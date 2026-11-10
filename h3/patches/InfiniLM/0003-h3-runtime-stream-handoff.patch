@@ -1,0 +1,42 @@
+--- a/python/infinilm/multimodal/minimax_h3.py
++++ b/python/infinilm/multimodal/minimax_h3.py
+@@ -401,6 +401,9 @@
+     def encode(self, model_inputs: Mapping[str, Any]) -> torch.Tensor:
+         native_inputs = self._prepare_native_inputs(model_inputs)
+         input_ids = native_inputs.pop("input_ids")
++        # from_torch shares storage but does not hand off the producing stream.
++        # Native TP workers use independent streams, including for peer copies.
++        torch.cuda.current_stream(self.torch_device).synchronize()
+         output = self.engine.forward_raw(input_ids, **native_inputs)
+         return MiniMaxH3TransformerRunner._to_torch(output["logits"], self.torch_device)
+ 
+@@ -468,13 +471,17 @@
+ 
+     @staticmethod
+     def _to_torch(tensor: infinicore.Tensor, device: torch.device) -> torch.Tensor:
++        # skip_sampling returns dense tensors after enqueueing the native work.
++        # Wait BEFORE copying on this thread's independent native stream;
++        # a device synchronization after the copy cannot repair an early read.
++        torch.cuda.synchronize(device)
+         output = torch.empty(
+             tuple(tensor.shape),
+             dtype=infinicore.utils.to_torch_dtype(tensor.dtype),
+             device=device,
+         )
+         infinicore.from_torch(output).copy_(tensor)
+-        infinicore.sync_device()
++        torch.cuda.synchronize(device)
+         return output
+ 
+     def __call__(
+@@ -501,6 +508,10 @@
+         native_inputs = {
+             name: self._to_infinicore(tensor) for name, tensor in torch_inputs.items()
+         }
++        # Includes the RoPE cache and row indices created above, as well as
++        # scheduler updates to latents. Sharing a pointer does not order streams.
++        for device in {tensor.device for tensor in torch_inputs.values() if tensor.is_cuda}:
++            torch.cuda.current_stream(device).synchronize()
+         output = self.engine.forward_raw(None, **native_inputs)
+         video = output["logits"]
+         audio = output["hidden_states"]

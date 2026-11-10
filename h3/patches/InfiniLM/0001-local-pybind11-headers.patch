@@ -1,0 +1,32 @@
+diff --git a/xmake.lua b/xmake.lua
+index dd04bbbe..d2227c24 100644
+--- a/xmake.lua
++++ b/xmake.lua
+@@ -1,4 +1,9 @@
+-add_requires("pybind11")
++local local_pybind11_include = os.getenv("SONGSHAN_PYBIND11_INCLUDE")
++if local_pybind11_include and local_pybind11_include ~= "" then
++    add_includedirs(local_pybind11_include)
++else
++    add_requires("pybind11")
++end
+ 
+ set_toolchains("gcc")
+ 
+@@ -22,9 +27,14 @@ add_includedirs("third_party/spdlog/include")
+ add_includedirs("third_party/json/single_include/")
+ 
+ target("_infinilm")
+-    add_packages("pybind11")
++    if not local_pybind11_include then
++        add_packages("pybind11")
++    end
+     set_default(false)
+-    add_rules("python.module", {soabi = true})
++    add_rules("python.library", {soabi = true})
++    if os.getenv("SONGSHAN_PYTHON_INCLUDE") then
++        add_includedirs(os.getenv("SONGSHAN_PYTHON_INCLUDE"))
++    end
+     set_languages("cxx17")
+     set_kind("shared")
+ 

@@ -1,0 +1,144 @@
+diff --git a/csrc/engine/infer_engine.cpp b/csrc/engine/infer_engine.cpp
+index 80393356..09b0d58a 100644
+--- a/csrc/engine/infer_engine.cpp
++++ b/csrc/engine/infer_engine.cpp
+@@ -308,10 +308,17 @@ void InferEngine::compile() {
+ // Destructor
+ //------------------------------------------------------
+ InferEngine::~InferEngine() {
++    close();
++}
++
++void InferEngine::close() {
+     // Close all workers
+     for (auto &worker : workers_) {
+         worker->close();
+     }
++    // The member declaration order otherwise destroys communication_group_
++    // before workers_. Release model/graph references while it is still alive.
++    workers_.clear();
+ }
+ 
+ const distributed::DistConfig &InferEngine::get_dist_config() const {
+diff --git a/csrc/engine/infer_engine.hpp b/csrc/engine/infer_engine.hpp
+index 31054149..c1900db8 100644
+--- a/csrc/engine/infer_engine.hpp
++++ b/csrc/engine/infer_engine.hpp
+@@ -60,6 +60,10 @@ public:
+ 
+     ~InferEngine();
+ 
++    // Join and release workers before their communicator and runtime owners.
++    // Safe to call again; callers must not submit new work after close().
++    void close();
++
+     const distributed::DistConfig &get_dist_config() const;
+ 
+     // Get current KV configuration
+diff --git a/csrc/pybind11/engine/engine.hpp b/csrc/pybind11/engine/engine.hpp
+index 5ac341da..211bbf47 100644
+--- a/csrc/pybind11/engine/engine.hpp
++++ b/csrc/pybind11/engine/engine.hpp
+@@ -122,6 +122,8 @@ inline void bind_infer_engine(py::module &m) {
+             return state_dict_tp_all;
+         })
+         .def("process_weights_after_loading", &InferEngine::process_weights_after_loading, "Process the weights after loading on all workers (e.g., for quantization)")
++        .def("close", &InferEngine::close, py::call_guard<py::gil_scoped_release>(),
++             "Join and release native workers before interpreter shutdown")
+         .def(
+             "forward", [](InferEngine &self, const InferEngine::Input &input) -> InferEngine::Output {
+                 // IMPORTANT: Release the GIL before calling forward() to allow other Python threads
+diff --git a/examples/minimax_h3.py b/examples/minimax_h3.py
+index 00dc9290..5622b7d2 100644
+--- a/examples/minimax_h3.py
++++ b/examples/minimax_h3.py
+@@ -55,6 +55,7 @@ class TimingReport:
+         "output.audio_vae_decode",
+         "generation.pipeline_total",
+         "output.media_encode",
++        "cleanup.native_engines",
+         "total.end_to_end",
+     )
+ 
+@@ -510,8 +511,8 @@ def load_pipeline(
+         )
+         execution_device = pipe._execution_device
+         print(f"[model] Diffusers execution device: {execution_device}")
+-        pipe.vae.to(device=execution_device, dtype=DTYPE)
+-        pipe.audio_vae.to(device=execution_device, dtype=DTYPE)
++        pipe.vae.to(device=execution_device)
++        pipe.audio_vae.to(device=execution_device)
+         pipe.vae.requires_grad_(False)
+         pipe.audio_vae.requires_grad_(False)
+     return pipe, text_encoder, transformer
+@@ -743,6 +744,13 @@ def main() -> None:
+             audio_sample_rate=result["sampling_rate"],
+         )
+     timings.synchronize()
++    if not args.legacy:
++        print("[cleanup] Closing native engines before interpreter shutdown", flush=True)
++        with timings.measure("cleanup.native_engines", synchronize=True):
++            transformer.close()
++            text_encoder.close()
++            gc.collect()
++        print("[cleanup] Native engines closed", flush=True)
+     timings.record("total.end_to_end", time.perf_counter() - total_started)
+     timings.print_report(timings.total("generation.pipeline_total"))
+     print(f"[done] Saved to: {output_path}")
+diff --git a/python/infinilm/multimodal/minimax_h3.py b/python/infinilm/multimodal/minimax_h3.py
+index ed4180d2..776f39d7 100644
+--- a/python/infinilm/multimodal/minimax_h3.py
++++ b/python/infinilm/multimodal/minimax_h3.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import itertools
++import weakref
+ from dataclasses import dataclass, fields
+ from pathlib import Path
+ from types import SimpleNamespace
+@@ -131,7 +132,7 @@ def minimax_h3_rotary_cache(
+ class _MiniMaxH3NativeQwen3VLModel(torch.nn.Module):
+     def __init__(self, encoder: "MiniMaxH3ConditionEncoder") -> None:
+         super().__init__()
+-        object.__setattr__(self, "_encoder", encoder)
++        object.__setattr__(self, "_encoder", weakref.proxy(encoder))
+ 
+     def forward(self, **model_inputs: Any) -> BaseModelOutputWithPast:
+         hidden_states = self._encoder.encode(model_inputs)
+@@ -213,6 +214,12 @@ class MiniMaxH3ConditionEncoder(Qwen3VLForConditionalGeneration):
+         self.model = _MiniMaxH3NativeQwen3VLModel(self)
+         self.lm_head = None
+ 
++    def close(self) -> None:
++        """Release native workers while the Python and device runtimes are alive."""
++        if self.engine is not None:
++            self.engine.close()
++        self.engine = None
++
+     @property
+     def dtype(self) -> torch.dtype:
+         return self._dtype
+@@ -449,6 +456,12 @@ class MiniMaxH3TransformerRunner:
+                 dtype=self.engine.dtype,
+             )
+ 
++    def close(self) -> None:
++        """Release the native engine explicitly before interpreter shutdown."""
++        if self.engine is not None:
++            self.engine.close()
++        self.engine = None
++
+     @staticmethod
+     def _to_infinicore(tensor: torch.Tensor) -> infinicore.Tensor:
+         return infinicore.from_torch(tensor.contiguous())
+@@ -512,6 +525,9 @@ class MiniMaxH3DiffusersAdapter(torch.nn.Module):
+         self._dtype = dtype
+         self.config = SimpleNamespace(**runner.engine.hf_config)
+ 
++    def close(self) -> None:
++        self.runner.close()
++
+     @property
+     def dtype(self) -> torch.dtype:
+         return self._dtype
