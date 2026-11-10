@@ -1,0 +1,386 @@
+{
+  "hf_repo": "MiniMaxAI/MiniMax-H3",
+  "hf_revision": "42ed227ee7df40d41602854ae760620d6eb651fe",
+  "modelscope_repo": "MiniMax/MiniMax-H3",
+  "bytes": 144051199021,
+  "files": [
+    {
+      "path": "text_encoder/chat_template.json",
+      "bytes": 5499,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "1081bacf1af7c7c6de4a585ce02cd0fd34e382da"
+    },
+    {
+      "path": "text_encoder/config.json",
+      "bytes": 1474,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "29e925092dee9f14278c53e7e7d876cea8a997bc"
+    },
+    {
+      "path": "text_encoder/merges.txt",
+      "bytes": 1671839,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0"
+    },
+    {
+      "path": "text_encoder/model-00001-of-00014.safetensors",
+      "bytes": 4932328944,
+      "hash_type": "sha256",
+      "expected_hash": "6b9dfbc930e505402ae9d7e5091a9d7d656cda5f34614f01cfe70bfb0cca27cb"
+    },
+    {
+      "path": "text_encoder/model-00002-of-00014.safetensors",
+      "bytes": 4875990528,
+      "hash_type": "sha256",
+      "expected_hash": "d8bb44b4ff303fe76fe9e894022fb3dc71b15a2e716592790fe0e3c3e60478fa"
+    },
+    {
+      "path": "text_encoder/model-00003-of-00014.safetensors",
+      "bytes": 4875990552,
+      "hash_type": "sha256",
+      "expected_hash": "54f22e8b3168f8dc962fac0d313607ebf52a12b433d4cf3098a0d82d9f042940"
+    },
+    {
+      "path": "text_encoder/model-00004-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "ad09c74d3c13ee29b5d0d84548fd8a3424a651564eaccd519946c296e59c557f"
+    },
+    {
+      "path": "text_encoder/model-00005-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "fc993c8a0e2a5b0570f383e1a95dc3a1281d1b224b6f3ee908f4827941e1dfc2"
+    },
+    {
+      "path": "text_encoder/model-00006-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "82f05620d1f718a90c362b221d6a184ff1a0f53301d706882d3df49695fa1974"
+    },
+    {
+      "path": "text_encoder/model-00007-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "fb91da8cb01ff4de3eef0eab1c3e769a734b3a1aafc61734068638a0d6c86934"
+    },
+    {
+      "path": "text_encoder/model-00008-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "431ca56535c8781944ce3801f5eb61c45531e853ecc5846d936ebaf4761b764f"
+    },
+    {
+      "path": "text_encoder/model-00009-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "3825e3f4302f4d2f7d76aa7430d2ce0864fde6b9e540a5806bf0d8e38e4d9f47"
+    },
+    {
+      "path": "text_encoder/model-00010-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "aded5a4d1d5e22dbd8b6f79266b6eb88c840411b09527c53917a1419ace22e2f"
+    },
+    {
+      "path": "text_encoder/model-00011-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "3820ffe8d8d6477f6fe8d614ef3c87abb264ee39accebf43a1507b970d80946f"
+    },
+    {
+      "path": "text_encoder/model-00012-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "05ad2d08ce71963121c9b03f1d9ec5d7641052f4b23c6c12b80d71065eb8e98e"
+    },
+    {
+      "path": "text_encoder/model-00013-of-00014.safetensors",
+      "bytes": 4875990584,
+      "hash_type": "sha256",
+      "expected_hash": "b64f2289871261fdd1abbd3b78bcd66011b341de3dc8eeb2ed1a473ee7c8d95c"
+    },
+    {
+      "path": "text_encoder/model-00014-of-00014.safetensors",
+      "bytes": 3270697008,
+      "hash_type": "sha256",
+      "expected_hash": "e45b6c9998c77ee5a6577f9f47bc76416c1d4d387169e50c4c9d3134ea51b13b"
+    },
+    {
+      "path": "text_encoder/model.safetensors.index.json",
+      "bytes": 97831,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "b7f68f12031a25c81d72d46a284fe9e1daa448b8"
+    },
+    {
+      "path": "text_encoder/preprocessor_config.json",
+      "bytes": 390,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "2ea84a437d448ff71b08df68fdd949d5cc4ebb64"
+    },
+    {
+      "path": "text_encoder/tokenizer.json",
+      "bytes": 7032403,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "c6cc1014128b19d1fc46b1d30a23e3b1d35db421"
+    },
+    {
+      "path": "text_encoder/tokenizer_config.json",
+      "bytes": 11003,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "204d76f78dac6dedc820418c30bf01145de78a21"
+    },
+    {
+      "path": "text_encoder/video_preprocessor_config.json",
+      "bytes": 385,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "3ba673a5ad7d4d13f54155ecd38b2a94a6dac8fe"
+    },
+    {
+      "path": "text_encoder/vocab.json",
+      "bytes": 2776833,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    },
+    {
+      "path": "transformer/config.json",
+      "bytes": 546,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "c251a4133c81852a150c6668a570e142dc776b6e"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00001-of-00014.safetensors",
+      "bytes": 4825958704,
+      "hash_type": "sha256",
+      "expected_hash": "2d847200c45c09dd7f973c1b096663068408ef851ee0b3711d059b6dc5dcd028"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00002-of-00014.safetensors",
+      "bytes": 4702158032,
+      "hash_type": "sha256",
+      "expected_hash": "2c4d362eddd2802180ac9c744849eb9ba8d9c8b984bdf9822cb02ed004b29184"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00003-of-00014.safetensors",
+      "bytes": 4933368192,
+      "hash_type": "sha256",
+      "expected_hash": "949c5aafbbfa5654da730a6a7fafd75adb164d0857b095a30e8bb6d390887d69"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00004-of-00014.safetensors",
+      "bytes": 4567069608,
+      "hash_type": "sha256",
+      "expected_hash": "eef7616790105ee839766bb2027203bf2c0d87c6aa038dca84145a8675f5ce28"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00005-of-00014.safetensors",
+      "bytes": 4702158080,
+      "hash_type": "sha256",
+      "expected_hash": "43fdf42d638e8bc6745f713fae80c93bb301807a1a5ae7249344ce28e202a494"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00006-of-00014.safetensors",
+      "bytes": 4933368232,
+      "hash_type": "sha256",
+      "expected_hash": "6442510b34d173653f0cce5c964b935395a8f7accf0b9cc0aa31aec59805239d"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00007-of-00014.safetensors",
+      "bytes": 4567069608,
+      "hash_type": "sha256",
+      "expected_hash": "29f48f535c91dac76496ca821eeb16ca24bc4caf3f0cae8b920a89b1f966da6d"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00008-of-00014.safetensors",
+      "bytes": 4702158080,
+      "hash_type": "sha256",
+      "expected_hash": "c711b096c764bd60f0b8b6ad49518bfab6d614fb788c725add8741c0674a4cd8"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00009-of-00014.safetensors",
+      "bytes": 4933368232,
+      "hash_type": "sha256",
+      "expected_hash": "44428defe3976cbb87635ad200b958199e739986697cd29fdf27aeb7294b5944"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00010-of-00014.safetensors",
+      "bytes": 4567069608,
+      "hash_type": "sha256",
+      "expected_hash": "3d44939c374c9da382e9c6877e1946adf7b84e08c7a881c068f228d6849411c9"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00011-of-00014.safetensors",
+      "bytes": 4702158080,
+      "hash_type": "sha256",
+      "expected_hash": "224d24430b58127a5577721084e0e704a0e74ec96dd7c35bc6fc0994ebd87c33"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00012-of-00014.safetensors",
+      "bytes": 4933368232,
+      "hash_type": "sha256",
+      "expected_hash": "48fa2bd8fe134eef565ab2464f1c2589a6657cba0d14283dfc06b532f8961f3c"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00013-of-00014.safetensors",
+      "bytes": 4567069608,
+      "hash_type": "sha256",
+      "expected_hash": "be5b4b1809f9d546ffd4b3fcf41e5c1e02b819125caa6bc105c109b04c051bd3"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model-00014-of-00014.safetensors",
+      "bytes": 4644161920,
+      "hash_type": "sha256",
+      "expected_hash": "8fbd5e6c1fb1df7ce988ca90f3d59e7610e465c7517e4b344eda4a214ba4b97d"
+    },
+    {
+      "path": "transformer/diffusion_pytorch_model.safetensors.index.json",
+      "bytes": 64488,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "da038def25abb5a5e4be509816ee55a0b7105e09"
+    },
+    {
+      "path": "tokenizer/merges.txt",
+      "bytes": 1671839,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0"
+    },
+    {
+      "path": "tokenizer/tokenizer.json",
+      "bytes": 7032403,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "c6cc1014128b19d1fc46b1d30a23e3b1d35db421"
+    },
+    {
+      "path": "tokenizer/tokenizer_config.json",
+      "bytes": 11003,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "204d76f78dac6dedc820418c30bf01145de78a21"
+    },
+    {
+      "path": "tokenizer/vocab.json",
+      "bytes": 2776833,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    },
+    {
+      "path": "processor/chat_template.json",
+      "bytes": 5499,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "1081bacf1af7c7c6de4a585ce02cd0fd34e382da"
+    },
+    {
+      "path": "processor/merges.txt",
+      "bytes": 1671839,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0"
+    },
+    {
+      "path": "processor/preprocessor_config.json",
+      "bytes": 390,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "2ea84a437d448ff71b08df68fdd949d5cc4ebb64"
+    },
+    {
+      "path": "processor/tokenizer.json",
+      "bytes": 7032403,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "c6cc1014128b19d1fc46b1d30a23e3b1d35db421"
+    },
+    {
+      "path": "processor/tokenizer_config.json",
+      "bytes": 11003,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "204d76f78dac6dedc820418c30bf01145de78a21"
+    },
+    {
+      "path": "processor/video_preprocessor_config.json",
+      "bytes": 385,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "3ba673a5ad7d4d13f54155ecd38b2a94a6dac8fe"
+    },
+    {
+      "path": "processor/vocab.json",
+      "bytes": 2776833,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    },
+    {
+      "path": "vae/config.json",
+      "bytes": 2011,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "ed4874a5886972f4029fcd99cbbe72de0177b2c9"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model-00001-of-00003.safetensors",
+      "bytes": 5061033024,
+      "hash_type": "sha256",
+      "expected_hash": "72f4c6be84ac0674f27398cde991dd9d719762f3952c4921aa66b2ce542f6374"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model-00002-of-00003.safetensors",
+      "bytes": 4955986528,
+      "hash_type": "sha256",
+      "expected_hash": "2e05e8bc23fa4071043e17fd242be8acd0685e781a43987432b2eae925be4198"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model-00003-of-00003.safetensors",
+      "bytes": 398539336,
+      "hash_type": "sha256",
+      "expected_hash": "c05d6ac4b1a33de372799d708531da6320f6a3ce6d1ce6d895e770988e004a39"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model.safetensors.index.json",
+      "bytes": 74228,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "05dfb255c44daa4f1ac487f57f18210fa5c19439"
+    },
+    {
+      "path": "audio_vae/config.json",
+      "bytes": 2271,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "15df6fe0b288b260dca0f2aebf1cd81334d77e96"
+    },
+    {
+      "path": "audio_vae/diffusion_pytorch_model.safetensors",
+      "bytes": 605429340,
+      "hash_type": "sha256",
+      "expected_hash": "52c59e67ba8de5477c81bfbced0327aabf500f1bfdeefd5ee754529241cb26cb"
+    },
+    {
+      "path": "scheduler/scheduler_config.json",
+      "bytes": 97,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "1d44f95b955a648ad4fab455e4fe11053888c30b"
+    },
+    {
+      "path": "audio_scheduler/scheduler_config.json",
+      "bytes": 96,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "28a3d4ed602d925031c7e5d6eeb07df8958ff0f1"
+    },
+    {
+      "path": "model_index.json",
+      "bytes": 2936,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "454be19164878173a962c39c81633e4377880fca"
+    },
+    {
+      "path": "modular_model_index.json",
+      "bytes": 2935,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "5b69f1e801bd0a7e9733c48704c732339f2002fe"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 17604,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "c389b45855337ccec8ddeb389f4fe902abcd0b19"
+    },
+    {
+      "path": "README.md",
+      "bytes": 38406,
+      "hash_type": "git_blob_sha1",
+      "expected_hash": "08b20eb59ca77aaf19627152a0ee61b1ffc83070"
+    }
+  ]
+}

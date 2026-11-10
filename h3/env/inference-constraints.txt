@@ -1,0 +1,14 @@
+# Preserve the vendor compute stack. NumPy 1.26.4 is required by NineToothed.
+torch===2.9.0+das.opt1.dtk2604
+triton===3.5.1+das.opt1.dtk2604.torch290
+numpy==1.26.4
+# Current H3 Diffusers uses Hub's resolve_revision and the newer processor API.
+# Transformers 4.57.6 requires Hub <1 and cannot be used with this source pin.
+transformers==5.12.1
+tokenizers==0.22.2
+huggingface-hub==1.32.0
+# Required by InfiniLM's eager LLM imports; upstream package metadata omits them.
+janus==2.0.0
+xxhash==3.6.0
+# CPU preprocessing only; version matched to Torch 2.9.0, no NVIDIA runtime.
+torchvision==0.24.0+cpu

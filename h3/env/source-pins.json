@@ -1,0 +1,26 @@
+{
+  "InfiniCore": {
+    "commit": "f32e2fbb2a9b2ca912b5711f4f3836c403196a74",
+    "branch": "minimax-h3"
+  },
+  "InfiniLM": {
+    "commit": "65deb91f840ebaef752d028fad2f3217ce0950f4",
+    "branch": "minimax_h3"
+  },
+  "ninetoothed": {
+    "commit": "4295e9c767805b619418f9ab8d0692f186772b1b",
+    "branch": "master"
+  },
+  "ntops": {
+    "commit": "82cba6cf2200919b5d12c86adbea60cbfb516040",
+    "branch": "master"
+  },
+  "diffusers": {
+    "commit": "86ef420b17363c28e36ebad6b58555e9aa8feda2",
+    "branch": "main"
+  },
+  "xmake": {
+    "commit": "13fc392386960040c3da1ddcbd104423b02fbe1b",
+    "branch": ""
+  }
+}
