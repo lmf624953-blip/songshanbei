@@ -1,0 +1,24 @@
+{
+  "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+  "input_size": [
+    800,
+    965
+  ],
+  "text": "A dog falls asleep",
+  "num_frames": 124,
+  "steps": 50,
+  "seed": 42,
+  "width": 768,
+  "height": 928,
+  "fps": 24,
+  "gpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ]
+}
