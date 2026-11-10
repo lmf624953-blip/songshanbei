@@ -1,0 +1,19 @@
+{
+  "export_source": "InfiniFabric AFS after successful competition-template dog run",
+  "source_archive_sha256": "1a65274e719149ec76e4aa6483c4321737f351e0de35056537c91361a40d5ecc",
+  "runtime_adaptation_hashes": {
+    "songshan_h3/diffusers_attention.py": "1b73f9b7d4554b08c95adbb50f2ad8e06392fb4dc4da4d8d78f1589bf162506b",
+    "songshan_h3/preprocessing.py": "b23b80c456994eb94b6e1cd46418ecc433b41326229eaeb0a3a5f75bf0eaf878",
+    "songshan_h3/cache_compat.py": "528e32625812e893247600bc0f208fa3c229da99509c2861fd64288a08daa5af",
+    "songshan_h3/attention_bridge.cc": "79975ef79f30d8462629fd7bfdb72ef2eea7794426ca9e1e465624f97520104a",
+    "songshan_h3/attention_bridge.py": "6e2e5a5f03499f424a20177597d5c05353121b37d616779a5f8ce73a106dc4b8",
+    "songshan_h3/attention_kernel.py": "a9b500ff7abefe63e75174f0ccac75ba3f3f1e1ca82012843491af490e879f60",
+    "songshan_h3/compiler_compat.py": "136248ee94d37d208fe6d61fa8c4e8fdb8e48a43dd0a918ab8425295bf095244",
+    "songshan_h3/output_validation.py": "9916a6a2f172b437c8466805f53dc6dc2e0d201358269c15c47f2fca0cabf7f5",
+    "songshan_h3/_attention_bridge.cpython-311-x86_64-linux-gnu.so": "cd30dfcef7bc4700b2cfafd3675d6b20f2c1fd1e6eb533f38202eeae5341d70e",
+    "songshan_h3/__init__.py": "458d6ad08d3d180b16294cf444fb68167062daf3328e07da0375af49409aedd7"
+  },
+  "source_code_changed_for_publication": false,
+  "evidence_path_normalization": "Personal project root replaced by $PROJECT_ROOT in evidence text only",
+  "new_clean_rebuild_verified": false
+}
