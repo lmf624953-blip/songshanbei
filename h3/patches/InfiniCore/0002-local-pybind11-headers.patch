@@ -1,0 +1,44 @@
+diff --git a/xmake.lua b/xmake.lua
+index 56841028..369f286d 100644
+--- a/xmake.lua
++++ b/xmake.lua
+@@ -1,6 +1,12 @@
+ add_rules("mode.debug", "mode.release")
+-add_requires("boost", {configs = {stacktrace = true}})
+-add_requires("pybind11")
++local local_pybind11_include = os.getenv("SONGSHAN_PYBIND11_INCLUDE")
++if local_pybind11_include and local_pybind11_include ~= "" then
++    -- This source revision has no Boost includes; use the installed bindings.
++    add_includedirs(local_pybind11_include)
++else
++    add_requires("boost", {configs = {stacktrace = true}})
++    add_requires("pybind11")
++end
+ 
+ -- Define color codes
+ local GREEN = '\27[0;32m'
+@@ -855,7 +861,9 @@ target("infinicore_cpp_api")
+     -- pybind11/embed.h for mha_kvcache branch
+     if has_config("moore-gpu") and has_config("aten") and has_config("flash-attn") then
+         add_defines("ENABLE_MOORE_MATE_FLASH_ATTN")
+-        add_packages("pybind11")
++        if not os.getenv("SONGSHAN_PYBIND11_INCLUDE") then
++            add_packages("pybind11")
++        end
+     end
+ 
+     before_build(function (target)
+@@ -1086,7 +1094,12 @@ target("_infinicore")
+ 
+     set_default(false)
+     add_rules("python.library", {soabi = true})
+-    add_packages("pybind11")
++    if os.getenv("SONGSHAN_PYTHON_INCLUDE") then
++        add_includedirs(os.getenv("SONGSHAN_PYTHON_INCLUDE"))
++    end
++    if not os.getenv("SONGSHAN_PYBIND11_INCLUDE") then
++        add_packages("pybind11")
++    end
+     set_languages("cxx17")
+ 
+     add_deps("infinicore_cpp_api")

@@ -1,0 +1,26 @@
+diff --git a/xmake/hygon.lua b/xmake/hygon.lua
+index ba06ae97..deed7ac9 100644
+--- a/xmake/hygon.lua
++++ b/xmake/hygon.lua
+@@ -68,8 +68,8 @@ toolchain("hygon.toolchain")
+ toolchain_end()
+ 
+ rule("hygon.env")
+-    -- Fix the deprecated warning by using add_orders
+-    add_orders("cuda.env", "hygon.env")
++    -- Order the Hygon environment hook after the CUDA environment hook.
++    add_deps("cuda.env", {order = true})
+     after_load(function (target)
+         -- This logic to remove CUDA-specific libs is correct and can remain
+         local old = target:get("syslinks") or {}
+@@ -289,7 +289,9 @@ target("infinicore_cpp_api")
+         add_defines("ENABLE_ATEN")
+         if FLASH_ATTN_ROOT and FLASH_ATTN_ROOT ~= "" then
+             add_defines("ENABLE_FLASH_ATTN")
+-            add_packages("pybind11")
++            if not os.getenv("SONGSHAN_PYBIND11_INCLUDE") then
++                add_packages("pybind11")
++            end
+         end
+     end
+ 
