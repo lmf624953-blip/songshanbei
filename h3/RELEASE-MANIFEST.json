@@ -1,4 +1,12 @@
 {
+  "download_vendor_triton.py": {
+    "bytes": 2062,
+    "sha256": "b18b57b6aeb80384076fc6bf686569c1aaaea7a4180df6f3a329205b4dd8f6c1"
+  },
+  "docs/TRITON_VENDOR.md": {
+    "bytes": 3302,
+    "sha256": "2abeba0a5528dd14ab163e09b0e4744bbe206fdddf171673e060e979194cf2e1"
+  },
   "verify_source.py": {
     "bytes": 1332,
     "sha256": "b76d2076a807c7d69502cf81aff571267c52821fe7ebe7e5e62ed523fd0f8a98"
@@ -20,8 +28,8 @@
     "sha256": "040c14500b73bef6c63ea124e4f26c854594cda6e14b35e55d4b490230b9cbea"
   },
   "README.md": {
-    "bytes": 7054,
-    "sha256": "c44e4c13c45562737bc19ad4d975ed00fe3e4fcf722ddd25e978618df5e2857e"
+    "bytes": 7425,
+    "sha256": "18eaa0d25f56aab98851e48f4a6c46eb715bc9efa5ebe448e728ea89af29e0a3"
   },
   "PLATFORM-SOURCE-MANIFEST.json": {
     "bytes": 10555,
