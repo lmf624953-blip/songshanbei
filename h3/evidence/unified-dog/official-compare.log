@@ -1,0 +1,13 @@
+
+[task] reference_fl2va: using existing result: $PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/reference.mp4
+
+[task] infinilm_fl2va: using existing result: $PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/infinilm.mp4
+
+[compare] FL2VA: decoding outputs
+
+[result] MiniMax-H3 video comparison
+
+  FL2VA
+    Size:         PASS (PyTorch 768x928, InfiniLM 768x928)
+    Length:       PASS (PyTorch 124 frames, InfiniLM 124 frames)
+    Average SSIM: 93.485%

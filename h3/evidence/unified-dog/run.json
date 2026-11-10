@@ -1,0 +1,213 @@
+{
+  "phase": "complete",
+  "complete": true,
+  "official_pass_claimed": false,
+  "prompt": "A dog falls asleep",
+  "output_directory": "$PROJECT_ROOT/outputs/unified_fl2va/20261109_085228",
+  "input_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+  "hardware": [
+    {
+      "device": 0,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 1,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 2,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 3,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 4,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 5,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 6,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    },
+    {
+      "device": 7,
+      "name": "BW",
+      "arch": "gfx936:sramecc+:xnack-",
+      "memory": 68702699520
+    }
+  ],
+  "input_size": [
+    800,
+    965
+  ],
+  "configuration": {
+    "height": 928,
+    "width": 768,
+    "num_frames": 124,
+    "fps": 24,
+    "steps": 50,
+    "seed": 42,
+    "gpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "comparison_script_sha256": "e143c28e4b3acb885662e0aa238aa00ca17cbcc82077f465f2ce57d0f1225590",
+  "entry_sha256": "9bee7f79ad0968cb2af1ade301ef59a4db31d2c06ba9d2ade3435dc2bd98ca46",
+  "adaptation_hashes": {
+    "songshan_h3/diffusers_attention.py": "1b73f9b7d4554b08c95adbb50f2ad8e06392fb4dc4da4d8d78f1589bf162506b",
+    "songshan_h3/preprocessing.py": "b23b80c456994eb94b6e1cd46418ecc433b41326229eaeb0a3a5f75bf0eaf878",
+    "songshan_h3/cache_compat.py": "528e32625812e893247600bc0f208fa3c229da99509c2861fd64288a08daa5af",
+    "songshan_h3/attention_bridge.cc": "79975ef79f30d8462629fd7bfdb72ef2eea7794426ca9e1e465624f97520104a",
+    "songshan_h3/attention_bridge.py": "6e2e5a5f03499f424a20177597d5c05353121b37d616779a5f8ce73a106dc4b8",
+    "songshan_h3/attention_kernel.py": "a9b500ff7abefe63e75174f0ccac75ba3f3f1e1ca82012843491af490e879f60",
+    "songshan_h3/compiler_compat.py": "136248ee94d37d208fe6d61fa8c4e8fdb8e48a43dd0a918ab8425295bf095244",
+    "songshan_h3/output_validation.py": "9916a6a2f172b437c8466805f53dc6dc2e0d201358269c15c47f2fca0cabf7f5",
+    "songshan_h3/_attention_bridge.cpython-311-x86_64-linux-gnu.so": "cd30dfcef7bc4700b2cfafd3675d6b20f2c1fd1e6eb533f38202eeae5341d70e",
+    "songshan_h3/__init__.py": "458d6ad08d3d180b16294cf444fb68167062daf3328e07da0375af49409aedd7"
+  },
+  "infinilm_command": [
+    "$PROJECT_ROOT/.venv/bin/python",
+    "$PROJECT_ROOT/scripts/launch_h3.py",
+    "$PROJECT_ROOT/h3-runtime/sources/InfiniLM/examples/minimax_h3.py",
+    "fl2va",
+    "--model-path=/public/home/aclsylqidf/shared/MiniMax-H3/diffusers",
+    "--first-frame=$PROJECT_ROOT/unified-dog-input/first_frame.png",
+    "--text=A dog falls asleep",
+    "--gpus=0,1,2,3,4,5,6,7",
+    "--num-frames=124",
+    "--steps=50",
+    "--seed=42",
+    "--height=928",
+    "--width=768",
+    "--output=$PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/infinilm.mp4"
+  ],
+  "infinilm_returncode": 0,
+  "infinilm_wall_seconds": 619.6095862537622,
+  "infinilm_media": {
+    "media_readable": true,
+    "video": {
+      "width": 768,
+      "height": 928,
+      "fps": 24.0,
+      "codec": "h264",
+      "frames": 124
+    },
+    "audio": {
+      "codec": "aac",
+      "sample_rate": 32000,
+      "channels": 2,
+      "decoded_frames": 162,
+      "decoded_samples": 165888
+    },
+    "video_specs_passed": true,
+    "similarity_evaluated": false,
+    "competition_validation_passed": false
+  },
+  "infinilm_sha256": "140bb95222aeaffff3571c4de886bb970fea356969750fcc631f0aedaf61da52",
+  "reference_command": [
+    "$PROJECT_ROOT/.venv/bin/python",
+    "$PROJECT_ROOT/h3-runtime/sources/InfiniLM/examples/minimax_h3.py",
+    "fl2va",
+    "--model-path=/public/home/aclsylqidf/shared/MiniMax-H3/diffusers",
+    "--first-frame=$PROJECT_ROOT/unified-dog-input/first_frame.png",
+    "--text=A dog falls asleep",
+    "--gpus=0,1,2,3,4,5,6,7",
+    "--num-frames=124",
+    "--steps=50",
+    "--seed=42",
+    "--height=928",
+    "--width=768",
+    "--output=$PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/reference.mp4",
+    "--legacy",
+    "--legacy-memory-fraction=0.4"
+  ],
+  "reference_returncode": 0,
+  "reference_wall_seconds": 645.0644467202947,
+  "reference_media": {
+    "media_readable": true,
+    "video": {
+      "width": 768,
+      "height": 928,
+      "fps": 24.0,
+      "codec": "h264",
+      "frames": 124
+    },
+    "audio": {
+      "codec": "aac",
+      "sample_rate": 32000,
+      "channels": 2,
+      "decoded_frames": 162,
+      "decoded_samples": 165888
+    },
+    "video_specs_passed": true,
+    "similarity_evaluated": false,
+    "competition_validation_passed": false
+  },
+  "reference_sha256": "5adfd852d4a5b8cde4de43d70f9bf0ca7e665e9c12faae4d808d39e29cb6b750",
+  "official-compare_command": [
+    "$PROJECT_ROOT/.venv/bin/python",
+    "$PROJECT_ROOT/h3-runtime/sources/InfiniLM/examples/minimax_h3_compare.py",
+    "--tasks=fl2va",
+    "--model-path=/public/home/aclsylqidf/shared/MiniMax-H3/diffusers",
+    "--reference-fl2va-video=$PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/reference.mp4",
+    "--infinilm-fl2va-video=$PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/infinilm.mp4"
+  ],
+  "official-compare_returncode": 0,
+  "official-compare_wall_seconds": 6.479072756133974,
+  "metrics": {
+    "exact": false,
+    "left_metadata": {
+      "width": 768,
+      "height": 928,
+      "declared_frames": 124,
+      "average_fps": 24.0,
+      "duration_seconds": 5.166666666666667
+    },
+    "right_metadata": {
+      "width": 768,
+      "height": 928,
+      "declared_frames": 124,
+      "average_fps": 24.0,
+      "duration_seconds": 5.166666666666667
+    },
+    "metadata_size_match": true,
+    "decoded_length_match": true,
+    "left_frames": 124,
+    "right_frames": 124,
+    "shape_mismatches": 0,
+    "different_elements": 224396967,
+    "compared_elements": 265125888,
+    "max_absolute_difference": 251,
+    "mean_absolute_difference": 5.65655968684582,
+    "ssim_match_percent": 93.48490251477143,
+    "ssim_min_percent": 86.33061924533045,
+    "ssim_max_percent": 98.28997494295191,
+    "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+  }
+}

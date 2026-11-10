@@ -1,0 +1,177 @@
+flash_attn is installed but failed to import: No module named 'pytest'. Falling back to native PyTorch attention.
+[model] Loading modular components from: /public/home/aclsylqidf/shared/MiniMax-H3/diffusers
+[model] Loading fl2va weights from:       /public/home/aclsylqidf/shared/MiniMax-H3/diffusers
+[model] Backend: legacy PyTorch
+[model] Qwen3-VL devices: [0, 1, 2, 3]
+[model] H3 transformer devices: [4, 5, 6, 7]
+
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]
+Loading weights:   1%|          | 11/1058 [00:00<00:10, 98.84it/s]
+Loading weights:   2%|▏         | 21/1058 [00:00<00:16, 61.07it/s]
+Loading weights:   3%|▎         | 28/1058 [00:00<00:32, 31.52it/s]
+Loading weights:   5%|▍         | 48/1058 [00:00<00:18, 55.17it/s]
+Loading weights:   5%|▌         | 57/1058 [00:01<00:20, 49.83it/s]
+Loading weights:   7%|▋         | 70/1058 [00:01<00:18, 53.65it/s]
+Loading weights:   8%|▊         | 81/1058 [00:01<00:18, 53.70it/s]
+Loading weights:   9%|▊         | 92/1058 [00:01<00:18, 53.33it/s]
+Loading weights:  10%|▉         | 101/1058 [00:02<00:26, 36.30it/s]
+Loading weights:  12%|█▏        | 123/1058 [00:02<00:18, 50.55it/s]
+Loading weights:  13%|█▎        | 133/1058 [00:02<00:18, 49.29it/s]
+Loading weights:  14%|█▎        | 145/1058 [00:02<00:18, 48.94it/s]
+Loading weights:  14%|█▍        | 151/1058 [00:03<00:23, 38.00it/s]
+Loading weights:  16%|█▌        | 169/1058 [00:03<00:17, 51.01it/s]
+Loading weights:  17%|█▋        | 175/1058 [00:03<00:20, 42.81it/s]
+Loading weights:  18%|█▊        | 186/1058 [00:04<00:26, 32.54it/s]
+Loading weights:  20%|██        | 213/1058 [00:04<00:15, 53.48it/s]
+Loading weights:  21%|██        | 221/1058 [00:04<00:17, 48.22it/s]
+Loading weights:  22%|██▏       | 236/1058 [00:04<00:15, 53.65it/s]
+Loading weights:  23%|██▎       | 243/1058 [00:05<00:18, 43.50it/s]
+Loading weights:  24%|██▍       | 257/1058 [00:05<00:14, 53.80it/s]
+Loading weights:  25%|██▍       | 264/1058 [00:06<00:30, 26.14it/s]
+Loading weights:  28%|██▊       | 298/1058 [00:06<00:16, 45.66it/s]
+Loading weights:  29%|██▉       | 312/1058 [00:06<00:15, 47.38it/s]
+Loading weights:  31%|███       | 323/1058 [00:06<00:14, 51.93it/s]
+Loading weights:  31%|███▏      | 331/1058 [00:07<00:16, 43.75it/s]
+Loading weights:  32%|███▏      | 338/1058 [00:07<00:23, 30.76it/s]
+Loading weights:  35%|███▍      | 368/1058 [00:07<00:12, 54.66it/s]
+Loading weights:  36%|███▌      | 378/1058 [00:08<00:11, 60.10it/s]
+Loading weights:  37%|███▋      | 387/1058 [00:08<00:14, 45.90it/s]
+Loading weights:  38%|███▊      | 400/1058 [00:08<00:11, 55.99it/s]
+Loading weights:  39%|███▊      | 409/1058 [00:08<00:14, 44.64it/s]
+Loading weights:  40%|███▉      | 422/1058 [00:08<00:11, 54.43it/s]
+Loading weights:  41%|████      | 430/1058 [00:09<00:14, 44.23it/s]
+Loading weights:  42%|████▏     | 444/1058 [00:09<00:13, 45.15it/s]
+Loading weights:  43%|████▎     | 455/1058 [00:09<00:13, 44.71it/s]
+Loading weights:  44%|████▍     | 466/1058 [00:10<00:16, 34.95it/s]
+Loading weights:  46%|████▌     | 488/1058 [00:10<00:12, 46.58it/s]
+Loading weights:  47%|████▋     | 500/1058 [00:10<00:10, 52.62it/s]
+Loading weights:  48%|████▊     | 507/1058 [00:11<00:12, 43.86it/s]
+Loading weights:  49%|████▉     | 518/1058 [00:11<00:11, 46.54it/s]
+Loading weights:  50%|█████     | 532/1058 [00:11<00:10, 48.33it/s]
+Loading weights:  51%|█████▏    | 544/1058 [00:11<00:09, 56.73it/s]
+Loading weights:  52%|█████▏    | 551/1058 [00:11<00:11, 45.24it/s]
+Loading weights:  53%|█████▎    | 565/1058 [00:11<00:08, 59.52it/s]
+Loading weights:  54%|█████▍    | 573/1058 [00:12<00:10, 45.50it/s]
+Loading weights:  55%|█████▍    | 580/1058 [00:12<00:11, 41.25it/s]
+Loading weights:  56%|█████▌    | 595/1058 [00:13<00:12, 36.70it/s]
+Loading weights:  58%|█████▊    | 617/1058 [00:13<00:08, 50.93it/s]
+Loading weights:  59%|█████▉    | 624/1058 [00:13<00:13, 33.05it/s]
+Loading weights:  62%|██████▏   | 652/1058 [00:13<00:07, 54.31it/s]
+Loading weights:  62%|██████▏   | 660/1058 [00:14<00:11, 34.00it/s]
+Loading weights:  65%|██████▍   | 685/1058 [00:14<00:08, 46.19it/s]
+Loading weights:  66%|██████▌   | 697/1058 [00:15<00:07, 45.31it/s]
+Loading weights:  92%|█████████▏| 974/1058 [00:15<00:00, 340.81it/s]
+Loading weights: 100%|█████████▉| 1057/1058 [00:15<00:00, 385.39it/s]
+Loading weights: 100%|██████████| 1058/1058 [00:15<00:00, 68.36it/s] 
+
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]
+Loading checkpoint shards:   7%|▋         | 1/14 [00:01<00:13,  1.07s/it]
+Loading checkpoint shards:  14%|█▍        | 2/14 [00:02<00:12,  1.01s/it]
+Loading checkpoint shards:  21%|██▏       | 3/14 [00:03<00:11,  1.06s/it]
+Loading checkpoint shards:  29%|██▊       | 4/14 [00:04<00:10,  1.09s/it]
+Loading checkpoint shards:  36%|███▌      | 5/14 [00:05<00:09,  1.10s/it]
+Loading checkpoint shards:  43%|████▎     | 6/14 [00:06<00:09,  1.18s/it]
+Loading checkpoint shards:  50%|█████     | 7/14 [00:07<00:08,  1.20s/it]
+Loading checkpoint shards:  57%|█████▋    | 8/14 [00:09<00:06,  1.16s/it]
+Loading checkpoint shards:  64%|██████▍   | 9/14 [00:10<00:05,  1.18s/it]
+Loading checkpoint shards:  71%|███████▏  | 10/14 [00:11<00:04,  1.13s/it]
+Loading checkpoint shards:  79%|███████▊  | 11/14 [00:12<00:03,  1.16s/it]
+Loading checkpoint shards:  86%|████████▌ | 12/14 [00:13<00:02,  1.24s/it]
+Loading checkpoint shards:  93%|█████████▎| 13/14 [00:15<00:01,  1.24s/it]
+Loading checkpoint shards: 100%|██████████| 14/14 [00:16<00:00,  1.21s/it]
+Loading checkpoint shards: 100%|██████████| 14/14 [00:16<00:00,  1.17s/it]
+[model] Routing legacy proj_out output to cuda:4
+[model] Routing legacy audio_proj_out output to cuda:4
+$PROJECT_ROOT/.reference-runtime/python/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  2.16it/s]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.16it/s]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.86it/s]
+[model] Diffusers execution device: cuda:1
+[generate] Running MiniMax-H3 FL2VA
+  text:            A dog falls asleep
+  first frame:     True
+  last frame:      False
+  frames:          124
+  steps:           50
+  backend:         legacy PyTorch
+$PROJECT_ROOT/.venv/lib/python3.11/site-packages/transformers/integrations/sdpa_attention.py:92: UserWarning: sdpa adopt the new interface of flash-attn (Triggered internally at /home/pytorch/aten/src/ATen/native/transformers/hip/cutlassfa_adapter.h:145.)
+  attn_output = torch.nn.functional.scaled_dot_product_attention(
+
+  0%|          | 0/49 [00:00<?, ?it/s]
+  2%|▏         | 1/49 [00:16<13:25, 16.78s/it]
+  4%|▍         | 2/49 [00:27<10:24, 13.28s/it]
+  6%|▌         | 3/49 [00:38<09:16, 12.10s/it]
+  8%|▊         | 4/49 [00:49<08:39, 11.55s/it]
+ 10%|█         | 5/49 [00:59<08:15, 11.26s/it]
+ 12%|█▏        | 6/49 [01:10<07:56, 11.08s/it]
+ 14%|█▍        | 7/49 [01:21<07:40, 10.96s/it]
+ 16%|█▋        | 8/49 [01:31<07:25, 10.87s/it]
+ 18%|█▊        | 9/49 [01:42<07:12, 10.81s/it]
+ 20%|██        | 10/49 [01:53<07:00, 10.78s/it]
+ 22%|██▏       | 11/49 [02:03<06:48, 10.75s/it]
+ 24%|██▍       | 12/49 [02:14<06:37, 10.74s/it]
+ 27%|██▋       | 13/49 [02:25<06:26, 10.73s/it]
+ 29%|██▊       | 14/49 [02:36<06:15, 10.71s/it]
+ 31%|███       | 15/49 [02:46<06:04, 10.71s/it]
+ 33%|███▎      | 16/49 [02:57<05:53, 10.71s/it]
+ 35%|███▍      | 17/49 [03:08<05:42, 10.72s/it]
+ 37%|███▋      | 18/49 [03:18<05:32, 10.71s/it]
+ 39%|███▉      | 19/49 [03:29<05:21, 10.71s/it]
+ 41%|████      | 20/49 [03:40<05:10, 10.71s/it]
+ 43%|████▎     | 21/49 [03:51<04:59, 10.71s/it]
+ 45%|████▍     | 22/49 [04:01<04:49, 10.71s/it]
+ 47%|████▋     | 23/49 [04:12<04:38, 10.71s/it]
+ 49%|████▉     | 24/49 [04:23<04:27, 10.71s/it]
+ 51%|█████     | 25/49 [04:33<04:16, 10.70s/it]
+ 53%|█████▎    | 26/49 [04:44<04:06, 10.71s/it]
+ 55%|█████▌    | 27/49 [04:55<03:55, 10.71s/it]
+ 57%|█████▋    | 28/49 [05:05<03:44, 10.71s/it]
+ 59%|█████▉    | 29/49 [05:16<03:33, 10.70s/it]
+ 61%|██████    | 30/49 [05:27<03:23, 10.69s/it]
+ 63%|██████▎   | 31/49 [05:38<03:12, 10.70s/it]
+ 65%|██████▌   | 32/49 [05:48<03:01, 10.70s/it]
+ 67%|██████▋   | 33/49 [05:59<02:51, 10.70s/it]
+ 69%|██████▉   | 34/49 [06:10<02:40, 10.70s/it]
+ 71%|███████▏  | 35/49 [06:20<02:29, 10.70s/it]
+ 73%|███████▎  | 36/49 [06:31<02:19, 10.70s/it]
+ 76%|███████▌  | 37/49 [06:42<02:08, 10.70s/it]
+ 78%|███████▊  | 38/49 [06:52<01:57, 10.70s/it]
+ 80%|███████▉  | 39/49 [07:03<01:47, 10.70s/it]
+ 82%|████████▏ | 40/49 [07:14<01:36, 10.70s/it]
+ 84%|████████▎ | 41/49 [07:25<01:25, 10.70s/it]
+ 86%|████████▌ | 42/49 [07:35<01:14, 10.70s/it]
+ 88%|████████▊ | 43/49 [07:46<01:04, 10.70s/it]
+ 90%|████████▉ | 44/49 [07:57<00:53, 10.70s/it]
+ 92%|█████████▏| 45/49 [08:07<00:42, 10.70s/it]
+ 94%|█████████▍| 46/49 [08:18<00:32, 10.70s/it]
+ 96%|█████████▌| 47/49 [08:29<00:21, 10.70s/it]
+ 98%|█████████▊| 48/49 [08:39<00:10, 10.71s/it]
+100%|██████████| 49/49 [08:50<00:00, 10.70s/it]
+100%|██████████| 49/49 [08:50<00:00, 10.83s/it]
+
+Encoding video chunks:   0%|          | 0/1 [00:00<?, ?it/s]
+Encoding video chunks: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s]
+Encoding video chunks: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s]
+
+[timing] MiniMax-H3 profile
+  model.pipeline_create                      0.154 s
+  model.condition_encoder_create_and_load    19.822 s
+  model.transformer_create_and_load         16.872 s
+  model.remaining_components_create_and_load     6.293 s
+  input.files_and_references                 0.042 s
+  input.arguments                            0.000 s
+  compute.condition_encoder                  7.174 s
+  input.video_vae_encode                     1.563 s
+  input.audio_vae_encode                     0.000 s (0 calls)
+  compute.h3_transformer                   530.562 s (49 calls, 10.828 s/call)
+  output.video_vae_decode                   16.348 s
+  output.audio_vae_decode                    1.997 s
+  generation.pipeline_total                561.948 s
+  output.media_encode                        1.594 s
+  cleanup.native_engines                     0.000 s (0 calls)
+  total.end_to_end                         606.749 s
+  pipeline.other_preprocess_scheduler        4.304 s
+[done] Saved to: $PROJECT_ROOT/outputs/unified_fl2va/20261109_085228/reference.mp4

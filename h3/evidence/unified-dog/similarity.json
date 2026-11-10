@@ -1,0 +1,30 @@
+{
+  "exact": false,
+  "left_metadata": {
+    "width": 768,
+    "height": 928,
+    "declared_frames": 124,
+    "average_fps": 24.0,
+    "duration_seconds": 5.166666666666667
+  },
+  "right_metadata": {
+    "width": 768,
+    "height": 928,
+    "declared_frames": 124,
+    "average_fps": 24.0,
+    "duration_seconds": 5.166666666666667
+  },
+  "metadata_size_match": true,
+  "decoded_length_match": true,
+  "left_frames": 124,
+  "right_frames": 124,
+  "shape_mismatches": 0,
+  "different_elements": 224396967,
+  "compared_elements": 265125888,
+  "max_absolute_difference": 251,
+  "mean_absolute_difference": 5.65655968684582,
+  "ssim_match_percent": 93.48490251477143,
+  "ssim_min_percent": 86.33061924533045,
+  "ssim_max_percent": 98.28997494295191,
+  "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+}
