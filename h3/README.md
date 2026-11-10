@@ -113,3 +113,8 @@ bash run.sh
 本工程仍复用 Diffusers/PyTorch 的既有 VAE 等模型数值组件。视频 VAE 注意力已接九齿，其余解码计算未全部重写。模型权重、计算配置与比较脚本未修改。单次公开输入验证不覆盖所有输入，也不等于干净环境重建和长时间稳定性已经通过。
 
 原始导出清单记录平台文件哈希；发布时仅把 `evidence/` 文本中的个人绝对工程路径规范为 `$PROJECT_ROOT`，数值及代码保持原样。新增包装和文档另列于 `RELEASE-MANIFEST.json`。上游许可应随所用固定源码保留。
+
+
+## 海光 Triton 厂商包获取
+
+[官方精确下载链接、SHA256 与个人环境安装步骤](docs/TRITON_VENDOR.md) 已补齐。在 h3/ 执行 `python3 download_vendor_triton.py`，会下载并校验实际使用的 cp311 厂商 wheel；该工具只下载，不自动安装或覆盖现有补丁。新环境需先按该文档准备 Triton，再执行依赖准备。
