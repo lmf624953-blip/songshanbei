@@ -1,0 +1,16 @@
+--- a/xmake.lua
++++ b/xmake.lua
+@@ -1102,7 +1102,12 @@
+     end
+     set_languages("cxx17")
+ 
+-    add_deps("infinicore_cpp_api")
++    -- Reuse the Core libraries already installed by the same build.
++    if os.getenv("SONGSHAN_USE_INSTALLED_CORE") == "1" then
++        add_links("infinicore_cpp_api")
++    else
++        add_deps("infinicore_cpp_api")
++    end
+ 
+     set_kind("shared")
+     local INFINI_ROOT = os.getenv("INFINI_ROOT") or (os.getenv(is_host("windows") and "HOMEPATH" or "HOME") .. "/.infini")

@@ -57,6 +57,7 @@ try:
    data=item.read_bytes();target.write_bytes(data)
    assert hashlib.sha256(target.read_bytes()).digest()==hashlib.sha256(data).digest()
  env['INFINI_ROOT']=str(root/'.infini')
+ env['SONGSHAN_USE_INSTALLED_CORE']='1'
  run([xmake,'build','-y','-j96','_infinicore'],core,900);run([xmake,'install','-y','_infinicore'],core,300)
  run([xmake,'f','-y','--ccache=n','-m','release','--cxx11-abi='+abi,'--cc='+env['CC'],'--cxx='+env['CXX']],lm,180)
  run([xmake,'build','-y','-j96','_infinilm'],lm,1200);run([xmake,'install','-y','_infinilm'],lm,300)

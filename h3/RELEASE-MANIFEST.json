@@ -23173,8 +23173,8 @@
     "sha256": "6934e278b7f7990e1ed0988bae4f657f53e055839a42ba7ba87b39a80566bc24"
   },
   "frameworks/InfiniCore/xmake.lua": {
-    "bytes": 39616,
-    "sha256": "c87e4e2bcb08c491b15eef502c351849336e97eb56dee5d25aebf7c451057a22"
+    "bytes": 39806,
+    "sha256": "52a839e6f559cc26ed28ee8835458af62947dd45a0ac47f5fab86ca37396b1d1"
   },
   "frameworks/InfiniLM/.clang-format": {
     "bytes": 1611,
@@ -30152,8 +30152,8 @@
     "sha256": "8bace4eca03184b3c1adc6afeb9241fc7ebfb2469994a6be011851a840e48eae"
   },
   "frameworks/UPSTREAM.json": {
-    "bytes": 1638,
-    "sha256": "4c65d266558adea725cb67b1fb44016f4665c9ab0967be6bdfa9ab910808722d"
+    "bytes": 1689,
+    "sha256": "c9eab8d98f751da3fd939103f5ed8377d0ca32820b3d44b7a314ec72e90188a7"
   },
   "frameworks/diffusers/.ai/.claude-plugin/plugin.json": {
     "bytes": 436,
@@ -66781,6 +66781,10 @@
     "bytes": 1521,
     "sha256": "df8c594769bf785b08411269e5f667f2eeaa5551487c9741842510e6e64165e3"
   },
+  "patches/InfiniCore/0003-link-installed-core-for-python.patch": {
+    "bytes": 511,
+    "sha256": "738741c2e4131fbea85e88034e348221203f14f1d3ecee6241ec55c6c7cedbe0"
+  },
   "patches/InfiniLM/0001-local-pybind11-headers.patch": {
     "bytes": 941,
     "sha256": "b99810e08f0f8a6abe45a2c6d935b4fed05a5575fee27f7ec7fbf37ffcefe1f9"
@@ -66814,8 +66818,8 @@
     "sha256": "2c3d400fd38f7834e20f8ad5f7d3d1c65bbb879b1b1dfd323d443191dde27fbf"
   },
   "rebuild/native.py": {
-    "bytes": 6529,
-    "sha256": "db8b2926f7f482e25dcabf7594bee80affd0015c8732de67a2e12ed57c96dbcf"
+    "bytes": 6569,
+    "sha256": "a7cf824ae5a76fca691bca41087a643253b5602673ec247733c1a5e1242e597b"
   },
   "rebuild/prepare.py": {
     "bytes": 5757,

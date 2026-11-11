@@ -4,7 +4,8 @@
     "branch": "minimax-h3",
     "applied_patches": [
       "0001-xmake-hygon-rule-order.patch",
-      "0002-local-pybind11-headers.patch"
+      "0002-local-pybind11-headers.patch",
+      "0003-link-installed-core-for-python.patch"
     ],
     "url": "https://github.com/InfiniTensor/InfiniCore"
   },
