@@ -70,7 +70,6 @@ if a.phase in ('build', 'accept', 'compute', 'all'):
     py = root/'.venv/bin/python'
 
 if a.phase in ('build', 'compute', 'all'):
-    env['H3_SOURCE_ARCHIVE'] = str(cache/'artifacts/h3-pinned-frameworks-20261107.tar.gz')
     run([py, root/'artifacts/rebuild-native.py'], root/'artifacts/rebuild-compute.log')
     status = json.loads((root/'artifacts/clean-native-status.json').read_text())
     if not status.get('complete'):

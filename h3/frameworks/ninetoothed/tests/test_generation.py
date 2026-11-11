@@ -1,0 +1,197 @@
+import functools
+import math
+import os
+
+import pytest
+import torch
+
+import ninetoothed
+import ninetoothed.language as ntl
+import tests.test_matmul as matmul
+from ninetoothed import Tensor
+from tests.utils import get_available_devices
+
+
+@pytest.mark.parametrize("_device", get_available_devices())
+@pytest.mark.parametrize("num_stages", (None, 3, (1, 3)))
+@pytest.mark.parametrize("num_warps", (None, 4, (4, 8)))
+@pytest.mark.parametrize("block_size_k", (ninetoothed.block_size(), 64))
+@pytest.mark.parametrize("block_size_n", (ninetoothed.block_size(), 64))
+@pytest.mark.parametrize("block_size_m", (ninetoothed.block_size(), 64))
+def test_auto_tuning_generation(
+    block_size_m, block_size_n, block_size_k, num_warps, num_stages, _device
+):
+    arrangement = functools.partial(
+        matmul.arrangement,
+        BLOCK_SIZE_M=block_size_m,
+        BLOCK_SIZE_N=block_size_n,
+        BLOCK_SIZE_K=block_size_k,
+    )
+
+    application = matmul.application
+
+    tensors = (Tensor(2), Tensor(2), Tensor(2))
+
+    backend = os.environ.get("NINETOOTHED_BACKEND", "triton")
+
+    if backend != "triton" and (
+        isinstance(num_warps, tuple) or isinstance(num_stages, tuple)
+    ):
+        with pytest.raises(NotImplementedError, match="auto-tuning is not supported"):
+            ninetoothed.make(
+                arrangement,
+                application,
+                tensors,
+                num_warps=num_warps,
+                num_stages=num_stages,
+            )
+        return
+
+    handle = ninetoothed.make(
+        arrangement, application, tensors, num_warps=num_warps, num_stages=num_stages
+    )
+    candidates = handle._launch_plan.tuning_candidates
+
+    if backend == "triton":
+        warps = num_warps if isinstance(num_warps, tuple) else (num_warps or 4,)
+        stages = num_stages if isinstance(num_stages, tuple) else (num_stages or 3,)
+        compiler_config_count = len(set(warps)) * len(set(stages))
+        has_meta = any(
+            not isinstance(value, int)
+            for value in (block_size_m, block_size_n, block_size_k)
+        )
+
+        if has_meta:
+            assert len(candidates) > compiler_config_count
+            assert all(candidate.get("meta_parameters") for candidate in candidates)
+        else:
+            assert len(candidates) == compiler_config_count
+            assert all("meta_parameters" not in candidate for candidate in candidates)
+
+        assert (handle._tuner is not None) == (len(candidates) > 1)
+    else:
+        assert not candidates
+
+
+@pytest.mark.parametrize("_device", get_available_devices())
+def test_arrangement_returning_a_single_tensor(_device):
+    def arrangement(x):
+        return x.tile((ninetoothed.block_size(),))
+
+    def application(x):
+        x
+
+    ninetoothed.make(arrangement, application, (Tensor(1),))
+
+
+@pytest.mark.parametrize("device", get_available_devices())
+@pytest.mark.parametrize("num_indices", (10,))
+@pytest.mark.parametrize("num_cols", (128,))
+@pytest.mark.parametrize("num_rows", (1024,))
+def test_squeezing_the_innermost_level(num_rows, num_cols, num_indices, device):
+    def arrangement(input, indices, output):
+        input_arranged = input.tile((1, -1)).squeeze(1)
+        input_arranged.dtype = input_arranged.dtype.squeeze(0)
+
+        indices_arranged = indices.tile((1,))
+
+        output_arranged = (
+            output.tile((1, -1))
+            .tile((-1, -1))
+            .squeeze(0)
+            .expand((input_arranged.shape[0],))
+        )
+        output_arranged.dtype = output_arranged.dtype.squeeze(1)
+        output_arranged.dtype.dtype = output_arranged.dtype.dtype.squeeze(0)
+
+        return input_arranged, indices_arranged, output_arranged
+
+    def application(input, index, output):
+        row = index
+
+        output[row] = input
+
+    shape_options = {"constexpr": True}
+
+    tensors = (
+        Tensor(2, shape_options=shape_options),
+        Tensor(1, shape_options=shape_options),
+        Tensor(2, shape_options=shape_options),
+    )
+
+    kernel = ninetoothed.make(arrangement, application, tensors)
+
+    input = torch.randn((num_indices, num_cols), device=device)
+    indices = torch.randperm(num_rows, device=device)[:num_indices]
+    output = torch.full((num_rows, num_cols), -12345.0, device=device)
+    expected = output.clone()
+    expected[indices] = input
+
+    kernel(input, indices, output)
+
+    assert output.shape == (num_rows, num_cols)
+    torch.testing.assert_close(output, expected)
+
+
+@pytest.mark.parametrize("device", get_available_devices())
+def test_unsqueezing_the_outermost_level(device):
+    def arrangement(x):
+        return x.tile((ninetoothed.block_size(),)).unsqueeze(0)
+
+    def application(x):
+        x
+
+    kernel = ninetoothed.make(arrangement, application, (Tensor(1),))
+
+    kernel(torch.randn((0,), device=device))
+
+
+@pytest.mark.parametrize("device", get_available_devices())
+@pytest.mark.parametrize("size", (1086,))
+def test_non_int_constexpr(size, device):
+    def arrangement(input, other, output, block_size=ninetoothed.block_size()):
+        return input.tile((block_size,)), other, output.tile((block_size,))
+
+    def application(input, other, output):
+        output = input + other  # noqa: F841
+
+    tensors = (Tensor(1), Tensor(0, constexpr=True), Tensor(1))
+
+    kernel = ninetoothed.make(arrangement, application, tensors)
+
+    input = torch.randn((size,), device=device)
+    other = math.pi
+    output = torch.empty_like(input)
+    expected = input + other
+
+    kernel(input, other, output)
+
+    assert output.shape == expected.shape and torch.allclose(output, expected)
+
+
+@pytest.mark.parametrize("device", get_available_devices())
+def test_loop_carried_row_sum_with_tensor_dtype(device):
+    block_size = ninetoothed.Symbol("block_size", constexpr=True)
+
+    def arrangement(x, y, block_size=block_size):
+        x_arranged = x.tile((1, block_size))
+        x_arranged = x_arranged.tile((1, -1))
+        y_arranged = y.tile((1, 1))
+
+        return x_arranged, y_arranged
+
+    def application(x, y):
+        acc = ntl.zeros(y.shape, dtype=y.dtype)
+
+        for i in range(x.shape[1]):
+            acc += ntl.sum(x[0, i], axis=-1)
+
+        y = acc  # noqa: F841
+
+    kernel = ninetoothed.make(arrangement, application, (Tensor(2, other=0), Tensor(2)))
+    x = torch.randn((17, 70), device=device)
+    y = torch.empty((17, 1), device=device)
+
+    kernel(x, y, block_size=64)
+
+    torch.testing.assert_close(y, torch.sum(x, dim=-1, keepdim=True))

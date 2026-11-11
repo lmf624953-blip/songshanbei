@@ -1,0 +1,47 @@
+{
+  "InfiniCore": {
+    "commit": "f32e2fbb2a9b2ca912b5711f4f3836c403196a74",
+    "branch": "minimax-h3",
+    "applied_patches": [
+      "0001-xmake-hygon-rule-order.patch",
+      "0002-local-pybind11-headers.patch"
+    ],
+    "url": "https://github.com/InfiniTensor/InfiniCore"
+  },
+  "InfiniLM": {
+    "commit": "65deb91f840ebaef752d028fad2f3217ce0950f4",
+    "branch": "minimax_h3",
+    "applied_patches": [
+      "0001-local-pybind11-headers.patch",
+      "0002-h3-lifecycle-and-vae-precision.patch",
+      "0003-h3-runtime-stream-handoff.patch"
+    ],
+    "url": "https://github.com/InfiniTensor/InfiniLM"
+  },
+  "ninetoothed": {
+    "commit": "4295e9c767805b619418f9ab8d0692f186772b1b",
+    "branch": "master",
+    "url": "https://github.com/InfiniTensor/ninetoothed"
+  },
+  "ntops": {
+    "commit": "82cba6cf2200919b5d12c86adbea60cbfb516040",
+    "branch": "master",
+    "url": "https://github.com/InfiniTensor/ntops"
+  },
+  "diffusers": {
+    "commit": "86ef420b17363c28e36ebad6b58555e9aa8feda2",
+    "branch": "main",
+    "url": "https://github.com/huggingface/diffusers",
+    "redistribution_note": "One credential-looking line in tests/pipelines/flux2/test_pipeline_flux2.py was removed from the redistributed test fixture. No runtime or model computation code changed."
+  },
+  "xmake": {
+    "commit": "13fc392386960040c3da1ddcbd104423b02fbe1b",
+    "branch": "",
+    "url": "https://github.com/xmake-io/xmake",
+    "tag": "v2.9.8"
+  },
+  "attention_integration": {
+    "path": "songshan_h3",
+    "note": "NineToothed and ntops upstream sources are unchanged; custom attention and host integration live in songshan_h3."
+  }
+}

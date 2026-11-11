@@ -24,11 +24,6 @@
     "sha256": "24d4021bf4ace04cf3c417f60affebe134128c0626a5b136230989812e66c18a",
     "path": "downloads/flash_attn-2.8.3+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl"
   },
-  "h3-pinned-frameworks-20261107.tar.gz": {
-    "bytes": 76154576,
-    "sha256": "6f468d855e5d9d63f1f74b1b580f1f72a79830e711d59abceefebf1a2781e0a7",
-    "path": "artifacts/h3-pinned-frameworks-20261107.tar.gz"
-  },
   "triton-3.5.1+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl": {
     "bytes": 105484167,
     "sha256": "e397b16365da22508353ce44a45f5be82f8ee58e49853a3df06aa8f6f83d5581",

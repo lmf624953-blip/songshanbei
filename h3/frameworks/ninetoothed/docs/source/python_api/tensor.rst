@@ -1,0 +1,31 @@
+Tensor
+======
+
+.. autoclass:: ninetoothed.Tensor
+
+Meta-Operations
+---------------
+
+.. autosummary::
+   :toctree: generated
+   :nosignatures:
+
+   ninetoothed.Tensor.axes
+   ninetoothed.Tensor.tile
+   ninetoothed.Tensor.expand
+   ninetoothed.Tensor.unsqueeze
+   ninetoothed.Tensor.squeeze
+   ninetoothed.Tensor.permute
+   ninetoothed.Tensor.flatten
+   ninetoothed.Tensor.ravel
+   ninetoothed.Tensor.pad
+
+Evaluation
+----------
+
+.. autosummary::
+   :toctree: generated
+   :nosignatures:
+
+   ninetoothed.Tensor.eval
+   ninetoothed.Tensor.subs

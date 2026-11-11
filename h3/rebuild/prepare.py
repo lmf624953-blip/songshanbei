@@ -45,16 +45,16 @@ try:
  for name,sha in manifest.items():assert hashlib.sha256((wheels/name).read_bytes()).hexdigest()==sha,name
  check([py,pipshim,'install','--no-index','--no-deps','--no-compile','--ignore-installed',*[wheels/n for n in sorted(manifest)]])
  status['phase']='pure_python_sources'
- archive=base/'artifacts/h3-pinned-frameworks-20261107.tar.gz'
- assert hashlib.file_digest(archive.open('rb'),'sha256').hexdigest()=='6f468d855e5d9d63f1f74b1b580f1f72a79830e711d59abceefebf1a2781e0a7'
  sources=root/'h3-runtime/sources'
- with tarfile.open(archive) as tf:
-  for m in tf:
-   parts=pathlib.PurePosixPath(m.name).parts
-   assert not m.name.startswith('/') and '..' not in parts
-   if parts[0] not in ('ninetoothed','ntops','diffusers') or not m.isfile():continue
-   if len(parts)>1 and parts[1] in ('docs','examples','tests','.github','benchmarks'):continue
-   target=sources/m.name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(tf.extractfile(m).read())
+ for name in ('ninetoothed','ntops','diffusers'):
+  origin=root/'frameworks'/name
+  assert origin.is_dir(), 'Missing public vendored source: '+name
+  for item in origin.rglob('*'):
+   if not item.is_file():continue
+   relative=item.relative_to(origin)
+   if relative.parts[0] in ('docs','examples','tests','.github','benchmarks'):continue
+   target=sources/name/relative;target.parent.mkdir(parents=True,exist_ok=True)
+   target.write_bytes(item.read_bytes())
  for name in ('ninetoothed','ntops','diffusers'):
   if name=='diffusers':
    out=root/'downloads/built';out.mkdir(exist_ok=True)
