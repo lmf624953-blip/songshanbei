@@ -13781,11 +13781,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniCCL/scripts/build.sh": {
     "bytes": 2191,
-    "sha256": "fc0aaf0545329fbc11f582527224d188122355acc5c2e8018953e0db2318b6be"
+    "sha256": "fc0aaf0545329fbc11f582527224d188122355acc5c2e8018953e0db2318b6be",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniCCL/scripts/devices/mxcc_wrapper.sh": {
     "bytes": 422,
-    "sha256": "1bc5f06f5a702c76c722da67c5ac334952a6b6819630f9504a31ad8155b94a42"
+    "sha256": "1bc5f06f5a702c76c722da67c5ac334952a6b6819630f9504a31ad8155b94a42",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniCCL/scripts/gen_bridge.py": {
     "bytes": 6732,
@@ -13801,11 +13803,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniCCL/scripts/run_examples.py": {
     "bytes": 8468,
-    "sha256": "2d9c9e3bc9a1cab4108255c572556b637ce237477916ddf699a798a39cd798c3"
+    "sha256": "2d9c9e3bc9a1cab4108255c572556b637ce237477916ddf699a798a39cd798c3",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniCCL/scripts/run_wrapper.sh": {
     "bytes": 687,
-    "sha256": "89d3eaafdc13bf6c1aa24c6de6f106d354dd27579a9fd48dddffeb9a941617d8"
+    "sha256": "89d3eaafdc13bf6c1aa24c6de6f106d354dd27579a9fd48dddffeb9a941617d8",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniCCL/src/CMakeLists.txt": {
     "bytes": 8509,
@@ -14085,7 +14089,8 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/daemon.sh": {
     "bytes": 4570,
-    "sha256": "595d990d6e1572a3ab2abab726f73d3b723c9e1a7b6aabcdd6c10b552811b738"
+    "sha256": "595d990d6e1572a3ab2abab726f73d3b723c9e1a7b6aabcdd6c10b552811b738",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/images/ascend/Dockerfile": {
     "bytes": 1005,
@@ -14353,35 +14358,43 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/WriteReportToExcel.py": {
     "bytes": 4847,
-    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655"
+    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/ascend_resource_monitor.sh": {
     "bytes": 18291,
-    "sha256": "43fc4c43275672d769dd3d463c43d86a743bf8d526f3c1c9a30cb745f145aabb"
+    "sha256": "43fc4c43275672d769dd3d463c43d86a743bf8d526f3c1c9a30cb745f145aabb",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/compare_excel_data.py": {
     "bytes": 11141,
-    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d"
+    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/controller.js": {
     "bytes": 1937,
-    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944"
+    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/daemon.sh": {
     "bytes": 1290,
-    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc"
+    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/demo_npu_lock.sh": {
     "bytes": 1775,
-    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174"
+    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/entrypoint.sh": {
     "bytes": 1445,
-    "sha256": "ebfc854210507bb448a980ee6094be2f91275ce3a9886dc0bf90e189f2e8dcad"
+    "sha256": "ebfc854210507bb448a980ee6094be2f91275ce3a9886dc0bf90e189f2e8dcad",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/generate_excel_template.py": {
     "bytes": 12117,
-    "sha256": "ff43d6f1404c74603c2bef41d6fe3611439aa071e534c0b0610f8fc7cdd28618"
+    "sha256": "ff43d6f1404c74603c2bef41d6fe3611439aa071e534c0b0610f8fc7cdd28618",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/generate_model_comparison_table.py": {
     "bytes": 11594,
@@ -14393,19 +14406,23 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/infiniTensor_ascend_test.sh": {
     "bytes": 34768,
-    "sha256": "a5d6bc92b8897fbf0c1da999a352e0879867d8c2481ba2e420bab670e89fa0d6"
+    "sha256": "a5d6bc92b8897fbf0c1da999a352e0879867d8c2481ba2e420bab670e89fa0d6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/job_executor_template_for_InfiniTensor.sh": {
     "bytes": 10522,
-    "sha256": "1ab61d094d747252ffb45e609dc8e8a3f63d0e424dcd8890d74b4351931f0ef6"
+    "sha256": "1ab61d094d747252ffb45e609dc8e8a3f63d0e424dcd8890d74b4351931f0ef6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/job_executor_template_for_MindIE.sh": {
     "bytes": 27761,
-    "sha256": "597ea1a20ca1ef928cecd93ed7e904ffdedb939fd94cc779ecd4e87282d65d76"
+    "sha256": "597ea1a20ca1ef928cecd93ed7e904ffdedb939fd94cc779ecd4e87282d65d76",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/job_executor_template_for_vLLM.sh": {
     "bytes": 9863,
-    "sha256": "f185c8ab68bfb952b4b5cc080d4240f6d041443614c9b70463340d1974cf2a89"
+    "sha256": "f185c8ab68bfb952b4b5cc080d4240f6d041443614c9b70463340d1974cf2a89",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/latest/model_list.xlsx": {
     "bytes": 15555,
@@ -14417,23 +14434,28 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/legacy_docker_scanner.sh": {
     "bytes": 1231,
-    "sha256": "ee9beabb22f4bbc80a417f45ba8a8ea443eba0842072b706eee51743c8d3f0ac"
+    "sha256": "ee9beabb22f4bbc80a417f45ba8a8ea443eba0842072b706eee51743c8d3f0ac",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/merge_hccl.py": {
     "bytes": 2316,
-    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36"
+    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/npu_lock_admin.sh": {
     "bytes": 8847,
-    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895"
+    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/npu_lock_manager_for_ci.sh": {
     "bytes": 12472,
-    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494"
+    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/parse_model_list.py": {
     "bytes": 3698,
-    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692"
+    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/requirements.txt": {
     "bytes": 51,
@@ -14441,39 +14463,48 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/script_generator_for_InfiniTensor.py": {
     "bytes": 5607,
-    "sha256": "d936ec1a8d4d70ed606e5ff4e8353917e4b0ff01b986ea3dad2e89ac380bc536"
+    "sha256": "d936ec1a8d4d70ed606e5ff4e8353917e4b0ff01b986ea3dad2e89ac380bc536",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/script_generator_for_MindIE.py": {
     "bytes": 4061,
-    "sha256": "7ae0db67c2fc8a4c79fb4c007c8fb125340a0b9d64b0f8ed1ddeb19a0e3aa32e"
+    "sha256": "7ae0db67c2fc8a4c79fb4c007c8fb125340a0b9d64b0f8ed1ddeb19a0e3aa32e",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/script_generator_for_vLLM.py": {
     "bytes": 3458,
-    "sha256": "262d1a79db2d5e73a4a4fea594c1c70fb3b374ed467d6b84ae9c2372ce29c495"
+    "sha256": "262d1a79db2d5e73a4a4fea594c1c70fb3b374ed467d6b84ae9c2372ce29c495",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/test_child_cleanup.sh": {
     "bytes": 1789,
-    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636"
+    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/test_npu_lock.sh": {
     "bytes": 7205,
-    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a"
+    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/v0.10.0/model_list.xlsx": {
     "bytes": 11388,
-    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6"
+    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/v0.11.0/model_list.xlsx": {
     "bytes": 11447,
-    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a"
+    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/write_file.py": {
     "bytes": 1737,
-    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92"
+    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/ascend_test_suite/write_results.bash": {
     "bytes": 1852,
-    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b"
+    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/10.0.0.40.json": {
     "bytes": 1513,
@@ -14525,35 +14556,43 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/WriteReportToExcel.py": {
     "bytes": 4847,
-    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655"
+    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/cambricon_resource_monitor.sh": {
     "bytes": 17653,
-    "sha256": "dcdb955eca5acbec95c3723636b2d9bddaf9178348816be0f1c7bc5b9750abcd"
+    "sha256": "dcdb955eca5acbec95c3723636b2d9bddaf9178348816be0f1c7bc5b9750abcd",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/compare_excel_data.py": {
     "bytes": 11141,
-    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d"
+    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/controller.js": {
     "bytes": 1937,
-    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944"
+    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/daemon.sh": {
     "bytes": 1290,
-    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc"
+    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/demo_npu_lock.sh": {
     "bytes": 1775,
-    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174"
+    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/entrypoint.sh": {
     "bytes": 1706,
-    "sha256": "3b38da61d4a144a1b24688067a6b1ebcbf1c31476151ecc1864d3b926fbf6920"
+    "sha256": "3b38da61d4a144a1b24688067a6b1ebcbf1c31476151ecc1864d3b926fbf6920",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/generate_excel_template.py": {
     "bytes": 12120,
-    "sha256": "045d0f9d53bb9f24587a4d977d7ff29329ec940893b1663adbab736ff14bdce6"
+    "sha256": "045d0f9d53bb9f24587a4d977d7ff29329ec940893b1663adbab736ff14bdce6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/generate_model_comparison_table.py": {
     "bytes": 11594,
@@ -14565,11 +14604,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/infiniTensor_cambricon_test.sh": {
     "bytes": 35089,
-    "sha256": "a23c38c6373be8b5ea9802586afdcbac09d27093267b4db60d37d60db2b08e4a"
+    "sha256": "a23c38c6373be8b5ea9802586afdcbac09d27093267b4db60d37d60db2b08e4a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/job_executor_template_for_InfiniTensor.sh": {
     "bytes": 10878,
-    "sha256": "a5ca21b822b91cd6650670b3e72fdb49a4d333d671fef2a851e1c6468c48786f"
+    "sha256": "a5ca21b822b91cd6650670b3e72fdb49a4d333d671fef2a851e1c6468c48786f",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/latest/model_list.xlsx": {
     "bytes": 15555,
@@ -14581,23 +14622,28 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/legacy_docker_scanner.sh": {
     "bytes": 1225,
-    "sha256": "81c00a43f7d42195ff9f15246c2d4acffbae2f18294647cffabefff803e836e6"
+    "sha256": "81c00a43f7d42195ff9f15246c2d4acffbae2f18294647cffabefff803e836e6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/merge_hccl.py": {
     "bytes": 2316,
-    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36"
+    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/npu_lock_admin.sh": {
     "bytes": 8847,
-    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895"
+    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/npu_lock_manager_for_ci.sh": {
     "bytes": 12472,
-    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494"
+    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/parse_model_list.py": {
     "bytes": 3698,
-    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692"
+    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/requirements.txt": {
     "bytes": 51,
@@ -14605,31 +14651,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/script_generator_for_InfiniTensor.py": {
     "bytes": 5603,
-    "sha256": "7a65bbff1b0cdb1419d28a8030954ec6201a8e2b0e42c9c8ba57040b268d1b79"
+    "sha256": "7a65bbff1b0cdb1419d28a8030954ec6201a8e2b0e42c9c8ba57040b268d1b79",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/test_child_cleanup.sh": {
     "bytes": 1789,
-    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636"
+    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/test_npu_lock.sh": {
     "bytes": 7205,
-    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a"
+    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/v0.10.0/model_list.xlsx": {
     "bytes": 11388,
-    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6"
+    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/v0.11.0/model_list.xlsx": {
     "bytes": 11447,
-    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a"
+    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/write_file.py": {
     "bytes": 1737,
-    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92"
+    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/cambricon_test_suite/write_results.bash": {
     "bytes": 1852,
-    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b"
+    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/10.0.0.40.json": {
     "bytes": 1513,
@@ -14681,31 +14734,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/WriteReportToExcel.py": {
     "bytes": 4847,
-    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655"
+    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/compare_excel_data.py": {
     "bytes": 11141,
-    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d"
+    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/controller.js": {
     "bytes": 1937,
-    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944"
+    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/daemon.sh": {
     "bytes": 1290,
-    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc"
+    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/demo_npu_lock.sh": {
     "bytes": 1775,
-    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174"
+    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/entrypoint.sh": {
     "bytes": 1703,
-    "sha256": "f0cf11356ad191fe0036bfa597f5e7bfa70e89b13db2cea3c3070480e58ad998"
+    "sha256": "f0cf11356ad191fe0036bfa597f5e7bfa70e89b13db2cea3c3070480e58ad998",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/generate_excel_template.py": {
     "bytes": 12119,
-    "sha256": "daa8acd9d95cedfa28b73230882e3f67ca2b48fc185ac442cbe3356ca7fb8249"
+    "sha256": "daa8acd9d95cedfa28b73230882e3f67ca2b48fc185ac442cbe3356ca7fb8249",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/generate_model_comparison_table.py": {
     "bytes": 11594,
@@ -14717,15 +14777,18 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/iluvatar_resource_monitor.sh": {
     "bytes": 19790,
-    "sha256": "9bd091375e980765ecc03f06c53553fd82f3deea9f4b8faa8cd01dac35c111e6"
+    "sha256": "9bd091375e980765ecc03f06c53553fd82f3deea9f4b8faa8cd01dac35c111e6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/infiniTensor_iluvatar_test.sh": {
     "bytes": 34469,
-    "sha256": "25955798a2ae7cc4a9cb907ebc70d881a2faf3234738dfdc14b4283e4a41e2e5"
+    "sha256": "25955798a2ae7cc4a9cb907ebc70d881a2faf3234738dfdc14b4283e4a41e2e5",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/job_executor_template_for_InfiniTensor.sh": {
     "bytes": 11726,
-    "sha256": "454e8b4b014911e0dd1a09cc8ed5d7932acc5330ebc71956c1a48aa99ff190ff"
+    "sha256": "454e8b4b014911e0dd1a09cc8ed5d7932acc5330ebc71956c1a48aa99ff190ff",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/latest/model_list.xlsx": {
     "bytes": 15555,
@@ -14737,23 +14800,28 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/legacy_docker_scanner.sh": {
     "bytes": 1233,
-    "sha256": "ab80b26ef4ce87768c2193619605437603d813dbb7992692161765afdb68185d"
+    "sha256": "ab80b26ef4ce87768c2193619605437603d813dbb7992692161765afdb68185d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/merge_hccl.py": {
     "bytes": 2316,
-    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36"
+    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/npu_lock_admin.sh": {
     "bytes": 8847,
-    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895"
+    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/npu_lock_manager_for_ci.sh": {
     "bytes": 12472,
-    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494"
+    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/parse_model_list.py": {
     "bytes": 3698,
-    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692"
+    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/requirements.txt": {
     "bytes": 51,
@@ -14761,31 +14829,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/script_generator_for_InfiniTensor.py": {
     "bytes": 5601,
-    "sha256": "61759c171554f8656e712c20a338f60718d7097ee5b90847f9965425937b2d69"
+    "sha256": "61759c171554f8656e712c20a338f60718d7097ee5b90847f9965425937b2d69",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/test_child_cleanup.sh": {
     "bytes": 1789,
-    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636"
+    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/test_npu_lock.sh": {
     "bytes": 7205,
-    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a"
+    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/v0.10.0/model_list.xlsx": {
     "bytes": 11388,
-    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6"
+    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/v0.11.0/model_list.xlsx": {
     "bytes": 11447,
-    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a"
+    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/write_file.py": {
     "bytes": 1737,
-    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92"
+    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/iluvatar_test_suite/write_results.bash": {
     "bytes": 1852,
-    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b"
+    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/10.0.0.40.json": {
     "bytes": 1513,
@@ -14837,31 +14912,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/WriteReportToExcel.py": {
     "bytes": 4847,
-    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655"
+    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/compare_excel_data.py": {
     "bytes": 11141,
-    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d"
+    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/controller.js": {
     "bytes": 1937,
-    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944"
+    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/daemon.sh": {
     "bytes": 1290,
-    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc"
+    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/demo_npu_lock.sh": {
     "bytes": 1775,
-    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174"
+    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/entrypoint.sh": {
     "bytes": 1694,
-    "sha256": "487019c9b396f809c1c306c7229df03d565d1afaad7d6706d42b33d8d55e1ce6"
+    "sha256": "487019c9b396f809c1c306c7229df03d565d1afaad7d6706d42b33d8d55e1ce6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/generate_excel_template.py": {
     "bytes": 12116,
-    "sha256": "c2b3b78ab587fa3be4e07e246278e01f00bdd0a3a1bd665f886528e7013d60dd"
+    "sha256": "c2b3b78ab587fa3be4e07e246278e01f00bdd0a3a1bd665f886528e7013d60dd",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/generate_model_comparison_table.py": {
     "bytes": 11594,
@@ -14873,11 +14955,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/infiniTensor_metax_test.sh": {
     "bytes": 34217,
-    "sha256": "10ccf7d3328d00a25b654f15d77eefa3bce982876898357b620452b46329f956"
+    "sha256": "10ccf7d3328d00a25b654f15d77eefa3bce982876898357b620452b46329f956",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/job_executor_template_for_InfiniTensor.sh": {
     "bytes": 11621,
-    "sha256": "044562cecbdab7a7f95c94d2eaab5ab63c545b56f87aa81270fed7731dc21d73"
+    "sha256": "044562cecbdab7a7f95c94d2eaab5ab63c545b56f87aa81270fed7731dc21d73",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/latest/model_list.xlsx": {
     "bytes": 15555,
@@ -14889,27 +14973,33 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/legacy_docker_scanner.sh": {
     "bytes": 1221,
-    "sha256": "13eda1133d42d584152c7cad56e33ef20225346a2a61f8090724fc76370f4f3c"
+    "sha256": "13eda1133d42d584152c7cad56e33ef20225346a2a61f8090724fc76370f4f3c",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/merge_hccl.py": {
     "bytes": 2316,
-    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36"
+    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/metax_resource_monitor.sh": {
     "bytes": 18487,
-    "sha256": "6a7f05864bcb596ff1e70096042059e55ca8f09acfcdfae204189d82e9586f2c"
+    "sha256": "6a7f05864bcb596ff1e70096042059e55ca8f09acfcdfae204189d82e9586f2c",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/npu_lock_admin.sh": {
     "bytes": 8847,
-    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895"
+    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/npu_lock_manager_for_ci.sh": {
     "bytes": 12472,
-    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494"
+    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/parse_model_list.py": {
     "bytes": 3698,
-    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692"
+    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/requirements.txt": {
     "bytes": 51,
@@ -14917,31 +15007,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/script_generator_for_InfiniTensor.py": {
     "bytes": 5595,
-    "sha256": "befe7724c58e591645e15528a5b9bd72b70579bc95682dce18b68cd946af0db2"
+    "sha256": "befe7724c58e591645e15528a5b9bd72b70579bc95682dce18b68cd946af0db2",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/test_child_cleanup.sh": {
     "bytes": 1789,
-    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636"
+    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/test_npu_lock.sh": {
     "bytes": 7205,
-    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a"
+    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/v0.10.0/model_list.xlsx": {
     "bytes": 11388,
-    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6"
+    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/v0.11.0/model_list.xlsx": {
     "bytes": 11447,
-    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a"
+    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/write_file.py": {
     "bytes": 1737,
-    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92"
+    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/metax_test_suite/write_results.bash": {
     "bytes": 1852,
-    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b"
+    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/10.0.0.40.json": {
     "bytes": 1513,
@@ -14993,31 +15090,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/WriteReportToExcel.py": {
     "bytes": 4847,
-    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655"
+    "sha256": "c9cc33c9432be363d587f53088baf7bd6ffceb155fb0474fb721d6227c567655",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/compare_excel_data.py": {
     "bytes": 11141,
-    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d"
+    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/controller.js": {
     "bytes": 1937,
-    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944"
+    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/daemon.sh": {
     "bytes": 1666,
-    "sha256": "c10a42ef4729985385c2bf661225edb586878fc94379ff6fa4376468f21d2275"
+    "sha256": "c10a42ef4729985385c2bf661225edb586878fc94379ff6fa4376468f21d2275",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/demo_npu_lock.sh": {
     "bytes": 1775,
-    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174"
+    "sha256": "97599962260e7e10d0c2ca7c678d5eb93dc100840d6e7196da7ccdc053b9c174",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/entrypoint.sh": {
     "bytes": 1694,
-    "sha256": "f7c1a56b44ca02b2a8baf6b33587d0f02cf1c1826ef022d024b2ea32a10610dd"
+    "sha256": "f7c1a56b44ca02b2a8baf6b33587d0f02cf1c1826ef022d024b2ea32a10610dd",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/generate_excel_template.py": {
     "bytes": 12116,
-    "sha256": "8adc1608a8ada65be64a11f2e671abe1b1a5bbe21c961c57c2667916b73b9fcb"
+    "sha256": "8adc1608a8ada65be64a11f2e671abe1b1a5bbe21c961c57c2667916b73b9fcb",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/generate_model_comparison_table.py": {
     "bytes": 11594,
@@ -15029,11 +15133,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/infiniTensor_moore_test.sh": {
     "bytes": 34221,
-    "sha256": "649e942b118168c83150cd741cb9cd2a8bf0ac986aea1a7011fb3db1df4fa90c"
+    "sha256": "649e942b118168c83150cd741cb9cd2a8bf0ac986aea1a7011fb3db1df4fa90c",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/job_executor_template_for_InfiniTensor.sh": {
     "bytes": 10972,
-    "sha256": "2d5da24e64a43f93a5c0f72a73885e6789a189d0ee677b2f3cf5e7481fdb76a3"
+    "sha256": "2d5da24e64a43f93a5c0f72a73885e6789a189d0ee677b2f3cf5e7481fdb76a3",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/latest/model_list.xlsx": {
     "bytes": 15555,
@@ -15045,27 +15151,33 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/legacy_docker_scanner.sh": {
     "bytes": 1221,
-    "sha256": "b3e06e7c20621b0d3df1bfec8d8eebb906c3d41b2fbbb5be2e1bdda115e8a9bf"
+    "sha256": "b3e06e7c20621b0d3df1bfec8d8eebb906c3d41b2fbbb5be2e1bdda115e8a9bf",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/merge_hccl.py": {
     "bytes": 2316,
-    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36"
+    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/moore_resource_monitor.sh": {
     "bytes": 17737,
-    "sha256": "7145fceae67e92b8f220c2a62a16645b8e8de9b860603428f8f725b012587880"
+    "sha256": "7145fceae67e92b8f220c2a62a16645b8e8de9b860603428f8f725b012587880",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/npu_lock_admin.sh": {
     "bytes": 8847,
-    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895"
+    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/npu_lock_manager_for_ci.sh": {
     "bytes": 12472,
-    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494"
+    "sha256": "319cfbaef1a8dad4970afa6d2fa236902f1f8a96280f0890483466a2fdbd8494",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/parse_model_list.py": {
     "bytes": 3698,
-    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692"
+    "sha256": "85fa9d7a1e47468226a2001073865f9571c1634a6cdf809d7b90934a6b0e4692",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/requirements.txt": {
     "bytes": 51,
@@ -15073,31 +15185,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/script_generator_for_InfiniTensor.py": {
     "bytes": 5703,
-    "sha256": "bfb26ce960d798876db568e017bd763d8a8ff8c2783d9db8cd900dca3d17e507"
+    "sha256": "bfb26ce960d798876db568e017bd763d8a8ff8c2783d9db8cd900dca3d17e507",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/test_child_cleanup.sh": {
     "bytes": 1789,
-    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636"
+    "sha256": "c9955e9b87edd0331cc9503071aed318a762040f95ad62aaf97ea8e6a6316636",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/test_npu_lock.sh": {
     "bytes": 7205,
-    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a"
+    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/v0.10.0/model_list.xlsx": {
     "bytes": 11388,
-    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6"
+    "sha256": "8cf44da5295d926962e8d651066b3dc4bea29586e5d2700202758b1256f113f6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/v0.11.0/model_list.xlsx": {
     "bytes": 11447,
-    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a"
+    "sha256": "12e9b1db1971bbaafcbd998c7da165c5a25aace96d67c3917678e1a82e5a9a6a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/write_file.py": {
     "bytes": 1737,
-    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92"
+    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/moore_test_suite/write_results.bash": {
     "bytes": 1852,
-    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b"
+    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/10.0.0.40.json": {
     "bytes": 1513,
@@ -15129,35 +15248,43 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/SendMsgToBot.py": {
     "bytes": 16061,
-    "sha256": "292ddf68dfa7f25c1bd04348eb381238daa2520e4ac499b7461734725be61a38"
+    "sha256": "292ddf68dfa7f25c1bd04348eb381238daa2520e4ac499b7461734725be61a38",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/WriteReportToExcel.py": {
     "bytes": 4931,
-    "sha256": "6d8fab1c9f1ec70a8a419d92af3d056c383a6ef11ebdcfa53cd7e95d2678293b"
+    "sha256": "6d8fab1c9f1ec70a8a419d92af3d056c383a6ef11ebdcfa53cd7e95d2678293b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/compare_excel_data.py": {
     "bytes": 11141,
-    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d"
+    "sha256": "6109eb16207b1bf79e9bc66b7b76d84e69e52a94b69ada879aa1143b4dfa395d",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/controller.js": {
     "bytes": 1937,
-    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944"
+    "sha256": "d50b7097f493306ce2ee92635bcc6b9f75dcf2e87efaedac1d08f580d2c6e944",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/daemon.sh": {
     "bytes": 1290,
-    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc"
+    "sha256": "40c8ee258fc88446f9b05840c3f789c72f4ccdc3ea9f25c373ecc3486121c4bc",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/entrypoint.sh": {
     "bytes": 1445,
-    "sha256": "ebfc854210507bb448a980ee6094be2f91275ce3a9886dc0bf90e189f2e8dcad"
+    "sha256": "ebfc854210507bb448a980ee6094be2f91275ce3a9886dc0bf90e189f2e8dcad",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/generate_excel_template.py": {
     "bytes": 12117,
-    "sha256": "b2ea4d647c21effbf08d65dab2fcb0670f3a0e396ad9e340bd769d2521eacf32"
+    "sha256": "b2ea4d647c21effbf08d65dab2fcb0670f3a0e396ad9e340bd769d2521eacf32",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/generate_model_comparison_table.py": {
     "bytes": 11594,
-    "sha256": "399c0aa1c1dd0bf86841b3b3701b2d27cfbe0b7b65a9e83f6b6fc6861aecfe15"
+    "sha256": "399c0aa1c1dd0bf86841b3b3701b2d27cfbe0b7b65a9e83f6b6fc6861aecfe15",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/get_info.py": {
     "bytes": 7911,
@@ -15165,15 +15292,18 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/infiniTensor_nvidia_test.sh": {
     "bytes": 37471,
-    "sha256": "ac064c19b2ac0e9e2ae45a38bf349e4e2c28c723e09d18e9f8e2c024cc9d0514"
+    "sha256": "ac064c19b2ac0e9e2ae45a38bf349e4e2c28c723e09d18e9f8e2c024cc9d0514",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/job_executor_template_for_InfiniTensor.sh": {
     "bytes": 18022,
-    "sha256": "916c297bc25313b7fbcc951c8555bfe101b11d2dd80c99aa7e02774cffe767b1"
+    "sha256": "916c297bc25313b7fbcc951c8555bfe101b11d2dd80c99aa7e02774cffe767b1",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/job_executor_template_for_vLLM.sh": {
     "bytes": 15513,
-    "sha256": "da7a19dee371b1442430566c665fdffc7a9341a8ddaa1e1b7a32a16ad8bb75fb"
+    "sha256": "da7a19dee371b1442430566c665fdffc7a9341a8ddaa1e1b7a32a16ad8bb75fb",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/latest/model_list.xlsx": {
     "bytes": 12011,
@@ -15185,31 +15315,38 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/legacy_docker_scanner.sh": {
     "bytes": 1109,
-    "sha256": "aff36a8c239e94c1c74461d41e5efa144f950906b3c3d3753bd42d40616ac2bd"
+    "sha256": "aff36a8c239e94c1c74461d41e5efa144f950906b3c3d3753bd42d40616ac2bd",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/main-51267ccb/model_list.xlsx": {
     "bytes": 13934,
-    "sha256": "47b9c0693459fb7a2b0e8d466d3a2abf7eb730fcca042959be3b2987c2a022c6"
+    "sha256": "47b9c0693459fb7a2b0e8d466d3a2abf7eb730fcca042959be3b2987c2a022c6",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/merge_hccl.py": {
     "bytes": 2316,
-    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36"
+    "sha256": "2f282946f808273dbf5a43553044b98f92691c6998666a9970fd48b00fc66c36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/npu_lock_admin.sh": {
     "bytes": 8847,
-    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895"
+    "sha256": "10e4857c31ae8182b2d18e06014545e1b69302aa9c92882d35681657393c0895",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/npu_lock_manager_for_ci.sh": {
     "bytes": 11368,
-    "sha256": "ea96f903a052d0923c32a03755b0c8439f748183c0d073892da08399beee7303"
+    "sha256": "ea96f903a052d0923c32a03755b0c8439f748183c0d073892da08399beee7303",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/nvidia_resource_monitor.sh": {
     "bytes": 38607,
-    "sha256": "28217cdab5dee50a51759ea9c7464a1e43ca788edefde1b8e515866e79766d3f"
+    "sha256": "28217cdab5dee50a51759ea9c7464a1e43ca788edefde1b8e515866e79766d3f",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/parse_model_list.py": {
     "bytes": 3527,
-    "sha256": "728232211cc6ea48abfcb6d1204d9789418909e0385e60fe76f0f26836304fb3"
+    "sha256": "728232211cc6ea48abfcb6d1204d9789418909e0385e60fe76f0f26836304fb3",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/requirements.txt": {
     "bytes": 51,
@@ -15217,15 +15354,18 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/script_generator_for_InfiniTensor.py": {
     "bytes": 6531,
-    "sha256": "674e4fcf5fdd4a1bbe2b1732399696bbadea780f6cc1bd7054b15a89ceb63dce"
+    "sha256": "674e4fcf5fdd4a1bbe2b1732399696bbadea780f6cc1bd7054b15a89ceb63dce",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/script_generator_for_vLLM.py": {
     "bytes": 6443,
-    "sha256": "72c8f09c7bbced9897843c3fd505b66cb09cd839ff99d90f373224c74b93a19a"
+    "sha256": "72c8f09c7bbced9897843c3fd505b66cb09cd839ff99d90f373224c74b93a19a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/test_npu_lock.sh": {
     "bytes": 7205,
-    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a"
+    "sha256": "d52b8a135d05f60039596b7d7f8a7055fc30fd114c062a082ced5b349b55642a",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/v0.10.0/model_list.xlsx": {
     "bytes": 12011,
@@ -15241,11 +15381,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/write_file.py": {
     "bytes": 1737,
-    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92"
+    "sha256": "11ee25aba071ebfd2803cd562f12a082cd88b0f3900ae51ba3ea05243c5cfa92",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/third-party/scheduler/nvidia_test_suite/write_results.bash": {
     "bytes": 1852,
-    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b"
+    "sha256": "480e8fdd61debd14d91e4ead780ecfa1302ec51110cd2cff2d30e6e7059ff16b",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/.ci/utils.py": {
     "bytes": 3355,
@@ -15413,7 +15555,8 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/dev/build.sh": {
     "bytes": 6173,
-    "sha256": "7603ae025eba45477ea33bbdf34b413be36b0bc962dcae11b7c50cd234e5d8b0"
+    "sha256": "7603ae025eba45477ea33bbdf34b413be36b0bc962dcae11b7c50cd234e5d8b0",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/dev/platforms.sh": {
     "bytes": 2957,
@@ -15421,7 +15564,8 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/dev/test.sh": {
     "bytes": 4246,
-    "sha256": "da7fe2f9e3cd16a43a9c578c0c225e2b3f17bc356a8a54228e0273e17bfb17ad"
+    "sha256": "da7fe2f9e3cd16a43a9c578c0c225e2b3f17bc356a8a54228e0273e17bfb17ad",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/generate_ninetoothed_ops.py": {
     "bytes": 2321,
@@ -15441,11 +15585,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/mcc_wrapper.sh": {
     "bytes": 1155,
-    "sha256": "bc66391e622858ae2cc3a5f87c7ef3a128dccfbd73264e5a413b2f39506365fe"
+    "sha256": "bc66391e622858ae2cc3a5f87c7ef3a128dccfbd73264e5a413b2f39506365fe",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/mxcc_wrapper.sh": {
     "bytes": 422,
-    "sha256": "1bc5f06f5a702c76c722da67c5ac334952a6b6819630f9504a31ad8155b94a42"
+    "sha256": "1bc5f06f5a702c76c722da67c5ac334952a6b6819630f9504a31ad8155b94a42",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/report/compare.py": {
     "bytes": 10028,
@@ -15453,7 +15599,8 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/report/summarize.py": {
     "bytes": 7046,
-    "sha256": "137083eaa4cac8a0d56fec626655e35ad9ceedc6a23d8c6fd279e71a54a48360"
+    "sha256": "137083eaa4cac8a0d56fec626655e35ad9ceedc6a23d8c6fd279e71a54a48360",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/scripts/resolve_linked_ops.py": {
     "bytes": 23628,
@@ -18033,7 +18180,8 @@
   },
   "frameworks/InfiniCore/submodules/InfiniOps/src/native/ascend/custom/build.sh": {
     "bytes": 1467,
-    "sha256": "50f0ee78e72bb14b07663e32c58d728e8a5440e731d289005e87ecd283f4bc36"
+    "sha256": "50f0ee78e72bb14b07663e32c58d728e8a5440e731d289005e87ecd283f4bc36",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniOps/src/native/ascend/custom/cmake/config_ascend.cmake": {
     "bytes": 1459,
@@ -20161,11 +20309,13 @@
   },
   "frameworks/InfiniCore/submodules/InfiniRT/scripts/mcc_wrapper.sh": {
     "bytes": 1155,
-    "sha256": "bc66391e622858ae2cc3a5f87c7ef3a128dccfbd73264e5a413b2f39506365fe"
+    "sha256": "bc66391e622858ae2cc3a5f87c7ef3a128dccfbd73264e5a413b2f39506365fe",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniRT/scripts/mxcc_wrapper.sh": {
     "bytes": 422,
-    "sha256": "1bc5f06f5a702c76c722da67c5ac334952a6b6819630f9504a31ad8155b94a42"
+    "sha256": "1bc5f06f5a702c76c722da67c5ac334952a6b6819630f9504a31ad8155b94a42",
+    "executable": true
   },
   "frameworks/InfiniCore/submodules/InfiniRT/src/CMakeLists.txt": {
     "bytes": 4360,
@@ -22813,15 +22963,18 @@
   },
   "frameworks/InfiniCore/third_party/spdlog/scripts/ci_setup_clang.sh": {
     "bytes": 226,
-    "sha256": "8006c30e33ba1005dc4cf387dfc0fe7b0c02200a018e3775697eb2ba1508ad3c"
+    "sha256": "8006c30e33ba1005dc4cf387dfc0fe7b0c02200a018e3775697eb2ba1508ad3c",
+    "executable": true
   },
   "frameworks/InfiniCore/third_party/spdlog/scripts/extract_version.py": {
     "bytes": 497,
-    "sha256": "3f44c716f1329bb0bb4d76ba89600987dc5993b1382255cb1b490bad9125cd0b"
+    "sha256": "3f44c716f1329bb0bb4d76ba89600987dc5993b1382255cb1b490bad9125cd0b",
+    "executable": true
   },
   "frameworks/InfiniCore/third_party/spdlog/scripts/format.sh": {
     "bytes": 630,
-    "sha256": "24dd27c544b9cb0135044484dc1d939050aa84e427420503312a1ddaf90f3ec1"
+    "sha256": "24dd27c544b9cb0135044484dc1d939050aa84e427420503312a1ddaf90f3ec1",
+    "executable": true
   },
   "frameworks/InfiniCore/third_party/spdlog/src/async.cpp": {
     "bytes": 398,
@@ -24541,11 +24694,13 @@
   },
   "frameworks/InfiniLM/test/models/llama/test_forward_validation.py": {
     "bytes": 27729,
-    "sha256": "67ee0359c8022799c63268fc023947cda3171ec89a8c955144bfb42f10b541a3"
+    "sha256": "67ee0359c8022799c63268fc023947cda3171ec89a8c955144bfb42f10b541a3",
+    "executable": true
   },
   "frameworks/InfiniLM/test/models/llama/test_intermediate_validation.py": {
     "bytes": 78141,
-    "sha256": "7cd8f7cfa993ffedf73df31cb2513f3def89deb71dc04cd5849689f38857eadf"
+    "sha256": "7cd8f7cfa993ffedf73df31cb2513f3def89deb71dc04cd5849689f38857eadf",
+    "executable": true
   },
   "frameworks/InfiniLM/test/models/llama/test_llama_inference.py": {
     "bytes": 21933,
@@ -27781,7 +27936,8 @@
   },
   "frameworks/InfiniLM/third_party/json/docs/mkdocs/scripts/check_structure.py": {
     "bytes": 10448,
-    "sha256": "4540eab2ff31d083d3db36d3425fcdb88cfc05fc5541a3da223de32e0e38fd07"
+    "sha256": "4540eab2ff31d083d3db36d3425fcdb88cfc05fc5541a3da223de32e0e38fd07",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/json/include/nlohmann/adl_serializer.hpp": {
     "bytes": 2279,
@@ -28729,7 +28885,8 @@
   },
   "frameworks/InfiniLM/third_party/json/tests/thirdparty/Fuzzer/build.sh": {
     "bytes": 213,
-    "sha256": "f948664f7ab474153a6d813429bc28d8667c084d053f4f6429b3ba63536a709e"
+    "sha256": "f948664f7ab474153a6d813429bc28d8667c084d053f4f6429b3ba63536a709e",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/json/tests/thirdparty/Fuzzer/cxx.dict": {
     "bytes": 1016,
@@ -29201,7 +29358,8 @@
   },
   "frameworks/InfiniLM/third_party/json/tests/thirdparty/imapdl/filterbr.py": {
     "bytes": 2708,
-    "sha256": "8fb30223c0476aecdb0ae89c3f68d84f4b90f7a5a90bd4b43be9d52e9631880b"
+    "sha256": "8fb30223c0476aecdb0ae89c3f68d84f4b90f7a5a90bd4b43be9d52e9631880b",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/json/tools/amalgamate/CHANGES.md": {
     "bytes": 432,
@@ -29213,7 +29371,8 @@
   },
   "frameworks/InfiniLM/third_party/json/tools/amalgamate/amalgamate.py": {
     "bytes": 11442,
-    "sha256": "d688b2590ba4d52a8752be9d22a94e864efe406813d326f50fecb97b2611b21c"
+    "sha256": "d688b2590ba4d52a8752be9d22a94e864efe406813d326f50fecb97b2611b21c",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/json/tools/amalgamate/config_json.json": {
     "bytes": 164,
@@ -29245,7 +29404,8 @@
   },
   "frameworks/InfiniLM/third_party/json/tools/generate_natvis/generate_natvis.py": {
     "bytes": 1423,
-    "sha256": "e00cb0d8a075303f0cc179425c666b789c49dd68569dffc725e338bbb70f9650"
+    "sha256": "e00cb0d8a075303f0cc179425c666b789c49dd68569dffc725e338bbb70f9650",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/json/tools/generate_natvis/nlohmann_json.natvis.j2": {
     "bytes": 2398,
@@ -29273,7 +29433,8 @@
   },
   "frameworks/InfiniLM/third_party/json/tools/serve_header/serve_header.py": {
     "bytes": 15050,
-    "sha256": "5c52141af454e77d5cab60f95e3f8dcb8e445c2d0cc9fc1cebe426cca303497a"
+    "sha256": "5c52141af454e77d5cab60f95e3f8dcb8e445c2d0cc9fc1cebe426cca303497a",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/json/tools/serve_header/serve_header.yml.example": {
     "bytes": 316,
@@ -29825,15 +29986,18 @@
   },
   "frameworks/InfiniLM/third_party/spdlog/scripts/ci_setup_clang.sh": {
     "bytes": 226,
-    "sha256": "8006c30e33ba1005dc4cf387dfc0fe7b0c02200a018e3775697eb2ba1508ad3c"
+    "sha256": "8006c30e33ba1005dc4cf387dfc0fe7b0c02200a018e3775697eb2ba1508ad3c",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/spdlog/scripts/extract_version.py": {
     "bytes": 497,
-    "sha256": "3f44c716f1329bb0bb4d76ba89600987dc5993b1382255cb1b490bad9125cd0b"
+    "sha256": "3f44c716f1329bb0bb4d76ba89600987dc5993b1382255cb1b490bad9125cd0b",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/spdlog/scripts/format.sh": {
     "bytes": 630,
-    "sha256": "24dd27c544b9cb0135044484dc1d939050aa84e427420503312a1ddaf90f3ec1"
+    "sha256": "24dd27c544b9cb0135044484dc1d939050aa84e427420503312a1ddaf90f3ec1",
+    "executable": true
   },
   "frameworks/InfiniLM/third_party/spdlog/src/async.cpp": {
     "bytes": 398,
@@ -32593,7 +32757,8 @@
   },
   "frameworks/diffusers/examples/community/dps_pipeline.py": {
     "bytes": 23560,
-    "sha256": "b9d2dc700f76e2684c1af0f94f46033f04591cd93f7f545ad76c7bd8510d7170"
+    "sha256": "b9d2dc700f76e2684c1af0f94f46033f04591cd93f7f545ad76c7bd8510d7170",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/edict_pipeline.py": {
     "bytes": 9471,
@@ -32649,7 +32814,8 @@
   },
   "frameworks/diffusers/examples/community/latent_consistency_txt2img.py": {
     "bytes": 33005,
-    "sha256": "d6aec3c48aea177e15d19e6b70d1313248d112b8898e209e3097c99fcaaf20e4"
+    "sha256": "d6aec3c48aea177e15d19e6b70d1313248d112b8898e209e3097c99fcaaf20e4",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/llm_grounded_diffusion.py": {
     "bytes": 72498,
@@ -32709,7 +32875,8 @@
   },
   "frameworks/diffusers/examples/community/one_step_unet.py": {
     "bytes": 721,
-    "sha256": "e2cfd2c408f1a6f470e6bc2ccffd8a9526f55d4df45077b082b84de0145e10f9"
+    "sha256": "e2cfd2c408f1a6f470e6bc2ccffd8a9526f55d4df45077b082b84de0145e10f9",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/pipeline_animatediff_controlnet.py": {
     "bytes": 55708,
@@ -32901,7 +33068,8 @@
   },
   "frameworks/diffusers/examples/community/sd_text2img_k_diffusion.py": {
     "bytes": 19959,
-    "sha256": "ef7c0f25a16f5ed5045790abb7c7e4cbeed1ae7431a0ba6a99fc5fb6a787e138"
+    "sha256": "ef7c0f25a16f5ed5045790abb7c7e4cbeed1ae7431a0ba6a99fc5fb6a787e138",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/sde_drag.py": {
     "bytes": 24490,
@@ -32953,15 +33121,18 @@
   },
   "frameworks/diffusers/examples/community/stable_diffusion_tensorrt_img2img.py": {
     "bytes": 48798,
-    "sha256": "93c0e3f6253773a1ec171d2884db35bd0a0d00ca947bc8e80e1f1b5c6ac10555"
+    "sha256": "93c0e3f6253773a1ec171d2884db35bd0a0d00ca947bc8e80e1f1b5c6ac10555",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/stable_diffusion_tensorrt_inpaint.py": {
     "bytes": 54291,
-    "sha256": "b4e3ddacd148d652bb0e54a58cc827b5b49fe617b0e120fd8d3e1324c9509d57"
+    "sha256": "b4e3ddacd148d652bb0e54a58cc827b5b49fe617b0e120fd8d3e1324c9509d57",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/stable_diffusion_tensorrt_txt2img.py": {
     "bytes": 45315,
-    "sha256": "f4601115df4f5d95d51c693e1c90bf4812bc0743f7f7ac29930a07db1442c9f9"
+    "sha256": "f4601115df4f5d95d51c693e1c90bf4812bc0743f7f7ac29930a07db1442c9f9",
+    "executable": true
   },
   "frameworks/diffusers/examples/community/stable_diffusion_xl_controlnet_reference.py": {
     "bytes": 71684,
@@ -33577,7 +33748,8 @@
   },
   "frameworks/diffusers/examples/profiling/run_profiling.sh": {
     "bytes": 1386,
-    "sha256": "c5ed42fe65d3506dc58d249229b870e7b50e6c91de80c6e9f46789629353ed0a"
+    "sha256": "c5ed42fe65d3506dc58d249229b870e7b50e6c91de80c6e9f46789629353ed0a",
+    "executable": true
   },
   "frameworks/diffusers/examples/reinforcement_learning/README.md": {
     "bytes": 1329,
@@ -33609,15 +33781,18 @@
   },
   "frameworks/diffusers/examples/research_projects/anytext/ocr_recog/RNN.py": {
     "bytes": 6455,
-    "sha256": "f057039ebfb2d4b1d1a9e392b721ad3c9bad147b1eb01c99bc6b81fc008b27e8"
+    "sha256": "f057039ebfb2d4b1d1a9e392b721ad3c9bad147b1eb01c99bc6b81fc008b27e8",
+    "executable": true
   },
   "frameworks/diffusers/examples/research_projects/anytext/ocr_recog/RecCTCHead.py": {
     "bytes": 1181,
-    "sha256": "1684749a81c8e7b7147de6c7a33b9313b2094e6780d8bc4aa7a89382f7f69850"
+    "sha256": "1684749a81c8e7b7147de6c7a33b9313b2094e6780d8bc4aa7a89382f7f69850",
+    "executable": true
   },
   "frameworks/diffusers/examples/research_projects/anytext/ocr_recog/RecModel.py": {
     "bytes": 1753,
-    "sha256": "90a3feaf70aca037a7df8eb914b7ae6a136cc9375b923bb4f2ddb7c3e27b36e3"
+    "sha256": "90a3feaf70aca037a7df8eb914b7ae6a136cc9375b923bb4f2ddb7c3e27b36e3",
+    "executable": true
   },
   "frameworks/diffusers/examples/research_projects/anytext/ocr_recog/RecMv1_enhance.py": {
     "bytes": 6095,
@@ -34001,7 +34176,8 @@
   },
   "frameworks/diffusers/examples/research_projects/pixart/train_controlnet_hf_diffusers.sh": {
     "bytes": 587,
-    "sha256": "8c2547ca523afb280ce957ca2031edc0c0f4c6fc6e1e2ce389047c4734f7e05c"
+    "sha256": "8c2547ca523afb280ce957ca2031edc0c0f4c6fc6e1e2ce389047c4734f7e05c",
+    "executable": true
   },
   "frameworks/diffusers/examples/research_projects/pixart/train_pixart_controlnet_hf.py": {
     "bytes": 49099,
@@ -34469,7 +34645,8 @@
   },
   "frameworks/diffusers/scripts/convert_dance_diffusion_to_diffusers.py": {
     "bytes": 10523,
-    "sha256": "ef4e6e4561e345defe2a6b5d1516feda1c413a7d4586cc295aeac6ad35ec31a6"
+    "sha256": "ef4e6e4561e345defe2a6b5d1516feda1c413a7d4586cc295aeac6ad35ec31a6",
+    "executable": true
   },
   "frameworks/diffusers/scripts/convert_dcae_to_diffusers.py": {
     "bytes": 11445,
@@ -35069,7 +35246,8 @@
   },
   "frameworks/diffusers/src/diffusers/models/__init__.py": {
     "bytes": 21831,
-    "sha256": "f4cdefd06de8ae36f295b1bdf06f38040a5ac60f75fc565767eba8b9346532a5"
+    "sha256": "f4cdefd06de8ae36f295b1bdf06f38040a5ac60f75fc565767eba8b9346532a5",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/models/_modeling_parallel.py": {
     "bytes": 17439,
@@ -35093,7 +35271,8 @@
   },
   "frameworks/diffusers/src/diffusers/models/attention_processor.py": {
     "bytes": 239359,
-    "sha256": "59871fd4e66fc14a26f0e0464706ab24680e13dcd93161c55123678a5e671772"
+    "sha256": "59871fd4e66fc14a26f0e0464706ab24680e13dcd93161c55123678a5e671772",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/models/auto_model.py": {
     "bytes": 18229,
@@ -35417,7 +35596,8 @@
   },
   "frameworks/diffusers/src/diffusers/models/transformers/__init__.py": {
     "bytes": 5080,
-    "sha256": "a5194392594480584d40a834101a2059cb8dd95bfc789d7ec8984e75ef600f7c"
+    "sha256": "a5194392594480584d40a834101a2059cb8dd95bfc789d7ec8984e75ef600f7c",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/models/transformers/ace_step_transformer.py": {
     "bytes": 27762,
@@ -35537,7 +35717,8 @@
   },
   "frameworks/diffusers/src/diffusers/models/transformers/transformer_easyanimate.py": {
     "bytes": 23551,
-    "sha256": "bc66c0ca1bd86afcca01887e7fd756aaa3e67866138a3a6d7391a6a4d28bfe96"
+    "sha256": "bc66c0ca1bd86afcca01887e7fd756aaa3e67866138a3a6d7391a6a4d28bfe96",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/models/transformers/transformer_ernie_image.py": {
     "bytes": 18998,
@@ -37497,15 +37678,18 @@
   },
   "frameworks/diffusers/src/diffusers/pipelines/easyanimate/pipeline_easyanimate.py": {
     "bytes": 35746,
-    "sha256": "8d762afcc308eec3cefb203c0fd505721e690e1a235976c459d9f94e024e032d"
+    "sha256": "8d762afcc308eec3cefb203c0fd505721e690e1a235976c459d9f94e024e032d",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/pipelines/easyanimate/pipeline_easyanimate_control.py": {
     "bytes": 46726,
-    "sha256": "53aa8a97f9ed35e84bc60556fb1aad2ec4f24c7f4e045ba2867db5d759d316c5"
+    "sha256": "53aa8a97f9ed35e84bc60556fb1aad2ec4f24c7f4e045ba2867db5d759d316c5",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/pipelines/easyanimate/pipeline_easyanimate_inpaint.py": {
     "bytes": 58877,
-    "sha256": "640f75e0691b163dca23037c9c6c938322474ce33a3468abb330946205f2bb80"
+    "sha256": "640f75e0691b163dca23037c9c6c938322474ce33a3468abb330946205f2bb80",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/pipelines/easyanimate/pipeline_output.py": {
     "bytes": 621,
@@ -37841,7 +38025,8 @@
   },
   "frameworks/diffusers/src/diffusers/pipelines/kandinsky3/convert_kandinsky3_unet.py": {
     "bytes": 3273,
-    "sha256": "149f29b1a82f66d40726ea66d2180c508da6b68dc81c45e36a82c35e2a752cc0"
+    "sha256": "149f29b1a82f66d40726ea66d2180c508da6b68dc81c45e36a82c35e2a752cc0",
+    "executable": true
   },
   "frameworks/diffusers/src/diffusers/pipelines/kandinsky3/pipeline_kandinsky3.py": {
     "bytes": 27271,
@@ -39481,7 +39666,8 @@
   },
   "frameworks/diffusers/tests/models/autoencoders/test_models_autoencoder_mochi.py": {
     "bytes": 3051,
-    "sha256": "53d47ed23ee76c1002eb2429d3eaf905f861f5732bc357217058e82f5a9200f6"
+    "sha256": "53d47ed23ee76c1002eb2429d3eaf905f861f5732bc357217058e82f5a9200f6",
+    "executable": true
   },
   "frameworks/diffusers/tests/models/autoencoders/test_models_autoencoder_oobleck.py": {
     "bytes": 8250,
@@ -40277,7 +40463,8 @@
   },
   "frameworks/diffusers/tests/others/test_utils.py": {
     "bytes": 15753,
-    "sha256": "d5acbc770b0b1bf00e919f52726709fcbd55aab740af0d5b96cf7f8fcbd55f9c"
+    "sha256": "d5acbc770b0b1bf00e919f52726709fcbd55aab740af0d5b96cf7f8fcbd55f9c",
+    "executable": true
   },
   "frameworks/diffusers/tests/others/test_video_processor.py": {
     "bytes": 7472,
@@ -41817,7 +42004,8 @@
   },
   "frameworks/diffusers/tests/schedulers/test_schedulers.py": {
     "bytes": 37672,
-    "sha256": "4e41c6c4863061cc40edf14cdcfbaffa624249592d1f5b3711cca6087293dc02"
+    "sha256": "4e41c6c4863061cc40edf14cdcfbaffa624249592d1f5b3711cca6087293dc02",
+    "executable": true
   },
   "frameworks/diffusers/tests/single_file/__init__.py": {
     "bytes": 0,
@@ -42049,11 +42237,13 @@
   },
   "frameworks/ninetoothed/.githooks/commit-msg": {
     "bytes": 3068,
-    "sha256": "76ae88a17c066d02165c0fe2ee20adee863ec22a791adb5de113d080484e7bfc"
+    "sha256": "76ae88a17c066d02165c0fe2ee20adee863ec22a791adb5de113d080484e7bfc",
+    "executable": true
   },
   "frameworks/ninetoothed/.githooks/pre-push": {
     "bytes": 1251,
-    "sha256": "139a5f73eb52208324421e93fd3335f456fcd3b59bc95a817aa0263f2a96a8c8"
+    "sha256": "139a5f73eb52208324421e93fd3335f456fcd3b59bc95a817aa0263f2a96a8c8",
+    "executable": true
   },
   "frameworks/ninetoothed/.github/ISSUE_TEMPLATE/bug-report.yml": {
     "bytes": 1557,
@@ -42117,7 +42307,8 @@
   },
   "frameworks/ninetoothed/docs/source/_static/ninetoothed-logo.png": {
     "bytes": 130,
-    "sha256": "497a81de96bd9d4ae1ecce02453ab20d232c2e370d8ff31b5aa497348dd7ba7c"
+    "sha256": "497a81de96bd9d4ae1ecce02453ab20d232c2e370d8ff31b5aa497348dd7ba7c",
+    "executable": true
   },
   "frameworks/ninetoothed/docs/source/ascendc.rst": {
     "bytes": 2606,
@@ -43949,7 +44140,8 @@
   },
   "frameworks/xmake/configure": {
     "bytes": 143980,
-    "sha256": "2911a4d27f302b2d14e6b2a7e521ae22a580f9a4f0ae4be007f1956bebc54bcc"
+    "sha256": "2911a4d27f302b2d14e6b2a7e521ae22a580f9a4f0ae4be007f1956bebc54bcc",
+    "executable": true
   },
   "frameworks/xmake/core/.clang-format": {
     "bytes": 3170,
@@ -43973,7 +44165,8 @@
   },
   "frameworks/xmake/core/src/cli/xmake.sh": {
     "bytes": 3062,
-    "sha256": "c16db546572c053ba2c4b155792df7e4a69993a38147d96905debdfd10314449"
+    "sha256": "c16db546572c053ba2c4b155792df7e4a69993a38147d96905debdfd10314449",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua/lua/.gitignore": {
     "bytes": 115,
@@ -43985,7 +44178,8 @@
   },
   "frameworks/xmake/core/src/lua/lua/all": {
     "bytes": 205,
-    "sha256": "5dcd03c7032a621b5905c76ab42e0423ff5ebba839ba3ff3cf173f7f9ffa0702"
+    "sha256": "5dcd03c7032a621b5905c76ab42e0423ff5ebba839ba3ff3cf173f7f9ffa0702",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua/lua/lapi.c": {
     "bytes": 36183,
@@ -44241,7 +44435,8 @@
   },
   "frameworks/xmake/core/src/lua/lua/manual/2html": {
     "bytes": 11914,
-    "sha256": "af537956f0cf874a67acaeecc32b31a8f56c73b963b9125b60dbfab59eebdb3e"
+    "sha256": "af537956f0cf874a67acaeecc32b31a8f56c73b963b9125b60dbfab59eebdb3e",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua/lua/manual/manual.of": {
     "bytes": 289085,
@@ -44381,7 +44576,8 @@
   },
   "frameworks/xmake/core/src/lua/lua/testes/packtests": {
     "bytes": 1001,
-    "sha256": "1bac4a233b0bbf129d46672354ab5fec4b6e2478af8a0ce252985681f13b4783"
+    "sha256": "1bac4a233b0bbf129d46672354ab5fec4b6e2478af8a0ce252985681f13b4783",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua/lua/testes/pm.lua": {
     "bytes": 13838,
@@ -44421,7 +44617,8 @@
   },
   "frameworks/xmake/core/src/lua/xmake.sh": {
     "bytes": 1455,
-    "sha256": "58aebe2e543e7b4e152d63553ae6f22fa4d91b4148ad18916cd04a63e66c9bbd"
+    "sha256": "58aebe2e543e7b4e152d63553ae6f22fa4d91b4148ad18916cd04a63e66c9bbd",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/.gitattributes": {
     "bytes": 125,
@@ -44461,7 +44658,8 @@
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/build-packages.sh": {
     "bytes": 934,
-    "sha256": "72a694ebc5013aa5af37b89caa174fdd3329a872ca4bfcc246aeb36857a32dd3"
+    "sha256": "72a694ebc5013aa5af37b89caa174fdd3329a872ca4bfcc246aeb36857a32dd3",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/devel/json_parser_outline.txt": {
     "bytes": 1036,
@@ -44493,11 +44691,13 @@
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/lua/json2lua.lua": {
     "bytes": 304,
-    "sha256": "0a7830dca64d95336c0c4e06865ddad412517c3d685f30265b075941d65aa591"
+    "sha256": "0a7830dca64d95336c0c4e06865ddad412517c3d685f30265b075941d65aa591",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/lua/lua2json.lua": {
     "bytes": 387,
-    "sha256": "8b2fb6a36753079ff5b49d7e737468215668f0ce075bf285923f004ad0dbeda2"
+    "sha256": "8b2fb6a36753079ff5b49d7e737468215668f0ce075bf285923f004ad0dbeda2",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/lua-cjson-2.1devel-1.rockspec": {
     "bytes": 1557,
@@ -44521,7 +44721,8 @@
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/runtests.sh": {
     "bytes": 1939,
-    "sha256": "92487c732e1011ff8870190c72b0f7b3549125667b4f4f69d6a897edcd286000"
+    "sha256": "92487c732e1011ff8870190c72b0f7b3549125667b4f4f69d6a897edcd286000",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/strbuf.c": {
     "bytes": 6159,
@@ -44537,7 +44738,8 @@
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/tests/bench.lua": {
     "bytes": 3247,
-    "sha256": "2aa31d86dc5e47befa95f0a14c6b90c97fd7579cf64e9ddd27b8aade9eb19f49"
+    "sha256": "2aa31d86dc5e47befa95f0a14c6b90c97fd7579cf64e9ddd27b8aade9eb19f49",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/tests/example1.json": {
     "bytes": 871,
@@ -44561,7 +44763,8 @@
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/tests/genutf8.pl": {
     "bytes": 656,
-    "sha256": "4caace0c627b4424bbb512ed27399521db7638b20a1f7b438afc0d3cbff90bb8"
+    "sha256": "4caace0c627b4424bbb512ed27399521db7638b20a1f7b438afc0d3cbff90bb8",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/tests/numbers.json": {
     "bytes": 126,
@@ -44581,7 +44784,8 @@
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/tests/test.lua": {
     "bytes": 18324,
-    "sha256": "654a63f727993ee25a373d876a70a409aebbd63058b21f02ab4d7643a5056c51"
+    "sha256": "654a63f727993ee25a373d876a70a409aebbd63058b21f02ab4d7643a5056c51",
+    "executable": true
   },
   "frameworks/xmake/core/src/lua-cjson/lua-cjson/tests/types.json": {
     "bytes": 32,
@@ -44593,7 +44797,8 @@
   },
   "frameworks/xmake/core/src/lua-cjson/xmake.sh": {
     "bytes": 877,
-    "sha256": "a65463bcb08789fd228408a5b5f803ae5e50040df0d469bad413ccadef7c77d4"
+    "sha256": "a65463bcb08789fd228408a5b5f803ae5e50040df0d469bad413ccadef7c77d4",
+    "executable": true
   },
   "frameworks/xmake/core/src/luajit/luajit/.gitignore": {
     "bytes": 71,
@@ -45053,11 +45258,13 @@
   },
   "frameworks/xmake/core/src/luajit/luajit/autogen/windows/jit/x64/lj_vm.o": {
     "bytes": 27342,
-    "sha256": "007d1e1ec0e3f4d4f5efad67dcbb951b11c820f41c7ed826324cbf2e0ad6565c"
+    "sha256": "007d1e1ec0e3f4d4f5efad67dcbb951b11c820f41c7ed826324cbf2e0ad6565c",
+    "executable": true
   },
   "frameworks/xmake/core/src/luajit/luajit/autogen/windows/jit/x64/lj_vm.obj": {
     "bytes": 27342,
-    "sha256": "007d1e1ec0e3f4d4f5efad67dcbb951b11c820f41c7ed826324cbf2e0ad6565c"
+    "sha256": "007d1e1ec0e3f4d4f5efad67dcbb951b11c820f41c7ed826324cbf2e0ad6565c",
+    "executable": true
   },
   "frameworks/xmake/core/src/luajit/luajit/autogen/windows/jit/x86/lj_bcdef.h": {
     "bytes": 1939,
@@ -45081,11 +45288,13 @@
   },
   "frameworks/xmake/core/src/luajit/luajit/autogen/windows/jit/x86/lj_vm.o": {
     "bytes": 25221,
-    "sha256": "18a74394c36ac6398667111204920ddf3b02306d41271ddadaddacd685264e18"
+    "sha256": "18a74394c36ac6398667111204920ddf3b02306d41271ddadaddacd685264e18",
+    "executable": true
   },
   "frameworks/xmake/core/src/luajit/luajit/autogen/windows/jit/x86/lj_vm.obj": {
     "bytes": 25221,
-    "sha256": "18a74394c36ac6398667111204920ddf3b02306d41271ddadaddacd685264e18"
+    "sha256": "18a74394c36ac6398667111204920ddf3b02306d41271ddadaddacd685264e18",
+    "executable": true
   },
   "frameworks/xmake/core/src/luajit/luajit/doc/bluequad-print.css": {
     "bytes": 2514,
@@ -45977,7 +46186,8 @@
   },
   "frameworks/xmake/core/src/luajit/xmake.sh": {
     "bytes": 1640,
-    "sha256": "10f6df4ab9ef8ad07c1e969ae0ffccd192782dfb620277c7c85696fbdbc5115b"
+    "sha256": "10f6df4ab9ef8ad07c1e969ae0ffccd192782dfb620277c7c85696fbdbc5115b",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/.circleci/config.yml": {
     "bytes": 4976,
@@ -46261,7 +46471,8 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/contrib/debian/rules": {
     "bytes": 185,
-    "sha256": "947dff0b3c6be7f7e6f8a316d11794d68e5ba9beb96893a4a4fc556376c01109"
+    "sha256": "947dff0b3c6be7f7e6f8a316d11794d68e5ba9beb96893a4a4fc556376c01109",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/contrib/djgpp/LICENSE": {
     "bytes": 1292,
@@ -46529,7 +46740,8 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/ossfuzz/ossfuzz.sh": {
     "bytes": 514,
-    "sha256": "31138e44b71510cc1a942e128facd1911cf9c20c6a3c610316e9d830700fb13a"
+    "sha256": "31138e44b71510cc1a942e128facd1911cf9c20c6a3c610316e9d830700fb13a",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/ossfuzz/round_trip_frame_fuzzer.c": {
     "bytes": 1383,
@@ -46557,7 +46769,8 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/ossfuzz/travisoss.sh": {
     "bytes": 820,
-    "sha256": "bb5c86548ba064366499e334b2a845ee2074179876a10374e7492c9f4cb0e06d"
+    "sha256": "bb5c86548ba064366499e334b2a845ee2074179876a10374e7492c9f4cb0e06d",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/programs/.gitignore": {
     "bytes": 187,
@@ -46677,7 +46890,8 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/check_liblz4_version.sh": {
     "bytes": 123,
-    "sha256": "e47a787d307711a2e1dd39bc04aa3ceeab0dbe5ec390e4b56891543706b6d0fb"
+    "sha256": "e47a787d307711a2e1dd39bc04aa3ceeab0dbe5ec390e4b56891543706b6d0fb",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/cmake/CMakeLists.txt": {
     "bytes": 1056,
@@ -46741,23 +46955,28 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-basic.sh": {
     "bytes": 3697,
-    "sha256": "b8d7ba818315a8669c5996ed66c6b44d651fd9d23a5e0691efa9e5cc2ae6d528"
+    "sha256": "b8d7ba818315a8669c5996ed66c6b44d651fd9d23a5e0691efa9e5cc2ae6d528",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-contentSize.sh": {
     "bytes": 869,
-    "sha256": "6004277857d437379f858651fdc3debf0758c3c41168077da183aecc8604167a"
+    "sha256": "6004277857d437379f858651fdc3debf0758c3c41168077da183aecc8604167a",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-dict.sh": {
     "bytes": 1662,
-    "sha256": "2daa93e9c380933793616760b3d2c1c6cc4f32a3fc76302b96be429c73937d87"
+    "sha256": "2daa93e9c380933793616760b3d2c1c6cc4f32a3fc76302b96be429c73937d87",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-fast-hugefile.sh": {
     "bytes": 423,
-    "sha256": "01b9924b5e2b4a0bcc56e28b7a677c750a21b27acb28715ac377f2fd6facdb4e"
+    "sha256": "01b9924b5e2b4a0bcc56e28b7a677c750a21b27acb28715ac377f2fd6facdb4e",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-frame-concatenation.sh": {
     "bytes": 485,
-    "sha256": "4b9184b3fe9bba488a7bc2709f4555c3befc83412d453bad47bf5b5853d5f30d"
+    "sha256": "4b9184b3fe9bba488a7bc2709f4555c3befc83412d453bad47bf5b5853d5f30d",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-list.py": {
     "bytes": 11206,
@@ -46765,23 +46984,28 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-multiple-legacy.sh": {
     "bytes": 2077,
-    "sha256": "ac081caecc1a6f807d9ff507fbaa678281c6cac78c9e7968c985ec76e41c6cd4"
+    "sha256": "ac081caecc1a6f807d9ff507fbaa678281c6cac78c9e7968c985ec76e41c6cd4",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-multiple.sh": {
     "bytes": 2183,
-    "sha256": "3f70ecf7801f4fc9ba29cca094118ab907e387c01e0209bf7afeda6297298eaa"
+    "sha256": "3f70ecf7801f4fc9ba29cca094118ab907e387c01e0209bf7afeda6297298eaa",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-opt-parser.sh": {
     "bytes": 511,
-    "sha256": "7a8196f8753bf2572eb2665a149dc892894dc10461ad9b4f0ac1517c0d1f4d21"
+    "sha256": "7a8196f8753bf2572eb2665a149dc892894dc10461ad9b4f0ac1517c0d1f4d21",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-skippable.sh": {
     "bytes": 276,
-    "sha256": "cf65c010400f37147f7de8921328c80f48f6f98c00cfa6522f0c9b2089baf0f4"
+    "sha256": "cf65c010400f37147f7de8921328c80f48f6f98c00cfa6522f0c9b2089baf0f4",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-sparse.sh": {
     "bytes": 1328,
-    "sha256": "7f790027646768ae8968ab78f13a8d187c71bce6d591f5f36758f4053da2b7b4"
+    "sha256": "7f790027646768ae8968ab78f13a8d187c71bce6d591f5f36758f4053da2b7b4",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-speed.py": {
     "bytes": 16807,
@@ -46789,7 +47013,8 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-testmode.sh": {
     "bytes": 962,
-    "sha256": "dd4c1a0a2431b02fd4385e241f7115467b26f5d825fc3440c55133a5293f821b"
+    "sha256": "dd4c1a0a2431b02fd4385e241f7115467b26f5d825fc3440c55133a5293f821b",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4-versions.py": {
     "bytes": 6510,
@@ -46797,15 +47022,18 @@
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test-lz4hc-hugefile.sh": {
     "bytes": 63,
-    "sha256": "d91f4b3199377453b034e5ef7857abac0bbda0f4b566b797dac6a6ecc11bc165"
+    "sha256": "d91f4b3199377453b034e5ef7857abac0bbda0f4b566b797dac6a6ecc11bc165",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test_custom_block_sizes.sh": {
     "bytes": 1901,
-    "sha256": "8466f9a3cf99bf29085ad6cbf8f28b3cae90ed2bf7acc456e4cd5ecdc7f91130"
+    "sha256": "8466f9a3cf99bf29085ad6cbf8f28b3cae90ed2bf7acc456e4cd5ecdc7f91130",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/test_install.sh": {
     "bytes": 973,
-    "sha256": "772b9013a80289806af837968afda5055531a5456e9ecba056ba82ec67a222d1"
+    "sha256": "772b9013a80289806af837968afda5055531a5456e9ecba056ba82ec67a222d1",
+    "executable": true
   },
   "frameworks/xmake/core/src/lz4/lz4/tests/unicode_lint.sh": {
     "bytes": 1195,
@@ -46817,7 +47045,8 @@
   },
   "frameworks/xmake/core/src/lz4/xmake.sh": {
     "bytes": 301,
-    "sha256": "142cfb45d148b988c7f4661a42a5ce507045f785a10ae1e2c3d821ec83f6d49f"
+    "sha256": "142cfb45d148b988c7f4661a42a5ce507045f785a10ae1e2c3d821ec83f6d49f",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/CNAME": {
     "bytes": 12,
@@ -46961,11 +47190,13 @@
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/docs/manext.awk": {
     "bytes": 286,
-    "sha256": "96fb906b1e3e4e3e9d9d3c2de0a56b2b27bdfa57b32a944e7792f305d6089152"
+    "sha256": "96fb906b1e3e4e3e9d9d3c2de0a56b2b27bdfa57b32a944e7792f305d6089152",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/docs/mkman.sh": {
     "bytes": 284,
-    "sha256": "5068000b30e878756a7338dd6f14b174326d645c4de2377bafee8ebe9d8e0f1f"
+    "sha256": "5068000b30e878756a7338dd6f14b174326d645c4de2377bafee8ebe9d8e0f1f",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/dos/Makefile": {
     "bytes": 1488,
@@ -47393,7 +47624,8 @@
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/config.guess": {
     "bytes": 49938,
-    "sha256": "36b03244d5bc0fee6c3b69013d2d4fe3027ae7e05e1dd566dbbd84a3639c3ca9"
+    "sha256": "36b03244d5bc0fee6c3b69013d2d4fe3027ae7e05e1dd566dbbd84a3639c3ca9",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/config.h.in": {
     "bytes": 874,
@@ -47401,11 +47633,13 @@
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/config.sub": {
     "bytes": 35819,
-    "sha256": "0114ee98bffafc27c4d48abea22b6a542fa6fe45c949ca0d2ea1999d395f4197"
+    "sha256": "0114ee98bffafc27c4d48abea22b6a542fa6fe45c949ca0d2ea1999d395f4197",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/configure": {
     "bytes": 170449,
-    "sha256": "b01af5ef409efecdd574c86d32768f074e36093eef7d0fdd1bcc3cae25023848"
+    "sha256": "b01af5ef409efecdd574c86d32768f074e36093eef7d0fdd1bcc3cae25023848",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/configure.ac": {
     "bytes": 3900,
@@ -47413,7 +47647,8 @@
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/install-sh": {
     "bytes": 6523,
-    "sha256": "c016619bff8e4e2e8b3688d80bead6b0c246b5f3efa0bd7dead381e97d438b7c"
+    "sha256": "c016619bff8e4e2e8b3688d80bead6b0c246b5f3efa0bd7dead381e97d438b7c",
+    "executable": true
   },
   "frameworks/xmake/core/src/pdcurses/pdcurses/x11/pdcclip.c": {
     "bytes": 6347,
@@ -47513,7 +47748,8 @@
   },
   "frameworks/xmake/core/src/sv/sv/autogen.sh": {
     "bytes": 278,
-    "sha256": "c585617b0fa8ecef2ef9fc941f97b1973f865bc76bc14956da1d5b3859ca8926"
+    "sha256": "c585617b0fa8ecef2ef9fc941f97b1973f865bc76bc14956da1d5b3859ca8926",
+    "executable": true
   },
   "frameworks/xmake/core/src/sv/sv/cmake/properties.cmake": {
     "bytes": 433,
@@ -47641,15 +47877,18 @@
   },
   "frameworks/xmake/core/src/sv/xmake.sh": {
     "bytes": 163,
-    "sha256": "a56676335e9ecae18cd0f91fe05732ba82b46f26a753f33cfaa4e3a43c2dc5ba"
+    "sha256": "a56676335e9ecae18cd0f91fe05732ba82b46f26a753f33cfaa4e3a43c2dc5ba",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/bsd/tbox.config.h": {
     "bytes": 8704,
-    "sha256": "34b2d4f332b653f41897a616e5446026e4a08be3939b47d05ec3b860e6a9cecd"
+    "sha256": "34b2d4f332b653f41897a616e5446026e4a08be3939b47d05ec3b860e6a9cecd",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/cygwin/tbox.config.h": {
     "bytes": 8822,
-    "sha256": "f214f8056585270cd5769154691cb0d8785727086399a38a717e5285d685bcde"
+    "sha256": "f214f8056585270cd5769154691cb0d8785727086399a38a717e5285d685bcde",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/haiku/tbox.config.h": {
     "bytes": 8960,
@@ -47657,23 +47896,28 @@
   },
   "frameworks/xmake/core/src/tbox/inc/iphoneos/tbox.config.h": {
     "bytes": 8977,
-    "sha256": "b0ec101fb4596689784d933a9ad54a1aba836640e5e16def4832dadd6642683b"
+    "sha256": "b0ec101fb4596689784d933a9ad54a1aba836640e5e16def4832dadd6642683b",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/linux/tbox.config.h": {
     "bytes": 7585,
-    "sha256": "4f6886187f5e3425e244831c9e2e228acc4342dbf1630fe20f6677bb1f0a67a7"
+    "sha256": "4f6886187f5e3425e244831c9e2e228acc4342dbf1630fe20f6677bb1f0a67a7",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/macosx/tbox.config.h": {
     "bytes": 6944,
-    "sha256": "1b362ea5fb660dff21d35185a1faee13e9e1bd222dde4a6b785f6d5c9dc1ba1f"
+    "sha256": "1b362ea5fb660dff21d35185a1faee13e9e1bd222dde4a6b785f6d5c9dc1ba1f",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/mingw/tbox.config.h": {
     "bytes": 8822,
-    "sha256": "f214f8056585270cd5769154691cb0d8785727086399a38a717e5285d685bcde"
+    "sha256": "f214f8056585270cd5769154691cb0d8785727086399a38a717e5285d685bcde",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/inc/msys/tbox.config.h": {
     "bytes": 8822,
-    "sha256": "f214f8056585270cd5769154691cb0d8785727086399a38a717e5285d685bcde"
+    "sha256": "f214f8056585270cd5769154691cb0d8785727086399a38a717e5285d685bcde",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/.github/workflows/android.yml": {
     "bytes": 591,
@@ -47721,7 +47965,8 @@
   },
   "frameworks/xmake/core/src/tbox/tbox/.gitignore": {
     "bytes": 267,
-    "sha256": "46bb6d0c9fc17587eb2f59461f825921d1b2c617bd8be4bfec8cd835bb999a87"
+    "sha256": "46bb6d0c9fc17587eb2f59461f825921d1b2c617bd8be4bfec8cd835bb999a87",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/CHANGELOG.md": {
     "bytes": 18528,
@@ -47737,23 +47982,28 @@
   },
   "frameworks/xmake/core/src/tbox/tbox/LICENSE.md": {
     "bytes": 14488,
-    "sha256": "53914cb11fde5fdf2560173101efda201a40d11776cfbb7fcb6f1d66f828db8d"
+    "sha256": "53914cb11fde5fdf2560173101efda201a40d11776cfbb7fcb6f1d66f828db8d",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/NOTICE.md": {
     "bytes": 2183,
-    "sha256": "2cd5107122adccf0f01aea10ad4eafea93afdcf3b9cd80b5a9e162c6cf100301"
+    "sha256": "2cd5107122adccf0f01aea10ad4eafea93afdcf3b9cd80b5a9e162c6cf100301",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/README.md": {
     "bytes": 9493,
-    "sha256": "5ef1ccbc36dee036b50fd1de1c03ad9cc5234026a2adaed22a962aacfeaa25c0"
+    "sha256": "5ef1ccbc36dee036b50fd1de1c03ad9cc5234026a2adaed22a962aacfeaa25c0",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/README_zh.md": {
     "bytes": 12859,
-    "sha256": "3d704f0352281fd4bae3ac36d3c99b0c22907a9a0a69e8d72b8fe1b82b1a0e6c"
+    "sha256": "3d704f0352281fd4bae3ac36d3c99b0c22907a9a0a69e8d72b8fe1b82b1a0e6c",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/configure": {
     "bytes": 143980,
-    "sha256": "2911a4d27f302b2d14e6b2a7e521ae22a580f9a4f0ae4be007f1956bebc54bcc"
+    "sha256": "2911a4d27f302b2d14e6b2a7e521ae22a580f9a4f0ae4be007f1956bebc54bcc",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/src/demo/algorithm/find.c": {
     "bytes": 4561,
@@ -48401,7 +48651,8 @@
   },
   "frameworks/xmake/core/src/tbox/tbox/src/demo/xmake.sh": {
     "bytes": 3345,
-    "sha256": "6a16cf3c28a95191faee26ceb33e3fceb6a0f4e07f0163ff30fd4d64da4bdc0e"
+    "sha256": "6a16cf3c28a95191faee26ceb33e3fceb6a0f4e07f0163ff30fd4d64da4bdc0e",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/src/demo/xml/document.c": {
     "bytes": 1256,
@@ -51997,7 +52248,8 @@
   },
   "frameworks/xmake/core/src/tbox/tbox/src/tbox/xmake.sh": {
     "bytes": 7875,
-    "sha256": "44cc298bd33f9dfe8de3c8c609c11718d44d8ca551910e3a798aeb6db22cd509"
+    "sha256": "44cc298bd33f9dfe8de3c8c609c11718d44d8ca551910e3a798aeb6db22cd509",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/src/tbox/xml/node.c": {
     "bytes": 11549,
@@ -52073,7 +52325,8 @@
   },
   "frameworks/xmake/core/src/tbox/tbox/src/xmake.sh": {
     "bytes": 10466,
-    "sha256": "a760e9a3fa3b45fbc1e09c39742b22f96144c0cc80b3143a8a789ca1aae56128"
+    "sha256": "a760e9a3fa3b45fbc1e09c39742b22f96144c0cc80b3143a8a789ca1aae56128",
+    "executable": true
   },
   "frameworks/xmake/core/src/tbox/tbox/xmake/check_interfaces.lua": {
     "bytes": 13457,
@@ -52089,7 +52342,8 @@
   },
   "frameworks/xmake/core/src/tbox/xmake.sh": {
     "bytes": 831,
-    "sha256": "5447cc1967aef92a3ed5e0690d1621531f2f5510db12a730272012518af06a0f"
+    "sha256": "5447cc1967aef92a3ed5e0690d1621531f2f5510db12a730272012518af06a0f",
+    "executable": true
   },
   "frameworks/xmake/core/src/xmake/base64/decode.c": {
     "bytes": 1798,
@@ -52873,7 +53127,8 @@
   },
   "frameworks/xmake/core/src/xmake/xmake.sh": {
     "bytes": 1994,
-    "sha256": "356a83e65844933666599c19a5c0f76108440d8aca9dd3e3dd62eabfe35bd15e"
+    "sha256": "356a83e65844933666599c19a5c0f76108440d8aca9dd3e3dd62eabfe35bd15e",
+    "executable": true
   },
   "frameworks/xmake/core/src/xxhash/xxhash/LICENSE": {
     "bytes": 1389,
@@ -52889,7 +53144,8 @@
   },
   "frameworks/xmake/core/xmake.sh": {
     "bytes": 5715,
-    "sha256": "d2142440cd27a88c68e314153aca71f8068fce2bbf7878210246147f0254249c"
+    "sha256": "d2142440cd27a88c68e314153aca71f8068fce2bbf7878210246147f0254249c",
+    "executable": true
   },
   "frameworks/xmake/core/xpack.lua": {
     "bytes": 6426,
@@ -52957,7 +53213,8 @@
   },
   "frameworks/xmake/scripts/debian/rules": {
     "bytes": 1383,
-    "sha256": "d5526971d7ae8ad96531e1b3290dbea92bc60b13e2db2eb9467b2bd25ed64644"
+    "sha256": "d5526971d7ae8ad96531e1b3290dbea92bc60b13e2db2eb9467b2bd25ed64644",
+    "executable": true
   },
   "frameworks/xmake/scripts/debian/source/format": {
     "bytes": 12,
@@ -52985,15 +53242,18 @@
   },
   "frameworks/xmake/scripts/get.ps1": {
     "bytes": 5686,
-    "sha256": "6cb9792abf484460fcd352407ab410a0029e7f664a674b1828d15c4e6aae30ab"
+    "sha256": "6cb9792abf484460fcd352407ab410a0029e7f664a674b1828d15c4e6aae30ab",
+    "executable": true
   },
   "frameworks/xmake/scripts/get.sh": {
     "bytes": 8117,
-    "sha256": "a0079ea3989d197a6012ff9cb2fd9f6bbdce5309268b0f871a823405d5c6e8c2"
+    "sha256": "a0079ea3989d197a6012ff9cb2fd9f6bbdce5309268b0f871a823405d5c6e8c2",
+    "executable": true
   },
   "frameworks/xmake/scripts/makeppa": {
     "bytes": 2921,
-    "sha256": "5610426477bf0e86807e0521e2bf53e957e7ec8ecc9d009a76a2cd70ecb2d0a3"
+    "sha256": "5610426477bf0e86807e0521e2bf53e957e7ec8ecc9d009a76a2cd70ecb2d0a3",
+    "executable": true
   },
   "frameworks/xmake/scripts/man/xmake.1": {
     "bytes": 3360,
@@ -53013,7 +53273,8 @@
   },
   "frameworks/xmake/scripts/msys/xmake.sh": {
     "bytes": 178,
-    "sha256": "c679f6e38e952e6b51e1d19eae97af85bede88ae25104f9db58f8b6bab51f388"
+    "sha256": "c679f6e38e952e6b51e1d19eae97af85bede88ae25104f9db58f8b6bab51f388",
+    "executable": true
   },
   "frameworks/xmake/scripts/rpmbuild/0001-use-static-libsv-and-tbox.patch": {
     "bytes": 736,
@@ -53025,11 +53286,13 @@
   },
   "frameworks/xmake/scripts/srcenv.bat": {
     "bytes": 230,
-    "sha256": "bfb31c53d5f27088ed6ca409a21042fb397163d9418f43768d41d251397cce8f"
+    "sha256": "bfb31c53d5f27088ed6ca409a21042fb397163d9418f43768d41d251397cce8f",
+    "executable": true
   },
   "frameworks/xmake/scripts/srcenv.profile": {
     "bytes": 229,
-    "sha256": "638bf4531bc462876bb7444c86a8c1dfe86d62104f5560f7bad1eb5b2de8eaec"
+    "sha256": "638bf4531bc462876bb7444c86a8c1dfe86d62104f5560f7bad1eb5b2de8eaec",
+    "executable": true
   },
   "frameworks/xmake/scripts/srcenv.ps1": {
     "bytes": 258,
@@ -53037,7 +53300,8 @@
   },
   "frameworks/xmake/scripts/xrepo.bat": {
     "bytes": 4791,
-    "sha256": "991ce85652960461ecef9f065c20c88fdc800bf7b7bc1a74d1b00277d36a28bd"
+    "sha256": "991ce85652960461ecef9f065c20c88fdc800bf7b7bc1a74d1b00277d36a28bd",
+    "executable": true
   },
   "frameworks/xmake/scripts/xrepo.ps1": {
     "bytes": 1793,
@@ -53045,7 +53309,8 @@
   },
   "frameworks/xmake/scripts/xrepo.sh": {
     "bytes": 196,
-    "sha256": "23c613f78cc367042bb7bc62eaaf9eab0286c265b0026c0d50f9af542c457493"
+    "sha256": "23c613f78cc367042bb7bc62eaaf9eab0286c265b0026c0d50f9af542c457493",
+    "executable": true
   },
   "frameworks/xmake/tests/actions/config/.gitignore": {
     "bytes": 5,
@@ -53913,7 +54178,8 @@
   },
   "frameworks/xmake/tests/modules/hello/test.lua": {
     "bytes": 53,
-    "sha256": "c4ff08e5c3f717d335275bcecf85450013a48be76f74c0e3aeef9e8f10b58f02"
+    "sha256": "c4ff08e5c3f717d335275bcecf85450013a48be76f74c0e3aeef9e8f10b58f02",
+    "executable": true
   },
   "frameworks/xmake/tests/modules/io/files/.gitattributes": {
     "bytes": 8,
@@ -53949,11 +54215,13 @@
   },
   "frameworks/xmake/tests/modules/json/test.lua": {
     "bytes": 2944,
-    "sha256": "60ad89a93cc9b416a2648d4e93920ad90a8a8cce5a48a4217f882a5af1f67b89"
+    "sha256": "60ad89a93cc9b416a2648d4e93920ad90a8a8cce5a48a4217f882a5af1f67b89",
+    "executable": true
   },
   "frameworks/xmake/tests/modules/lib/detect/test.lua": {
     "bytes": 627,
-    "sha256": "be24509efdfbbb11e876c48a7c6481ea243e932a37b92c9f51b05e38ea99c39e"
+    "sha256": "be24509efdfbbb11e876c48a7c6481ea243e932a37b92c9f51b05e38ea99c39e",
+    "executable": true
   },
   "frameworks/xmake/tests/modules/list/test.lua": {
     "bytes": 3402,
@@ -54049,7 +54317,8 @@
   },
   "frameworks/xmake/tests/modules/semver/test.lua": {
     "bytes": 3647,
-    "sha256": "ec4c20d3db29a3ca17ff2768d9bfe293e52ecbd021b2b5c7490cb187e188e86a"
+    "sha256": "ec4c20d3db29a3ca17ff2768d9bfe293e52ecbd021b2b5c7490cb187e188e86a",
+    "executable": true
   },
   "frameworks/xmake/tests/modules/signal/sigint.lua": {
     "bytes": 165,
@@ -56469,7 +56738,8 @@
   },
   "frameworks/xmake/tests/projects/nim/console/src/main": {
     "bytes": 92184,
-    "sha256": "0318e5d3b2b74df81e2a830b24d75215b3d9c7615ff9c9dcc6aa0ffaad379183"
+    "sha256": "0318e5d3b2b74df81e2a830b24d75215b3d9c7615ff9c9dcc6aa0ffaad379183",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/nim/console/src/main.nim": {
     "bytes": 20,
@@ -57509,7 +57779,8 @@
   },
   "frameworks/xmake/tests/projects/package/basic/src/main.c": {
     "bytes": 181,
-    "sha256": "0d3034ed136c4ffb1df4b460aeded665b709e561853976737517f3d1e09eb838"
+    "sha256": "0d3034ed136c4ffb1df4b460aeded665b709e561853976737517f3d1e09eb838",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/basic/src/test.c": {
     "bytes": 136,
@@ -57549,7 +57820,8 @@
   },
   "frameworks/xmake/tests/projects/package/compatibility/deps_with_version/src/main.c": {
     "bytes": 100,
-    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488"
+    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/compatibility/deps_with_version/test.lua": {
     "bytes": 272,
@@ -57561,7 +57833,8 @@
   },
   "frameworks/xmake/tests/projects/package/compatibility/sync_requires_to_deps/src/main.c": {
     "bytes": 100,
-    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488"
+    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/compatibility/sync_requires_to_deps/test.lua": {
     "bytes": 272,
@@ -57573,7 +57846,8 @@
   },
   "frameworks/xmake/tests/projects/package/components/src/graphics.cpp": {
     "bytes": 119,
-    "sha256": "ce38e2e7a546a274a45077c0b95f1879352a7204cddf6b543dc0491e2d001391"
+    "sha256": "ce38e2e7a546a274a45077c0b95f1879352a7204cddf6b543dc0491e2d001391",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/components/src/main.cpp": {
     "bytes": 189,
@@ -57581,7 +57855,8 @@
   },
   "frameworks/xmake/tests/projects/package/components/src/network.cpp": {
     "bytes": 266,
-    "sha256": "c07e985b7e3c27ee71a388999f0029c96e4780347fe36c53f4fae0298df7f243"
+    "sha256": "c07e985b7e3c27ee71a388999f0029c96e4780347fe36c53f4fae0298df7f243",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/components/test.lua": {
     "bytes": 274,
@@ -57605,7 +57880,8 @@
   },
   "frameworks/xmake/tests/projects/package/depconfigs/src/main.c": {
     "bytes": 100,
-    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488"
+    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/depconfigs/test.lua": {
     "bytes": 272,
@@ -57617,7 +57893,8 @@
   },
   "frameworks/xmake/tests/projects/package/inherit_base/src/main.c": {
     "bytes": 100,
-    "sha256": "420d6d58878ec2057cfe2d15666d376c1d18a19edfd295e906f7160c8fe53957"
+    "sha256": "420d6d58878ec2057cfe2d15666d376c1d18a19edfd295e906f7160c8fe53957",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/inherit_base/test.lua": {
     "bytes": 272,
@@ -57641,7 +57918,8 @@
   },
   "frameworks/xmake/tests/projects/package/multiconfig/src/main.c": {
     "bytes": 100,
-    "sha256": "420d6d58878ec2057cfe2d15666d376c1d18a19edfd295e906f7160c8fe53957"
+    "sha256": "420d6d58878ec2057cfe2d15666d376c1d18a19edfd295e906f7160c8fe53957",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/multiconfig/test.lua": {
     "bytes": 272,
@@ -57689,7 +57967,8 @@
   },
   "frameworks/xmake/tests/projects/package/package_rule/src/main.cpp": {
     "bytes": 100,
-    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488"
+    "sha256": "6792bc8b7556c055cd96b9858ee208a434f95c57ac30d0b54301d74946d5e488",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/package_rule/src/test.md": {
     "bytes": 0,
@@ -57705,7 +57984,8 @@
   },
   "frameworks/xmake/tests/projects/package/rootconfigs/src/main.c": {
     "bytes": 100,
-    "sha256": "420d6d58878ec2057cfe2d15666d376c1d18a19edfd295e906f7160c8fe53957"
+    "sha256": "420d6d58878ec2057cfe2d15666d376c1d18a19edfd295e906f7160c8fe53957",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/package/rootconfigs/test.lua": {
     "bytes": 272,
@@ -57969,39 +58249,48 @@
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot/main.cpp": {
     "bytes": 183,
-    "sha256": "449fcebe127e5378c536ac05212e1af8227c206e331925cd2cacdc93c14b8d11"
+    "sha256": "449fcebe127e5378c536ac05212e1af8227c206e331925cd2cacdc93c14b8d11",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot/mainwindow.cpp": {
     "bytes": 438,
-    "sha256": "300e9e7513c7961dbf7f49bacc18c47caab59057a05ae0b6444c6912b802217a"
+    "sha256": "300e9e7513c7961dbf7f49bacc18c47caab59057a05ae0b6444c6912b802217a",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot/mainwindow.h": {
     "bytes": 546,
-    "sha256": "8e2a7852aea78eacca0d1650056b4142e7189c4d12dae1ea690eb9dc5081ebda"
+    "sha256": "8e2a7852aea78eacca0d1650056b4142e7189c4d12dae1ea690eb9dc5081ebda",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot/mainwindow.ui": {
     "bytes": 654,
-    "sha256": "1e97af9d141ee9803c8dbfe2f33b988441206969821ebb4a0e029ac59158eede"
+    "sha256": "1e97af9d141ee9803c8dbfe2f33b988441206969821ebb4a0e029ac59158eede",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot/xmake.lua": {
     "bytes": 136,
-    "sha256": "bc9aede6f3328269d757cba4c5ba4c85eff2c5626ee0baba77b806633e0fcea7"
+    "sha256": "bc9aede6f3328269d757cba4c5ba4c85eff2c5626ee0baba77b806633e0fcea7",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot2/main.cpp": {
     "bytes": 183,
-    "sha256": "449fcebe127e5378c536ac05212e1af8227c206e331925cd2cacdc93c14b8d11"
+    "sha256": "449fcebe127e5378c536ac05212e1af8227c206e331925cd2cacdc93c14b8d11",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot2/mainwindow.cpp": {
     "bytes": 589,
-    "sha256": "822953f9339848b236c3c717989c43e21d90517ca05cff5e7c9362afa52da4dc"
+    "sha256": "822953f9339848b236c3c717989c43e21d90517ca05cff5e7c9362afa52da4dc",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot2/mainwindow.h": {
     "bytes": 581,
-    "sha256": "9153c1d6d25c42d44c4aae110947736ee31bdaef226e7f204eaa93468eb261f9"
+    "sha256": "9153c1d6d25c42d44c4aae110947736ee31bdaef226e7f204eaa93468eb261f9",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot2/mainwindow.ui": {
     "bytes": 654,
-    "sha256": "1e97af9d141ee9803c8dbfe2f33b988441206969821ebb4a0e029ac59158eede"
+    "sha256": "1e97af9d141ee9803c8dbfe2f33b988441206969821ebb4a0e029ac59158eede",
+    "executable": true
   },
   "frameworks/xmake/tests/projects/qt/widgetapp_private_slot2/xmake.lua": {
     "bytes": 166,
@@ -64465,7 +64754,8 @@
   },
   "frameworks/xmake/xmake/scripts/download.ps1": {
     "bytes": 607,
-    "sha256": "1b3cfca4caa42a47d599d098416f7a0e1f305eead95a5af08b7910c2d10f8ffc"
+    "sha256": "1b3cfca4caa42a47d599d098416f7a0e1f305eead95a5af08b7910c2d10f8ffc",
+    "executable": true
   },
   "frameworks/xmake/xmake/scripts/faq.lua": {
     "bytes": 1779,
@@ -64477,7 +64767,8 @@
   },
   "frameworks/xmake/xmake/scripts/gas-preprocessor.pl": {
     "bytes": 44723,
-    "sha256": "17a14de55348547d5de5c2448dee0ab6d193d138a1326b6a5235617c3f2c2f82"
+    "sha256": "17a14de55348547d5de5c2448dee0ab6d193d138a1326b6a5235617c3f2c2f82",
+    "executable": true
   },
   "frameworks/xmake/xmake/scripts/gitignore": {
     "bytes": 56,
@@ -64517,7 +64808,8 @@
   },
   "frameworks/xmake/xmake/scripts/unzip.ps1": {
     "bytes": 432,
-    "sha256": "7eb8df4634b066b21dc4e57c7a5799da29f73b0911975e5b6533cedd7ecf5070"
+    "sha256": "7eb8df4634b066b21dc4e57c7a5799da29f73b0911975e5b6533cedd7ecf5070",
+    "executable": true
   },
   "frameworks/xmake/xmake/scripts/update-script.bat": {
     "bytes": 489,
@@ -64721,7 +65013,8 @@
   },
   "frameworks/xmake/xmake/scripts/xpack/deb/debian/rules": {
     "bytes": 959,
-    "sha256": "1503c50852ab632b0f545f69cd962e1e18ca4db605d555b52777456d352a2df6"
+    "sha256": "1503c50852ab632b0f545f69cd962e1e18ca4db605d555b52777456d352a2df6",
+    "executable": true
   },
   "frameworks/xmake/xmake/scripts/xpack/deb/debian/source/format": {
     "bytes": 12,
@@ -64737,7 +65030,8 @@
   },
   "frameworks/xmake/xmake/scripts/xpack/runself/setup.sh": {
     "bytes": 10,
-    "sha256": "a8076d3d28d21e02012b20eaf7dbf75409a6277134439025f282e368e3305abf"
+    "sha256": "a8076d3d28d21e02012b20eaf7dbf75409a6277134439025f282e368e3305abf",
+    "executable": true
   },
   "frameworks/xmake/xmake/scripts/xpack/srpm/srpm.spec": {
     "bytes": 758,
@@ -66520,20 +66814,20 @@
     "sha256": "2c3d400fd38f7834e20f8ad5f7d3d1c65bbb879b1b1dfd323d443191dde27fbf"
   },
   "rebuild/native.py": {
-    "bytes": 6027,
-    "sha256": "ac3b6a54a9afb99cda3bf2050b6a1ea2ae894ba61970c36ad95dcd47c7cda9e4"
+    "bytes": 6529,
+    "sha256": "db8b2926f7f482e25dcabf7594bee80affd0015c8732de67a2e12ed57c96dbcf"
   },
   "rebuild/prepare.py": {
-    "bytes": 5723,
-    "sha256": "c7e3da4ef2d0c95951a93be782080bd9586c32a8a258eb873542408b504babfe"
+    "bytes": 5757,
+    "sha256": "cb663bce27f53247ab6fb02d0d94dfe353661aafbe1736bbfeb9435c00781e44"
   },
   "rebuild/runtime-wheels.lock.json": {
     "bytes": 7364,
     "sha256": "575f5ace3b3493cfba5a3a749768f74739b844edc914e2d3a33d176c11479b17"
   },
   "rebuild.py": {
-    "bytes": 5041,
-    "sha256": "be45dc300bec89ee8ee9377c07538153f36827b34311ad944671d758e1e3d3c4"
+    "bytes": 5222,
+    "sha256": "8416d7d02791bdbcfaf7e9e3428a64c470474e7d86cf5d9e4450c7262dd24411"
   },
   "run.sh": {
     "bytes": 246,

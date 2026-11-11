@@ -22,9 +22,18 @@ def run(cmd,cwd=None,timeout=2700):
 try:
  sources=scratch/'sources'
  for name in ('InfiniCore','InfiniLM','xmake'):
-  origin=root/'frameworks'/name
+  origin=P(os.environ['H3_VENDORED_SOURCE_ROOT'])/name
   assert origin.is_dir(), 'Missing public vendored source: '+name
+  manifest=json.loads((root/'RELEASE-MANIFEST.json').read_text())
+  prefix='frameworks/'+name+'/'
+  for relative,item in manifest.items():
+   if not relative.startswith(prefix):continue
+   source=origin/relative[len(prefix):]
+   assert hashlib.file_digest(source.open('rb'),'sha256').hexdigest()==item['sha256'],relative
   shutil.copytree(origin,sources/name)
+  for relative,item in manifest.items():
+   if relative.startswith(prefix) and item.get('executable'):
+    (sources/name/relative[len(prefix):]).chmod(0o755)
  for p in sources.rglob('*.so'):raise RuntimeError('Prebuilt shared library in source: '+str(p))
  env['XMAKE_PROGRAM_DIR']=str(sources/'xmake/xmake')
  run(['bash','configure'],sources/'xmake',600);run(['make','-j96'],sources/'xmake',1200)

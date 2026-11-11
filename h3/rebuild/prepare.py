@@ -47,7 +47,7 @@ try:
  status['phase']='pure_python_sources'
  sources=root/'h3-runtime/sources'
  for name in ('ninetoothed','ntops','diffusers'):
-  origin=root/'frameworks'/name
+  origin=pathlib.Path(os.environ['H3_VENDORED_SOURCE_ROOT'])/name
   assert origin.is_dir(), 'Missing public vendored source: '+name
   for item in origin.rglob('*'):
    if not item.is_file():continue

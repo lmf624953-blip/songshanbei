@@ -27,7 +27,8 @@ env = dict(os.environ)
 for name in ('PYTHONPATH', 'VIRTUAL_ENV', 'PYTHONUSERBASE'):
     env.pop(name, None)
 env.update(PYTHONNOUSERSITE='1', IFAB_AFS_HOME=str(root),
-           H3_INPUT_CACHE=str(cache), SONGSHAN_STORAGE=str(root/'h3-runtime'))
+           H3_INPUT_CACHE=str(cache), SONGSHAN_STORAGE=str(root/'h3-runtime'),
+           H3_VENDORED_SOURCE_ROOT=str(HERE/'frameworks'))
 
 if a.download_inputs:
     subprocess.run([sys.executable, str(HERE/'rebuild/download_inputs.py'),
@@ -49,6 +50,8 @@ if a.phase in ('prepare', 'all'):
         data = source.read_bytes()
         if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
             raise SystemExit('Source verification failed: '+name)
+        if name.startswith('frameworks/'):
+            continue  # Keep one public source checkout; build in node TMPDIR.
         target = root/name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
