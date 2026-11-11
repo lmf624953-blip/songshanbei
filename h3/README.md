@@ -33,6 +33,10 @@
 
 上述源码保留原工程和上游来源。九齿内核、主机桥及模型流交接已经过八卡执行验证；`run.sh` 和 `prepare_runtime_layout.py` 是本次发布新增的薄包装，不改变设备数值计算。
 
+## 海光 Triton 厂商包获取
+
+已补齐 [官方精确下载链接、SHA256 及个人环境安装步骤](docs/TRITON_VENDOR.md)。在 `h3/` 运行 `python3 download_vendor_triton.py` 即可下载并校验实际使用的 cp311 厂商 wheel；该工具不自动安装或覆盖现有补丁。新环境需先按该文档准备 Triton，再执行依赖准备。
+
 ## 已验证环境
 
 Python 3.11.9，海光 PyTorch `2.9.0+das.opt1.dtk2604`，Triton `3.5.1+das.opt1.dtk2604.torch290`，DTK26.04，GCC/G++11.4，xmake2.9.8，原生八卡 BW1000 gfx936。
@@ -61,42 +65,81 @@ bash run.sh
 
 不要在共享 CPU 登录节点运行模型。程序会检查8卡与gfx936后才启动。
 
-## 在新工程目录构建
+## 在全新目录重建
 
-以下步骤依据实际环境和原构建脚本整理，尚未在全新干净目录完成整套重建验收。需要预先提供匹配的厂商 wheel、DTK 和共享模型；不能仅凭下载本仓库就省略这些运行依赖。
+使用平台原生八卡 BW1000/gfx936 镜像：CPython 3.11、海光 Torch 2.9.0+das.opt1.dtk2604、DTK 26.04、GCC/G++ 11.4。必须可读共享 Diffusers 模型 `/public/home/aclsylqidf/shared/MiniMax-H3/diffusers`。本工程不包含权重，不覆盖系统 Torch，不向共享模型写文件。不是面向任意 Linux/CUDA 镜像的安装包。
 
-```bash
-git clone https://github.com/lmf624953-blip/songshanbei.git
-cd songshanbei/h3
-# 本子进程兼容原运行脚本的工程根目录变量
-export IFAB_AFS_HOME="$PWD"
-python3.11 -m venv --system-site-packages .venv
-cp env/machine.local.example.sh env/machine.local.sh
-```
+重建分为五个阶段：创建个人虚拟环境；下载和安装校验过的依赖；应用 Triton 和框架补丁；从原始源码编译 InfiniCore/InfiniLM；进行九齿算子检查、正式生成、独立参考和比较。新增的 `rebuild.py` 串联这些阶段。下载与 Python 准备可在登录节点完成；设备编译和推理必须在分配的 DCU 节点完成。
 
-在 `machine.local.sh` 填写实际 DTK_ROOT、SONGSHAN_GCC_ROOT，并将 SONGSHAN_STORAGE 配为本工程的 `$IFAB_AFS_HOME/h3-runtime`。厂商 Torch 可复用同一 Python 的系统安装；Triton 必须安装到个人 `.venv`，兼容补丁只能写个人环境。依赖准备需要网络，离线重建则需先完整准备固定源码、子模块和依赖。
+原始输入缓存包含六个公开 Release 文件及一份海光原厂 Triton wheel，精确 URL、字节数、SHA256 和目标路径见 `rebuild/inputs.lock.json`。Triton 从海光原厂获取，优先复用已经校验的原包缓存。缓存只用于原始源码、wheel 和模板图片，不复用旧框架二进制或旧虚拟环境。
+
+先在 `h3/` 设置路径：
 
 ```bash
-source scripts/activate.sh
-export PATH="$IFAB_AFS_HOME/.venv/bin:$PATH"
-export SONGSHAN_STORAGE="$IFAB_AFS_HOME/h3-runtime"
-bash scripts/prepare_dependencies.sh
-# 检查/应用个人 Triton LLVM17 兼容补丁
-python scripts/prepare_triton_compat.py --check
-python apply_triton_compat_memory.py
-python scripts/prepare_triton_compat.py --check
-export SONGSHAN_BUILD_JOBS=96
-bash scripts/build_frameworks.sh --check
-bash scripts/build_frameworks.sh
-python scripts/build_attention_bridge.py
-python scripts/check_attention_bridge.py --devices=0,1,2,3,4,5,6,7
-python prepare_runtime_layout.py --first-frame=/path/to/template-dog.png
-export H3_EXPORT_DIR="$IFAB_AFS_HOME/exports/unified-dog"
-mkdir -p "$H3_EXPORT_DIR"
-bash run.sh
+export AFS_BASE="$IFAB_AFS_HOME"
+export H3_CODE="$PWD"
+export H3_CACHE="$AFS_BASE/h3-input-cache"
+export H3_DEST="$AFS_BASE/clean-rebuilds/official-$(date +%Y%m%d-%H%M%S)"
+printf 'export H3_CODE=%q\nexport H3_CACHE=%q\nexport H3_DEST=%q\n' \
+  "$H3_CODE" "$H3_CACHE" "$H3_DEST" > "$AFS_BASE/h3-rebuild-paths.sh"
 ```
 
-构建脚本应用全部 Core/LM 补丁。Core 的 `--ninetoothed=n` 关闭该上游提交的可选内置集成，本工程经自有主机桥向 HYGON MHA/varlen dispatcher 注册 NineToothed；不能据此判断运行时未用九齿。注意力数值代码位于 `attention_kernel.py`。
+CPU 登录节点只准备依赖：
+
+```bash
+python3.11 rebuild.py --destination "$H3_DEST" \
+  --cache-root "$H3_CACHE" --download-inputs --phase prepare
+```
+
+目标目录必须尚不存在。成功输出 `PREPARE_COMPLETE`，并写入目标目录的 `artifacts/rebuild-prepare-status.json`，其中 `complete=true`。准备程序通过 Python 自带 bundled pip 引导个人 pip；pip 的平台兼容只在个人安装进程中生效。NineToothed、ntops、Diffusers 从固定源码重新安装；不读取旧安装树。
+
+在已分配的八卡计算终端中加载先前保存的路径，编译框架：
+
+```bash
+source "$IFAB_AFS_HOME/h3-rebuild-paths.sh"
+python3.11 "$H3_CODE/rebuild.py" --destination "$H3_DEST" \
+  --cache-root "$H3_CACHE" --phase build
+```
+
+成功输出 `BUILD_COMPLETE` 后执行推理验收；如果当前实例剩余时间不足，可先释放资源，再在新八卡实例中执行同一条命令：
+
+```bash
+source "$IFAB_AFS_HOME/h3-rebuild-paths.sh"
+python3.11 "$H3_CODE/rebuild.py" --destination "$H3_DEST" \
+  --cache-root "$H3_CACHE" --phase accept
+```
+
+验收入口会先核对本次新编译包和持久原生库的哈希，再启动设备验证，不会复制历史成功环境的框架二进制。
+
+资源使用时限足够时，也可以用 `--phase compute` 合并编译与验收，或在计算节点用 `--phase all --download-inputs` 从空目录执行全程。当前平台每次最长 60 分钟，推荐保留可分配到不同实例的 prepare、build、accept 三阶段入口。计算阶段在节点提供的可写 `TMPDIR` 中解包原始源码，应用全部 Core/LM 补丁，构建 xmake 2.9.8，再以 96 路构建框架。Python 扩展必须匹配 cp311 和当前 Torch C++ ABI；完整 Python 包树安装到新 `.venv`，包含 `infinilm.multimodal`。原生库保存到新 `.infini`，不能留下指向已销毁节点目录的链接。推理前按仓库模型哈希清单只读核对全部 63 个模型文件，将结果写入个人 artifacts。随后构建注意力桥、执行九齿 lowering/六组 gfx936 代码生成/八卡数值检查，再依次生成正式视频、参考视频并调用官方比较程序。
+
+最终必须输出 `CLEAN_REBUILD_ACCEPTED`，并且 `artifacts/clean-rebuild-acceptance.json` 中 `complete=true`、两侧推理与比较退出码均为 0。只看到构建 100%、导入成功或旧样例证据不算完整验收。检查输出目录中的两个视频都为 124 帧、768×928、24fps，并播放确认内容。SSIM 保存为本次真实结果，不预填历史的 93.485%。
+
+若平台无法访问 GitHub Release，可先在可联网机器运行 `rebuild/download_inputs.py --destination 本地缓存目录`，将完整缓存按相同相对目录上传个人 AFS，再省略 `--download-inputs`。现有文件仍逐一验证 SHA256，遇到不一致立即停止，不覆盖。完整缓存已包含匹配的 Triton 原包，准备阶段可复用它而无需访问厂商下载站。
+
+平台网页单文件上传上限为 128MiB，参考 FlashAttention wheel 超过此限制。在下载机器将它分为 112MiB 片段：
+
+```bash
+FLASH=flash_attn-2.8.3+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl
+mkdir -p h3-input-cache/downloads/flash-parts
+split -b 112M -d -a 2 "h3-input-cache/downloads/$FLASH" \
+  h3-input-cache/downloads/flash-parts/flash.part
+```
+
+将六个片段及其他六个原始输入按锁定清单的相对目录上传个人 AFS，不上传超限的完整 wheel。Linux 计算或登录终端中合并：
+
+```bash
+FLASH=flash_attn-2.8.3+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl
+cat "$H3_CACHE"/downloads/flash-parts/flash.part?? \
+  > "$H3_CACHE/downloads/$FLASH"
+python3.11 "$H3_CODE/rebuild/download_inputs.py" --destination "$H3_CACHE"
+```
+
+最后一条命令会验证所有现有完整输入的字节数和 SHA256，并输出 `RAW_INPUT_CACHE_READY`；验证失败的文件会保留并停止，不会被默认为可用。所有输入齐备时不会再请求网络。其他原始输入均小于网页单文件上限。
+
+诊断文件位于目标目录 `artifacts/`：`rebuild-prepare.log`、`rebuild-prepare-status.json`、`clean-native.log`、`clean-native-status.json`、`fresh-module-paths.json`、两个 `*-fresh-install.json`、`attention-bridge-device.json`、`clean-rebuild-acceptance.json`。视频和比较结果位于 `outputs/unified_fl2va/时间戳/`，导出副本在 `artifacts/clean-rebuild-exports/`。
+
+验收状态更新：2026-11-11 正在新计算实例执行本轮重建；此候选版本尚未取得端到端通过结果，不能先行声明新环境验收成功。
 
 ## 独立参考依赖
 
@@ -113,8 +156,3 @@ bash run.sh
 本工程仍复用 Diffusers/PyTorch 的既有 VAE 等模型数值组件。视频 VAE 注意力已接九齿，其余解码计算未全部重写。模型权重、计算配置与比较脚本未修改。单次公开输入验证不覆盖所有输入，也不等于干净环境重建和长时间稳定性已经通过。
 
 原始导出清单记录平台文件哈希；发布时仅把 `evidence/` 文本中的个人绝对工程路径规范为 `$PROJECT_ROOT`，数值及代码保持原样。新增包装和文档另列于 `RELEASE-MANIFEST.json`。上游许可应随所用固定源码保留。
-
-
-## 海光 Triton 厂商包获取
-
-[官方精确下载链接、SHA256 与个人环境安装步骤](docs/TRITON_VENDOR.md) 已补齐。在 h3/ 执行 `python3 download_vendor_triton.py`，会下载并校验实际使用的 cp311 厂商 wheel；该工具只下载，不自动安装或覆盖现有补丁。新环境需先按该文档准备 Triton，再执行依赖准备。
