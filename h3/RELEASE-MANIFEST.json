@@ -8,8 +8,8 @@
     "sha256": "a0faf0d59464b9a159464635caa6781d8ab1682f91da23b0dc441b37613b2a63"
   },
   "README.md": {
-    "bytes": 4290,
-    "sha256": "b67986069e7af206a262ce5aa566e2395c0053037895c1b618a4fa1e57ef41c1"
+    "bytes": 4655,
+    "sha256": "1d1090ad81e9e2c4a86410e6bfd672e884cfcfbd980e772a4c8d470bb92ebf36"
   },
   "apply_triton_compat_memory.py": {
     "bytes": 1366,
@@ -74,6 +74,14 @@
   "env/vendor-wheels.sha256": {
     "bytes": 276,
     "sha256": "e7035e371df0b109ffbd8c1c0e49539967932980bd82b67b0a16a58055b83c47"
+  },
+  "evidence/new-environment-20261111/README.md": {
+    "bytes": 571,
+    "sha256": "1f80329d586ae6b18d468a3b6df28743889f20a8059e45788c28bfab27a4a87c"
+  },
+  "evidence/new-environment-20261111/verification.json": {
+    "bytes": 1370,
+    "sha256": "fa01af2bc2ff6447745e26de7c44bad176e3de1b16a80ac69c963eb7714e9299"
   },
   "evidence/unified-dog/infinilm.log": {
     "bytes": 13947,
@@ -66806,8 +66814,8 @@
     "sha256": "135d8da2afab7829d4272fac2e5119d37db9c048f94f3faa3d4df2346e2295fc"
   },
   "rebuild/accept.py": {
-    "bytes": 2183,
-    "sha256": "cd71a47fbe54ffcc30bd4f0fa79d4b0f7ff0e6fbefc44d63c36a9e38123326d8"
+    "bytes": 2005,
+    "sha256": "0a20e6c8dc6d018631b90f894e45e4e60a9f2efdfa5551881133ecd244f5ba50"
   },
   "rebuild/download_inputs.py": {
     "bytes": 2049,

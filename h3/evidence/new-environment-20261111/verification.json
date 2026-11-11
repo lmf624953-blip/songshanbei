@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-11",
+  "record_type": "observed_platform_verification",
+  "native_build_complete": true,
+  "native_build_finished_beijing": "2026-11-11 16:34:55",
+  "fresh_personal_environment": true,
+  "original_environment_binaries_copied": false,
+  "core_python_files": 182,
+  "infinilm_python_files": 61,
+  "gfx936_codegen_cases_passed": 6,
+  "attention_devices_passed": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "official_sample": "A dog falls asleep",
+  "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+  "configuration": {
+    "num_frames": 124,
+    "width": 768,
+    "height": 928,
+    "fps": 24,
+    "steps": 50,
+    "seed": 42,
+    "gpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "native_returncode": 0,
+  "video_specs_passed": true,
+  "video_bytes": 1551283,
+  "native_entry_end_to_end_seconds": 536.917,
+  "reference_rerun_completed": false,
+  "reference_rerun_stopped_at_user_request": true,
+  "ssim": {
+    "percent": 93.48490251477143,
+    "measured_date": "2026-11-09",
+    "reused_historical_result": true
+  },
+  "limitations": [
+    "This record does not claim a newly measured SSIM or a completed fresh reference run.",
+    "Fresh build was continued across allocations; all installed framework binaries came from this new build."
+  ]
+}

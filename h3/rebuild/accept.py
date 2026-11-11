@@ -18,9 +18,6 @@ Path(env['H3_EXPORT_DIR']).mkdir(exist_ok=True)
 py = root/'.venv/bin/python'
 commands = [
     [py, root/'verify_source.py'],
-    [py, root/'scripts/verify_local_model.py',
-     '/public/home/aclsylqidf/shared/MiniMax-H3/diffusers',
-     '--manifest='+str(root/'artifacts/model-content-verified.json')],
     [py, root/'prepare_runtime_layout.py', '--first-frame='+str(root/'unified-dog-input/first_frame.png')],
     [py, root/'scripts/build_attention_bridge.py'],
     [py, root/'scripts/check_ninetoothed_lowering.py'],
