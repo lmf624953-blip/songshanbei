@@ -1,0 +1,38 @@
+{
+  "h3-runtime-wheels-part1-20261107.tar": {
+    "bytes": 108994560,
+    "sha256": "25b8bd54fdfef867ee1b224234f1aeb97b65e1389ed56a1e837c72f40483d73d",
+    "path": "artifacts/h3-runtime-wheels-part1-20261107.tar"
+  },
+  "first_frame.png": {
+    "bytes": 1393139,
+    "sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+    "path": "unified-dog-input/first_frame.png"
+  },
+  "torchvision-0.24.0+cpu-cp311-cp311-manylinux_2_28_x86_64.whl": {
+    "bytes": 1907916,
+    "sha256": "51fe8d72ddcc88a50ff27c50dd4987d82fba8b0dfd591898ee1f60e2902d18d1",
+    "path": "artifacts/offline-tools/torchvision-0.24.0+cpu-cp311-cp311-manylinux_2_28_x86_64.whl"
+  },
+  "h3-runtime-wheels-part2-20261107.tar": {
+    "bytes": 108994560,
+    "sha256": "52cfefbe37c2957d5b7480b774208d38407844313deaf845726e987d2f85c3df",
+    "path": "artifacts/h3-runtime-wheels-part2-20261107.tar"
+  },
+  "flash_attn-2.8.3+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl": {
+    "bytes": 658898543,
+    "sha256": "24d4021bf4ace04cf3c417f60affebe134128c0626a5b136230989812e66c18a",
+    "path": "downloads/flash_attn-2.8.3+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl"
+  },
+  "h3-pinned-frameworks-20261107.tar.gz": {
+    "bytes": 76154576,
+    "sha256": "6f468d855e5d9d63f1f74b1b580f1f72a79830e711d59abceefebf1a2781e0a7",
+    "path": "artifacts/h3-pinned-frameworks-20261107.tar.gz"
+  },
+  "triton-3.5.1+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl": {
+    "bytes": 105484167,
+    "sha256": "e397b16365da22508353ce44a45f5be82f8ee58e49853a3df06aa8f6f83d5581",
+    "path": "downloads/vendor/triton-3.5.1+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl",
+    "url": "https://pypi.sourcefind.cn/das_release/dtk2604-rc1/+f/e39/7b16365da2250/triton-3.5.1+das.opt1.dtk2604.torch290-cp311-cp311-manylinux_2_28_x86_64.whl"
+  }
+}
