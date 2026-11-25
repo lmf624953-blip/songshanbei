@@ -1,0 +1,63 @@
+--- a/csrc/layers/linear/linear.cpp
++++ b/csrc/layers/linear/linear.cpp
+@@ -1,4 +1,31 @@
+ #include "linear.hpp"
++#include <atomic>
++#include <cstdint>
++#include <limits>
++#include <infinicore/context/context.hpp>
++#include <infinicore/ops/distributed/allreduce.hpp>
++
++using ReduceCastLaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &, std::uintptr_t);
++namespace {
++std::atomic<ReduceCastLaunch> reducecast_launch{nullptr};
++std::atomic<std::uint64_t> reducecast_calls{0};
++std::atomic<int> reducecast_mode{0};
++}
++extern "C" __attribute__((visibility("default")))
++void songshan_set_reducecast_launch(ReduceCastLaunch launch) {
++    reducecast_launch.store(launch, std::memory_order_release);
++}
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_reducecast_calls() {
++    return reducecast_calls.load(std::memory_order_relaxed);
++}
++extern "C" __attribute__((visibility("default")))
++int songshan_set_reducecast_mode(int mode) {
++    if (mode != 0 && mode != 1) return -1;
++    reducecast_mode.store(mode, std::memory_order_release);
++    return 0;
++}
++
+ 
+ namespace infinilm::nn {
+ 
+@@ -82,6 +109,28 @@
+ }
+ 
+ infinicore::Tensor RowParallelLinear::forward(infinicore::Tensor &input) const {
++    auto cast = reducecast_launch.load(std::memory_order_acquire);
++    const auto &shape = input->shape();
++    if (cast && tp_size_ == 8 && communicator_ != nullptr && out_features_ == 5376
++        && dtype_ == infinicore::DataType::BF16 && !has_bias_ && alpha_ == 1.0f
++        && input->device().getType() == infinicore::Device::Type::HYGON
++        && input->dtype() == dtype_ && input->is_contiguous()
++        && shape.size() == 3 && shape[0] == 1 && shape[1] >= 4096
++        && shape[1] < std::numeric_limits<int>::max() / 5376
++        && std::dynamic_pointer_cast<infinilm::quantization::NoneQuantization>(quantization_)
++        && !infinicore::context::isGraphRecording()) {
++        auto partial = compute_linear(input);
++        const auto wire_dtype = reducecast_mode.load(std::memory_order_acquire)
++                                    ? infinicore::DataType::F16 : infinicore::DataType::F32;
++        auto wire = infinicore::Tensor::empty(partial->shape(), wire_dtype, partial->device());
++        const auto stream = reinterpret_cast<std::uintptr_t>(infinicore::context::getStream());
++        cast(wire, partial, stream);
++        infinicore::op::distributed::allreduce_(wire, wire, INFINICCL_SUM, communicator_);
++        auto output = infinicore::Tensor::empty(partial->shape(), partial->dtype(), partial->device());
++        cast(output, wire, stream);
++        reducecast_calls.fetch_add(1, std::memory_order_relaxed);
++        return output;
++    }
+     if (tp_size_ > 1 && communicator_ != nullptr) {
+         return compute_linear_allreduce(input, communicator_);
+     }

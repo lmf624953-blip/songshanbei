@@ -1,0 +1,69 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -3,6 +3,7 @@
+ #include "../../global_state/global_state.hpp"
+ #include "../models_registry.hpp"
+ 
++#include <infinicore/context/context.hpp>
+ #include <infinicore/ops/add.hpp>
+ #include <infinicore/ops/cast.hpp>
+ #include <infinicore/ops/distributed/allgather.hpp>
+@@ -16,6 +17,8 @@
+ #include <infinicore/ops/timestep_embedding.hpp>
+ 
+ #include <algorithm>
++#include <atomic>
++#include <cstdint>
+ #include <cmath>
+ #include <cstddef>
+ #include <stdexcept>
+@@ -25,6 +28,26 @@
+ #include <vector>
+ 
+ namespace infinilm::models::minimax_h3 {
++
++using AdaLNLaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
++                            const infinicore::Tensor &, const infinicore::Tensor &,
++                            std::uintptr_t);
++
++namespace {
++std::atomic<AdaLNLaunch> fused_adaln{nullptr};
++std::atomic<std::uint64_t> fused_adaln_calls{0};
++} // namespace
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_adaln_launch(AdaLNLaunch launch) {
++    fused_adaln.store(launch, std::memory_order_release);
++}
++
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_fused_adaln_calls() {
++    return fused_adaln_calls.load(std::memory_order_relaxed);
++}
++
+ namespace {
+ 
+ constexpr size_t H3_MODALITY_COUNT = 3;
+@@ -54,6 +77,22 @@
+ infinicore::Tensor apply_adaln(const infinicore::Tensor &normalized,
+                                const infinicore::Tensor &scale,
+                                const infinicore::Tensor &shift) {
++    auto launch = fused_adaln.load(std::memory_order_acquire);
++    if (launch && normalized->device().getType() == infinicore::Device::Type::HYGON
++        && normalized->dtype() == infinicore::DataType::BF16
++        && scale->dtype() == normalized->dtype() && shift->dtype() == normalized->dtype()
++        && scale->device() == normalized->device() && shift->device() == normalized->device()
++        && normalized->shape().size() == 3 && normalized->shape()[0] == 1
++        && normalized->shape()[1] > 0 && normalized->shape()[2] > 0
++        && scale->shape() == normalized->shape() && shift->shape() == normalized->shape()
++        && !infinicore::context::isGraphRecording()) {
++        auto out = infinicore::Tensor::empty(normalized->shape(), normalized->dtype(),
++                                             normalized->device());
++        launch(out, normalized, scale, shift,
++               reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++        fused_adaln_calls.fetch_add(1, std::memory_order_relaxed);
++        return out;
++    }
+     auto scaled = infinicore::op::mul(normalized, scale);
+     return infinicore::op::add(infinicore::op::add(normalized, scaled), shift);
+ }

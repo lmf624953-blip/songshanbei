@@ -1,0 +1,77 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -46,6 +46,8 @@
+ 
+ namespace {
+ std::atomic<QKNormLaunch> qknorm_launch{nullptr};
++std::atomic<QKNormLaunch> widenorm_launch{nullptr};
++std::atomic<std::uint64_t> widenorm_calls{0};
+ std::atomic<DenseAttentionLaunch> attention_launch{nullptr};
+ std::atomic<std::uint64_t> qknorm_calls{0};
+ std::atomic<std::uint64_t> attention_calls{0};
+@@ -90,6 +92,13 @@
+ 
+ extern "C" __attribute__((visibility("default")))
+ std::uint64_t songshan_attention_calls() { return attention_calls.load(std::memory_order_relaxed); }
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_widenorm_launch(QKNormLaunch launch) {
++    widenorm_launch.store(launch, std::memory_order_release);
++}
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_widenorm_calls() { return widenorm_calls.load(std::memory_order_relaxed); }
+ 
+ namespace {
+ 
+@@ -172,6 +181,27 @@
+     launch(out, x, weight, reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
+     qknorm_calls.fetch_add(1, std::memory_order_relaxed);
+     return out;
++}
++
++infinicore::Tensor normalize_wide(const infinicore::Tensor &input,
++                                  const std::shared_ptr<infinicore::nn::RMSNorm> &norm) {
++    auto launch = widenorm_launch.load(std::memory_order_acquire);
++    const auto &shape = input->shape();
++    if (!launch || input->device().getType() != infinicore::Device::Type::HYGON
++        || input->dtype() != infinicore::DataType::BF16 || shape.size() != 3 || shape[0] != 1
++        || shape[1] < 4096 || shape[2] != 5376 || !input->is_contiguous() || norm->eps() != 1e-5
++        || input->numel() > std::numeric_limits<int>::max() || infinicore::context::isGraphRecording()) {
++        return norm->forward(input);
++    }
++    auto weight = norm->weight();
++    if (weight->dtype() != input->dtype() || weight->device() != input->device()
++        || weight->shape().size() != 1 || weight->shape()[0] != 5376 || !weight->is_contiguous()) {
++        return norm->forward(input);
++    }
++    auto output = infinicore::Tensor::empty(shape, input->dtype(), input->device());
++    launch(output, input, weight, reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++    widenorm_calls.fetch_add(1, std::memory_order_relaxed);
++    return output;
+ }
+ 
+ infinicore::Tensor dense_attention(const infinicore::Tensor &q, const infinicore::Tensor &k,
+@@ -509,12 +539,12 @@
+     auto scale_mlp = token_modulation->narrow({{2, 4 * hidden_size_, hidden_size_}});
+     auto gate_mlp = token_modulation->narrow({{2, 5 * hidden_size_, hidden_size_}});
+ 
+-    auto normalized = norm1_->forward(hidden_states);
++    auto normalized = normalize_wide(hidden_states, norm1_);
+     normalized = adaln(normalized, scale_msa, shift_msa);
+     auto attention_output = attn_->forward(normalized, rope, position_ids, rotary_cos_sin_cache);
+     auto output = residual(hidden_states, attention_output, gate_msa);
+ 
+-    normalized = norm2_->forward(output);
++    normalized = normalize_wide(output, norm2_);
+     normalized = adaln(normalized, scale_mlp, shift_mlp);
+     auto mlp_output = ff_->forward(normalized);
+     output = residual(output, mlp_output, gate_mlp);
+@@ -577,7 +607,7 @@
+     auto token_modulation = gather_rows(modulation, timestep_indices)->unsqueeze(0);
+     auto shift = token_modulation->narrow({{2, 0, hidden_size_}});
+     auto scale = token_modulation->narrow({{2, hidden_size_, hidden_size_}});
+-    return apply_adaln(norm_->forward(hidden_states), scale, shift);
++    return apply_adaln(normalize_wide(hidden_states, norm_), scale, shift);
+ }
+ 
+ MiniMaxH3Transformer::MiniMaxH3Transformer(

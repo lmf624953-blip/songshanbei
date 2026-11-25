@@ -1,0 +1,119 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -38,7 +38,17 @@
+                                const infinicore::Tensor &, const infinicore::Tensor &,
+                                const infinicore::Tensor &, std::uintptr_t);
+ 
++using QKNormLaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
++                              const infinicore::Tensor &, std::uintptr_t);
++using DenseAttentionLaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
++                                      const infinicore::Tensor &, const infinicore::Tensor &,
++                                      float, std::uintptr_t);
++
+ namespace {
++std::atomic<QKNormLaunch> qknorm_launch{nullptr};
++std::atomic<DenseAttentionLaunch> attention_launch{nullptr};
++std::atomic<std::uint64_t> qknorm_calls{0};
++std::atomic<std::uint64_t> attention_calls{0};
+ std::atomic<IndexedLaunch> indexed_launch{nullptr};
+ std::atomic<std::uint64_t> indexed_calls{0};
+ std::atomic<AdaLNLaunch> fused_adaln{nullptr};
+@@ -65,6 +75,22 @@
+     return indexed_calls.load(std::memory_order_relaxed);
+ }
+ 
++extern "C" __attribute__((visibility("default")))
++void songshan_set_qknorm_launch(QKNormLaunch launch) {
++    qknorm_launch.store(launch, std::memory_order_release);
++}
++
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_qknorm_calls() { return qknorm_calls.load(std::memory_order_relaxed); }
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_attention_launch(DenseAttentionLaunch launch) {
++    attention_launch.store(launch, std::memory_order_release);
++}
++
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_attention_calls() { return attention_calls.load(std::memory_order_relaxed); }
++
+ namespace {
+ 
+ constexpr size_t H3_MODALITY_COUNT = 3;
+@@ -114,6 +140,55 @@
+     return infinicore::op::add(infinicore::op::add(normalized, scaled), shift);
+ }
+ 
++bool supports_packed_heads(const infinicore::Tensor &input, size_t sequence_axis) {
++    constexpr size_t heads = 7;
++    constexpr size_t width = 128;
++    auto &shape = input->shape();
++    auto &strides = input->strides();
++    return input->device().getType() == infinicore::Device::Type::HYGON
++           && input->dtype() == infinicore::DataType::BF16
++           && shape.size() == sequence_axis + 3 && shape[sequence_axis] > 0
++           && shape[sequence_axis + 1] == heads && shape[sequence_axis + 2] == width
++           && strides[sequence_axis + 1] == width && strides[sequence_axis + 2] == 1
++           && strides[sequence_axis] >= static_cast<ptrdiff_t>(heads * width) && strides[sequence_axis] % 16 == 0
++           && shape[sequence_axis] <= std::numeric_limits<int>::max() / strides[sequence_axis]
++           && reinterpret_cast<std::uintptr_t>(input->data()) % 16 == 0;
++}
++
++infinicore::Tensor normalize_heads(const infinicore::Tensor &x,
++                                   const std::shared_ptr<infinicore::nn::RMSNorm> &norm) {
++    auto launch = qknorm_launch.load(std::memory_order_acquire);
++    if (!launch || !supports_packed_heads(x, 0) || norm->eps() != 1e-5
++        || infinicore::context::isGraphRecording()) {
++        return norm->forward(x);
++    }
++    auto weight = norm->weight();
++    if (weight->dtype() != x->dtype() || weight->device() != x->device()
++        || weight->shape().size() != 1 || weight->shape()[0] != x->shape()[2]
++        || !weight->is_contiguous() || reinterpret_cast<std::uintptr_t>(weight->data()) % 16 != 0) {
++        return norm->forward(x);
++    }
++    auto out = infinicore::Tensor::empty(x->shape(), x->dtype(), x->device());
++    launch(out, x, weight, reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++    qknorm_calls.fetch_add(1, std::memory_order_relaxed);
++    return out;
++}
++
++infinicore::Tensor dense_attention(const infinicore::Tensor &q, const infinicore::Tensor &k,
++                                   const infinicore::Tensor &v, float scale) {
++    auto launch = attention_launch.load(std::memory_order_acquire);
++    if (!launch || !supports_packed_heads(q, 1) || q->shape()[0] != 1 || q->shape()[1] < 4096
++        || !supports_packed_heads(k, 1) || k->shape() != q->shape() || k->device() != q->device()
++        || !supports_packed_heads(v, 1) || v->shape() != q->shape() || v->device() != q->device()
++        || infinicore::context::isGraphRecording()) {
++        return infinicore::op::mha(q, k, v, std::nullopt, scale, false);
++    }
++    auto out = infinicore::Tensor::empty(q->shape(), q->dtype(), q->device());
++    launch(out, q, k, v, scale, reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++    attention_calls.fetch_add(1, std::memory_order_relaxed);
++    return out;
++}
++
+ bool supports_indexed(const infinicore::Tensor &hidden, const infinicore::Tensor &table,
+                       const infinicore::Tensor &indices) {
+     constexpr size_t width = 5376;
+@@ -213,8 +288,8 @@
+     key = key->view({batch_size * sequence_length, num_heads_, head_dim_});
+     value = value->view({batch_size, sequence_length, num_heads_, head_dim_});
+ 
+-    query = norm_q_->forward(query);
+-    key = norm_k_->forward(key);
++    query = normalize_heads(query, norm_q_);
++    key = normalize_heads(key, norm_k_);
+     query = query->view({batch_size, sequence_length, num_heads_, head_dim_});
+     key = key->view({batch_size, sequence_length, num_heads_, head_dim_});
+ 
+@@ -260,7 +335,7 @@
+         query = query_squeezed->unsqueeze(0);
+         key = key_squeezed->unsqueeze(0);
+     }
+-    auto output = infinicore::op::mha(query, key, value, std::nullopt, scale_, false);
++    auto output = dense_attention(query, key, value, scale_);
+     output = output->view({batch_size, sequence_length, inner_dim_});
+     return linear_forward(out_proj_, output);
+ }

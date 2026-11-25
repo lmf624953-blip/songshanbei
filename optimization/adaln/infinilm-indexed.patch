@@ -1,0 +1,121 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -21,6 +21,7 @@
+ #include <cstdint>
+ #include <cmath>
+ #include <cstddef>
++#include <limits>
+ #include <stdexcept>
+ #include <string>
+ #include <tuple>
+@@ -33,7 +34,13 @@
+                             const infinicore::Tensor &, const infinicore::Tensor &,
+                             std::uintptr_t);
+ 
++using IndexedLaunch = void (*)(bool, const infinicore::Tensor &, const infinicore::Tensor &,
++                               const infinicore::Tensor &, const infinicore::Tensor &,
++                               const infinicore::Tensor &, std::uintptr_t);
++
+ namespace {
++std::atomic<IndexedLaunch> indexed_launch{nullptr};
++std::atomic<std::uint64_t> indexed_calls{0};
+ std::atomic<AdaLNLaunch> fused_adaln{nullptr};
+ std::atomic<std::uint64_t> fused_adaln_calls{0};
+ } // namespace
+@@ -48,6 +55,16 @@
+     return fused_adaln_calls.load(std::memory_order_relaxed);
+ }
+ 
++extern "C" __attribute__((visibility("default")))
++void songshan_set_indexed_launch(IndexedLaunch launch) {
++    indexed_launch.store(launch, std::memory_order_release);
++}
++
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_indexed_calls() {
++    return indexed_calls.load(std::memory_order_relaxed);
++}
++
+ namespace {
+ 
+ constexpr size_t H3_MODALITY_COUNT = 3;
+@@ -97,6 +114,36 @@
+     return infinicore::op::add(infinicore::op::add(normalized, scaled), shift);
+ }
+ 
++bool supports_indexed(const infinicore::Tensor &hidden, const infinicore::Tensor &table,
++                      const infinicore::Tensor &indices) {
++    constexpr size_t width = 5376;
++    constexpr size_t table_stride = 6 * width;
++    const auto &shape = hidden->shape();
++    const auto &table_shape = table->shape();
++    return hidden->device().getType() == infinicore::Device::Type::HYGON
++           && hidden->device() == table->device() && hidden->device() == indices->device()
++           && hidden->dtype() == infinicore::DataType::BF16 && table->dtype() == hidden->dtype()
++           && indices->dtype() == infinicore::DataType::I64
++           && shape.size() == 3 && shape[0] == 1 && shape[2] == width
++           && shape[1] > 0 && shape[1] <= std::numeric_limits<int>::max() / width
++           && indices->shape().size() == 1 && indices->shape()[0] == shape[1]
++           && indices->is_contiguous() && table->is_contiguous() && table_shape.size() == 2
++           && table_shape[0] > 0 && table_shape[0] <= std::numeric_limits<int>::max() / table_stride
++           && table_shape[1] == table_stride && !infinicore::context::isGraphRecording();
++}
++
++infinicore::Tensor apply_indexed(IndexedLaunch launch, bool gate,
++                                 const infinicore::Tensor &first,
++                                 const infinicore::Tensor &second,
++                                 const infinicore::Tensor &table_part,
++                                 const infinicore::Tensor &indices) {
++    auto out = infinicore::Tensor::empty(first->shape(), first->dtype(), first->device());
++    launch(gate, out, first->contiguous(), gate ? second->contiguous() : second, table_part, indices,
++           reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++    indexed_calls.fetch_add(1, std::memory_order_relaxed);
++    return out;
++}
++
+ void require_tensor(const std::optional<infinicore::Tensor> &tensor,
+                     const char *name) {
+     if (!tensor.has_value() || !tensor.value()) {
+@@ -365,7 +412,21 @@
+     const std::optional<infinicore::Tensor> &rotary_cos_sin_cache) const {
+     auto modulation = adaln_proj_->forward(temb)->view(
+         {temb->size(0) * H3_MODALITY_COUNT, 6 * hidden_size_});
+-    auto token_modulation = gather_rows(modulation, adaln_indices)->unsqueeze(0);
++    auto launch = indexed_launch.load(std::memory_order_acquire);
++    if (launch && !supports_indexed(hidden_states, modulation, adaln_indices)) {
++        launch = nullptr;
++    }
++    auto token_modulation = (launch ? modulation : gather_rows(modulation, adaln_indices))->unsqueeze(0);
++    const auto adaln = [&](const infinicore::Tensor &normalized,
++                           const infinicore::Tensor &scale, const infinicore::Tensor &shift) {
++        return launch ? apply_indexed(launch, false, normalized, scale, shift, adaln_indices)
++                      : apply_adaln(normalized, scale, shift);
++    };
++    const auto residual = [&](const infinicore::Tensor &input, const infinicore::Tensor &branch,
++                              const infinicore::Tensor &gate) {
++        return launch ? apply_indexed(launch, true, input, branch, gate, adaln_indices)
++                      : infinicore::op::add(input, infinicore::op::mul(gate, branch));
++    };
+     auto shift_msa = token_modulation->narrow({{2, 0, hidden_size_}});
+     auto scale_msa = token_modulation->narrow({{2, hidden_size_, hidden_size_}});
+     auto gate_msa = token_modulation->narrow({{2, 2 * hidden_size_, hidden_size_}});
+@@ -374,15 +435,14 @@
+     auto gate_mlp = token_modulation->narrow({{2, 5 * hidden_size_, hidden_size_}});
+ 
+     auto normalized = norm1_->forward(hidden_states);
+-    normalized = apply_adaln(normalized, scale_msa, shift_msa);
++    normalized = adaln(normalized, scale_msa, shift_msa);
+     auto attention_output = attn_->forward(normalized, rope, position_ids, rotary_cos_sin_cache);
+-    auto output = infinicore::op::add(
+-        hidden_states, infinicore::op::mul(gate_msa, attention_output));
++    auto output = residual(hidden_states, attention_output, gate_msa);
+ 
+     normalized = norm2_->forward(output);
+-    normalized = apply_adaln(normalized, scale_mlp, shift_mlp);
++    normalized = adaln(normalized, scale_mlp, shift_mlp);
+     auto mlp_output = ff_->forward(normalized);
+-    output = infinicore::op::add(output, infinicore::op::mul(gate_mlp, mlp_output));
++    output = residual(output, mlp_output, gate_mlp);
+     return output;
+ }
+ 

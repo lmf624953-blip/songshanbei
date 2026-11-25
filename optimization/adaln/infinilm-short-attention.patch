@@ -1,0 +1,52 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -47,6 +47,8 @@
+ namespace {
+ std::atomic<QKNormLaunch> qknorm_launch{nullptr};
+ std::atomic<DenseAttentionLaunch> attention_launch{nullptr};
++std::atomic<DenseAttentionLaunch> short_attention_launch{nullptr};
++std::atomic<std::uint64_t> short_attention_calls{0};
+ std::atomic<std::uint64_t> qknorm_calls{0};
+ std::atomic<std::uint64_t> attention_calls{0};
+ std::atomic<IndexedLaunch> indexed_launch{nullptr};
+@@ -90,6 +92,16 @@
+ 
+ extern "C" __attribute__((visibility("default")))
+ std::uint64_t songshan_attention_calls() { return attention_calls.load(std::memory_order_relaxed); }
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_short_attention_launch(DenseAttentionLaunch launch) {
++    short_attention_launch.store(launch, std::memory_order_release);
++}
++
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_short_attention_calls() {
++    return short_attention_calls.load(std::memory_order_relaxed);
++}
+ 
+ namespace {
+ 
+@@ -176,8 +188,11 @@
+ 
+ infinicore::Tensor dense_attention(const infinicore::Tensor &q, const infinicore::Tensor &k,
+                                    const infinicore::Tensor &v, float scale) {
+-    auto launch = attention_launch.load(std::memory_order_acquire);
+-    if (!launch || !supports_packed_heads(q, 1) || q->shape()[0] != 1 || q->shape()[1] < 4096
++    const auto &shape = q->shape();
++    const bool short_sequence = shape.size() == 4 && shape[1] < 4096;
++    auto &selected_launch = short_sequence ? short_attention_launch : attention_launch;
++    auto launch = selected_launch.load(std::memory_order_acquire);
++    if (!launch || !supports_packed_heads(q, 1) || shape[0] != 1
+         || !supports_packed_heads(k, 1) || k->shape() != q->shape() || k->device() != q->device()
+         || !supports_packed_heads(v, 1) || v->shape() != q->shape() || v->device() != q->device()
+         || infinicore::context::isGraphRecording()) {
+@@ -185,7 +200,8 @@
+     }
+     auto out = infinicore::Tensor::empty(q->shape(), q->dtype(), q->device());
+     launch(out, q, k, v, scale, reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
+-    attention_calls.fetch_add(1, std::memory_order_relaxed);
++    auto &selected_counter = short_sequence ? short_attention_calls : attention_calls;
++    selected_counter.fetch_add(1, std::memory_order_relaxed);
+     return out;
+ }
+ 

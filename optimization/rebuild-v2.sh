@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# 在已适配的 BW1000 运行目录上重新构建 v2 的所有原生和九齿产物。
+set -eo pipefail
+project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+out=$(realpath -m -- "${1:?Provide a new build directory}")
+variant=dense
+deterministic=0
+for option in "${@:2}"; do
+  case "$option" in
+    --short-attention) variant=short-attention ;;
+    --deterministic-keyframe) deterministic=1 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe]\n' >&2; exit 2 ;;
+  esac
+done
+mkdir -- "$out"
+export IFAB_AFS_HOME="$project/runtime"
+source "$IFAB_AFS_HOME/scripts/unified_dog_env.sh"
+source_dir="$project/optimization/adaln"
+H3_NATIVE_CXX_OPTIMIZE=O3 bash "$source_dir/build-candidate.sh" "$out/infinilm" "$variant"
+python "$source_dir/build-aot.py" "$out/adaln"
+python "$source_dir/build-indexed.py" "$out/indexed" --tile 2048 --warps 4
+python "$source_dir/build-qk-norm.py" "$out/qknorm" --cub-order --warps 2
+python "$source_dir/build-attention-aot.py" "$out/attention" \
+  --fp32-scale --aligned-strides --query-block 32 --key-block 32 --warps 2 --stages 1 --kpack 2
+if [[ "$variant" == short-attention ]]; then
+  python "$source_dir/build-attention-aot.py" "$out/short-attention" --fp32-scale --aligned-strides
+fi
+{
+  printf 'export H3_ADALN_BUILD=%q\n' "$out/infinilm"
+  printf 'export H3_ADALN_AOT_BUILD=%q\n' "$out/adaln"
+  printf 'export H3_INDEXED_BUILD=%q\n' "$out/indexed"
+  printf 'export H3_QKNORM_BUILD=%q\n' "$out/qknorm"
+  printf 'export H3_ATTENTION_AOT_BUILD=%q\n' "$out/attention"
+  if [[ "$variant" == short-attention ]]; then
+    printf 'export H3_SHORT_ATTENTION_AOT_BUILD=%q\n' "$out/short-attention"
+  fi
+  printf 'export H3_VAE_DEVICES=0,1\n'
+  printf 'export H3_PY_ATTENTION_FP32_SCALE=1\n'
+  printf 'export H3_ENCODER_TP_COUNT=4\n'
+  printf 'export H3_ENCODER_INITIAL_CACHE=512\n'
+  if [[ "$deterministic" == 1 ]]; then
+    printf 'export H3_VAE_DETERMINISTIC_ENCODE=1\n'
+  fi
+} > "$out/candidate.env"
+cp -- "$out/infinilm/source-commit" "$out/source-commit"
+date -Is > "$out/build.complete"
+printf '%s\n' "$out/candidate.env"

@@ -1,0 +1,111 @@
+--- a/csrc/models/qwen3_vl/qwen3_vl_attention.hpp
++++ b/csrc/models/qwen3_vl/qwen3_vl_attention.hpp
+@@ -3,6 +3,9 @@
+ #include "../../layers/common_modules.hpp"
+ 
+ namespace infinilm::models::qwen3_vl {
++
++extern thread_local bool use_condition_prefill;
++void count_condition_prefill();
+ 
+ class Qwen3VLAttention : public infinicore::nn::Module {
+ public:
+--- a/csrc/models/qwen3_vl/qwen3_vl_attention.cpp
++++ b/csrc/models/qwen3_vl/qwen3_vl_attention.cpp
+@@ -5,6 +5,8 @@
+ #include "../../layers/rotary_embedding/rotary_embedding.hpp"
+ #include "../../layers/rotary_embedding/rotary_embedding_factory.hpp"
+ #include "../../utils.hpp"
++
++#include <infinicore/ops/mha.hpp>
+ 
+ #include <cmath>
+ #include <stdexcept>
+@@ -106,7 +108,14 @@
+     auto q_reshaped = q->view({batch_size, seq_len, num_attention_heads_, head_dim_});
+     auto k_reshaped = k->view({batch_size, seq_len, num_key_value_heads_, head_dim_});
+     auto v_reshaped = v->view({batch_size, seq_len, num_key_value_heads_, head_dim_});
+-    auto output = attn_->forward(q_reshaped, k_reshaped, v_reshaped);
++    auto output = use_condition_prefill
++                      ? infinicore::op::mha(q_reshaped, k_reshaped, v_reshaped, std::nullopt,
++                                             1.0f / std::sqrt(static_cast<float>(head_dim_)), true)
++                            ->view({batch_size, seq_len, num_attention_heads_ * head_dim_})
++                      : attn_->forward(q_reshaped, k_reshaped, v_reshaped);
++    if (use_condition_prefill) {
++        count_condition_prefill();
++    }
+     output = o_proj_->forward(output);
+     return output;
+ }
+--- a/csrc/models/qwen3_vl/qwen3_vl_for_conditional_generation.cpp
++++ b/csrc/models/qwen3_vl/qwen3_vl_for_conditional_generation.cpp
+@@ -1,4 +1,7 @@
+ #include "qwen3_vl_for_conditional_generation.hpp"
++#include "qwen3_vl_attention.hpp"
++
++#include <atomic>
+ 
+ #include "../../global_state/global_state.hpp"
+ #include "../models_registry.hpp"
+@@ -10,7 +13,18 @@
+ #include <vector>
+ 
+ namespace infinilm::models::qwen3_vl {
++thread_local bool use_condition_prefill = false;
+ namespace {
++std::atomic<bool> enable_condition_prefill{false};
++std::atomic<std::uint64_t> condition_prefill_calls{0};
++
++struct PrefillScope {
++    explicit PrefillScope(bool enabled) : previous(use_condition_prefill) {
++        use_condition_prefill = enabled;
++    }
++    ~PrefillScope() { use_condition_prefill = previous; }
++    bool previous;
++};
+ 
+ std::vector<int64_t> tensor_to_i64_vector(const infinicore::Tensor &tensor) {
+     auto cpu = tensor->to(infinicore::Device::cpu());
+@@ -45,6 +59,20 @@
+ }
+ 
+ } // namespace
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_condition_prefill(int enabled) {
++    enable_condition_prefill.store(enabled != 0, std::memory_order_release);
++}
++
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_condition_prefill_calls() {
++    return condition_prefill_calls.load(std::memory_order_relaxed);
++}
++
++void count_condition_prefill() {
++    condition_prefill_calls.fetch_add(1, std::memory_order_relaxed);
++}
+ 
+ Qwen3VLModel::Qwen3VLModel(
+     std::shared_ptr<infinilm::config::ModelConfig> model_config,
+@@ -177,6 +205,21 @@
+ 
+ infinilm::InfinilmModel::Output Qwen3VLForConditionalGeneration::forward(
+     const infinilm::InfinilmModel::Input &input) const {
++    bool full_prefill = false;
++    if (condition_encoder_mode_ && enable_condition_prefill.load(std::memory_order_acquire)
++        && input.input_ids && input.input_ids.value()->device().getType() == infinicore::Device::Type::HYGON
++        && input.input_ids.value()->shape().size() == 2 && input.input_ids.value()->size(0) == 1
++        && input.input_ids.value()->size(1) > 0
++        && input.past_sequence_lengths && input.total_sequence_lengths
++        && global_state::get_infinilm_config().attention_backend == backends::AttentionBackend::STATIC_ATTN
++        && model_config_->get_kv_quant_scheme() == quantization::KVQuantAlgo::NONE
++        && !infinicore::context::isGraphRecording()) {
++        auto past = tensor_to_i64_vector(input.past_sequence_lengths.value());
++        auto total = tensor_to_i64_vector(input.total_sequence_lengths.value());
++        full_prefill = past.size() == 1 && past[0] == 0 && total.size() == 1
++                       && total[0] == static_cast<std::int64_t>(input.input_ids.value()->size(1));
++    }
++    const PrefillScope prefill(full_prefill);
+     auto hidden_states = model_->forward(input);
+     if (condition_encoder_mode_) {
+         return {hidden_states};
