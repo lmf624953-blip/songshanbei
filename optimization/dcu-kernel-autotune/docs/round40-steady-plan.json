@@ -1,0 +1,49 @@
+{
+  "sequence": [
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "B",
+    "C",
+    "A"
+  ],
+  "attention_variants": [
+    "base",
+    "fast",
+    "base",
+    "fast",
+    "fast",
+    "base",
+    "base",
+    "fast",
+    "fast",
+    "fast",
+    "fast"
+  ],
+  "warmup_indices": [
+    0,
+    1
+  ],
+  "pairs": [
+    [
+      2,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "baseline": "v3",
+  "candidate": "round_040 integrated Q64 tail",
+  "notes": "同一常驻实例，只切换长注意力回调；每个请求完整运行，不缓存输入、模型输出或成片。资源只报告整个实例，不作独立实例显存节省结论。"
+}

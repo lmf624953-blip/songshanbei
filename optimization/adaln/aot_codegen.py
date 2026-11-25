@@ -21,7 +21,7 @@ TILE = 256
 WARPS = 4
 
 
-def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *, hoist_query=False):
+def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *, hoist_query=False, query_loads=1):
     configure_hygon_compiler()
     compilation = DEFAULT_COMPILER.compile(CompileRequest(
         arrangement=arrangement, application=application, tensors=tensors, kernel_name=name,
@@ -31,7 +31,7 @@ def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *,
     source = build / f"{name}.triton.py"
     if hoist_query:
         from attention_codegen import hoist_readonly_query
-        hoist_readonly_query(source)
+        hoist_readonly_query(source, expected_loads=query_loads)
     spec = importlib.util.spec_from_file_location(f"songshan_{name}_lowered", source)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

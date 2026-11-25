@@ -18,7 +18,7 @@ LONG_ATTENTION_LDS_SWIZZLES = {
 }
 
 
-def hoist_readonly_query(source):
+def hoist_readonly_query(source, *, expected_loads=1):
     """将九齿生成代码中不依赖 KV 循环变量的只读 Q 加载提升到循环前。"""
     tree = ast.parse(source.read_text())
     count = 0
@@ -67,8 +67,8 @@ def hoist_readonly_query(source):
             return [*assignments, node] if assignments else node
 
     tree = Hoist().visit(tree)
-    if count != 1:
-        raise RuntimeError(f"预期一个只读 Q 分块，实际提升 {count} 个")
+    if count != expected_loads:
+        raise RuntimeError(f"预期 {expected_loads} 个只读 Q 分块，实际提升 {count} 个")
     source.write_text(ast.unparse(ast.fix_missing_locations(tree)) + "\n")
 
 

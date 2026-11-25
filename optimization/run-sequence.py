@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run independent FL2VA requests against one model instance for steady-state comparison."""
 import argparse
+import ctypes
 from functools import wraps
 import hashlib
 import importlib.util
@@ -58,6 +59,8 @@ def main():
     parser.add_argument("--sequence", default="A,B,A,A,A")
     parser.add_argument("--legacy", action="store_true")
     parser.add_argument("--variants", help="Comma-separated original/candidate/candidate-tf modes, one per request")
+    parser.add_argument("--fast-attention-build", type=Path, help="Optional attention-only override for paired complete requests")
+    parser.add_argument("--attention-variants", help="Comma-separated base/fast selections, one per request")
     parser.add_argument("--capture-denoise", action="store_true", help="Save live inputs from the first request; diagnostic timing")
     parser.add_argument("--capture-boundaries", action="store_true", help="Save the first denoising input/output from every request; diagnostic timing")
     parser.add_argument("--check-finite", action="store_true", help="Check all transformer outputs before the scheduler; diagnostic timing")
@@ -74,6 +77,21 @@ def main():
     if not control and any(v != "original" for v in variants):
         parser.error("Candidate variants require the native candidate launcher")
 
+    attention_order = args.attention_variants.split(",") if args.attention_variants else ["base"] * len(order)
+    if len(attention_order) != len(order) or any(v not in {"base", "fast"} for v in attention_order):
+        parser.error("--attention-variants must specify base/fast for every request")
+    if bool(args.fast_attention_build) != bool(args.attention_variants):
+        parser.error("--fast-attention-build and --attention-variants must be used together")
+    if args.fast_attention_build and (not control or not hasattr(control, "set_attention_callback")
+                                     or any(v == "original" for v in variants)):
+        parser.error("Attention pairing requires candidate variants with a registered attention kernel")
+    fast_host = fast_callback = None
+    if args.fast_attention_build:
+        from adaln.aot_runtime import load_attention
+        args.fast_attention_build = args.fast_attention_build.resolve(strict=True)
+        fast_host = load_attention(args.fast_attention_build)
+        fast_callback = ctypes.cast(fast_host.songshan_launch_attention, ctypes.c_void_p)
+
     entry = load_entry()
     from diffusers.modular_pipelines.minimax_h3.modular_pipeline import resolve_canvas_size
     from songshan_h3.output_validation import validate_generated_media
@@ -81,6 +99,14 @@ def main():
     out = args.out.resolve()
     out.mkdir()
     snapshot(out)
+    if args.fast_attention_build:
+        path = args.fast_attention_build
+        override = dict(path=str(path),
+                        metadata=json.loads((path / "dense-attention-aot-build.json").read_text()),
+                        sha256={name: hashlib.sha256((path / name).read_bytes()).hexdigest()
+                                for name in ("dense-attention-aot.hsaco", "dense-attention-aot.so")},
+                        sequence=attention_order)
+        (out / "attention-overrides.json").write_text(json.dumps(override, indent=2) + "\n")
     if args.capture_denoise:
         from adaln.capture_denoise import install_capture
         install_capture(out / "denoise-captures")
@@ -159,6 +185,8 @@ def main():
             variant = variants[index]
             if control:
                 control.select_variant(variant)
+                if attention_order[index] == "fast":
+                    control.set_attention_callback(fast_callback)
             counters_before = control.read_counters() if control else {}
             finite_before = finite_calls
             print(f"[request] index={index} case={case} variant={variant}", flush=True)
@@ -213,6 +241,8 @@ def main():
                 "finite_transformer_calls": finite_calls - finite_before,
                 "media": media,
             }
+            if args.fast_attention_build:
+                record["attention_variant"] = attention_order[index]
             record["candidate_calls"] = {name: count - counters_before[name]
                                          for name, count in (control.read_counters() if control else {}).items()}
             if variant == "original" and any(record["candidate_calls"].values()):
@@ -236,7 +266,7 @@ def main():
             transformer.close()
             text_encoder.close()
     (out / "complete.json").write_text(json.dumps({
-        "sequence": order, "variants": variants,
+        "sequence": order, "variants": variants, "attention_variants": attention_order,
         "model_load_seconds": {key: sum(values) for key, values in model_timings.values.items()},
     }, indent=2) + "\n")
 

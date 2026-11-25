@@ -26,6 +26,8 @@ def main():
     parser.add_argument("--kpack", default=1, type=int, choices=(1, 2))
     parser.add_argument("--optimize-long-attention", action="store_true",
                         help="Hoist read-only Q and swizzle PV LDS for the validated gfx936 Q32/2-warp or Q64/4-warp preset")
+    parser.add_argument("--split-kv-tail", action="store_true",
+                        help="Separate full K32 tiles from the masked tail; requires optimized Q64/4-warps")
     args = parser.parse_args()
     if args.fp16_pv and not args.fp32_scale:
         parser.error("--fp16-pv requires --fp32-scale")
@@ -35,6 +37,8 @@ def main():
             and args.stages == 1 and args.kpack == 2 and args.matrix_instr_nonkdim == 0):
         parser.error("--optimize-long-attention requires BF16 PV, FP32 scale, aligned K32, "
                      "Q32/2-warps or Q64/4-warps, 1-stage, kpack=2, matrix-instr-nonkdim=0")
+    if args.split_kv_tail and not (args.optimize_long_attention and args.query_block == 64):
+        parser.error("--split-kv-tail requires --optimize-long-attention and Q64/4-warps")
     build = args.destination.resolve()
     build.mkdir()
     arrangement, application, tensors = definition(head_dim=128, dtype=nt.bfloat16, causal=False)
@@ -45,10 +49,13 @@ def main():
         from accurate_attention import application
     if args.fp16_pv:
         from precise_attention import application
+    if args.split_kv_tail:
+        from tail_attention import application
     for tensor in (*tensors[:3], tensors[-1]):
         tensor.shape = (1, 7, tensor.shape[2], 128)
     source, kernel, bindings = lower_kernel(build, arrangement, application, tensors, "dense_attention_aot",
-                                          warps=args.warps, hoist_query=args.optimize_long_attention)
+                                          warps=args.warps, hoist_query=args.optimize_long_attention,
+                                          query_loads=2 if args.split_kv_tail else 1)
     signature, constants, dynamic = {}, {}, []
     for binding in bindings:
         name, tensor, kind, axis = binding.name, binding.source, binding.kind, binding.dim
@@ -90,9 +97,13 @@ def main():
     record["matrix_instr_nonkdim"] = args.matrix_instr_nonkdim
     record["kpack"] = args.kpack
     record["optimize_long_attention"] = args.optimize_long_attention
+    record["split_kv_tail"] = args.split_kv_tail
+    if args.split_kv_tail:
+        record["application_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("tail_attention.py").read_bytes()).hexdigest()
     if args.optimize_long_attention:
         from attention_codegen import LONG_ATTENTION_LDS_SWIZZLES
-        record["codegen_passes"] = ["readonly_query_licm", "pv_lds_swizzle"]
+        record["codegen_passes"] = (["split_kv_tail"] if args.split_kv_tail else []) + ["readonly_query_licm", "pv_lds_swizzle"]
         record["pv_lds_swizzle"] = LONG_ATTENTION_LDS_SWIZZLES[args.query_block]
         record["codegen_sha256"] = hashlib.sha256(
             Path(__file__).with_name("attention_codegen.py").read_bytes()).hexdigest()
