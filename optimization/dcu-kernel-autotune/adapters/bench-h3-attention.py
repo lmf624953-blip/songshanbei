@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import os
 from pathlib import Path
 import runpy
 from statistics import median
@@ -69,6 +70,18 @@ def compare(baseline, candidate, sequence, iterations):
     }
 
 
+
+def native_loader():
+    paths = [Path(directory) for directory in sys.path]
+    if os.environ.get("H3_AUTOTUNE_CODE_ROOT"):
+        paths.insert(0, Path(os.environ["H3_AUTOTUNE_CODE_ROOT"]) / "optimization")
+    for directory in paths:
+        source = directory / "bench-attention.py"
+        if source.is_file():
+            return runpy.run_path(str(source))["native_launcher"]
+    raise FileNotFoundError("找不到 bench-attention.py；先 source adapters/env/h3.sh 或将 optimization 加入 PYTHONPATH")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("candidate", type=Path)
@@ -77,9 +90,7 @@ def main():
     args = parser.parse_args()
     if args.iterations < 3:
         parser.error("至少需要三次配对计时")
-    launcher = next(Path(directory) / "bench-attention.py" for directory in sys.path
-                    if (Path(directory) / "bench-attention.py").is_file())
-    load = runpy.run_path(str(launcher))["native_launcher"]
+    load = native_loader()
     baseline, candidate = load(args.baseline), load(args.candidate)
     total = 0
     for sequence in (27570, 22016):

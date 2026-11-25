@@ -14,10 +14,7 @@ def main():
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     benchmark = runpy.run_path(str(Path(__file__).with_name("bench-h3-attention.py")))
-    import sys
-    source = next(Path(directory) / "bench-attention.py" for directory in sys.path
-                  if (Path(directory) / "bench-attention.py").is_file())
-    load = runpy.run_path(str(source))["native_launcher"]
+    load = benchmark["native_loader"]()
     baseline, candidate = load(args.baseline.resolve()), load(args.candidate.resolve())
     results = []
     for sequence in (1, 2, 31, 32, 33, 63, 64, 65, 127, 128, 129, 895, 896, 897, 1023):

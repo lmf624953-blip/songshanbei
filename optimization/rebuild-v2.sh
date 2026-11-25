@@ -14,8 +14,9 @@ for option in "${@:2}"; do
     --deterministic-keyframe) deterministic=1 ;;
     --long-attention-lds) attention_options=(--optimize-long-attention) ;;
     --long-attention-q64) attention_options=(--optimize-long-attention); attention_query_block=64; attention_warps=4 ;;
+    --long-attention-q64-full-load) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-tail) attention_options=(--optimize-long-attention --split-kv-tail); attention_query_block=64; attention_warps=4 ;;
-    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail]\n' >&2; exit 2 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load]\n' >&2; exit 2 ;;
   esac
 done
 mkdir -- "$out"

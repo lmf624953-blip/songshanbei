@@ -21,7 +21,7 @@ TILE = 256
 WARPS = 4
 
 
-def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *, hoist_query=False, query_loads=1):
+def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *, hoist_query=False, query_loads=1, elide_full_kv_mask=False):
     configure_hygon_compiler()
     compilation = DEFAULT_COMPILER.compile(CompileRequest(
         arrangement=arrangement, application=application, tensors=tensors, kernel_name=name,
@@ -32,6 +32,9 @@ def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *,
     if hoist_query:
         from attention_codegen import hoist_readonly_query
         hoist_readonly_query(source, expected_loads=query_loads)
+    if elide_full_kv_mask:
+        from attention_codegen import elide_full_kv_load_mask
+        elide_full_kv_load_mask(source)
     spec = importlib.util.spec_from_file_location(f"songshan_{name}_lowered", source)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

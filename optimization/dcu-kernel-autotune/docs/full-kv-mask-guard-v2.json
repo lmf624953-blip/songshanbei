@@ -1,0 +1,12 @@
+{
+  "verdict": "PASS",
+  "generated_source_equal_round_041": true,
+  "unsafe_or_unknown_inputs_rejected": [
+    "K64",
+    "loop-range",
+    "unknown-side-effect"
+  ],
+  "guard": "九齿生成源码字节摘要+完整循环数量与K/V上界数量",
+  "source_sha256": "dc03b8c8f7fc5d7c2764b9104be83a5e8878e300b159e57445812cd76e11614e",
+  "note": "避免不同CPython版本AST字段差异引起摘要不一致；当前运行环境源码严格匹配，不接受未知生成代码。"
+}

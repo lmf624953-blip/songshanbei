@@ -1,0 +1,951 @@
+{
+  "plan": {
+    "sequence": [
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "B",
+      "C",
+      "A"
+    ],
+    "attention_variants": [
+      "base",
+      "fast",
+      "base",
+      "fast",
+      "fast",
+      "base",
+      "base",
+      "fast",
+      "fast",
+      "fast",
+      "fast"
+    ],
+    "warmup_indices": [
+      0,
+      1
+    ],
+    "pairs": [
+      [
+        2,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "baseline": "v3",
+    "candidate": "round_040 integrated Q64 tail",
+    "notes": "同一常驻实例，只切换长注意力回调；每个请求完整运行，不缓存输入、模型输出或成片。资源只报告整个实例，不作独立实例显存节省结论。"
+  },
+  "timings": {
+    "wall_seconds": {
+      "base": {
+        "samples": [
+          240.7789245690219,
+          240.0028500589542,
+          240.82003529602662
+        ],
+        "mean": 240.53393664133424,
+        "median": 240.7789245690219,
+        "min": 240.0028500589542,
+        "max": 240.82003529602662,
+        "stdev": 0.46039357234522116
+      },
+      "fast": {
+        "samples": [
+          194.34543079836294,
+          196.0563117209822,
+          195.0136373769492
+        ],
+        "mean": 195.13845996543145,
+        "median": 195.0136373769492,
+        "min": 194.34543079836294,
+        "max": 196.0563117209822,
+        "stdev": 0.8622435223254413
+      },
+      "mean_reduction_percent": 18.872794961815742,
+      "paired_reduction_percent": {
+        "samples": [
+          19.284700209443915,
+          18.310840195096432,
+          19.02100789195973
+        ],
+        "mean": 18.872182765500025,
+        "median": 19.02100789195973,
+        "min": 18.310840195096432,
+        "max": 19.284700209443915,
+        "stdev": 0.503698839174293
+      }
+    },
+    "compute.condition_encoder": {
+      "base": {
+        "samples": [
+          0.31790059618651867,
+          0.3116830517537892,
+          0.31253808503970504
+        ],
+        "mean": 0.3140405776600043,
+        "median": 0.31253808503970504,
+        "min": 0.3116830517537892,
+        "max": 0.31790059618651867,
+        "stdev": 0.0033701005546988723
+      },
+      "fast": {
+        "samples": [
+          0.31422503432258964,
+          0.30689831217750907,
+          0.31499052699655294
+        ],
+        "mean": 0.3120379578322172,
+        "median": 0.31422503432258964,
+        "min": 0.30689831217750907,
+        "max": 0.31499052699655294,
+        "stdev": 0.004467489546763722
+      },
+      "mean_reduction_percent": 0.6376946070820289,
+      "paired_reduction_percent": {
+        "samples": [
+          1.1561984809152492,
+          1.535129853662931,
+          -0.784685794864437
+        ],
+        "mean": 0.6355475132379144,
+        "median": 1.1561984809152492,
+        "min": -0.784685794864437,
+        "max": 1.535129853662931,
+        "stdev": 1.2444654408201226
+      }
+    },
+    "compute.h3_transformer": {
+      "base": {
+        "samples": [
+          220.28736695088446,
+          220.3062833887525,
+          220.28445822698995
+        ],
+        "mean": 220.2927028555423,
+        "median": 220.28736695088446,
+        "min": 220.28445822698995,
+        "max": 220.3062833887525,
+        "stdev": 0.011850667929631055
+      },
+      "fast": {
+        "samples": [
+          175.06201542541385,
+          175.08807790279388,
+          175.06858310010284
+        ],
+        "mean": 175.0728921427702,
+        "median": 175.06858310010284,
+        "min": 175.06201542541385,
+        "max": 175.08807790279388,
+        "stdev": 0.013555038484933044
+      },
+      "mean_reduction_percent": 20.527148710152755,
+      "paired_reduction_percent": {
+        "samples": [
+          20.530161194197817,
+          20.525154702994353,
+          20.52613039104868
+        ],
+        "mean": 20.52714876274695,
+        "median": 20.52613039104868,
+        "min": 20.525154702994353,
+        "max": 20.530161194197817,
+        "stdev": 0.002654062777981253
+      }
+    },
+    "generation.pipeline_total": {
+      "base": {
+        "samples": [
+          239.1581675861962,
+          238.34933479176834,
+          239.26979731302708
+        ],
+        "mean": 238.92576656366387,
+        "median": 239.1581675861962,
+        "min": 238.34933479176834,
+        "max": 239.26979731302708,
+        "stdev": 0.5023151298896497
+      },
+      "fast": {
+        "samples": [
+          192.70784907508641,
+          194.46007104497403,
+          193.39433875400573
+        ],
+        "mean": 193.52075295802206,
+        "median": 193.39433875400573,
+        "min": 192.70784907508641,
+        "max": 194.46007104497403,
+        "stdev": 0.8829246123945232
+      },
+      "mean_reduction_percent": 19.003816230738448,
+      "paired_reduction_percent": {
+        "samples": [
+          19.42242616253882,
+          18.413839411441092,
+          19.173108797766204
+        ],
+        "mean": 19.00312479058204,
+        "median": 19.173108797766204,
+        "min": 18.413839411441092,
+        "max": 19.42242616253882,
+        "stdev": 0.5253405853789113
+      }
+    },
+    "input.arguments": {
+      "base": {
+        "samples": [
+          5.400972440838814e-05,
+          4.127994179725647e-05,
+          7.011974230408669e-05
+        ],
+        "mean": 5.5136469503243767e-05,
+        "median": 5.400972440838814e-05,
+        "min": 4.127994179725647e-05,
+        "max": 7.011974230408669e-05,
+        "stdev": 1.4452878232380809e-05
+      },
+      "fast": {
+        "samples": [
+          4.2061321437358856e-05,
+          4.141125828027725e-05,
+          6.0770194977521896e-05
+        ],
+        "mean": 4.8080924898386e-05,
+        "median": 4.2061321437358856e-05,
+        "min": 4.141125828027725e-05,
+        "max": 6.0770194977521896e-05,
+        "stdev": 1.0994035968787297e-05
+      },
+      "mean_reduction_percent": 12.796511398762444,
+      "paired_reduction_percent": {
+        "samples": [
+          22.12268827865672,
+          -0.31811208374694644,
+          13.333687517017424
+        ],
+        "mean": 11.7127545706424,
+        "median": 13.333687517017424,
+        "min": -0.31811208374694644,
+        "max": 22.12268827865672,
+        "stdev": 11.30787106129165
+      }
+    },
+    "input.files_and_references": {
+      "base": {
+        "samples": [
+          0.031031659804284573,
+          0.030842458829283714,
+          0.031389780808240175
+        ],
+        "mean": 0.03108796648060282,
+        "median": 0.031031659804284573,
+        "min": 0.030842458829283714,
+        "max": 0.031389780808240175,
+        "stdev": 0.00027797152464004317
+      },
+      "fast": {
+        "samples": [
+          0.030804897658526897,
+          0.030619287863373756,
+          0.031057788990437984
+        ],
+        "mean": 0.030827324837446213,
+        "median": 0.030804897658526897,
+        "min": 0.030619287863373756,
+        "max": 0.031057788990437984,
+        "stdev": 0.00022010916240551825
+      },
+      "mean_reduction_percent": 0.8384004251909882,
+      "paired_reduction_percent": {
+        "samples": [
+          0.730744495099056,
+          0.7235835740114993,
+          1.0576429948024324
+        ],
+        "mean": 0.8373236879709959,
+        "median": 0.730744495099056,
+        "min": 0.7235835740114993,
+        "max": 1.0576429948024324,
+        "stdev": 0.19083570792626584
+      }
+    },
+    "input.video_vae_encode": {
+      "base": {
+        "samples": [
+          0.8626208091154695,
+          0.8620810299180448,
+          0.8627969939261675
+        ],
+        "mean": 0.8624996109865606,
+        "median": 0.8626208091154695,
+        "min": 0.8620810299180448,
+        "max": 0.8627969939261675,
+        "stdev": 0.000373052080908327
+      },
+      "fast": {
+        "samples": [
+          0.8630135860294104,
+          0.8624921939335763,
+          0.8632151898927987
+        ],
+        "mean": 0.8629069899519285,
+        "median": 0.8630135860294104,
+        "min": 0.8624921939335763,
+        "max": 0.8632151898927987,
+        "stdev": 0.00037309895746818404
+      },
+      "mean_reduction_percent": -0.04723236511399165,
+      "paired_reduction_percent": {
+        "samples": [
+          -0.04553297460372363,
+          -0.04769435833318347,
+          -0.04846979875627877
+        ],
+        "mean": -0.04723237723106196,
+        "median": -0.04769435833318347,
+        "min": -0.04846979875627877,
+        "max": -0.04553297460372363,
+        "stdev": 0.0015219408430671216
+      }
+    },
+    "output.audio_vae_decode": {
+      "base": {
+        "samples": [
+          0.24095947667956352,
+          0.24239106196910143,
+          0.24350117798894644
+        ],
+        "mean": 0.24228390554587045,
+        "median": 0.24239106196910143,
+        "min": 0.24095947667956352,
+        "max": 0.24350117798894644,
+        "stdev": 0.0012742343822113133
+      },
+      "fast": {
+        "samples": [
+          0.24294304521754384,
+          0.2423604717478156,
+          0.2427461352199316
+        ],
+        "mean": 0.24268321739509702,
+        "median": 0.2427461352199316,
+        "min": 0.2423604717478156,
+        "max": 0.24294304521754384,
+        "stdev": 0.0002963392505545533
+      },
+      "mean_reduction_percent": -0.16481154549945476,
+      "paired_reduction_percent": {
+        "samples": [
+          -0.8231959021965052,
+          0.012620193598444907,
+          0.310077665845665
+        ],
+        "mean": -0.1668326809174651,
+        "median": 0.012620193598444907,
+        "min": -0.8231959021965052,
+        "max": 0.310077665845665,
+        "stdev": 0.5875625461470251
+      }
+    },
+    "output.media_encode": {
+      "base": {
+        "samples": [
+          1.5889549399726093,
+          1.6218995549716055,
+          1.517899458296597
+        ],
+        "mean": 1.5762513177469373,
+        "median": 1.5889549399726093,
+        "min": 1.517899458296597,
+        "max": 1.6218995549716055,
+        "stdev": 0.05315111984090477
+      },
+      "fast": {
+        "samples": [
+          1.6060130023397505,
+          1.5648651639930904,
+          1.5873718983493745
+        ],
+        "mean": 1.5860833548940718,
+        "median": 1.5873718983493745,
+        "min": 1.5648651639930904,
+        "max": 1.6060130023397505,
+        "stdev": 0.02060415997627351
+      },
+      "mean_reduction_percent": -0.6237607567039616,
+      "paired_reduction_percent": {
+        "samples": [
+          -1.0735397170819283,
+          3.5165180731252854,
+          -4.57688021911149
+        ],
+        "mean": -0.711300621022711,
+        "median": -1.0735397170819283,
+        "min": -4.57688021911149,
+        "max": 3.5165180731252854,
+        "stdev": 4.058840579676743
+      }
+    },
+    "output.video_vae_decode": {
+      "base": {
+        "samples": [
+          13.963951740413904,
+          13.059968911111355,
+          14.148432755842805
+        ],
+        "mean": 13.724117802456021,
+        "median": 13.963951740413904,
+        "min": 13.059968911111355,
+        "max": 14.148432755842805,
+        "stdev": 0.5825192045496713
+      },
+      "fast": {
+        "samples": [
+          12.853372525889426,
+          14.598490667995065,
+          13.482880316209048
+        ],
+        "mean": 13.644914503364513,
+        "median": 13.482880316209048,
+        "min": 12.853372525889426,
+        "max": 14.598490667995065,
+        "stdev": 0.8837706947121003
+      },
+      "mean_reduction_percent": 0.5771103121639976,
+      "paired_reduction_percent": {
+        "samples": [
+          7.9531871433663355,
+          -11.780439657668285,
+          4.70407182985626
+        ],
+        "mean": 0.29227310518477,
+        "median": 4.70407182985626,
+        "min": -11.780439657668285,
+        "max": 7.9531871433663355,
+        "stdev": 10.580736395491938
+      }
+    }
+  },
+  "all_A_mp4_equal": true,
+  "model_load_seconds": {
+    "model.pipeline_create": 0.015674215275794268,
+    "model.condition_encoder_create_and_load": 30.825892112217844,
+    "model.transformer_create_and_load": 20.16684836568311,
+    "model.remaining_components_create_and_load": 4.917507256846875
+  },
+  "resource_note": "同一实例，仅长注意力回调交替；显存为五秒整卡采样，不能据此宣称独立实例显存节省。",
+  "requests": [
+    {
+      "index": 0,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 300.2594461371191,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 27599,
+        "card1": 22263,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31946,
+        "card5": 31938,
+        "card6": 31938,
+        "card7": 31842
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.03641135198995471,
+        "input.arguments": 4.942994564771652e-05,
+        "compute.condition_encoder": 38.27517386665568,
+        "input.video_vae_encode": 1.980020257178694,
+        "compute.h3_transformer": 222.83690137090161,
+        "output.video_vae_decode": 29.739269521087408,
+        "output.audio_vae_decode": 1.8950049788691103,
+        "generation.pipeline_total": 298.5610546381213,
+        "output.media_encode": 1.6612041131593287
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 196.7123951050453,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 27808,
+        "card1": 22261,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.031045148614794016,
+        "input.arguments": 5.07100485265255e-05,
+        "compute.condition_encoder": 0.30602518701925874,
+        "input.video_vae_encode": 0.8664932567626238,
+        "compute.h3_transformer": 175.05957987252623,
+        "output.video_vae_decode": 15.226845383178443,
+        "output.audio_vae_decode": 0.24208388989791274,
+        "generation.pipeline_total": 195.127624142915,
+        "output.media_encode": 1.5528897298499942
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 240.7789245690219,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 28820,
+        "card1": 22261,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.031031659804284573,
+        "input.arguments": 5.400972440838814e-05,
+        "compute.condition_encoder": 0.31790059618651867,
+        "input.video_vae_encode": 0.8626208091154695,
+        "compute.h3_transformer": 220.28736695088446,
+        "output.video_vae_decode": 13.963951740413904,
+        "output.audio_vae_decode": 0.24095947667956352,
+        "generation.pipeline_total": 239.1581675861962,
+        "output.media_encode": 1.5889549399726093
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 194.34543079836294,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 28820,
+        "card1": 22523,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.030804897658526897,
+        "input.arguments": 4.2061321437358856e-05,
+        "compute.condition_encoder": 0.31422503432258964,
+        "input.video_vae_encode": 0.8630135860294104,
+        "compute.h3_transformer": 175.06201542541385,
+        "output.video_vae_decode": 12.853372525889426,
+        "output.audio_vae_decode": 0.24294304521754384,
+        "generation.pipeline_total": 192.70784907508641,
+        "output.media_encode": 1.6060130023397505
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 4,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 196.0563117209822,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 28820,
+        "card1": 22819,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.030619287863373756,
+        "input.arguments": 4.141125828027725e-05,
+        "compute.condition_encoder": 0.30689831217750907,
+        "input.video_vae_encode": 0.8624921939335763,
+        "compute.h3_transformer": 175.08807790279388,
+        "output.video_vae_decode": 14.598490667995065,
+        "output.audio_vae_decode": 0.2423604717478156,
+        "generation.pipeline_total": 194.46007104497403,
+        "output.media_encode": 1.5648651639930904
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 5,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 240.0028500589542,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 28820,
+        "card1": 23025,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.030842458829283714,
+        "input.arguments": 4.127994179725647e-05,
+        "compute.condition_encoder": 0.3116830517537892,
+        "input.video_vae_encode": 0.8620810299180448,
+        "compute.h3_transformer": 220.3062833887525,
+        "output.video_vae_decode": 13.059968911111355,
+        "output.audio_vae_decode": 0.24239106196910143,
+        "generation.pipeline_total": 238.34933479176834,
+        "output.media_encode": 1.6218995549716055
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 240.82003529602662,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 28820,
+        "card1": 23201,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.031389780808240175,
+        "input.arguments": 7.011974230408669e-05,
+        "compute.condition_encoder": 0.31253808503970504,
+        "input.video_vae_encode": 0.8627969939261675,
+        "compute.h3_transformer": 220.28445822698995,
+        "output.video_vae_decode": 14.148432755842805,
+        "output.audio_vae_decode": 0.24350117798894644,
+        "generation.pipeline_total": 239.26979731302708,
+        "output.media_encode": 1.517899458296597
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 7,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 195.0136373769492,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 29832,
+        "card1": 23347,
+        "card2": 15277,
+        "card3": 15277,
+        "card4": 31976,
+        "card5": 31946,
+        "card6": 31946,
+        "card7": 31850
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.031057788990437984,
+        "input.arguments": 6.0770194977521896e-05,
+        "compute.condition_encoder": 0.31499052699655294,
+        "input.video_vae_encode": 0.8632151898927987,
+        "compute.h3_transformer": 175.06858310010284,
+        "output.video_vae_decode": 13.482880316209048,
+        "output.audio_vae_decode": 0.2427461352199316,
+        "generation.pipeline_total": 193.39433875400573,
+        "output.media_encode": 1.5873718983493745
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 8,
+      "case": "B",
+      "attention_variant": "fast",
+      "wall_seconds": 147.90174226881936,
+      "transformer_calls": 49,
+      "video_sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+      "sampled_device_peak_mib": {
+        "card0": 31368,
+        "card1": 25009,
+        "card2": 16813,
+        "card3": 16813,
+        "card4": 33512,
+        "card5": 33490,
+        "card6": 33490,
+        "card7": 33394
+      },
+      "ssim_match_percent": 99.40412322827537,
+      "ssim_min_percent": 99.17931498954825,
+      "stage_seconds": {
+        "input.files_and_references": 0.009576890151947737,
+        "input.arguments": 4.671001806855202e-05,
+        "compute.condition_encoder": 0.28555181389674544,
+        "input.video_vae_encode": 0.6916357818990946,
+        "compute.h3_transformer": 131.88935941131786,
+        "output.video_vae_decode": 10.753072706982493,
+        "output.audio_vae_decode": 0.24146393919363618,
+        "generation.pipeline_total": 146.73607402807102,
+        "output.media_encode": 1.1553678181953728
+      },
+      "video": {
+        "width": 768,
+        "height": 768,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 9,
+      "case": "C",
+      "attention_variant": "fast",
+      "wall_seconds": 159.35626188479364,
+      "transformer_calls": 49,
+      "video_sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+      "sampled_device_peak_mib": {
+        "card0": 31456,
+        "card1": 25113,
+        "card2": 16917,
+        "card3": 16917,
+        "card4": 33746,
+        "card5": 33720,
+        "card6": 33720,
+        "card7": 33624
+      },
+      "ssim_match_percent": 99.63004744871529,
+      "ssim_min_percent": 99.3410113516413,
+      "stage_seconds": {
+        "input.files_and_references": 0.018240408040583134,
+        "input.arguments": 4.1730236262083054e-05,
+        "compute.condition_encoder": 0.5569562064483762,
+        "input.video_vae_encode": 1.381521737203002,
+        "compute.h3_transformer": 141.1716775353998,
+        "output.video_vae_decode": 11.950580085162073,
+        "output.audio_vae_decode": 0.2431074301712215,
+        "generation.pipeline_total": 158.23242000397295,
+        "output.media_encode": 1.1048459587618709
+      },
+      "video": {
+        "width": 768,
+        "height": 768,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    },
+    {
+      "index": 10,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 194.74401684803888,
+      "transformer_calls": 49,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "sampled_device_peak_mib": {
+        "card0": 31458,
+        "card1": 25113,
+        "card2": 16917,
+        "card3": 16917,
+        "card4": 33752,
+        "card5": 33726,
+        "card6": 33726,
+        "card7": 33630
+      },
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "stage_seconds": {
+        "input.files_and_references": 0.032820070162415504,
+        "input.arguments": 5.0259754061698914e-05,
+        "compute.condition_encoder": 0.30045725777745247,
+        "input.video_vae_encode": 0.8629814549349248,
+        "compute.h3_transformer": 175.06338222231716,
+        "output.video_vae_decode": 13.234096616972238,
+        "output.audio_vae_decode": 0.24372980184853077,
+        "generation.pipeline_total": 193.17125254217535,
+        "output.media_encode": 1.5391171532683074
+      },
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      }
+    }
+  ],
+  "source_manifest_sha256": "66324ed5d7410c8401d302ae8649c8a3ac882e12798cf4587f56b8d30d27ab31",
+  "measurement_sha256": "6ebc35f6e6c5b15d3b6a45e8de7be2a0254ad6d65be32c9faf6a881731771c52",
+  "sequence_validation_sha256": "62097b46b35898d37f3b550e2ca2d94b754ecba73354afdbb49b5ebcdc8da701"
+}
