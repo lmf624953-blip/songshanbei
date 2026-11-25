@@ -1,0 +1,136 @@
+{
+  "verdict": "PASS",
+  "scope": "真实八卡 Transformer 输入回放",
+  "saving_pct_from_sum_of_medians": 21.97805230311012,
+  "steps": [
+    {
+      "step": 1,
+      "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+      "v3_median_seconds": 4.49471663730219,
+      "candidate_median_seconds": 3.506569736171514,
+      "saving_pct": 21.984631754756844,
+      "v3_samples_seconds": [
+        4.492655647918582,
+        4.49471663730219,
+        4.510129790753126
+      ],
+      "candidate_samples_seconds": [
+        3.506569736171514,
+        3.506207834929228,
+        3.5069611999206245
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098",
+          "candidate_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc",
+          "candidate_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      ]
+    },
+    {
+      "step": 25,
+      "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+      "v3_median_seconds": 4.494078384246677,
+      "candidate_median_seconds": 3.5053621530532837,
+      "saving_pct": 22.00042248170817,
+      "v3_samples_seconds": [
+        4.488822459708899,
+        4.501022283919156,
+        4.494078384246677
+      ],
+      "candidate_samples_seconds": [
+        3.5053621530532837,
+        3.503309854771942,
+        3.5059863459318876
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779",
+          "candidate_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04",
+          "candidate_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+      "v3_median_seconds": 4.493765003979206,
+      "candidate_median_seconds": 3.507424042094499,
+      "saving_pct": 21.94909971952933,
+      "v3_samples_seconds": [
+        4.512422244995832,
+        4.493765003979206,
+        4.491835455875844
+      ],
+      "candidate_samples_seconds": [
+        3.506466598249972,
+        3.507424042094499,
+        3.508202613797039
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79",
+          "candidate_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2",
+          "candidate_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      ]
+    }
+  ]
+}
