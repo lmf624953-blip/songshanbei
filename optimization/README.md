@@ -94,3 +94,28 @@ mkdir "$trace"
 ```
 
 导出 hipprof 的 stream JSON 后，用 `analyze-hipprof-timeline.py REPLAY_LOG TRACE_JSON --output-dir OUTPUT_DIR` 生成逐卡 kernel 统计和同步窗口的空泡分布。将实验产物写到自己的 `artifacts/` 目录。
+
+## v3 基础上的长注意力编译器候选
+
+`adaln/attention_codegen.py` 为九齿生成代码增加两个可选变换，将循环不变的只读 Q 加载提升到 KV 循环前，并为 PV 的 LDS 暂存加入 swizzle。模型计算继续由九齿表达并经其编译链生成，变换保留点积、softmax、精度及完整 KV 遍历。
+
+新开关默认关闭。它只接受已经测量的 BF16 PV、FP32 scale、aligned stride、32×32、2 warps、1 stage、`kpack=2`、`matrix_instr_nonkdim=0` 组合；其他参数组合会在创建产物目录前退出。生成代码中不能确认循环依赖或 LDS 布局时构建失败。短注意力保持单独构建。
+
+仅重建长注意力时使用新的输出路径。
+
+```bash
+(
+  export IFAB_AFS_HOME="$project/runtime"
+  source "$IFAB_AFS_HOME/scripts/unified_dog_env.sh"
+  H3_AOT_SAVE_IR=1 python "$project/optimization/adaln/build-attention-aot.py" \
+    "$project/artifacts/long-attention-lds" --fp32-scale --aligned-strides \
+    --query-block 32 --key-block 32 --warps 2 --stages 1 --kpack 2 \
+    --optimize-long-attention
+)
+```
+
+全量重建时给 `rebuild-v2.sh` 追加 `--long-attention-lds`，生成的 `candidate.env` 会指向新长注意力产物。AOT 元数据记录启用的变换、P/V 布局参数、变换源码哈希和最终九齿生成源码哈希。
+
+本机自动调优目录为 `/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune`。第 19 轮在 27570、22016 token 上分别约为 49.0、31.4 ms，同卡配对节省约 19%。27570 token 的全局读取指令减少 33.29%、LDS bank conflict 原始计数减少 93.75%，180 VGPR、8192 B LDS、0 B Scratch。该结果是单算子计时，完整生成收益单独验收。
+
+集成源码重建后，设备可加载区段与第 19 轮相同；关闭新开关后与正式 v3 相同，两侧主机库均文件一致。15 个短长度和分块边界的普通与放大 Q/K 输入检查均逐位一致。结果保存在自动调优目录的 `validated-build/`，真实八卡回放保存在 `validation/round_019/`。`selected-best.env` 的更新以完整规格、质量及正式计时通过为准。

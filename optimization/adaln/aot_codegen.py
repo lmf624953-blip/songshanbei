@@ -21,7 +21,7 @@ TILE = 256
 WARPS = 4
 
 
-def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS):
+def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *, hoist_query=False):
     configure_hygon_compiler()
     compilation = DEFAULT_COMPILER.compile(CompileRequest(
         arrangement=arrangement, application=application, tensors=tensors, kernel_name=name,
@@ -29,6 +29,9 @@ def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS):
     ))
     compilation.artifact.write_to(build)
     source = build / f"{name}.triton.py"
+    if hoist_query:
+        from attention_codegen import hoist_readonly_query
+        hoist_readonly_query(source)
     spec = importlib.util.spec_from_file_location(f"songshan_{name}_lowered", source)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -37,21 +40,27 @@ def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS):
 
 def compile_image(output, kernel, signature, constants, runtime_signature, warps=WARPS,
                   *, block=TILE, allow_shared=False, aligned_scalars=(), num_stages=1,
-                  matrix_instr_nonkdim=0, kpack=1):
+                  matrix_instr_nonkdim=0, kpack=1, attention_lds_swizzle=False):
     signature["BLOCK"] = "constexpr"
     if list(signature) != kernel.arg_names or [t for t in signature.values() if t != "constexpr"] != runtime_signature:
         raise RuntimeError(f"Unexpected {kernel.__name__} launcher signature: {signature}")
     attrs = {(i,): [["tt.divisibility", 16]] for i, name in enumerate(signature)
              if signature[name].startswith("*") or name in aligned_scalars}
+    target = GPUTarget("hip", "gfx936", 64)
+    options = {"num_warps": warps, "num_stages": num_stages,
+               "matrix_instr_nonkdim": matrix_instr_nonkdim, "kpack": kpack}
     compiled = triton.compile(
         ASTSource(kernel, signature, constexprs={"BLOCK": block, **constants}, attrs=attrs),
-        target=GPUTarget("hip", "gfx936", 64),
-        options={"num_warps": warps, "num_stages": num_stages,
-                 "matrix_instr_nonkdim": matrix_instr_nonkdim, "kpack": kpack},
+        target=target, options=options,
     )
+    initial_asm = dict(compiled.asm)
+    if attention_lds_swizzle:
+        from attention_codegen import swizzle_attention_pv
+        compiled = swizzle_attention_pv(compiled, output, target, options)
     if os.environ.get("H3_AOT_SAVE_IR") == "1":
         for kind in ("ttir", "ttgir", "llir", "amdgcn"):
-            output.with_suffix("." + kind).write_text(compiled.asm[kind])
+            output.with_suffix("." + kind).write_text(
+                compiled.asm[kind] if kind in compiled.asm else initial_asm[kind])
     params = re.search(rf"define amdgpu_kernel void @{kernel.__name__}\(([^\n]*)\)", compiled.asm["llir"])
     if params is None:
         raise RuntimeError(f"The device object does not export {kernel.__name__}")

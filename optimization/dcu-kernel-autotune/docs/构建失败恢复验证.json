@@ -1,0 +1,30 @@
+[
+  {
+    "mode": "run",
+    "build_script": "/bin/false",
+    "exit_code": 1,
+    "status": "build_failed",
+    "restored": true
+  },
+  {
+    "mode": "run",
+    "build_script": "/bin/true",
+    "exit_code": 1,
+    "status": "build_failed",
+    "restored": true
+  },
+  {
+    "mode": "build",
+    "build_script": "/bin/false",
+    "exit_code": 1,
+    "status": "仅构建，无运行状态",
+    "restored": true
+  },
+  {
+    "mode": "build",
+    "build_script": "/bin/true",
+    "exit_code": 1,
+    "status": "仅构建，无运行状态",
+    "restored": true
+  }
+]

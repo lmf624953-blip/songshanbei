@@ -1,0 +1,17 @@
+[
+  {
+    "case": "依赖 KV 下标的读取",
+    "rejected": true,
+    "source_preserved": true
+  },
+  {
+    "case": "循环内全局写回",
+    "rejected": true,
+    "source_preserved": true
+  },
+  {
+    "case": "循环内原子写回",
+    "rejected": true,
+    "source_preserved": true
+  }
+]

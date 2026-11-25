@@ -1,0 +1,26 @@
+# —— 编译 / 安装产物 ——
+build/
+!adapters/build/
+!adapters/build/*.sh
+rounds/**/install/
+rounds/**/build/
+
+# —— 原始运行数据（保留 summary / metrics / report，丢弃大文件 dump）——
+rounds/**/trace/
+rounds/**/pmc/*.txt
+!rounds/**/pmc/full_summary.txt
+
+# —— python ——
+__pycache__/
+*.pyc
+
+# —— 本地会话辅助文件 ——
+cc
+
+# 实验留在本机，仓库保存框架、模板、候选源码及精简报告。
+work/
+source_snapshots/
+rounds/
+validation/
+validated-build/
+reports/
