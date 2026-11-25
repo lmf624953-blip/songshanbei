@@ -81,4 +81,12 @@ cp -a candidates/long-attention-lds/source_delta/. rounds/h3-long-attention/roun
 
 冻结增量位于 `candidates/long-attention-q64/source_delta`。完整实验目录在本机 `rounds/h3-long-attention`；第 26–28 轮测试了提前 LSE、提前 V 和 Q128，均未胜出。第 29 轮 MFMA32 未进入当前 gfx936 的预期 BF16 路径，被布局检查拒绝；第 30–31 轮扩大 PV kWidth 或修改 MFMA warp 分布造成浮点差异且更慢，在数值检查后停止。第 32–36 轮继续检查流水线、kpack、调度及 QK 的 LDS 暂存。
 
+## 构建边界与重复实验
+
+H3 候选构建默认限制 180 s，使用 `H3_AUTOTUNE_BUILD_TIMEOUT_SECONDS` 调整。第 34 轮发现当前 DTK 的 IGLP 调度组构造持续增长，保存调用栈后终止，未形成 GPU 性能结论；IGLP1 的第 38 轮也在 60 s 时限停止。第 39 轮去掉 IGLP 后与第 25 轮的加载区段、映射和主机库完全相同，标记 `equivalent_binary` 并跳过 GPU 重测。框架汇总同时保留这些状态。
+
+第 37 轮修正双阶段预取的 P/V 别名后数值一致，但增加到 208 VGPR、20480 B LDS，耗时约 50.272 / 32.766 ms，无额外收益。第 40 轮继续检查完整 KV 块与尾块分离。正式候选仍为已通过完整公开 A 的 Q64 第 25 轮。
+
+第 40 轮的直接配对确认相对第 25 轮再节省 1.89% / 2.52%，15 个边界长度通过。真实八卡三时刻输出与同轮 v3 哈希一致，Transformer 中位数合计节省 **20.51%**。尚需本轮的正式集成、完整质量、多用例与稳态验证；不能套用第 25 轮完整 A 的成片证明。
+
 仓库内冻结证据见 [实测报告](docs/H3长注意力实测.md) 与 [逐长度对照](docs/按长度对照.md)。

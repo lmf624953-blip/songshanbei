@@ -8,7 +8,8 @@ if [[ "$install_dir" == */baseline/install ]]; then
   sha256sum "$install_dir"/attention/dense-attention-aot.{so,hsaco}
 else
   source "$SOURCE_ROOT/flags.conf"
-  H3_AOT_SAVE_IR=1 python -u "$SOURCE_ROOT/optimization/adaln/build-attention-aot.py" \
+  H3_AOT_SAVE_IR=1 timeout --verbose --kill-after=15s "${H3_AUTOTUNE_BUILD_TIMEOUT_SECONDS:-180}s" \
+    python -u "$SOURCE_ROOT/optimization/adaln/build-attention-aot.py" \
     "$install_dir/attention" --fp32-scale --aligned-strides --query-block "${AOT_QUERY_BLOCK:-32}" --key-block 32 \
     --warps "${AOT_WARPS:-2}" --stages "${AOT_STAGES:-1}" --kpack "${AOT_KPACK:-2}" \
     --matrix-instr-nonkdim "${AOT_MATRIX_INSTR_NONKDIM:-0}" \

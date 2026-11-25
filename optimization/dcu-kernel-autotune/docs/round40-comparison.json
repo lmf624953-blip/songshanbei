@@ -1,0 +1,136 @@
+{
+  "verdict": "PASS",
+  "scope": "真实八卡 Transformer 输入回放",
+  "saving_pct_from_sum_of_medians": 20.507419274540506,
+  "steps": [
+    {
+      "step": 1,
+      "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+      "v3_median_seconds": 4.493422063067555,
+      "candidate_median_seconds": 3.572485086042434,
+      "saving_pct": 20.495225333816492,
+      "v3_samples_seconds": [
+        4.498201183974743,
+        4.490788302849978,
+        4.493422063067555
+      ],
+      "candidate_samples_seconds": [
+        3.572485086042434,
+        3.5709134391508996,
+        3.5730024371296167
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098",
+          "candidate_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc",
+          "candidate_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      ]
+    },
+    {
+      "step": 25,
+      "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+      "v3_median_seconds": 4.493407690431923,
+      "candidate_median_seconds": 3.5728752338327467,
+      "saving_pct": 20.48628835881774,
+      "v3_samples_seconds": [
+        4.497529316693544,
+        4.491383489686996,
+        4.493407690431923
+      ],
+      "candidate_samples_seconds": [
+        3.5728752338327467,
+        3.5724674416705966,
+        3.5729954442940652
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779",
+          "candidate_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04",
+          "candidate_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+      "v3_median_seconds": 4.497161844279617,
+      "candidate_median_seconds": 3.573412586003542,
+      "saving_pct": 20.540716350937704,
+      "v3_samples_seconds": [
+        4.497161844279617,
+        4.502244845032692,
+        4.496416661888361
+      ],
+      "candidate_samples_seconds": [
+        3.573412586003542,
+        3.573713927064091,
+        3.572833423037082
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79",
+          "candidate_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "finite": true,
+          "exact": true,
+          "v3_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2",
+          "candidate_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      ]
+    }
+  ]
+}
