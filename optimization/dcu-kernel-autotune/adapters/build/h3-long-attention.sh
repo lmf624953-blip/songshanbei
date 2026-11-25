@@ -10,5 +10,7 @@ else
   source "$SOURCE_ROOT/flags.conf"
   H3_AOT_SAVE_IR=1 python -u "$SOURCE_ROOT/optimization/adaln/build-attention-aot.py" \
     "$install_dir/attention" --fp32-scale --aligned-strides --query-block "${AOT_QUERY_BLOCK:-32}" --key-block 32 \
-    --warps "${AOT_WARPS:-2}" --stages "${AOT_STAGES:-1}" --kpack 2 --waves-per-eu "$WAVES_PER_EU" --schedule-hint "$SCHEDULE_HINT"
+    --warps "${AOT_WARPS:-2}" --stages "${AOT_STAGES:-1}" --kpack "${AOT_KPACK:-2}" \
+    --matrix-instr-nonkdim "${AOT_MATRIX_INSTR_NONKDIM:-0}" \
+    --waves-per-eu "$WAVES_PER_EU" --schedule-hint "$SCHEDULE_HINT"
 fi

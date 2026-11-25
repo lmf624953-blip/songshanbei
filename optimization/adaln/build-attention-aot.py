@@ -25,16 +25,16 @@ def main():
     parser.add_argument("--matrix-instr-nonkdim", default=0, type=int, choices=(0, 16, 32))
     parser.add_argument("--kpack", default=1, type=int, choices=(1, 2))
     parser.add_argument("--optimize-long-attention", action="store_true",
-                        help="Hoist read-only Q and swizzle PV LDS for the validated gfx936 32x32 preset")
+                        help="Hoist read-only Q and swizzle PV LDS for the validated gfx936 Q32/2-warp or Q64/4-warp preset")
     args = parser.parse_args()
     if args.fp16_pv and not args.fp32_scale:
         parser.error("--fp16-pv requires --fp32-scale")
     if args.optimize_long_attention and not (
             args.fp32_scale and not args.fp16_pv and args.aligned_strides
-            and args.query_block == args.key_block == 32 and args.warps == 2
+            and args.key_block == 32 and (args.query_block, args.warps) in ((32, 2), (64, 4))
             and args.stages == 1 and args.kpack == 2 and args.matrix_instr_nonkdim == 0):
-        parser.error("--optimize-long-attention requires the BF16 PV, FP32 scale, aligned 32x32, "
-                     "2-warp, 1-stage, kpack=2, matrix-instr-nonkdim=0 preset")
+        parser.error("--optimize-long-attention requires BF16 PV, FP32 scale, aligned K32, "
+                     "Q32/2-warps or Q64/4-warps, 1-stage, kpack=2, matrix-instr-nonkdim=0")
     build = args.destination.resolve()
     build.mkdir()
     arrangement, application, tensors = definition(head_dim=128, dtype=nt.bfloat16, causal=False)
@@ -76,7 +76,8 @@ def main():
                                    runtime, warps, block=1, allow_shared=True,
                                    aligned_scalars=aligned if args.aligned_strides else (), num_stages=args.stages,
                                    matrix_instr_nonkdim=args.matrix_instr_nonkdim, kpack=args.kpack,
-                                   attention_lds_swizzle=args.optimize_long_attention)
+                                   attention_lds_swizzle=args.optimize_long_attention,
+                                   attention_query_block=args.query_block)
     host = compile_host(build / "dense-attention-aot.so", ("attention_aot_host.cc",),
                         defines=(("H3_ATTENTION_QUERY_BLOCK", args.query_block),))
     record = {"source": str(source), "hsaco_sha256": digest, "warps": warps,
@@ -90,9 +91,9 @@ def main():
     record["kpack"] = args.kpack
     record["optimize_long_attention"] = args.optimize_long_attention
     if args.optimize_long_attention:
-        from attention_codegen import LONG_ATTENTION_LDS_SWIZZLE
+        from attention_codegen import LONG_ATTENTION_LDS_SWIZZLES
         record["codegen_passes"] = ["readonly_query_licm", "pv_lds_swizzle"]
-        record["pv_lds_swizzle"] = LONG_ATTENTION_LDS_SWIZZLE
+        record["pv_lds_swizzle"] = LONG_ATTENTION_LDS_SWIZZLES[args.query_block]
         record["codegen_sha256"] = hashlib.sha256(
             Path(__file__).with_name("attention_codegen.py").read_bytes()).hexdigest()
         record["generated_source_sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()

@@ -1,0 +1,41 @@
+[
+  {
+    "round": "baseline",
+    "sequence": 27570,
+    "samples": 2,
+    "TCC_HIT": 757194289.0,
+    "TCC_MISS": 240651972.0,
+    "L2_hit_pct": 75.88286077668631,
+    "SQ_WAIT_INST_LDS": 6182680661.5,
+    "SQ_INSTS_LDS": 1081872064.0,
+    "SQ_LDS_BANK_CONFLICT": 2663069696.0,
+    "SQ_INSTS_VMEM_RD": 124777086.0,
+    "GRBM_GUI_ACTIVE": 90274531.0
+  },
+  {
+    "round": "round_019",
+    "sequence": 27570,
+    "samples": 2,
+    "TCC_HIT": 567591233.0,
+    "TCC_MISS": 96192757.5,
+    "L2_hit_pct": 85.5084245964501,
+    "SQ_WAIT_INST_LDS": 1508597271.0,
+    "SQ_INSTS_LDS": 998747680.0,
+    "SQ_LDS_BANK_CONFLICT": 166441856.0,
+    "SQ_INSTS_VMEM_RD": 83232975.0,
+    "GRBM_GUI_ACTIVE": 73545377.0
+  },
+  {
+    "round": "round_025",
+    "sequence": 27570,
+    "samples": 2,
+    "TCC_HIT": 326972160.5,
+    "TCC_MISS": 7624804.0,
+    "L2_hit_pct": 97.72119749759415,
+    "SQ_WAIT_INST_LDS": 2925036329.5,
+    "SQ_INSTS_LDS": 957137216.0,
+    "SQ_LDS_BANK_CONFLICT": 166441856.0,
+    "SQ_INSTS_VMEM_RD": 41640613.0,
+    "GRBM_GUI_ACTIVE": 64539274.0
+  }
+]

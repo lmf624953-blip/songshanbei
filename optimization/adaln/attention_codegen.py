@@ -9,6 +9,13 @@ LONG_ATTENTION_LDS_SWIZZLE = {
     "P": {"vec": 8, "perPhase": 2, "maxPhase": 4, "order": [0, 1]},
     "V": {"vec": 8, "perPhase": 1, "maxPhase": 16, "order": [1, 0]},
 }
+LONG_ATTENTION_LDS_SWIZZLES = {
+    32: LONG_ATTENTION_LDS_SWIZZLE,
+    64: {
+        "P": {"vec": 8, "perPhase": 2, "maxPhase": 8, "order": [0, 1]},
+        "V": {"vec": 8, "perPhase": 1, "maxPhase": 16, "order": [1, 0]},
+    },
+}
 
 
 def hoist_readonly_query(source):
@@ -65,11 +72,13 @@ def hoist_readonly_query(source):
     source.write_text(ast.unparse(ast.fix_missing_locations(tree)) + "\n")
 
 
-def swizzle_attention_pv(compiled, output, target, options):
+def swizzle_attention_pv(compiled, output, target, options, *, query_block=32):
     """变更九齿输出的共享内存布局，保留点积与 softmax 的计算。"""
     text = compiled.asm["ttgir"]
-    for label, alias, shape in (("P", "#shared2", "32x32"), ("V", "#shared3", "32x128")):
-        config = LONG_ATTENTION_LDS_SWIZZLE[label]
+    if query_block not in LONG_ATTENTION_LDS_SWIZZLES:
+        raise ValueError(f"未经验证的 query 分块：{query_block}")
+    for label, alias, shape in (("P", "#shared2", f"{query_block}x32"), ("V", "#shared3", "32x128")):
+        config = LONG_ATTENTION_LDS_SWIZZLES[query_block][label]
         order = config["order"]
         original = (f"{alias} = #ttg.swizzled_shared<{{vec = 1, perPhase = 1, "
                     f"maxPhase = 1, order = {order}}}>")

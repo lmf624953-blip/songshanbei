@@ -99,7 +99,7 @@ mkdir "$trace"
 
 `adaln/attention_codegen.py` 为九齿生成代码增加两个可选变换，将循环不变的只读 Q 加载提升到 KV 循环前，并为 PV 的 LDS 暂存加入 swizzle。模型计算继续由九齿表达并经其编译链生成，变换保留点积、softmax、精度及完整 KV 遍历。
 
-新开关默认关闭。它只接受已经测量的 BF16 PV、FP32 scale、aligned stride、32×32、2 warps、1 stage、`kpack=2`、`matrix_instr_nonkdim=0` 组合；其他参数组合会在创建产物目录前退出。生成代码中不能确认循环依赖或 LDS 布局时构建失败。短注意力保持单独构建。
+新开关默认关闭。它只接受已经测量的 BF16 PV、FP32 scale、aligned stride、K32、Q32/2 warps 或 Q64/4 warps、1 stage、`kpack=2`、`matrix_instr_nonkdim=0` 组合；其他参数组合会在创建产物目录前退出。生成代码中不能确认循环依赖或 LDS 布局时构建失败。短注意力保持单独构建。
 
 仅重建长注意力时使用新的输出路径。
 
@@ -119,3 +119,7 @@ mkdir "$trace"
 本机自动调优目录为 `/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune`。第 19 轮在 27570、22016 token 上分别约为 49.0、31.4 ms，同卡配对节省约 19%。27570 token 的全局读取指令减少 33.29%、LDS bank conflict 原始计数减少 93.75%，180 VGPR、8192 B LDS、0 B Scratch。该结果是单算子计时，完整生成收益单独验收。
 
 集成源码重建后，设备可加载区段与第 19 轮相同；关闭新开关后与正式 v3 相同，两侧主机库均文件一致。15 个短长度和分块边界的普通与放大 Q/K 输入检查均逐位一致。结果保存在自动调优目录的 `validated-build/`，真实八卡回放保存在 `validation/round_019/`。`selected-best.env` 的更新以完整规格、质量及正式计时通过为准。
+
+第 25 轮在相同计算上扩大到 Q64/K32、4 warps，P 的 LDS 布局使用 `vec=8, perPhase=2, maxPhase=8`。单算子约 43.026 / 28.047 ms，176 VGPR、16384 B LDS、0 B Scratch；真实八卡三个去噪时刻由约 4.49 s 降到 3.61 s，合计节省 19.60%，video/audio 输出哈希均与同轮 v3 一致。
+
+Q64 构建时将上例改为 `--query-block 64 --warps 4`；全量构建使用 `--long-attention-q64`。集成重建的加载区段、ELF 映射和主机库与第 25 轮一致，15 个边界长度检查全部通过。普通公开 A 已通过本地检查，成片哈希与已验收 v3 完全一致；正式默认在稳态和多用例回归完成前仍为 v3。详见 [实测报告](长注意力编译优化.md)。

@@ -75,4 +75,10 @@ cp -a candidates/long-attention-lds/source_delta/. rounds/h3-long-attention/roun
 
 `adapters/stage-h3-weights.py SOURCE /tmp/新目录 --manifest work/weights.json` 可将完整模型复制到节点本地盘并逐文件核对 SHA-256，拒绝覆盖已有目标且检查剩余空间。只用于减少后续加载等待，正式推理参数及计时口径不受此步骤影响。
 
-仓库内冻结实测与证明见 [长注意力实测](docs/H3长注意力实测.md) 和 [按长度对照](docs/按长度对照.md)。
+## Q64 的真实回放与后续搜索
+
+第 25 轮保留 P 的 `vec=8, perPhase=2, maxPhase=8`，VGPR 为 176，两个生产长度为 43.026 / 28.047 ms。真实八卡 Transformer 三个阶段中位数约由 4.49 s 降至 3.61 s，合计节省 19.60%，video/audio 哈希均与同轮 v3 一致。集成重建与实验产物的加载区段、ELF 映射和主机库一致，15 个边界长度全部通过。普通公开 A 已通过本地检查，SSIM 93.832013%，成片哈希与已验收 v3 一致；正式默认配置在稳态和多用例回归前尚未切换。
+
+冻结增量位于 `candidates/long-attention-q64/source_delta`。完整实验目录在本机 `rounds/h3-long-attention`；第 26–28 轮测试了提前 LSE、提前 V 和 Q128，均未胜出。第 29 轮 MFMA32 未进入当前 gfx936 的预期 BF16 路径，被布局检查拒绝；第 30–31 轮扩大 PV kWidth 或修改 MFMA warp 分布造成浮点差异且更慢，在数值检查后停止。第 32–36 轮继续检查流水线、kpack、调度及 QK 的 LDS 暂存。
+
+仓库内冻结证据见 [实测报告](docs/H3长注意力实测.md) 与 [逐长度对照](docs/按长度对照.md)。

@@ -6,12 +6,15 @@ out=$(realpath -m -- "${1:?Provide a new build directory}")
 variant=dense
 deterministic=0
 attention_options=()
+attention_query_block=32
+attention_warps=2
 for option in "${@:2}"; do
   case "$option" in
     --short-attention) variant=short-attention ;;
     --deterministic-keyframe) deterministic=1 ;;
     --long-attention-lds) attention_options=(--optimize-long-attention) ;;
-    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--long-attention-lds]\n' >&2; exit 2 ;;
+    --long-attention-q64) attention_options=(--optimize-long-attention); attention_query_block=64; attention_warps=4 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--long-attention-lds | --long-attention-q64]\n' >&2; exit 2 ;;
   esac
 done
 mkdir -- "$out"
@@ -23,7 +26,8 @@ python "$source_dir/build-aot.py" "$out/adaln"
 python "$source_dir/build-indexed.py" "$out/indexed" --tile 2048 --warps 4
 python "$source_dir/build-qk-norm.py" "$out/qknorm" --cub-order --warps 2
 python "$source_dir/build-attention-aot.py" "$out/attention" \
-  --fp32-scale --aligned-strides --query-block 32 --key-block 32 --warps 2 --stages 1 --kpack 2 "${attention_options[@]}"
+  --fp32-scale --aligned-strides --query-block "$attention_query_block" --key-block 32 \
+  --warps "$attention_warps" --stages 1 --kpack 2 "${attention_options[@]}"
 if [[ "$variant" == short-attention ]]; then
   python "$source_dir/build-attention-aot.py" "$out/short-attention" --fp32-scale --aligned-strides
 fi
