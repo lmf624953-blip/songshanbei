@@ -1,0 +1,9 @@
+{
+  "source_sha256": {
+    "bench_fused_aot.py": "d77fe49285d9d36fc9329a8af989e6ea95a633c886639606734815c14182be96",
+    "fused_norm.py": "1304ee225ddba09717fcc6930f92986a62ab80a77f76bcb442e6f185acef0012",
+    "kernel.py": "86553f42e533abe67feaa775d5d39b454bf3f34f81132d27aaec2fa4c2941208",
+    "bench.py": "bbbeca8f75e7bb4fb35fad8e94c36670b947a47a7aba194d39a7891c7783b650"
+  },
+  "note": "本次运行结束后冻结；运行期间未编辑这些文件。九齿动态N前端共享符号，微测编译图像仍分别特化两个实际N。"
+}
