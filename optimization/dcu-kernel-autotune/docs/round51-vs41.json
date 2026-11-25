@@ -1,0 +1,111 @@
+{
+  "verdict": "PASS",
+  "hostname": "f12r1n15",
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q64-full-load-retry1",
+  "candidate": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/rounds/h3-long-attention/round_051/install/attention",
+  "binaries": {
+    "reference": {
+      "dense-attention-aot.so": "cf5eeb743412b209e556341f1e8e7a8fdceb6df7785a7c7b8fd9fa53f96d0ad5",
+      "dense-attention-aot.hsaco": "1ab150609fdd094d587cdddb49799977a9b0cd82b416c74b18351c66c74135b0"
+    },
+    "candidate": {
+      "dense-attention-aot.so": "cf5eeb743412b209e556341f1e8e7a8fdceb6df7785a7c7b8fd9fa53f96d0ad5",
+      "dense-attention-aot.hsaco": "a1a6f3c966db26864cf54b6edc86fed0e024a1f808bd8160639540c48714695c"
+    }
+  },
+  "iterations": 11,
+  "cases": [
+    {
+      "sequence": 27570,
+      "reference_ms": 40.88703155517578,
+      "candidate_ms": 40.42079162597656,
+      "paired_speedup_pct": 1.1315067350769592,
+      "samples_ms": [
+        [
+          40.880470275878906,
+          40.92799377441406,
+          40.88239288330078,
+          40.87759017944336,
+          40.89071273803711,
+          40.90239334106445,
+          40.91263198852539,
+          40.883033752441406,
+          40.88703155517578,
+          40.89439010620117,
+          40.870872497558594
+        ],
+        [
+          40.42047119140625,
+          40.49951171875,
+          40.42879104614258,
+          40.40127182006836,
+          40.40159225463867,
+          40.42079162597656,
+          40.41790771484375,
+          40.397586822509766,
+          40.448307037353516,
+          40.43166732788086,
+          40.44974899291992
+        ]
+      ],
+      "normal": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "stress": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      }
+    },
+    {
+      "sequence": 22016,
+      "reference_ms": 26.63295555114746,
+      "candidate_ms": 26.26463508605957,
+      "paired_speedup_pct": 1.4466239056431962,
+      "samples_ms": [
+        [
+          26.680952072143555,
+          26.631675720214844,
+          26.62751579284668,
+          26.63295555114746,
+          26.64959144592285,
+          26.627836227416992,
+          26.64639663696289,
+          26.639511108398438,
+          26.615192413330078,
+          26.647356033325195,
+          26.622556686401367
+        ],
+        [
+          26.26463508605957,
+          26.319835662841797,
+          26.213916778564453,
+          26.247676849365234,
+          26.254871368408203,
+          26.301591873168945,
+          26.306716918945312,
+          26.212631225585938,
+          26.313756942749023,
+          26.231996536254883,
+          26.275035858154297
+        ]
+      ],
+      "normal": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "stress": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      }
+    }
+  ]
+}

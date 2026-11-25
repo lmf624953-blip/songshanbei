@@ -1,0 +1,640 @@
+{
+  "scope": "第41轮已通过原默认A的配置；八卡真实1/25/49输入诊断，profile-once，每个窗口同步后drain2s；计时不替代无profiler正式计时",
+  "phases": {
+    "compute.h3_transformer.1": {
+      "wall_ms_with_profiler": 3506.761542,
+      "all_device_idle_ms": 2.952992,
+      "all_device_internal_idle_ms": 2.18331,
+      "device0_grouped_ms": {
+        "注意力AOT（长短同名）": 2043.155648,
+        "AllReduce": 564.636772,
+        "GEMM": 445.1969779999999,
+        "宽RMSNorm": 141.211311,
+        "索引门控": 69.334059,
+        "索引调制": 65.384138,
+        "Q/K RMSNorm": 64.716937,
+        "SwiGLU": 53.222384,
+        "MRoPE": 42.056788,
+        "其他": 15.031995999999998
+      },
+      "devices": {
+        "0": {
+          "device_activity_pct": 99.91154234575555,
+          "busy_ms": 3503.659543,
+          "compute_busy_ms": 2937.169491,
+          "communication_busy_ms": 564.636772,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 9,
+            "HIPOPS": 1125,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 3.101999,
+          "internal_idle_ms": 2.332317,
+          "leading_idle_ms": 0.334897,
+          "trailing_idle_ms": 0.434785,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 16,
+            "0.1": 5,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "1": {
+          "device_activity_pct": 99.84053529351725,
+          "busy_ms": 3501.169495,
+          "compute_busy_ms": 2936.610722,
+          "communication_busy_ms": 562.415253,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.592047,
+          "internal_idle_ms": 2.371132,
+          "leading_idle_ms": 2.200816,
+          "trailing_idle_ms": 1.020099,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 9,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "2": {
+          "device_activity_pct": 99.84645608389646,
+          "busy_ms": 3501.377123,
+          "compute_busy_ms": 2938.014286,
+          "communication_busy_ms": 561.261398,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.384419,
+          "internal_idle_ms": 2.264067,
+          "leading_idle_ms": 2.118096,
+          "trailing_idle_ms": 1.002256,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 9,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "3": {
+          "device_activity_pct": 99.84762687921595,
+          "busy_ms": 3501.41818,
+          "compute_busy_ms": 2937.646105,
+          "communication_busy_ms": 561.650636,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.343362,
+          "internal_idle_ms": 2.163134,
+          "leading_idle_ms": 2.150256,
+          "trailing_idle_ms": 1.029972,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 9,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "4": {
+          "device_activity_pct": 99.83741911356915,
+          "busy_ms": 3501.060218,
+          "compute_busy_ms": 2938.662407,
+          "communication_busy_ms": 560.315091,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.701324,
+          "internal_idle_ms": 2.194143,
+          "leading_idle_ms": 2.458256,
+          "trailing_idle_ms": 1.048925,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "5": {
+          "device_activity_pct": 99.83724302517744,
+          "busy_ms": 3501.054043,
+          "compute_busy_ms": 2937.56704,
+          "communication_busy_ms": 561.418918,
+          "compute_communication_overlap_ms": 0.000394,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.707499,
+          "internal_idle_ms": 2.085945,
+          "leading_idle_ms": 2.542256,
+          "trailing_idle_ms": 1.079298,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 9,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "6": {
+          "device_activity_pct": 99.83867591416627,
+          "busy_ms": 3501.104291,
+          "compute_busy_ms": 2937.838351,
+          "communication_busy_ms": 561.178742,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.657251,
+          "internal_idle_ms": 2.236024,
+          "leading_idle_ms": 2.342736,
+          "trailing_idle_ms": 1.078491,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 12,
+            "0.1": 9,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "7": {
+          "device_activity_pct": 99.83826456598001,
+          "busy_ms": 3501.089866,
+          "compute_busy_ms": 2938.14819,
+          "communication_busy_ms": 560.880878,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.671676,
+          "internal_idle_ms": 2.177602,
+          "leading_idle_ms": 2.348016,
+          "trailing_idle_ms": 1.146058,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 9,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        }
+      }
+    },
+    "compute.h3_transformer.25": {
+      "wall_ms_with_profiler": 3506.534245,
+      "all_device_idle_ms": 1.690017,
+      "all_device_internal_idle_ms": 1.071998,
+      "device0_grouped_ms": {
+        "注意力AOT（长短同名）": 2043.175797,
+        "AllReduce": 564.886852,
+        "GEMM": 445.893449,
+        "宽RMSNorm": 141.212115,
+        "索引门控": 69.290694,
+        "索引调制": 65.403019,
+        "Q/K RMSNorm": 64.717259,
+        "SwiGLU": 53.225102,
+        "MRoPE": 42.042066,
+        "其他": 14.968315000000004
+      },
+      "devices": {
+        "0": {
+          "device_activity_pct": 99.95095781532856,
+          "busy_ms": 3504.814564,
+          "compute_busy_ms": 2938.097793,
+          "communication_busy_ms": 564.886852,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 6,
+            "HIPOPS": 1125,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 1.719681,
+          "internal_idle_ms": 1.101662,
+          "leading_idle_ms": 0.230566,
+          "trailing_idle_ms": 0.387453,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 15,
+            "0.1": 3,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "1": {
+          "device_activity_pct": 99.87829592692313,
+          "busy_ms": 3502.26665,
+          "compute_busy_ms": 2938.42883,
+          "communication_busy_ms": 561.692701,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.267595,
+          "internal_idle_ms": 2.417012,
+          "leading_idle_ms": 1.078406,
+          "trailing_idle_ms": 0.772177,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "2": {
+          "device_activity_pct": 99.87517512466215,
+          "busy_ms": 3502.157218,
+          "compute_busy_ms": 2939.018403,
+          "communication_busy_ms": 561.050323,
+          "compute_communication_overlap_ms": 0.000148,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.377027,
+          "internal_idle_ms": 2.425102,
+          "leading_idle_ms": 1.114246,
+          "trailing_idle_ms": 0.837679,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 9,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "3": {
+          "device_activity_pct": 99.89604906881495,
+          "busy_ms": 3502.88917,
+          "compute_busy_ms": 2939.853297,
+          "communication_busy_ms": 560.978472,
+          "compute_communication_overlap_ms": 3.8e-05,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 3.645075,
+          "internal_idle_ms": 1.717094,
+          "leading_idle_ms": 1.145766,
+          "trailing_idle_ms": 0.782215,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "4": {
+          "device_activity_pct": 99.87850830186316,
+          "busy_ms": 3502.274097,
+          "compute_busy_ms": 2938.81353,
+          "communication_busy_ms": 561.355889,
+          "compute_communication_overlap_ms": 0.000281,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.260148,
+          "internal_idle_ms": 1.694854,
+          "leading_idle_ms": 1.786406,
+          "trailing_idle_ms": 0.778888,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "5": {
+          "device_activity_pct": 99.87727104031177,
+          "busy_ms": 3502.230712,
+          "compute_busy_ms": 2938.713724,
+          "communication_busy_ms": 561.40435,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.303533,
+          "internal_idle_ms": 2.254515,
+          "leading_idle_ms": 1.192486,
+          "trailing_idle_ms": 0.856532,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 10,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "6": {
+          "device_activity_pct": 99.87748478412479,
+          "busy_ms": 3502.238207,
+          "compute_busy_ms": 2939.472094,
+          "communication_busy_ms": 560.644493,
+          "compute_communication_overlap_ms": 0.000618,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.296038,
+          "internal_idle_ms": 2.235195,
+          "leading_idle_ms": 1.240166,
+          "trailing_idle_ms": 0.820677,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "7": {
+          "device_activity_pct": 99.87764365894564,
+          "busy_ms": 3502.243778,
+          "compute_busy_ms": 2942.103492,
+          "communication_busy_ms": 558.042847,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.290467,
+          "internal_idle_ms": 2.063168,
+          "leading_idle_ms": 1.445286,
+          "trailing_idle_ms": 0.782013,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        }
+      }
+    },
+    "compute.h3_transformer.49": {
+      "wall_ms_with_profiler": 3508.529414,
+      "all_device_idle_ms": 2.501151,
+      "all_device_internal_idle_ms": 1.758171,
+      "device0_grouped_ms": {
+        "注意力AOT（长短同名）": 2043.310339,
+        "AllReduce": 565.413566,
+        "GEMM": 446.117605,
+        "宽RMSNorm": 141.21484,
+        "索引门控": 69.428776,
+        "索引调制": 65.399173,
+        "Q/K RMSNorm": 64.719977,
+        "SwiGLU": 53.226702,
+        "MRoPE": 42.058231,
+        "其他": 15.001431
+      },
+      "devices": {
+        "0": {
+          "device_activity_pct": 99.92478592342792,
+          "busy_ms": 3505.890506,
+          "compute_busy_ms": 2938.647501,
+          "communication_busy_ms": 565.413566,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 6,
+            "HIPOPS": 1125,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 2.638908,
+          "internal_idle_ms": 1.895928,
+          "leading_idle_ms": 0.314265,
+          "trailing_idle_ms": 0.428715,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 14,
+            "0.1": 4,
+            "0.5": 2,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "1": {
+          "device_activity_pct": 99.85720179571508,
+          "busy_ms": 3503.519297,
+          "compute_busy_ms": 2938.714896,
+          "communication_busy_ms": 562.73924,
+          "compute_communication_overlap_ms": 0.001878,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.010117,
+          "internal_idle_ms": 2.181183,
+          "leading_idle_ms": 1.689945,
+          "trailing_idle_ms": 1.138989,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "2": {
+          "device_activity_pct": 99.8597717898454,
+          "busy_ms": 3503.609466,
+          "compute_busy_ms": 2939.904752,
+          "communication_busy_ms": 561.639595,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.919948,
+          "internal_idle_ms": 2.125197,
+          "leading_idle_ms": 1.721625,
+          "trailing_idle_ms": 1.073126,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "3": {
+          "device_activity_pct": 99.85462618669669,
+          "busy_ms": 3503.428931,
+          "compute_busy_ms": 2939.724379,
+          "communication_busy_ms": 561.593352,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.100483,
+          "internal_idle_ms": 2.265126,
+          "leading_idle_ms": 1.647865,
+          "trailing_idle_ms": 1.187492,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "4": {
+          "device_activity_pct": 99.86049063803003,
+          "busy_ms": 3503.634687,
+          "compute_busy_ms": 2939.297757,
+          "communication_busy_ms": 562.277966,
+          "compute_communication_overlap_ms": 0.000395,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 4.894727,
+          "internal_idle_ms": 1.809799,
+          "leading_idle_ms": 1.953784,
+          "trailing_idle_ms": 1.131144,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "5": {
+          "device_activity_pct": 99.85379381516566,
+          "busy_ms": 3503.399727,
+          "compute_busy_ms": 2938.510583,
+          "communication_busy_ms": 562.804821,
+          "compute_communication_overlap_ms": 0.000156,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.129687,
+          "internal_idle_ms": 2.163226,
+          "leading_idle_ms": 1.812824,
+          "trailing_idle_ms": 1.153637,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "6": {
+          "device_activity_pct": 99.85610176218405,
+          "busy_ms": 3503.480702,
+          "compute_busy_ms": 2940.105294,
+          "communication_busy_ms": 561.268486,
+          "compute_communication_overlap_ms": 0.000276,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.048712,
+          "internal_idle_ms": 2.175547,
+          "leading_idle_ms": 1.752984,
+          "trailing_idle_ms": 1.120181,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        },
+        "7": {
+          "device_activity_pct": 99.8570017973918,
+          "busy_ms": 3503.51228,
+          "compute_busy_ms": 2940.436357,
+          "communication_busy_ms": 560.937683,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 15,
+            "HIPOPS": 1112,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.017134,
+          "internal_idle_ms": 2.271841,
+          "leading_idle_ms": 1.596825,
+          "trailing_idle_ms": 1.148468,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          }
+        }
+      }
+    }
+  },
+  "raw_source_manifest_sha256": "08399c2586289f4884fdbcc6042e2a44b68cba2a731d196aa3aa49dc63a2493d",
+  "raw_stream_json_bytes": 45300939
+}
