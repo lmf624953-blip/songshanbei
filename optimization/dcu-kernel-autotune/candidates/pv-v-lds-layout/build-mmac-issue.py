@@ -184,7 +184,37 @@ def elide_v_operations(lines, mode):
     return dict(stage="elide_v_operations", mode=mode)
 
 
-def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale, v_prefetch, kv_zero, elide_v):
+def join_kv_loads(lines, wait):
+    k_miss = lines.index("\ts_branch .LBB0_16", lines.index(".LBB0_14:"))
+    k_join = lines.index(".LBB0_16:", k_miss)
+    k_wait = lines.index("\ts_waitcnt vmcnt(0) lgkmcnt(0)", k_join)
+    v_start = lines.index("\ts_andn2_b64 vcc, exec, s[26:27]", lines.index(".Ltmp0:"))
+    v_load = lines.index(".Lh3_v_load:", v_start)
+    v_join = lines.index(".Lh3_v_loaded:", v_load)
+    v_copy = lines.index(".Ltmp1:", v_join) + 1
+    assert sum(line.startswith("\tglobal_load_dwordx4 ") for line in lines[k_miss:k_join]) == 2
+    old_registers = re.compile(r"\bv\[(17[5-9]|18[0-2]):(17[5-9]|18[0-2])\]")
+
+    def stage_v(match):
+        return f"v[{int(match[1]) + 23}:{int(match[2]) + 23}]"
+
+    new_load = [old_registers.sub(stage_v, line) for line in lines[v_load + 1:v_join]]
+    assert sum(line.startswith("\tglobal_load_dwordx2 ") for line in new_load) == 4
+    assert all(not re.search(r"\bv(?:19[89]|20[0-5])\b|\bv\[(?:19[89]|20[0-5]):", line)
+               for line in lines[k_join:v_copy])
+    copies = [f"\tv_mov_b64_e32 v[{i}:{i + 1}], v[{i + 23}:{i + 24}]"
+              for i in range(175, 183, 2)]
+    lines[v_copy:v_copy] = ["\ts_waitcnt vmcnt(0)", *copies]
+    del lines[v_start:v_join + 1]
+    # All six memory instructions are global loads, with the two K loads first.
+    lines[k_wait] = f"\ts_waitcnt vmcnt({wait}) lgkmcnt(0)"
+    lines[k_join:k_join] = new_load
+    lines[k_miss:k_miss] = [f"\tv_mov_b64_e32 v[{i}:{i + 1}], 0" for i in range(198, 206, 2)]
+    return dict(stage="joint_kv_load", k_loads=2, v_loads=4, k_vmcnt=wait, copy_instructions=4)
+
+
+def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale, v_prefetch, kv_zero, elide_v,
+              joint_kv_wait):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', assembly, flags=re.M)
     if digest(normalized.encode()) != REFERENCE:
         raise ValueError("Expected the validated four-row Q128 DPP assembly")
@@ -217,6 +247,8 @@ def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale, v_
         changes.append(change_kv_zero(lines, kv_zero, v_prefetch))
     if elide_v:
         changes.append(elide_v_operations(lines, elide_v))
+    if joint_kv_wait is not None:
+        changes.append(join_kv_loads(lines, joint_kv_wait))
     return "\n".join(lines) + "\n", list(reversed(changes))
 
 
@@ -232,14 +264,19 @@ def main():
     cli.add_argument("--prefetch-v", choices=("copy", "direct"))
     cli.add_argument("--kv-zero", choices=("packed", "miss"))
     cli.add_argument("--elide-v", choices=("guard", "pack", "both"))
+    cli.add_argument("--joint-kv-wait", type=int, choices=(0, 2, 4))
     args = cli.parse_args()
     if args.elide_v and args.prefetch_v != "direct":
         cli.error("--elide-v requires --prefetch-v direct")
+    if args.joint_kv_wait is not None and (
+        args.prefetch_v != "direct" or args.kv_zero != "miss" or args.elide_v in ("guard", "both")
+    ):
+        cli.error("--joint-kv-wait requires direct V prefetch and miss-only zeroing")
     asm_name, image_name = PACKED + ".amdgcn", PACKED + ".hsaco"
     source = (args.reference / asm_name).read_text()
     assembly, changes = transform(source, args.qk_wait_width, args.pv_wait_width,
                                   args.pv_issue_ready, args.pack_pv_rescale, args.pack_qk_scale,
-                                  args.prefetch_v, args.kv_zero, args.elide_v)
+                                  args.prefetch_v, args.kv_zero, args.elide_v, args.joint_kv_wait)
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
     options = backend.parse_options(dict(num_warps=4, num_stages=1, kpack=2))
@@ -257,6 +294,7 @@ def main():
                         v_prefetch=args.prefetch_v,
                         kv_zero=args.kv_zero,
                         elide_v=args.elide_v,
+                        joint_kv_wait=args.joint_kv_wait,
                         reference_packed_sha256=digest(original_image))
     )
     args.output.mkdir()

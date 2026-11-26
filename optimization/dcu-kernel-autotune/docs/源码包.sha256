@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-90aae886feb70a75a8d668d45b6ee3e1fffa27ffa6cb2d5237789a371af22dd8  candidates/pv-v-lds-layout/README.md
+6a28aeabbdd6622902bdbfeac1b639f58aae4d7995068b79092ec392dc9af7bb  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 07daea88808f2f1d293b205e27b6d5204ce5af78d27c01c3e4e14d1510ae9aa2  candidates/pv-v-lds-layout/build-dual-q128.py
@@ -74,7 +74,7 @@ b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
 10080bb8b0a7f58a7874c55047731fd396288b21753215e47e8cf1920c6b9871  candidates/pv-v-lds-layout/build-k-producer.py
 e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-v-lds-layout/build-k-resources.py
-f6aca49b40ef7146758ad8284069a92fd560cf721c198a8899e7dc7dae6be913  candidates/pv-v-lds-layout/build-mmac-issue.py
+fed85aa8635690db4003fe734177798010aa986173e597f8a38218c0a25f0351  candidates/pv-v-lds-layout/build-mmac-issue.py
 3c740f14a5141d06f5b58cd7c71a55b604ffa1afb5e6f5b12a16e2483cc87ae1  candidates/pv-v-lds-layout/build-p-lds-axis.py
 cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-v-lds-layout/build-p-resources.py
 2b12171a926b8f205eb7f170b68eefe1e9d4deb733945fa0c0e3983ba92565e8  candidates/pv-v-lds-layout/build-p-wave-exchange.py
@@ -102,6 +102,7 @@ b8ddf51c3ba19ec23873633c7936c520256ad74e4dac2b8e33628612196eb488  candidates/pv-
 5021df32520a2a9f6cbacba580066663053a0fb93ebec7ddd2802a8e8a1665b1  candidates/pv-v-lds-layout/producer_layout.py
 ce44b3d555c0ddda9cec5898c4a615383c17cd3f8c7e33e8cc68fb80cc82ba15  candidates/pv-v-lds-layout/q_resources.py
 d9e0c64ca42467130352a0d95f7d0275f37f927252a932449683e80f9f2257a4  candidates/pv-v-lds-layout/q_resources_v2.py
+6c6dbbe180212bced86eb8d633dc8bf205d8b771e7a243bd2b54d1631bba83c6  candidates/pv-v-lds-layout/qualify-attention.sh
 a656e7c1e74a932f00a7b429054594275720dcf90e8fff0efe946a08d115e9e6  candidates/pv-v-lds-layout/screen-dual-q128.py
 ec63a65f9ddf5c0564297d6fff094333c46ee2454447a6531ccf6c87a8936111  candidates/pv-v-lds-layout/screen-pv-wide-operand.py
 509ac9e1073f444fdd87b3d0d78ebb48838e32b0b692f543e0dec3fb473b8773  candidates/pv-v-lds-layout/screen.py
@@ -210,6 +211,7 @@ e8b6e921e3b0e5fa8e6bb03a613e8f35a37743b7ea656e88e0531b253c5cc7b2  docs/hsaco-llv
 a573a678d6af2f446aaec0c63ab3f42e3bd245c7a3e8ac307a62774ece87285b  docs/indexed-gate-linear-1218234-failure-analysis.json
 6c24f86f139abb68463c2ffa94952cbc4626dd2d87c045e5b670c041a51835a0  docs/indexed-gate-linear-1218234-guarded-rebuild.json
 8178e7ca6468f4a6d882d05df341862b83a0f575d824e2bee4c1afc4b3e4f48e  docs/indexed-gate-linear-v2-1218234-micro.json
+49ffcbe9dfa23157847a15eb30865cef51ca852e1f22a4b6094dfc223cc2596b  docs/joint-kv-a14r1n11.json
 ab51b6f67eb0122b472910f6fceeda1d7c2a48a02eb92203e16b016e2e93fa06  docs/k-pretranspose-a14r1n11.json
 92094b5f1ca4cd1bbca7f0120888a6b0ce37527b9a7566c893d3f54306e0b08f  docs/k-producer-a14r1n11.json
 6c9edb645899d22c061ffa00b6d3f235cfa842e3cc7ad1a174ac0e5298e7ed91  docs/mmac-issue-a14r1n11.json

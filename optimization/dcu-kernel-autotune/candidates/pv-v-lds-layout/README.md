@@ -186,3 +186,17 @@ python build-mmac-issue.py "$candidate" "$prefetched" \
 11 个候选在 27570/22016 token 的普通与放大输入上逐位一致。直接预取单项节省 0.68%/0.70%，受掩码清零单项节省 1.94%/1.94%。最佳组合节省 6.24%/6.26%，复用 K 加载的比较结果会削弱收益。最佳组合独立重建到相同产物，再做 20 个长度的逐位和哨兵检查。独立 PMC 的 VALU 指令数降低 11.4%，全局读取和 LDS 指令计数持平，硬件分配 220 VGPR、8192 B LDS、0 B scratch。见 [配对计时、独立 PMC 与八卡回放](../../docs/v-prefetch-a14r1n11.json)。
 
 在同一八卡实例回放第 1、25、49 次去噪输入，各取五次无 profiler 同步墙钟计时的中位数。三次分别节省 92.44、93.85、93.87 毫秒，中位数合计节省 3.44%，两侧音视频张量哈希和算子调用计数一致。按 49 次去噪外推为 4.58 秒，占已验收 A 稳态端到端 153.93 秒的 2.97%。本轮按端到端 3% 优先线归档该组合，正式版本沿用四行 DPP。
+
+## K、V 联合发射
+
+`--joint-kv-wait 0|2|4` 让完整块的两条 K 全局读与四条 V 全局读共用原来的掩码分支，先发射 K，再发射 V。V 暂存于 v198–v205，在最大值归约后等待并转入 V 打包已用的寄存器。尾块及每个累加器的 BF16 MMAC 序列保留。`vmcnt(4)` 让 QK 所需的 K 到达后即可继续，V 的等待推迟到实际转存前。
+
+```bash
+python build-mmac-issue.py "$candidate" "$joined" \
+  --joint-kv-wait 4 --elide-v pack --kv-zero miss --prefetch-v direct \
+  --qk-wait-width 2 --pv-wait-width 4 --pack-pv-rescale --pack-qk-scale
+```
+
+`vmcnt(4)` 在 27570/22016 token 的无 profiler 配对相对正式四行 DPP 版节省 7.63%/7.45%，相对上节预取组合节省 1.44%/1.38%。扩大 K 消费前的等待范围至 `vmcnt(2)` 或 `vmcnt(0)` 均慢于上节预取组合。各变体在两种生产长度的普通与放大输入下逐位一致，最佳镜像独立重建逐字节一致，另外 20 个长度及尾部哨兵校验通过。独立 PMC 显示，各版的 LDS 指令、全局读取和 bank conflict 计数相同，最佳版仍分配 220 VGPR、8192 B LDS、0 B scratch。见 [双对照、复建与独立 PMC](../../docs/joint-kv-a14r1n11.json)。
+
+在同一八卡实例回放第 1、25、49 次去噪输入，每侧各取五次无 profiler 同步计时。三次中位数分别节省 110.69、112.10、112.30 毫秒，中位数合计节省 4.11%。两侧音视频张量哈希和算子调用计数一致。按 49 次调用外推，公开 A 端到端预计节省 5.47 秒（3.56%）。使用 `qualify-attention.sh RUN CODE BASE_CONFIG ACCEPTED BUILD` 依次测普通入口与同一进程的三组 A 配对、B/C 和返回 A，并复算规格、哈希与端到端收益。

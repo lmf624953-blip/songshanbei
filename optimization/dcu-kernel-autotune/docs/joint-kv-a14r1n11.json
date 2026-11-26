@@ -1,0 +1,2521 @@
+{
+  "hostname": "a14r1n11",
+  "reference": "attention-q128-softmax-dpp-w4-a14r1n11",
+  "reference_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8",
+  "variants": {
+    "official": [
+      {
+        "variant": "wait-0",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/joint-kv-a14r1n11/builds/wait-0",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 0,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 0,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                29.5535888671875,
+                29.559988021850586,
+                29.561744689941406,
+                29.555028915405273,
+                29.551347732543945,
+                29.556787490844727,
+                29.557588577270508,
+                29.55950355529785,
+                29.55230712890625,
+                29.553428649902344,
+                29.54446792602539
+              ],
+              [
+                28.50238800048828,
+                28.488147735595703,
+                28.51678466796875,
+                28.492624282836914,
+                28.473588943481445,
+                28.466707229614258,
+                28.458383560180664,
+                28.468303680419922,
+                28.506868362426758,
+                28.48558807373047,
+                28.50014877319336
+              ]
+            ],
+            "medians_ms": [
+              29.555028915405273,
+              28.488147735595703
+            ],
+            "paired_gain_percent": 3.613254451190062,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                19.960147857666016,
+                19.97551155090332,
+                19.968311309814453,
+                19.963512420654297,
+                19.967832565307617,
+                19.972152709960938,
+                19.979032516479492,
+                19.975507736206055,
+                19.96910858154297,
+                19.972631454467773,
+                19.961271286010742
+              ],
+              [
+                18.991350173950195,
+                19.0299072265625,
+                19.103351593017578,
+                19.080791473388672,
+                19.02863121032715,
+                19.030391693115234,
+                19.013111114501953,
+                19.109111785888672,
+                19.079830169677734,
+                19.063507080078125,
+                19.10367202758789
+              ]
+            ],
+            "medians_ms": [
+              19.96910858154297,
+              19.063507080078125
+            ],
+            "paired_gain_percent": 4.551850748671793,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "wait-2",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/joint-kv-a14r1n11/builds/wait-2",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 2,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 2,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                29.552467346191406,
+                29.568788528442383,
+                29.561588287353516,
+                29.568147659301758,
+                29.557588577270508,
+                29.565427780151367,
+                29.58382797241211,
+                29.547348022460938,
+                29.552627563476562,
+                29.57166862487793,
+                29.56062889099121
+              ],
+              [
+                28.631507873535156,
+                28.67454719543457,
+                28.650388717651367,
+                28.635988235473633,
+                28.643348693847656,
+                28.67662811279297,
+                28.657108306884766,
+                28.676467895507812,
+                28.65614891052246,
+                28.650388717651367,
+                28.635028839111328
+              ]
+            ],
+            "medians_ms": [
+              29.561588287353516,
+              28.650388717651367
+            ],
+            "paired_gain_percent": 3.093080076653798,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                19.973432540893555,
+                19.971351623535156,
+                19.969432830810547,
+                19.98191261291504,
+                19.981592178344727,
+                19.9809513092041,
+                19.98351287841797,
+                19.974712371826172,
+                19.973751068115234,
+                19.94607162475586,
+                19.969432830810547
+              ],
+              [
+                19.193431854248047,
+                19.044631958007812,
+                19.159992218017578,
+                19.22431182861328,
+                19.168312072753906,
+                19.08527183532715,
+                19.248151779174805,
+                19.238231658935547,
+                19.20783233642578,
+                19.002391815185547,
+                19.012311935424805
+              ]
+            ],
+            "medians_ms": [
+              19.973751068115234,
+              19.168312072753906
+            ],
+            "paired_gain_percent": 4.0533981092547355,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "wait-4",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/joint-kv-a14r1n11/builds/wait-4",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                29.555503845214844,
+                29.555044174194336,
+                29.538387298583984,
+                29.538223266601562,
+                29.55726432800293,
+                29.566068649291992,
+                29.570068359375,
+                29.55630874633789,
+                29.546388626098633,
+                29.559988021850586,
+                29.55470848083496
+              ],
+              [
+                27.292804718017578,
+                27.33392333984375,
+                27.290708541870117,
+                27.315828323364258,
+                27.302383422851562,
+                27.296628952026367,
+                27.313268661499023,
+                27.292308807373047,
+                27.286867141723633,
+                27.335987091064453,
+                27.30206871032715
+              ]
+            ],
+            "medians_ms": [
+              29.555503845214844,
+              27.30206871032715
+            ],
+            "paired_gain_percent": 7.6288552287129825,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                19.985912322998047,
+                19.985748291015625,
+                19.985107421875,
+                19.97279167175293,
+                19.963031768798828,
+                19.9809513092041,
+                19.967191696166992,
+                19.956632614135742,
+                19.977752685546875,
+                19.992952346801758,
+                19.983671188354492
+              ],
+              [
+                18.445911407470703,
+                18.457111358642578,
+                18.486549377441406,
+                18.485109329223633,
+                18.502391815185547,
+                18.463191986083984,
+                18.469432830810547,
+                18.491031646728516,
+                18.520151138305664,
+                18.507671356201172,
+                18.49679183959961
+              ]
+            ],
+            "medians_ms": [
+              19.9809513092041,
+              18.486549377441406
+            ],
+            "paired_gain_percent": 7.448544835288562,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "previous": [
+      {
+        "variant": "wait-0",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/joint-kv-a14r1n11/builds/wait-0",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 0,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 0,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                27.69598388671875,
+                27.704465866088867,
+                27.706703186035156,
+                27.71454429626465,
+                27.687183380126953,
+                27.695823669433594,
+                27.696144104003906,
+                27.700624465942383,
+                27.68414306640625,
+                27.699663162231445,
+                27.706863403320312
+              ],
+              [
+                28.487503051757812,
+                28.472623825073242,
+                28.49390411376953,
+                28.49550437927246,
+                28.478063583374023,
+                28.516624450683594,
+                28.49470329284668,
+                28.502864837646484,
+                28.48574447631836,
+                28.497583389282227,
+                28.49870491027832
+              ]
+            ],
+            "medians_ms": [
+              27.699663162231445,
+              28.49470329284668
+            ],
+            "paired_gain_percent": -2.8579254729465875,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                18.73822784423828,
+                18.729589462280273,
+                18.738229751586914,
+                18.730390548706055,
+                18.707509994506836,
+                18.730390548706055,
+                18.726709365844727,
+                18.73326873779297,
+                18.717748641967773,
+                18.7235107421875,
+                18.74047088623047
+              ],
+              [
+                19.09198570251465,
+                19.0582275390625,
+                19.1318302154541,
+                19.02606964111328,
+                19.04383087158203,
+                18.971187591552734,
+                19.05982780456543,
+                19.07567024230957,
+                19.101587295532227,
+                19.045108795166016,
+                19.026710510253906
+              ]
+            ],
+            "medians_ms": [
+              18.730390548706055,
+              19.0582275390625
+            ],
+            "paired_gain_percent": -1.7788412914031326,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "wait-2",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/joint-kv-a14r1n11/builds/wait-2",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 2,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 2,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                27.70989990234375,
+                27.71150016784668,
+                27.715824127197266,
+                27.70638656616211,
+                27.725746154785156,
+                27.70622444152832,
+                27.725584030151367,
+                27.721263885498047,
+                27.709583282470703,
+                27.715343475341797,
+                27.707664489746094
+              ],
+              [
+                28.684459686279297,
+                28.682540893554688,
+                28.641263961791992,
+                28.621904373168945,
+                28.665264129638672,
+                28.6519832611084,
+                28.679344177246094,
+                28.633424758911133,
+                28.648944854736328,
+                28.633583068847656,
+                28.6503849029541
+              ]
+            ],
+            "medians_ms": [
+              27.71150016784668,
+              28.6503849029541
+            ],
+            "paired_gain_percent": -3.390024175714945,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                18.727190017700195,
+                18.73822784423828,
+                18.74142837524414,
+                18.742870330810547,
+                18.728790283203125,
+                18.724790573120117,
+                18.710229873657227,
+                18.73567008972168,
+                18.74271011352539,
+                18.742069244384766,
+                18.725269317626953
+              ],
+              [
+                19.156309127807617,
+                19.040307998657227,
+                19.210065841674805,
+                19.12974739074707,
+                19.168947219848633,
+                19.204788208007812,
+                19.271028518676758,
+                19.12590789794922,
+                19.168628692626953,
+                19.202707290649414,
+                19.17102813720703
+              ]
+            ],
+            "medians_ms": [
+              18.73567008972168,
+              19.168947219848633
+            ],
+            "paired_gain_percent": -2.3501621300136,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "wait-4",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/joint-kv-a14r1n11/builds/wait-4",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                27.735023498535156,
+                27.71773910522461,
+                27.72702407836914,
+                27.733264923095703,
+                27.705904006958008,
+                27.730224609375,
+                27.716463088989258,
+                27.7420597076416,
+                27.698223114013672,
+                27.718704223632812,
+                27.7183837890625
+              ],
+              [
+                27.313581466674805,
+                27.321741104125977,
+                27.324783325195312,
+                27.32062339782715,
+                27.318544387817383,
+                27.30846405029297,
+                27.31614112854004,
+                27.34526252746582,
+                27.309423446655273,
+                27.34110450744629,
+                27.313583374023438
+              ]
+            ],
+            "medians_ms": [
+              27.718704223632812,
+              27.318544387817383
+            ],
+            "paired_gain_percent": 1.444347206798735,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                18.73583221435547,
+                18.727989196777344,
+                18.727510452270508,
+                18.754230499267578,
+                18.74751091003418,
+                18.72303009033203,
+                18.760629653930664,
+                18.731830596923828,
+                18.731189727783203,
+                18.72079086303711,
+                18.737590789794922
+              ],
+              [
+                18.498550415039062,
+                18.48126983642578,
+                18.48526954650879,
+                18.487510681152344,
+                18.488309860229492,
+                18.459510803222656,
+                18.498870849609375,
+                18.48350715637207,
+                18.472309112548828,
+                18.495189666748047,
+                18.477590560913086
+              ]
+            ],
+            "medians_ms": [
+              18.731830596923828,
+              18.48526954650879
+            ],
+            "paired_gain_percent": 1.382083140455237,
+            "passed": true
+          }
+        ]
+      }
+    ]
+  },
+  "best": "wait-4",
+  "rebuild_byte_exact": true,
+  "rebuilt_sha256": {
+    "dense-attention-fallback.hsaco": "45602e6ad33266ac135be3c3eaff95159ca5ff51be15c78437ba34dad00997a5",
+    "dense-attention-packed.amdgcn": "88fb18cbf88195f6c0c0f8ef40580efb845377be61dc7ddc79c14271cbc3fd99",
+    "dense-attention-aot-build.json": "c79452c1432ba9d5accc49e41c3a156999c1024dfadc1bad0c89dda1acfc463d",
+    "dense-attention-aot.so": "fa78252de1d473dabdf5ac869c770da4b297de84283e75286609f659a0117374",
+    "dense-attention-aot.hsaco": "d00576ed5df9aa7c924d0727d576bb3a0bd34e9e0a06fd53e2cb96f54c3afca5",
+    "dense-attention-packed.hsaco": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+  },
+  "boundaries": [
+    {
+      "sequence": 1,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03728000074625015,
+          0.03680000081658363,
+          0.03551999852061272
+        ],
+        [
+          0.04543999955058098,
+          0.03872000053524971,
+          0.035840000957250595
+        ]
+      ],
+      "medians_ms": [
+        0.03680000081658363,
+        0.03872000053524971
+      ],
+      "paired_gain_percent": -5.217390424080759,
+      "passed": true
+    },
+    {
+      "sequence": 2,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03407999873161316,
+          0.0326399989426136,
+          0.03407999873161316
+        ],
+        [
+          0.03248000144958496,
+          0.03519999980926514,
+          0.03311999887228012
+        ]
+      ],
+      "medians_ms": [
+        0.03407999873161316,
+        0.03311999887228012
+      ],
+      "paired_gain_percent": 2.816901100534741,
+      "passed": true
+    },
+    {
+      "sequence": 31,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03248000144958496,
+          0.0350399985909462,
+          0.0350399985909462
+        ],
+        [
+          0.03440000116825104,
+          0.03311999887228012,
+          0.03471999987959862
+        ]
+      ],
+      "medians_ms": [
+        0.0350399985909462,
+        0.03440000116825104
+      ],
+      "paired_gain_percent": 0.9132383681952017,
+      "passed": true
+    },
+    {
+      "sequence": 32,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03471999987959862,
+          0.036159999668598175,
+          0.03488000109791756
+        ],
+        [
+          0.03440000116825104,
+          0.0342399999499321,
+          0.03455999866127968
+        ]
+      ],
+      "medians_ms": [
+        0.03488000109791756,
+        0.03440000116825104
+      ],
+      "paired_gain_percent": 0.9216552778147036,
+      "passed": true
+    },
+    {
+      "sequence": 33,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.043519001454114914,
+          0.03840000182390213,
+          0.035360001027584076
+        ],
+        [
+          0.035360001027584076,
+          0.03711999952793121,
+          0.036159999668598175
+        ]
+      ],
+      "medians_ms": [
+        0.03840000182390213,
+        0.036159999668598175
+      ],
+      "paired_gain_percent": 3.3333391540991464,
+      "passed": true
+    },
+    {
+      "sequence": 63,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04224000126123428,
+          0.03984000161290169,
+          0.03711999952793121
+        ],
+        [
+          0.03872000053524971,
+          0.03680000081658363,
+          0.04224000126123428
+        ]
+      ],
+      "medians_ms": [
+        0.03984000161290169,
+        0.03872000053524971
+      ],
+      "paired_gain_percent": 7.630523778225918,
+      "passed": true
+    },
+    {
+      "sequence": 64,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03680000081658363,
+          0.036479998379945755,
+          0.03551999852061272
+        ],
+        [
+          0.036320000886917114,
+          0.03551999852061272,
+          0.03455999866127968
+        ]
+      ],
+      "medians_ms": [
+        0.036479998379945755,
+        0.03551999852061272
+      ],
+      "paired_gain_percent": 2.6315786786349826,
+      "passed": true
+    },
+    {
+      "sequence": 65,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04416000097990036,
+          0.04608000069856644,
+          0.04224000126123428
+        ],
+        [
+          0.047520000487565994,
+          0.041760001331567764,
+          0.04447999969124794
+        ]
+      ],
+      "medians_ms": [
+        0.04416000097990036,
+        0.04447999969124794
+      ],
+      "paired_gain_percent": -5.303026427864754,
+      "passed": true
+    },
+    {
+      "sequence": 127,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.05056000128388405,
+          0.04927999898791313,
+          0.04944000020623207
+        ],
+        [
+          0.047680001705884933,
+          0.05071999877691269,
+          0.05167999863624573
+        ]
+      ],
+      "medians_ms": [
+        0.04944000020623207,
+        0.05071999877691269
+      ],
+      "paired_gain_percent": -2.92207755392353,
+      "passed": true
+    },
+    {
+      "sequence": 128,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04848000034689903,
+          0.047520000487565994,
+          0.04831999912858009
+        ],
+        [
+          0.04879999905824661,
+          0.047040000557899475,
+          0.04639999940991402
+        ]
+      ],
+      "medians_ms": [
+        0.04831999912858009,
+        0.047040000557899475
+      ],
+      "paired_gain_percent": 1.010100851728979,
+      "passed": true
+    },
+    {
+      "sequence": 129,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.0544000007212162,
+          0.052000001072883606,
+          0.05471999943256378
+        ],
+        [
+          0.05552000179886818,
+          0.0560000017285347,
+          0.05503999814391136
+        ]
+      ],
+      "medians_ms": [
+        0.0544000007212162,
+        0.05552000179886818
+      ],
+      "paired_gain_percent": -2.058825483094484,
+      "passed": true
+    },
+    {
+      "sequence": 255,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.06623999774456024,
+          0.06351999938488007,
+          0.06703999638557434
+        ],
+        [
+          0.06272000074386597,
+          0.06735999882221222,
+          0.07840000092983246
+        ]
+      ],
+      "medians_ms": [
+        0.06623999774456024,
+        0.06735999882221222
+      ],
+      "paired_gain_percent": -6.045339223108059,
+      "passed": true
+    },
+    {
+      "sequence": 256,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.06224000081419945,
+          0.0628800019621849,
+          0.06304000318050385
+        ],
+        [
+          0.05984000116586685,
+          0.06191899999976158,
+          0.06128000095486641
+        ]
+      ],
+      "medians_ms": [
+        0.0628800019621849,
+        0.06128000095486641
+      ],
+      "paired_gain_percent": 2.7918815622486326,
+      "passed": true
+    },
+    {
+      "sequence": 257,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.063680000603199,
+          0.06176000088453293,
+          0.06319999694824219
+        ],
+        [
+          0.0660799965262413,
+          0.06095999851822853,
+          0.058240000158548355
+        ]
+      ],
+      "medians_ms": [
+        0.06319999694824219,
+        0.06095999851822853
+      ],
+      "paired_gain_percent": 1.2953406004641899,
+      "passed": true
+    },
+    {
+      "sequence": 895,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.11903999745845795,
+          0.12272000312805176,
+          0.11903999745845795
+        ],
+        [
+          0.11711999773979187,
+          0.11343999952077866,
+          0.11615999788045883
+        ]
+      ],
+      "medians_ms": [
+        0.11903999745845795,
+        0.11615999788045883
+      ],
+      "paired_gain_percent": 2.419354535860241,
+      "passed": true
+    },
+    {
+      "sequence": 896,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.11807999759912491,
+          0.11840000003576279,
+          0.11680000275373459
+        ],
+        [
+          0.11407999694347382,
+          0.11135999858379364,
+          0.11311999708414078
+        ]
+      ],
+      "medians_ms": [
+        0.11807999759912491,
+        0.11311999708414078
+      ],
+      "paired_gain_percent": 3.3875344994762524,
+      "passed": true
+    },
+    {
+      "sequence": 897,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.12064000219106674,
+          0.122079998254776,
+          0.1212799996137619
+        ],
+        [
+          0.11552000045776367,
+          0.11727999895811081,
+          0.11727999895811081
+        ]
+      ],
+      "medians_ms": [
+        0.1212799996137619,
+        0.11727999895811081
+      ],
+      "paired_gain_percent": 3.9318474486277344,
+      "passed": true
+    },
+    {
+      "sequence": 1023,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.13232000172138214,
+          0.13279999792575836,
+          0.13104000687599182
+        ],
+        [
+          0.1292800009250641,
+          0.12432000041007996,
+          0.14223900437355042
+        ]
+      ],
+      "medians_ms": [
+        0.13232000172138214,
+        0.1292800009250641
+      ],
+      "paired_gain_percent": 2.297461273254209,
+      "passed": true
+    },
+    {
+      "sequence": 4096,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.8159999847412109,
+          0.8172789812088013,
+          0.8151999711990356
+        ],
+        [
+          0.7643190026283264,
+          0.7654399871826172,
+          0.7646390199661255
+        ]
+      ],
+      "medians_ms": [
+        0.8159999847412109,
+        0.7646390199661255
+      ],
+      "paired_gain_percent": 6.333453808736877,
+      "passed": true
+    },
+    {
+      "sequence": 8191,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          2.960638999938965,
+          2.965437889099121,
+          2.9607980251312256
+        ],
+        [
+          2.766077995300293,
+          2.749279022216797,
+          2.763519048690796
+        ]
+      ],
+      "medians_ms": [
+        2.9607980251312256,
+        2.763519048690796
+      ],
+      "paired_gain_percent": 6.663033910652727,
+      "passed": true
+    }
+  ],
+  "independent_hipprof_pmc": {
+    "reference_from_previous_independent_capture": {
+      "27570": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 2459449440.0,
+        "SQ_INSTS_LDS": 271095552.0,
+        "SQ_INSTS_VMEM_RD": 31314920.0,
+        "SQ_WAIT_INST_LDS": 896288857.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080.0
+      },
+      "22016": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 1564241616.0,
+        "SQ_INSTS_LDS": 172297216.0,
+        "SQ_INSTS_VMEM_RD": 19918976.0,
+        "SQ_WAIT_INST_LDS": 563996994.5,
+        "SQ_LDS_BANK_CONFLICT": 265072640.0
+      }
+    },
+    "previous_prefetch": {
+      "27570": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 2178253728.0,
+        "SQ_INSTS_LDS": 271095552.0,
+        "SQ_INSTS_VMEM_RD": 31314920.0,
+        "SQ_WAIT_INST_LDS": 1022521439.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080.0
+      },
+      "22016": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 1385317584.0,
+        "SQ_INSTS_LDS": 172297216.0,
+        "SQ_INSTS_VMEM_RD": 19918976.0,
+        "SQ_WAIT_INST_LDS": 646444722.0,
+        "SQ_LDS_BANK_CONFLICT": 265072640.0
+      }
+    },
+    "candidate": {
+      "27570": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 2199083040.0,
+        "SQ_INSTS_LDS": 271095552.0,
+        "SQ_INSTS_VMEM_RD": 31314920.0,
+        "SQ_WAIT_INST_LDS": 986615262.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080.0
+      },
+      "22016": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 1398571216.0,
+        "SQ_INSTS_LDS": 172297216.0,
+        "SQ_INSTS_VMEM_RD": 19918976.0,
+        "SQ_WAIT_INST_LDS": 632416244.0,
+        "SQ_LDS_BANK_CONFLICT": 265072640.0
+      }
+    }
+  },
+  "replay": {
+    "steps": [
+      {
+        "step": 1,
+        "base": 2.717879695817828,
+        "candidate": 2.6071945782750845,
+        "reduction_s": 0.11068511754274368,
+        "output_sha256": {
+          "video": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098",
+          "audio": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      },
+      {
+        "step": 25,
+        "base": 2.7170345885679126,
+        "candidate": 2.6049351003021,
+        "reduction_s": 0.1120994882658124,
+        "output_sha256": {
+          "video": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779",
+          "audio": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      },
+      {
+        "step": 49,
+        "base": 2.7172773918136954,
+        "candidate": 2.6049812212586403,
+        "reduction_s": 0.11229617055505514,
+        "output_sha256": {
+          "video": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79",
+          "audio": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      }
+    ],
+    "records": [
+      {
+        "step": 1,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.7171665905043483,
+          2.718219131231308,
+          2.7194898882880807,
+          2.7177564539015293,
+          2.717879695817828
+        ],
+        "mean_seconds": 2.7181023519486187,
+        "median_seconds": 2.717879695817828,
+        "warmup_seconds": 5.990950440987945,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.7370049953460693,
+            "mean_abs_error": 0.02384854666888714,
+            "rmse": 0.03359978274970103,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.09959760308265686,
+            "mean_abs_error": 0.026621470227837563,
+            "rmse": 0.03233205743545516,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 1,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.608431619592011,
+          2.6071945782750845,
+          2.605286561883986,
+          2.605533584021032,
+          2.6085121305659413
+        ],
+        "mean_seconds": 2.606991694867611,
+        "median_seconds": 2.6071945782750845,
+        "warmup_seconds": 2.603869111277163,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.7370049953460693,
+            "mean_abs_error": 0.02384854666888714,
+            "rmse": 0.03359978274970103,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.09959760308265686,
+            "mean_abs_error": 0.026621470227837563,
+            "rmse": 0.03233205743545516,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ]
+      },
+      {
+        "step": 25,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.6066990736871958,
+          2.6049351003021,
+          2.603994551114738,
+          2.6049702297896147,
+          2.6035160571336746
+        ],
+        "mean_seconds": 2.604823002405465,
+        "median_seconds": 2.6049351003021,
+        "warmup_seconds": 2.605891047976911,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2538994,
+            "max_abs_error": 0.4010007381439209,
+            "mean_abs_error": 0.008604387752711773,
+            "rmse": 0.012172585110222416,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.053460896015167236,
+            "mean_abs_error": 0.00826754979789257,
+            "rmse": 0.010348869412489126,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 25,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.7165957437828183,
+          2.7170345885679126,
+          2.7170800492167473,
+          2.7172876903787255,
+          2.716600055806339
+        ],
+        "mean_seconds": 2.7169196255505086,
+        "median_seconds": 2.7170345885679126,
+        "warmup_seconds": 2.7173226131126285,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2538994,
+            "max_abs_error": 0.4010007381439209,
+            "mean_abs_error": 0.008604387752711773,
+            "rmse": 0.012172585110222416,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.053460896015167236,
+            "mean_abs_error": 0.00826754979789257,
+            "rmse": 0.010348869412489126,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_candidate_without_qknorm": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ]
+      },
+      {
+        "step": 49,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.7163213109597564,
+          2.7172773918136954,
+          2.717508281581104,
+          2.7166367964819074,
+          2.718489520251751
+        ],
+        "mean_seconds": 2.7172466602176426,
+        "median_seconds": 2.7172773918136954,
+        "warmup_seconds": 2.71624016109854,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.48146843910217285,
+            "mean_abs_error": 0.013386040925979614,
+            "rmse": 0.018223751494279513,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.115581214427948,
+            "mean_abs_error": 0.012662931345403194,
+            "rmse": 0.016394232593819127,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 49,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.60495999827981,
+          2.6045275665819645,
+          2.6069301469251513,
+          2.6049812212586403,
+          2.605168519541621
+        ],
+        "mean_seconds": 2.6053134905174375,
+        "median_seconds": 2.6049812212586403,
+        "warmup_seconds": 2.603995651938021,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.48146843910217285,
+            "mean_abs_error": 0.013386040925979614,
+            "rmse": 0.018223751494279513,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.115581214427948,
+            "mean_abs_error": 0.012662931345403194,
+            "rmse": 0.016394232593819127,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ]
+      }
+    ],
+    "exact": true,
+    "reduction_percent": 4.110315233900712
+  },
+  "extrapolation": {
+    "seconds_saved": 5.472986013938983,
+    "fraction_of_reference_wall_percent": 3.555424112299344,
+    "reference_wall_seconds": 153.93342231679708,
+    "transformer_calls": 49
+  },
+  "measured_end_to_end": false,
+  "promoted": false
+}
