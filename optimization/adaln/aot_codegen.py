@@ -14,6 +14,11 @@ from triton.compiler import ASTSource
 
 from songshan_h3.compiler_compat import configure_hygon_compiler
 
+if __package__:
+    from .elf_validation import verify_lowered_hsaco
+else:
+    from elf_validation import verify_lowered_hsaco
+
 HERE = Path(__file__).resolve().parent
 RUNTIME = (HERE.parents[1] / "runtime").resolve()
 WIDTH = 5376
@@ -83,6 +88,7 @@ def compile_image(output, kernel, signature, constants, runtime_signature, warps
     if (compiled.metadata.shared and not allow_shared) or compiled.metadata.profile_scratch_size:
         raise RuntimeError("Unsupported shared memory or profile scratch requirement")
     image = compiled.asm["hsaco"]
+    verify_lowered_hsaco(image)
     output.write_bytes(image)
     return hashlib.sha256(image).hexdigest(), compiled.metadata.shared
 

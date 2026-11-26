@@ -32,7 +32,15 @@ def main():
     indexed = host.songshan_bench_indexed
     indexed.argtypes = [ct.c_bool] + [ct.c_int] * 3 + [ct.c_void_p] * 6
     indexed.restype = ct.c_char_p
-    modules = {f.parent.name: Fusion(f.parent) for f in sorted(a.build.glob('*/build.json'))}
+    elf = runpy.run_path(str(Path(__file__).resolve().parents[2] / 'adapters/compare-h3-device.py'))['elf_loads']
+    modules, seen = {}, {}
+    for f in sorted(a.build.glob('*/build.json')):
+        digest = elf(f.parent / 'wide-norm-indexed.hsaco')['sections']['.text']['sha256']
+        if digest in seen:
+            print(json.dumps(dict(skipped=f.parent.name, same_text_as=seen[digest])), flush=True)
+            continue
+        seen[digest] = f.parent.name
+        modules[f.parent.name] = Fusion(f.parent)
     assert modules
     gen = torch.Generator(device='cuda').manual_seed(42)
     records = []

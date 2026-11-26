@@ -1,0 +1,45 @@
+{
+  "scope": "CPU检查真实编译镜像；不改变设备计算",
+  "cases": [
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense-attention-aot.hsaco",
+      "passed": true,
+      "unresolved_llvm": []
+    },
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense-attention-packed.hsaco",
+      "passed": true,
+      "unresolved_llvm": []
+    },
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense-attention-fallback.hsaco",
+      "passed": true,
+      "unresolved_llvm": []
+    },
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-compact-source-1218234/wide-norm-indexed.hsaco",
+      "passed": true,
+      "unresolved_llvm": []
+    },
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/swiglu-row-source-1218234/swiglu.hsaco",
+      "passed": true,
+      "unresolved_llvm": []
+    },
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/qk-norm-mrope-1218234/qk-norm-mrope.hsaco",
+      "passed": true,
+      "unresolved_llvm": []
+    },
+    {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/indexed-gate-flat-1218234/buffer-t2048-w4/indexed_gate_flat.hsaco",
+      "rejected": true,
+      "unresolved_llvm": [
+        "llvm.amdgcn.make.buffer.rsrc.p8.p1",
+        "llvm.amdgcn.raw.ptr.buffer.load.i64",
+        "llvm.amdgcn.raw.ptr.buffer.load.v4i32",
+        "llvm.amdgcn.raw.ptr.buffer.store.v4i32"
+      ]
+    }
+  ]
+}

@@ -46,3 +46,6 @@ Q256 四个配置在普通、放大输入与尾部检查上逐位通过，但两
 `build-pv-wide-operand.py` 把 PV 的 `kWidth=4` 改为8，保留相同数量的BF16 MMAC指令、全部KV遍历及FP32缩放舍入边界，研究宽LDS读取是否更有利。新增P向量布局、V布局及P直接转换对照。编译已完成；两种V布局出现8/24B private segment，会跳过GPU微测；其余镜像仍无scratch。P直接转换版本为213VGPR、10处barrier，单凭这些资源变化不宣布更快。
 
 `screen-pv-wide-operand.py` 先核对三镜像分派、哈希和ABI，排除相同`.text`与spills，再在实际packed stride的27570/22016长度交替计时，并检查普通、放大输入及末尾哨兵。只有两个长度均逐位一致且收益至少0.5%才进入真实去噪验证。本轮微测等待compact归约与row SwiGLU的七次正式生成退出，不与正式计时并行。
+
+
+本轮筛选已结束：3个无spills的PV宽操作数候选在两个生产长度均出现最大0.000244140625的BF16差异，未进入性能选版；另外2项因spills在CPU资源审查时跳过。对照与候选的BF16 MMAC数量相同，不把这一点误认为已证明数值顺序相同。原始结果见`docs/pv-wide-operand-1218234-micro.json`。

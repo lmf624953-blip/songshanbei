@@ -1,0 +1,9 @@
+{
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/indexed-gate-linear-v2-1218234/t1024-w4-unified/wide-norm-indexed.hsaco",
+  "rebuilt": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/indexed-gate-linear-guarded-rebuild-1218234/wide-norm-indexed.hsaco",
+  "text_equal": true,
+  "reference_text_sha256": "91dcdbecee86307b8e98cc149db2dcaa30ca5f955003e1923748ac208acb0542",
+  "rebuilt_text_sha256": "91dcdbecee86307b8e98cc149db2dcaa30ca5f955003e1923748ac208acb0542",
+  "reference_text_bytes": 1376,
+  "rebuilt_text_bytes": 1376
+}

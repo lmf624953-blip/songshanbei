@@ -1,0 +1,7 @@
+{
+  "verdict": "DIAGNOSTIC_BUILD_BUG",
+  "reason": "微测builder把一维output的stride[0]误设为5376，实际应为1，导致首次N=1测试越界写。不是正式模型、原注意力或硬件故障。",
+  "fix": "仅residual/activation/gate二维首维使用5376或32256；一维indices/output stride均为1。新目录重建并复核全部动态绑定。",
+  "selected_model_affected": false,
+  "old_builds_retained": true
+}

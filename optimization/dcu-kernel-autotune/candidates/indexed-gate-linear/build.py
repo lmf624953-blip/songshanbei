@@ -50,7 +50,7 @@ def main():
         elif binding.kind == 'stride':
             signature[name] = 'constexpr'
             constants[name] = (5376 * (6 if binding.source == 'gate' else 1)
-                               if binding.dim == 0 and binding.source != 'indices' else 1)
+                               if binding.dim == 0 and binding.source in ('residual', 'activation', 'gate') else 1)
         else:
             raise RuntimeError(f'不支持绑定 {binding}')
         if signature[name] != 'constexpr':
@@ -63,26 +63,29 @@ def main():
         ir = a.output / 'wide-norm-indexed.ttgir'
         text = ir.read_text()
         layouts = dict(re.findall(r'^(#\w+) = (#ttg.blocked<[^\n]+>)$', text, re.M))
-        assert len(layouts) == 2, layouts
-        vector = next(name for name, value in layouts.items() if 'sizePerThread = [1]' not in value)
-        scalar = next(name for name, value in layouts.items() if 'sizePerThread = [1]' in value)
-        vector_size = re.search(r'sizePerThread = \[(\d+)\]', layouts[vector])[1]
-        assert int(vector_size) in (2, 4, 8)
-        assert layouts[scalar].replace('sizePerThread = [1]', f'sizePerThread = [{vector_size}]') == layouts[vector]
-        text = re.sub(r'^' + re.escape(scalar) + r' = [^\n]+\n', '', text, flags=re.M)
-        text = re.sub(re.escape(scalar) + r'(?![\w])', vector, text)
-        ir.write_text(text)
-        compiled = triton.compile(str(ir), target=GPUTarget('hip', 'gfx936', 64), options=dict(
-            num_warps=a.warps, num_stages=1, matrix_instr_nonkdim=0, kpack=1))
-        assert compiled.metadata.profile_scratch_size == 0
-        image = compiled.asm['hsaco']
-        (a.output / 'wide-norm-indexed.hsaco').write_bytes(image)
-        (a.output / 'wide-norm-indexed.amdgcn').write_text(compiled.asm['amdgcn'])
-        digest, shared = hashlib.sha256(image).hexdigest(), compiled.metadata.shared
+        if len(layouts) == 1:
+            assert shared == 0, '同布局镜像不应使用LDS'
+        else:
+            assert len(layouts) == 2, layouts
+            vector = next(name for name, value in layouts.items() if 'sizePerThread = [1]' not in value)
+            scalar = next(name for name, value in layouts.items() if 'sizePerThread = [1]' in value)
+            vector_size = re.search(r'sizePerThread = \[(\d+)\]', layouts[vector])[1]
+            assert int(vector_size) in (2, 4, 8)
+            assert layouts[scalar].replace('sizePerThread = [1]', f'sizePerThread = [{vector_size}]') == layouts[vector]
+            text = re.sub(r'^' + re.escape(scalar) + r' = [^\n]+\n', '', text, flags=re.M)
+            text = re.sub(re.escape(scalar) + r'(?![\w])', vector, text)
+            ir.write_text(text)
+            compiled = triton.compile(str(ir), target=GPUTarget('hip', 'gfx936', 64), options=dict(
+                num_warps=a.warps, num_stages=1, matrix_instr_nonkdim=0, kpack=1))
+            assert compiled.metadata.profile_scratch_size == 0
+            image = compiled.asm['hsaco']
+            (a.output / 'wide-norm-indexed.hsaco').write_bytes(image)
+            (a.output / 'wide-norm-indexed.amdgcn').write_text(compiled.asm['amdgcn'])
+            digest, shared = hashlib.sha256(image).hexdigest(), compiled.metadata.shared
     (a.output / 'build.json').write_text(json.dumps(dict(
         arguments=arguments, warps=a.warps, tile=a.tile, shared=shared,
         hsaco_sha256=digest, source=str(source), mode='indexed-gate-linear',
-        unified_layout=a.unify_layout), indent=2) + '\n')
+        unified_layout=a.unify_layout, signature=signature, constants=constants), indent=2) + '\n')
 
 
 if __name__ == '__main__':

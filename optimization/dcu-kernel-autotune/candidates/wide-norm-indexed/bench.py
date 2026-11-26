@@ -19,7 +19,7 @@ from indexed_runtime import load_indexed
 
 
 class Fusion:
-    def __init__(self, root):
+    def __init__(self, root, symbol=b"wide_norm_indexed_kernel"):
         self.meta = json.loads((root / "build.json").read_text())
         image = root / "wide-norm-indexed.hsaco"
         assert hashlib.sha256(image.read_bytes()).hexdigest() == self.meta["hsaco_sha256"]
@@ -33,7 +33,7 @@ class Fusion:
             + [ct.c_void_p, ct.POINTER(ct.c_void_p), ct.c_void_p])
         self.module, self.function = ct.c_void_p(), ct.c_void_p()
         self.check(self.hip.hipModuleLoad(ct.byref(self.module), os.fsencode(image)))
-        self.check(self.hip.hipModuleGetFunction(ct.byref(self.function), self.module, b"wide_norm_indexed_kernel"))
+        self.check(self.hip.hipModuleGetFunction(ct.byref(self.function), self.module, symbol))
 
     def check(self, code):
         if code:

@@ -1,0 +1,6 @@
+{
+  "verdict": "REJECTED_BEFORE_GPU",
+  "reason": "直接改变原arrangement的rows不会生成独立的逐行归约：lowering仍为一维tl.sum且掩码offset<128；不能把现有主机grid缩小。先修复lowering域和分段归约，再进行微测。",
+  "formal_model_affected": false,
+  "gpu_benchmark_started": false
+}
