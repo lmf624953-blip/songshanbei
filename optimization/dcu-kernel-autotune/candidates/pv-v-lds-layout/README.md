@@ -125,3 +125,9 @@ K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-o
 用 `screen-dual-q128.py REFERENCE BUILDS OUTPUT` 复现时，`BUILDS` 下两个目录分别命名为 `independent-kv` 和 `shared-kv`。两个生产长度和 12 个边界长度的普通输入、放大输入及输出哨兵检查均通过。两个生产长度的三组对照各做 11 组无 profiler 交替配对。27570 token 下，单 Q128 为约 35.10 ms，独立双 Q128 为 115.45 ms，共享双 Q128 为 99.56 ms。共享版相对独立版节省约 13.86%。22016 token 的同类配对节省约 13.40%。
 
 独立 PMC 确认两种双 Q128 均分配 128 VGPR、16 KiB LDS，并分别使用 344 B、320 B scratch。共享版使总 VMEM 读指令数比独立版少约 15%，但与无 scratch 的单 Q128 相比仍约为 10.6 倍。此计数涵盖编译器生成的 scratch 读写，仅用于解释当前实现的整体访存变化。本轮没有候选进入八卡回放或官方成片验收。见 [配对、边界、复建和 PMC](../../docs/dual-q128-a14r1n11.json)。
+
+## Softmax wave 内归约的 lane 交换
+
+`build-softmax-xor.py REFERENCE OUTPUT` 在原归约树中以 `row_ror:8` 替换异或 8 的两条带 bank mask 的 DPP。`--scope max|sum` 分别限制到最大值或求和。`--row4 ds` 和 `--row8 ds` 可比较 `ds_swizzle_b32` 的地址映射。脚本核对 64 个 lane 的映射、完整与尾块的变更位置，并保留原 FP32 算术顺序和 BF16 MMAC。
+
+六个镜像在两个生产长度的普通与放大输入上均逐位一致。最大值和求和同时用 `row_ror:8` 时，27570/22016 token 配对分别缩短 1.69%/2.01%。静态 `v_mov_b32_dpp` 从 192 条降至 160 条，`s_nop` 从 42 条降至 15 条。独立 PMC 中 VALU 指令减少约 2.6%，LDS 和全局读指令计数相同，硬件仍分配 216 VGPR、8192 B LDS 和 0 B scratch。DS 路径均回退。`--mov-dpp` 与 `--dpp-combine` 的三种组合生成了和最优旋转镜像相同的可加载区段，未重复计时。本轮收益低于端到端优先线，继续归档。见 [配对、编译器对照与 PMC](../../docs/softmax-xor-a14r1n11.json)。
