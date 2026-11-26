@@ -1185,5 +1185,30 @@
     "end_to_end_seconds_including_load": 261.734,
     "transformer_seconds": 148.122
   },
-  "resident_state": "待跑 A,A,A,A,B,C,A"
+  "resident_state": "按用户要求停止，低于 3% 的候选只归档",
+  "resident_partial": {
+    "completed_formal_a": 2,
+    "pipeline_exit_code": 143,
+    "reference_transformer_mean": 146.72069032412642,
+    "requests": [
+      {
+        "index": 1,
+        "wall_seconds": 165.86623421218246,
+        "transformer_seconds": 145.73796708649024,
+        "transformer_calls": 49,
+        "video_specs_passed": true,
+        "video_exact": true
+      },
+      {
+        "index": 2,
+        "wall_seconds": 164.8164474600926,
+        "transformer_seconds": 145.73655433533713,
+        "transformer_calls": 49,
+        "video_specs_passed": true,
+        "video_exact": true
+      }
+    ],
+    "product_build_option_removed": true,
+    "user_priority_percent": 3
+  }
 }
