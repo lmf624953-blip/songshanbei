@@ -16,6 +16,10 @@ LONG_ATTENTION_LDS_SWIZZLES = {
         "P": {"vec": 8, "perPhase": 2, "maxPhase": 8, "order": [0, 1]},
         "V": {"vec": 8, "perPhase": 1, "maxPhase": 16, "order": [1, 0]},
     },
+    128: {
+        "P": {"vec": 8, "perPhase": 2, "maxPhase": 16, "order": [0, 1]},
+        "V": {"vec": 8, "perPhase": 1, "maxPhase": 16, "order": [1, 0]},
+    },
 }
 
 
@@ -75,7 +79,7 @@ def hoist_readonly_query(source, *, expected_loads=1):
 
 
 def elide_full_kv_load_mask(source):
-    """仅对已核对的 Q64/K32 九齿 AST 删除完整分块的 K/V 上界比较。
+    """仅对已核对的 Q64/K32 或 Q128/K32 九齿 AST 删除完整分块的 K/V 上界比较。
 
     原生 ABI 对 Q/K/V/output 传入同一个 rows，完整循环 j < rows//32。
     固定生成源码摘要同时约束索引、分块大小、范围和其余副作用；编译器输出
@@ -83,8 +87,10 @@ def elide_full_kv_load_mask(source):
     """
     tree = ast.parse(source.read_text())
     digest = hashlib.sha256(source.read_bytes()).hexdigest()
-    if digest != "44e8620a409b0927fbad5854965da27b0b0df6da5af8f5154968af776b0a57f2":
-        raise RuntimeError("完整 KV 加载掩码的九齿源码与已验证 Q64/K32 版本不符")
+    if digest not in {
+            "44e8620a409b0927fbad5854965da27b0b0df6da5af8f5154968af776b0a57f2",
+            "9250db51ded148e269687a820e0e59710543993ed2525510c050d44f2eea29c5"}:
+        raise RuntimeError("完整 KV 加载掩码的九齿源码与已验证 Q64/K32 或 Q128/K32 版本不符")
     removed = 0
     full_loops = 0
 
@@ -132,7 +138,7 @@ def elide_full_kv_load_mask(source):
     source.write_text(ast.unparse(ast.fix_missing_locations(tree)) + "\n")
 
 def swizzle_attention_pv(compiled, output, target, options, *, query_block=32, coalesce_value=False,
-                         direct_query=False):
+                         direct_query=False, packed_strides=False):
     """变更九齿输出的共享内存布局，保留点积与 softmax 的计算。"""
     text = compiled.asm["ttgir"]
     if query_block not in LONG_ATTENTION_LDS_SWIZZLES:
@@ -153,7 +159,10 @@ def swizzle_attention_pv(compiled, output, target, options, *, query_block=32, c
         text = coalesce_pv_value(text)
     if direct_query:
         from attention_q_codegen import load_attention_query_direct
-        text = load_attention_query_direct(text)
+        text = load_attention_query_direct(text, query_block=query_block)
+    if packed_strides:
+        from attention_stride_codegen import specialize_attention_strides
+        text = specialize_attention_strides(text)
     modified = output.with_name(
         "pv-swizzle.ttgir" if output.name == "dense-attention-aot.hsaco"
         else f"{output.stem}-pv-swizzle.ttgir")

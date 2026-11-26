@@ -48,6 +48,11 @@ def load_attention(build):
         fallback = build / "dense-attention-fallback.hsaco"
         verify_device_image(image, record["hsaco_sha256"])
         verify_device_image(fallback, record["fallback"]["hsaco_sha256"])
+        packed = record.get("packed_strides")
+        if packed is not None:
+            if packed["strides"] != [896, 896, 2688, 896]:
+                raise RuntimeError("Unsupported packed attention strides")
+            verify_device_image(build / "dense-attention-packed.hsaco", packed["hsaco_sha256"])
         host = ctypes.CDLL(str(build / "dense-attention-aot.so"))
         prepare = host.songshan_prepare_buffer_attention
         prepare.argtypes = [ctypes.c_char_p, ctypes.c_char_p] + [ctypes.c_int] * 3
@@ -56,6 +61,13 @@ def load_attention(build):
                         record["shared"], record["fallback"]["shared"])
         if error:
             raise RuntimeError(f"Preparing guarded attention failed: {error.decode()}")
+        if packed is not None:
+            prepare_packed = host.songshan_prepare_attention_strides
+            prepare_packed.argtypes = [ctypes.c_char_p, ctypes.c_int]
+            prepare_packed.restype = ctypes.c_char_p
+            error = prepare_packed(os.fsencode(build / "dense-attention-packed.hsaco"), packed["shared"])
+            if error:
+                raise RuntimeError(f"Preparing packed attention failed: {error.decode()}")
     else:
         host = load_kernel(build, "dense-attention-aot", "dense-attention-aot.so", "songshan_prepare_attention")
     if hasattr(host, "songshan_attention_query_block"):

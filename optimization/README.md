@@ -2,7 +2,7 @@
 
 v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
 
-当前选用第 51 轮长注意力与 Q/K RMSNorm + MRoPE 融合。组合版已通过官方默认 A 和完整常驻 A/B/C 回归。三次稳态 A 请求均值 188.414 秒，Transformer 均值 167.297 秒。见 [完整验收记录](dcu-kernel-autotune/docs/combination-1218234-qualified.json)。
+当前选用 Q 直接加载与 V 协同布局的长注意力，叠加 Q/K RMSNorm + MRoPE 融合。组合版已通过官方默认 A 和完整常驻 A/B/C 回归。三次稳态 A 请求均值 181.580 秒，Transformer 均值 161.608 秒。相对同节点上一版分别减少 3.627% 和 3.401%。见 [完整验收记录](dcu-kernel-autotune/docs/qdirect-1218234-steady-qualified.json)。
 
 ## 准备运行环境
 
@@ -35,7 +35,7 @@ job=$(mktemp -d "$project/artifacts/selected-XXXXXXXX")
 build="$job/build"
 first_frame="$project/runtime/unified-dog-input/first_frame.png"
 H3_BUILD_JOBS=8 bash "$project/optimization/rebuild-v2.sh" "$build" \
-  --short-attention --deterministic-keyframe --long-attention-q64-buffer --fused-qknorm-mrope
+  --short-attention --deterministic-keyframe --long-attention-q64-qdirect --fused-qknorm-mrope
 
 out="$job/official"
 mkdir "$out"

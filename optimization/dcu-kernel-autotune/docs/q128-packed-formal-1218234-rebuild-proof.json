@@ -1,0 +1,17 @@
+{
+  "dense-attention-aot.hsaco": {
+    "loaded_sections_match": true,
+    "rebuilt_sha256": "85bfb3d4ec59c31570777917f9f60a7c82e85d663e93cbee89b0608bc255d5af",
+    "prototype_sha256": "e78b49d7b35b73b4fb86aa734e0b79200b80f0142445b6eb3727f1e896fffc65"
+  },
+  "dense-attention-fallback.hsaco": {
+    "loaded_sections_match": true,
+    "rebuilt_sha256": "f19a468c2d3da5477aacbffe7abda4316bc3ff3e4ef55485714afdef43254688",
+    "prototype_sha256": "3d64b84298ac6763eff7efae47fed20297aa5031b0ce583b69a74169e4dcd5c4"
+  },
+  "dense-attention-packed.hsaco": {
+    "loaded_sections_match": true,
+    "rebuilt_sha256": "38d7e88388f25ad302611415004d79b8c81cf3f806ce9971c919224340cc3039",
+    "prototype_sha256": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3"
+  }
+}

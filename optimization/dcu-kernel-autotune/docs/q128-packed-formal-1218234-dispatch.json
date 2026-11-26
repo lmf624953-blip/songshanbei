@@ -1,0 +1,947 @@
+{
+  "fallback_equal_to_reference": true,
+  "cpu_cases": [
+    {
+      "axis": 0,
+      "rows": 2,
+      "strides": [
+        1073740912,
+        896,
+        896,
+        896
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 0,
+      "rows": 2,
+      "strides": [
+        1073740928,
+        896,
+        896,
+        896
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 0,
+      "rows": 2,
+      "strides": [
+        1073740944,
+        896,
+        896,
+        896
+      ],
+      "eligible": false
+    },
+    {
+      "axis": 1,
+      "rows": 2,
+      "strides": [
+        896,
+        1073740912,
+        896,
+        896
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 1,
+      "rows": 2,
+      "strides": [
+        896,
+        1073740928,
+        896,
+        896
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 1,
+      "rows": 2,
+      "strides": [
+        896,
+        1073740944,
+        896,
+        896
+      ],
+      "eligible": false
+    },
+    {
+      "axis": 2,
+      "rows": 2,
+      "strides": [
+        896,
+        896,
+        1073740912,
+        896
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 2,
+      "rows": 2,
+      "strides": [
+        896,
+        896,
+        1073740928,
+        896
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 2,
+      "rows": 2,
+      "strides": [
+        896,
+        896,
+        1073740944,
+        896
+      ],
+      "eligible": false
+    },
+    {
+      "axis": 3,
+      "rows": 2,
+      "strides": [
+        896,
+        896,
+        896,
+        1073740912
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 3,
+      "rows": 2,
+      "strides": [
+        896,
+        896,
+        896,
+        1073740928
+      ],
+      "eligible": true
+    },
+    {
+      "axis": 3,
+      "rows": 2,
+      "strides": [
+        896,
+        896,
+        896,
+        1073740944
+      ],
+      "eligible": false
+    },
+    {
+      "rows": 0,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "eligible": false
+    },
+    {
+      "rows": 2,
+      "strides": [
+        896,
+        0,
+        896,
+        896
+      ],
+      "eligible": false
+    },
+    {
+      "rows": 2147483647,
+      "strides": [
+        2147483647,
+        2147483647,
+        2147483647,
+        2147483647
+      ],
+      "eligible": false
+    }
+  ],
+  "gpu_cases": [
+    {
+      "rows": 1,
+      "production_buffer": true,
+      "forced_buffer": true,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 4,
+      "production_buffer": true,
+      "forced_buffer": true,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 5,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 31,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 32,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 33,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 63,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 64,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 65,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    },
+    {
+      "rows": 129,
+      "production_buffer": true,
+      "forced_buffer": false,
+      "exact": true,
+      "finite": true
+    }
+  ],
+  "digest_rejections": [
+    "dense-attention-aot.hsaco",
+    "dense-attention-fallback.hsaco",
+    "dense-attention-packed.hsaco"
+  ],
+  "packed_cases": [
+    {
+      "rows": 1,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 2,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 1,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 1,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 1,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 1,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 4,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 4,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 4,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 4,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 4,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 5,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 5,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 5,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 5,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 5,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 31,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 31,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 31,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 31,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 31,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 32,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 32,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 32,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 32,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 32,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 63,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 63,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 63,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 63,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 63,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 64,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 64,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 64,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 64,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 64,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 65,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 65,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 65,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 65,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 65,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 129,
+      "strides": [
+        896,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 2,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 129,
+      "strides": [
+        1024,
+        896,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 129,
+      "strides": [
+        896,
+        1024,
+        2688,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 129,
+      "strides": [
+        896,
+        896,
+        896,
+        896
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 129,
+      "strides": [
+        896,
+        896,
+        2688,
+        1024
+      ],
+      "dispatch": 1,
+      "forced_dispatch": 0,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    }
+  ],
+  "verdict": "PASS"
+}

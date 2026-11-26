@@ -18,6 +18,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("build", type=Path)
     parser.add_argument("reference", type=Path)
+    parser.add_argument("--fallback-image", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     code = Path(os.environ["H3_AUTOTUNE_CODE_ROOT"])
@@ -33,7 +34,7 @@ def main():
     record_path = build / f"{name}-build.json"
     record = json.loads(record_path.read_text())
     elf = runpy.run_path(str(Path(__file__).with_name("compare-h3-device.py")))["elf_loads"]
-    normal = elf(reference / f"{name}.hsaco")
+    normal = elf(args.fallback_image or reference / f"{name}.hsaco")
     fallback = elf(fallback_image)
     assert all(normal[key] == fallback[key] for key in ("sections", "segments", "elf_target"))
     report = {"fallback_equal_to_reference": True, "cpu_cases": [], "gpu_cases": [], "digest_rejections": []}
@@ -65,9 +66,12 @@ def main():
 
     with tempfile.TemporaryDirectory(prefix="h3-attention-buffer-check-") as directory:
         fixture = Path(directory)
-        for path in (primary_image, fallback_image, record_path):
+        images = [primary_image, fallback_image]
+        if "packed_strides" in record:
+            images.append(build / "dense-attention-packed.hsaco")
+        for path in (*images, record_path):
             shutil.copy2(path, fixture / path.name)
-        for source in (primary_image, fallback_image):
+        for source in images:
             image = fixture / source.name
             image.write_bytes(source.read_bytes() + b"\0")
             try:
@@ -80,7 +84,8 @@ def main():
             shutil.copy2(source, image)
 
         compile_host(fixture / f"{name}.so", ("attention_buffer_host.cc",),
-                     defines=(("H3_ATTENTION_QUERY_BLOCK", 64), ("H3_ATTENTION_BUFFER_LIMIT", 8192)))
+                     defines=(("H3_ATTENTION_QUERY_BLOCK", record["query_block"]),
+                              ("H3_ATTENTION_BUFFER_LIMIT", 8192)))
         forced_host = load_attention(fixture)
         forced_launch = benchmark["native_launcher"](fixture)
         for rows in (1, 4, 5, 31, 32, 33, 63, 64, 65, 129):
@@ -99,6 +104,44 @@ def main():
             report["gpu_cases"].append(dict(rows=rows, production_buffer=production_eligible,
                                             forced_buffer=forced_eligible, exact=exact, finite=finite))
             assert exact and finite
+
+        if "packed_strides" in record:
+            def kind(host, rows, strides):
+                function = host.songshan_attention_dispatch_kind
+                function.argtypes = [ctypes.c_int] * 5
+                function.restype = ctypes.c_int
+                return function(rows, *strides)
+
+            report["packed_cases"] = []
+            for rows in (1, 4, 5, 31, 32, 33, 63, 64, 65, 129):
+                for heads in ((7, 7, 21, 7), (8, 7, 21, 7), (7, 8, 21, 7),
+                              (7, 7, 7, 7), (7, 7, 21, 8)):
+                    inputs = [torch.randn((1, rows, h, 128), dtype=torch.bfloat16,
+                                          device="cuda", generator=generator)[:, :, :7].transpose(1, 2)
+                              for h in heads[:3]]
+                    buffers = [torch.full((1, rows + 2, heads[-1], 128), float("nan"),
+                                          dtype=torch.bfloat16, device="cuda") for _ in range(3)]
+                    outputs = [buffer[:, :rows, :7].transpose(1, 2) for buffer in buffers]
+                    for buffer in buffers:
+                        buffer[:, rows:].fill_(-17)
+                    strides = [t.stride(2) for t in (*inputs, outputs[0])]
+                    actual_kind = kind(production, rows, strides)
+                    forced_kind = kind(forced_host, rows, strides)
+                    assert actual_kind == (2 if heads == (7, 7, 21, 7) else 1)
+                    expected_forced = actual_kind if eligible(forced_host, rows, strides) else 0
+                    assert forced_kind == expected_forced
+                    for launch, out in zip((reference_launch, production_launch, forced_launch),
+                                           outputs, strict=True):
+                        launch(*inputs, 128**-0.5, out)
+                    torch.cuda.synchronize()
+                    exact = all(torch.equal(outputs[0].view(torch.int16), out.view(torch.int16))
+                                for out in outputs[1:])
+                    finite = all(bool(torch.isfinite(out).all()) for out in outputs)
+                    tail_ok = all(bool((buffer[:, rows:] == -17).all()) for buffer in buffers)
+                    report["packed_cases"].append(dict(rows=rows, strides=strides, dispatch=actual_kind,
+                                                       forced_dispatch=forced_kind, exact=exact,
+                                                       finite=finite, tail_ok=tail_ok))
+                    assert exact and finite and tail_ok
 
     report["verdict"] = "PASS"
     with args.output.open("x") as stream:

@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 #include <hip/hip_runtime_api.h>
 #include <infinicore/tensor.hpp>
@@ -18,6 +19,9 @@ std::vector<hipModule_t> modules;
 std::vector<hipFunction_t> functions;
 std::vector<hipModule_t> fallback_modules;
 std::vector<hipFunction_t> fallback_functions;
+std::vector<hipModule_t> packed_modules;
+std::vector<hipFunction_t> packed_functions;
+int packed_shared = 0;
 #ifndef H3_ATTENTION_BUFFER_LIMIT
 #define H3_ATTENTION_BUFFER_LIMIT 2147483648LL
 #endif
@@ -32,6 +36,13 @@ bool buffer_eligible(int rows, int q_stride, int k_stride, int v_stride, int out
         if (elements * 2 > H3_ATTENTION_BUFFER_LIMIT) return false;
     }
     return true;
+}
+
+int dispatch_kind(int rows, int q_stride, int k_stride, int v_stride, int out_stride) {
+    if (!buffer_eligible(rows, q_stride, k_stride, v_stride, out_stride)) return 0;
+    if (!packed_functions.empty() && q_stride == 896 && k_stride == 896 &&
+        v_stride == 2688 && out_stride == 896) return 2;
+    return 1;
 }
 int threads = 0;
 int shared = 0;
@@ -48,9 +59,10 @@ void dispatch(int device, int rows, float scale, const void *q, const void *k,
     void *scratch = nullptr;
     void *args[] = {&q, &k, &v, &scale, &out, &rows, &q_stride, &rows, &k_stride,
                     &rows, &v_stride, &rows, &out_stride, &scratch, &scratch};
-    const bool use_buffer = buffer_eligible(rows, q_stride, k_stride, v_stride, out_stride);
-    const auto function = use_buffer ? functions.at(device) : fallback_functions.at(device);
-    const int selected_shared = use_buffer ? shared : fallback_shared;
+    const int kind = dispatch_kind(rows, q_stride, k_stride, v_stride, out_stride);
+    const auto function = kind == 2 ? packed_functions.at(device) :
+                          kind == 1 ? functions.at(device) : fallback_functions.at(device);
+    const int selected_shared = kind == 2 ? packed_shared : kind == 1 ? shared : fallback_shared;
     check(hipModuleLaunchKernel(function, heads * ((rows + query_block - 1) / query_block),
                                1, 1, threads, 1, 1, selected_shared, stream, args, nullptr));
 }
@@ -60,6 +72,10 @@ extern "C" int songshan_attention_query_block() { return query_block; }
 extern "C" int songshan_attention_buffer_eligible(int rows, int q_stride, int k_stride,
                                                   int v_stride, int out_stride) {
     return buffer_eligible(rows, q_stride, k_stride, v_stride, out_stride) ? 1 : 0;
+}
+extern "C" int songshan_attention_dispatch_kind(int rows, int q_stride, int k_stride,
+                                               int v_stride, int out_stride) {
+    return dispatch_kind(rows, q_stride, k_stride, v_stride, out_stride);
 }
 
 extern "C" const char *songshan_prepare_buffer_attention(const char *path, const char *fallback,
@@ -71,6 +87,8 @@ extern "C" const char *songshan_prepare_buffer_attention(const char *path, const
         check(hipGetDevice(&prior));
         modules.resize(count);
         functions.resize(count);
+        packed_functions.clear();
+        packed_modules.clear();
         fallback_modules.resize(count);
         fallback_functions.resize(count);
         threads = warps * 64;
@@ -86,6 +104,35 @@ extern "C" const char *songshan_prepare_buffer_attention(const char *path, const
         check(hipSetDevice(prior));
         return nullptr;
     } catch (const std::exception &error) {
+        error_message = error.what();
+        return error_message.c_str();
+    }
+}
+
+extern "C" const char *songshan_prepare_attention_strides(const char *path, int shared_memory) {
+    int prior = 0;
+    std::vector<hipModule_t> pending_modules;
+    try {
+        int count = 0;
+        check(hipGetDeviceCount(&count));
+        check(hipGetDevice(&prior));
+        pending_modules.resize(count, nullptr);
+        std::vector<hipFunction_t> pending_functions(count);
+        for (int i = 0; i < count; ++i) {
+            check(hipSetDevice(i));
+            check(hipModuleLoad(&pending_modules[i], path));
+            check(hipModuleGetFunction(&pending_functions[i], pending_modules[i], "dense_attention_aot_kernel"));
+        }
+        check(hipSetDevice(prior));
+        packed_modules = std::move(pending_modules);
+        packed_functions = std::move(pending_functions);
+        packed_shared = shared_memory;
+        return nullptr;
+    } catch (const std::exception &error) {
+        for (const auto module : pending_modules) {
+            if (module != nullptr) static_cast<void>(hipModuleUnload(module));
+        }
+        static_cast<void>(hipSetDevice(prior));
         error_message = error.what();
         return error_message.c_str();
     }

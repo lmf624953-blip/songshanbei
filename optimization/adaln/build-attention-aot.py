@@ -26,28 +26,30 @@ def main():
     parser.add_argument("--matrix-instr-nonkdim", default=0, type=int, choices=(0, 16, 32))
     parser.add_argument("--kpack", default=1, type=int, choices=(1, 2))
     parser.add_argument("--optimize-long-attention", action="store_true",
-                        help="Hoist read-only Q and swizzle PV LDS for the validated gfx936 Q32/2-warp or Q64/4-warp preset")
+                        help="Hoist read-only Q and swizzle PV LDS for the validated gfx936 Q32/2-warp, Q64/4-warp or Q128/4-warp preset")
     parser.add_argument("--split-kv-tail", action="store_true",
-                        help="Separate full K32 tiles from the masked tail; requires optimized Q64/4-warps")
+                        help="Separate full K32 tiles from the masked tail; requires optimized Q64/4-warps or Q128/4-warps")
     parser.add_argument("--elide-full-kv-load-mask", action="store_true",
                         help="Remove proven redundant K/V load bounds in complete tiles; requires split-kv-tail")
     parser.add_argument("--guarded-buffer-ops", action="store_true",
                         help="Use narrow buffer addressing with per-buffer span checks and a fallback image")
     parser.add_argument("--coalesce-pv-value", action="store_true",
-                        help="Coalesce V LDS reads and preserve coalesced global loads for guarded Q64/K32")
+                        help="Coalesce V LDS reads and preserve coalesced global loads for guarded Q64/K32 or Q128/K32")
     parser.add_argument("--direct-attention-query", action="store_true",
                         help="Load hoisted Q directly in the matrix operand layout with coalesced PV")
+    parser.add_argument("--packed-attention-strides", action="store_true",
+                        help="Add a guarded image for Q/K/V/output strides 896/896/2688/896")
     args = parser.parse_args()
     if args.fp16_pv and not args.fp32_scale:
         parser.error("--fp16-pv requires --fp32-scale")
     if args.optimize_long_attention and not (
             args.fp32_scale and not args.fp16_pv and args.aligned_strides
-            and args.key_block == 32 and (args.query_block, args.warps) in ((32, 2), (64, 4))
+            and args.key_block == 32 and (args.query_block, args.warps) in ((32, 2), (64, 4), (128, 4))
             and args.stages == 1 and args.kpack == 2 and args.matrix_instr_nonkdim == 0):
         parser.error("--optimize-long-attention requires BF16 PV, FP32 scale, aligned K32, "
-                     "Q32/2-warps or Q64/4-warps, 1-stage, kpack=2, matrix-instr-nonkdim=0")
-    if args.split_kv_tail and not (args.optimize_long_attention and args.query_block == 64):
-        parser.error("--split-kv-tail requires --optimize-long-attention and Q64/4-warps")
+                     "Q32/2-warps, Q64/4-warps or Q128/4-warps, 1-stage, kpack=2, matrix-instr-nonkdim=0")
+    if args.split_kv_tail and not (args.optimize_long_attention and args.query_block in (64, 128)):
+        parser.error("--split-kv-tail requires --optimize-long-attention and Q64/4-warps or Q128/4-warps")
     if args.elide_full_kv_load_mask and not args.split_kv_tail:
         parser.error("--elide-full-kv-load-mask requires --split-kv-tail")
     if args.guarded_buffer_ops and not args.elide_full_kv_load_mask:
@@ -56,6 +58,8 @@ def main():
         parser.error("--coalesce-pv-value requires --guarded-buffer-ops")
     if args.direct_attention_query and not args.coalesce_pv_value:
         parser.error("--direct-attention-query requires --coalesce-pv-value")
+    if args.packed_attention_strides and not args.direct_attention_query:
+        parser.error("--packed-attention-strides requires --direct-attention-query")
     build = args.destination.resolve()
     build.mkdir()
     arrangement, application, tensors = definition(head_dim=128, dtype=nt.bfloat16, causal=False)
@@ -97,7 +101,7 @@ def main():
     warps = args.warps
     aligned = [b.name for b in bindings if b.kind == "stride" and b.dim == 2]
     runtime = ["*bf16"] * 3 + ["fp32", "*bf16"] + ["i32"] * 8
-    def image(stem, *, buffer_addressing=False):
+    def image(stem, *, buffer_addressing=False, packed_strides=False):
         return compile_image(build / f"{stem}.hsaco", kernel, signature, constants,
                              runtime, warps, block=1, allow_shared=True,
                              aligned_scalars=aligned if args.aligned_strides else (), num_stages=args.stages,
@@ -105,7 +109,8 @@ def main():
                              attention_lds_swizzle=args.optimize_long_attention,
                              attention_query_block=args.query_block, buffer_addressing=buffer_addressing,
                              coalesce_pv_value=buffer_addressing and args.coalesce_pv_value,
-                             direct_attention_query=buffer_addressing and args.direct_attention_query)
+                             direct_attention_query=buffer_addressing and args.direct_attention_query,
+                             packed_attention_strides=packed_strides)
 
     fallback = None
     host_source = "attention_aot_host.cc"
@@ -121,6 +126,10 @@ def main():
         host_source = "attention_buffer_host.cc"
     else:
         digest, shared = image("dense-attention-aot")
+    packed = None
+    if args.packed_attention_strides:
+        packed_digest, packed_shared = image("dense-attention-packed", buffer_addressing=True, packed_strides=True)
+        packed = dict(hsaco_sha256=packed_digest, shared=packed_shared, strides=[896, 896, 2688, 896])
     host = compile_host(build / "dense-attention-aot.so", (host_source,),
                         defines=(("H3_ATTENTION_QUERY_BLOCK", args.query_block),))
     record = {"source": str(source), "hsaco_sha256": digest, "warps": warps,
@@ -162,6 +171,11 @@ def main():
         record["codegen_passes"].append("direct_attention_query")
         record["q_codegen_sha256"] = hashlib.sha256(
             Path(__file__).with_name("attention_q_codegen.py").read_bytes()).hexdigest()
+    if packed is not None:
+        record["packed_strides"] = packed
+        record["codegen_passes"].append("packed_attention_strides")
+        record["stride_codegen_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("attention_stride_codegen.py").read_bytes()).hexdigest()
     (build / "dense-attention-aot-build.json").write_text(json.dumps(record, indent=2) + "\n")
 
 

@@ -7,20 +7,24 @@ from attention_v_codegen import ALLOWED, LINE, SSA
 
 TENSOR_LAYOUT = re.compile(r"#(?:blocked|mma)\b")
 DOT = "#ttg.dot_op<{opIdx = 0, parent = #mma, kWidth = 8}>"
-Q_TYPE = f"tensor<64x128xbf16, {DOT}>"
-Q_SMEM = "!ttg.memdesc<64x128xbf16, #shared, #smem>"
 
 
-def load_attention_query_direct(source):
+def load_attention_query_direct(source, *, query_block=64):
     """保持 Q 索引及掩码，直接按 QK 的矩阵操作数布局加载。"""
     normalized = re.sub(r'loc\("[^"]*/dense_attention_aot\.triton\.py":', 'loc("<generated>":', source)
-    if hashlib.sha256(normalized.encode()).hexdigest() != "3a2233acee520416b0e465be48f1e3d9c9032080fba573723e485f3c30f66ac6":
+    expected = {
+        64: "3a2233acee520416b0e465be48f1e3d9c9032080fba573723e485f3c30f66ac6",
+        128: "e0bc50687b95af04e11633ace298283afaff2e5ffc723d2089b8fbff134db7ca",
+    }
+    if hashlib.sha256(normalized.encode()).hexdigest() != expected.get(query_block):
         raise RuntimeError("Q 直接加载要求已核对的 V 协同布局和九齿生成 IR")
+    q_type = f"tensor<{query_block}x128xbf16, {DOT}>"
+    q_smem = f"!ttg.memdesc<{query_block}x128xbf16, #shared, #smem>"
     lines = source.splitlines()
     alloc = [i for i, line in enumerate(lines)
-             if "ttg.local_alloc" in line and line.find(Q_SMEM) >= 0]
+             if "ttg.local_alloc" in line and q_smem in line]
     loads = [i for i, line in enumerate(lines)
-             if "ttg.local_load" in line and Q_SMEM in line and Q_TYPE in line]
+             if "ttg.local_load" in line and q_smem in line and q_type in line]
     assert len(alloc) == len(loads) == 1 and loads[0] == alloc[0] + 1
     start, end = alloc[0], loads[0]
     alloc_value = LINE.fullmatch(lines[start])
