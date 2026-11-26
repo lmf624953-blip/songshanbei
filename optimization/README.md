@@ -2,7 +2,7 @@
 
 v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
 
-当前选用 Q128 packed stride 长注意力，叠加 Q/K RMSNorm + MRoPE、保持原库归约顺序的宽 RMSNorm + 索引 AdaLN，以及 packed BF16 SwiGLU。已通过普通官方默认 A 和完整常驻 A,A,A,A,B,C,A 回归，全部成片与此前验收版各自哈希相同。三次稳态 A 请求均值 **169.355 ± 1.048 秒**，Transformer 均值 **148.964 ± 0.018 秒**。相对同节点上一版 171.402/150.757 秒分别减少 **1.194%** / **1.190%**，完整七请求显存采样最高值仍为 **33688 MiB**。所有请求保留官方规定工作量和 49 次 Transformer 调用。见 [完整验收记录](dcu-kernel-autotune/docs/swiglu-packed-1218234-steady-qualified.json)。
+当前本地默认采用 Q128 packed 长注意力、Q/K RMSNorm 与 MRoPE 融合、compact 原库顺序宽 RMSNorm 与索引 AdaLN 融合，以及按行分块的 BF16 SwiGLU。普通官方 A 和常驻 A,A,A,A,B,C,A 均通过规格与独立质量比较，各条成片的 SHA-256 与上一版一致。三次正式 A 的端到端均值为 **167.721 ± 0.972 秒**，Transformer 均值为 **146.721 ± 0.010 秒**，比同节点上一版分别减少 **0.965%** 和 **1.506%**。七请求显存采样最高值为 **33688 MiB**。官方 A 采用 768×928、50 steps、124 帧和 seed 42，执行 49 次 Transformer。[七请求验收](dcu-kernel-autotune/docs/elementwise-compact-row-1218234-steady-qualified.json)
 
 ## 准备运行环境
 
@@ -35,7 +35,7 @@ job=$(mktemp -d "$project/artifacts/selected-XXXXXXXX")
 build="$job/build"
 first_frame="$project/runtime/unified-dog-input/first_frame.png"
 H3_BUILD_JOBS=8 bash "$project/optimization/rebuild-v2.sh" "$build" \
-  --short-attention --deterministic-keyframe --long-attention-q128-packed --fused-wide-norm-indexed-original-serial --fused-swiglu
+  --short-attention --deterministic-keyframe --long-attention-q128-packed --fused-wide-norm-indexed-original-serial-compact --fused-swiglu-row
 
 out="$job/official"
 mkdir "$out"

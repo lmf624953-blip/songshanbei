@@ -1,0 +1,1148 @@
+{
+  "run": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/elementwise-compact-row-steady-1218234",
+  "measured_indices": [
+    1,
+    2,
+    3
+  ],
+  "wall_seconds": {
+    "samples": [
+      167.9682586779818,
+      168.54536600178108,
+      166.64839932508767
+    ],
+    "mean": 167.72067466828352,
+    "median": 167.9682586779818,
+    "min": 166.64839932508767,
+    "max": 168.54536600178108,
+    "stdev": 0.9724165900040059
+  },
+  "stage_seconds": {
+    "generation.pipeline_total": {
+      "samples": [
+        166.39408760610968,
+        166.82061681291088,
+        165.15595665294677
+      ],
+      "mean": 166.12355369065577,
+      "median": 166.39408760610968,
+      "min": 165.15595665294677,
+      "max": 166.82061681291088,
+      "stdev": 0.8646761310462152
+    },
+    "compute.h3_transformer": {
+      "samples": [
+        146.71319922059774,
+        146.71648773690686,
+        146.7323840148747
+      ],
+      "mean": 146.72069032412642,
+      "median": 146.71648773690686,
+      "min": 146.71319922059774,
+      "max": 146.7323840148747,
+      "stdev": 0.010259648501087043
+    },
+    "compute.condition_encoder": {
+      "samples": [
+        0.3061606283299625,
+        0.29685502871870995,
+        0.298928314819932
+      ],
+      "mean": 0.3006479906228681,
+      "median": 0.298928314819932,
+      "min": 0.29685502871870995,
+      "max": 0.3061606283299625,
+      "stdev": 0.004885336189213488
+    },
+    "input.video_vae_encode": {
+      "samples": [
+        0.865601675119251,
+        0.863274053670466,
+        0.8624633997678757
+      ],
+      "mean": 0.8637797095191976,
+      "median": 0.863274053670466,
+      "min": 0.8624633997678757,
+      "max": 0.865601675119251,
+      "stdev": 0.0016290975794223807
+    },
+    "output.video_vae_decode": {
+      "samples": [
+        14.927375420928001,
+        15.358493850100785,
+        13.761755957268178
+      ],
+      "mean": 14.682541742765656,
+      "median": 14.927375420928001,
+      "min": 13.761755957268178,
+      "max": 15.358493850100785,
+      "stdev": 0.8260451695117864
+    },
+    "output.audio_vae_decode": {
+      "samples": [
+        0.24116597371175885,
+        0.2428345112130046,
+        0.24150431109592319
+      ],
+      "mean": 0.24183493200689554,
+      "median": 0.24150431109592319,
+      "min": 0.24116597371175885,
+      "max": 0.2428345112130046,
+      "stdev": 0.0008820357069557815
+    },
+    "output.media_encode": {
+      "samples": [
+        1.5422196500003338,
+        1.6924495999701321,
+        1.4607551246881485
+      ],
+      "mean": 1.5651414582195382,
+      "median": 1.5422196500003338,
+      "min": 1.4607551246881485,
+      "max": 1.6924495999701321,
+      "stdev": 0.11753569431486299
+    }
+  },
+  "ssim_percent": {
+    "samples": [
+      93.83201347926341,
+      93.83201347926341,
+      93.83201347926341
+    ],
+    "mean": 93.83201347926341,
+    "median": 93.83201347926341,
+    "min": 93.83201347926341,
+    "max": 93.83201347926341,
+    "stdev": 0.0
+  },
+  "sampled_process_device_peak_mib": {
+    "card0": 30222,
+    "card1": 24821,
+    "card2": 16853,
+    "card3": 16853,
+    "card4": 33688,
+    "card5": 33662,
+    "card6": 33662,
+    "card7": 33566
+  },
+  "sampled_measured_device_peak_mib": {
+    "card0": 28596,
+    "card1": 22643,
+    "card2": 15213,
+    "card3": 15213,
+    "card4": 31912,
+    "card5": 31882,
+    "card6": 31882,
+    "card7": 31786
+  },
+  "requests": [
+    {
+      "case": "A",
+      "index": 0,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 228.9895364018157,
+      "stage_seconds": {
+        "input.files_and_references": 0.0332556520588696,
+        "input.arguments": 5.655130371451378e-05,
+        "compute.condition_encoder": 40.22230096394196,
+        "input.video_vae_encode": 1.8808290190063417,
+        "compute.h3_transformer": 149.1280858037062,
+        "output.video_vae_decode": 30.99883640324697,
+        "output.audio_vae_decode": 1.817112501244992,
+        "generation.pipeline_total": 227.48157733120024,
+        "output.media_encode": 1.4739459650591016
+      },
+      "started_epoch_ns": 1795677391351974364,
+      "finished_epoch_ns": 1795677620341513496,
+      "torch_peak_allocated_bytes": {
+        "0": 9728266752,
+        "1": 6260137472,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 27595,
+        "card1": 22199,
+        "card2": 15213,
+        "card3": 15213,
+        "card4": 31882,
+        "card5": 31874,
+        "card6": 31874,
+        "card7": 31778
+      },
+      "vram_samples": 45,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.023822446924466185,
+        "candidate_rms": 0.024674512137782028,
+        "max_absolute_error": 0.04925673082470894,
+        "mean_absolute_error": 0.00043783742626061654,
+        "rmse": 0.0020183097472610714,
+        "snr_db": 21.439971008554608,
+        "correlation": 0.9971525035546781,
+        "reference_peak": 0.49654465913772583,
+        "candidate_peak": 0.5286788940429688,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    },
+    {
+      "case": "A",
+      "index": 1,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 167.9682586779818,
+      "stage_seconds": {
+        "input.files_and_references": 0.031150538008660078,
+        "input.arguments": 4.82010655105114e-05,
+        "compute.condition_encoder": 0.3061606283299625,
+        "input.video_vae_encode": 0.865601675119251,
+        "compute.h3_transformer": 146.71319922059774,
+        "output.video_vae_decode": 14.927375420928001,
+        "output.audio_vae_decode": 0.24116597371175885,
+        "generation.pipeline_total": 166.39408760610968,
+        "output.media_encode": 1.5422196500003338
+      },
+      "started_epoch_ns": 1795677620488447459,
+      "finished_epoch_ns": 1795677788456708157,
+      "torch_peak_allocated_bytes": {
+        "0": 9672125440,
+        "1": 6458748416,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 27584,
+        "card1": 22437,
+        "card2": 15213,
+        "card3": 15213,
+        "card4": 31912,
+        "card5": 31882,
+        "card6": 31882,
+        "card7": 31786
+      },
+      "vram_samples": 33,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.023822446924466185,
+        "candidate_rms": 0.024674512137782028,
+        "max_absolute_error": 0.04925673082470894,
+        "mean_absolute_error": 0.00043783742626061654,
+        "rmse": 0.0020183097472610714,
+        "snr_db": 21.439971008554608,
+        "correlation": 0.9971525035546781,
+        "reference_peak": 0.49654465913772583,
+        "candidate_peak": 0.5286788940429688,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    },
+    {
+      "case": "A",
+      "index": 2,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 168.54536600178108,
+      "stage_seconds": {
+        "input.files_and_references": 0.031485072802752256,
+        "input.arguments": 6.130104884505272e-05,
+        "compute.condition_encoder": 0.29685502871870995,
+        "input.video_vae_encode": 0.863274053670466,
+        "compute.h3_transformer": 146.71648773690686,
+        "output.video_vae_decode": 15.358493850100785,
+        "output.audio_vae_decode": 0.2428345112130046,
+        "generation.pipeline_total": 166.82061681291088,
+        "output.media_encode": 1.6924495999701321
+      },
+      "started_epoch_ns": 1795677788614999207,
+      "finished_epoch_ns": 1795677957160367769,
+      "torch_peak_allocated_bytes": {
+        "0": 9938079744,
+        "1": 6300383744,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 28596,
+        "card1": 22437,
+        "card2": 15213,
+        "card3": 15213,
+        "card4": 31912,
+        "card5": 31882,
+        "card6": 31882,
+        "card7": 31786
+      },
+      "vram_samples": 33,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.023822446924466185,
+        "candidate_rms": 0.024674512137782028,
+        "max_absolute_error": 0.04925673082470894,
+        "mean_absolute_error": 0.00043783742626061654,
+        "rmse": 0.0020183097472610714,
+        "snr_db": 21.439971008554608,
+        "correlation": 0.9971525035546781,
+        "reference_peak": 0.49654465913772583,
+        "candidate_peak": 0.5286788940429688,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    },
+    {
+      "case": "A",
+      "index": 3,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 166.64839932508767,
+      "stage_seconds": {
+        "input.files_and_references": 0.03091299021616578,
+        "input.arguments": 4.358123987913132e-05,
+        "compute.condition_encoder": 0.298928314819932,
+        "input.video_vae_encode": 0.8624633997678757,
+        "compute.h3_transformer": 146.7323840148747,
+        "output.video_vae_decode": 13.761755957268178,
+        "output.audio_vae_decode": 0.24150431109592319,
+        "generation.pipeline_total": 165.15595665294677,
+        "output.media_encode": 1.4607551246881485
+      },
+      "started_epoch_ns": 1795677957330631137,
+      "finished_epoch_ns": 1795678123979032812,
+      "torch_peak_allocated_bytes": {
+        "0": 10026247168,
+        "1": 6664842752,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 28596,
+        "card1": 22643,
+        "card2": 15213,
+        "card3": 15213,
+        "card4": 31912,
+        "card5": 31882,
+        "card6": 31882,
+        "card7": 31786
+      },
+      "vram_samples": 33,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.023822446924466185,
+        "candidate_rms": 0.024674512137782028,
+        "max_absolute_error": 0.04925673082470894,
+        "mean_absolute_error": 0.00043783742626061654,
+        "rmse": 0.0020183097472610714,
+        "snr_db": 21.439971008554608,
+        "correlation": 0.9971525035546781,
+        "reference_peak": 0.49654465913772583,
+        "candidate_peak": 0.5286788940429688,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    },
+    {
+      "case": "B",
+      "index": 4,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/elementwise-compact-row-steady-1218234/square-first-frame.png",
+        "text": "A small sailboat moves across the water under a bright sun."
+      },
+      "first_frame_sha256": "6126f6e95e87abcd5a4d810ef8ca9bf1ada520fa053d9fa5460eb139d49323a7",
+      "last_frame_sha256": null,
+      "wall_seconds": 126.72096339380369,
+      "stage_seconds": {
+        "input.files_and_references": 0.009669182356446981,
+        "input.arguments": 4.6451110392808914e-05,
+        "compute.condition_encoder": 0.2769109061919153,
+        "input.video_vae_encode": 0.6907278671860695,
+        "compute.h3_transformer": 110.82139142137021,
+        "output.video_vae_decode": 11.016262232325971,
+        "output.audio_vae_decode": 0.24140636576339602,
+        "generation.pipeline_total": 125.7202389203012,
+        "output.media_encode": 0.9902654481120408
+      },
+      "started_epoch_ns": 1795678124122095852,
+      "finished_epoch_ns": 1795678250843061306,
+      "torch_peak_allocated_bytes": {
+        "0": 10059315712,
+        "1": 6672439296,
+        "2": 0,
+        "3": 0,
+        "4": 13213184,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 768,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 30132,
+        "card1": 24179,
+        "card2": 16749,
+        "card3": 16749,
+        "card4": 33448,
+        "card5": 33426,
+        "card6": 33426,
+        "card7": 33330
+      },
+      "vram_samples": 25,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 768,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 768,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 57773100,
+        "compared_elements": 219414528,
+        "max_absolute_difference": 234,
+        "mean_absolute_difference": 0.8855353962705697,
+        "ssim_match_percent": 99.40412322827537,
+        "ssim_min_percent": 99.17931498954825,
+        "ssim_max_percent": 99.86587996696518,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.008158768251807783,
+        "candidate_rms": 0.0060807307717949295,
+        "max_absolute_error": 0.024111899081617594,
+        "mean_absolute_error": 0.002460233706159571,
+        "rmse": 0.003270646765585316,
+        "snr_db": 7.939819100170448,
+        "correlation": 0.9357112923346455,
+        "reference_peak": 0.06807353347539902,
+        "candidate_peak": 0.05385071039199829,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    },
+    {
+      "case": "C",
+      "index": 5,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/elementwise-compact-row-steady-1218234/square-last-frame.png",
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/elementwise-compact-row-steady-1218234/square-first-frame.png",
+        "text": "A small sailboat moves to the right across the water under a bright sun."
+      },
+      "first_frame_sha256": "6126f6e95e87abcd5a4d810ef8ca9bf1ada520fa053d9fa5460eb139d49323a7",
+      "last_frame_sha256": "3f34cc71734b96b3ea830886bbe2532e874a819019e7f293f96d2ce2e338b2f4",
+      "wall_seconds": 138.29106514155865,
+      "stage_seconds": {
+        "input.files_and_references": 0.01856488874182105,
+        "input.arguments": 4.792120307683945e-05,
+        "compute.condition_encoder": 0.601198717020452,
+        "input.video_vae_encode": 1.3821143619716167,
+        "compute.h3_transformer": 120.26669069612399,
+        "output.video_vae_decode": 12.174615011084825,
+        "output.audio_vae_decode": 0.23857648111879826,
+        "generation.pipeline_total": 137.36174316704273,
+        "output.media_encode": 0.9099995116703212
+      },
+      "started_epoch_ns": 1795678250905406958,
+      "finished_epoch_ns": 1795678389196474340,
+      "torch_peak_allocated_bytes": {
+        "0": 9799141888,
+        "1": 6841882624,
+        "2": 0,
+        "3": 0,
+        "4": 26780672,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 768,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 30220,
+        "card1": 24379,
+        "card2": 16853,
+        "card3": 16853,
+        "card4": 33682,
+        "card5": 33656,
+        "card6": 33656,
+        "card7": 33560
+      },
+      "vram_samples": 27,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 768,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 768,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 52402555,
+        "compared_elements": 219414528,
+        "max_absolute_difference": 212,
+        "mean_absolute_difference": 0.6505503455085708,
+        "ssim_match_percent": 99.63004744871529,
+        "ssim_min_percent": 99.3410113516413,
+        "ssim_max_percent": 99.84916773354621,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.009546768453824349,
+        "candidate_rms": 0.009159982069324021,
+        "max_absolute_error": 0.03528235387057066,
+        "mean_absolute_error": 0.0023383262728015127,
+        "rmse": 0.003276673945807852,
+        "snr_db": 9.288463229327247,
+        "correlation": 0.9394671321368571,
+        "reference_peak": 0.07043834030628204,
+        "candidate_peak": 0.07224920392036438,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    },
+    {
+      "case": "A",
+      "index": 6,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/tmp/songshan-h3-autotune-weights-1218234",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 166.26264578290284,
+      "stage_seconds": {
+        "input.files_and_references": 0.03277590498328209,
+        "input.arguments": 5.4430682212114334e-05,
+        "compute.condition_encoder": 0.3238823930732906,
+        "input.video_vae_encode": 0.861657383851707,
+        "compute.h3_transformer": 146.70408051507547,
+        "output.video_vae_decode": 13.309315101243556,
+        "output.audio_vae_decode": 0.24107755813747644,
+        "generation.pipeline_total": 164.78567707166076,
+        "output.media_encode": 1.4433781602419913
+      },
+      "started_epoch_ns": 1795678389257999505,
+      "finished_epoch_ns": 1795678555520647468,
+      "torch_peak_allocated_bytes": {
+        "0": 10523147264,
+        "1": 7170145792,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 35572668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 39200,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384
+      },
+      "sampled_device_peak_mib": {
+        "card0": 30222,
+        "card1": 24821,
+        "card2": 16853,
+        "card3": 16853,
+        "card4": 33688,
+        "card5": 33662,
+        "card6": 33662,
+        "card7": 33566
+      },
+      "vram_samples": 32,
+      "quality": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      },
+      "audio_quality": {
+        "sample_rate": 32000,
+        "channels": 2,
+        "reference_samples": 165600,
+        "candidate_samples": 165600,
+        "sample_length_match": true,
+        "compared_samples": 165600,
+        "reference_rms": 0.023822446924466185,
+        "candidate_rms": 0.024674512137782028,
+        "max_absolute_error": 0.04925673082470894,
+        "mean_absolute_error": 0.00043783742626061654,
+        "rmse": 0.0020183097472610714,
+        "snr_db": 21.439971008554608,
+        "correlation": 0.9971525035546781,
+        "reference_peak": 0.49654465913772583,
+        "candidate_peak": 0.5286788940429688,
+        "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+      }
+    }
+  ],
+  "model_load_seconds": {
+    "model.pipeline_create": 0.010684953071177006,
+    "model.condition_encoder_create_and_load": 15.760929194744676,
+    "model.transformer_create_and_load": 17.017836229875684,
+    "model.remaining_components_create_and_load": 3.7808979782275856
+  },
+  "resource_note": "hy-smi 每五秒整卡已用显存采样；不是瞬时精确峰值，也不等同于 PyTorch allocator 统计。"
+}

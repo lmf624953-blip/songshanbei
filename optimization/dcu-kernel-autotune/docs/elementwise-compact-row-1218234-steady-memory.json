@@ -1,0 +1,25 @@
+{
+  "scope": "完整七请求逐卡整卡显存采样峰值，单位 MiB",
+  "peak_mib": {
+    "swiglu-packed": {
+      "card0": 30308,
+      "card1": 25011,
+      "card2": 16853,
+      "card3": 16853,
+      "card4": 33688,
+      "card5": 33662,
+      "card6": 33662,
+      "card7": 33566
+    },
+    "elementwise-compact-row": {
+      "card0": 30222,
+      "card1": 24821,
+      "card2": 16853,
+      "card3": 16853,
+      "card4": 33688,
+      "card5": 33662,
+      "card6": 33662,
+      "card7": 33566
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "scope": "独立扩大数值覆盖，不作为正式计时",
+  "cases": [
+    {
+      "label": "positive-0.5-to-1",
+      "gate_values": 65280,
+      "up_mantissas": 128,
+      "compared_elements": 8390144,
+      "exact": true,
+      "mismatches": 0,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "label": "negative-0.5-to-1",
+      "gate_values": 65280,
+      "up_mantissas": 128,
+      "compared_elements": 8390144,
+      "exact": true,
+      "mismatches": 0,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "label": "positive-subnormal",
+      "gate_values": 65280,
+      "up_mantissas": 128,
+      "compared_elements": 8390144,
+      "exact": true,
+      "mismatches": 0,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "label": "positive-smallest-normal",
+      "gate_values": 65280,
+      "up_mantissas": 128,
+      "compared_elements": 8390144,
+      "exact": true,
+      "mismatches": 0,
+      "finite": true,
+      "tail_ok": true
+    }
+  ]
+}

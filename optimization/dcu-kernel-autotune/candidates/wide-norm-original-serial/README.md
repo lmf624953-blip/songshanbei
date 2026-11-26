@@ -13,3 +13,5 @@
 ## 合并归约与布局后续实测
 
 `build-grouped.py` 在保持原库最终16次串行加法的前提下，将16组 masked reduce 合并成二维分组归约；`build-masked-loads.py` 为会被归约 mask 丢弃的加载提前加 mask。1/2/4/8 warps 与 sizePerThread=8 均已对照。所有有效配置输出逐位一致，但27570行当前 serial 4-warps为1.3589ms，合并版1/2/4/8-warps分别3.7080/1.5958/1.5326/1.5893ms，sizePerThread=8为4.1554ms；提前masked的serial为1.3592ms，无可靠收益，均不替换。1-warp消耗256VGPR且private788B，2/4/8为199/102/70VGPR、无spill；仅减少VGPR并不代表更快。详见 [完整后续微测](../../docs/wide-norm-original-serial-grouped-expanded-1218234-micro.json)。
+
+集中传递前 16 个归约结果后仍按原顺序累加，输出读写使用向量布局。compact 版本已与按行 SwiGLU 完成普通 A 和完整七请求验收，当前本地默认使用该组合。生产构建模式为 `original-serial-compact`，宽归约的动态长度与调制表 ABI 沿用已有实现。真实八卡单独替换 compact RMSNorm 节省 1.358%。[七请求验收](../../docs/elementwise-compact-row-1218234-steady-qualified.json)
