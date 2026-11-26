@@ -222,3 +222,13 @@ python build-mmac-issue.py "$candidate" "$joined" \
 `build-k-cross-block.py REFERENCE OUTPUT {backedge,after-pv,before-dpp}` 在完整块的回边、当前 PV 点积结束后或求和 DPP 前发射下一块 K。复用 PV 后的 v166–v173，下一轮从这组寄存器直接写 LDS。用 `--include-v` 同时预取 V 到 v206–v213。最后一个完整块继续按原分支进入尾块，加载条件和所有累加顺序保留。`--pair-with-lds` 叠加上一节的高半字写入、16 KiB 分区和 `lgkmcnt(7)`。
 
 八个候选在 27570/22016 token 的普通与放大输入均逐位一致。紧接 PV 的 K 单项节省 2.14%/2.29%，K/V 同时预取的最佳位置在求和 DPP 前，节省 2.45%/2.53%。最佳组合用 `after-pv --pair-with-lds`，节省 4.02%/4.63%。该组合的独立重建产物逐字节一致，另外 20 个长度和哨兵均通过。三个独立 PMC 对照均测得 220 VGPR 和 0 B scratch，K 单项和 K/V 单项保留 8192 B LDS，最佳组合使用 16384 B LDS。对 27570 token，K/V 单项的 LDS 等待计数降低约 23%，实际耗时收益约 2.45%。本轮按单 kernel 收益归档。见 [配对、边界验证与独立 PMC](../../docs/k-cross-block-a14r1n11.json)。
+
+## 完整块的标量掩码与地址递推
+
+`--loop-mask` 将完整块中不随迭代变化的掩码提到循环外。packed 主机入口检查序列长度和有符号 32 位字节跨度，完整块索引小于 `floor(rows/32)`，因此块号上界和非负偏移条件在该路径成立，仍保留原 lane 掩码。`--address-induction k|v|both` 逐块递推相应的 64 位字节地址，保留进位、原内存读取与尾块。DTK 要求 64 位标量复制的源寄存器对齐，基址初始化因此采用两条 32 位复制。
+
+```bash
+python build-k-cross-block.py "$candidate" "$induction" after-pv --pair-with-lds --address-induction k
+```
+
+十个候选在 27570/22016 token 均通过普通和放大输入的逐位校验。仅递推 K 地址叠加 K 预取和 LDS 分区后，相对正式版节省 4.88%/5.09%，19 组复测相对上一轮组合再省 0.87%/0.47%。双地址递推相对正式版节省 4.56%/5.17%，说明最佳选择随长度变化。掩码外提在本轮对照中回退。K 单独递推还通过另外 20 个长度和尾部哨兵检查，重建产物逐文件一致。独立 PMC 测得 220 VGPR、16 KiB LDS、0 B scratch，LDS 等待计数相对上一轮最快组合减少约 11%。按单 kernel 收益归档。见 [配对计时与独立 PMC](../../docs/k-loop-scalar-a14r1n11.json)。

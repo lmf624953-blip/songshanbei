@@ -21,7 +21,29 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def transform(source, placement, include_v, pair_with_lds):
+def address_induction(init, k_reads, v_reads, scope):
+    for operand, low, high, base, end, loads in (
+        ("k", 22, 23, 37, 38, k_reads), ("v", 24, 25, 39, 40, v_reads),
+    ):
+        if scope not in (operand, "both"):
+            continue
+        index = init.index(f"\ts_mov_b32 s{low}, 0")
+        init[index:index + 1] = [f"\ts_mov_b32 s{low}, s{base}", f"\ts_mov_b32 s{high}, s{end}"]
+        first = loads.index(f"\ts_ashr_i32 s{high}, s{low}, 31")
+        assert loads[first:first + 4] == [
+            f"\ts_ashr_i32 s{high}, s{low}, 31",
+            f"\ts_lshl_b64 s[2:3], s[{low}:{high}], 1",
+            f"\ts_add_u32 s2, s{base}, s2",
+            f"\ts_addc_u32 s3, s{end}, s3",
+        ]
+        del loads[first:first + 4]
+        for i, line in enumerate(loads):
+            if line.startswith("\tglobal_load_"):
+                assert line.endswith("s[2:3]")
+                loads[i] = line.removesuffix("s[2:3]") + f"s[{low}:{high}]"
+
+
+def transform(source, placement, include_v, pair_with_lds, loop_mask=False, addresses=False):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', source, flags=re.M)
     if digest(normalized.encode()) != REFERENCE:
         raise ValueError("Expected the qualified joint K/V assembly")
@@ -45,6 +67,19 @@ def transform(source, placement, include_v, pair_with_lds):
     v_zeros = lines[miss + 5:k_load - 1]
     assert len(v_zeros) == 4 and all("], 0" in line for line in v_zeros)
     v_reads = lines[v_load:join]
+    init = lines[:head]
+    if addresses:
+        address_induction(init, k_reads, v_reads, addresses)
+    if loop_mask:
+        # n > 0, full block indices are below floor(n/32), and the packed
+        # host checks the signed 32-bit byte span before launching.
+        index = init.index("\ts_mov_b32 s45, 0")
+        init[index:index + 1] = [
+            "\ts_cmp_gt_i32 s30, -1",
+            "\ts_cselect_b64 s[26:27], -1, 0",
+            "\ts_and_b64 s[26:27], s[10:11], s[26:27]",
+        ]
+        guard = guard[-1:]
     if include_v:
         old_v = {f"v[{i}:{i + 1}]": f"v[{i + 8}:{i + 9}]" for i in range(198, 206, 2)}
         for i in range(join, lines.index(".Ltmp2:")):
@@ -65,27 +100,35 @@ def transform(source, placement, include_v, pair_with_lds):
     if not include_v:
         first.extend([".Lh3_v_guard:", "\ts_cbranch_vccz .Lh3_v_load", *v_zeros, "\ts_branch .LBB0_16",
                       ".Lh3_v_load:", *v_reads])
-    lines[miss:join] = first
+    lines = init + [lines[head], *guard, *first, *lines[join:]]
 
     # The predicate and K address use the already advanced loop counters.
     loop_end = lines.index("\ts_branch .LBB0_14", lines.index(".Ltmp3:"))
     # These are the original four increments. No instruction between PV and the backedge
     # reads their values except the existing loop termination compare.
-    advancing = [
+    original_advance = [
         "\ts_add_i32 s46, s46, 1", "\ts_add_i32 s24, s24, 0x15000",
         "\ts_addk_i32 s22, 0x7000", "\ts_add_i32 s45, s45, 32",
     ]
+    advancing = list(original_advance)
+    if addresses in ("k", "both"):
+        advancing[2:3] = ["\ts_add_u32 s22, s22, 0xe000", "\ts_addc_u32 s23, s23, 0"]
+    if addresses in ("v", "both"):
+        advancing[1:2] = ["\ts_add_u32 s24, s24, 0x2a000", "\ts_addc_u32 s25, s25, 0"]
+    if loop_mask:
+        del advancing[-1]
     prefetch = [
         *guard, "\ts_cbranch_vccz .Lh3_next_k_load", *zeros,
         "\ts_branch .Lh3_next_k_ready", ".Lh3_next_k_load:", *loads, ".Lh3_next_k_ready:",
     ]
     lines[loop_end] = f"\ts_branch {next_head}"
+    update = lines.index(original_advance[0], lines.index(".Ltmp3:"))
+    assert lines[update:update + len(original_advance)] == original_advance
     if placement == "backedge":
         lines[loop_end:loop_end] = prefetch
+        lines[update:update + len(original_advance)] = advancing
     else:
-        update = lines.index(advancing[0], lines.index(".Ltmp3:"))
-        assert lines[update:update + len(advancing)] == advancing
-        del lines[update:update + len(advancing)]
+        del lines[update:update + len(original_advance)]
         start = lines.index(".Ltmp2:") + 1
         if placement == "before-dpp":
             start = lines.index("\t;;#ASMSTART", start)
@@ -107,10 +150,13 @@ def main():
     cli.add_argument("placement", choices=("backedge", "after-pv", "before-dpp"))
     cli.add_argument("--include-v", action="store_true")
     cli.add_argument("--pair-with-lds", action="store_true")
+    cli.add_argument("--loop-mask", action="store_true")
+    cli.add_argument("--address-induction", nargs="?", const="both", choices=("k", "v", "both"))
     args = cli.parse_args()
     asm = STEM + ".amdgcn"
     image_name = STEM + ".hsaco"
-    assembly = transform((args.reference / asm).read_text(), args.placement, args.include_v, args.pair_with_lds)
+    assembly = transform((args.reference / asm).read_text(), args.placement, args.include_v,
+                         args.pair_with_lds, args.loop_mask, args.address_induction)
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
     options = backend.parse_options(dict(num_warps=4, num_stages=1, kpack=2))
@@ -123,7 +169,8 @@ def main():
         record["packed_strides"]["shared"] = 16384
     record["experiment"]["k_cross_block"] = dict(
         placement=args.placement, temporary_vgprs="166:173", include_v=args.include_v,
-        pair_with_lds=args.pair_with_lds, reference_packed_sha256=previous
+        pair_with_lds=args.pair_with_lds, loop_mask=args.loop_mask, address_induction=args.address_induction,
+        reference_packed_sha256=previous
     )
     args.output.mkdir()
     for name in ("dense-attention-aot.so", "dense-attention-aot.hsaco", "dense-attention-fallback.hsaco"):
