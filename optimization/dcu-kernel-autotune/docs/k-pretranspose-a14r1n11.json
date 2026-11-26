@@ -1,0 +1,978 @@
+{
+  "hostname": "a14r1n11",
+  "device": "1 _CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6234-3865-3535-353634303631, pci_bus_id=9, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "scope": "同节点单卡逐位校验、11组交替计时；独立 PMC；排布采用 PyTorch copy 作诊断",
+  "selected_default_changed": false,
+  "quality_all_cases_exact": true,
+  "verdict": "NO_GAIN",
+  "variants": {
+    "0": {
+      "scope": "GPU 算子诊断，转置采用 PyTorch copy，正式候选需九齿实现",
+      "records": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "passed": true,
+          "samples_ms": {
+            "baseline": [
+              35.086544036865234,
+              35.12254333496094,
+              35.090545654296875,
+              35.1890983581543,
+              35.10366439819336,
+              35.20942687988281,
+              35.08430480957031,
+              35.15534210205078,
+              35.080142974853516,
+              35.10910415649414,
+              35.088462829589844
+            ],
+            "combined": [
+              128.01544189453125,
+              127.55691528320312,
+              127.97960662841797,
+              127.9780044555664,
+              127.76171112060547,
+              128.020751953125,
+              127.63770294189453,
+              127.7085952758789,
+              127.860107421875,
+              127.45866394042969,
+              128.1077880859375
+            ],
+            "attention_only": [
+              127.16363525390625,
+              127.05786895751953,
+              127.0103530883789,
+              127.1679458618164,
+              127.26346588134766,
+              127.27482604980469,
+              127.38651275634766,
+              127.52025604248047,
+              127.01322174072266,
+              127.0002670288086,
+              127.06026458740234
+            ],
+            "transpose": [
+              0.6366400122642517,
+              0.6222400069236755,
+              0.6791999936103821,
+              0.6335999965667725,
+              0.8407999873161316,
+              0.6201599836349487,
+              0.858240008354187,
+              0.6228799819946289,
+              0.6355199813842773,
+              0.618399977684021,
+              0.6606400012969971
+            ]
+          },
+          "medians_ms": {
+            "baseline": 35.10366439819336,
+            "combined": 127.860107421875,
+            "attention_only": 127.16363525390625,
+            "transpose": 0.6355199813842773
+          },
+          "reduction_percent": -263.80285610526755
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "passed": true,
+          "samples_ms": {
+            "baseline": [
+              23.712467193603516,
+              23.726871490478516,
+              23.699190139770508,
+              23.70671272277832,
+              23.699989318847656,
+              23.723031997680664,
+              23.735349655151367,
+              23.698230743408203,
+              23.69791030883789,
+              23.70494842529297,
+              23.704788208007812
+            ],
+            "combined": [
+              87.06444549560547,
+              86.9578857421875,
+              87.0185317993164,
+              87.02668762207031,
+              87.03004455566406,
+              87.05596923828125,
+              87.07036590576172,
+              86.95356750488281,
+              87.27948760986328,
+              87.08715057373047,
+              86.93052673339844
+            ],
+            "attention_only": [
+              86.5927505493164,
+              86.53660583496094,
+              86.56012725830078,
+              86.50475311279297,
+              86.51868438720703,
+              86.36988830566406,
+              86.48442840576172,
+              86.53804779052734,
+              86.46683502197266,
+              86.48027038574219,
+              86.52490997314453
+            ],
+            "transpose": [
+              0.5003200173377991,
+              0.4907200038433075,
+              0.5016000270843506,
+              0.49456000328063965,
+              0.5075200200080872,
+              0.4939199984073639,
+              0.4963200092315674,
+              0.4939199984073639,
+              0.5035200119018555,
+              0.49055999517440796,
+              0.5
+            ]
+          },
+          "medians_ms": {
+            "baseline": 23.70494842529297,
+            "combined": 87.03004455566406,
+            "attention_only": 86.51868438720703,
+            "transpose": 0.4963200092315674
+          },
+          "reduction_percent": -267.0972379837873
+        }
+      ],
+      "metadata": {
+        "source": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense_attention_aot.triton.py",
+        "hsaco_sha256": "85bfb3d4ec59c31570777917f9f60a7c82e85d663e93cbee89b0608bc255d5af",
+        "warps": 4,
+        "shared": 8192,
+        "fp32_scale": true,
+        "fp16_pv": false,
+        "query_block": 128,
+        "key_block": 32,
+        "aligned_strides": true,
+        "host_command": [
+          "/public/software/compiler/gcc-11.4.0/bin/g++",
+          "-std=c++17",
+          "-O2",
+          "-shared",
+          "-fPIC",
+          "-DENABLE_ATEN",
+          "-D_GLIBCXX_USE_CXX11_ABI=1",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+          "-D__HIP_PLATFORM_AMD__",
+          "-I/public/software/compiler/dtk-26.04/include",
+          "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/adaln/attention_buffer_host.cc",
+          "-L/public/software/compiler/dtk-26.04/lib",
+          "-lamdhip64",
+          "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-linfinicore_cpp_api",
+          "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-ltorch_python",
+          "-ltorch",
+          "-ltorch_cpu",
+          "-lc10",
+          "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-o",
+          "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense-attention-aot.so",
+          "-DH3_ATTENTION_QUERY_BLOCK=128"
+        ],
+        "num_stages": 1,
+        "matrix_instr_nonkdim": 0,
+        "kpack": 2,
+        "optimize_long_attention": true,
+        "split_kv_tail": true,
+        "elide_full_kv_load_mask": true,
+        "buffer_ops_limit_bytes": 2147483648,
+        "fallback": {
+          "hsaco_sha256": "f19a468c2d3da5477aacbffe7abda4316bc3ff3e4ef55485714afdef43254688",
+          "shared": 32768
+        },
+        "application_sha256": "bf9a780ad8de0f491693796c857b5d2104e92540f29694d1d30f1e868e270618",
+        "codegen_passes": [
+          "split_kv_tail",
+          "readonly_query_licm",
+          "elide_full_kv_load_mask",
+          "pv_lds_swizzle",
+          "coalesce_pv_value",
+          "direct_attention_query",
+          "packed_attention_strides"
+        ],
+        "pv_lds_swizzle": {
+          "P": {
+            "vec": 8,
+            "perPhase": 2,
+            "maxPhase": 16,
+            "order": [
+              0,
+              1
+            ]
+          },
+          "V": {
+            "vec": 4,
+            "perPhase": 2,
+            "maxPhase": 8,
+            "order": [
+              0,
+              1
+            ]
+          }
+        },
+        "codegen_sha256": "4bc5649f6d50ca1e92f9f7c2983ecd2a867bb592e134b6fb9453eb6a3d641ce4",
+        "generated_source_sha256": "309b4d8074405bb9fbc2f86dbcd14a96b56cfddfd1b1aa6aeca722ac76f0dd54",
+        "v_producer": {
+          "sizePerThread": [
+            4,
+            4
+          ],
+          "threadsPerWarp": [
+            2,
+            32
+          ],
+          "warpsPerCTA": [
+            4,
+            1
+          ],
+          "order": [
+            1,
+            0
+          ]
+        },
+        "v_codegen_sha256": "7773c8cfdd1e3e1ba7b7d20df185621abfe3d7b7eb1c7c80fb0e8c4cf5dc6192",
+        "q_codegen_sha256": "7e44580d0ec6bc2e546d22a18cc6a8e6213a5bc9cd12d3818e82a54ed22fba03",
+        "packed_strides": {
+          "hsaco_sha256": "570a4921307d3e5189cdd7c12cca62618e2cc8582a0f28c3179b88b90bc81329",
+          "shared": 8192,
+          "strides": [
+            896,
+            896,
+            2688,
+            896
+          ]
+        },
+        "stride_codegen_sha256": "a0061912bef6120be01b76d5fa9a9cfda13c21730207458eda8342c3e15831b5",
+        "experiment": {
+          "k_pretranspose": true,
+          "layout": "head,dim,padded-sequence",
+          "diagnostic_only": true,
+          "isa": {
+            "s_waitcnt": 115,
+            "global_load_dwordx4": 8,
+            "global_load_ushort": 128,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "s_barrier": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 236,
+            "sgpr_count": 56,
+            "vgpr_count": 256
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        }
+      }
+    },
+    "8": {
+      "scope": "GPU 算子诊断，转置采用 PyTorch copy，正式候选需九齿实现",
+      "records": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "passed": true,
+          "samples_ms": {
+            "baseline": [
+              35.08686447143555,
+              35.13294219970703,
+              35.08430480957031,
+              35.13294219970703,
+              35.098384857177734,
+              35.10862350463867,
+              35.09374237060547,
+              35.11198425292969,
+              35.11006546020508,
+              35.10606384277344,
+              35.100303649902344
+            ],
+            "combined": [
+              36.6931037902832,
+              36.6931037902832,
+              36.69054412841797,
+              36.67710494995117,
+              36.6740608215332,
+              36.67870330810547,
+              36.687503814697266,
+              36.65534210205078,
+              36.696144104003906,
+              36.69966506958008,
+              36.67790222167969
+            ],
+            "attention_only": [
+              36.39790344238281,
+              36.39726257324219,
+              36.386383056640625,
+              36.37486267089844,
+              36.377899169921875,
+              36.38510513305664,
+              36.38702392578125,
+              36.39582443237305,
+              36.404624938964844,
+              36.36142349243164,
+              36.36062240600586
+            ],
+            "transpose": [
+              0.31488001346588135,
+              0.30928000807762146,
+              0.3145599961280823,
+              0.3086400032043457,
+              0.31167998909950256,
+              0.30239999294281006,
+              0.31567999720573425,
+              0.3022400140762329,
+              0.3145599961280823,
+              0.3086400032043457,
+              0.31536000967025757
+            ]
+          },
+          "medians_ms": {
+            "baseline": 35.10606384277344,
+            "combined": 36.687503814697266,
+            "attention_only": 36.386383056640625,
+            "transpose": 0.31167998909950256
+          },
+          "reduction_percent": -4.494543943302132
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "passed": true,
+          "samples_ms": {
+            "baseline": [
+              23.7091121673584,
+              23.707189559936523,
+              23.704309463500977,
+              23.713592529296875,
+              23.704631805419922,
+              23.70671272277832,
+              23.694232940673828,
+              23.710552215576172,
+              23.697751998901367,
+              23.69647216796875,
+              23.69215202331543
+            ],
+            "combined": [
+              24.815828323364258,
+              24.77806854248047,
+              24.791030883789062,
+              24.784149169921875,
+              24.81390953063965,
+              24.794225692749023,
+              24.800790786743164,
+              24.793909072875977,
+              24.80367088317871,
+              24.791189193725586,
+              24.798389434814453
+            ],
+            "attention_only": [
+              24.542709350585938,
+              24.550230026245117,
+              24.56702995300293,
+              24.555509567260742,
+              24.558547973632812,
+              24.554067611694336,
+              24.55503273010254,
+              24.56511116027832,
+              24.558870315551758,
+              24.557750701904297,
+              24.553110122680664
+            ],
+            "transpose": [
+              0.254720002412796,
+              0.24223999679088593,
+              0.2553600072860718,
+              0.24463999271392822,
+              0.25231999158859253,
+              0.23968000710010529,
+              0.2555199861526489,
+              0.24191999435424805,
+              0.25567999482154846,
+              0.24208000302314758,
+              0.25519999861717224
+            ]
+          },
+          "medians_ms": {
+            "baseline": 23.704631805419922,
+            "combined": 24.794225692749023,
+            "attention_only": 24.555509567260742,
+            "transpose": 0.25231999158859253
+          },
+          "reduction_percent": -4.619746846691375
+        }
+      ],
+      "metadata": {
+        "source": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense_attention_aot.triton.py",
+        "hsaco_sha256": "85bfb3d4ec59c31570777917f9f60a7c82e85d663e93cbee89b0608bc255d5af",
+        "warps": 4,
+        "shared": 8192,
+        "fp32_scale": true,
+        "fp16_pv": false,
+        "query_block": 128,
+        "key_block": 32,
+        "aligned_strides": true,
+        "host_command": [
+          "/public/software/compiler/gcc-11.4.0/bin/g++",
+          "-std=c++17",
+          "-O2",
+          "-shared",
+          "-fPIC",
+          "-DENABLE_ATEN",
+          "-D_GLIBCXX_USE_CXX11_ABI=1",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+          "-D__HIP_PLATFORM_AMD__",
+          "-I/public/software/compiler/dtk-26.04/include",
+          "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/adaln/attention_buffer_host.cc",
+          "-L/public/software/compiler/dtk-26.04/lib",
+          "-lamdhip64",
+          "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-linfinicore_cpp_api",
+          "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-ltorch_python",
+          "-ltorch",
+          "-ltorch_cpu",
+          "-lc10",
+          "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-o",
+          "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense-attention-aot.so",
+          "-DH3_ATTENTION_QUERY_BLOCK=128"
+        ],
+        "num_stages": 1,
+        "matrix_instr_nonkdim": 0,
+        "kpack": 2,
+        "optimize_long_attention": true,
+        "split_kv_tail": true,
+        "elide_full_kv_load_mask": true,
+        "buffer_ops_limit_bytes": 2147483648,
+        "fallback": {
+          "hsaco_sha256": "f19a468c2d3da5477aacbffe7abda4316bc3ff3e4ef55485714afdef43254688",
+          "shared": 32768
+        },
+        "application_sha256": "bf9a780ad8de0f491693796c857b5d2104e92540f29694d1d30f1e868e270618",
+        "codegen_passes": [
+          "split_kv_tail",
+          "readonly_query_licm",
+          "elide_full_kv_load_mask",
+          "pv_lds_swizzle",
+          "coalesce_pv_value",
+          "direct_attention_query",
+          "packed_attention_strides"
+        ],
+        "pv_lds_swizzle": {
+          "P": {
+            "vec": 8,
+            "perPhase": 2,
+            "maxPhase": 16,
+            "order": [
+              0,
+              1
+            ]
+          },
+          "V": {
+            "vec": 4,
+            "perPhase": 2,
+            "maxPhase": 8,
+            "order": [
+              0,
+              1
+            ]
+          }
+        },
+        "codegen_sha256": "4bc5649f6d50ca1e92f9f7c2983ecd2a867bb592e134b6fb9453eb6a3d641ce4",
+        "generated_source_sha256": "309b4d8074405bb9fbc2f86dbcd14a96b56cfddfd1b1aa6aeca722ac76f0dd54",
+        "v_producer": {
+          "sizePerThread": [
+            4,
+            4
+          ],
+          "threadsPerWarp": [
+            2,
+            32
+          ],
+          "warpsPerCTA": [
+            4,
+            1
+          ],
+          "order": [
+            1,
+            0
+          ]
+        },
+        "v_codegen_sha256": "7773c8cfdd1e3e1ba7b7d20df185621abfe3d7b7eb1c7c80fb0e8c4cf5dc6192",
+        "q_codegen_sha256": "7e44580d0ec6bc2e546d22a18cc6a8e6213a5bc9cd12d3818e82a54ed22fba03",
+        "packed_strides": {
+          "hsaco_sha256": "de40b0f28fd8db755edc2026903bf93c311ceb9ddfd67126c1fb84147eeed438",
+          "shared": 8192,
+          "strides": [
+            896,
+            896,
+            2688,
+            896
+          ]
+        },
+        "stride_codegen_sha256": "a0061912bef6120be01b76d5fa9a9cfda13c21730207458eda8342c3e15831b5",
+        "experiment": {
+          "k_pretranspose": true,
+          "unit": 8,
+          "diagnostic_only": true,
+          "isa": {
+            "s_waitcnt": 34,
+            "global_load_dwordx4": 24,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "s_barrier": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        }
+      }
+    },
+    "16": {
+      "scope": "GPU 算子诊断，转置采用 PyTorch copy，正式候选需九齿实现",
+      "records": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "passed": true,
+          "samples_ms": {
+            "baseline": [
+              35.08557891845703,
+              35.11886215209961,
+              35.089744567871094,
+              35.16718292236328,
+              35.176143646240234,
+              35.145423889160156,
+              35.12062454223633,
+              35.1139030456543,
+              35.08942413330078,
+              35.117103576660156,
+              35.099822998046875
+            ],
+            "combined": [
+              37.837745666503906,
+              37.791500091552734,
+              37.882225036621094,
+              37.88734436035156,
+              37.96158218383789,
+              37.815185546875,
+              37.85134506225586,
+              37.81342315673828,
+              37.854225158691406,
+              37.829742431640625,
+              37.830535888671875
+            ],
+            "attention_only": [
+              37.528465270996094,
+              37.54766082763672,
+              37.620304107666016,
+              37.555824279785156,
+              37.52046585083008,
+              37.517425537109375,
+              37.550384521484375,
+              37.50414276123047,
+              37.498863220214844,
+              37.498863220214844,
+              37.50221633911133
+            ],
+            "transpose": [
+              0.31856000423431396,
+              0.3081600069999695,
+              0.4403199851512909,
+              0.30880001187324524,
+              0.3271999955177307,
+              0.30719900131225586,
+              0.33535999059677124,
+              0.30831998586654663,
+              0.3206399977207184,
+              0.3073599934577942,
+              0.31360000371932983
+            ]
+          },
+          "medians_ms": {
+            "baseline": 35.117103576660156,
+            "combined": 37.837745666503906,
+            "attention_only": 37.52046585083008,
+            "transpose": 0.31360000371932983
+          },
+          "reduction_percent": -7.775261845744086
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "passed": true,
+          "samples_ms": {
+            "baseline": [
+              23.69902992248535,
+              23.720949172973633,
+              23.720630645751953,
+              23.71678924560547,
+              23.69951057434082,
+              23.712467193603516,
+              23.705427169799805,
+              23.719030380249023,
+              23.697269439697266,
+              23.727670669555664,
+              23.698389053344727
+            ],
+            "combined": [
+              25.60622787475586,
+              25.59198760986328,
+              25.597108840942383,
+              25.558063507080078,
+              25.612468719482422,
+              25.58734893798828,
+              25.587507247924805,
+              25.583187103271484,
+              25.626068115234375,
+              25.589744567871094,
+              25.602388381958008
+            ],
+            "attention_only": [
+              25.327348709106445,
+              25.323347091674805,
+              25.349105834960938,
+              25.33038330078125,
+              25.34686851501465,
+              25.337907791137695,
+              25.353107452392578,
+              25.358707427978516,
+              25.347185134887695,
+              25.35454559326172,
+              25.35118865966797
+            ],
+            "transpose": [
+              0.2646400034427643,
+              0.24079999327659607,
+              0.24831999838352203,
+              0.23552000522613525,
+              0.263839989900589,
+              0.24240000545978546,
+              0.2542400062084198,
+              0.24303999543190002,
+              0.25887998938560486,
+              0.23695999383926392,
+              0.25360000133514404
+            ]
+          },
+          "medians_ms": {
+            "baseline": 23.712467193603516,
+            "combined": 25.59198760986328,
+            "attention_only": 25.347185134887695,
+            "transpose": 0.24831999838352203
+          },
+          "reduction_percent": -7.910743281719967
+        }
+      ],
+      "metadata": {
+        "source": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense_attention_aot.triton.py",
+        "hsaco_sha256": "85bfb3d4ec59c31570777917f9f60a7c82e85d663e93cbee89b0608bc255d5af",
+        "warps": 4,
+        "shared": 8192,
+        "fp32_scale": true,
+        "fp16_pv": false,
+        "query_block": 128,
+        "key_block": 32,
+        "aligned_strides": true,
+        "host_command": [
+          "/public/software/compiler/gcc-11.4.0/bin/g++",
+          "-std=c++17",
+          "-O2",
+          "-shared",
+          "-fPIC",
+          "-DENABLE_ATEN",
+          "-D_GLIBCXX_USE_CXX11_ABI=1",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+          "-D__HIP_PLATFORM_AMD__",
+          "-I/public/software/compiler/dtk-26.04/include",
+          "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/adaln/attention_buffer_host.cc",
+          "-L/public/software/compiler/dtk-26.04/lib",
+          "-lamdhip64",
+          "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-linfinicore_cpp_api",
+          "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-ltorch_python",
+          "-ltorch",
+          "-ltorch_cpu",
+          "-lc10",
+          "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-o",
+          "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234/dense-attention-aot.so",
+          "-DH3_ATTENTION_QUERY_BLOCK=128"
+        ],
+        "num_stages": 1,
+        "matrix_instr_nonkdim": 0,
+        "kpack": 2,
+        "optimize_long_attention": true,
+        "split_kv_tail": true,
+        "elide_full_kv_load_mask": true,
+        "buffer_ops_limit_bytes": 2147483648,
+        "fallback": {
+          "hsaco_sha256": "f19a468c2d3da5477aacbffe7abda4316bc3ff3e4ef55485714afdef43254688",
+          "shared": 32768
+        },
+        "application_sha256": "bf9a780ad8de0f491693796c857b5d2104e92540f29694d1d30f1e868e270618",
+        "codegen_passes": [
+          "split_kv_tail",
+          "readonly_query_licm",
+          "elide_full_kv_load_mask",
+          "pv_lds_swizzle",
+          "coalesce_pv_value",
+          "direct_attention_query",
+          "packed_attention_strides"
+        ],
+        "pv_lds_swizzle": {
+          "P": {
+            "vec": 8,
+            "perPhase": 2,
+            "maxPhase": 16,
+            "order": [
+              0,
+              1
+            ]
+          },
+          "V": {
+            "vec": 4,
+            "perPhase": 2,
+            "maxPhase": 8,
+            "order": [
+              0,
+              1
+            ]
+          }
+        },
+        "codegen_sha256": "4bc5649f6d50ca1e92f9f7c2983ecd2a867bb592e134b6fb9453eb6a3d641ce4",
+        "generated_source_sha256": "309b4d8074405bb9fbc2f86dbcd14a96b56cfddfd1b1aa6aeca722ac76f0dd54",
+        "v_producer": {
+          "sizePerThread": [
+            4,
+            4
+          ],
+          "threadsPerWarp": [
+            2,
+            32
+          ],
+          "warpsPerCTA": [
+            4,
+            1
+          ],
+          "order": [
+            1,
+            0
+          ]
+        },
+        "v_codegen_sha256": "7773c8cfdd1e3e1ba7b7d20df185621abfe3d7b7eb1c7c80fb0e8c4cf5dc6192",
+        "q_codegen_sha256": "7e44580d0ec6bc2e546d22a18cc6a8e6213a5bc9cd12d3818e82a54ed22fba03",
+        "packed_strides": {
+          "hsaco_sha256": "db75fedb2a72f2f912967e9a5f5db116096f82fb49374322e7065003a6e26294",
+          "shared": 8192,
+          "strides": [
+            896,
+            896,
+            2688,
+            896
+          ]
+        },
+        "stride_codegen_sha256": "a0061912bef6120be01b76d5fa9a9cfda13c21730207458eda8342c3e15831b5",
+        "experiment": {
+          "k_pretranspose": true,
+          "unit": 16,
+          "diagnostic_only": true,
+          "isa": {
+            "s_waitcnt": 34,
+            "global_load_dwordx4": 24,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "s_barrier": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        }
+      }
+    }
+  },
+  "independent_pmc": {
+    "reference": {
+      "387072": {
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_INSTS_LDS": 271095552,
+          "SQ_LDS_BANK_CONFLICT": 417070080,
+          "SQ_WAIT_INST_LDS": 700325480.5,
+          "l2_hit_percent": 97.7787521360672
+        }
+      },
+      "308224": {
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_INSTS_LDS": 172297216,
+          "SQ_LDS_BANK_CONFLICT": 265072640,
+          "SQ_WAIT_INST_LDS": 439920259.25,
+          "l2_hit_percent": 97.47874951092484
+        }
+      }
+    },
+    "u8": {
+      "387072": {
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 62599712,
+          "SQ_INSTS_LDS": 218961792,
+          "SQ_LDS_BANK_CONFLICT": 417070080,
+          "SQ_WAIT_INST_LDS": 566737548,
+          "l2_hit_percent": 97.7722653885652
+        }
+      },
+      "308224": {
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 39799424,
+          "SQ_INSTS_LDS": 139163136,
+          "SQ_LDS_BANK_CONFLICT": 265072640,
+          "SQ_WAIT_INST_LDS": 355284297.25,
+          "l2_hit_percent": 97.4685498679202
+        }
+      }
+    },
+    "source_rebuild": {
+      "loaded_sections_match": true,
+      "text": {
+        "type": 1,
+        "flags": 6,
+        "address": 6144,
+        "size": 20904,
+        "sha256": "74698b9c823b9a71789a6dc0c261790123e90116697dfee03cd51673b40b2877"
+      }
+    }
+  },
+  "limitation": "未实现正式九齿排布，候选 attention 即使排除排布成本也更慢",
+  "reference_digests_verified": true
+}
