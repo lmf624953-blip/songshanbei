@@ -1,0 +1,145 @@
+{
+  "verdict": "PASS",
+  "cases": [
+    {
+      "step": 1,
+      "base_seconds": 3.4362450568005443,
+      "control_seconds": 3.436448730994016,
+      "fast_seconds": 3.4142474783584476,
+      "calls": {
+        "adaln": 32,
+        "indexed": 6400,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64
+      },
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539000,
+          "max_abs_error": 0.7370049953460693,
+          "mean_abs_error": 0.02384854666888714,
+          "rmse": 0.03359978274970103,
+          "finite": true,
+          "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.09959760308265686,
+          "mean_abs_error": 0.026621470227837563,
+          "rmse": 0.03233205743545516,
+          "finite": true,
+          "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      ]
+    },
+    {
+      "step": 25,
+      "base_seconds": 3.4362790561281145,
+      "control_seconds": 3.4372730287723243,
+      "fast_seconds": 3.4148814929649234,
+      "calls": {
+        "adaln": 32,
+        "indexed": 6400,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64
+      },
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2538994,
+          "max_abs_error": 0.4010007381439209,
+          "mean_abs_error": 0.008604387752711773,
+          "rmse": 0.012172585110222416,
+          "finite": true,
+          "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.053460896015167236,
+          "mean_abs_error": 0.00826754979789257,
+          "rmse": 0.010348869412489126,
+          "finite": true,
+          "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "base_seconds": 3.4374618739821017,
+      "control_seconds": 3.436613622121513,
+      "fast_seconds": 3.4155980153009295,
+      "calls": {
+        "adaln": 32,
+        "indexed": 6400,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64
+      },
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539000,
+          "max_abs_error": 0.48146843910217285,
+          "mean_abs_error": 0.013386040925979614,
+          "rmse": 0.018223751494279513,
+          "finite": true,
+          "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.115581214427948,
+          "mean_abs_error": 0.012662931345403194,
+          "rmse": 0.016394232593819127,
+          "finite": true,
+          "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      ]
+    }
+  ],
+  "same_instance_sequential": true,
+  "median_sum_reduction_percent": 0.6346525507989087
+}
