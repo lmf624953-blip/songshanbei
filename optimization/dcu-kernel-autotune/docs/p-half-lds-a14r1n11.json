@@ -1,0 +1,1960 @@
+{
+  "hostname": "a14r1n11",
+  "reference": "attention-q128-joint-kv-a14r1n11",
+  "reference_image_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623",
+  "variants": {
+    "screen": [
+      {
+        "variant": "both-both",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/builds/both-both",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "both",
+            "scope": "both",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.070556640625
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.055206298828125
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "both-full",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/builds/both-full",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "both",
+            "scope": "full",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.070556640625
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.055206298828125
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "read-both",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/builds/read-both",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "read",
+            "scope": "both",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.070556640625
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.055206298828125
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "read-full",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/builds/read-full",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "read",
+            "scope": "full",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.070556640625
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.055206298828125
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "store-both",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/builds/store-both",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "store",
+            "scope": "both",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                27.311668395996094,
+                27.317108154296875,
+                27.341747283935547,
+                27.30990982055664,
+                27.33551025390625,
+                27.325429916381836,
+                27.336467742919922,
+                27.316627502441406,
+                27.341747283935547,
+                27.333267211914062,
+                27.291187286376953
+              ],
+              [
+                26.960309982299805,
+                26.976150512695312,
+                26.980148315429688,
+                26.963668823242188,
+                26.970067977905273,
+                26.976470947265625,
+                26.978389739990234,
+                26.967350006103516,
+                26.981430053710938,
+                26.960308074951172,
+                26.98063087463379
+              ]
+            ],
+            "medians_ms": [
+              27.325429916381836,
+              26.976150512695312
+            ],
+            "paired_gain_percent": 1.2864772982810413,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                18.513912200927734,
+                18.479991912841797,
+                18.493751525878906,
+                18.465591430664062,
+                18.466232299804688,
+                18.50815200805664,
+                18.493911743164062,
+                18.482711791992188,
+                18.50703239440918,
+                18.456951141357422,
+                18.499832153320312
+              ],
+              [
+                18.22943115234375,
+                18.232311248779297,
+                18.221752166748047,
+                18.229589462280273,
+                18.230712890625,
+                18.243831634521484,
+                18.24287223815918,
+                18.220951080322266,
+                18.22399139404297,
+                18.24607276916504,
+                18.235031127929688
+              ]
+            ],
+            "medians_ms": [
+              18.493751525878906,
+              18.230712890625
+            ],
+            "paired_gain_percent": 1.4162462446843604,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "store-full",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/builds/store-full",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "store",
+            "scope": "full",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                27.348787307739258,
+                27.316146850585938,
+                27.301427841186523,
+                27.33614730834961,
+                27.310867309570312,
+                27.301748275756836,
+                27.32622718811035,
+                27.331188201904297,
+                27.310546875,
+                27.303348541259766,
+                27.338708877563477
+              ],
+              [
+                26.976465225219727,
+                26.961105346679688,
+                26.958709716796875,
+                26.98238754272461,
+                26.974868774414062,
+                26.97503089904785,
+                26.975507736206055,
+                26.975027084350586,
+                26.973905563354492,
+                26.976303100585938,
+                26.983348846435547
+              ]
+            ],
+            "medians_ms": [
+              27.316146850585938,
+              26.97503089904785
+            ],
+            "paired_gain_percent": 1.283453619447672,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                18.461591720581055,
+                18.492151260375977,
+                18.496152877807617,
+                18.478551864624023,
+                18.497432708740234,
+                18.475191116333008,
+                18.487512588500977,
+                18.466392517089844,
+                18.4763126373291,
+                18.49631118774414,
+                18.48463249206543
+              ],
+              [
+                18.222232818603516,
+                18.213590621948242,
+                18.2255916595459,
+                18.216632843017578,
+                18.21935272216797,
+                18.211511611938477,
+                18.22831153869629,
+                18.22239112854004,
+                18.22943115234375,
+                18.21839141845703,
+                18.23263168334961
+              ]
+            ],
+            "medians_ms": [
+              18.48463249206543,
+              18.222232818603516
+            ],
+            "paired_gain_percent": 1.417421795416085,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "read-orders": [
+      {
+        "variant": "split",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/read-orders/split",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "both",
+            "scope": "both",
+            "read_order": "split",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.04376220703125
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.06829833984375
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "swap",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-half-lds-a14r1n11/read-orders/swap",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 217
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "9a8afc6335e3aa1060418f62603c948df5d75164b3b7e63d9687a802b38db8c8"
+          },
+          "p_half_lds": {
+            "mode": "both",
+            "scope": "both",
+            "read_order": "swap",
+            "reference_packed_sha256": "0811d286f52c809bca4e4619380ad3f0ec9935abc1a33bfa3bb934acc1c2a623"
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0819549560546875
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0894775390625
+            },
+            "passed": false
+          }
+        ]
+      }
+    ]
+  },
+  "winner": "store-both",
+  "rebuilt_sha256": {
+    "dense-attention-packed.hsaco": "bad64ffee9ab1010d8e32e4704b7146a584af2c0e7f5b0a7b598d8efffb048df",
+    "dense-attention-aot.so": "fa78252de1d473dabdf5ac869c770da4b297de84283e75286609f659a0117374",
+    "dense-attention-aot.hsaco": "d00576ed5df9aa7c924d0727d576bb3a0bd34e9e0a06fd53e2cb96f54c3afca5",
+    "dense-attention-fallback.hsaco": "45602e6ad33266ac135be3c3eaff95159ca5ff51be15c78437ba34dad00997a5",
+    "dense-attention-packed.amdgcn": "9758a6922eaff420d345006f6b7aa1d62ef7fc2f2429ca6110bbd4a7a7cec83b"
+  },
+  "boundaries": [
+    {
+      "sequence": 1,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03728000074625015,
+          0.036639999598264694,
+          0.035999998450279236
+        ],
+        [
+          0.04623999819159508,
+          0.035999998450279236,
+          0.036159999668598175
+        ]
+      ],
+      "medians_ms": [
+        0.036639999598264694,
+        0.036159999668598175
+      ],
+      "paired_gain_percent": -0.4444478477962255,
+      "passed": true
+    },
+    {
+      "sequence": 2,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03936000168323517,
+          0.033440001308918,
+          0.03328000009059906
+        ],
+        [
+          0.0342399999499321,
+          0.033440001308918,
+          0.03328000009059906
+        ]
+      ],
+      "medians_ms": [
+        0.033440001308918,
+        0.033440001308918
+      ],
+      "paired_gain_percent": 0.0,
+      "passed": true
+    },
+    {
+      "sequence": 31,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03136000037193298,
+          0.03327900171279907,
+          0.03296000137925148
+        ],
+        [
+          0.05071999877691269,
+          0.03248000144958496,
+          0.03376000002026558
+        ]
+      ],
+      "medians_ms": [
+        0.03296000137925148,
+        0.03376000002026558
+      ],
+      "paired_gain_percent": -2.427180241314253,
+      "passed": true
+    },
+    {
+      "sequence": 32,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04255999997258186,
+          0.0342399999499321,
+          0.0342399999499321
+        ],
+        [
+          0.03280000016093254,
+          0.03376000002026558,
+          0.03311999887228012
+        ]
+      ],
+      "medians_ms": [
+        0.0342399999499321,
+        0.03311999887228012
+      ],
+      "paired_gain_percent": 3.2710311895143507,
+      "passed": true
+    },
+    {
+      "sequence": 33,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03951999917626381,
+          0.036639999598264694,
+          0.03455999866127968
+        ],
+        [
+          0.03680000081658363,
+          0.03791999816894531,
+          0.035679999738931656
+        ]
+      ],
+      "medians_ms": [
+        0.036639999598264694,
+        0.03680000081658363
+      ],
+      "paired_gain_percent": -3.240743984480554,
+      "passed": true
+    },
+    {
+      "sequence": 63,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04800000041723251,
+          0.03903999924659729,
+          0.036479998379945755
+        ],
+        [
+          0.03776000067591667,
+          0.035360001027584076,
+          0.03776000067591667
+        ]
+      ],
+      "medians_ms": [
+        0.03903999924659729,
+        0.03776000067591667
+      ],
+      "paired_gain_percent": 9.426225128152277,
+      "passed": true
+    },
+    {
+      "sequence": 64,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.042399998754262924,
+          0.03519999980926514,
+          0.035360001027584076
+        ],
+        [
+          0.03455999866127968,
+          0.0350399985909462,
+          0.03376000002026558
+        ]
+      ],
+      "medians_ms": [
+        0.035360001027584076,
+        0.03455999866127968
+      ],
+      "paired_gain_percent": 4.524889595083293,
+      "passed": true
+    },
+    {
+      "sequence": 65,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.057920001447200775,
+          0.04287999868392944,
+          0.059039000421762466
+        ],
+        [
+          0.042080000042915344,
+          0.04368000105023384,
+          0.0427200011909008
+        ]
+      ],
+      "medians_ms": [
+        0.057920001447200775,
+        0.0427200011909008
+      ],
+      "paired_gain_percent": 27.34806803954416,
+      "passed": true
+    },
+    {
+      "sequence": 127,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.059039998799562454,
+          0.04800000041723251,
+          0.04831999912858009
+        ],
+        [
+          0.04912000149488449,
+          0.04864000156521797,
+          0.04639999940991402
+        ]
+      ],
+      "medians_ms": [
+        0.04831999912858009,
+        0.04864000156521797
+      ],
+      "paired_gain_percent": 3.9735094232037027,
+      "passed": true
+    },
+    {
+      "sequence": 128,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.05455999821424484,
+          0.04608000069856644,
+          0.04560000076889992
+        ],
+        [
+          0.047680001705884933,
+          0.047839999198913574,
+          0.046720001846551895
+        ]
+      ],
+      "medians_ms": [
+        0.04608000069856644,
+        0.047680001705884933
+      ],
+      "paired_gain_percent": -2.4561426727339963,
+      "passed": true
+    },
+    {
+      "sequence": 129,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.058240000158548355,
+          0.05488000065088272,
+          0.052960000932216644
+        ],
+        [
+          0.05215999856591225,
+          0.05471999943256378,
+          0.05040000006556511
+        ]
+      ],
+      "medians_ms": [
+        0.05488000065088272,
+        0.05215999856591225
+      ],
+      "paired_gain_percent": 4.833838409346091,
+      "passed": true
+    },
+    {
+      "sequence": 255,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.06095999851822853,
+          0.06672000139951706,
+          0.06431999802589417
+        ],
+        [
+          0.06047999858856201,
+          0.06496000289916992,
+          0.06272000074386597
+        ]
+      ],
+      "medians_ms": [
+        0.06431999802589417,
+        0.06272000074386597
+      ],
+      "paired_gain_percent": 2.4875580397002883,
+      "passed": true
+    },
+    {
+      "sequence": 256,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.058720000088214874,
+          0.057920001447200775,
+          0.05984000116586685
+        ],
+        [
+          0.05984000116586685,
+          0.06207999959588051,
+          0.0575999990105629
+        ]
+      ],
+      "medians_ms": [
+        0.058720000088214874,
+        0.05984000116586685
+      ],
+      "paired_gain_percent": -1.9073587806018422,
+      "passed": true
+    },
+    {
+      "sequence": 257,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.05695899948477745,
+          0.058400001376867294,
+          0.06111999973654747
+        ],
+        [
+          0.05648000165820122,
+          0.05967999994754791,
+          0.05728000029921532
+        ]
+      ],
+      "medians_ms": [
+        0.058400001376867294,
+        0.05728000029921532
+      ],
+      "paired_gain_percent": 0.8409519670447341,
+      "passed": true
+    },
+    {
+      "sequence": 895,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.12432000041007996,
+          0.11392000317573547,
+          0.10911999642848969
+        ],
+        [
+          0.11184000223875046,
+          0.10864000022411346,
+          0.11104000359773636
+        ]
+      ],
+      "medians_ms": [
+        0.11392000317573547,
+        0.11104000359773636
+      ],
+      "paired_gain_percent": 4.634833922429726,
+      "passed": true
+    },
+    {
+      "sequence": 896,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.1111999973654747,
+          0.11264000087976456,
+          0.12399999797344208
+        ],
+        [
+          0.11055999994277954,
+          0.10784000158309937,
+          0.11104000359773636
+        ]
+      ],
+      "medians_ms": [
+        0.11264000087976456,
+        0.11055999994277954
+      ],
+      "paired_gain_percent": 4.26136297867119,
+      "passed": true
+    },
+    {
+      "sequence": 897,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.11472000181674957,
+          0.1128000020980835,
+          0.11215999722480774
+        ],
+        [
+          0.11215999722480774,
+          0.11055999994277954,
+          0.11151999980211258
+        ]
+      ],
+      "medians_ms": [
+        0.1128000020980835,
+        0.11151999980211258
+      ],
+      "paired_gain_percent": 1.9858174766310688,
+      "passed": true
+    },
+    {
+      "sequence": 1023,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.12671999633312225,
+          0.12624000012874603,
+          0.12160000205039978
+        ],
+        [
+          0.1228799968957901,
+          0.11952000111341476,
+          0.12272000312805176
+        ]
+      ],
+      "medians_ms": [
+        0.12624000012874603,
+        0.12272000312805176
+      ],
+      "paired_gain_percent": 3.0303026739659455,
+      "passed": true
+    },
+    {
+      "sequence": 4096,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.7630400061607361,
+          0.7641599774360657,
+          0.7646390199661255
+        ],
+        [
+          0.7553600072860718,
+          0.7486389875411987,
+          0.7523199915885925
+        ]
+      ],
+      "medians_ms": [
+        0.7641599774360657,
+        0.7523199915885925
+      ],
+      "paired_gain_percent": 1.6110907311634115,
+      "passed": true
+    },
+    {
+      "sequence": 8191,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          2.7489590644836426,
+          2.7511990070343018,
+          2.7588789463043213
+        ],
+        [
+          2.7113590240478516,
+          2.706238031387329,
+          2.712157964706421
+        ]
+      ],
+      "medians_ms": [
+        2.7511990070343018,
+        2.7113590240478516
+      ],
+      "paired_gain_percent": 1.6342320396313004,
+      "passed": true
+    }
+  ],
+  "device_probe": {
+    "low": "00003344",
+    "high": "77880000",
+    "pair": "77880000",
+    "write_high": "112299aa"
+  },
+  "independent_hipprof_pmc": {
+    "reference": {
+      "27570": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 2199083040.0,
+        "SQ_INSTS_LDS": 271095552.0,
+        "SQ_INSTS_VMEM_RD": 31314920.0,
+        "SQ_WAIT_INST_LDS": 986615262.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080.0
+      },
+      "22016": {
+        "samples": 4,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VALU": 1398571216.0,
+        "SQ_INSTS_LDS": 172297216.0,
+        "SQ_INSTS_VMEM_RD": 19918976.0,
+        "SQ_WAIT_INST_LDS": 632416244.0,
+        "SQ_LDS_BANK_CONFLICT": 265072640.0
+      }
+    },
+    "candidate": {
+      "27570": {
+        "samples": 4,
+        "SQ_INSTS_VALU": 2115669024.0,
+        "SQ_INSTS_LDS": 271095552.0,
+        "SQ_INSTS_VMEM_RD": 31314920.0,
+        "SQ_WAIT_INST_LDS": 1083700679.0,
+        "SQ_LDS_BANK_CONFLICT": 417070080.0,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0
+      },
+      "22016": {
+        "samples": 4,
+        "SQ_INSTS_VALU": 1345556688.0,
+        "SQ_INSTS_LDS": 172297216.0,
+        "SQ_INSTS_VMEM_RD": 19918976.0,
+        "SQ_WAIT_INST_LDS": 683120294.5,
+        "SQ_LDS_BANK_CONFLICT": 265072640.0,
+        "arch_vgpr": 220.0,
+        "lds": 8192.0,
+        "scr": 0.0
+      }
+    }
+  },
+  "promoted": false
+}

@@ -202,3 +202,11 @@ python build-mmac-issue.py "$candidate" "$joined" \
 在同一八卡实例回放第 1、25、49 次去噪输入，每侧各取五次无 profiler 同步计时。三次中位数分别节省 110.69、112.10、112.30 毫秒，中位数合计节省 4.11%。两侧音视频张量哈希和算子调用计数一致。按 49 次调用外推，公开 A 端到端预计节省 5.47 秒（3.56%）。使用 `qualify-attention.sh RUN CODE BASE_CONFIG ACCEPTED BUILD` 依次测普通入口与同一进程的三组 A 配对、B/C 和返回 A，并复算规格、哈希与端到端收益。
 
 普通官方 A 与 11 条常驻请求通过完整验收，A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer 调用。三组 A 的稳态端到端均值由 153.717 秒降至 147.552 秒，下降 4.011%，三组降幅分别为 3.953%、4.429%、3.651%。Transformer 均值由 133.144 秒降至 127.649 秒，下降 4.127%。A、B、C 及返回 A 的成片与验收版逐字节一致。本地默认镜像为 `attention-q128-joint-kv-a14r1n11`。见 [官方及常驻验收记录](../../docs/joint-kv-a14r1n11-qualified.json)。
+
+## P 的 LDS 高半字写入
+
+`build-p-half-lds.py REFERENCE OUTPUT store --scope both` 从已验收联合发射镜像的固定汇编摘要开始。它保留 FP32 至 BF16 的 RNE 和 NaN 编码，把舍入值留在 VGPR 高半字，使用 `ds_write_b16_d16_hi` 写原 LDS 地址。完整块和尾块各省去 16 条右移，全部 P 读写地址和 PV 累加顺序保留。
+
+27570/22016 token 的无 profiler 配对分别节省 1.29%/1.42%。生产长度和另外 20 个长度均逐位一致，独立构建的三份设备镜像、汇编和主机库与实测对应文件逐字节一致。独立 PMC 显示 VALU 指令减少约 3.8%，LDS、全局读取及 bank conflict 计数持平，LDS 等待计数增加约 8%–10%。本轮只归档。
+
+低、高半字分别读到同一 VGPR 的方案、加入中间等待和交换半字的对照均出现数值差异。可用 `hipcc --offload-arch=gfx936 -x hip probe-lds-d16.cc -o probe-lds-d16` 在 DTK 26.04 和 BW1000 上复现。探针从初值 `0xaabbccdd` 分别得到 `0x00003344` 和 `0x77880000`。同一寄存器先读低半字、等待，再读高半字后为 `0x77880000`。高半字写入将原 LDS 字 `0x11223344` 更新为 `0x112299aa`。见 [配对、边界校验、探针与 PMC](../../docs/p-half-lds-a14r1n11.json)。
