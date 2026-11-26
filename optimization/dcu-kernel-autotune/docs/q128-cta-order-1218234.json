@@ -1,0 +1,979 @@
+{
+  "scope": "同节点 BW1000 单算子微测，正式推理沿用原顺序",
+  "extra_rounding_fence": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "g1",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-1218234/g1",
+        "experiment": {
+          "query_group": 1,
+          "enumeration": "query group, head, query within group",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.10302734375,
+                35.10910415649414,
+                35.0988655090332,
+                35.11614990234375,
+                35.103668212890625,
+                35.09407043457031,
+                35.10527038574219,
+                35.112152099609375,
+                35.09071350097656,
+                35.11358642578125,
+                35.11246871948242
+              ],
+              [
+                35.97598648071289,
+                35.966548919677734,
+                35.94974899291992,
+                36.00318908691406,
+                35.95806884765625,
+                35.936309814453125,
+                35.94094467163086,
+                35.93998336791992,
+                35.939666748046875,
+                35.95358657836914,
+                35.944942474365234
+              ]
+            ],
+            "medians_ms": [
+              35.10527038574219,
+              35.94974899291992
+            ],
+            "paired_gain_percent": -2.4193103028431917,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.711828231811523,
+                23.691347122192383,
+                23.704792022705078,
+                23.69647216796875,
+                23.698551177978516,
+                23.718711853027344,
+                23.694711685180664,
+                23.71662712097168,
+                23.69487190246582,
+                23.69007110595703,
+                23.708951950073242
+              ],
+              [
+                24.32046890258789,
+                24.325908660888672,
+                24.330711364746094,
+                24.314071655273438,
+                24.340951919555664,
+                24.317272186279297,
+                24.330228805541992,
+                24.322227478027344,
+                24.3105525970459,
+                24.32303237915039,
+                24.3182315826416
+              ]
+            ],
+            "medians_ms": [
+              23.698551177978516,
+              24.322227478027344
+            ],
+            "paired_gain_percent": -2.606292966003254,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "g4",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-1218234/g4",
+        "experiment": {
+          "query_group": 4,
+          "enumeration": "query group, head, query within group",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.09726333618164,
+                35.09998321533203,
+                35.083984375,
+                35.098548889160156,
+                35.09678649902344,
+                35.090389251708984,
+                35.10590744018555,
+                35.10430908203125,
+                35.09006881713867,
+                35.09870910644531,
+                35.09006881713867
+              ],
+              [
+                35.94702911376953,
+                35.92702865600586,
+                35.92350769042969,
+                35.941749572753906,
+                35.94126892089844,
+                35.936946868896484,
+                35.93806838989258,
+                35.93486785888672,
+                35.93534469604492,
+                35.93102264404297,
+                35.93934631347656
+              ]
+            ],
+            "medians_ms": [
+              35.09726333618164,
+              35.936946868896484
+            ],
+            "paired_gain_percent": -2.402380469507581,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.69103240966797,
+                23.7121524810791,
+                23.689592361450195,
+                23.69599151611328,
+                23.700151443481445,
+                23.699188232421875,
+                23.700307846069336,
+                23.69807243347168,
+                23.684627532958984,
+                23.69967269897461,
+                23.682872772216797
+              ],
+              [
+                24.269912719726562,
+                24.269432067871094,
+                24.26047134399414,
+                24.285432815551758,
+                24.28655242919922,
+                24.28190803527832,
+                24.270231246948242,
+                24.26287269592285,
+                24.26302719116211,
+                24.262067794799805,
+                24.298871994018555
+              ]
+            ],
+            "medians_ms": [
+              23.69807243347168,
+              24.269912719726562
+            ],
+            "paired_gain_percent": -2.442088892460892,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "g8",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-1218234/g8",
+        "experiment": {
+          "query_group": 8,
+          "enumeration": "query group, head, query within group",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.09150695800781,
+                35.09438705444336,
+                35.090389251708984,
+                35.10110855102539,
+                35.08462905883789,
+                35.09934616088867,
+                35.078067779541016,
+                35.081748962402344,
+                35.2297477722168,
+                35.096309661865234,
+                35.09598922729492
+              ],
+              [
+                35.937747955322266,
+                35.92670822143555,
+                35.934547424316406,
+                35.92350769042969,
+                35.93054962158203,
+                35.92462921142578,
+                35.95854949951172,
+                35.9222297668457,
+                35.93422317504883,
+                35.937904357910156,
+                35.92926788330078
+              ]
+            ],
+            "medians_ms": [
+              35.09438705444336,
+              35.93054962158203
+            ],
+            "paired_gain_percent": -2.395777945233335,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.710227966308594,
+                23.69327163696289,
+                23.697111129760742,
+                23.70943260192871,
+                23.712312698364258,
+                23.68815040588379,
+                23.70286750793457,
+                23.70734977722168,
+                23.699512481689453,
+                23.694549560546875,
+                23.715829849243164
+              ],
+              [
+                24.269752502441406,
+                24.25743293762207,
+                24.26447105407715,
+                24.267032623291016,
+                24.27231216430664,
+                24.278547286987305,
+                24.255508422851562,
+                24.26190757751465,
+                24.253271102905273,
+                24.27663230895996,
+                24.279348373413086
+              ]
+            ],
+            "medians_ms": [
+              23.70286750793457,
+              24.267032623291016
+            ],
+            "paired_gain_percent": -2.361640018272082,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": []
+  },
+  "original_order_with_fence": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "g0",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-control-1218234/g0",
+        "experiment": {
+          "query_group": 0,
+          "enumeration": "original",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.09646987915039,
+                35.095184326171875,
+                35.09342575073242,
+                35.09678649902344,
+                35.090389251708984,
+                35.08446502685547,
+                35.08494567871094,
+                35.09214782714844,
+                35.09054946899414,
+                35.09502410888672,
+                35.093265533447266
+              ],
+              [
+                35.958065032958984,
+                35.95790481567383,
+                35.95870590209961,
+                35.937103271484375,
+                35.95822525024414,
+                35.94126510620117,
+                35.93806457519531,
+                35.947662353515625,
+                35.946224212646484,
+                35.95390319824219,
+                35.95518493652344
+              ]
+            ],
+            "medians_ms": [
+              35.093265533447266,
+              35.95390319824219
+            ],
+            "paired_gain_percent": -2.4472959092169067,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.709110260009766,
+                23.70975112915039,
+                23.715991973876953,
+                23.697912216186523,
+                23.706552505493164,
+                23.690391540527344,
+                23.711669921875,
+                23.716630935668945,
+                23.70159149169922,
+                23.700469970703125,
+                23.6854305267334
+              ],
+              [
+                24.289430618286133,
+                24.304149627685547,
+                24.299352645874023,
+                24.28399085998535,
+                24.28318977355957,
+                24.305110931396484,
+                24.299989700317383,
+                24.31694984436035,
+                24.305269241333008,
+                24.3131103515625,
+                24.306230545043945
+              ]
+            ],
+            "medians_ms": [
+              23.706552505493164,
+              24.304149627685547
+            ],
+            "paired_gain_percent": -2.50697907075188,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": []
+  },
+  "native_rounding": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "g0",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-native-rounding-1218234/g0",
+        "experiment": {
+          "query_group": 0,
+          "enumeration": "original",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": true,
+        "reason": "可执行 .text 与对照相同"
+      },
+      {
+        "variant": "g1",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-native-rounding-1218234/g1",
+        "experiment": {
+          "query_group": 1,
+          "enumeration": "query group, head, query within group",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.082542419433594,
+                35.09455108642578,
+                35.085113525390625,
+                35.10063171386719,
+                35.07631301879883,
+                35.09151077270508,
+                35.08559036254883,
+                35.08879089355469,
+                35.09135055541992,
+                35.089752197265625,
+                35.083030700683594
+              ],
+              [
+                35.04463195800781,
+                35.027191162109375,
+                35.039825439453125,
+                35.018062591552734,
+                35.03422927856445,
+                35.025428771972656,
+                35.036312103271484,
+                35.02911376953125,
+                35.03487014770508,
+                35.023193359375,
+                35.02398681640625
+              ]
+            ],
+            "medians_ms": [
+              35.08879089355469,
+              35.02911376953125
+            ],
+            "paired_gain_percent": 0.16829755895687581,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.698232650756836,
+                23.701112747192383,
+                23.712312698364258,
+                23.717592239379883,
+                23.683992385864258,
+                23.70431137084961,
+                23.69103240966797,
+                23.707191467285156,
+                23.712312698364258,
+                23.69759178161621,
+                23.660472869873047
+              ],
+              [
+                23.661752700805664,
+                23.676471710205078,
+                23.666231155395508,
+                23.672151565551758,
+                23.680952072143555,
+                23.674711227416992,
+                23.67295265197754,
+                23.673431396484375,
+                23.676631927490234,
+                23.674392700195312,
+                23.679351806640625
+              ]
+            ],
+            "medians_ms": [
+              23.701112747192383,
+              23.674392700195312
+            ],
+            "paired_gain_percent": 0.12487240388269205,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "g4",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-native-rounding-1218234/g4",
+        "experiment": {
+          "query_group": 4,
+          "enumeration": "query group, head, query within group",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.08286666870117,
+                35.10670852661133,
+                35.08830642700195,
+                35.098228454589844,
+                35.087669372558594,
+                35.09886932373047,
+                35.09982681274414,
+                35.092628479003906,
+                35.09278869628906,
+                35.099666595458984,
+                35.12318801879883
+              ],
+              [
+                35.02670669555664,
+                35.00846862792969,
+                35.01630401611328,
+                35.039344787597656,
+                35.00974655151367,
+                35.014549255371094,
+                35.02126693725586,
+                35.02398681640625,
+                35.0175895690918,
+                35.019989013671875,
+                35.01614761352539
+              ]
+            ],
+            "medians_ms": [
+              35.098228454589844,
+              35.0175895690918
+            ],
+            "paired_gain_percent": 0.22208035597218734,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.692472457885742,
+                23.72319221496582,
+                23.703672409057617,
+                23.704631805419922,
+                23.701112747192383,
+                23.732952117919922,
+                23.690872192382812,
+                23.707672119140625,
+                23.698551177978516,
+                23.687671661376953,
+                23.715511322021484
+              ],
+              [
+                23.652151107788086,
+                23.64303207397461,
+                23.637432098388672,
+                23.64527130126953,
+                23.65359115600586,
+                23.639192581176758,
+                23.648792266845703,
+                23.670391082763672,
+                23.641111373901367,
+                23.649911880493164,
+                23.64623260498047
+              ]
+            ],
+            "medians_ms": [
+              23.703672409057617,
+              23.64623260498047
+            ],
+            "paired_gain_percent": 0.24237685943655496,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "g8",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-cta-order-native-rounding-1218234/g8",
+        "experiment": {
+          "query_group": 8,
+          "enumeration": "query group, head, query within group",
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.08526611328125,
+                35.098228454589844,
+                35.08510971069336,
+                35.10254669189453,
+                35.09166717529297,
+                35.092308044433594,
+                35.09214782714844,
+                35.1046257019043,
+                35.10478210449219,
+                35.09742736816406,
+                35.09054946899414
+              ],
+              [
+                35.04494857788086,
+                35.02286911010742,
+                35.02174377441406,
+                35.02446365356445,
+                35.02254867553711,
+                35.0211067199707,
+                35.031349182128906,
+                35.028629302978516,
+                35.04046630859375,
+                35.02206802368164,
+                35.045589447021484
+              ]
+            ],
+            "medians_ms": [
+              35.092308044433594,
+              35.02446365356445
+            ],
+            "paired_gain_percent": 0.19696556282320365,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.709428787231445,
+                23.686071395874023,
+                23.70191192626953,
+                23.709272384643555,
+                23.688152313232422,
+                23.71550941467285,
+                23.691030502319336,
+                23.714399337768555,
+                23.701431274414062,
+                23.70686912536621,
+                23.712949752807617
+              ],
+              [
+                23.639511108398438,
+                23.636152267456055,
+                23.649911880493164,
+                23.64095115661621,
+                23.657272338867188,
+                23.642709732055664,
+                23.66655921936035,
+                23.655519485473633,
+                23.65519142150879,
+                23.633752822875977,
+                23.63566780090332
+              ]
+            ],
+            "medians_ms": [
+              23.70686912536621,
+              23.642709732055664
+            ],
+            "paired_gain_percent": 0.24828734414178433,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": []
+  },
+  "independent_pmc": {
+    "sequence": [
+      27570,
+      22016
+    ],
+    "reference_tcc_hit_percent": [
+      97.778825,
+      97.478538
+    ],
+    "group4_tcc_hit_percent": [
+      90.292182,
+      90.534051
+    ],
+    "allocated_vgpr": 216,
+    "lds_bytes": 8192,
+    "scratch_bytes": 0
+  }
+}

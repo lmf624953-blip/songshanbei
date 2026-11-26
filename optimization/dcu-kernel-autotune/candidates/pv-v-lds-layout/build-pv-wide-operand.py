@@ -49,7 +49,7 @@ def main():
         pv_operand_width=8, wide_p=a.wide_p, wide_v=a.wide_v, direct_p=a.direct_p))
 
 
-def compile_packed(root, output, source, experiment):
+def compile_packed(root, output, source, experiment, *, rounding_boundary=True):
     record = json.loads((root / 'dense-attention-aot-build.json').read_text())
     output.mkdir()
     ir = output / 'dense-attention-packed-pv-swizzle.ttgir'
@@ -78,7 +78,7 @@ def compile_packed(root, output, source, experiment):
     record['experiment'] = dict(experiment, isa=isa,
         resources={k: int(v) for k, v in re.findall(
             r'^[ \t]*\.(vgpr_count|sgpr_count|private_segment_fixed_size):[ \t]*(\d+)', asm, re.M)},
-        reference=str(root), rounding_boundary=True)
+        reference=str(root), rounding_boundary=rounding_boundary)
     (output / 'dense-attention-aot-build.json').write_text(json.dumps(record, indent=2) + '\n')
     print(json.dumps(record['experiment']), flush=True)
 
