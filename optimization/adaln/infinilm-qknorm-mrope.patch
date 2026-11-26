@@ -3,7 +3,7 @@
 @@ -44,7 +44,14 @@
                                        const infinicore::Tensor &, const infinicore::Tensor &,
                                        float, std::uintptr_t);
- 
+
 +using QKNormMRoPELaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
 +    const infinicore::Tensor &, const infinicore::Tensor &, const infinicore::Tensor &,
 +    const infinicore::Tensor &, const infinicore::Tensor &, const infinicore::Tensor &,
@@ -29,12 +29,12 @@
 +std::uint64_t songshan_qknorm_mrope_calls() {
 +    return qknorm_mrope_calls.load(std::memory_order_relaxed);
  }
- 
+
  namespace {
 @@ -186,6 +202,46 @@
      return out;
  }
- 
+
 +// 原始 Q/K -> CUB 顺序 RMSNorm -> BF16 舍入 -> 三轴 MRoPE。
 +// 条件不满足时完全交回既有分支，包括 graph recording。
 +bool normalize_rotary_heads(infinicore::Tensor &query, infinicore::Tensor &key,
@@ -81,7 +81,7 @@
 @@ -304,12 +360,17 @@
      key = key->view({batch_size * sequence_length, num_heads_, head_dim_});
      value = value->view({batch_size, sequence_length, num_heads_, head_dim_});
- 
+
 -    query = normalize_heads(query, norm_q_);
 -    key = normalize_heads(key, norm_k_);
 +    const bool fused_norm_rotary = batch_size == 1 && rotary_cos_sin_cache.has_value()
@@ -93,7 +93,7 @@
 +    }
      query = query->view({batch_size, sequence_length, num_heads_, head_dim_});
      key = key->view({batch_size, sequence_length, num_heads_, head_dim_});
- 
+
 -    if (rotary_cos_sin_cache.has_value()) {
 +    if (!fused_norm_rotary && rotary_cos_sin_cache.has_value()) {
          if (!position_ids.has_value()) {
