@@ -1,0 +1,243 @@
+{
+  "verdict": "PASS",
+  "entry_defaults": {
+    "entry": "/public/home/acvduipmem/xsh/songshanbei/runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py",
+    "entry_sha256": "9bee7f79ad0968cb2af1ade301ef59a4db31d2c06ba9d2ade3435dc2bd98ca46",
+    "defaults": {
+      "--steps": 50,
+      "--seed": 42,
+      "--num-frames": 124
+    },
+    "source": "未传入 steps/num-frames/seed/height/width 覆盖参数"
+  },
+  "official_video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+  "measurement_sha256": "3d36cc74d907e214ceedc50b3986e2b914af97d86eba7631615cd17c8205a441",
+  "source_sha256": {
+    "official": "e582fbd032771ef9623afc37dab0cfce9bbbe9217c1a552b0baa6dafbbab7abd",
+    "steady": "5040755ad5c07d6d9cfadfae80482379cf5aba38f30daa7caaa0261c0f72d759"
+  },
+  "measured_wall_seconds": {
+    "samples": [
+      188.86113351443782,
+      189.18985173059627,
+      187.18957580113783
+    ],
+    "mean": 188.41352034872398,
+    "median": 188.86113351443782,
+    "min": 187.18957580113783,
+    "max": 189.18985173059627,
+    "stdev": 1.0726341911774884
+  },
+  "stages": {
+    "generation.pipeline_total": {
+      "samples": [
+        187.3918523369357,
+        187.6828789752908,
+        185.7117418111302
+      ],
+      "mean": 186.92882437445223,
+      "median": 187.3918523369357,
+      "min": 185.7117418111302,
+      "max": 187.6828789752908,
+      "stdev": 1.0640214285976455
+    },
+    "compute.h3_transformer": {
+      "samples": [
+        167.28440939774737,
+        167.32509755762294,
+        167.2825441765599
+      ],
+      "mean": 167.29735037731007,
+      "median": 167.28440939774737,
+      "min": 167.2825441765599,
+      "max": 167.32509755762294,
+      "stdev": 0.024047853833675466
+    },
+    "compute.condition_encoder": {
+      "samples": [
+        0.3031524736434221,
+        0.30607715202495456,
+        0.32787502417340875
+      ],
+      "mean": 0.3123682166139285,
+      "median": 0.30607715202495456,
+      "min": 0.3031524736434221,
+      "max": 0.32787502417340875,
+      "stdev": 0.013508673007513234
+    },
+    "input.video_vae_encode": {
+      "samples": [
+        0.866444923914969,
+        0.8636132627725601,
+        0.8625352592207491
+      ],
+      "mean": 0.8641978153027594,
+      "median": 0.8636132627725601,
+      "min": 0.8625352592207491,
+      "max": 0.866444923914969,
+      "stdev": 0.0020193181400485283
+    },
+    "output.video_vae_decode": {
+      "samples": [
+        15.37772723659873,
+        15.610957337077707,
+        13.66462136618793
+      ],
+      "mean": 14.884435313288122,
+      "median": 15.37772723659873,
+      "min": 13.66462136618793,
+      "max": 15.610957337077707,
+      "stdev": 1.0628069528834818
+    },
+    "output.audio_vae_decode": {
+      "samples": [
+        0.24239743780344725,
+        0.24272838607430458,
+        0.24279571138322353
+      ],
+      "mean": 0.24264051175365844,
+      "median": 0.24272838607430458,
+      "min": 0.24239743780344725,
+      "max": 0.24279571138322353,
+      "stdev": 0.00021318274615624594
+    },
+    "output.media_encode": {
+      "samples": [
+        1.4373262976296246,
+        1.4751365692354739,
+        1.4459821111522615
+      ],
+      "mean": 1.4528149926724534,
+      "median": 1.4459821111522615,
+      "min": 1.4373262976296246,
+      "max": 1.4751365692354739,
+      "stdev": 0.019809602775642855
+    }
+  },
+  "requests": [
+    {
+      "case": "A",
+      "index": 0,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "wall_seconds": 247.0516336588189,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 93.83201347926341
+    },
+    {
+      "case": "A",
+      "index": 1,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "wall_seconds": 188.86113351443782,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 93.83201347926341
+    },
+    {
+      "case": "A",
+      "index": 2,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "wall_seconds": 189.18985173059627,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 93.83201347926341
+    },
+    {
+      "case": "A",
+      "index": 3,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "wall_seconds": 187.18957580113783,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 93.83201347926341
+    },
+    {
+      "case": "B",
+      "index": 4,
+      "video_sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+      "wall_seconds": 143.26330733997747,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 99.40412322827537
+    },
+    {
+      "case": "C",
+      "index": 5,
+      "video_sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+      "wall_seconds": 152.5561690959148,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 99.63004744871529
+    },
+    {
+      "case": "A",
+      "index": 6,
+      "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "wall_seconds": 188.47692662896588,
+      "num_transformer_calls": 49,
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 78400,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784
+      },
+      "ssim_percent": 93.83201347926341
+    }
+  ],
+  "vram_sampled_mib": {
+    "card0": 28950,
+    "card1": 22457,
+    "card2": 15213,
+    "card3": 15213,
+    "card4": 31912,
+    "card5": 31882,
+    "card6": 31882,
+    "card7": 31786
+  },
+  "vram_scope": "hy-smi 每五秒整卡已用显存采样；不是瞬时精确峰值，也不等同于 PyTorch allocator 统计。",
+  "older_node_round40_wall_reference": 195.13845996543145
+}

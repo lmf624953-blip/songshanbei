@@ -1,6 +1,8 @@
-# MiniMax-H3 决赛 v3
+# MiniMax-H3 决赛推理
 
 v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
+
+当前选用第 51 轮长注意力与 Q/K RMSNorm + MRoPE 融合。组合版已通过官方默认 A 和完整常驻 A/B/C 回归。三次稳态 A 请求均值 188.414 秒，Transformer 均值 167.297 秒。见 [完整验收记录](dcu-kernel-autotune/docs/combination-1218234-qualified.json)。
 
 ## 准备运行环境
 
@@ -25,22 +27,22 @@ module load compiler/dtk/26.04 compiler/gcc/11.4.0
 
 模型根目录需要直接包含 `model_index.json`。准备独立 PyTorch 参考时使用同一组离线依赖执行 `reproduce-local.py reference`，然后执行 `reproduce-local.py generate`，两个阶段均传入对应的 `--cache` 和 `--model`。
 
-## 构建 v3 和验收公开样例
+## 构建当前版本和验收公开样例
 
 ```bash
 mkdir -p "$project/artifacts"
-job=$(mktemp -d "$project/artifacts/v3-XXXXXXXX")
+job=$(mktemp -d "$project/artifacts/selected-XXXXXXXX")
 build="$job/build"
 first_frame="$project/runtime/unified-dog-input/first_frame.png"
 H3_BUILD_JOBS=8 bash "$project/optimization/rebuild-v2.sh" "$build" \
-  --short-attention --deterministic-keyframe
+  --short-attention --deterministic-keyframe --long-attention-q64-buffer --fused-qknorm-mrope
 
 out="$job/official"
 mkdir "$out"
 bash "$project/optimization/run-optimized.sh" --config "$build/candidate.env" fl2va \
   --model-path "$model" --first-frame "$first_frame" \
   --text "A dog falls asleep" --gpus 0,1,2,3,4,5,6,7 \
-  --steps 50 --num-frames 124 --seed 42 --output "$out/video.mp4" \
+  --output "$out/video.mp4" \
   > "$out/run.log" 2>&1
 ```
 
