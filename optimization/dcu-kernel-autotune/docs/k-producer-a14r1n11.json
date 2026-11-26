@@ -1,0 +1,744 @@
+{
+  "scope": "单算子，非端到端验收",
+  "records": [
+    {
+      "variant": "d16-n1",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/k-producer-a14r1n11/d16-n1",
+      "experiment": {
+        "k_producer": "d16-n1",
+        "k_row_lds": false,
+        "isa": {
+          "s_waitcnt": 59,
+          "global_load_dwordx4": 12,
+          "s_barrier": 12,
+          "ds_write_b128": 4,
+          "ds_read_b128": 16,
+          "v_mmac_f32_16x16x16_bf16": 128,
+          "global_load_dwordx2": 8,
+          "ds_write_b16": 32,
+          "ds_read_u16": 32,
+          "ds_write2_b64": 4,
+          "ds_read2st64_b64": 16,
+          "global_store_short": 64
+        },
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 52,
+          "vgpr_count": 212
+        },
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+        "rounding_boundary": false
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.100303649902344,
+              35.109107971191406,
+              35.09742736816406,
+              35.09870529174805,
+              35.09806442260742,
+              35.10558319091797,
+              35.090065002441406,
+              35.09070587158203,
+              35.09534454345703,
+              35.09262466430664,
+              35.080623626708984
+            ],
+            [
+              35.60462951660156,
+              35.583988189697266,
+              35.597904205322266,
+              35.59406280517578,
+              35.59550094604492,
+              35.59822082519531,
+              35.588623046875,
+              35.60718536376953,
+              35.60334396362305,
+              35.60798263549805,
+              35.6092643737793
+            ]
+          ],
+          "medians_ms": [
+            35.09742736816406,
+            35.59822082519531
+          ],
+          "paired_gain_percent": -1.4259644500672852,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.703027725219727,
+              23.70846939086914,
+              23.69999122619629,
+              23.703672409057617,
+              23.700151443481445,
+              23.70271110534668,
+              23.69438934326172,
+              23.7121524810791,
+              23.710872650146484,
+              23.710708618164062,
+              23.696468353271484
+            ],
+            [
+              24.07103157043457,
+              24.055511474609375,
+              24.08287239074707,
+              24.065589904785156,
+              24.077590942382812,
+              24.077112197875977,
+              24.075349807739258,
+              24.047990798950195,
+              24.047832489013672,
+              24.07135009765625,
+              24.0963077545166
+            ]
+          ],
+          "medians_ms": [
+            23.703027725219727,
+            24.07135009765625
+          ],
+          "paired_gain_percent": -1.552560497675537,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "d4-n1",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/k-producer-a14r1n11/d4-n1",
+      "experiment": {
+        "k_producer": "d4-n1",
+        "k_row_lds": false,
+        "isa": {
+          "s_waitcnt": 59,
+          "global_load_dwordx4": 8,
+          "global_load_dwordx2": 16,
+          "s_barrier": 12,
+          "ds_write2st64_b64": 4,
+          "ds_read_b128": 16,
+          "v_mmac_f32_16x16x16_bf16": 128,
+          "ds_write_b16": 32,
+          "ds_read_u16": 32,
+          "ds_write2_b64": 4,
+          "ds_read2st64_b64": 16,
+          "global_store_short": 64
+        },
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 54,
+          "vgpr_count": 216
+        },
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+        "rounding_boundary": false
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.10238265991211,
+              35.1035041809082,
+              35.11790466308594,
+              35.11534118652344,
+              35.11069869995117,
+              35.10877990722656,
+              35.08766174316406,
+              35.1009407043457,
+              35.100460052490234,
+              35.10414123535156,
+              35.104461669921875
+            ],
+            [
+              35.365264892578125,
+              35.35406494140625,
+              35.363983154296875,
+              35.374542236328125,
+              35.3723030090332,
+              35.35038375854492,
+              35.36717987060547,
+              35.36174011230469,
+              35.34126281738281,
+              35.375823974609375,
+              35.380462646484375
+            ]
+          ],
+          "medians_ms": [
+            35.10414123535156,
+            35.365264892578125
+          ],
+          "paired_gain_percent": -0.7429983434224408,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.707189559936523,
+              23.69710922241211,
+              23.702709197998047,
+              23.703990936279297,
+              23.70111083984375,
+              23.717269897460938,
+              23.691030502319336,
+              23.709270477294922,
+              23.6854305267334,
+              23.711347579956055,
+              23.7065486907959
+            ],
+            [
+              23.89566993713379,
+              23.904150009155273,
+              23.90319061279297,
+              23.915029525756836,
+              23.898229598999023,
+              23.891830444335938,
+              23.90654945373535,
+              23.87118911743164,
+              23.90191078186035,
+              23.897750854492188,
+              23.898548126220703
+            ]
+          ],
+          "medians_ms": [
+            23.703990936279297,
+            23.898548126220703
+          ],
+          "paired_gain_percent": -0.8316857403320554,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "d8-n2",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/k-producer-a14r1n11/d8-n2",
+      "experiment": {
+        "k_producer": "d8-n2",
+        "k_row_lds": false,
+        "isa": {
+          "s_waitcnt": 59,
+          "global_load_dwordx4": 12,
+          "s_barrier": 12,
+          "ds_write_b128": 4,
+          "ds_read_b128": 16,
+          "v_mmac_f32_16x16x16_bf16": 128,
+          "global_load_dwordx2": 8,
+          "ds_write_b16": 32,
+          "ds_read_u16": 32,
+          "ds_write2_b64": 4,
+          "ds_read2st64_b64": 16,
+          "global_store_short": 64
+        },
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 52,
+          "vgpr_count": 216
+        },
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+        "rounding_boundary": false
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.096622467041016,
+              35.097740173339844,
+              35.09038162231445,
+              35.088623046875,
+              35.091983795166016,
+              35.08910369873047,
+              35.10398483276367,
+              35.1046257019043,
+              35.089744567871094,
+              35.09230422973633,
+              35.094383239746094
+            ],
+            [
+              35.13246536254883,
+              35.1287841796875,
+              35.132301330566406,
+              35.1231803894043,
+              35.12382507324219,
+              35.12654495239258,
+              35.11614227294922,
+              35.12702560424805,
+              35.13982391357422,
+              35.12606430053711,
+              35.15070343017578
+            ]
+          ],
+          "medians_ms": [
+            35.09230422973633,
+            35.12702560424805
+          ],
+          "paired_gain_percent": -0.09848588952359183,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.707189559936523,
+              23.714229583740234,
+              23.712631225585938,
+              23.709749221801758,
+              23.688310623168945,
+              23.71550941467285,
+              23.70030975341797,
+              23.70462989807129,
+              23.712308883666992,
+              23.70111083984375,
+              23.70815086364746
+            ],
+            [
+              23.71599006652832,
+              23.68766975402832,
+              23.684471130371094,
+              23.71055030822754,
+              23.73567008972168,
+              23.6787109375,
+              23.69791030883789,
+              23.70030975341797,
+              23.70830726623535,
+              23.688947677612305,
+              23.711509704589844
+            ]
+          ],
+          "medians_ms": [
+            23.70815086364746,
+            23.70030975341797
+          ],
+          "paired_gain_percent": 0.016875697138030166,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "d8-n2-wide",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/k-producer-a14r1n11/d8-n2-wide",
+      "experiment": {
+        "k_producer": "d8-n2-wide",
+        "k_row_lds": false,
+        "isa": {
+          "s_waitcnt": 59,
+          "global_load_dwordx4": 12,
+          "s_barrier": 12,
+          "ds_write_b128": 4,
+          "ds_read_b128": 16,
+          "v_mmac_f32_16x16x16_bf16": 128,
+          "global_load_dwordx2": 8,
+          "ds_write_b16": 32,
+          "ds_read_u16": 32,
+          "ds_write2_b64": 4,
+          "ds_read2st64_b64": 16,
+          "global_store_short": 64
+        },
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 52,
+          "vgpr_count": 217
+        },
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+        "rounding_boundary": false
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.096622467041016,
+              35.08910369873047,
+              35.08670425415039,
+              35.12238311767578,
+              35.087982177734375,
+              35.108463287353516,
+              35.09086227416992,
+              35.08158493041992,
+              35.105743408203125,
+              35.12094497680664,
+              35.11774444580078
+            ],
+            [
+              35.26606369018555,
+              35.265262603759766,
+              35.25950241088867,
+              35.26286315917969,
+              35.259185791015625,
+              35.28606414794922,
+              35.28910446166992,
+              35.250545501708984,
+              35.267982482910156,
+              35.28510284423828,
+              35.24078369140625
+            ]
+          ],
+          "medians_ms": [
+            35.096622467041016,
+            35.265262603759766
+          ],
+          "paired_gain_percent": -0.48278498395009084,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.696149826049805,
+              23.709428787231445,
+              23.700469970703125,
+              23.72479248046875,
+              23.696632385253906,
+              23.7235107421875,
+              23.692630767822266,
+              23.71390724182129,
+              23.712787628173828,
+              23.717910766601562,
+              23.68494987487793
+            ],
+            [
+              23.831829071044922,
+              23.787189483642578,
+              23.792470932006836,
+              23.797748565673828,
+              23.80014991760254,
+              23.816469192504883,
+              23.811187744140625,
+              23.791988372802734,
+              23.80862808227539,
+              23.79454803466797,
+              23.793107986450195
+            ]
+          ],
+          "medians_ms": [
+            23.709428787231445,
+            23.797748565673828
+          ],
+          "paired_gain_percent": -0.3918410362091729,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "original",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/k-producer-a14r1n11/original",
+      "experiment": {
+        "k_producer": "original",
+        "k_row_lds": true,
+        "isa": {
+          "s_waitcnt": 53,
+          "global_load_dwordx4": 12,
+          "s_barrier": 12,
+          "ds_write_b16": 48,
+          "ds_write_b16_d16_hi": 16,
+          "ds_read_u16": 160,
+          "v_mmac_f32_16x16x16_bf16": 128,
+          "global_load_dwordx2": 8,
+          "ds_write2_b64": 4,
+          "ds_read2st64_b64": 16,
+          "global_store_short": 64
+        },
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 54,
+          "vgpr_count": 226
+        },
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+        "rounding_boundary": false
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.08734130859375,
+              35.1123046875,
+              35.10862350463867,
+              35.09614562988281,
+              35.09966278076172,
+              35.11342239379883,
+              35.0870246887207,
+              35.11933898925781,
+              35.09901809692383,
+              35.11726379394531,
+              35.09774398803711
+            ],
+            [
+              42.48286056518555,
+              42.46253967285156,
+              42.462379455566406,
+              42.463340759277344,
+              42.475341796875,
+              42.452781677246094,
+              42.459495544433594,
+              42.471336364746094,
+              42.474700927734375,
+              42.462860107421875,
+              42.46781539916992
+            ]
+          ],
+          "medians_ms": [
+            35.09966278076172,
+            42.463340759277344
+          ],
+          "paired_gain_percent": -20.99146500897151,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.70094871520996,
+              23.723827362060547,
+              23.698389053344727,
+              23.708629608154297,
+              23.683990478515625,
+              23.699190139770508,
+              23.700468063354492,
+              23.717910766601562,
+              23.71710777282715,
+              23.698070526123047,
+              23.709749221801758
+            ],
+            [
+              28.726224899291992,
+              28.724464416503906,
+              28.730548858642578,
+              28.72062873840332,
+              28.731027603149414,
+              28.691028594970703,
+              28.742067337036133,
+              28.70830726623535,
+              28.734384536743164,
+              28.715024948120117,
+              28.73390769958496
+            ]
+          ],
+          "medians_ms": [
+            23.70094871520996,
+            28.726224899291992
+          ],
+          "paired_gain_percent": -21.17030758460585,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "winners": [],
+  "hostname": "a14r1n11",
+  "verdict": "NO_GAIN",
+  "selected_default_changed": false,
+  "independent_pmc": {
+    "reference": {
+      "387072": {
+        "sequence": 27570,
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_INSTS_LDS": 271095552,
+          "SQ_WAIT_INST_LDS": 700325480.5,
+          "SQ_LDS_BANK_CONFLICT": 417070080
+        }
+      },
+      "308224": {
+        "sequence": 22016,
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_INSTS_LDS": 172297216,
+          "SQ_WAIT_INST_LDS": 439920259.25,
+          "SQ_LDS_BANK_CONFLICT": 265072640
+        }
+      }
+    },
+    "row_lds": {
+      "387072": {
+        "sequence": 27570,
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 228,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_INSTS_LDS": 636031872,
+          "SQ_WAIT_INST_LDS": 3397166554,
+          "SQ_LDS_BANK_CONFLICT": 1584866304
+        }
+      },
+      "308224": {
+        "sequence": 22016,
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 228,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_INSTS_LDS": 404235776,
+          "SQ_WAIT_INST_LDS": 2138885626,
+          "SQ_LDS_BANK_CONFLICT": 1007276032
+        }
+      }
+    },
+    "d8_n2": {
+      "387072": {
+        "sequence": 27570,
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 31316432,
+          "SQ_INSTS_LDS": 271095552,
+          "SQ_WAIT_INST_LDS": 678618846.5,
+          "SQ_LDS_BANK_CONFLICT": 417070080
+        }
+      },
+      "308224": {
+        "sequence": 22016,
+        "samples": 4,
+        "means": {
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_INSTS_LDS": 172297216,
+          "SQ_WAIT_INST_LDS": 426295372.25,
+          "SQ_LDS_BANK_CONFLICT": 265072640
+        }
+      }
+    }
+  }
+}

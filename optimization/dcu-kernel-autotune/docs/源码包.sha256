@@ -66,10 +66,11 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-519f6ddca49c5b9c5910f8f239e06707fcc48b82e07a2a6caec0b8541d22896e  candidates/pv-v-lds-layout/README.md
+8016839ffb6f9d422e718863eec5fc49bc06b9e883aa90cbf0eee8f644916215  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
+10080bb8b0a7f58a7874c55047731fd396288b21753215e47e8cf1920c6b9871  candidates/pv-v-lds-layout/build-k-producer.py
 e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-v-lds-layout/build-k-resources.py
 3c740f14a5141d06f5b58cd7c71a55b604ffa1afb5e6f5b12a16e2483cc87ae1  candidates/pv-v-lds-layout/build-p-lds-axis.py
 cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-v-lds-layout/build-p-resources.py
@@ -190,6 +191,7 @@ a573a678d6af2f446aaec0c63ab3f42e3bd245c7a3e8ac307a62774ece87285b  docs/indexed-g
 6c24f86f139abb68463c2ffa94952cbc4626dd2d87c045e5b670c041a51835a0  docs/indexed-gate-linear-1218234-guarded-rebuild.json
 8178e7ca6468f4a6d882d05df341862b83a0f575d824e2bee4c1afc4b3e4f48e  docs/indexed-gate-linear-v2-1218234-micro.json
 ab51b6f67eb0122b472910f6fceeda1d7c2a48a02eb92203e16b016e2e93fa06  docs/k-pretranspose-a14r1n11.json
+92094b5f1ca4cd1bbca7f0120888a6b0ce37527b9a7566c893d3f54306e0b08f  docs/k-producer-a14r1n11.json
 ffd40883c739b6e7ce8482c69bbd02f0bdfd6765cd03eae22d4c298aa301f561  docs/mrope-aot-screen.json
 6d961ad7fe06e1467bfb23913e691874ac892a94a9f7f5f4f5f43590b05ff200  docs/precise-pv-tail-1218234-results.json
 d265f40c5264dcc6ca956e9ea210ac503b24f79fd8c983fd49f4e0af6a1c1cc3  docs/pv-lds-query-1218234-screen.json
