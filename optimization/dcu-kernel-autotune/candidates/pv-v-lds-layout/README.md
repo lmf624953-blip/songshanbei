@@ -216,3 +216,9 @@ python build-mmac-issue.py "$candidate" "$joined" \
 `build-p-half-lds.py REFERENCE OUTPUT store --overlap p-first --p-pending 7` 在联合发射汇编上把 V 的 LDS 地址移到第二个 8 KiB 区域。先写 P，再写 V，共用一次线程块同步后读回。先发射 P 的读请求，在 V 发射前允许至多七条 LDS 操作未完成。PV 消费前的等待仍覆盖两个操作数。完整块与尾块的累加顺序保留。用 `unchanged` 代替 `store` 可测保留标量右移的分区版。
 
 九个候选在 27570/22016 token 的普通与放大输入均逐位一致。单独分区时，先读 P 回退 0.8%–0.9%，先读 V 回退约 3.4%。组合高半字写入和 `lgkmcnt(7)` 后，相对正式版分别节省 1.98%/2.01%，相对单独高半字写入的 19 组配对分别节省 0.71%/0.63%。组合版独立重建逐文件一致，20 个额外长度及哨兵均通过。设备汇编的 barrier 从 12 处减到 8 处，独立 PMC 测得 LDS 从 8 KiB 增为 16 KiB，LDS 等待计数较正式版少约 8%–9%，LDS 指令、bank conflict 和 220 VGPR 保持一致。收益位于单 kernel 范围，先归档。见 [逐位校验、双对照和 PMC](../../docs/joint-pv-overlap-a14r1n11.json)。
+
+## 联合发射版的跨块预取
+
+`build-k-cross-block.py REFERENCE OUTPUT {backedge,after-pv,before-dpp}` 在完整块的回边、当前 PV 点积结束后或求和 DPP 前发射下一块 K。复用 PV 后的 v166–v173，下一轮从这组寄存器直接写 LDS。用 `--include-v` 同时预取 V 到 v206–v213。最后一个完整块继续按原分支进入尾块，加载条件和所有累加顺序保留。`--pair-with-lds` 叠加上一节的高半字写入、16 KiB 分区和 `lgkmcnt(7)`。
+
+八个候选在 27570/22016 token 的普通与放大输入均逐位一致。紧接 PV 的 K 单项节省 2.14%/2.29%，K/V 同时预取的最佳位置在求和 DPP 前，节省 2.45%/2.53%。最佳组合用 `after-pv --pair-with-lds`，节省 4.02%/4.63%。该组合的独立重建产物逐字节一致，另外 20 个长度和哨兵均通过。三个独立 PMC 对照均测得 220 VGPR 和 0 B scratch，K 单项和 K/V 单项保留 8192 B LDS，最佳组合使用 16384 B LDS。对 27570 token，K/V 单项的 LDS 等待计数降低约 23%，实际耗时收益约 2.45%。本轮按单 kernel 收益归档。见 [配对、边界验证与独立 PMC](../../docs/k-cross-block-a14r1n11.json)。

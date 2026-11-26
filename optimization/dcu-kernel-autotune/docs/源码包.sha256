@@ -66,11 +66,12 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-0928ab6ce7b3f220d82c7e4220a6590a15fb49fb67120e2594a2126a7c5a988f  candidates/pv-v-lds-layout/README.md
+58a62bc1bb6018a3fdd80f54e15568c74f8d91d058d11a25be7693883c0c4af8  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 07daea88808f2f1d293b205e27b6d5204ce5af78d27c01c3e4e14d1510ae9aa2  candidates/pv-v-lds-layout/build-dual-q128.py
 16567e781f9ccdb388bebc2013fa80387745054da32acfa042b9940aff1d673a  candidates/pv-v-lds-layout/build-full-kv-unmasked.py
+87c6350e12e94031d1786ab98e9ff99cac5f15c3d567beca7caa582109d1e5aa  candidates/pv-v-lds-layout/build-k-cross-block.py
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
 10080bb8b0a7f58a7874c55047731fd396288b21753215e47e8cf1920c6b9871  candidates/pv-v-lds-layout/build-k-producer.py
 e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-v-lds-layout/build-k-resources.py
@@ -216,6 +217,7 @@ a573a678d6af2f446aaec0c63ab3f42e3bd245c7a3e8ac307a62774ece87285b  docs/indexed-g
 091fdb02e6154e19b2b47eb09e315272efb69be7a4e36fd4ed263a9e03d91608  docs/joint-kv-a14r1n11-qualified.json
 49ffcbe9dfa23157847a15eb30865cef51ca852e1f22a4b6094dfc223cc2596b  docs/joint-kv-a14r1n11.json
 249129ffbe124b05b260b5719b311a9c32f3759c5fd9d98364183e960f42043c  docs/joint-pv-overlap-a14r1n11.json
+f2096ef6785a1f2d760a1c42567e75a5730803476b08750a4492e48163b9fb9c  docs/k-cross-block-a14r1n11.json
 ab51b6f67eb0122b472910f6fceeda1d7c2a48a02eb92203e16b016e2e93fa06  docs/k-pretranspose-a14r1n11.json
 92094b5f1ca4cd1bbca7f0120888a6b0ce37527b9a7566c893d3f54306e0b08f  docs/k-producer-a14r1n11.json
 6c9edb645899d22c061ffa00b6d3f235cfa842e3cc7ad1a174ac0e5298e7ed91  docs/mmac-issue-a14r1n11.json
