@@ -27,11 +27,12 @@ def main():
     out.mkdir()
     metadata="dense-attention-aot-build.json"
     record=json.loads((root/metadata).read_text())
-    assert record["shared"]==8192 and record["query_block"]==64 and record["key_block"]==32
+    assert record["shared"]==8192 and record["query_block"] in (64,128) and record["key_block"]==32
     assert record["warps"]==4 and record["num_stages"]==1 and record["kpack"]==2
-    assert record["experiment"]["q_method"]=="direct"
+    assert (record["experiment"].get("q_method")=="direct"
+            or record["query_block"]==128 and record["experiment"].get("mode")=="both")
     source=out/"pv-swizzle.ttgir"
-    source.write_text(apply((root/"pv-swizzle.ttgir").read_text(),args.tail))
+    source.write_text(apply((root/"pv-swizzle.ttgir").read_text(),args.tail,query_block=record["query_block"]))
     os.environ["AMDGCN_USE_BUFFER_OPS"]="1"
     configure_hygon_compiler()
     device=triton.compile(str(source),target=GPUTarget("hip","gfx936",64),
@@ -43,7 +44,7 @@ def main():
     assert device.metadata.profile_scratch_size==0
     asm=device.asm["amdgcn"]
     isa=Counter(re.findall(r"^[ \t]*(ds_\w+|v_mmac_\w+|global_\w+|s_barrier|s_waitcnt)\b",asm,re.M))
-    assert isa["v_mmac_f32_16x16x16_bf16"]==64
+    assert isa["v_mmac_f32_16x16x16_bf16"]==record["query_block"]
     (out/"dense-attention-aot.amdgcn").write_text(asm)
     image=device.asm["hsaco"]
     (out/"dense-attention-aot.hsaco").write_bytes(image)

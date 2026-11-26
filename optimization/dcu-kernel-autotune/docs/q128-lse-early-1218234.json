@@ -1,0 +1,177 @@
+{
+  "reference_sha256": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3",
+  "control_sections_exact": true,
+  "results": [
+    {
+      "name": "v-lse-early",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 60,
+        "global_load_dwordx4": 12,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "global_load_dwordx2": 8,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "2ab264a97fa45c1ab974ec1556628bc74086b47a125d42729c36201d43227cb5"
+    },
+    {
+      "name": "v0",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.108943939208984,
+              35.10910415649414,
+              35.09822463989258,
+              35.10078811645508,
+              35.098384857177734,
+              35.106544494628906,
+              35.1004638671875,
+              35.11742401123047,
+              35.09502410888672
+            ],
+            [
+              35.08430480957031,
+              35.085105895996094,
+              35.09502410888672,
+              35.08830261230469,
+              35.106224060058594,
+              35.08670425415039,
+              35.09022521972656,
+              35.1004638671875,
+              35.1199836730957
+            ]
+          ],
+          "medians_ms": [
+            35.10078811645508,
+            35.09022521972656
+          ],
+          "paired_gain_percent": 0.035570438216281364,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.7302303314209,
+              23.6951904296875,
+              23.68638801574707,
+              23.71358871459961,
+              23.70958709716797,
+              23.69438934326172,
+              23.698869705200195,
+              23.672950744628906,
+              23.70655059814453
+            ],
+            [
+              23.70030975341797,
+              23.665430068969727,
+              23.721107482910156,
+              23.682388305664062,
+              23.698545455932617,
+              23.686710357666016,
+              23.695350646972656,
+              23.691509246826172,
+              23.700149536132812
+            ]
+          ],
+          "medians_ms": [
+            23.698869705200195,
+            23.695350646972656
+          ],
+          "paired_gain_percent": 0.03240845537083592,
+          "passed": true
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 59,
+        "global_load_dwordx4": 12,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "global_load_dwordx2": 8,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3"
+    }
+  ],
+  "winners": []
+}

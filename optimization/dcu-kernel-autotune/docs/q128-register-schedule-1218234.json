@@ -1,0 +1,327 @@
+{
+  "reference_sha256": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3",
+  "control_sections_exact": true,
+  "results": [
+    {
+      "name": "v-lse-attention",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 60,
+        "global_load_dwordx4": 12,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "global_load_dwordx2": 8,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "2ab264a97fa45c1ab974ec1556628bc74086b47a125d42729c36201d43227cb5"
+    },
+    {
+      "name": "v-lse-v-attention",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 60,
+        "global_load_dwordx4": 12,
+        "global_load_dwordx2": 8,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "389452fd67fd29b12f6fbc7f8c82c23593717a90dfb88f2e7e37bd8c8227cb5e"
+    },
+    {
+      "name": "v-lse-v-vgpr192",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 61,
+        "global_load_dwordx4": 12,
+        "global_load_dwordx2": 8,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "22f7f7a9ecdff6340e0d0b9ad9bcee8fe833a645f896e6c99801060658a98193"
+    },
+    {
+      "name": "v-lse-vgpr192",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 61,
+        "global_load_dwordx4": 12,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "global_load_dwordx2": 8,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "e6abde770c7ade0e67d4cedb7859d944893cd8cca969307b79a6738c9b1c105e"
+    },
+    {
+      "name": "v0",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.11054229736328,
+              35.0890998840332,
+              35.08845901489258,
+              35.08766555786133,
+              35.10238265991211,
+              35.103660583496094,
+              35.09629821777344,
+              35.110225677490234,
+              35.090065002441406
+            ],
+            [
+              35.0958251953125,
+              35.09950256347656,
+              35.103023529052734,
+              35.095184326171875,
+              35.09214401245117,
+              35.08990478515625,
+              35.08670425415039,
+              35.09902572631836,
+              35.097904205322266
+            ]
+          ],
+          "medians_ms": [
+            35.09629821777344,
+            35.0958251953125
+          ],
+          "paired_gain_percent": 0.027336112667830648,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.699989318847656,
+              23.68878746032715,
+              23.696147918701172,
+              23.714710235595703,
+              23.69791030883789,
+              23.704790115356445,
+              23.7049503326416,
+              23.711669921875,
+              23.691829681396484
+            ],
+            [
+              23.705907821655273,
+              23.696788787841797,
+              23.712947845458984,
+              23.7044677734375,
+              23.722230911254883,
+              23.707189559936523,
+              23.706552505493164,
+              23.710552215576172,
+              23.711349487304688
+            ]
+          ],
+          "medians_ms": [
+            23.699989318847656,
+            23.707189559936523
+          ],
+          "paired_gain_percent": -0.024972596940830982,
+          "passed": true
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 59,
+        "global_load_dwordx4": 12,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "global_load_dwordx2": 8,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3"
+    }
+  ],
+  "winners": []
+}

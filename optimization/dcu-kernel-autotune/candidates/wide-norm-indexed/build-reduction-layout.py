@@ -20,7 +20,7 @@ def main():
     root = args.reference.resolve(strict=True)
     out = args.output.resolve()
     record = json.loads((root / "build.json").read_text())
-    assert record["mode"] == "cub-padded" and record["warps"] == 16
+    assert record["mode"] in ("cub-padded", "cub-warp-padded") and record["warps"] == 16
     source = (root / "wide-norm-indexed.ttgir").read_text()
     previous = "#blocked = #ttg.blocked<{sizePerThread = [8], threadsPerWarp = [64], warpsPerCTA = [16], order = [0]}>"
     assert source.count(previous) == 1

@@ -11,13 +11,13 @@ import ninetoothed as nt
 
 sys.path.insert(0, str(Path(os.environ["H3_AUTOTUNE_CODE_ROOT"]) / "optimization/adaln"))
 from aot_codegen import compile_image, lower_kernel
-from kernel import arrange_cub, arrange_naive, cub, cub_padded, cub_vector, naive
+from kernel import arrange_cub, arrange_naive, cub, cub_padded, cub_vector, cub_warp_padded, naive
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
-    parser.add_argument("--mode", choices=("naive", "cub", "cub-vector", "cub-padded"), required=True)
+    parser.add_argument("--mode", choices=("naive", "cub", "cub-vector", "cub-padded", "cub-warp-padded"), required=True)
     parser.add_argument("--warps", type=int, choices=(4, 8, 16), required=True)
     args = parser.parse_args()
     args.output.mkdir()
@@ -32,6 +32,7 @@ def main():
         "cub": (arrange_cub, cub),
         "cub-vector": (arrange_naive, cub_vector),
         "cub-padded": (arrange_naive, cub_padded),
+        "cub-warp-padded": (arrange_naive, cub_warp_padded),
     }[args.mode]
     source, kernel, bindings = lower_kernel(
         args.output, arrange, app, tensors, "wide_norm_indexed", args.warps)

@@ -1,0 +1,194 @@
+{
+  "scope": "独立 profiler 诊断，设备 0 累计事件耗时除以同步窗口；正式收益使用无 profiler 数据",
+  "compute_units": 80,
+  "mean_window_ms": 3149.2608846666667,
+  "device0_groups": [
+    {
+      "name": "九齿注意力（长短合计）",
+      "mean_ms": 1754.1214443333333,
+      "pct_of_window": 55.699464368732286
+    },
+    {
+      "name": "RCCL",
+      "mean_ms": 564.943922,
+      "pct_of_window": 17.93893687089047
+    },
+    {
+      "name": "GEMM",
+      "mean_ms": 445.67091866666664,
+      "pct_of_window": 14.15160366156323
+    },
+    {
+      "name": "宽 RMSNorm",
+      "mean_ms": 141.19704733333333,
+      "pct_of_window": 4.483497954101009
+    },
+    {
+      "name": "索引门控",
+      "mean_ms": 69.44705666666667,
+      "pct_of_window": 2.2051858899589796
+    },
+    {
+      "name": "索引 AdaLN",
+      "mean_ms": 65.40391466666667,
+      "pct_of_window": 2.0768020517166312
+    },
+    {
+      "name": "SwiGLU",
+      "mean_ms": 53.21671833333333,
+      "pct_of_window": 1.6898161277282067
+    },
+    {
+      "name": "Q/K RMSNorm 与 MRoPE",
+      "mean_ms": 37.910328,
+      "pct_of_window": 1.2037849320321587
+    },
+    {
+      "name": "其他设备操作",
+      "mean_ms": 15.022179333333336,
+      "pct_of_window": 0.47700650671636424
+    }
+  ],
+  "waves_per_cu_by_grid": {
+    "387072": {
+      "samples": [
+        11.326214102800131,
+        11.329376030357219,
+        11.326760518014897,
+        11.325027309647227
+      ],
+      "mean": 11.326844490204868
+    },
+    "308224": {
+      "samples": [
+        10.593469497802767,
+        10.591576958192697,
+        10.593759317758234,
+        10.582676848467994
+      ],
+      "mean": 10.590370655555423
+    }
+  },
+  "windows": [
+    {
+      "phase": "compute.h3_transformer.1",
+      "wall_ms": 3150.655421,
+      "device0_activity_ms": {
+        "九齿注意力（长短合计）": 1754.099599,
+        "RCCL": 564.999715,
+        "GEMM": 446.520586,
+        "宽 RMSNorm": 141.219289,
+        "索引门控": 69.508282,
+        "索引 AdaLN": 65.374207,
+        "SwiGLU": 53.21357,
+        "Q/K RMSNorm 与 MRoPE": 37.909101,
+        "其他设备操作": 15.046555000000001
+      },
+      "all_cards_idle_ms": 2.935462,
+      "all_cards_internal_idle_ms": 2.134642
+    },
+    {
+      "phase": "compute.h3_transformer.25",
+      "wall_ms": 3148.793575,
+      "device0_activity_ms": {
+        "九齿注意力（长短合计）": 1754.108221,
+        "RCCL": 565.208185,
+        "GEMM": 445.024253,
+        "宽 RMSNorm": 141.157688,
+        "索引门控": 69.480289,
+        "索引 AdaLN": 65.395488,
+        "SwiGLU": 53.214373,
+        "Q/K RMSNorm 与 MRoPE": 37.91134,
+        "其他设备操作": 14.985111000000003
+      },
+      "all_cards_idle_ms": 2.175278,
+      "all_cards_internal_idle_ms": 1.408204
+    },
+    {
+      "phase": "compute.h3_transformer.49",
+      "wall_ms": 3148.333658,
+      "device0_activity_ms": {
+        "九齿注意力（长短合计）": 1754.156513,
+        "RCCL": 564.623866,
+        "GEMM": 445.4679169999999,
+        "宽 RMSNorm": 141.214165,
+        "索引门控": 69.352599,
+        "索引 AdaLN": 65.442049,
+        "SwiGLU": 53.222212,
+        "Q/K RMSNorm 与 MRoPE": 37.910543,
+        "其他设备操作": 15.034872000000002
+      },
+      "all_cards_idle_ms": 1.879974,
+      "all_cards_internal_idle_ms": 1.202717
+    }
+  ],
+  "outputs_match_approved": true,
+  "pmc_by_grid": {
+    "387072": {
+      "samples": [
+        {
+          "l2_hit_pct": 97.77854996362711,
+          "lds_instructions": 271095552,
+          "lds_bank_conflict_raw": 417070080,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        },
+        {
+          "l2_hit_pct": 97.7788281104364,
+          "lds_instructions": 271095552,
+          "lds_bank_conflict_raw": 417070080,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        },
+        {
+          "l2_hit_pct": 97.77885528379525,
+          "lds_instructions": 271095552,
+          "lds_bank_conflict_raw": 417070080,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        },
+        {
+          "l2_hit_pct": 97.7787917781002,
+          "lds_instructions": 271095552,
+          "lds_bank_conflict_raw": 417070080,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        }
+      ],
+      "l2_hit_pct_mean": 97.77875628398974
+    },
+    "308224": {
+      "samples": [
+        {
+          "l2_hit_pct": 97.47875739247814,
+          "lds_instructions": 172297216,
+          "lds_bank_conflict_raw": 265072640,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        },
+        {
+          "l2_hit_pct": 97.4786448093236,
+          "lds_instructions": 172297216,
+          "lds_bank_conflict_raw": 265072640,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        },
+        {
+          "l2_hit_pct": 97.47871108573298,
+          "lds_instructions": 172297216,
+          "lds_bank_conflict_raw": 265072640,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        },
+        {
+          "l2_hit_pct": 97.47840997998928,
+          "lds_instructions": 172297216,
+          "lds_bank_conflict_raw": 265072640,
+          "vgpr_allocated": 216,
+          "scratch_bytes": 0
+        }
+      ],
+      "l2_hit_pct_mean": 97.47863081688101
+    }
+  }
+}

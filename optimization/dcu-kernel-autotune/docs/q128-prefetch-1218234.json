@@ -1,0 +1,227 @@
+{
+  "reference_sha256": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3",
+  "control_sections_exact": true,
+  "results": [
+    {
+      "name": "v-lse-v-prefetch",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 60,
+        "global_load_dwordx4": 12,
+        "global_load_dwordx2": 8,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "389452fd67fd29b12f6fbc7f8c82c23593717a90dfb88f2e7e37bd8c8227cb5e"
+    },
+    {
+      "name": "v-v-prefetch",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": false,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.000244140625
+          },
+          "passed": false
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 59,
+        "global_load_dwordx4": 12,
+        "global_load_dwordx2": 8,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "5813d1f1d7afae4ac69c6cdc87ed1663478db225cd54d24e49162a8cc02a8cb6"
+    },
+    {
+      "name": "v0",
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.08830642700195,
+              35.10862731933594,
+              35.09166717529297,
+              35.098388671875,
+              35.08414840698242,
+              35.08782958984375,
+              35.089107513427734,
+              35.087188720703125,
+              35.08846664428711
+            ],
+            [
+              35.08910369873047,
+              35.09022521972656,
+              35.09566879272461,
+              35.09870910644531,
+              35.089744567871094,
+              35.08958435058594,
+              35.085426330566406,
+              35.078548431396484,
+              35.083988189697266
+            ]
+          ],
+          "medians_ms": [
+            35.08846664428711,
+            35.08958435058594
+          ],
+          "paired_gain_percent": -0.0009129609148450513,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.707027435302734,
+              23.703828811645508,
+              23.688791275024414,
+              23.709592819213867,
+              23.7121524810791,
+              23.7142276763916,
+              23.683027267456055,
+              23.698392868041992,
+              23.730712890625
+            ],
+            [
+              23.708467483520508,
+              23.703187942504883,
+              23.691192626953125,
+              23.70783233642578,
+              23.733591079711914,
+              23.71038818359375,
+              23.70319175720215,
+              23.70351219177246,
+              23.694551467895508
+            ]
+          ],
+          "medians_ms": [
+            23.707027435302734,
+            23.70351219177246
+          ],
+          "paired_gain_percent": -0.006074351673590606,
+          "passed": true
+        }
+      ],
+      "layout": [
+        4,
+        2,
+        8,
+        [
+          0,
+          1
+        ]
+      ],
+      "shared": 8192,
+      "isa": {
+        "s_waitcnt": 59,
+        "global_load_dwordx4": 12,
+        "s_barrier": 12,
+        "ds_write_b128": 4,
+        "ds_read_b128": 16,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "global_load_dwordx2": 8,
+        "ds_write_b16": 32,
+        "ds_read_u16": 32,
+        "ds_write2_b64": 4,
+        "ds_read2st64_b64": 16,
+        "global_store_short": 64
+      },
+      "binary": "91218458189e033d6a42787e23e065bca7d2df287ca5843411f55c20325d07a3"
+    }
+  ],
+  "winners": []
+}

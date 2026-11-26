@@ -1,0 +1,10 @@
+{
+  "verdict": "PASS",
+  "old_wall_seconds": 181.58005227474496,
+  "new_wall_seconds": 174.5508346366696,
+  "old_transformer_seconds": 161.60794824206582,
+  "new_transformer_seconds": 154.22502222067365,
+  "complete_requests": 7,
+  "video_hashes_equal": true,
+  "scope": "同节点独立常驻实例，三次正式 A，均排除一次预热"
+}
