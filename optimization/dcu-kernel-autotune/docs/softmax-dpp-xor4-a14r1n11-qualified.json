@@ -1,0 +1,1011 @@
+{
+  "official": {
+    "validation": {
+      "local_checks_passed": true,
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "transformer_calls": 49,
+      "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "comparison": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      }
+    },
+    "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+    "entry_defaults": {
+      "--steps": 50,
+      "--seed": 42,
+      "--num-frames": 124
+    }
+  },
+  "matched_previously_accepted_media": true,
+  "records": [
+    {
+      "index": 0,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 222.41094304341823,
+      "transformer_seconds": 143.16681395843625,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10199339520,
+        "1": 6116699648,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 0,
+        "variant": "candidate",
+        "wall_seconds": 222.41094304341823,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 152.9575371351093,
+      "transformer_seconds": 133.22299602348357,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10731779072,
+        "1": 6278302208,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 1,
+        "variant": "candidate",
+        "wall_seconds": 152.9575371351093,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 161.79123302549124,
+      "transformer_seconds": 140.73368377238512,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 9906472960,
+        "1": 6340774400,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 2,
+        "variant": "candidate",
+        "wall_seconds": 161.79123302549124,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 154.04936087876558,
+      "transformer_seconds": 133.2044425252825,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10440263680,
+        "1": 6565392896,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 3,
+        "variant": "candidate",
+        "wall_seconds": 154.04936087876558,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 4,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 153.39499730616808,
+      "transformer_seconds": 133.2128281723708,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10199278592,
+        "1": 6635381248,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 4,
+        "variant": "candidate",
+        "wall_seconds": 153.39499730616808,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 5,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 160.0970549006015,
+      "transformer_seconds": 140.72952451836318,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10966952960,
+        "1": 6892663808,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 5,
+        "variant": "candidate",
+        "wall_seconds": 160.0970549006015,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 162.1223316770047,
+      "transformer_seconds": 140.73709703236818,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10704319488,
+        "1": 7068973056,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 6,
+        "variant": "candidate",
+        "wall_seconds": 162.1223316770047,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 7,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 154.35590876545757,
+      "transformer_seconds": 133.2207323871553,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 11028327424,
+        "1": 7291339776,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 7,
+        "variant": "candidate",
+        "wall_seconds": 154.35590876545757,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 8,
+      "case": "B",
+      "attention_variant": "fast",
+      "wall_seconds": 117.58711799047887,
+      "transformer_seconds": 101.33605018258095,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+      "peak_torch_allocated_bytes": {
+        "0": 11031589376,
+        "1": 7290834432,
+        "2": 0,
+        "3": 0,
+        "4": 13213184,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "B",
+        "index": 8,
+        "variant": "candidate",
+        "wall_seconds": 117.58711799047887,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/旧文档/optimization/sequence-reference-B-1201424/00-B/video.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 57773100,
+          "compared_elements": 219414528,
+          "max_absolute_difference": 234,
+          "mean_absolute_difference": 0.8855353962705697,
+          "ssim_match_percent": 99.40412322827537,
+          "ssim_min_percent": 99.17931498954825,
+          "ssim_max_percent": 99.86587996696518,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.008158768251807783,
+          "candidate_rms": 0.0060807307717949295,
+          "max_absolute_error": 0.024111899081617594,
+          "mean_absolute_error": 0.002460233706159571,
+          "rmse": 0.003270646765585316,
+          "snr_db": 7.939819100170448,
+          "correlation": 0.9357112923346455,
+          "reference_peak": 0.06807353347539902,
+          "candidate_peak": 0.05385071039199829,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 9,
+      "case": "C",
+      "attention_variant": "fast",
+      "wall_seconds": 126.40173376817256,
+      "transformer_seconds": 109.67406558804214,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+      "peak_torch_allocated_bytes": {
+        "0": 10951174656,
+        "1": 7511619072,
+        "2": 0,
+        "3": 0,
+        "4": 26780672,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "C",
+        "index": 9,
+        "variant": "candidate",
+        "wall_seconds": 126.40173376817256,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/旧文档/optimization/sequence-reference-C-1201424/00-C/video.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 52402555,
+          "compared_elements": 219414528,
+          "max_absolute_difference": 212,
+          "mean_absolute_difference": 0.6505503455085708,
+          "ssim_match_percent": 99.63004744871529,
+          "ssim_min_percent": 99.3410113516413,
+          "ssim_max_percent": 99.84916773354621,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.009546768453824349,
+          "candidate_rms": 0.009159982069324021,
+          "max_absolute_error": 0.03528235387057066,
+          "mean_absolute_error": 0.0023383262728015127,
+          "rmse": 0.003276673945807852,
+          "snr_db": 9.288463229327247,
+          "correlation": 0.9394671321368571,
+          "reference_peak": 0.07043834030628204,
+          "candidate_peak": 0.07224920392036438,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    },
+    {
+      "index": 10,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 155.2782748611644,
+      "transformer_seconds": 133.21169601753354,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 9877744640,
+        "1": 6442977280,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 10,
+        "variant": "candidate",
+        "wall_seconds": 155.2782748611644,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+        }
+      }
+    }
+  ],
+  "timed_pairs": [
+    [
+      2,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "wall": {
+    "reference": {
+      "samples": [
+        161.79123302549124,
+        160.0970549006015,
+        162.1223316770047
+      ],
+      "mean": 161.3368732010325,
+      "median": 161.79123302549124,
+      "stdev": 1.0864016949642374
+    },
+    "candidate": {
+      "samples": [
+        154.04936087876558,
+        153.39499730616808,
+        154.35590876545757
+      ],
+      "mean": 153.93342231679708,
+      "median": 154.04936087876558,
+      "stdev": 0.4908350239764463
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        4.785099910516088,
+        4.186246648068881,
+        4.790470770566091
+      ],
+      "mean": 4.587272443050353,
+      "median": 4.785099910516088,
+      "stdev": 0.3473089081996179
+    },
+    "mean_time_reduction_percent": 4.588815152634329
+  },
+  "transformer": {
+    "reference": {
+      "samples": [
+        140.73368377238512,
+        140.72952451836318,
+        140.73709703236818
+      ],
+      "mean": 140.7334351077055,
+      "median": 140.73368377238512,
+      "stdev": 0.0037923762578587765
+    },
+    "candidate": {
+      "samples": [
+        133.2044425252825,
+        133.2128281723708,
+        133.2207323871553
+      ],
+      "mean": 133.2126676949362,
+      "median": 133.2128281723708,
+      "stdev": 0.008146116541881987
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        5.349992301260298,
+        5.341236227236424,
+        5.340713147923037
+      ],
+      "mean": 5.343980558806586,
+      "median": 5.341236227236424,
+      "stdev": 0.005212886771198986
+    },
+    "mean_time_reduction_percent": 5.3439805594267975
+  },
+  "eligible": true,
+  "selected_default_changed": true,
+  "selected_build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-softmax-dpp-w4-a14r1n11",
+  "selected_default_smoke": [
+    {
+      "sequence": 1,
+      "passed": true,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      }
+    },
+    {
+      "sequence": 257,
+      "passed": true,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      }
+    }
+  ]
+}
