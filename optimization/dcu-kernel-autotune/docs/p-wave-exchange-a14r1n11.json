@@ -1,0 +1,297 @@
+{
+  "scope": "单算子，非端到端验收",
+  "records": [
+    {
+      "variant": "both",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/p-wave-exchange-v3-a14r1n11/both",
+      "experiment": {
+        "p_wave_exchange": true,
+        "full_only": false,
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 56,
+          "vgpr_count": 206
+        }
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.10078048706055,
+              35.09406280517578,
+              35.10142517089844,
+              35.086544036865234,
+              35.10126495361328,
+              35.11085891723633,
+              35.08654022216797,
+              35.09262466430664,
+              35.10174560546875,
+              35.087825775146484,
+              35.086063385009766
+            ],
+            [
+              36.610538482666016,
+              36.576141357421875,
+              36.60334396362305,
+              36.597904205322266,
+              36.621578216552734,
+              36.565101623535156,
+              36.601261138916016,
+              36.58734130859375,
+              36.58366394042969,
+              36.625423431396484,
+              36.585899353027344
+            ]
+          ],
+          "medians_ms": [
+            35.09406280517578,
+            36.597904205322266
+          ],
+          "paired_gain_percent": -4.278797186758698,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.700149536132812,
+              23.713911056518555,
+              23.69742774963379,
+              23.70655059814453,
+              23.706390380859375,
+              23.707992553710938,
+              23.72110939025879,
+              23.713592529296875,
+              23.702070236206055,
+              23.70623016357422,
+              23.696149826049805
+            ],
+            [
+              24.728790283203125,
+              24.720149993896484,
+              24.730228424072266,
+              24.719987869262695,
+              24.72191047668457,
+              24.727510452270508,
+              24.711830139160156,
+              24.714550018310547,
+              24.717910766601562,
+              24.719989776611328,
+              24.727670669555664
+            ]
+          ],
+          "medians_ms": [
+            23.706390380859375,
+            24.720149993896484
+          ],
+          "paired_gain_percent": -4.283739867226388,
+          "passed": true
+        }
+      ],
+      "isa": {
+        "s_barrier": 8,
+        "ds_bpermute_b32": 32,
+        "v_mmac_f32_16x16x16_bf16": 128
+      }
+    },
+    {
+      "variant": "full",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/p-wave-exchange-v3-a14r1n11/full",
+      "experiment": {
+        "p_wave_exchange": true,
+        "full_only": true,
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 55,
+          "vgpr_count": 215
+        }
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.09326171875,
+              35.106224060058594,
+              35.100624084472656,
+              35.10590362548828,
+              35.092464447021484,
+              35.094383239746094,
+              35.11054229736328,
+              35.097900390625,
+              35.10221862792969,
+              35.10734558105469,
+              35.08718490600586
+            ],
+            [
+              36.577423095703125,
+              36.57806396484375,
+              36.547019958496094,
+              36.57981872558594,
+              36.56974411010742,
+              36.5809440612793,
+              36.583824157714844,
+              36.58430480957031,
+              36.579345703125,
+              36.5675048828125,
+              36.569583892822266
+            ]
+          ],
+          "medians_ms": [
+            35.100624084472656,
+            36.57806396484375
+          ],
+          "paired_gain_percent": -4.20807325842365,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.684310913085938,
+              23.692150115966797,
+              23.692947387695312,
+              23.707990646362305,
+              23.69679069519043,
+              23.70414924621582,
+              23.697269439697266,
+              23.713430404663086,
+              23.691509246826172,
+              23.663990020751953,
+              23.695510864257812
+            ],
+            [
+              24.703350067138672,
+              24.69135093688965,
+              24.694387435913086,
+              24.69342613220215,
+              24.70111083984375,
+              24.69135093688965,
+              24.694549560546875,
+              24.686389923095703,
+              24.71678924560547,
+              24.692787170410156,
+              24.694549560546875
+            ]
+          ],
+          "medians_ms": [
+            23.695510864257812,
+            24.694387435913086
+          ],
+          "paired_gain_percent": -4.217434112277818,
+          "passed": true
+        }
+      ],
+      "isa": {
+        "s_barrier": 10,
+        "ds_bpermute_b32": 16,
+        "v_mmac_f32_16x16x16_bf16": 128
+      }
+    }
+  ],
+  "winners": [],
+  "hostname": "a14r1n11",
+  "verdict": "NO_GAIN",
+  "selected_default_changed": false,
+  "independent_pmc": {
+    "reference": {
+      "27570": {
+        "arch_vgpr": 216,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 271095552,
+        "SQ_WAIT_INST_LDS": 700325480.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080,
+        "SQ_INSTS_VALU": 3210175584
+      },
+      "22016": {
+        "arch_vgpr": 216,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 172297216,
+        "SQ_WAIT_INST_LDS": 439920259.25,
+        "SQ_LDS_BANK_CONFLICT": 265072640,
+        "SQ_INSTS_VALU": 2041372368
+      }
+    },
+    "both": {
+      "27570": {
+        "arch_vgpr": 208,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 187681536,
+        "SQ_WAIT_INST_LDS": 449058438.25,
+        "SQ_LDS_BANK_CONFLICT": 333656064,
+        "SQ_INSTS_VALU": 3371741856
+      },
+      "22016": {
+        "arch_vgpr": 208,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 119282688,
+        "SQ_WAIT_INST_LDS": 282194876.25,
+        "SQ_LDS_BANK_CONFLICT": 212058112,
+        "SQ_INSTS_VALU": 2144068752
+      }
+    }
+  },
+  "build_retries": [
+    "尾块需要独立的 SSA 地址编号映射",
+    "重命名后需要显式声明入口块标签"
+  ]
+}

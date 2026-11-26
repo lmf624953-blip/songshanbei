@@ -97,3 +97,9 @@ K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-o
 用 `build-pv-lds-overlap.py REFERENCE OUTPUT` 同时发出 P、V 的 LDS 分配与写入，再读回两个操作数。默认覆盖完整循环和尾块。`--full-only` 仅改完整循环，`--v-first` 调整两个操作数的读回次序。脚本校验原始 packed IR 的摘要和局部依赖。LDS 地址分配和同步由编译器完成。
 
 三种候选在长度 27570、22016 的普通及放大输入上均逐位一致。LDS 从 8192 B 增到 16384 B，静态 barrier 数从 12 降到 8 或 10。配对计时回退 0.63%–1.30%。独立 PMC 中，完整循环与尾块都改的版本保持与对照相同的全局读取指令、LDS 指令和 bank conflict 计数，LDS 等待计数增加约 6%。本轮保留实验记录。见 [配对计时与 PMC](../../docs/pv-lds-overlap-a14r1n11.json)。
+
+## P 的 wave 内寄存器交换
+
+`build-p-wave-exchange.py REFERENCE OUTPUT` 根据冻结的 Q128 packed LLVM IR 替换 P 的 LDS 写读。脚本验证源文件摘要，并枚举 4096 个位置，核对源寄存器及读写双方的 wave 归属。使用 `--full-only` 可只替换完整块。两个镜像均保留 BF16 MMAC 指令和 K、V 的同步。
+
+在长度 27570 和 22016 上，两种方案的普通和放大输入均逐位一致，配对计时回退 4.21%–4.28%。同时改完整块和尾块时，静态 barrier 从 12 处降至 8 处，增加 32 条 `ds_bpermute_b32`。独立 PMC 显示，LDS 指令计数减少约 31%，LDS 等待计数减少约 36%，VALU 指令计数增加约 5%。候选未进入八卡验收。见 [配对计时与 PMC](../../docs/p-wave-exchange-a14r1n11.json)。
