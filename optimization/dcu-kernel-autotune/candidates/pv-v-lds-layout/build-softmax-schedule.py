@@ -18,6 +18,7 @@ REFERENCES = {
     "3581fe29fb7046ee58cdfc6cc972e15967ef529d15bd1f89d4c04e957f98e331",
     "a343dc1a5367d1ee522f180d00aeea5ffb46f4066fe13066ffa21d4e410e0935",
 }
+FOLDED_REFERENCE = "6fb3acc01ebc382130551e98367de04718700112ff9bd3cde8742121df44c87e"
 OPERATIONS = {
     "v_max_f32_e32", "v_sub_f32_e32", "v_exp_f32_e32", "v_add_u32_e32",
     "v_add3_u32", "v_bfe_u32", "v_lshrrev_b32_e32", "v_cmp_o_f32_e32",
@@ -102,9 +103,50 @@ def fold_self_max(lines, temporary):
     return [line for i, line in enumerate(lines) if i not in remove]
 
 
-def transform(source, scope, exp_latency, favor_order, fold_max, fold_only):
+def update_row_sum(lines, mode):
+    begin = lines.index(".Ltmp3:")
+    exit_edge = lines.index("\ts_cbranch_scc1 .LBB0_20", begin)
+    tail = lines.index(".LBB0_20:", exit_edge)
+    match_fma = re.compile(r"\tv_fmac_f32_e32 (v\d+), (v\d+), (v\d+)")
+    updates = [(i, m.groups()) for i in range(begin, exit_edge)
+               if (m := match_fma.fullmatch(lines[i]))]
+    assert len(updates) == 8
+    keep = {f"\tv_mov_b32_e32 {state}, {acc}" for _, (acc, state, _) in updates}
+    assert keep <= set(lines[exit_edge + 1:tail])
+    assert {acc for _, (acc, _, _) in updates}.isdisjoint({state for _, (_, state, _) in updates})
+    fmas = [f"\tv_fma_f32 {state}, {state}, {scale}, {acc}" for _, (acc, state, scale) in updates]
+    end_copies = [f"\tv_mov_b32_e32 {acc}, {state}" for _, (acc, state, _) in updates]
+    lines[tail:tail] = [".Lh3_folded_sum_exit:", *end_copies]
+    lines[exit_edge + 1:tail] = [line for line in lines[exit_edge + 1:tail] if line not in keep]
+    lines[exit_edge] = "\ts_cbranch_scc1 .Lh3_folded_sum_exit"
+    if mode == "direct":
+        for (i, _), fma in zip(updates, fmas, strict=True):
+            lines[i] = fma
+    else:
+        for i, _ in reversed(updates[:4]):
+            del lines[i]
+        for (i, _), fma in zip(updates[4:], fmas[4:], strict=True):
+            lines[i - 4] = fma
+        # The first four addends are ready before the second four-row DPP group.
+        assert lines[begin - 1] == "\t;;#ASMEND"
+        dpp_start = max(i for i in range(begin - 24, begin) if lines[i] == "\t;;#ASMSTART")
+        first_end = dpp_start - 1
+        assert lines[first_end] == "\t;;#ASMEND"
+        assert lines[dpp_start + 1] == "\ts_nop 1"
+        lines[first_end + 1:first_end + 1] = fmas[:4]
+        if mode == "interleave":
+            del lines[dpp_start + len(fmas[:4]) + 1]
+    return "\n".join(lines) + "\n"
+
+
+def transform(source, scope, exp_latency, favor_order, fold_max, fold_only, row_sum=None):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', source, flags=re.M)
-    if digest(normalized.encode()) not in REFERENCES:
+    source_id = digest(normalized.encode())
+    if row_sum:
+        if source_id not in (FOLDED_REFERENCE, "3581fe29fb7046ee58cdfc6cc972e15967ef529d15bd1f89d4c04e957f98e331"):
+            raise ValueError("Expected the verified folded or joint K/V image for row sum updates")
+        return update_row_sum(source.splitlines(), row_sum), {"row_sum": 8}
+    if source_id not in REFERENCES:
         raise ValueError("Expected a verified joint K/V or K-induction build")
     lines = source.splitlines()
     counts = {}
@@ -138,11 +180,12 @@ def main():
     cli.add_argument("--exp-latency", type=int, choices=(8, 16, 32), default=16)
     cli.add_argument("--favor-order", action="store_true")
     cli.add_argument("--fold-max", choices=("only", "scheduled"))
+    cli.add_argument("--row-sum", choices=("direct", "interleave", "interleave-nop"))
     args = cli.parse_args()
     asm = STEM + ".amdgcn"
     image_name = STEM + ".hsaco"
     assembly, counts = transform((args.reference / asm).read_text(), args.scope, args.exp_latency,
-                                 args.favor_order, bool(args.fold_max), args.fold_max == "only")
+                                 args.favor_order, bool(args.fold_max), args.fold_max == "only", args.row_sum)
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
     options = backend.parse_options(dict(num_warps=4, num_stages=1, kpack=2))
@@ -153,7 +196,7 @@ def main():
     record["packed_strides"]["hsaco_sha256"] = digest(image)
     record["experiment"]["softmax_schedule"] = dict(
         scope=args.scope, groups=counts, exp_latency=args.exp_latency, favor_order=args.favor_order,
-        reference_packed_sha256=original, fold_max=args.fold_max
+        reference_packed_sha256=original, fold_max=args.fold_max, row_sum=args.row_sum
     )
     args.output.mkdir()
     for name in ("dense-attention-aot.so", "dense-attention-aot.hsaco", "dense-attention-fallback.hsaco"):

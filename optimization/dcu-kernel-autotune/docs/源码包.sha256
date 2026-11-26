@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-b55d40746f7f2a0268173f22fb561046682997ee211a5b92f268cda737463159  candidates/pv-v-lds-layout/README.md
+b0ec2bc200abd5b6c234091f6fdef0953a41b8180c330c91f3410df867d92478  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 07daea88808f2f1d293b205e27b6d5204ce5af78d27c01c3e4e14d1510ae9aa2  candidates/pv-v-lds-layout/build-dual-q128.py
@@ -93,7 +93,7 @@ daf8d69d5ca8dfe00301dbab5f3f1d4c80cd4fcea66a6065a328255b21d811d6  candidates/pv-
 f9270a0dbd5ae3475c858f7d65bc3fb865302f96bc0a4049f6ab424d14fef50d  candidates/pv-v-lds-layout/build-q256.py
 73df6d832256003d44ceed205fea27300a4371f40ffe6fddabbeb17037dfe42b  candidates/pv-v-lds-layout/build-softmax-dpp-arithmetic.py
 91e1f8f08c1857c370428d7148aa62c6500261cad65e2ee34b8e993c2103f0f6  candidates/pv-v-lds-layout/build-softmax-rescale-order.py
-c11b1e73fcea205377b5840c066fdea40e1a3387c62d1e84bf269d5a47c41125  candidates/pv-v-lds-layout/build-softmax-schedule.py
+7045a4d1b39e52b643bfb97e3ac33ff4ec2ba80e6b23e462e339891e5f08a401  candidates/pv-v-lds-layout/build-softmax-schedule.py
 302f1761bf96a9898ec5a506c4933dcd4eb307dd54163d922f4bbb5afbb1f539  candidates/pv-v-lds-layout/build-softmax-xor.py
 15cd13946863b4a1aaf5751aba8c9480bc3879464185e6abe9de9e0b91ea9328  candidates/pv-v-lds-layout/build-v-phase-qdirect.py
 1d058a3e3d6bb1c3ec8bd5900bd0f1820eeb45d0af770db2bf9170bc68fecf3a  candidates/pv-v-lds-layout/build-vwide-q-resources.py
@@ -316,6 +316,7 @@ fe3dd6d226724dc840533f75647fb386a0aa883418fcbbbd5b989f5795320df1  docs/round51-v
 f2395510aeac8a573f420f36a0a1368b96f1dd933611ddd1dab0f5d8eacabde7  docs/softmax-dpp-xor4-a14r1n11-qualified.json
 67ba73e98cef66be470f30423a0e8c56d5c79ddb36502ecfc12d99df8d5d9170  docs/softmax-dpp-xor4-a14r1n11.json
 134a7ac51ec04f6cdb76f7e2b6906bbedb3b3357b9dba039a5d88be69daa0dec  docs/softmax-rescale-a14r1n11.json
+95e09f519da8e819a8a630dcff1c21afd1e46fa2ccf371097283cfc687a68071  docs/softmax-row-sum-a14r1n11.json
 42c2d0b4f7d71063197bdd14b62c6a2701f4412a4bcac6aa24eb9d6ce4f2a0ee  docs/softmax-schedule-a14r1n11-qualified.json
 4139b2bd31ffdeeb948a6f4603c31a99cfdfe1e50cd212ca4b6f60db19357ffb  docs/softmax-schedule-a14r1n11.json
 59d9c76e0509ecce90910e729e4aed34cc14652fe11ce2422f74aa5ae9e6e140  docs/softmax-xor-a14r1n11.json

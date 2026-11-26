@@ -247,3 +247,14 @@ python screen-softmax-special.py "$candidate" "$folded"
 折叠直接应用到正式联合发射版时节省 1.35%/1.45%，叠加 K 地址递推和 LDS 组合后节省 6.90%/7.08%，19 组对上一轮组合的配对分别再省 2.10%/2.11%。最佳组合的独立重建逐文件一致，额外 20 个长度、尾部哨兵和 24 组特殊 BF16 输入逐位一致。独立 PMC 测得 220 VGPR、16 KiB LDS、0 B scratch。见 [配对、特殊值探针与八卡回放](../../docs/softmax-schedule-a14r1n11.json)。
 
 普通官方 A 和包含 B、C、返回 A 的 11 条常驻请求均通过规格与独立质量检查，成片与各自已验收结果逐字节一致。三组 A 同进程配对的端到端均值由 147.507 秒降至 143.627 秒，节省 2.630%，单组降幅为 2.890%、2.951%、2.049%。Transformer 均值由 127.706 秒降至 123.079 秒，节省 3.623%。端到端低于 3% 门槛，归档候选。见 [官方入口和常驻验收](../../docs/softmax-schedule-a14r1n11-qualified.json)。
+
+## 在线求和回写与 DPP 交错
+
+`build-softmax-schedule.py REFERENCE OUTPUT --row-sum direct` 让完整块的八条 FMA 直接回写下一轮使用的求和寄存器。普通回边的八条搬运移到完整块退出边，尾块入口保留原寄存器布局。`--row-sum interleave` 把前四行的 FMA 放到两组 DPP 中间，并省去第二组原有的 `s_nop 1`。`interleave-nop` 保留这条等待作为对照。每行的归约树及 FMA 舍入顺序保留。
+
+```bash
+python build-softmax-schedule.py "$folded" "$interleaved" --row-sum interleave
+python screen-softmax-special.py "$candidate" "$interleaved"
+```
+
+四个候选在 27570/22016 token 的普通和放大输入均逐位一致。最快组合相对正式联合发射版节省 8.47%/8.59%，19 组配对相对最大值折叠版再省 1.70%/1.67%。重建产物逐文件一致，20 个额外长度、尾部哨兵和 24 个特殊 BF16 输入通过。独立 PMC 测得 220 VGPR、16 KiB LDS、0 B scratch。见 [配对、特殊值和八卡回放](../../docs/softmax-row-sum-a14r1n11.json)。
