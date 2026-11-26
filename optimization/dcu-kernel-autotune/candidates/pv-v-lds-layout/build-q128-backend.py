@@ -25,6 +25,7 @@ VARIANTS = {
     "mma-2x2": (8, 2, 16, 8, [2, 2]),
     "warps8": (8, 2, 16, 8, [8, 1]),
     "warps8-pmax8": (8, 2, 8, 8, [8, 1]),
+    "lse-early": (8, 2, 16, 8, [4, 1]),
 }
 
 
@@ -40,6 +41,21 @@ def main():
     assert record["query_block"] == 128 and record["shared"] == 8192
     assert record["experiment"]["compact_args"] == "common-length-fixed-strides"
     source = (root / "pv-swizzle.ttgir").read_text()
+    if args.variant == "lse-early":
+        lines = source.splitlines()
+        yields = [i for i, line in enumerate(lines) if line.startswith("      scf.yield ")]
+        assert len(yields) == 2
+        for end in reversed(yields):
+            dot = max(i for i in range(end) if lines[i].startswith("      %") and " = tt.dot " in lines[i])
+            block = lines[dot + 1:end]
+            assert len(block) == 7 and "arith.mulf" in block[0] and '"tt.reduce"' in block[1]
+            assert "arith.addf" in block[-1]
+            anchor = max(i for i in range(dot) if "arith.truncf" in lines[i]
+                         and "tensor<128x32xf32, #mma>" in lines[i])
+            assert anchor < dot
+            lines[dot + 1:end] = []
+            lines[anchor:anchor] = block
+        source = "\n".join(lines) + "\n"
     assert source.count(P_LAYOUT) == 1
     vec, phase, phases, width, warps = VARIANTS[args.variant]
     source = source.replace(P_LAYOUT, f"#shared2 = #ttg.swizzled_shared<{{vec = {vec}, perPhase = {phase}, maxPhase = {phases}, order = [0, 1]}}>")
