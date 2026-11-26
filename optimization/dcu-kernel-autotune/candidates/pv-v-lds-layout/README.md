@@ -210,3 +210,9 @@ python build-mmac-issue.py "$candidate" "$joined" \
 27570/22016 token 的无 profiler 配对分别节省 1.29%/1.42%。生产长度和另外 20 个长度均逐位一致，独立构建的三份设备镜像、汇编和主机库与实测对应文件逐字节一致。独立 PMC 显示 VALU 指令减少约 3.8%，LDS、全局读取及 bank conflict 计数持平，LDS 等待计数增加约 8%–10%。本轮只归档。
 
 低、高半字分别读到同一 VGPR 的方案、加入中间等待和交换半字的对照均出现数值差异。可用 `hipcc --offload-arch=gfx936 -x hip probe-lds-d16.cc -o probe-lds-d16` 在 DTK 26.04 和 BW1000 上复现。探针从初值 `0xaabbccdd` 分别得到 `0x00003344` 和 `0x77880000`。同一寄存器先读低半字、等待，再读高半字后为 `0x77880000`。高半字写入将原 LDS 字 `0x11223344` 更新为 `0x112299aa`。见 [配对、边界校验、探针与 PMC](../../docs/p-half-lds-a14r1n11.json)。
+
+## 联合发射版的 P/V LDS 分区
+
+`build-p-half-lds.py REFERENCE OUTPUT store --overlap p-first --p-pending 7` 在联合发射汇编上把 V 的 LDS 地址移到第二个 8 KiB 区域。先写 P，再写 V，共用一次线程块同步后读回。先发射 P 的读请求，在 V 发射前允许至多七条 LDS 操作未完成。PV 消费前的等待仍覆盖两个操作数。完整块与尾块的累加顺序保留。用 `unchanged` 代替 `store` 可测保留标量右移的分区版。
+
+九个候选在 27570/22016 token 的普通与放大输入均逐位一致。单独分区时，先读 P 回退 0.8%–0.9%，先读 V 回退约 3.4%。组合高半字写入和 `lgkmcnt(7)` 后，相对正式版分别节省 1.98%/2.01%，相对单独高半字写入的 19 组配对分别节省 0.71%/0.63%。组合版独立重建逐文件一致，20 个额外长度及哨兵均通过。设备汇编的 barrier 从 12 处减到 8 处，独立 PMC 测得 LDS 从 8 KiB 增为 16 KiB，LDS 等待计数较正式版少约 8%–9%，LDS 指令、bank conflict 和 220 VGPR 保持一致。收益位于单 kernel 范围，先归档。见 [逐位校验、双对照和 PMC](../../docs/joint-pv-overlap-a14r1n11.json)。

@@ -21,6 +21,7 @@ LOAD = re.compile(r"\tds_read_u16 (v\d+), (v\d+(?: offset:\d+)?)")
 PERM = re.compile(r"\tv_perm_b32 (v\d+), (v\d+), (v\d+), s(?:43|46)")
 MATRIX = re.compile(r"(\tv_mmac_f32_16x16x16_bf16 v\[\d+:\d+\], v\[\d+:\d+\], )v\[(\d+):(\d+)\](, v\[\d+:\d+\])")
 STEM = "dense-attention-packed"
+FENCE = ["\ts_waitcnt lgkmcnt(0)", "\ts_barrier", "\ts_waitcnt lgkmcnt(0)"]
 
 
 def digest(data):
@@ -87,7 +88,53 @@ def packed_read(lines, reads, pv_end, first_temp, read_order):
     lines[reads[0]:reads[-1] + 1] = replacement
 
 
-def transform(source, mode, scope, read_order):
+def overlap_lds(lines, stores, reads, end, part, order, p_pending):
+    p_address = stores[-1] + 1
+    assert lines[p_address + 1:reads[0]] == FENCE
+    assert reads == list(range(reads[0], reads[0] + 16))
+    v_stores = [i for i in range(reads[-1] + 1, end) if lines[i].startswith("\tds_write2_b64 ")]
+    v_reads = [i for i in range(v_stores[-1] + 1, end) if lines[i].startswith("\tds_read2st64_b64 ")]
+    assert len(v_stores) == 2 and len(v_reads) == 8
+    assert v_reads == list(range(v_reads[0], v_reads[0] + 8))
+    assert lines[v_stores[0] - 3:v_stores[0]] == FENCE
+    assert lines[v_reads[0] - 3:v_reads[0]] == FENCE
+    # Append the V region at 8192 B. Read2st64 offsets use 512 B units.
+    original_v_reads = lines[v_reads[0]:v_reads[-1] + 1]
+    relocated_reads = []
+    for line in original_v_reads:
+        if "offset0:" not in line:
+            line = line.replace("offset1:", "offset0:0 offset1:")
+        relocated_reads.append(re.sub(r"(offset[01]:)(\d+)", lambda m: f"{m[1]}{16 + int(m[2])}", line))
+    p_loads = [lines[p_address], *lines[reads[0]:reads[-1] + 1]]
+    if p_pending is not None:
+        p_loads.append(f"\ts_waitcnt lgkmcnt({p_pending})")
+    v_address_index = v_stores[-1] + (1 if part == "full" else -1)
+    v_address = lines[v_address_index]
+    assert v_address.startswith("\tv_add_u32_e32 ")
+    v_loads = [v_address, *relocated_reads]
+    v_pack = lines[reads[-1] + 1:v_stores[0] - 3] + lines[v_stores[0]:v_reads[0] - 3]
+    v_pack.remove(v_address)
+    p_first = order == "p-first"
+    first_base = re.fullmatch(r"\tds_write2_b64 (v\d+), .*", lines[v_stores[0]])[1]
+    address = next(line for line in v_pack if line.startswith(f"\tv_add_u32_e32 {first_base}, 0, "))
+    v_pack[v_pack.index(address)] = address.replace(", 0, ", ", 8192, ")
+    last_store = v_pack.index(lines[v_stores[-1]])
+    assert lines[v_stores[-1]].startswith("\tds_write2_b64 v148, ")
+    scratch = "v172" if part == "full" else "v171"
+    assert all(not re.search(rf"\b{scratch}\b", line) for line in v_pack)
+    v_pack[last_store:last_store + 1] = [
+        f"\tv_add_u32_e32 {scratch}, 8192, v148",
+        lines[v_stores[-1]].replace("v148,", f"{scratch},", 1),
+    ]
+    # LDS reads may still be outstanding while rescaling the PV accumulator.
+    final_perm = next(i for i in range(v_reads[-1] + 1, end) if PERM.fullmatch(lines[i]))
+    lines.insert(final_perm, f"\ts_waitcnt lgkmcnt({8 if p_first else 0})")
+    lines[p_address:v_reads[-1] + 1] = v_pack + FENCE + (
+        p_loads + v_loads if p_first else v_loads + p_loads
+    )
+
+
+def transform(source, mode, scope, read_order, overlap, p_pending):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', source, flags=re.M)
     if digest(normalized.encode()) != REFERENCE:
         raise ValueError("Expected the qualified joint K/V assembly")
@@ -102,6 +149,8 @@ def transform(source, mode, scope, read_order):
         stores = [i for i in range(start, end) if STORE.fullmatch(lines[i])]
         reads = [i for i in range(start, end) if LOAD.fullmatch(lines[i])]
         assert len(stores) == len(reads) == 16
+        if overlap:
+            overlap_lds(lines, stores, reads, end, part, overlap, p_pending)
         if mode in ("read", "both"):
             packed_read(lines, reads, end, first_temp, read_order)
         if mode in ("store", "both"):
@@ -113,12 +162,20 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("reference", type=Path)
     cli.add_argument("output", type=Path)
-    cli.add_argument("mode", choices=("read", "store", "both"))
+    cli.add_argument("mode", choices=("read", "store", "both", "unchanged"))
     cli.add_argument("--scope", choices=("full", "tail", "both"), default="both")
     cli.add_argument("--read-order", choices=("interleaved", "split", "swap"), default="interleaved")
+    cli.add_argument("--overlap", choices=("p-first", "v-first"))
+    cli.add_argument("--p-pending", type=int, choices=(0, 4, 7))
     args = cli.parse_args()
+    if args.overlap and args.mode in ("read", "both"):
+        cli.error("--overlap supports store or unchanged")
+    if not args.overlap and args.mode == "unchanged":
+        cli.error("unchanged requires --overlap")
+    if args.p_pending is not None and args.overlap != "p-first":
+        cli.error("--p-pending requires --overlap p-first")
     source = (args.reference / (STEM + ".amdgcn")).read_text()
-    assembly = transform(source, args.mode, args.scope, args.read_order)
+    assembly = transform(source, args.mode, args.scope, args.read_order, args.overlap, args.p_pending)
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
     options = backend.parse_options(dict(num_warps=4, num_stages=1, kpack=2))
@@ -127,7 +184,11 @@ def main():
     record = json.loads((args.reference / meta).read_text())
     original = record["packed_strides"]["hsaco_sha256"]
     record["packed_strides"]["hsaco_sha256"] = digest(image)
+    if args.overlap:
+        record["packed_strides"]["shared"] = 16384
     record["experiment"]["p_half_lds"] = dict(mode=args.mode, scope=args.scope, read_order=args.read_order,
+                                              overlap=args.overlap,
+                                              p_pending=args.p_pending,
                                               reference_packed_sha256=original)
     args.output.mkdir()
     for name in ("dense-attention-aot.so", "dense-attention-aot.hsaco", "dense-attention-fallback.hsaco"):
