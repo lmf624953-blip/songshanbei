@@ -1,0 +1,975 @@
+{
+  "official": {
+    "validation": {
+      "local_checks_passed": true,
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "transformer_calls": 49,
+      "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "comparison": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      }
+    },
+    "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+    "entry_defaults": {
+      "--steps": 50,
+      "--seed": 42,
+      "--num-frames": 124
+    }
+  },
+  "matched_previously_accepted_media": true,
+  "records": [
+    {
+      "index": 0,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 205.89330655988306,
+      "transformer_seconds": 130.09568403009325,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 9904919040,
+        "1": 6193594880,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 0,
+        "variant": "candidate",
+        "wall_seconds": 205.89330655988306,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 144.10936088860035,
+      "transformer_seconds": 123.05409123748541,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10027547648,
+        "1": 6223796224,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 1,
+        "variant": "candidate",
+        "wall_seconds": 144.10936088860035,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 148.18885210063308,
+      "transformer_seconds": 127.70065016765147,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 9849517056,
+        "1": 6517705216,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 2,
+        "variant": "candidate",
+        "wall_seconds": 148.18885210063308,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 143.90669690351933,
+      "transformer_seconds": 123.06834237184376,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10292445184,
+        "1": 6669087744,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 3,
+        "variant": "candidate",
+        "wall_seconds": 143.90669690351933,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 4,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 142.77949243690819,
+      "transformer_seconds": 123.08469025045633,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10733591552,
+        "1": 7077813248,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 4,
+        "variant": "candidate",
+        "wall_seconds": 142.77949243690819,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 5,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 147.1214375505224,
+      "transformer_seconds": 127.71115512214601,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10525899776,
+        "1": 7262062592,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 5,
+        "variant": "candidate",
+        "wall_seconds": 147.1214375505224,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "attention_variant": "base",
+      "wall_seconds": 147.20926937367767,
+      "transformer_seconds": 127.70732935704291,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10938595328,
+        "1": 7519847424,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 6,
+        "variant": "candidate",
+        "wall_seconds": 147.20926937367767,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 7,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 144.193402281031,
+      "transformer_seconds": 123.08546502143145,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 11113817088,
+        "1": 7703578624,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 7,
+        "variant": "candidate",
+        "wall_seconds": 144.193402281031,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 8,
+      "case": "B",
+      "attention_variant": "fast",
+      "wall_seconds": 110.80717681720853,
+      "transformer_seconds": 94.20494753774256,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+      "peak_torch_allocated_bytes": {
+        "0": 11323249152,
+        "1": 7847406080,
+        "2": 0,
+        "3": 0,
+        "4": 13213184,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "B",
+        "index": 8,
+        "variant": "candidate",
+        "wall_seconds": 110.80717681720853,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/\u65e7\u6587\u6863/optimization/sequence-reference-B-1201424/00-B/video.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 57773100,
+          "compared_elements": 219414528,
+          "max_absolute_difference": 234,
+          "mean_absolute_difference": 0.8855353962705697,
+          "ssim_match_percent": 99.40412322827537,
+          "ssim_min_percent": 99.17931498954825,
+          "ssim_max_percent": 99.86587996696518,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.008158768251807783,
+          "candidate_rms": 0.0060807307717949295,
+          "max_absolute_error": 0.024111899081617594,
+          "mean_absolute_error": 0.002460233706159571,
+          "rmse": 0.003270646765585316,
+          "snr_db": 7.939819100170448,
+          "correlation": 0.9357112923346455,
+          "reference_peak": 0.06807353347539902,
+          "candidate_peak": 0.05385071039199829,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 9,
+      "case": "C",
+      "attention_variant": "fast",
+      "wall_seconds": 119.06352776754647,
+      "transformer_seconds": 101.73134389705956,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+      "peak_torch_allocated_bytes": {
+        "0": 9797777920,
+        "1": 7288250880,
+        "2": 0,
+        "3": 0,
+        "4": 26780672,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "C",
+        "index": 9,
+        "variant": "candidate",
+        "wall_seconds": 119.06352776754647,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/\u65e7\u6587\u6863/optimization/sequence-reference-C-1201424/00-C/video.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 768,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 52402555,
+          "compared_elements": 219414528,
+          "max_absolute_difference": 212,
+          "mean_absolute_difference": 0.6505503455085708,
+          "ssim_match_percent": 99.63004744871529,
+          "ssim_min_percent": 99.3410113516413,
+          "ssim_max_percent": 99.84916773354621,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.009546768453824349,
+          "candidate_rms": 0.009159982069324021,
+          "max_absolute_error": 0.03528235387057066,
+          "mean_absolute_error": 0.0023383262728015127,
+          "rmse": 0.003276673945807852,
+          "snr_db": 9.288463229327247,
+          "correlation": 0.9394671321368571,
+          "reference_peak": 0.07043834030628204,
+          "candidate_peak": 0.07224920392036438,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    },
+    {
+      "index": 10,
+      "case": "A",
+      "attention_variant": "fast",
+      "wall_seconds": 143.72271622624248,
+      "transformer_seconds": 123.0845311973244,
+      "transformer_calls": 49,
+      "attention_calls": 19600,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "peak_torch_allocated_bytes": {
+        "0": 10230637568,
+        "1": 6418090496,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "independent_quality": {
+        "case": "A",
+        "index": 10,
+        "variant": "candidate",
+        "wall_seconds": 143.72271622624248,
+        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+        "comparison": {
+          "exact": false,
+          "left_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "right_metadata": {
+            "width": 768,
+            "height": 928,
+            "declared_frames": 124,
+            "average_fps": 24.0,
+            "duration_seconds": 5.166666666666667
+          },
+          "metadata_size_match": true,
+          "decoded_length_match": true,
+          "left_frames": 124,
+          "right_frames": 124,
+          "shape_mismatches": 0,
+          "different_elements": 224410185,
+          "compared_elements": 265125888,
+          "max_absolute_difference": 237,
+          "mean_absolute_difference": 5.597480216643348,
+          "ssim_match_percent": 93.83201347926341,
+          "ssim_min_percent": 87.9202020874348,
+          "ssim_max_percent": 98.0362796408051,
+          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        },
+        "audio_comparison": {
+          "sample_rate": 32000,
+          "channels": 2,
+          "reference_samples": 165600,
+          "candidate_samples": 165600,
+          "sample_length_match": true,
+          "compared_samples": 165600,
+          "reference_rms": 0.023822446924466185,
+          "candidate_rms": 0.024674512137782028,
+          "max_absolute_error": 0.04925673082470894,
+          "mean_absolute_error": 0.00043783742626061654,
+          "rmse": 0.0020183097472610714,
+          "snr_db": 21.439971008554608,
+          "correlation": 0.9971525035546781,
+          "reference_peak": 0.49654465913772583,
+          "candidate_peak": 0.5286788940429688,
+          "note": "AAC \u89e3\u7801\u540e\u9010\u6837\u672c\u6bd4\u8f83\uff0c\u53d7\u7f16\u7801\u53ca\u751f\u6210\u6ce2\u52a8\u5f71\u54cd\uff1b\u6ca1\u6709\u4eba\u4e3a\u5bf9\u9f50\u3001\u91cd\u91c7\u6837\u641c\u7d22\u6216\u76f8\u4f4d\u8c03\u6574\u3002"
+        }
+      }
+    }
+  ],
+  "timed_pairs": [
+    [
+      2,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "wall": {
+    "reference": {
+      "samples": [
+        148.18885210063308,
+        147.1214375505224,
+        147.20926937367767
+      ],
+      "mean": 147.50651967494437,
+      "median": 147.20926937367767,
+      "stdev": 0.5925468434219933
+    },
+    "candidate": {
+      "samples": [
+        143.90669690351933,
+        142.77949243690819,
+        144.193402281031
+      ],
+      "mean": 143.6265305404862,
+      "median": 143.90669690351933,
+      "stdev": 0.7474323749064384
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        2.8896608188892614,
+        2.951266100919625,
+        2.0486937442717346
+      ],
+      "mean": 2.6298735546935403,
+      "median": 2.8896608188892614,
+      "stdev": 0.5042581498845158
+    },
+    "mean_time_reduction_percent": 2.630384841977429
+  },
+  "transformer": {
+    "reference": {
+      "samples": [
+        127.70065016765147,
+        127.71115512214601,
+        127.70732935704291
+      ],
+      "mean": 127.70637821561347,
+      "median": 127.70732935704291,
+      "stdev": 0.005316673748423108
+    },
+    "candidate": {
+      "samples": [
+        123.06834237184376,
+        123.08469025045633,
+        123.08546502143145
+      ],
+      "mean": 123.07949921457718,
+      "median": 123.08469025045633,
+      "stdev": 0.009669871889002363
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        3.6274739319856253,
+        3.62260044337146,
+        3.6191065609787354
+      ],
+      "mean": 3.62306031211194,
+      "median": 3.62260044337146,
+      "stdev": 0.004202598462331206
+    },
+    "mean_time_reduction_percent": 3.6230602305739823
+  },
+  "eligible": false
+}
