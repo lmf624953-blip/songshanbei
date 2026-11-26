@@ -51,6 +51,7 @@ def main():
     parser.add_argument("--short-attention-ablation", action="store_true", help="Compare JIT and AOT for short Transformer attention")
     parser.add_argument("--pv-build", type=Path, help="Optional FP16 PV attention candidate for the precision ablation")
     parser.add_argument("--fast-attention-build", type=Path, help="Optional BF16 PV candidate for the precision ablation")
+    parser.add_argument("--attention-ablation", type=Path, help="Swap only the long attention callback on the same real inputs")
     parser.add_argument("--profile-once", action="store_true", help="Only one warmed candidate call under hipprof; diagnostic timing")
     parser.add_argument("--profile-drain-seconds", type=float, default=0,
                         help="Wait after the measured window before stopping hipprof")
@@ -65,6 +66,16 @@ def main():
     if args.profile_drain_seconds < 0 or (args.profile_drain_seconds and not args.profile_once):
         parser.error("A nonnegative profile drain delay requires --profile-once")
     control = sys.modules["songshan_candidate_control"]
+    attention_override = None
+    if args.attention_ablation:
+        if any((args.qknorm_ablation, args.qknorm_mrope_ablation, args.wide_ablation,
+                args.precision_ablation, args.wire_ablation, args.short_attention_ablation,
+                args.profile_once, args.elementwise_reference_builds, args.swiglu_ablation,
+                args.widenorm_indexed_ablation, args.candidate_only, args.indexed_ablation)):
+            parser.error("--attention-ablation must run without another ablation or profiling mode")
+        from adaln.aot_runtime import load_attention
+        alternative_attention = load_attention(args.attention_ablation.resolve(strict=True))
+        attention_override = ctypes.cast(alternative_attention.songshan_launch_attention, ctypes.c_void_p)
     pv_host = pv_callback = None
     if args.pv_build:
         if not args.precision_ablation:
@@ -103,7 +114,8 @@ def main():
                               host_sha256=hashlib.sha256((path / (stem+"-host.so")).read_bytes()).hexdigest())
         (out / "elementwise-reference-builds.json").write_text(json.dumps(proof,indent=2)+"\n")
     overrides = {}
-    for name, path in (("fp16_pv", args.pv_build), ("bf16_pv_fast", args.fast_attention_build)):
+    for name, path in (("fp16_pv", args.pv_build), ("bf16_pv_fast", args.fast_attention_build),
+                       ("attention_ablation", args.attention_ablation)):
         if path:
             overrides[name] = dict(path=str(path.resolve()),
                                    metadata=json.loads((path / "dense-attention-aot-build.json").read_text()),
@@ -123,7 +135,7 @@ def main():
 
     try:
         with torch.inference_mode():
-            for step in map(int, args.steps.split(",")):
+            for step_index, step in enumerate(map(int, args.steps.split(","))):
                 path = args.captures / f"step-{step:02d}.pt"
                 saved = torch.load(path, map_location="cpu", weights_only=True)
                 if args.reference_results:
@@ -162,6 +174,10 @@ def main():
                     variants = ("candidate-no-qknorm-mrope", "candidate")
                 if args.elementwise_reference_builds:
                     variants = ("candidate-reference-elementwise", "candidate-compact-norm", "candidate-row-swiglu", "candidate")
+                if attention_override is not None:
+                    variants = ("candidate", "candidate-alternative-attention")
+                    if step_index % 2:
+                        variants = variants[::-1]
                 if args.profile_once or args.candidate_only:
                     variants = ("candidate",)
                 for variant in variants:
@@ -174,7 +190,11 @@ def main():
                         selected_variant = "candidate-tf-no-tf-reducecast"
                     if args.elementwise_reference_builds:
                         selected_variant = "candidate"
+                    if attention_override is not None:
+                        selected_variant = "candidate"
                     control.select_variant(selected_variant)
+                    if variant == "candidate-alternative-attention":
+                        control.set_attention_callback(attention_override)
                     if args.elementwise_reference_builds:
                         if variant in {"candidate-reference-elementwise", "candidate-row-swiglu"}:
                             control.set_widenorm_indexed_callback(old_wide_callback)
@@ -256,6 +276,11 @@ def main():
                             paired = tuple(x.detach().cpu().clone() for x in outputs(result))
                         else:
                             record["against_elementwise_reference"] = compare(result, paired)
+                    if attention_override is not None:
+                        if paired is None:
+                            paired = tuple(x.detach().cpu().clone() for x in outputs(result))
+                        else:
+                            record["against_paired_attention"] = compare(result, paired)
                     print(json.dumps(record), flush=True)
                     records.append(record)
                     (out / "results.json").write_text(json.dumps(records, indent=2) + "\n")

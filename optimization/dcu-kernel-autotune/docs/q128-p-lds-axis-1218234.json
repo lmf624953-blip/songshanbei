@@ -1,0 +1,1189 @@
+{
+  "scope": "同节点单卡配对微测、真实八卡回放、独立 PMC 和普通官方入口",
+  "selected_default_changed": false,
+  "micro": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "row-v2",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-p-lds-axis-1218234/row-v2",
+        "experiment": {
+          "p_lds_preset": "row-v2",
+          "p_lds_swizzle": [
+            2,
+            1,
+            16
+          ],
+          "p_lds_order": [
+            1,
+            0
+          ],
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read2st64_b32": 8,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 212
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.09950256347656,
+                35.09101486206055,
+                35.09965515136719,
+                35.11134338378906,
+                35.10862350463867,
+                35.09086227416992,
+                35.11934280395508,
+                35.09854507446289,
+                35.09230422973633,
+                35.116455078125,
+                35.09501647949219
+              ],
+              [
+                34.991825103759766,
+                35.01630401611328,
+                35.01982498168945,
+                35.02142333984375,
+                35.00542449951172,
+                34.9990234375,
+                35.01949691772461,
+                35.01357650756836,
+                35.00301742553711,
+                35.04141616821289,
+                35.00798416137695
+              ]
+            ],
+            "medians_ms": [
+              35.09950256347656,
+              35.01357650756836
+            ],
+            "paired_gain_percent": 0.25443414491875815,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.694068908691406,
+                23.690223693847656,
+                23.70878791809082,
+                23.70926856994629,
+                23.702068328857422,
+                23.690547943115234,
+                23.693748474121094,
+                23.702228546142578,
+                23.83198356628418,
+                23.69054412841797,
+                23.704143524169922
+              ],
+              [
+                23.65550422668457,
+                23.664304733276367,
+                23.66398811340332,
+                23.64670753479004,
+                23.65886878967285,
+                23.617908477783203,
+                23.65854835510254,
+                23.62702751159668,
+                23.64446449279785,
+                23.627824783325195,
+                23.641103744506836
+              ]
+            ],
+            "medians_ms": [
+              23.702068328857422,
+              23.64670753479004
+            ],
+            "paired_gain_percent": 0.26386741949329107,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "row-v4",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-p-lds-axis-1218234/row-v4",
+        "experiment": {
+          "p_lds_preset": "row-v4",
+          "p_lds_swizzle": [
+            4,
+            1,
+            8
+          ],
+          "p_lds_order": [
+            1,
+            0
+          ],
+          "isa": {
+            "s_waitcnt": 60,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read2st64_b64": 20,
+            "ds_write2_b64": 4,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 206
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.078704833984375,
+                35.100303649902344,
+                35.097103118896484,
+                35.10318374633789,
+                35.115665435791016,
+                35.09726333618164,
+                35.088462829589844,
+                35.10414505004883,
+                35.08718490600586,
+                35.11742401123047,
+                35.09646224975586
+              ],
+              [
+                34.9347038269043,
+                34.917423248291016,
+                34.92637634277344,
+                34.910057067871094,
+                34.87518310546875,
+                34.85950469970703,
+                34.887664794921875,
+                34.924625396728516,
+                34.90144729614258,
+                34.874568939208984,
+                34.88670349121094
+              ]
+            ],
+            "medians_ms": [
+              35.09726333618164,
+              34.90144729614258
+            ],
+            "paired_gain_percent": 0.5501685541185242,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.691987991333008,
+                23.721267700195312,
+                23.694068908691406,
+                23.707826614379883,
+                23.688785552978516,
+                23.692947387695312,
+                23.708948135375977,
+                23.692628860473633,
+                23.697265625,
+                23.683507919311523,
+                23.683828353881836
+              ],
+              [
+                23.596147537231445,
+                23.59566879272461,
+                23.583667755126953,
+                23.61646842956543,
+                23.59470558166504,
+                23.594228744506836,
+                23.596147537231445,
+                23.616788864135742,
+                23.640626907348633,
+                23.60958480834961,
+                23.608627319335938
+              ]
+            ],
+            "medians_ms": [
+              23.692947387695312,
+              23.596147537231445
+            ],
+            "paired_gain_percent": 0.3971498289900621,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "row-v4-phase2",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-p-lds-axis-1218234/row-v4-phase2",
+        "experiment": {
+          "p_lds_preset": "row-v4-phase2",
+          "p_lds_swizzle": [
+            4,
+            2,
+            8
+          ],
+          "p_lds_order": [
+            1,
+            0
+          ],
+          "isa": {
+            "s_waitcnt": 60,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read2st64_b64": 20,
+            "ds_write2_b64": 4,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 207
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.099342346191406,
+                35.09518051147461,
+                35.0906982421875,
+                35.10446548461914,
+                35.09502410888672,
+                35.088138580322266,
+                35.09006118774414,
+                35.109745025634766,
+                35.09950256347656,
+                35.09678268432617,
+                35.08350372314453
+              ],
+              [
+                34.6977424621582,
+                34.69502258300781,
+                34.692142486572266,
+                34.67390441894531,
+                34.67982482910156,
+                34.67278289794922,
+                34.64237976074219,
+                34.658058166503906,
+                34.71806335449219,
+                34.68894577026367,
+                34.6777458190918
+              ]
+            ],
+            "medians_ms": [
+              35.09518051147461,
+              34.67982482910156
+            ],
+            "paired_gain_percent": 1.1620350438692362,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.699188232421875,
+                23.70878791809082,
+                23.719188690185547,
+                23.691028594970703,
+                23.68798828125,
+                23.714067459106445,
+                23.70926856994629,
+                23.706388473510742,
+                23.691028594970703,
+                23.732147216796875,
+                23.699827194213867
+              ],
+              [
+                23.45758819580078,
+                23.47374725341797,
+                23.462228775024414,
+                23.44462776184082,
+                23.46478843688965,
+                23.466388702392578,
+                23.461267471313477,
+                23.446388244628906,
+                23.431188583374023,
+                23.48078727722168,
+                23.450387954711914
+              ]
+            ],
+            "medians_ms": [
+              23.706388473510742,
+              23.461267471313477
+            ],
+            "paired_gain_percent": 1.046009065615705,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "row-v8",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-p-lds-axis-1218234/row-v8",
+        "experiment": {
+          "p_lds_preset": "row-v8",
+          "p_lds_swizzle": [
+            8,
+            1,
+            4
+          ],
+          "p_lds_order": [
+            1,
+            0
+          ],
+          "isa": {
+            "s_waitcnt": 60,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write_b16": 32,
+            "ds_read2st64_b64": 20,
+            "ds_write2_b64": 4,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 207
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.09694290161133,
+                35.089263916015625,
+                35.10238265991211,
+                35.0974235534668,
+                35.090065002441406,
+                35.09406280517578,
+                35.07646560668945,
+                35.08638000488281,
+                35.08926010131836,
+                35.097900390625,
+                35.093101501464844
+              ],
+              [
+                35.892303466796875,
+                35.84142303466797,
+                35.84126281738281,
+                35.86638259887695,
+                35.859344482421875,
+                35.8604621887207,
+                35.841739654541016,
+                35.84046173095703,
+                35.85166549682617,
+                35.85902404785156,
+                35.883182525634766
+              ]
+            ],
+            "medians_ms": [
+              35.093101501464844,
+              35.85902404785156
+            ],
+            "paired_gain_percent": -2.181730783347846,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.7091064453125,
+                23.70094871520996,
+                23.688148498535156,
+                23.707988739013672,
+                23.696468353271484,
+                23.712467193603516,
+                23.69902801513672,
+                23.67502784729004,
+                23.7065486907959,
+                23.708147048950195,
+                23.681428909301758
+              ],
+              [
+                24.21982765197754,
+                24.20926856994629,
+                24.227346420288086,
+                24.22670555114746,
+                24.2260684967041,
+                24.2260684967041,
+                24.244787216186523,
+                24.206228256225586,
+                24.217588424682617,
+                24.223827362060547,
+                24.232147216796875
+              ]
+            ],
+            "medians_ms": [
+              23.70094871520996,
+              24.2260684967041
+            ],
+            "paired_gain_percent": -2.1879410263098142,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": [
+      "row-v4-phase2"
+    ]
+  },
+  "dynamic": {
+    "verdict": "PASS",
+    "lengths": [
+      1,
+      31,
+      32,
+      33,
+      63,
+      64,
+      65,
+      127,
+      128,
+      129,
+      255,
+      256,
+      257,
+      4095,
+      4096,
+      8192,
+      16384,
+      24577,
+      32768,
+      65535
+    ]
+  },
+  "replay": {
+    "rows": [
+      {
+        "step": 1,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.995445180684328,
+          2.9944263519719243,
+          2.9940896122716367,
+          2.9949162900447845,
+          2.9951940244063735
+        ],
+        "mean_seconds": 2.9948142918758096,
+        "median_seconds": 2.9949162900447845,
+        "warmup_seconds": 6.023925500921905,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.7370049953460693,
+            "mean_abs_error": 0.02384854666888714,
+            "rmse": 0.03359978274970103,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.09959760308265686,
+            "mean_abs_error": 0.026621470227837563,
+            "rmse": 0.03233205743545516,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 1,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.9738604282028973,
+          2.973654410801828,
+          2.9741042680107057,
+          2.974789079744369,
+          2.9737262427806854
+        ],
+        "mean_seconds": 2.974026885908097,
+        "median_seconds": 2.9738604282028973,
+        "warmup_seconds": 2.9746124083176255,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.7370049953460693,
+            "mean_abs_error": 0.02384854666888714,
+            "rmse": 0.03359978274970103,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.09959760308265686,
+            "mean_abs_error": 0.026621470227837563,
+            "rmse": 0.03233205743545516,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ]
+      },
+      {
+        "step": 25,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.973296406213194,
+          2.9739834968931973,
+          2.9756562002003193,
+          2.9735331288538873,
+          2.973956586327404
+        ],
+        "mean_seconds": 2.9740851636976005,
+        "median_seconds": 2.973956586327404,
+        "warmup_seconds": 2.9749141330830753,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2538994,
+            "max_abs_error": 0.4010007381439209,
+            "mean_abs_error": 0.008604387752711773,
+            "rmse": 0.012172585110222416,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.053460896015167236,
+            "mean_abs_error": 0.00826754979789257,
+            "rmse": 0.010348869412489126,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 25,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.992520584259182,
+          2.9940367522649467,
+          2.9941776962950826,
+          2.995064281858504,
+          2.9952296363189816
+        ],
+        "mean_seconds": 2.9942057901993393,
+        "median_seconds": 2.9941776962950826,
+        "warmup_seconds": 2.9944977909326553,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2538994,
+            "max_abs_error": 0.4010007381439209,
+            "mean_abs_error": 0.008604387752711773,
+            "rmse": 0.012172585110222416,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.053460896015167236,
+            "mean_abs_error": 0.00826754979789257,
+            "rmse": 0.010348869412489126,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_candidate_without_qknorm": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ]
+      },
+      {
+        "step": 49,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.993560743983835,
+          2.9945671330206096,
+          2.993716434109956,
+          2.993820131290704,
+          2.99524237588048
+        ],
+        "mean_seconds": 2.994181363657117,
+        "median_seconds": 2.993820131290704,
+        "warmup_seconds": 2.9950403631664813,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.48146843910217285,
+            "mean_abs_error": 0.013386040925979614,
+            "rmse": 0.018223751494279513,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.115581214427948,
+            "mean_abs_error": 0.012662931345403194,
+            "rmse": 0.016394232593819127,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 49,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.9758952939882874,
+          2.9735951800830662,
+          2.972555127926171,
+          2.973332786001265,
+          2.973923046141863
+        ],
+        "mean_seconds": 2.9738602868281303,
+        "median_seconds": 2.9735951800830662,
+        "warmup_seconds": 2.9746472099795938,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.48146843910217285,
+            "mean_abs_error": 0.013386040925979614,
+            "rmse": 0.018223751494279513,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.115581214427948,
+            "mean_abs_error": 0.012662931345403194,
+            "rmse": 0.016394232593819127,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ]
+      }
+    ],
+    "exact": true,
+    "same_kernel_call_counts": true,
+    "median_sum_baseline": 8.982914117630571,
+    "median_sum_candidate": 8.921412194613367,
+    "reduction_percent": 0.684654469717072
+  },
+  "independent_pmc": {
+    "sequence": [
+      27570,
+      22016
+    ],
+    "launches_per_sequence": 4,
+    "reference": {
+      "VGPR": 216,
+      "LDS": 8192,
+      "scratch": 0,
+      "SQ_INSTS_LDS": [
+        271095552,
+        172297216
+      ],
+      "SQ_LDS_BANK_CONFLICT": [
+        417070080,
+        265072640
+      ],
+      "SQ_WAIT_INST_LDS": [
+        701135020.5,
+        439883899.5
+      ],
+      "TCC_hit_percent": [
+        97.778825,
+        97.478538
+      ]
+    },
+    "candidate": {
+      "VGPR": 208,
+      "LDS": 8192,
+      "scratch": 0,
+      "SQ_INSTS_LDS": [
+        198108288,
+        125909504
+      ],
+      "SQ_LDS_BANK_CONFLICT": [
+        250242048,
+        159043584
+      ],
+      "SQ_WAIT_INST_LDS": [
+        559822636.75,
+        353515375.25
+      ],
+      "TCC_hit_percent": [
+        97.779339,
+        97.479257
+      ]
+    }
+  },
+  "official": {
+    "verification": {
+      "local_checks_passed": true,
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "transformer_calls": 49,
+      "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "comparison": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      }
+    },
+    "sha256_matches_selected": true,
+    "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+    "end_to_end_seconds_including_load": 261.734,
+    "transformer_seconds": 148.122
+  },
+  "resident_state": "待跑 A,A,A,A,B,C,A"
+}

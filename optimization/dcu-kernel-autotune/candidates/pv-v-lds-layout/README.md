@@ -58,3 +58,19 @@ hipprof --pmc --pmc-type 3 --kernel-name dense_attention_aot_kernel -o "$pmc" \
 `build-pv-lds-order.py` 比较 `swap`、`after-qk`、`before-probability-cast` 和 `prefetch-only`。它只调整 V 的加载与 LDS 时序，保留原点积和归约表达式。对提前读取的变体，使用 `--rounding-fence` 可保留原 FP32 缩放舍入。
 
 仅交换 P/V 的 LDS 顺序时，27570/22016 两个长度的普通和放大输入均逐位一致，耗时增加 2.60%/2.65%。提前 V 全局读取后，两种 LDS 时序在原舍入优化下均出现 1 个 BF16 ULP 的差异。加舍入边界后输出恢复逐位一致，单独预取慢约 1.9%–2.0%，更早的 LDS 读写慢约 2.9%–6.1%。独立 PMC 中，交换顺序的 LDS 指令数和 bank conflict 计数与对照相同，LDS 等待计数增加约 20%。本轮无候选进入八卡回放。见 [配对计时与 PMC](../../docs/q128-pv-lds-order-1218234.json)。
+
+## Q128 packed 的 P LDS 连续轴
+
+对正式 Q128 三镜像构建目录运行 `build-p-lds-axis.py`，仅在 packed 镜像中修改 P 的 LDS swizzle，保留 BF16 数据、矩阵操作数布局、K 分块和累加顺序。以下命令构建目前微测与八卡回放最快的配置。
+
+```bash
+python build-p-lds-axis.py "$reference" "$builds/row-v4-phase2" row-v4-phase2
+python screen-pv-wide-operand.py "$reference" "$builds" "$results"
+bash "$H3_AUTOTUNE_CODE_ROOT/optimization/run-optimized.sh" --config "$baseline_config" --replay-run \
+  --model "$model" --captures "$captures" --out "$replay" --steps 1,25,49 --iterations 5 \
+  --attention-ablation "$builds/row-v4-phase2"
+```
+
+`row-v4-phase2` 使用 `vec=4, perPhase=2, maxPhase=8, order=[1,0]`。两个生产长度的单算子配对中位收益为 1.16% 和 1.05%，20 个边界长度均逐位一致。八卡第 1、25、49 次去噪输入上，音视频张量和各算子调用数一致，三步中位耗时之和缩短约 0.69%。独立 PMC 中，LDS 指令计数约下降 27%，bank conflict 计数下降 40%，L2 命中率基本持平。见 [测量记录](../../docs/q128-p-lds-axis-1218234.json)。
+
+普通官方入口 A 完整执行了 49 次 Transformer，输出规格和独立参考质量通过，MP4 与现用版逐字节一致。独立进程用时 261.734 秒，包含模型加载和首次编译。采用常驻 A/A/A/A/B/C/A 序列确认端到端收益和质量后，再决定是否替换当前默认。
