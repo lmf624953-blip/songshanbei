@@ -1,0 +1,17 @@
+{
+  "baseline_hashes_match": true,
+  "all_real_outputs_exact": true,
+  "median_sums_seconds": {
+    "candidate-reference-elementwise": 9.119016355834901,
+    "candidate-compact-norm": 8.995198043528944,
+    "candidate-row-swiglu": 9.108164497185498,
+    "candidate": 8.982852896209806
+  },
+  "reduction_percent": {
+    "candidate-reference-elementwise": 0.0,
+    "candidate-compact-norm": 1.3578033800403344,
+    "candidate-row-swiglu": 0.11900251327501277,
+    "candidate": 1.4931814387849962
+  },
+  "selected_default_changed": false
+}

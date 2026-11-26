@@ -1,0 +1,9 @@
+{
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-original-serial-source-1218234/wide-norm-indexed.hsaco",
+  "rebuilt": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-serial-compat-rebuild-1218234/wide-norm-indexed.hsaco",
+  "text_equal": true,
+  "reference_text_sha256": "56a1306b0b2beaf23e2cdc5f67f1d7a6f9cbe48f54d291b6d5c94ad6bf957b24",
+  "rebuilt_text_sha256": "56a1306b0b2beaf23e2cdc5f67f1d7a6f9cbe48f54d291b6d5c94ad6bf957b24",
+  "reference_text_bytes": 11956,
+  "rebuilt_text_bytes": 11956
+}

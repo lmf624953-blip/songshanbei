@@ -39,3 +39,10 @@ python screen.py "$reference" "$candidates" "$results"
 Q256 四个配置在普通、放大输入与尾部检查上逐位通过，但两个长度较 Q128 慢约 126%–263%，同时出现 348–424B private segment；本轮淘汰，不能把更大分块当作收益。见 [Q256 结果](../../docs/q256-1218234.json)。
 
 缓存属性候选的 K.cg、V.cg、K/V.cg 均只有约 ±0.1% 波动，K/V.cv 慢约 13%–14%，没有稳定胜出项。K/V.ca 与对照的 ELF 加载区段相同，是控制项；筛选器已排除这类相同代码，避免把计时噪声当作优化。见 [缓存实测](../../docs/q128-cache-policy-1218234.json) 和 [ELF 证明](../../docs/q128-cache-policy-1218234-elf-equivalence.json)。默认仍保持已验收 Q128。
+
+
+## Q128 packed 的 PV 操作数打包候选
+
+`build-pv-wide-operand.py` 把 PV 的 `kWidth=4` 改为8，保留相同数量的BF16 MMAC指令、全部KV遍历及FP32缩放舍入边界，研究宽LDS读取是否更有利。新增P向量布局、V布局及P直接转换对照。编译已完成；两种V布局出现8/24B private segment，会跳过GPU微测；其余镜像仍无scratch。P直接转换版本为213VGPR、10处barrier，单凭这些资源变化不宣布更快。
+
+`screen-pv-wide-operand.py` 先核对三镜像分派、哈希和ABI，排除相同`.text`与spills，再在实际packed stride的27570/22016长度交替计时，并检查普通、放大输入及末尾哨兵。只有两个长度均逐位一致且收益至少0.5%才进入真实去噪验证。本轮微测等待compact归约与row SwiGLU的七次正式生成退出，不与正式计时并行。
