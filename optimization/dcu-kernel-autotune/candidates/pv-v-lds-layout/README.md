@@ -52,3 +52,9 @@ hipprof --pmc --pmc-type 3 --kernel-name dense_attention_aot_kernel -o "$pmc" \
 `build-q128-cta-order.py --query-group 1/4/8` 以 query 分组、head 和组内 query 依次枚举 CTA，保留原始主机 ABI 和动态序列长度。`--query-group 0` 是原顺序对照。可用 `--rounding-fence` 重现额外舍入边界的实验，再用 `screen-pv-wide-operand.py` 对比。
 
 额外舍入边界令原顺序本身变慢约 2.45%–2.51%。保留原舍入方式时，对照的 `.text` 与正式镜像一致。三种重排均通过普通与放大 QK 的逐位比较，配对收益为 0.12%–0.25%，未达到八卡回放门槛。4 块分组在长度 27570/22016 上的 TCC 命中率由约 97.78%/97.48% 降至 90.29%/90.53%，两者硬件资源均为 216 VGPR、8192 B LDS、零 scratch。见 [计时与 PMC 记录](../../docs/q128-cta-order-1218234.json)。
+
+## Q128 packed 的 P/V LDS 时序
+
+`build-pv-lds-order.py` 比较 `swap`、`after-qk`、`before-probability-cast` 和 `prefetch-only`。它只调整 V 的加载与 LDS 时序，保留原点积和归约表达式。对提前读取的变体，使用 `--rounding-fence` 可保留原 FP32 缩放舍入。
+
+仅交换 P/V 的 LDS 顺序时，27570/22016 两个长度的普通和放大输入均逐位一致，耗时增加 2.60%/2.65%。提前 V 全局读取后，两种 LDS 时序在原舍入优化下均出现 1 个 BF16 ULP 的差异。加舍入边界后输出恢复逐位一致，单独预取慢约 1.9%–2.0%，更早的 LDS 读写慢约 2.9%–6.1%。独立 PMC 中，交换顺序的 LDS 指令数和 bank conflict 计数与对照相同，LDS 等待计数增加约 20%。本轮无候选进入八卡回放。见 [配对计时与 PMC](../../docs/q128-pv-lds-order-1218234.json)。

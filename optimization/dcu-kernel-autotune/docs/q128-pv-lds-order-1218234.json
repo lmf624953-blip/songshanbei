@@ -1,0 +1,667 @@
+{
+  "scope": "同节点单算子无 profiler 配对计时，另采独立 PMC",
+  "native_rounding": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "after-qk",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-pv-lds-order-1218234/after-qk",
+        "experiment": {
+          "v_lds_position": "after-qk",
+          "v_global_prefetch": true,
+          "isa": {
+            "s_waitcnt": 48,
+            "global_load_dwordx4": 12,
+            "global_load_dwordx2": 8,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 214
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.000244140625
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.000244140625
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "before-probability-cast",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-pv-lds-order-1218234/before-probability-cast",
+        "experiment": {
+          "v_lds_position": "before-probability-cast",
+          "v_global_prefetch": true,
+          "isa": {
+            "s_waitcnt": 48,
+            "global_load_dwordx4": 12,
+            "global_load_dwordx2": 8,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 214
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.000244140625
+            },
+            "passed": false
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": false,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.000244140625
+            },
+            "passed": false
+          }
+        ]
+      },
+      {
+        "variant": "swap",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-pv-lds-order-1218234/swap",
+        "experiment": {
+          "v_lds_position": "swap",
+          "v_global_prefetch": false,
+          "isa": {
+            "s_waitcnt": 51,
+            "global_load_dwordx4": 12,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "global_load_dwordx2": 8,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 54,
+            "vgpr_count": 215
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": false
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.08430480957031,
+                35.09774398803711,
+                35.093902587890625,
+                35.09502410888672,
+                35.08158493041992,
+                35.09646224975586,
+                35.09070587158203,
+                35.09806442260742,
+                35.104942321777344,
+                35.08750534057617,
+                35.091983795166016
+              ],
+              [
+                36.029422760009766,
+                35.97022247314453,
+                36.01310348510742,
+                36.00254440307617,
+                36.023502349853516,
+                35.98846435546875,
+                36.00285720825195,
+                35.993896484375,
+                36.017425537109375,
+                36.03134536743164,
+                36.014225006103516
+              ]
+            ],
+            "medians_ms": [
+              35.093902587890625,
+              36.01310348510742
+            ],
+            "paired_gain_percent": -2.5994100546396393,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.700307846069336,
+                23.693748474121094,
+                23.694868087768555,
+                23.69854736328125,
+                23.710227966308594,
+                23.721107482910156,
+                23.699508666992188,
+                23.683347702026367,
+                23.698068618774414,
+                23.67774772644043,
+                23.703828811645508
+              ],
+              [
+                24.302867889404297,
+                24.30702781677246,
+                24.326868057250977,
+                24.32558822631836,
+                24.35662841796875,
+                24.307668685913086,
+                24.32718849182129,
+                24.30670738220215,
+                24.344467163085938,
+                24.341108322143555,
+                24.309907913208008
+              ]
+            ],
+            "medians_ms": [
+              23.69854736328125,
+              24.32558822631836
+            ],
+            "paired_gain_percent": -2.645904212714112,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": []
+  },
+  "extra_rounding_fence": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "after-qk",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-pv-lds-order-fenced-1218234/after-qk",
+        "experiment": {
+          "v_lds_position": "after-qk",
+          "v_global_prefetch": true,
+          "isa": {
+            "s_waitcnt": 36,
+            "global_load_dwordx4": 12,
+            "global_load_dwordx2": 8,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 214
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.108943939208984,
+                35.094383239746094,
+                35.097103118896484,
+                35.1067008972168,
+                35.10926055908203,
+                35.1246223449707,
+                35.09358215332031,
+                35.10334014892578,
+                35.11246109008789,
+                35.12269973754883,
+                35.10414123535156
+              ],
+              [
+                36.1055793762207,
+                36.12590026855469,
+                36.11406326293945,
+                36.103023529052734,
+                36.1123046875,
+                36.10606384277344,
+                36.098384857177734,
+                36.11102294921875,
+                36.11582565307617,
+                36.112464904785156,
+                36.09149932861328
+              ]
+            ],
+            "medians_ms": [
+              35.1067008972168,
+              36.11102294921875
+            ],
+            "paired_gain_percent": -2.8569218275902974,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.7188663482666,
+                23.682228088378906,
+                23.705110549926758,
+                23.70414924621582,
+                23.71438980102539,
+                23.694068908691406,
+                23.717266082763672,
+                23.676467895507812,
+                23.717269897460938,
+                23.687349319458008,
+                23.69951057434082
+              ],
+              [
+                24.390226364135742,
+                24.392786026000977,
+                24.40319061279297,
+                24.389747619628906,
+                24.391347885131836,
+                24.383506774902344,
+                24.40542984008789,
+                24.393430709838867,
+                24.41023063659668,
+                24.39710807800293,
+                24.405588150024414
+              ]
+            ],
+            "medians_ms": [
+              23.70414924621582,
+              24.393430709838867
+            ],
+            "paired_gain_percent": -2.921755927776193,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "before-probability-cast",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-pv-lds-order-fenced-1218234/before-probability-cast",
+        "experiment": {
+          "v_lds_position": "before-probability-cast",
+          "v_global_prefetch": true,
+          "isa": {
+            "s_waitcnt": 48,
+            "global_load_dwordx4": 12,
+            "global_load_dwordx2": 8,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 214
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.09406280517578,
+                35.111663818359375,
+                35.094383239746094,
+                35.09998321533203,
+                35.08814239501953,
+                35.09342575073242,
+                35.0767822265625,
+                35.10014343261719,
+                35.089744567871094,
+                35.10446548461914,
+                35.08430480957031
+              ],
+              [
+                37.160945892333984,
+                37.11134338378906,
+                37.215023040771484,
+                37.1483039855957,
+                37.18190383911133,
+                37.19198226928711,
+                37.147342681884766,
+                37.1694221496582,
+                37.150699615478516,
+                37.12030029296875,
+                37.165584564208984
+              ]
+            ],
+            "medians_ms": [
+              35.09406280517578,
+              37.160945892333984
+            ],
+            "paired_gain_percent": -5.895356869448332,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.701589584350586,
+                23.704307556152344,
+                23.698068618774414,
+                23.710229873657227,
+                23.70030975341797,
+                23.68878936767578,
+                23.688310623168945,
+                23.702869415283203,
+                23.696630477905273,
+                23.687667846679688,
+                23.691667556762695
+              ],
+              [
+                25.14335060119629,
+                25.112150192260742,
+                25.153427124023438,
+                25.0979061126709,
+                25.1766300201416,
+                25.135990142822266,
+                25.1380672454834,
+                25.12750816345215,
+                25.11326789855957,
+                25.13838768005371,
+                25.160947799682617
+              ]
+            ],
+            "medians_ms": [
+              23.698068618774414,
+              25.1380672454834
+            ],
+            "paired_gain_percent": -6.109222183896157,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "prefetch-only",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/q128-pv-lds-order-fenced-1218234/prefetch-only",
+        "experiment": {
+          "v_lds_position": "prefetch-only",
+          "v_global_prefetch": true,
+          "isa": {
+            "s_waitcnt": 59,
+            "global_load_dwordx4": 12,
+            "global_load_dwordx2": 8,
+            "s_barrier": 12,
+            "ds_write_b128": 4,
+            "ds_read_b128": 16,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "ds_write_b16": 32,
+            "ds_read_u16": 32,
+            "ds_write2_b64": 4,
+            "ds_read2st64_b64": 16,
+            "global_store_short": 64
+          },
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 213
+          },
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q128-packed-1218234",
+          "rounding_boundary": true
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.098384857177734,
+                35.099342346191406,
+                35.09374237060547,
+                35.10414505004883,
+                35.09294509887695,
+                35.106224060058594,
+                35.09310531616211,
+                35.107025146484375,
+                35.088462829589844,
+                35.08814239501953,
+                35.07838439941406
+              ],
+              [
+                35.76542282104492,
+                35.736942291259766,
+                35.755184173583984,
+                35.73982238769531,
+                35.75374221801758,
+                35.77134323120117,
+                35.76606369018555,
+                35.742862701416016,
+                35.77598571777344,
+                35.757423400878906,
+                35.72510528564453
+              ]
+            ],
+            "medians_ms": [
+              35.09374237060547,
+              35.755184173583984
+            ],
+            "paired_gain_percent": -1.8847856007871533,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.711990356445312,
+                23.7019100189209,
+                23.695348739624023,
+                23.799352645874023,
+                23.711671829223633,
+                23.71118927001953,
+                23.722230911254883,
+                23.688949584960938,
+                23.69791030883789,
+                23.672792434692383,
+                23.694711685180664
+              ],
+              [
+                24.191030502319336,
+                24.149429321289062,
+                24.205907821655273,
+                24.188148498535156,
+                24.173269271850586,
+                24.184310913085938,
+                24.18255043029785,
+                24.223989486694336,
+                24.168149948120117,
+                24.20655059814453,
+                24.206867218017578
+              ]
+            ],
+            "medians_ms": [
+              23.7019100189209,
+              24.188148498535156
+            ],
+            "paired_gain_percent": -1.9953518049161012,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": []
+  },
+  "independent_pmc": {
+    "sequence": [
+      27570,
+      22016
+    ],
+    "launches_per_sequence": 4,
+    "resources": {
+      "allocated_vgpr": 216,
+      "lds_bytes": 8192,
+      "scratch_bytes": 0
+    },
+    "SQ_INSTS_LDS": [
+      271095552,
+      172297216
+    ],
+    "SQ_LDS_BANK_CONFLICT": [
+      417070080,
+      265072640
+    ],
+    "reference_SQ_WAIT_INST_LDS": [
+      701135020.5,
+      439883899.5
+    ],
+    "swap_SQ_WAIT_INST_LDS": [
+      837788109.25,
+      528319591.25
+    ]
+  }
+}
