@@ -1,0 +1,111 @@
+{
+  "verdict": "PASS",
+  "hostname": "f12r2n16",
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q64-full-load-retry1",
+  "candidate": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q64-buffer-1218234",
+  "binaries": {
+    "reference": {
+      "dense-attention-aot.so": "cf5eeb743412b209e556341f1e8e7a8fdceb6df7785a7c7b8fd9fa53f96d0ad5",
+      "dense-attention-aot.hsaco": "1ab150609fdd094d587cdddb49799977a9b0cd82b416c74b18351c66c74135b0"
+    },
+    "candidate": {
+      "dense-attention-aot.so": "96d7df7a589ef50415034c482743ec2b220add11ef9ffe93b21d2b79c0118226",
+      "dense-attention-aot.hsaco": "c22838f567f003ac34dde1f84ea058b592a95065d6b69c5cec19ad493acae33a"
+    }
+  },
+  "iterations": 11,
+  "cases": [
+    {
+      "sequence": 27570,
+      "reference_ms": 40.88190460205078,
+      "candidate_ms": 40.42094421386719,
+      "paired_speedup_pct": 1.127541372327523,
+      "samples_ms": [
+        [
+          40.89229965209961,
+          40.885108947753906,
+          40.883182525634766,
+          40.89391326904297,
+          40.86543273925781,
+          40.88030242919922,
+          40.88190460205078,
+          40.86606216430664,
+          40.89710235595703,
+          40.86798095703125,
+          40.87630081176758
+        ],
+        [
+          40.434547424316406,
+          40.3743896484375,
+          40.42190933227539,
+          40.39870834350586,
+          40.46686935424805,
+          40.39726638793945,
+          40.42094421386719,
+          40.42030334472656,
+          40.47902297973633,
+          40.45102310180664,
+          40.3887825012207
+        ]
+      ],
+      "normal": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "stress": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      }
+    },
+    {
+      "sequence": 22016,
+      "reference_ms": 26.592792510986328,
+      "candidate_ms": 26.2471923828125,
+      "paired_speedup_pct": 1.3096946665836717,
+      "samples_ms": [
+        [
+          26.60350799560547,
+          26.590871810913086,
+          26.592792510986328,
+          26.595508575439453,
+          26.59551239013672,
+          26.59455108642578,
+          26.5911922454834,
+          26.577592849731445,
+          26.584949493408203,
+          26.585912704467773,
+          26.594072341918945
+        ],
+        [
+          26.183671951293945,
+          26.157432556152344,
+          26.34158706665039,
+          26.302867889404297,
+          26.2471923828125,
+          26.170072555541992,
+          26.29231071472168,
+          26.22399139404297,
+          26.278711318969727,
+          26.17295265197754,
+          26.284791946411133
+        ]
+      ],
+      "normal": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "stress": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      }
+    }
+  ]
+}

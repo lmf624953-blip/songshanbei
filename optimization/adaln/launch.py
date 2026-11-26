@@ -80,6 +80,7 @@ if indexed_build:
     print("[adaln] indexed device binaries", indexed_build, flush=True)
 optional_kernels = (
     ("qknorm", os.environ.get("H3_QKNORM_BUILD")),
+    ("qknorm_mrope", os.environ.get("H3_QKNORM_MROPE_BUILD")),
     ("attention", os.environ.get("H3_ATTENTION_AOT_BUILD")),
     ("short_attention", os.environ.get("H3_SHORT_ATTENTION_AOT_BUILD")),
     ("reducecast", os.environ.get("H3_REDUCECAST_BUILD")),
@@ -96,8 +97,8 @@ def device_callback(name, lib):
 
 if any(path for _, path in optional_kernels):
     sys.path.insert(0, str(here))
-    from aot_runtime import load_attention, load_qknorm, load_reducecast, load_widenorm
-    loaders = {"qknorm": load_qknorm, "attention": load_attention, "short_attention": load_attention,
+    from aot_runtime import load_attention, load_qknorm, load_qknorm_mrope, load_reducecast, load_widenorm
+    loaders = {"qknorm": load_qknorm, "qknorm_mrope": load_qknorm_mrope, "attention": load_attention, "short_attention": load_attention,
                "reducecast": load_reducecast, "encodercast": load_reducecast,
                "widenorm": load_widenorm}
     for name, path in optional_kernels:
@@ -225,6 +226,7 @@ def set_kernel_enabled(kernel, enabled):
 control = ModuleType("songshan_candidate_control")
 control.select_variant, control.read_counters = select_variant, read_counters
 control.set_qknorm_enabled = lambda enabled: set_kernel_enabled("qknorm", enabled)
+control.set_qknorm_mrope_enabled = lambda enabled: set_kernel_enabled("qknorm_mrope", enabled)
 control.set_widenorm_enabled = lambda enabled: set_kernel_enabled("widenorm", enabled)
 control.set_short_attention_enabled = lambda enabled: set_kernel_enabled("short_attention", enabled)
 for registered_name, _, registered_setter, _ in registrations:

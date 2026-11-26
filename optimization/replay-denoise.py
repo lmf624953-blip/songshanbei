@@ -43,6 +43,7 @@ def main():
     parser.add_argument("--steps", default="1,49")
     parser.add_argument("--iterations", default=3, type=int)
     parser.add_argument("--qknorm-ablation", action="store_true")
+    parser.add_argument("--qknorm-mrope-ablation", action="store_true")
     parser.add_argument("--wide-ablation", action="store_true", help="Compare wide RMSNorm with original on the same real input")
     parser.add_argument("--reference-results", type=Path, help="Independent PyTorch outputs for these exact captures")
     parser.add_argument("--precision-ablation", action="store_true", help="Compare original, BF16/FP32 communication and optional precision kernels")
@@ -135,11 +136,13 @@ def main():
                         variants += ("candidate-bf16-wire-fast-attention",)
                 if args.short_attention_ablation:
                     variants = ("candidate-no-short-attention", "candidate")
+                if args.qknorm_mrope_ablation:
+                    variants = ("candidate-no-qknorm-mrope", "candidate")
                 if args.profile_once or args.candidate_only:
                     variants = ("candidate",)
                 for variant in variants:
                     selected_variant = variant
-                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention"}:
+                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope"}:
                         selected_variant = "candidate"
                     if args.precision_ablation and variant != "original":
                         selected_variant = "candidate-tf-no-reducecast" if variant.startswith("candidate-bf16-wire") else "candidate-tf"
@@ -158,6 +161,8 @@ def main():
                         control.set_short_attention_enabled(False)
                     if variant == "candidate-no-qknorm":
                         control.set_qknorm_enabled(False)
+                    if variant == "candidate-no-qknorm-mrope":
+                        control.set_qknorm_mrope_enabled(False)
                     if variant == "candidate-old-indexed":
                         control.set_indexed_callback(old_indexed_callback)
                     before = control.read_counters()
@@ -196,7 +201,7 @@ def main():
                         expected = torch.load(args.reference_results / f"step-{step:02d}.pt",
                                               map_location="cpu", weights_only=True)
                         record["against_independent_pytorch"] = compare(result, expected)
-                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention"}:
+                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope"}:
                         paired = tuple(x.detach().cpu().clone() for x in outputs(result))
                     elif variant == "candidate" and paired is not None:
                         key = "against_candidate_with_original_indexed" if args.indexed_ablation else "against_candidate_without_qknorm"
@@ -204,6 +209,8 @@ def main():
                             key = "against_candidate_without_widenorm"
                         if args.short_attention_ablation:
                             key = "against_candidate_with_jit_short_attention"
+                        if args.qknorm_mrope_ablation:
+                            key = "against_candidate_without_qknorm_mrope"
                         record[key] = compare(result, paired)
                     print(json.dumps(record), flush=True)
                     records.append(record)

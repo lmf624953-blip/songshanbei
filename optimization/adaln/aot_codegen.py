@@ -44,12 +44,16 @@ def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *,
 def compile_image(output, kernel, signature, constants, runtime_signature, warps=WARPS,
                   *, block=TILE, allow_shared=False, aligned_scalars=(), num_stages=1,
                   matrix_instr_nonkdim=0, kpack=1, attention_lds_swizzle=False,
-                  attention_query_block=32):
+                  attention_query_block=32, buffer_addressing=False):
     signature["BLOCK"] = "constexpr"
     if list(signature) != kernel.arg_names or [t for t in signature.values() if t != "constexpr"] != runtime_signature:
         raise RuntimeError(f"Unexpected {kernel.__name__} launcher signature: {signature}")
     attrs = {(i,): [["tt.divisibility", 16]] for i, name in enumerate(signature)
              if signature[name].startswith("*") or name in aligned_scalars}
+    if buffer_addressing:
+        for i, name in enumerate(signature):
+            if signature[name].startswith("*"):
+                attrs[(i,)].append(["tt.pointer_range", 32])
     target = GPUTarget("hip", "gfx936", 64)
     options = {"num_warps": warps, "num_stages": num_stages,
                "matrix_instr_nonkdim": matrix_instr_nonkdim, "kpack": kpack}

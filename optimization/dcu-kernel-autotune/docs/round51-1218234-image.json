@@ -1,0 +1,313 @@
+{
+  "verdict": "PASS",
+  "rebuilt": {
+    "sha256": "c22838f567f003ac34dde1f84ea058b592a95065d6b69c5cec19ad493acae33a",
+    "sections": {
+      ".note": {
+        "type": 7,
+        "flags": 2,
+        "address": 512,
+        "size": 1156,
+        "sha256": "e8b6acdf0d1a96fa1d2e1ee052ed4edd92d11507176c9463919a6dead7a630e4"
+      },
+      ".dynsym": {
+        "type": 11,
+        "flags": 2,
+        "address": 1672,
+        "size": 72,
+        "sha256": "f5b2c7b40d1da79a5195b1ac4a5c49f22981faad387421273c6f73e501157ecb"
+      },
+      ".gnu.hash": {
+        "type": 1879048182,
+        "flags": 2,
+        "address": 1744,
+        "size": 36,
+        "sha256": "84f014a9fdb3076b75520d8b559959c51596dfa66058c8acefa0c910d5a474e1"
+      },
+      ".hash": {
+        "type": 5,
+        "flags": 2,
+        "address": 1780,
+        "size": 32,
+        "sha256": "6fa80282e29f146a54676d191e42c4af937e732f64e2496d76f93cbabb0b2ae5"
+      },
+      ".dynstr": {
+        "type": 3,
+        "flags": 2,
+        "address": 1812,
+        "size": 58,
+        "sha256": "8f60ceb56a1d793c456485b927ec92fc63eb71915b10ef57bba2c65b47a2e535"
+      },
+      ".rodata": {
+        "type": 1,
+        "flags": 2,
+        "address": 1920,
+        "size": 64,
+        "sha256": "492599cbff4fe196cfc0d78671a70511de0701ee57592e2d4f8fc526c75aa70a"
+      },
+      ".text": {
+        "type": 1,
+        "flags": 6,
+        "address": 6144,
+        "size": 14944,
+        "sha256": "052f64c9dc3aab04937cea085d64da118d52180e8cc0817c14e82e3eef442924"
+      },
+      ".dynamic": {
+        "type": 6,
+        "flags": 3,
+        "address": 25184,
+        "size": 112,
+        "sha256": "fe9d0863d9f6a7293d7d81669b510730b8419cbb17e57b278a81055a4e0d5cde"
+      },
+      ".relro_padding": {
+        "type": 8,
+        "flags": 3,
+        "address": 25296,
+        "size": 3376,
+        "sha256": null
+      }
+    },
+    "segments": [
+      [
+        6,
+        4,
+        64,
+        64,
+        64,
+        448,
+        448,
+        8
+      ],
+      [
+        1,
+        4,
+        0,
+        0,
+        0,
+        1984,
+        1984,
+        4096
+      ],
+      [
+        1,
+        5,
+        2048,
+        6144,
+        6144,
+        14944,
+        14944,
+        4096
+      ],
+      [
+        1,
+        6,
+        16992,
+        25184,
+        25184,
+        112,
+        3488,
+        4096
+      ],
+      [
+        2,
+        6,
+        16992,
+        25184,
+        25184,
+        112,
+        112,
+        8
+      ],
+      [
+        1685382482,
+        4,
+        16992,
+        25184,
+        25184,
+        112,
+        3488,
+        1
+      ],
+      [
+        1685382481,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        4,
+        512,
+        512,
+        512,
+        1156,
+        1156,
+        4
+      ]
+    ],
+    "elf_target": {
+      "machine": 224,
+      "flags": 1410,
+      "entry": 0
+    }
+  },
+  "experimental": {
+    "sha256": "a1a6f3c966db26864cf54b6edc86fed0e024a1f808bd8160639540c48714695c",
+    "sections": {
+      ".note": {
+        "type": 7,
+        "flags": 2,
+        "address": 512,
+        "size": 1156,
+        "sha256": "e8b6acdf0d1a96fa1d2e1ee052ed4edd92d11507176c9463919a6dead7a630e4"
+      },
+      ".dynsym": {
+        "type": 11,
+        "flags": 2,
+        "address": 1672,
+        "size": 72,
+        "sha256": "f5b2c7b40d1da79a5195b1ac4a5c49f22981faad387421273c6f73e501157ecb"
+      },
+      ".gnu.hash": {
+        "type": 1879048182,
+        "flags": 2,
+        "address": 1744,
+        "size": 36,
+        "sha256": "84f014a9fdb3076b75520d8b559959c51596dfa66058c8acefa0c910d5a474e1"
+      },
+      ".hash": {
+        "type": 5,
+        "flags": 2,
+        "address": 1780,
+        "size": 32,
+        "sha256": "6fa80282e29f146a54676d191e42c4af937e732f64e2496d76f93cbabb0b2ae5"
+      },
+      ".dynstr": {
+        "type": 3,
+        "flags": 2,
+        "address": 1812,
+        "size": 58,
+        "sha256": "8f60ceb56a1d793c456485b927ec92fc63eb71915b10ef57bba2c65b47a2e535"
+      },
+      ".rodata": {
+        "type": 1,
+        "flags": 2,
+        "address": 1920,
+        "size": 64,
+        "sha256": "492599cbff4fe196cfc0d78671a70511de0701ee57592e2d4f8fc526c75aa70a"
+      },
+      ".text": {
+        "type": 1,
+        "flags": 6,
+        "address": 6144,
+        "size": 14944,
+        "sha256": "052f64c9dc3aab04937cea085d64da118d52180e8cc0817c14e82e3eef442924"
+      },
+      ".dynamic": {
+        "type": 6,
+        "flags": 3,
+        "address": 25184,
+        "size": 112,
+        "sha256": "fe9d0863d9f6a7293d7d81669b510730b8419cbb17e57b278a81055a4e0d5cde"
+      },
+      ".relro_padding": {
+        "type": 8,
+        "flags": 3,
+        "address": 25296,
+        "size": 3376,
+        "sha256": null
+      }
+    },
+    "segments": [
+      [
+        6,
+        4,
+        64,
+        64,
+        64,
+        448,
+        448,
+        8
+      ],
+      [
+        1,
+        4,
+        0,
+        0,
+        0,
+        1984,
+        1984,
+        4096
+      ],
+      [
+        1,
+        5,
+        2048,
+        6144,
+        6144,
+        14944,
+        14944,
+        4096
+      ],
+      [
+        1,
+        6,
+        16992,
+        25184,
+        25184,
+        112,
+        3488,
+        4096
+      ],
+      [
+        2,
+        6,
+        16992,
+        25184,
+        25184,
+        112,
+        112,
+        8
+      ],
+      [
+        1685382482,
+        4,
+        16992,
+        25184,
+        25184,
+        112,
+        3488,
+        1
+      ],
+      [
+        1685382481,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        4,
+        512,
+        512,
+        512,
+        1156,
+        1156,
+        4
+      ]
+    ],
+    "elf_target": {
+      "machine": 224,
+      "flags": 1410,
+      "entry": 0
+    }
+  }
+}

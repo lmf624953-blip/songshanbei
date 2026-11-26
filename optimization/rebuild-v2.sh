@@ -5,6 +5,7 @@ project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 out=$(realpath -m -- "${1:?Provide a new build directory}")
 variant=dense
 deterministic=0
+fused_qknorm_mrope=0
 attention_options=()
 attention_query_block=32
 attention_warps=2
@@ -12,13 +13,16 @@ for option in "${@:2}"; do
   case "$option" in
     --short-attention) variant=short-attention ;;
     --deterministic-keyframe) deterministic=1 ;;
+    --fused-qknorm-mrope) fused_qknorm_mrope=1 ;;
     --long-attention-lds) attention_options=(--optimize-long-attention) ;;
     --long-attention-q64) attention_options=(--optimize-long-attention); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-full-load) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask); attention_query_block=64; attention_warps=4 ;;
+    --long-attention-q64-buffer) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-tail) attention_options=(--optimize-long-attention --split-kv-tail); attention_query_block=64; attention_warps=4 ;;
-    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load]\n' >&2; exit 2 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--fused-qknorm-mrope] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer]\n' >&2; exit 2 ;;
   esac
 done
+if [[ "$fused_qknorm_mrope" == 1 ]]; then variant=qknorm-mrope; fi
 mkdir -- "$out"
 export IFAB_AFS_HOME="$project/runtime"
 source "$IFAB_AFS_HOME/scripts/unified_dog_env.sh"
@@ -27,10 +31,13 @@ H3_NATIVE_CXX_OPTIMIZE=O3 bash "$source_dir/build-candidate.sh" "$out/infinilm" 
 python "$source_dir/build-aot.py" "$out/adaln"
 python "$source_dir/build-indexed.py" "$out/indexed" --tile 2048 --warps 4
 python "$source_dir/build-qk-norm.py" "$out/qknorm" --cub-order --warps 2
+if [[ "$fused_qknorm_mrope" == 1 ]]; then
+  python "$source_dir/build-qk-norm-mrope.py" "$out/qknorm-mrope"
+fi
 python "$source_dir/build-attention-aot.py" "$out/attention" \
   --fp32-scale --aligned-strides --query-block "$attention_query_block" --key-block 32 \
   --warps "$attention_warps" --stages 1 --kpack 2 "${attention_options[@]}"
-if [[ "$variant" == short-attention ]]; then
+if [[ "$variant" == short-attention || "$variant" == qknorm-mrope ]]; then
   python "$source_dir/build-attention-aot.py" "$out/short-attention" --fp32-scale --aligned-strides
 fi
 {
@@ -38,8 +45,11 @@ fi
   printf 'export H3_ADALN_AOT_BUILD=%q\n' "$out/adaln"
   printf 'export H3_INDEXED_BUILD=%q\n' "$out/indexed"
   printf 'export H3_QKNORM_BUILD=%q\n' "$out/qknorm"
+  if [[ "$fused_qknorm_mrope" == 1 ]]; then
+    printf 'export H3_QKNORM_MROPE_BUILD=%q\n' "$out/qknorm-mrope"
+  fi
   printf 'export H3_ATTENTION_AOT_BUILD=%q\n' "$out/attention"
-  if [[ "$variant" == short-attention ]]; then
+  if [[ "$variant" == short-attention || "$variant" == qknorm-mrope ]]; then
     printf 'export H3_SHORT_ATTENTION_AOT_BUILD=%q\n' "$out/short-attention"
   fi
   printf 'export H3_VAE_DEVICES=0,1\n'

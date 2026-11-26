@@ -110,10 +110,11 @@ def main():
                 if error:raise RuntimeError(error.decode())
             ic.mrope(qi,ki,ci,si,pi,128,96,16,16,16,False,out=(qo,ko))
         torch.cuda.synchronize();original();torch.cuda.synchronize()
-        for rows,warps in ((1,2),(2,4),(4,8),(8,16)):
+        for rows,warps in ((1,2),):
             row=dict(sequence=length,rows=rows,warps=warps)
             try:
                 native=build_native(args.out/f'n{length}-m{rows}-w{warps}',(q,k,qweight,kweight,cos,sin,positions,*actual),rows,warps)
+                for tensor in actual:tensor.fill_(float("nan"))
                 native();torch.cuda.synchronize()
                 errors=[]
                 for a,b in zip(actual,expected):

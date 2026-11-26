@@ -5,13 +5,17 @@ import json
 import os
 
 
+def verify_device_image(image, expected_digest):
+    with image.open("rb") as stream:
+        digest = hashlib.file_digest(stream, "sha256").hexdigest()
+    if digest != expected_digest:
+        raise RuntimeError(f"Unexpected device binary digest: {image}")
+
+
 def load_kernel(build, stem, host_file, prepare_symbol):
     record = json.loads((build / f"{stem}-build.json").read_text())
     image = build / f"{stem}.hsaco"
-    with image.open("rb") as stream:
-        digest = hashlib.file_digest(stream, "sha256").hexdigest()
-    if digest != record["hsaco_sha256"]:
-        raise RuntimeError(f"Unexpected device binary digest: {image}")
+    verify_device_image(image, record["hsaco_sha256"])
     host = ctypes.CDLL(str(build / host_file))
     prepare = getattr(host, prepare_symbol)
     prepare.argtypes = [ctypes.c_char_p, ctypes.c_int, ctypes.c_int]
@@ -26,13 +30,34 @@ def load_qknorm(build):
     return load_kernel(build, "qk-norm", "qk-norm-host.so", "songshan_prepare_qknorm")
 
 
+def load_qknorm_mrope(build):
+    record = json.loads((build / "qk-norm-mrope-build.json").read_text())
+    if record["rows"] != 1 or record["warps"] != 2 or record["block"] != 128:
+        raise RuntimeError("Unexpected fused Q/K norm MRoPE launch geometry")
+    return load_kernel(build, "qk-norm-mrope", "qk-norm-mrope-host.so", "songshan_prepare_qknorm_mrope")
+
+
 def load_widenorm(build):
     return load_kernel(build, "wide-norm", "wide-norm-host.so", "songshan_prepare_widenorm")
 
 
 def load_attention(build):
-    host = load_kernel(build, "dense-attention-aot", "dense-attention-aot.so", "songshan_prepare_attention")
     record = json.loads((build / "dense-attention-aot-build.json").read_text())
+    if "fallback" in record:
+        image = build / "dense-attention-aot.hsaco"
+        fallback = build / "dense-attention-fallback.hsaco"
+        verify_device_image(image, record["hsaco_sha256"])
+        verify_device_image(fallback, record["fallback"]["hsaco_sha256"])
+        host = ctypes.CDLL(str(build / "dense-attention-aot.so"))
+        prepare = host.songshan_prepare_buffer_attention
+        prepare.argtypes = [ctypes.c_char_p, ctypes.c_char_p] + [ctypes.c_int] * 3
+        prepare.restype = ctypes.c_char_p
+        error = prepare(os.fsencode(image), os.fsencode(fallback), record["warps"],
+                        record["shared"], record["fallback"]["shared"])
+        if error:
+            raise RuntimeError(f"Preparing guarded attention failed: {error.decode()}")
+    else:
+        host = load_kernel(build, "dense-attention-aot", "dense-attention-aot.so", "songshan_prepare_attention")
     if hasattr(host, "songshan_attention_query_block"):
         host.songshan_attention_query_block.argtypes = []
         host.songshan_attention_query_block.restype = ctypes.c_int

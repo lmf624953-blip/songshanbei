@@ -1,0 +1,502 @@
+{
+  "verdict": "PASS",
+  "cases": [
+    {
+      "length": 1,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 1,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 2,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 2,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 3,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 3,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 4,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 4,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 5,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 5,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 31,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 31,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 32,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 32,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 33,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 33,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 4096,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 4096,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 22016,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 22016,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ],
+      "diagnostic_sync_wall_ms": [
+        1.7487918958067894,
+        0.6572823040187359
+      ]
+    },
+    {
+      "length": 27570,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 27570,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ],
+      "diagnostic_sync_wall_ms": [
+        2.1772910840809345,
+        0.809855293482542
+      ]
+    },
+    {
+      "length": 65535,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 4096,
+      "positions_stride": 65535,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 33,
+      "scale": 1,
+      "query_stride": 896,
+      "key_stride": 896,
+      "cache_rows": 17,
+      "positions_stride": 49,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 33,
+      "scale": 1,
+      "query_stride": 2816,
+      "key_stride": 2944,
+      "cache_rows": 17,
+      "positions_stride": 49,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 33,
+      "scale": 8,
+      "query_stride": 896,
+      "key_stride": 896,
+      "cache_rows": 17,
+      "positions_stride": 49,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 33,
+      "scale": 8,
+      "query_stride": 2816,
+      "key_stride": 2944,
+      "cache_rows": 17,
+      "positions_stride": 49,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 1,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 1,
+      "positions_stride": 0,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 33,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 33,
+      "positions_stride": 0,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ]
+    },
+    {
+      "length": 22016,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 22016,
+      "positions_stride": 0,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ],
+      "diagnostic_sync_wall_ms": [
+        1.748973038047552,
+        0.657212920486927
+      ]
+    },
+    {
+      "length": 27570,
+      "scale": 1,
+      "query_stride": 2688,
+      "key_stride": 2688,
+      "cache_rows": 27570,
+      "positions_stride": 0,
+      "errors": [
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        },
+        {
+          "exact": true,
+          "finite": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "tail_guard": true
+        }
+      ],
+      "diagnostic_sync_wall_ms": [
+        2.172939945012331,
+        0.808084849268198
+      ]
+    }
+  ],
+  "hsaco_sha256": "c5985b789d4a958365523976a33f04c4e21adbdf61c21743c1bb046bb1453d9c"
+}

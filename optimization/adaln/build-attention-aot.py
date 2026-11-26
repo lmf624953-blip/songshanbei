@@ -4,6 +4,7 @@ import argparse
 from functools import partial
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import ninetoothed as nt
@@ -30,6 +31,8 @@ def main():
                         help="Separate full K32 tiles from the masked tail; requires optimized Q64/4-warps")
     parser.add_argument("--elide-full-kv-load-mask", action="store_true",
                         help="Remove proven redundant K/V load bounds in complete tiles; requires split-kv-tail")
+    parser.add_argument("--guarded-buffer-ops", action="store_true",
+                        help="Use narrow buffer addressing with per-buffer span checks and a fallback image")
     args = parser.parse_args()
     if args.fp16_pv and not args.fp32_scale:
         parser.error("--fp16-pv requires --fp32-scale")
@@ -43,6 +46,8 @@ def main():
         parser.error("--split-kv-tail requires --optimize-long-attention and Q64/4-warps")
     if args.elide_full_kv_load_mask and not args.split_kv_tail:
         parser.error("--elide-full-kv-load-mask requires --split-kv-tail")
+    if args.guarded_buffer_ops and not args.elide_full_kv_load_mask:
+        parser.error("--guarded-buffer-ops requires --elide-full-kv-load-mask")
     build = args.destination.resolve()
     build.mkdir()
     arrangement, application, tensors = definition(head_dim=128, dtype=nt.bfloat16, causal=False)
@@ -84,13 +89,29 @@ def main():
     warps = args.warps
     aligned = [b.name for b in bindings if b.kind == "stride" and b.dim == 2]
     runtime = ["*bf16"] * 3 + ["fp32", "*bf16"] + ["i32"] * 8
-    digest, shared = compile_image(build / "dense-attention-aot.hsaco", kernel, signature, constants,
-                                   runtime, warps, block=1, allow_shared=True,
-                                   aligned_scalars=aligned if args.aligned_strides else (), num_stages=args.stages,
-                                   matrix_instr_nonkdim=args.matrix_instr_nonkdim, kpack=args.kpack,
-                                   attention_lds_swizzle=args.optimize_long_attention,
-                                   attention_query_block=args.query_block)
-    host = compile_host(build / "dense-attention-aot.so", ("attention_aot_host.cc",),
+    def image(stem, *, buffer_addressing=False):
+        return compile_image(build / f"{stem}.hsaco", kernel, signature, constants,
+                             runtime, warps, block=1, allow_shared=True,
+                             aligned_scalars=aligned if args.aligned_strides else (), num_stages=args.stages,
+                             matrix_instr_nonkdim=args.matrix_instr_nonkdim, kpack=args.kpack,
+                             attention_lds_swizzle=args.optimize_long_attention,
+                             attention_query_block=args.query_block, buffer_addressing=buffer_addressing)
+
+    fallback = None
+    host_source = "attention_aot_host.cc"
+    if args.guarded_buffer_ops:
+        # 只在这个构建进程切换后端环境，两个镜像使用同一份九齿计算。
+        os.environ["AMDGCN_USE_BUFFER_OPS"] = "0"
+        fallback_digest, fallback_shared = image("dense-attention-fallback")
+        os.environ["AMDGCN_USE_BUFFER_OPS"] = "1"
+        digest, shared = image("dense-attention-aot", buffer_addressing=True)
+        if digest == fallback_digest:
+            raise RuntimeError("Buffer addressing did not change the device image")
+        fallback = dict(hsaco_sha256=fallback_digest, shared=fallback_shared)
+        host_source = "attention_buffer_host.cc"
+    else:
+        digest, shared = image("dense-attention-aot")
+    host = compile_host(build / "dense-attention-aot.so", (host_source,),
                         defines=(("H3_ATTENTION_QUERY_BLOCK", args.query_block),))
     record = {"source": str(source), "hsaco_sha256": digest, "warps": warps,
               "shared": shared, "fp32_scale": args.fp32_scale,
@@ -104,6 +125,9 @@ def main():
     record["optimize_long_attention"] = args.optimize_long_attention
     record["split_kv_tail"] = args.split_kv_tail
     record["elide_full_kv_load_mask"] = args.elide_full_kv_load_mask
+    if fallback is not None:
+        record["buffer_ops_limit_bytes"] = 2**31
+        record["fallback"] = fallback
     if args.split_kv_tail:
         record["application_sha256"] = hashlib.sha256(
             Path(__file__).with_name("tail_attention.py").read_bytes()).hexdigest()

@@ -12,7 +12,7 @@ case "$host_opt" in
   *) printf 'Unsupported host optimization: %s\n' "$host_opt" >&2; exit 2;;
 esac
 case "$variant" in
-  adaln|indexed|dense|precision|encoder-precision|wide-norm|encoder-prefill|short-attention) ;;
+  adaln|indexed|dense|precision|encoder-precision|wide-norm|encoder-prefill|short-attention|qknorm-mrope) ;;
   *) printf 'Unknown variant: %s\n' "$variant" >&2; exit 2;;
 esac
 commit=$(git -C "$project" rev-parse --verify '45b2c3094d8d189e030f8984d7c07dead4db690a^{commit}')
@@ -44,8 +44,11 @@ fi
 if [[ "$variant" == encoder-prefill ]]; then
     git apply "$here/infinilm-encoder-prefill.patch"
 fi
-if [[ "$variant" == short-attention ]]; then
+if [[ "$variant" == short-attention || "$variant" == qknorm-mrope ]]; then
     git apply "$here/infinilm-short-attention.patch"
+fi
+if [[ "$variant" == qknorm-mrope ]]; then
+    git apply "$here/infinilm-qknorm-mrope.patch"
 fi
 if [[ "$host_opt" == O3 ]]; then
   python3 - <<'PY'
@@ -122,8 +125,11 @@ if variant in {"wide-norm", "encoder-prefill"}:
     files["wide_norm_patch"] = project / "optimization/adaln/infinilm-wide-norm.patch"
 if variant == "encoder-prefill":
     files["encoder_prefill_patch"] = project / "optimization/adaln/infinilm-encoder-prefill.patch"
-if variant == "short-attention":
+if variant in {"short-attention", "qknorm-mrope"}:
     files["short_attention_patch"] = project / "optimization/adaln/infinilm-short-attention.patch"
+if variant == "qknorm-mrope":
+    files["qknorm_mrope_patch"] = project / "optimization/adaln/infinilm-qknorm-mrope.patch"
+    files["qknorm_mrope_kernel"] = project / "optimization/adaln/qk_norm_mrope.py"
 record = {}
 for name, path in files.items():
     with path.open("rb") as stream:

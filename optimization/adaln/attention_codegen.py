@@ -147,6 +147,8 @@ def swizzle_attention_pv(compiled, output, target, options, *, query_block=32):
         if text.count(original) != 1 or f"!ttg.memdesc<{shape}xbf16, {alias}, #smem>" not in text:
             raise RuntimeError(f"九齿 PV 布局与已验证的 gfx936 编译前提不符: {label}")
         text = text.replace(original, replacement)
-    modified = output.with_name("pv-swizzle.ttgir")
+    modified = output.with_name(
+        "pv-swizzle.ttgir" if output.name == "dense-attention-aot.hsaco"
+        else f"{output.stem}-pv-swizzle.ttgir")
     modified.write_text(text)
     return triton.compile(str(modified), target=target, options=options)

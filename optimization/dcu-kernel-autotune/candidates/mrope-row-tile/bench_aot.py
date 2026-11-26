@@ -86,10 +86,11 @@ def main():
         qi,ki=wrap(q.flatten(1)),wrap(k.flatten(1));ci,si,pi=map(wrap,(cos,sin,positions));qo,ko=(wrap(t.flatten(1)) for t in expected)
         def original():ic.mrope(qi,ki,ci,si,pi,128,96,16,16,16,False,out=(qo,ko))
         original();torch.cuda.synchronize()
-        for rows,warps in ((1,1),(2,2),(4,4),(8,4),(16,4)):
+        for rows,warps in ((1,1),):
             row=dict(sequence=length,rows=rows,warps=warps)
             try:
                 native=build_native(args.out/f'n{length}-m{rows}-w{warps}',(q,k,cos,sin,positions,*actual),rows,warps)
+                for tensor in actual:tensor.fill_(float("nan"))
                 native();torch.cuda.synchronize()
                 errors=[]
                 for a,b in zip(actual,expected):
