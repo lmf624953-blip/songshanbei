@@ -18,6 +18,8 @@ def group(row):
         return 'RCCL'
     if name.startswith('Cijk_') or 'gemm' in name.lower():
         return 'GEMM'
+    if 'wide_norm_indexed' in name:
+        return '宽 RMSNorm 与索引 AdaLN 融合'
     if 'rmsnormKernel' in name:
         return '宽 RMSNorm'
     if 'indexed_gate' in name:
@@ -54,7 +56,8 @@ def summarize(root, code, compute_units):
         writer = csv.DictWriter(stream, fieldnames=list(all_rows[0]))
         writer.writeheader()
         writer.writerows(all_rows)
-    wave_rows = list(csv.DictReader((root / 'waves.csv').open()))
+    wave_path = root / 'waves.csv'
+    wave_rows = list(csv.DictReader(wave_path.open())) if wave_path.exists() else []
     wave_groups = defaultdict(list)
     for row in wave_rows:
         if row['KernelName'] == 'dense_attention_aot_kernel':
@@ -69,6 +72,7 @@ def summarize(root, code, compute_units):
     groups.sort(key=lambda row: -row['mean_ms'])
     return dict(scope='独立 profiler 诊断，设备 0 累计事件耗时除以同步窗口；正式收益使用无 profiler 数据',
                 compute_units=compute_units, mean_window_ms=wall, device0_groups=groups,
+                wave_counter_available=wave_path.exists(),
                 waves_per_cu_by_grid={grid: dict(samples=values, mean=mean(values))
                                       for grid, values in wave_groups.items()}, windows=windows)
 

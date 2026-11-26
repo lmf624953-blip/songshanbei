@@ -9,7 +9,7 @@ DOT = "#ttg.dot_op<{opIdx = 0, parent = #mma, kWidth = 8}>"
 
 
 def apply(source, method, *, query_block=64):
-    assert query_block in (64, 128)
+    assert query_block in (64, 128, 256)
     shape = f"{query_block}x128xbf16"
     q_type = f"tensor<{shape}, {DOT}>"
     q_smem = f"!ttg.memdesc<{shape}, #shared, #smem>"

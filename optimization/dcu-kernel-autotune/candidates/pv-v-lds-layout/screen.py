@@ -83,16 +83,18 @@ def main():
     base = load(args.reference.resolve())
     rows = []
     for path in sorted(args.new_builds.glob("v*/dense-attention-aot-build.json")):
+        device = elf(path.parent / "dense-attention-aot.hsaco")
+        same_code = all(a[key] == device[key] for key in ("sections", "segments", "elf_target"))
         candidate = load(path.parent.resolve())
         record = json.loads(path.read_text())
         cases = [screen(base, candidate, length, 9) for length in (27570, 22016)]
-        result = dict(name=path.parent.name, cases=cases, layout=record["experiment"]["v_layout"],
+        result = dict(name=path.parent.name, cases=cases, control_sections_equal=same_code, layout=record["experiment"]["v_layout"],
                       shared=record["shared"], isa=record["experiment"]["isa"],
                       binary=record["hsaco_sha256"])
         rows.append(result)
         print(json.dumps(result, ensure_ascii=False), flush=True)
         (args.out / "progress.json").write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n")
-    winners = [r for r in rows if r["name"] != "v0"
+    winners = [r for r in rows if r["name"] != "v0" and not r["control_sections_equal"]
                and all(c["passed"] and c["paired_gain_percent"] >= 0.5 for c in r["cases"])]
     winners.sort(key=lambda r: -min(c["paired_gain_percent"] for c in r["cases"]))
     result = dict(reference_sha256=hashlib.sha256(ref.read_bytes()).hexdigest(),

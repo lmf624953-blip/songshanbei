@@ -7,6 +7,7 @@ variant=dense
 deterministic=0
 fused_qknorm_mrope=0
 fused_wide_norm_indexed=0
+wide_norm_mode=naive
 attention_options=()
 attention_query_block=32
 attention_warps=2
@@ -15,7 +16,8 @@ for option in "${@:2}"; do
     --short-attention) variant=short-attention ;;
     --deterministic-keyframe) deterministic=1 ;;
     --fused-qknorm-mrope) fused_qknorm_mrope=1 ;;
-    --fused-wide-norm-indexed) fused_wide_norm_indexed=1; fused_qknorm_mrope=1 ;;
+    --fused-wide-norm-indexed) fused_wide_norm_indexed=1; fused_qknorm_mrope=1; wide_norm_mode=naive ;;
+    --fused-wide-norm-indexed-original-serial) fused_wide_norm_indexed=1; fused_qknorm_mrope=1; wide_norm_mode=original-serial ;;
     --long-attention-lds) attention_options=(--optimize-long-attention) ;;
     --long-attention-q64) attention_options=(--optimize-long-attention); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-full-load) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask); attention_query_block=64; attention_warps=4 ;;
@@ -25,7 +27,7 @@ for option in "${@:2}"; do
     --long-attention-q64-packed) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value --direct-attention-query --packed-attention-strides); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q128-packed) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value --direct-attention-query --packed-attention-strides); attention_query_block=128; attention_warps=4 ;;
     --long-attention-q64-tail) attention_options=(--optimize-long-attention --split-kv-tail); attention_query_block=64; attention_warps=4 ;;
-    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--fused-qknorm-mrope] [--fused-wide-norm-indexed] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer | --long-attention-q64-vwide | --long-attention-q64-qdirect | --long-attention-q64-packed | --long-attention-q128-packed]\n' >&2; exit 2 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--fused-qknorm-mrope] [--fused-wide-norm-indexed | --fused-wide-norm-indexed-original-serial] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer | --long-attention-q64-vwide | --long-attention-q64-qdirect | --long-attention-q64-packed | --long-attention-q128-packed]\n' >&2; exit 2 ;;
   esac
 done
 if [[ "$fused_qknorm_mrope" == 1 ]]; then variant=qknorm-mrope; fi
@@ -42,7 +44,7 @@ if [[ "$fused_qknorm_mrope" == 1 ]]; then
   python "$source_dir/build-qk-norm-mrope.py" "$out/qknorm-mrope"
 fi
 if [[ "$fused_wide_norm_indexed" == 1 ]]; then
-  python "$source_dir/build-wide-norm-indexed.py" "$out/wide-norm-indexed"
+  python "$source_dir/build-wide-norm-indexed.py" "$out/wide-norm-indexed" --mode "$wide_norm_mode"
 fi
 python "$source_dir/build-attention-aot.py" "$out/attention" \
   --fp32-scale --aligned-strides --query-block "$attention_query_block" --key-block 32 \

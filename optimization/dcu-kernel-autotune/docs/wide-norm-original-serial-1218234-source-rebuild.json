@@ -1,0 +1,74 @@
+{
+  "original": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-original-serial-1218234/w4/wide-norm-indexed.hsaco",
+  "rebuilt": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-original-serial-source-1218234/wide-norm-indexed.hsaco",
+  "original_sha256": "2bb18887604c9a2a5f80df41b742cc4e0133dce631ffc8e3103dcbb7af1f37ad",
+  "rebuilt_sha256": "8f2b027fa5ff0237c4bd94a854c7effcf63d247896da59e3c453bfed773d8b9d",
+  "file_equal": false,
+  "loaded_sections_equal": true,
+  "changed_loaded_sections": [],
+  "loaded_sections": {
+    ".note": {
+      "address": "0000000000000200",
+      "size": 1016,
+      "type": "NOTE",
+      "flags": "A",
+      "sha256": "a5b6dab64516708f9e748c6ae2d66e4c48eecd928a03b33c5d6c8188bf82e6c5"
+    },
+    ".dynsym": {
+      "address": "00000000000005f8",
+      "size": 72,
+      "type": "DYNSYM",
+      "flags": "A",
+      "sha256": "3b3729bfa65faf036934161d7eb0016fc26adbf24a2b82f37fe0adb12a941303"
+    },
+    ".gnu.hash": {
+      "address": "0000000000000640",
+      "size": 36,
+      "type": "GNU_HASH",
+      "flags": "A",
+      "sha256": "098a8f718da3fa2925c8934cbad476f9052885ff313d484b1d00a82df8d83419"
+    },
+    ".hash": {
+      "address": "0000000000000664",
+      "size": 32,
+      "type": "HASH",
+      "flags": "A",
+      "sha256": "6fa80282e29f146a54676d191e42c4af937e732f64e2496d76f93cbabb0b2ae5"
+    },
+    ".dynstr": {
+      "address": "0000000000000684",
+      "size": 54,
+      "type": "STRTAB",
+      "flags": "A",
+      "sha256": "f5aed81ba8d73005bf8bf16dcc05d9a6a2100b688f80535192c70025c4a117ca"
+    },
+    ".rodata": {
+      "address": "00000000000006c0",
+      "size": 64,
+      "type": "PROGBITS",
+      "flags": "A",
+      "sha256": "8e8e2a94f1a54f10346df1832fe90cbac9f80277b24fa4ab4f98267c9804be0e"
+    },
+    ".text": {
+      "address": "0000000000001700",
+      "size": 11956,
+      "type": "PROGBITS",
+      "flags": "AX",
+      "sha256": "56a1306b0b2beaf23e2cdc5f67f1d7a6f9cbe48f54d291b6d5c94ad6bf957b24"
+    },
+    ".dynamic": {
+      "address": "00000000000055b8",
+      "size": 112,
+      "type": "DYNAMIC",
+      "flags": "WA",
+      "sha256": "5f10e2e39bf009145bb2f473c68faf00ccc6e7ca41656fad1610819e3520918c"
+    },
+    ".relro_padding": {
+      "address": "0000000000005628",
+      "size": 2520,
+      "type": "NOBITS",
+      "flags": "WA",
+      "sha256": null
+    }
+  }
+}

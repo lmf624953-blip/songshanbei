@@ -1,0 +1,64 @@
+{
+  "verdict": "REVIEW",
+  "old_wall_seconds": 174.5508346366696,
+  "new_wall_seconds": 168.42130272913104,
+  "old_transformer_seconds": 154.22502222067365,
+  "new_transformer_seconds": 148.23220195341855,
+  "complete_requests": 7,
+  "quality": [
+    {
+      "index": 0,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 95.13427470365578,
+      "no_regression": true
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 95.13427470365578,
+      "no_regression": true
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 95.13427470365578,
+      "no_regression": true
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 95.13427470365578,
+      "no_regression": true
+    },
+    {
+      "index": 4,
+      "case": "B",
+      "old_ssim_percent": 99.40412322827537,
+      "new_ssim_percent": 99.31059738027649,
+      "no_regression": false
+    },
+    {
+      "index": 5,
+      "case": "C",
+      "old_ssim_percent": 99.63004744871529,
+      "new_ssim_percent": 99.62697216360027,
+      "no_regression": false
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 95.13427470365578,
+      "no_regression": true
+    }
+  ],
+  "repeated_A_hashes": [
+    "aa86c190b5efd682bf9f78e7ad2d73b272f75f2d58d0c267e40dc0623d1b1257"
+  ],
+  "selected_default_changed": false,
+  "scope": "同节点八卡独立常驻实例，排除预热，三次正式 A，B、C 和返回 A"
+}

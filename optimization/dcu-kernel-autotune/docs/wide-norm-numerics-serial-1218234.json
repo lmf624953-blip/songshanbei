@@ -1,0 +1,1278 @@
+{
+  "scope": "诊断中间量，不作为性能计时或生产候选",
+  "records": [
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "probe": "default",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "finite": true
+    },
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "probe": "fast",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "finite": true
+    },
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "probe": "serial",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "finite": true
+    },
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "variant": "cub-warp",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        },
+        "fast": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        },
+        "serial": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        }
+      }
+    },
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "variant": "naive",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": false,
+            "mismatches": 1,
+            "max_abs": 0.00048828125
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5216.638671875,
+              "candidate": 5216.63818359375
+            }
+          ]
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 1,
+            "max_abs": 0.00048828125
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5216.638671875,
+              "candidate": 5216.63818359375
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": false,
+            "mismatches": 1,
+            "max_abs": 0.00048828125
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5216.638671875,
+              "candidate": 5216.63818359375
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "variant": "original-serial",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        },
+        "fast": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        },
+        "serial": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        }
+      }
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "probe": "default",
+      "original_output": {
+        "exact": false,
+        "mismatches": 3,
+        "max_abs": 0.0078125
+      },
+      "finite": true
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "probe": "fast",
+      "original_output": {
+        "exact": false,
+        "mismatches": 4,
+        "max_abs": 0.0078125
+      },
+      "finite": true
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "probe": "serial",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "finite": true
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "variant": "cub-warp",
+      "original_output": {
+        "exact": false,
+        "mismatches": 3,
+        "max_abs": 0.0078125
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 2,
+            "max_abs": 0.03125
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 10,
+            "max_abs": 1.4901161193847656e-08
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 1,
+            "max_abs": 0.00390625
+          },
+          "sum_examples": [
+            {
+              "row": 4,
+              "reference": 343729.375,
+              "candidate": 343729.34375
+            },
+            {
+              "row": 14,
+              "reference": 333193.875,
+              "candidate": 333193.84375
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": false,
+            "mismatches": 21,
+            "max_abs": 0.0625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 16,
+            "max_abs": 1.4901161193847656e-08
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 3,
+            "max_abs": 0.0078125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 341672.71875,
+              "candidate": 341672.75
+            },
+            {
+              "row": 1,
+              "reference": 344201.46875,
+              "candidate": 344201.5
+            },
+            {
+              "row": 2,
+              "reference": 339430.96875,
+              "candidate": 339431.0
+            },
+            {
+              "row": 4,
+              "reference": 343729.3125,
+              "candidate": 343729.34375
+            },
+            {
+              "row": 8,
+              "reference": 335819.3125,
+              "candidate": 335819.25
+            },
+            {
+              "row": 10,
+              "reference": 342656.8125,
+              "candidate": 342656.78125
+            },
+            {
+              "row": 11,
+              "reference": 348623.6875,
+              "candidate": 348623.71875
+            },
+            {
+              "row": 12,
+              "reference": 346204.84375,
+              "candidate": 346204.875
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "variant": "naive",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": false,
+            "mismatches": 11,
+            "max_abs": 0.0625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 9,
+            "max_abs": 1.4901161193847656e-08
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 3,
+            "max_abs": 0.0078125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 341672.75,
+              "candidate": 341672.71875
+            },
+            {
+              "row": 4,
+              "reference": 343729.34375,
+              "candidate": 343729.3125
+            },
+            {
+              "row": 8,
+              "reference": 335819.25,
+              "candidate": 335819.28125
+            },
+            {
+              "row": 9,
+              "reference": 343288.34375,
+              "candidate": 343288.3125
+            },
+            {
+              "row": 10,
+              "reference": 342656.78125,
+              "candidate": 342656.8125
+            },
+            {
+              "row": 12,
+              "reference": 346204.875,
+              "candidate": 346204.8125
+            },
+            {
+              "row": 13,
+              "reference": 344380.53125,
+              "candidate": 344380.5625
+            },
+            {
+              "row": 14,
+              "reference": 333193.84375,
+              "candidate": 333193.875
+            }
+          ]
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 10,
+            "max_abs": 0.0625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 13,
+            "max_abs": 1.4901161193847656e-08
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 4,
+            "max_abs": 0.0078125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 341672.75,
+              "candidate": 341672.71875
+            },
+            {
+              "row": 4,
+              "reference": 343729.375,
+              "candidate": 343729.3125
+            },
+            {
+              "row": 8,
+              "reference": 335819.25,
+              "candidate": 335819.28125
+            },
+            {
+              "row": 9,
+              "reference": 343288.34375,
+              "candidate": 343288.3125
+            },
+            {
+              "row": 10,
+              "reference": 342656.78125,
+              "candidate": 342656.8125
+            },
+            {
+              "row": 12,
+              "reference": 346204.875,
+              "candidate": 346204.8125
+            },
+            {
+              "row": 13,
+              "reference": 344380.53125,
+              "candidate": 344380.5625
+            },
+            {
+              "row": 20,
+              "reference": 346962.90625,
+              "candidate": 346962.875
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": false,
+            "mismatches": 19,
+            "max_abs": 0.09375
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 11,
+            "max_abs": 2.2351741790771484e-08
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": [
+            {
+              "row": 1,
+              "reference": 344201.46875,
+              "candidate": 344201.5
+            },
+            {
+              "row": 2,
+              "reference": 339430.96875,
+              "candidate": 339431.0
+            },
+            {
+              "row": 8,
+              "reference": 335819.3125,
+              "candidate": 335819.28125
+            },
+            {
+              "row": 9,
+              "reference": 343288.34375,
+              "candidate": 343288.3125
+            },
+            {
+              "row": 11,
+              "reference": 348623.6875,
+              "candidate": 348623.71875
+            },
+            {
+              "row": 12,
+              "reference": 346204.84375,
+              "candidate": 346204.8125
+            },
+            {
+              "row": 13,
+              "reference": 344380.5,
+              "candidate": 344380.5625
+            },
+            {
+              "row": 15,
+              "reference": 333328.34375,
+              "candidate": 333328.375
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "variant": "original-serial",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": false,
+            "mismatches": 21,
+            "max_abs": 0.0625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 16,
+            "max_abs": 1.4901161193847656e-08
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 3,
+            "max_abs": 0.0078125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 341672.75,
+              "candidate": 341672.71875
+            },
+            {
+              "row": 1,
+              "reference": 344201.5,
+              "candidate": 344201.46875
+            },
+            {
+              "row": 2,
+              "reference": 339431.0,
+              "candidate": 339430.96875
+            },
+            {
+              "row": 4,
+              "reference": 343729.34375,
+              "candidate": 343729.3125
+            },
+            {
+              "row": 8,
+              "reference": 335819.25,
+              "candidate": 335819.3125
+            },
+            {
+              "row": 10,
+              "reference": 342656.78125,
+              "candidate": 342656.8125
+            },
+            {
+              "row": 11,
+              "reference": 348623.71875,
+              "candidate": 348623.6875
+            },
+            {
+              "row": 12,
+              "reference": 346204.875,
+              "candidate": 346204.84375
+            }
+          ]
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 20,
+            "max_abs": 0.0625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 22,
+            "max_abs": 1.4901161193847656e-08
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 4,
+            "max_abs": 0.0078125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 341672.75,
+              "candidate": 341672.71875
+            },
+            {
+              "row": 1,
+              "reference": 344201.5,
+              "candidate": 344201.46875
+            },
+            {
+              "row": 2,
+              "reference": 339431.0,
+              "candidate": 339430.96875
+            },
+            {
+              "row": 4,
+              "reference": 343729.375,
+              "candidate": 343729.3125
+            },
+            {
+              "row": 8,
+              "reference": 335819.25,
+              "candidate": 335819.3125
+            },
+            {
+              "row": 10,
+              "reference": 342656.78125,
+              "candidate": 342656.8125
+            },
+            {
+              "row": 11,
+              "reference": 348623.71875,
+              "candidate": 348623.6875
+            },
+            {
+              "row": 12,
+              "reference": 346204.875,
+              "candidate": 346204.84375
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        }
+      }
+    },
+    {
+      "rows": 4096,
+      "magnitude": 1,
+      "probe": "default",
+      "original_output": {
+        "exact": false,
+        "mismatches": 118,
+        "max_abs": 0.03125
+      },
+      "finite": true
+    },
+    {
+      "rows": 4096,
+      "magnitude": 1,
+      "probe": "fast",
+      "original_output": {
+        "exact": false,
+        "mismatches": 205,
+        "max_abs": 0.03125
+      },
+      "finite": true
+    },
+    {
+      "rows": 4096,
+      "magnitude": 1,
+      "probe": "serial",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "finite": true
+    },
+    {
+      "rows": 4096,
+      "magnitude": 1,
+      "variant": "cub-warp",
+      "original_output": {
+        "exact": false,
+        "mismatches": 118,
+        "max_abs": 0.03125
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 31,
+            "max_abs": 0.00048828125
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 167,
+            "max_abs": 1.1920928955078125e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 121,
+            "max_abs": 0.03125
+          },
+          "sum_examples": [
+            {
+              "row": 195,
+              "reference": 5207.5390625,
+              "candidate": 5207.53955078125
+            },
+            {
+              "row": 207,
+              "reference": 5355.0517578125,
+              "candidate": 5355.05224609375
+            },
+            {
+              "row": 271,
+              "reference": 5272.3212890625,
+              "candidate": 5272.32177734375
+            },
+            {
+              "row": 429,
+              "reference": 5355.38916015625,
+              "candidate": 5355.388671875
+            },
+            {
+              "row": 549,
+              "reference": 5419.9951171875,
+              "candidate": 5419.99462890625
+            },
+            {
+              "row": 598,
+              "reference": 5132.71923828125,
+              "candidate": 5132.7197265625
+            },
+            {
+              "row": 621,
+              "reference": 5282.52001953125,
+              "candidate": 5282.51953125
+            },
+            {
+              "row": 718,
+              "reference": 5335.7548828125,
+              "candidate": 5335.75537109375
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": false,
+            "mismatches": 2135,
+            "max_abs": 0.00146484375
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 1308,
+            "max_abs": 1.7881393432617188e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 118,
+            "max_abs": 0.03125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5443.18603515625,
+              "candidate": 5443.185546875
+            },
+            {
+              "row": 2,
+              "reference": 5313.91015625,
+              "candidate": 5313.9091796875
+            },
+            {
+              "row": 3,
+              "reference": 5324.55322265625,
+              "candidate": 5324.552734375
+            },
+            {
+              "row": 4,
+              "reference": 5341.99267578125,
+              "candidate": 5341.9921875
+            },
+            {
+              "row": 6,
+              "reference": 5399.99755859375,
+              "candidate": 5399.9970703125
+            },
+            {
+              "row": 9,
+              "reference": 5260.4453125,
+              "candidate": 5260.4443359375
+            },
+            {
+              "row": 10,
+              "reference": 5493.55859375,
+              "candidate": 5493.55810546875
+            },
+            {
+              "row": 11,
+              "reference": 5388.88037109375,
+              "candidate": 5388.880859375
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rows": 4096,
+      "magnitude": 1,
+      "variant": "naive",
+      "original_output": {
+        "exact": false,
+        "mismatches": 128,
+        "max_abs": 0.03125
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": false,
+            "mismatches": 1071,
+            "max_abs": 0.0009765625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 609,
+            "max_abs": 1.1920928955078125e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 72,
+            "max_abs": 0.015625
+          },
+          "sum_examples": [
+            {
+              "row": 10,
+              "reference": 5493.55810546875,
+              "candidate": 5493.5576171875
+            },
+            {
+              "row": 13,
+              "reference": 5505.71875,
+              "candidate": 5505.71826171875
+            },
+            {
+              "row": 16,
+              "reference": 5422.87841796875,
+              "candidate": 5422.8779296875
+            },
+            {
+              "row": 21,
+              "reference": 5401.923828125,
+              "candidate": 5401.92431640625
+            },
+            {
+              "row": 25,
+              "reference": 5311.41455078125,
+              "candidate": 5311.4150390625
+            },
+            {
+              "row": 28,
+              "reference": 5554.8271484375,
+              "candidate": 5554.82666015625
+            },
+            {
+              "row": 29,
+              "reference": 5276.76611328125,
+              "candidate": 5276.7666015625
+            },
+            {
+              "row": 32,
+              "reference": 5497.87255859375,
+              "candidate": 5497.8720703125
+            }
+          ]
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 1073,
+            "max_abs": 0.0009765625
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 744,
+            "max_abs": 1.1920928955078125e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 165,
+            "max_abs": 0.03125
+          },
+          "sum_examples": [
+            {
+              "row": 10,
+              "reference": 5493.55810546875,
+              "candidate": 5493.5576171875
+            },
+            {
+              "row": 13,
+              "reference": 5505.71875,
+              "candidate": 5505.71826171875
+            },
+            {
+              "row": 16,
+              "reference": 5422.87841796875,
+              "candidate": 5422.8779296875
+            },
+            {
+              "row": 21,
+              "reference": 5401.923828125,
+              "candidate": 5401.92431640625
+            },
+            {
+              "row": 25,
+              "reference": 5311.41455078125,
+              "candidate": 5311.4150390625
+            },
+            {
+              "row": 28,
+              "reference": 5554.8271484375,
+              "candidate": 5554.82666015625
+            },
+            {
+              "row": 29,
+              "reference": 5276.76611328125,
+              "candidate": 5276.7666015625
+            },
+            {
+              "row": 32,
+              "reference": 5497.87255859375,
+              "candidate": 5497.8720703125
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": false,
+            "mismatches": 2156,
+            "max_abs": 0.00146484375
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 1335,
+            "max_abs": 1.7881393432617188e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 128,
+            "max_abs": 0.03125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5443.18603515625,
+              "candidate": 5443.185546875
+            },
+            {
+              "row": 2,
+              "reference": 5313.91015625,
+              "candidate": 5313.9091796875
+            },
+            {
+              "row": 3,
+              "reference": 5324.55322265625,
+              "candidate": 5324.552734375
+            },
+            {
+              "row": 4,
+              "reference": 5341.99267578125,
+              "candidate": 5341.9921875
+            },
+            {
+              "row": 6,
+              "reference": 5399.99755859375,
+              "candidate": 5399.9970703125
+            },
+            {
+              "row": 9,
+              "reference": 5260.4453125,
+              "candidate": 5260.4443359375
+            },
+            {
+              "row": 10,
+              "reference": 5493.55859375,
+              "candidate": 5493.5576171875
+            },
+            {
+              "row": 11,
+              "reference": 5388.88037109375,
+              "candidate": 5388.880859375
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rows": 4096,
+      "magnitude": 1,
+      "variant": "original-serial",
+      "original_output": {
+        "exact": true,
+        "mismatches": 0,
+        "max_abs": 0.0
+      },
+      "tail_ok": true,
+      "finite": true,
+      "probes": {
+        "default": {
+          "sum": {
+            "exact": false,
+            "mismatches": 2135,
+            "max_abs": 0.00146484375
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 1308,
+            "max_abs": 1.7881393432617188e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 118,
+            "max_abs": 0.03125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5443.185546875,
+              "candidate": 5443.18603515625
+            },
+            {
+              "row": 2,
+              "reference": 5313.9091796875,
+              "candidate": 5313.91015625
+            },
+            {
+              "row": 3,
+              "reference": 5324.552734375,
+              "candidate": 5324.55322265625
+            },
+            {
+              "row": 4,
+              "reference": 5341.9921875,
+              "candidate": 5341.99267578125
+            },
+            {
+              "row": 6,
+              "reference": 5399.9970703125,
+              "candidate": 5399.99755859375
+            },
+            {
+              "row": 9,
+              "reference": 5260.4443359375,
+              "candidate": 5260.4453125
+            },
+            {
+              "row": 10,
+              "reference": 5493.55810546875,
+              "candidate": 5493.55859375
+            },
+            {
+              "row": 11,
+              "reference": 5388.880859375,
+              "candidate": 5388.88037109375
+            }
+          ]
+        },
+        "fast": {
+          "sum": {
+            "exact": false,
+            "mismatches": 2138,
+            "max_abs": 0.00146484375
+          },
+          "inverse": {
+            "exact": false,
+            "mismatches": 1400,
+            "max_abs": 1.7881393432617188e-07
+          },
+          "normalized": {
+            "exact": false,
+            "mismatches": 205,
+            "max_abs": 0.03125
+          },
+          "sum_examples": [
+            {
+              "row": 0,
+              "reference": 5443.185546875,
+              "candidate": 5443.18603515625
+            },
+            {
+              "row": 2,
+              "reference": 5313.9091796875,
+              "candidate": 5313.91015625
+            },
+            {
+              "row": 3,
+              "reference": 5324.552734375,
+              "candidate": 5324.55322265625
+            },
+            {
+              "row": 4,
+              "reference": 5341.9921875,
+              "candidate": 5341.99267578125
+            },
+            {
+              "row": 6,
+              "reference": 5399.9970703125,
+              "candidate": 5399.99755859375
+            },
+            {
+              "row": 9,
+              "reference": 5260.4443359375,
+              "candidate": 5260.4453125
+            },
+            {
+              "row": 10,
+              "reference": 5493.55810546875,
+              "candidate": 5493.55859375
+            },
+            {
+              "row": 11,
+              "reference": 5388.880859375,
+              "candidate": 5388.88037109375
+            }
+          ]
+        },
+        "serial": {
+          "sum": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "inverse": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "normalized": {
+            "exact": true,
+            "mismatches": 0,
+            "max_abs": 0.0
+          },
+          "sum_examples": []
+        }
+      }
+    }
+  ]
+}

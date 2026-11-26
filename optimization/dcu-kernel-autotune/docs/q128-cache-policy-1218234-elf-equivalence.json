@@ -1,0 +1,32 @@
+{
+  "v-k-cg": {
+    "sections": false,
+    "segments": true,
+    "elf_target": true
+  },
+  "v-kv-ca": {
+    "sections": true,
+    "segments": true,
+    "elf_target": true
+  },
+  "v-kv-cg": {
+    "sections": false,
+    "segments": true,
+    "elf_target": true
+  },
+  "v-kv-cv": {
+    "sections": false,
+    "segments": false,
+    "elf_target": true
+  },
+  "v-v-cg": {
+    "sections": false,
+    "segments": true,
+    "elf_target": true
+  },
+  "v0": {
+    "sections": true,
+    "segments": true,
+    "elf_target": true
+  }
+}
