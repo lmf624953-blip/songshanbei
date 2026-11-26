@@ -85,3 +85,9 @@ bash "$H3_AUTOTUNE_CODE_ROOT/optimization/run-optimized.sh" --config "$baseline_
 用 `build-softmax-rescale-order.py REFERENCE OUTPUT PLACEMENT` 构建 `chain-after-p`、`multiply-before-pv` 和 `chain-before-pv`，再用 `screen-pv-wide-operand.py` 做逐位比较和配对计时。变体移动 FP32 缩放乘法或其整条依赖链，保留原始的在线 softmax 计算与 QK/PV 点积。
 
 三种时序在长度 27570 和 22016 上都逐位一致。最接近基准的 `chain-after-p` 慢 0.17% 和 0.10%；`chain-before-pv` 慢 2.21% 和 2.00%。独立 PMC 中，后者的可分配 VGPR 从 216 增至 224，LDS 等待计数增加约 18%，LDS 指令和 bank conflict 计数相同。本轮归档三种时序。见 [逐位校验、配对计时与 PMC](../../docs/softmax-rescale-a14r1n11.json)。
+
+## 完整 KV 块读取掩码
+
+用 `build-full-kv-unmasked.py REFERENCE OUTPUT {k,v,kv}` 构建候选，使用 `screen-pv-wide-operand.py` 校验和配对计时。构建脚本校验原始 IR 哈希。现用主机以七个 head 和 `ceil(rows/128)` 个 Q 块发射，完整 KV 循环处理 `floor(rows/32)` 个 32 token 块。脚本只移除该循环中的读取掩码，保留尾块和输出掩码。
+
+K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-only 和 KV 联合版本在原编译方式下有一个 BF16 ULP 的差异。加入 `--rounding-fence` 后恢复逐位一致，分别回退约 7% 和 5%。独立 PMC 中，K-only 的全局读取、LDS 指令和 bank conflict 计数一致，LDS 等待计数增加约 3%。本轮收益低于晋级门槛，保留实验源码和数据。见 [实测数据](../../docs/full-kv-unmasked-a14r1n11.json)。
