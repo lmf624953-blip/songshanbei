@@ -79,3 +79,9 @@ bash "$H3_AUTOTUNE_CODE_ROOT/optimization/run-optimized.sh" --config "$baseline_
 `build-k-producer.py` 只调整 K 的加载线程或 LDS 排布，保留 QK/PV 的矩阵操作数和归约布局。用正式 Q128 三镜像目录作为 `reference`，构建 `d4-n1`、`d8-n2`、`d16-n1`、`d8-n2-wide`，再以 `original --row-lds` 构建 LDS 转置对照。然后用 `screen-pv-wide-operand.py` 测两个生产长度。
 
 五种配置都通过普通和放大 QK 输入的逐位比较。最接近对照的 `d8-n2` 在长度 27570 慢 0.10%，在长度 22016 快 0.02%。K 的 LDS 转置慢约 21%。独立 PMC 表明转置使 LDS 指令数增至约 2.35 倍、bank conflict 计数增至 3.8 倍，而 VMEM 读取指令数相同。所有候选均归档，本轮没有进入八卡验证的配置。见 [配对计时与 PMC](../../docs/k-producer-a14r1n11.json)。
+
+## 在线 softmax 累加器缩放时序
+
+用 `build-softmax-rescale-order.py REFERENCE OUTPUT PLACEMENT` 构建 `chain-after-p`、`multiply-before-pv` 和 `chain-before-pv`，再用 `screen-pv-wide-operand.py` 做逐位比较和配对计时。变体移动 FP32 缩放乘法或其整条依赖链，保留原始的在线 softmax 计算与 QK/PV 点积。
+
+三种时序在长度 27570 和 22016 上都逐位一致。最接近基准的 `chain-after-p` 慢 0.17% 和 0.10%；`chain-before-pv` 慢 2.21% 和 2.00%。独立 PMC 中，后者的可分配 VGPR 从 216 增至 224，LDS 等待计数增加约 18%，LDS 指令和 bank conflict 计数相同。本轮归档三种时序。见 [逐位校验、配对计时与 PMC](../../docs/softmax-rescale-a14r1n11.json)。

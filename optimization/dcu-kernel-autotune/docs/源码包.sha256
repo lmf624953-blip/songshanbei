@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-8016839ffb6f9d422e718863eec5fc49bc06b9e883aa90cbf0eee8f644916215  candidates/pv-v-lds-layout/README.md
+86046f0dd432d7067ffe935ee71677a15f5941165c286eceb143ec250c89bcc6  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
@@ -83,6 +83,7 @@ c5d4c067bba06127629b88caf235f31093d88818dfe2b22848c72caa48bfba38  candidates/pv-
 daf8d69d5ca8dfe00301dbab5f3f1d4c80cd4fcea66a6065a328255b21d811d6  candidates/pv-v-lds-layout/build-q128-cta-order.py
 621885e5b85b6a9ff9927aeebab0b547a22f8ea014a0559dc551d03e6d62df7d  candidates/pv-v-lds-layout/build-q128.py
 f9270a0dbd5ae3475c858f7d65bc3fb865302f96bc0a4049f6ab424d14fef50d  candidates/pv-v-lds-layout/build-q256.py
+91e1f8f08c1857c370428d7148aa62c6500261cad65e2ee34b8e993c2103f0f6  candidates/pv-v-lds-layout/build-softmax-rescale-order.py
 15cd13946863b4a1aaf5751aba8c9480bc3879464185e6abe9de9e0b91ea9328  candidates/pv-v-lds-layout/build-v-phase-qdirect.py
 1d058a3e3d6bb1c3ec8bd5900bd0f1820eeb45d0af770db2bf9170bc68fecf3a  candidates/pv-v-lds-layout/build-vwide-q-resources.py
 e45bb720f6a7c57927542eb51a403db0c3325cd395629d8496d59783fa9ee4c5  candidates/pv-v-lds-layout/build.py
@@ -270,6 +271,7 @@ f7187d658decd52e06503af49314da96b306dd3c3d15002e7beb6275ab992f62  docs/round41-o
 2c9b00f8a906a69877c3057756f22e1b2fee44b61bdd507f8677c68aaf26afdd  docs/round51-boundaries.json
 b8e0502b1ad0b58e6e99955576c5a502c27a51ccd662a21295c0110afd34d62f  docs/round51-dynamic-vs41.json
 fe3dd6d226724dc840533f75647fb386a0aa883418fcbbbd5b989f5795320df1  docs/round51-vs41.json
+134a7ac51ec04f6cdb76f7e2b6906bbedb3b3357b9dba039a5d88be69daa0dec  docs/softmax-rescale-a14r1n11.json
 3925f159c0fa6fc7bf3fce50489ae0bcec3473a5a1832fb407941f224b2f9fb3  docs/swiglu-linear-1218234-compatibility.json
 f6638f070e0190545bdd54226b8f1c5118dfa3e90051be283a8020b9c3348765  docs/swiglu-packed-1218234-host-validation.json
 8e98676c4f006c7836a1abf097c82a904ff0933da09908019d8e570ae01ec91e  docs/swiglu-packed-1218234-micro.json
