@@ -45,8 +45,14 @@ def main():
         source = source.replace(old, new)
     helper = runpy.run_path(str(Path(__file__).with_name('build-q128-backend.py')))
     source = helper['preserve_scaled_rounding'](source)
-    a.output.mkdir()
-    ir = a.output / 'dense-attention-packed-pv-swizzle.ttgir'
+    compile_packed(root, a.output, source, dict(
+        pv_operand_width=8, wide_p=a.wide_p, wide_v=a.wide_v, direct_p=a.direct_p))
+
+
+def compile_packed(root, output, source, experiment):
+    record = json.loads((root / 'dense-attention-aot-build.json').read_text())
+    output.mkdir()
+    ir = output / 'dense-attention-packed-pv-swizzle.ttgir'
     ir.write_text(source)
     os.environ['AMDGCN_USE_BUFFER_OPS'] = '1'
     configure_hygon_compiler()
@@ -63,17 +69,17 @@ def main():
         ['ptr addrspace(1)'] * 3 + ['float', 'ptr addrspace(1)'] + ['i32'] * 8
         + ['ptr addrspace(1)'] * 2)
     for name in ('dense-attention-aot.so', 'dense-attention-aot.hsaco', 'dense-attention-fallback.hsaco'):
-        shutil.copy2(root / name, a.output / name)
+        shutil.copy2(root / name, output / name)
     image = compiled.asm['hsaco']
-    (a.output / 'dense-attention-packed.hsaco').write_bytes(image)
-    (a.output / 'dense-attention-packed.amdgcn').write_text(asm)
-    (a.output / 'dense-attention-packed.llir').write_text(compiled.asm['llir'])
+    (output / 'dense-attention-packed.hsaco').write_bytes(image)
+    (output / 'dense-attention-packed.amdgcn').write_text(asm)
+    (output / 'dense-attention-packed.llir').write_text(compiled.asm['llir'])
     record['packed_strides'].update(hsaco_sha256=hashlib.sha256(image).hexdigest(), shared=compiled.metadata.shared)
-    record['experiment'] = dict(pv_operand_width=8, wide_p=a.wide_p, wide_v=a.wide_v, direct_p=a.direct_p, isa=isa,
+    record['experiment'] = dict(experiment, isa=isa,
         resources={k: int(v) for k, v in re.findall(
             r'^[ \t]*\.(vgpr_count|sgpr_count|private_segment_fixed_size):[ \t]*(\d+)', asm, re.M)},
         reference=str(root), rounding_boundary=True)
-    (a.output / 'dense-attention-aot-build.json').write_text(json.dumps(record, indent=2) + '\n')
+    (output / 'dense-attention-aot-build.json').write_text(json.dumps(record, indent=2) + '\n')
     print(json.dumps(record['experiment']), flush=True)
 
 

@@ -26,26 +26,23 @@ python screen.py "$reference" "$candidates" "$results"
 证据位于 [舍入与调度](../../docs/q128-rounding-1218234.json)、[K LDS](../../docs/q128-k-layout-1218234.json)、[P 转换](../../docs/q128-p-convert-1218234.json) 和 [不同长度](../../docs/q128-lengths-1218234.json)。资源下降不等同于已验证的性能收益。所有候选都保留全部 KV 遍历、BF16 矩阵输入与 FP32 累加。
 
 
-## 后续探索入口（2026-11-26）
-
-`build-q256.py REFERENCE OUTPUT` 通过九齿重新生成 Q256/K32，而后应用独立微测的 V 合并加载、Q 直接加载及同长度 packed stride 约束，编译 4/8 warps、P maxPhase16/32。保留完整 KV 上界掩码，未放宽生产源码的 hash guard。四个初始变体均出现 private segment：4 warps 为 VGPR256/424B，8 warps 为 VGPR128/348B；是否还有收益以串行实测为准。这里的 fallback 使用同一固定步长镜像，**禁止将本实验目录作为正式推理配置**。
-
-`build-cache-policy.py REFERENCE OUTPUT` 仅给已验收 Q128 IR 中的两处 K 和两处 V 加载增加缓存属性，筛 K.cg、V.cg、K/V.cg、K/V.cv、K/V.ca。动态形状、尾部掩码、softmax 和矩阵点积表达式保持原样。CPU 编译时五个变体均为 VGPR215、0 private segment；ISA 已显示对应加载属性生效，数值与性能仍需微测通过。
-
-两种构建均生成 `v0` 原镜像对照，可复用 `screen.py REFERENCE OUTPUT RESULT` 做两个目标长度的普通/幅度放大数值检查、尾部边界和无 profiler 交替计时。正式采用前仍须通用守卫、真实八卡和多用例验证。
-
-## Q256 与缓存属性实测结论
-
-Q256 四个配置在普通、放大输入与尾部检查上逐位通过，但两个长度较 Q128 慢约 126%–263%，同时出现 348–424B private segment；本轮淘汰，不能把更大分块当作收益。见 [Q256 结果](../../docs/q256-1218234.json)。
-
-缓存属性候选的 K.cg、V.cg、K/V.cg 均只有约 ±0.1% 波动，K/V.cv 慢约 13%–14%，没有稳定胜出项。K/V.ca 与对照的 ELF 加载区段相同，是控制项；筛选器已排除这类相同代码，避免把计时噪声当作优化。见 [缓存实测](../../docs/q128-cache-policy-1218234.json) 和 [ELF 证明](../../docs/q128-cache-policy-1218234-elf-equivalence.json)。默认仍保持已验收 Q128。
-
-
 ## Q128 packed 的 PV 操作数打包候选
 
 `build-pv-wide-operand.py` 把 PV 的 `kWidth=4` 改为8，保留相同数量的BF16 MMAC指令、全部KV遍历及FP32缩放舍入边界，研究宽LDS读取是否更有利。新增P向量布局、V布局及P直接转换对照。编译已完成；两种V布局出现8/24B private segment，会跳过GPU微测；其余镜像仍无scratch。P直接转换版本为213VGPR、10处barrier，单凭这些资源变化不宣布更快。
 
 `screen-pv-wide-operand.py` 先核对三镜像分派、哈希和ABI，排除相同`.text`与spills，再在实际packed stride的27570/22016长度交替计时，并检查普通、放大输入及末尾哨兵。只有两个长度均逐位一致且收益至少0.5%才进入真实去噪验证。本轮微测等待compact归约与row SwiGLU的七次正式生成退出，不与正式计时并行。
 
+## Q128 packed 的 K 预取
 
-本轮筛选已结束：3个无spills的PV宽操作数候选在两个生产长度均出现最大0.000244140625的BF16差异，未进入性能选版；另外2项因spills在CPU资源审查时跳过。对照与候选的BF16 MMAC数量相同，不把这一点误认为已证明数值顺序相同。原始结果见`docs/pv-wide-operand-1218234-micro.json`。
+`build-k-lookahead.py` 在完整 K 块主循环中携带下一块 K，比较 QK 后和 PV 前两种预取位置。初始块和下一块均带完整块边界掩码，尾块保留原处理。使用同一个正式三镜像构建目录作为基准，候选只替换 packed 镜像。
+
+```bash
+mkdir "$builds"
+python build-k-lookahead.py "$reference" "$builds/after-qk" after-qk
+python build-k-lookahead.py "$reference" "$builds/before-pv" before-pv
+python screen-pv-wide-operand.py "$reference" "$builds" "$results"
+hipprof --pmc --pmc-type 3 --kernel-name dense_attention_aot_kernel -o "$pmc" \
+  python "$H3_AUTOTUNE_CODE_ROOT/optimization/profile-attention-pmc.py" "$build" --sequence 27570 22016 --iterations 3
+```
+
+长度 27570 和 22016 上，两种预取均通过普通与放大 QK 的逐位比较和输出尾部哨兵检查，分别回退 4.19%–4.23% 和 6.12%–6.31%。独立 PMC 的硬件分配从 216 VGPR 增至 232/236，LDS 均为 8192 B，scratch 为零。平均活跃 wave/CU 约为 11.32/10.59，L2 命中率约为 97.8%/97.5%。这些指标无法将性能回退归因于占用率下降。两种候选均未进入八卡回放。见 [配对计时](../../docs/q128-k-lookahead-1218234-micro.json) 与 [PMC 对照](../../docs/q128-k-lookahead-1218234-pmc.json)。

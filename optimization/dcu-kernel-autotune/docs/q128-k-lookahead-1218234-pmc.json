@@ -1,0 +1,388 @@
+{
+  "scope": "独立 hipprof waves 和 PMC type 3 诊断，每长度含一次预热和三个观测调用，不用于性能验收",
+  "gpu": "BW1000 gfx936",
+  "compute_units": 80,
+  "results": [
+    {
+      "variant": "reference",
+      "lengths": [
+        {
+          "sequence": 27570,
+          "waves_per_cu": [
+            11.32465352185501,
+            11.32626639451772,
+            11.330105743329641,
+            11.327002652057761
+          ],
+          "l2_hit_percent": [
+            97.77875398465811,
+            97.77877495095812,
+            97.77885090422635,
+            97.77891902865194
+          ],
+          "counters": {
+            "waves": [
+              {
+                "GRBM_GUI_ACTIVE": 52628572,
+                "SQ_ACCUM_PREV_HIRES": 47680027460
+              },
+              {
+                "GRBM_GUI_ACTIVE": 52648621,
+                "SQ_ACCUM_PREV_HIRES": 47704984540
+              },
+              {
+                "GRBM_GUI_ACTIVE": 52628757,
+                "SQ_ACCUM_PREV_HIRES": 47703150556
+              },
+              {
+                "GRBM_GUI_ACTIVE": 52633469,
+                "SQ_ACCUM_PREV_HIRES": 47694355436
+              }
+            ],
+            "pmc": [
+              {
+                "TCC_HIT": 246801193,
+                "TCC_MISS": 5606598
+              },
+              {
+                "TCC_HIT": 246804676,
+                "TCC_MISS": 5606623
+              },
+              {
+                "TCC_HIT": 246804547,
+                "TCC_MISS": 5606424
+              },
+              {
+                "TCC_HIT": 246804893,
+                "TCC_MISS": 5606256
+              }
+            ]
+          },
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "sgpr": 64,
+          "wgr": 256,
+          "grid": 387072,
+          "mean_waves_per_cu": 11.327007077940033,
+          "mean_l2_hit_percent": 97.77882471712363
+        },
+        {
+          "sequence": 22016,
+          "waves_per_cu": [
+            10.590970454003843,
+            10.589894226762322,
+            10.595102280523665,
+            10.593992993065047
+          ],
+          "l2_hit_percent": [
+            97.4784969223706,
+            97.47843826819707,
+            97.47843786927756,
+            97.47877836285842
+          ],
+          "counters": {
+            "waves": [
+              {
+                "GRBM_GUI_ACTIVE": 35550536,
+                "SQ_ACCUM_PREV_HIRES": 30121174112
+              },
+              {
+                "GRBM_GUI_ACTIVE": 35553984,
+                "SQ_ACCUM_PREV_HIRES": 30121034392
+              },
+              {
+                "GRBM_GUI_ACTIVE": 35546748,
+                "SQ_ACCUM_PREV_HIRES": 30129714464
+              },
+              {
+                "GRBM_GUI_ACTIVE": 35536508,
+                "SQ_ACCUM_PREV_HIRES": 30117881340
+              }
+            ],
+            "pmc": [
+              {
+                "TCC_HIT": 156823400,
+                "TCC_MISS": 4056594
+              },
+              {
+                "TCC_HIT": 156820083,
+                "TCC_MISS": 4056605
+              },
+              {
+                "TCC_HIT": 156822493,
+                "TCC_MISS": 4056668
+              },
+              {
+                "TCC_HIT": 156819978,
+                "TCC_MISS": 4056041
+              }
+            ]
+          },
+          "arch_vgpr": 216,
+          "lds": 8192,
+          "scr": 0,
+          "sgpr": 64,
+          "wgr": 256,
+          "grid": 308224,
+          "mean_waves_per_cu": 10.592489988588719,
+          "mean_l2_hit_percent": 97.47853785567591
+        }
+      ]
+    },
+    {
+      "variant": "after-qk",
+      "lengths": [
+        {
+          "sequence": 27570,
+          "waves_per_cu": [
+            11.324897921175666,
+            11.324803221212902,
+            11.324465328166463,
+            11.324619946242585
+          ],
+          "l2_hit_percent": [
+            97.770817718657,
+            97.77088320584278,
+            97.77081094940614,
+            97.77082134205732
+          ],
+          "counters": {
+            "waves": [
+              {
+                "GRBM_GUI_ACTIVE": 54854178,
+                "SQ_ACCUM_PREV_HIRES": 49697437312
+              },
+              {
+                "GRBM_GUI_ACTIVE": 54854617,
+                "SQ_ACCUM_PREV_HIRES": 49697419464
+              },
+              {
+                "GRBM_GUI_ACTIVE": 54855377,
+                "SQ_ACCUM_PREV_HIRES": 49696625192
+              },
+              {
+                "GRBM_GUI_ACTIVE": 54858292,
+                "SQ_ACCUM_PREV_HIRES": 49699944624
+              }
+            ],
+            "pmc": [
+              {
+                "TCC_HIT": 246774944,
+                "TCC_MISS": 5626488
+              },
+              {
+                "TCC_HIT": 246776394,
+                "TCC_MISS": 5626352
+              },
+              {
+                "TCC_HIT": 246774660,
+                "TCC_MISS": 5626499
+              },
+              {
+                "TCC_HIT": 246775749,
+                "TCC_MISS": 5626497
+              }
+            ]
+          },
+          "arch_vgpr": 232,
+          "lds": 8192,
+          "scr": 0,
+          "sgpr": 64,
+          "wgr": 256,
+          "grid": 387072,
+          "mean_waves_per_cu": 11.324696604199403,
+          "mean_l2_hit_percent": 97.77083330399081
+        },
+        {
+          "sequence": 22016,
+          "waves_per_cu": [
+            10.578425310549258,
+            10.578705118291868,
+            10.579696361597362,
+            10.57928542738248
+          ],
+          "l2_hit_percent": [
+            97.46504416444029,
+            97.46508691580813,
+            97.46501490846833,
+            97.4649389027997
+          ],
+          "counters": {
+            "waves": [
+              {
+                "GRBM_GUI_ACTIVE": 37033175,
+                "SQ_ACCUM_PREV_HIRES": 31340214060
+              },
+              {
+                "GRBM_GUI_ACTIVE": 37032765,
+                "SQ_ACCUM_PREV_HIRES": 31340696052
+              },
+              {
+                "GRBM_GUI_ACTIVE": 37027925,
+                "SQ_ACCUM_PREV_HIRES": 31339536272
+              },
+              {
+                "GRBM_GUI_ACTIVE": 37028413,
+                "SQ_ACCUM_PREV_HIRES": 31338732004
+              }
+            ],
+            "pmc": [
+              {
+                "TCC_HIT": 156790615,
+                "TCC_MISS": 4077947
+              },
+              {
+                "TCC_HIT": 156789214,
+                "TCC_MISS": 4077840
+              },
+              {
+                "TCC_HIT": 156791296,
+                "TCC_MISS": 4078013
+              },
+              {
+                "TCC_HIT": 156785281,
+                "TCC_MISS": 4077982
+              }
+            ]
+          },
+          "arch_vgpr": 232,
+          "lds": 8192,
+          "scr": 0,
+          "sgpr": 64,
+          "wgr": 256,
+          "grid": 308224,
+          "mean_waves_per_cu": 10.579028054455243,
+          "mean_l2_hit_percent": 97.46502122287912
+        }
+      ]
+    },
+    {
+      "variant": "before-pv",
+      "lengths": [
+        {
+          "sequence": 27570,
+          "waves_per_cu": [
+            11.32171320490098,
+            11.321035823437485,
+            11.323571316657237,
+            11.324437840667626
+          ],
+          "l2_hit_percent": [
+            97.76283131476423,
+            97.74410789284684,
+            97.76303058919666,
+            97.76225851357502
+          ],
+          "counters": {
+            "waves": [
+              {
+                "GRBM_GUI_ACTIVE": 55952309,
+                "SQ_ACCUM_PREV_HIRES": 50678079652
+              },
+              {
+                "GRBM_GUI_ACTIVE": 55951582,
+                "SQ_ACCUM_PREV_HIRES": 50674389136
+              },
+              {
+                "GRBM_GUI_ACTIVE": 55954859,
+                "SQ_ACCUM_PREV_HIRES": 50688706912
+              },
+              {
+                "GRBM_GUI_ACTIVE": 55952998,
+                "SQ_ACCUM_PREV_HIRES": 50690899828
+              }
+            ],
+            "pmc": [
+              {
+                "TCC_HIT": 246757417,
+                "TCC_MISS": 5646706
+              },
+              {
+                "TCC_HIT": 246708352,
+                "TCC_MISS": 5693923
+              },
+              {
+                "TCC_HIT": 246758356,
+                "TCC_MISS": 5646213
+              },
+              {
+                "TCC_HIT": 246757816,
+                "TCC_MISS": 5648194
+              }
+            ]
+          },
+          "arch_vgpr": 236,
+          "lds": 8192,
+          "scr": 0,
+          "sgpr": 64,
+          "wgr": 256,
+          "grid": 387072,
+          "mean_waves_per_cu": 11.322689546415832,
+          "mean_l2_hit_percent": 97.75805707759568
+        },
+        {
+          "sequence": 22016,
+          "waves_per_cu": [
+            10.588177482792709,
+            10.591530544506323,
+            10.581609479778994,
+            10.590191863407155
+          ],
+          "l2_hit_percent": [
+            97.46457910326912,
+            97.46379461840586,
+            97.46361298409462,
+            97.46465224880413
+          ],
+          "counters": {
+            "waves": [
+              {
+                "GRBM_GUI_ACTIVE": 37716862,
+                "SQ_ACCUM_PREV_HIRES": 31948226316
+              },
+              {
+                "GRBM_GUI_ACTIVE": 37704980,
+                "SQ_ACCUM_PREV_HIRES": 31948275788
+              },
+              {
+                "GRBM_GUI_ACTIVE": 37741344,
+                "SQ_ACCUM_PREV_HIRES": 31949133076
+              },
+              {
+                "GRBM_GUI_ACTIVE": 37713132,
+                "SQ_ACCUM_PREV_HIRES": 31951144292
+              }
+            ],
+            "pmc": [
+              {
+                "TCC_HIT": 156791553,
+                "TCC_MISS": 4078739
+              },
+              {
+                "TCC_HIT": 156788331,
+                "TCC_MISS": 4079950
+              },
+              {
+                "TCC_HIT": 156790337,
+                "TCC_MISS": 4080302
+              },
+              {
+                "TCC_HIT": 156790966,
+                "TCC_MISS": 4078603
+              }
+            ]
+          },
+          "arch_vgpr": 236,
+          "lds": 8192,
+          "scr": 0,
+          "sgpr": 64,
+          "wgr": 256,
+          "grid": 308224,
+          "mean_waves_per_cu": 10.587877342621296,
+          "mean_l2_hit_percent": 97.46415973864343
+        }
+      ]
+    }
+  ]
+}
