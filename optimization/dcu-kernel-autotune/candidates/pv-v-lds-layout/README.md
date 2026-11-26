@@ -149,3 +149,13 @@ python build-softmax-dpp-arithmetic.py "$control" "$candidate" all
 `all` 相对上一版镜像在 27570/22016 token 配对分别缩短 7.10%/7.00%，20 个额外长度逐位一致。独立 PMC 中 VALU 指令减少约 15.6%，LDS 和全局读取指令数相同，scratch 为零。八卡第 1、25、49 次去噪的输出逐位一致，三个配对中位数合计缩短 4.13%。设备镜像从重新生成的九齿 IR 构建，三个镜像的可加载区段均与实测版一致。见 [单卡配对、八卡回放、复建与 PMC](../../docs/softmax-dpp-arithmetic-a14r1n11.json)。
 
 普通官方 A 通过规格检查，成片与上一验收版逐字节一致。独立常驻实例做三组 A 交替配对，端到端均值由 167.695 秒降至 161.959 秒，节省 3.420%；Transformer 均值由 146.748 秒降至 140.700 秒，节省 4.121%。三组端到端降幅分别为 3.954%、2.528%、3.769%。常驻 11 条请求包含 B、C 和返回 A，每条均执行 49 次 Transformer，成片分别与已验收结果逐字节一致。用 `summarize-softmax-dpp-steady.py` 从两次验收的原始记录重算配对与哈希检查。已将本地 `selected-best.env` 指向按上述步骤重建的 `attention-q128-softmax-dpp-a14r1n11`。见 [成片与常驻验收](../../docs/softmax-dpp-arithmetic-a14r1n11-qualified.json)。
+
+## Softmax 异或 4 与多行交错调度
+
+在原 `all` 的基础上，`--xor4 max|sum|both` 将异或 4 及其算术融合为两条使用互补 bank mask 的 DPP。`--bundle max|sum|both` 合并每行四级依赖，和 `--bundle-width 2|4` 一起使用时，以其他行的 DPP 填充同一行的等待间隔。单行归约树和原 FP32 算术顺序保留。
+
+```bash
+python build-softmax-dpp-arithmetic.py "$control" "$candidate" all --xor4 both --bundle both --bundle-width 4
+```
+
+在 `a14r1n11` 测试了 12 个配置，全部在两个生产长度的普通和放大输入上逐位一致。四路交错同时覆盖最大值和求和时最快，静态 `s_nop` 由 224 条降为 8 条，动态 VALU 指令减少约 9.2%，全局读取与 LDS 指令数相同，scratch 为零。增补 20 个长度的边界测试通过。公开 A 长度相对现用 DPP 融合版节省 9.29%，八卡三步去噪中位数合计减少约 5.34%，音频、视频输出逐位一致。重建的设备镜像及主机库与实测文件逐字节相同。见 [单卡、八卡、复建和 PMC](../../docs/softmax-dpp-xor4-a14r1n11.json)。

@@ -59,8 +59,9 @@ def main():
     assert tuple(read(steady / "attention-overrides.json")["sequence"]) == VARIANTS
     quality = read(steady / "sequence-validation.json")
     assert len(quality) == len(ORDER)
-    accepted_requests = {case: args.accepted_steady / f"{index:02d}-{case}"
-                         for case, index in (("A", 1), ("B", 4), ("C", 5))}
+    accepted_order = read(args.accepted_steady / "complete.json")["sequence"]
+    accepted_requests = {case: args.accepted_steady / f"{accepted_order.index(case):02d}-{case}"
+                         for case in ("A", "B", "C")}
     hashes = {case: digest(path / "video.mp4") for case, path in accepted_requests.items()}
     accepted_records = {case: read(path / "record.json") for case, path in accepted_requests.items()}
     rows = []
