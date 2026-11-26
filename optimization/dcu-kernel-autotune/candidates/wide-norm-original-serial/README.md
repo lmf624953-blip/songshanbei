@@ -8,4 +8,4 @@
 
 可复用的生产候选构建位于 `optimization/adaln/build-wide-norm-indexed.py NEW_OUTPUT --mode original-serial --warps 4`。它自动保留编译 IR，检查 `sizePerThread=1` 布局守卫，生成同一动态 rows/table_rows ABI 和主机桥。完整重建可显式增加 `--fused-wide-norm-indexed-original-serial`，它同时启用必要的 Q/K RMSNorm/MRoPE 原生补丁。模式默认仍为 `naive`，新模式没有自动成为正式默认；通过 `H3_WIDE_NORM_INDEXED_BUILD` 显式装载并配合已重建 guarded native。长度按运行时传入，不按提示词、seed 或输入内容分派。
 
-独立微测与从交付源码重建的设备 ELF 加载区段相同，主机桥也另做动态 rows/table_rows 对照。真实八卡消融、普通官方 A 和 A,A,A,A,B,C,A 顺序回归正在执行；通过完整质量与正式计时前不修改 `selected-best.env`。
+独立微测与从交付源码重建的设备 ELF 加载区段相同，主机桥动态 rows/table_rows 校验通过。真实八卡第 1/25/49 步输出对照均逐位一致，三步中位耗时之和 9.4463→9.2306 秒，减少 2.283%。普通官方 A 和独立常驻 A,A,A,A,B,C,A 全部通过，七条成片及普通入口成片均与前版哈希一致，A/B/C SSIM 分别为 93.83201347926341% / 99.40412322827537% / 99.63004744871529%。三次正式 A 均值 171.40246838936582±0.7182077438648892 秒，Transformer 150.7572119133547±0.019954892541036977 秒，显存采样峰值 31912 MiB。已在全部门槛通过后原子更新本机 `selected-best.env`；构建默认仍需显式选择原库顺序模式。详见 [七请求验收](../../docs/wide-norm-original-serial-1218234-steady-qualified.json) 与 [测量分项](../../docs/wide-norm-original-serial-1218234-steady-measurement.json)。

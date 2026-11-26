@@ -1,0 +1,75 @@
+{
+  "verdict": "PASS",
+  "old_wall_seconds": 174.5508346366696,
+  "new_wall_seconds": 171.40246838936582,
+  "old_transformer_seconds": 154.22502222067365,
+  "new_transformer_seconds": 150.7572119133547,
+  "complete_requests": 7,
+  "quality": [
+    {
+      "index": 0,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 4,
+      "case": "B",
+      "old_ssim_percent": 99.40412322827537,
+      "new_ssim_percent": 99.40412322827537,
+      "no_regression": true
+    },
+    {
+      "index": 5,
+      "case": "C",
+      "old_ssim_percent": 99.63004744871529,
+      "new_ssim_percent": 99.63004744871529,
+      "no_regression": true
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    }
+  ],
+  "repeated_A_hashes": [
+    "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+  ],
+  "selected_default_changed": true,
+  "scope": "同节点八卡独立常驻实例，排除预热，三次正式 A，B、C 和返回 A",
+  "all_seven_videos_match_previous": true,
+  "official_entry_matches_previous": true,
+  "matched_video_paths": [
+    "00-A/video.mp4",
+    "01-A/video.mp4",
+    "02-A/video.mp4",
+    "03-A/video.mp4",
+    "04-B/video.mp4",
+    "05-C/video.mp4",
+    "06-A/video.mp4"
+  ]
+}
