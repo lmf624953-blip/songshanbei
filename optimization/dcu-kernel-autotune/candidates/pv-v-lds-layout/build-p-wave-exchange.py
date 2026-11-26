@@ -41,7 +41,7 @@ def verify_permutation():
             assert addresses[addr] == (producer, register)
 
 
-def replace_stage(lines, start, end, prefix, pointer_offset):
+def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp):
     region = lines[start:end]
     stores, loads = {}, {}
     scalars = {}
@@ -84,7 +84,12 @@ def replace_stage(lines, start, end, prefix, pointer_offset):
                 continue
             low_pack, high_pack = values[reg], values[reg | reg_bit]
             send = emit(f"select i1 {high}, i32 {low_pack}, i32 {high_pack}")
-            recv = emit(f"call i32 @llvm.amdgcn.ds.bpermute(i32 {remote}, i32 {send})")
+            if quad_dpp:
+                control = sum((lane ^ lane_bit) << (2 * lane) for lane in range(4))
+                recv = emit(f"call i32 @llvm.amdgcn.update.dpp.i32("
+                            f"i32 poison, i32 {send}, i32 {control}, i32 15, i32 15, i1 true)")
+            else:
+                recv = emit(f"call i32 @llvm.amdgcn.ds.bpermute(i32 {remote}, i32 {send})")
             values[reg] = emit(f"select i1 {high}, i32 {recv}, i32 {low_pack}")
             values[reg | reg_bit] = emit(f"select i1 {high}, i32 {high_pack}, i32 {recv}")
     lo = emit(f"and i32 {lane}, 3")
@@ -107,7 +112,7 @@ def replace_stage(lines, start, end, prefix, pointer_offset):
     lines[start:end] = code
 
 
-def transform(source, full_only):
+def transform(source, full_only, quad_dpp=False):
     if hashlib.sha256(source.encode()).hexdigest() != REFERENCE_SHA256:
         raise ValueError("Use the verified Q128 packed LLVM IR")
     verify_permutation()
@@ -125,7 +130,7 @@ def transform(source, full_only):
         marker = f"load <1 x i16>, ptr addrspace(3) %o{241 + offset},"
         last_load = next(j for j in range(i, len(lines)) if marker in lines[j])
         end = next(j for j in range(last_load + 1, len(lines)) if "fence syncscope" in lines[j])
-        replace_stage(lines, start, end, f"p_exchange{n}", offset)
+        replace_stage(lines, start, end, f"p_exchange{n}", offset, quad_dpp)
     declaration = "declare i32 @llvm.amdgcn.ds.bpermute(i32, i32)"
     return "\n".join([*lines, declaration, ""])
 
@@ -135,9 +140,11 @@ def main():
     cli.add_argument("reference", type=Path)
     cli.add_argument("output", type=Path)
     cli.add_argument("--full-only", action="store_true")
+    cli.add_argument("--quad-dpp", action="store_true",
+                     help="Use DPP quad permutations for the two register/lane exchanges")
     args = cli.parse_args()
     ref = args.reference.resolve(strict=True)
-    image_source = transform((ref / "dense-attention-packed.llir").read_text(), args.full_only)
+    image_source = transform((ref / "dense-attention-packed.llir").read_text(), args.full_only, args.quad_dpp)
     os.environ["AMDGCN_USE_BUFFER_OPS"] = "1"
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
@@ -157,7 +164,8 @@ def main():
     (args.output / "dense-attention-packed.llir").write_text(image_source)
     metadata = json.loads((ref / "dense-attention-aot-build.json").read_text())
     metadata["packed_strides"]["hsaco_sha256"] = hashlib.sha256(image).hexdigest()
-    metadata["experiment"] = dict(p_wave_exchange=True, full_only=args.full_only, resources=resources)
+    metadata["experiment"] = dict(p_wave_exchange=True, full_only=args.full_only,
+                                  quad_dpp=args.quad_dpp, resources=resources)
     (args.output / "dense-attention-aot-build.json").write_text(json.dumps(metadata, indent=2) + "\n")
     print(json.dumps(metadata["experiment"]))
 

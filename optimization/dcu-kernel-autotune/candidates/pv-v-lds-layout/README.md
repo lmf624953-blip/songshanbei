@@ -103,3 +103,5 @@ K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-o
 `build-p-wave-exchange.py REFERENCE OUTPUT` 根据冻结的 Q128 packed LLVM IR 替换 P 的 LDS 写读。脚本验证源文件摘要，并枚举 4096 个位置，核对源寄存器及读写双方的 wave 归属。使用 `--full-only` 可只替换完整块。两个镜像均保留 BF16 MMAC 指令和 K、V 的同步。
 
 在长度 27570 和 22016 上，两种方案的普通和放大输入均逐位一致，配对计时回退 4.21%–4.28%。同时改完整块和尾块时，静态 barrier 从 12 处降至 8 处，增加 32 条 `ds_bpermute_b32`。独立 PMC 显示，LDS 指令计数减少约 31%，LDS 等待计数减少约 36%，VALU 指令计数增加约 5%。候选未进入八卡验收。见 [配对计时与 PMC](../../docs/p-wave-exchange-a14r1n11.json)。
+
+加 `--quad-dpp` 可用 DPP quad shuffle 执行前两级交换，保留最终的跨 lane 寄存器映射。两种范围均通过逐位比较，配对回退 3.69%–3.83%。完整替换的静态 `ds_bpermute_b32` 由 32 条减到 16 条。相对现用镜像，独立 PMC 的 LDS 指令计数下降约 46%，LDS 等待计数下降约 51%，VALU 指令计数增加约 6%。本轮只归档。见 [DPP 配对计时与 PMC](../../docs/p-wave-dpp-a14r1n11.json)。

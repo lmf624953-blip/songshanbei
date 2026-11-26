@@ -1,0 +1,317 @@
+{
+  "scope": "单算子，非端到端验收",
+  "records": [
+    {
+      "variant": "both",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/p-wave-dpp-a14r1n11/both",
+      "experiment": {
+        "p_wave_exchange": true,
+        "full_only": false,
+        "quad_dpp": true,
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 56,
+          "vgpr_count": 204
+        }
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.09022903442383,
+              35.10814666748047,
+              35.08782958984375,
+              35.11662292480469,
+              35.0916633605957,
+              35.09758377075195,
+              35.10638427734375,
+              35.100467681884766,
+              35.10382843017578,
+              35.095829010009766,
+              35.09614944458008
+            ],
+            [
+              36.44718551635742,
+              36.42558288574219,
+              36.426063537597656,
+              36.427345275878906,
+              36.42462921142578,
+              36.411827087402344,
+              36.42414093017578,
+              36.42253875732422,
+              36.422542572021484,
+              36.41438293457031,
+              36.42030334472656
+            ]
+          ],
+          "medians_ms": [
+            35.09758377075195,
+            36.42414093017578
+          ],
+          "paired_gain_percent": -3.7570103392755794,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.708467483520508,
+              23.719348907470703,
+              23.729272842407227,
+              23.69567108154297,
+              23.67839241027832,
+              23.70126724243164,
+              23.68958854675293,
+              23.686708450317383,
+              23.71183204650879,
+              23.697912216186523,
+              23.704952239990234
+            ],
+            [
+              24.565587997436523,
+              24.57358741760254,
+              24.572952270507812,
+              24.57086944580078,
+              24.57775115966797,
+              24.576627731323242,
+              24.58222770690918,
+              24.56894874572754,
+              24.571352005004883,
+              24.571989059448242,
+              24.570709228515625
+            ]
+          ],
+          "medians_ms": [
+            23.70126724243164,
+            24.571989059448242
+          ],
+          "paired_gain_percent": -3.688412866449453,
+          "passed": true
+        }
+      ],
+      "isa": {
+        "s_barrier": 8,
+        "ds_bpermute_b32": 16,
+        "v_mmac_f32_16x16x16_bf16": 128
+      }
+    },
+    {
+      "variant": "full",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/p-wave-dpp-a14r1n11/full",
+      "experiment": {
+        "p_wave_exchange": true,
+        "full_only": true,
+        "quad_dpp": true,
+        "resources": {
+          "private_segment_fixed_size": 0,
+          "sgpr_count": 55,
+          "vgpr_count": 215
+        }
+      },
+      "skipped": false,
+      "cases": [
+        {
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              35.107025146484375,
+              35.116943359375,
+              35.10718536376953,
+              35.11374282836914,
+              35.10942459106445,
+              35.11054611206055,
+              35.09486770629883,
+              35.10478973388672,
+              35.09774398803711,
+              35.10590362548828,
+              35.101104736328125
+            ],
+            [
+              36.44990158081055,
+              36.447818756103516,
+              36.448143005371094,
+              36.43598556518555,
+              36.45598220825195,
+              36.45550537109375,
+              36.453582763671875,
+              36.45198440551758,
+              36.45454025268555,
+              36.44493865966797,
+              36.44782257080078
+            ]
+          ],
+          "medians_ms": [
+            35.107025146484375,
+            36.44990158081055
+          ],
+          "paired_gain_percent": -3.8306418098441597,
+          "passed": true
+        },
+        {
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              23.722387313842773,
+              23.69118881225586,
+              23.700952529907227,
+              23.70271110534668,
+              23.6905517578125,
+              23.708471298217773,
+              23.69902992248535,
+              23.70494842529297,
+              23.700471878051758,
+              23.708467483520508,
+              23.714387893676758
+            ],
+            [
+              24.599348068237305,
+              24.596147537231445,
+              24.60127067565918,
+              24.582069396972656,
+              24.58591079711914,
+              24.593910217285156,
+              24.587987899780273,
+              24.578388214111328,
+              24.607030868530273,
+              24.60158920288086,
+              24.591508865356445
+            ]
+          ],
+          "medians_ms": [
+            23.70271110534668,
+            24.593910217285156
+          ],
+          "paired_gain_percent": -3.7510310768099853,
+          "passed": true
+        }
+      ],
+      "isa": {
+        "s_barrier": 10,
+        "ds_bpermute_b32": 8,
+        "v_mmac_f32_16x16x16_bf16": 128
+      }
+    }
+  ],
+  "winners": [],
+  "hostname": "a14r1n11",
+  "verdict": "NO_GAIN",
+  "selected_default_changed": false,
+  "independent_pmc": {
+    "reference": {
+      "27570": {
+        "arch_vgpr": 216,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 271095552,
+        "SQ_WAIT_INST_LDS": 700325480.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080,
+        "SQ_INSTS_VALU": 3210175584
+      },
+      "22016": {
+        "arch_vgpr": 216,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 172297216,
+        "SQ_WAIT_INST_LDS": 439920259.25,
+        "SQ_LDS_BANK_CONFLICT": 265072640,
+        "SQ_INSTS_VALU": 2041372368
+      }
+    },
+    "bpermute": {
+      "27570": {
+        "arch_vgpr": 208,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 187681536,
+        "SQ_WAIT_INST_LDS": 449058438.25,
+        "SQ_LDS_BANK_CONFLICT": 333656064,
+        "SQ_INSTS_VALU": 3371741856
+      },
+      "22016": {
+        "arch_vgpr": 208,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 119282688,
+        "SQ_WAIT_INST_LDS": 282194876.25,
+        "SQ_LDS_BANK_CONFLICT": 212058112,
+        "SQ_INSTS_VALU": 2144068752
+      }
+    },
+    "quad_dpp": {
+      "27570": {
+        "arch_vgpr": 204,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 145974528,
+        "SQ_WAIT_INST_LDS": 344625960.75,
+        "SQ_LDS_BANK_CONFLICT": 333656064,
+        "SQ_INSTS_VALU": 3413412576
+      },
+      "22016": {
+        "arch_vgpr": 204,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 92775424,
+        "SQ_WAIT_INST_LDS": 217154897.5,
+        "SQ_LDS_BANK_CONFLICT": 212058112,
+        "SQ_INSTS_VALU": 2170561568
+      }
+    }
+  }
+}
