@@ -1,0 +1,12 @@
+{
+  "fast": {
+    "loaded_sections_match": true,
+    "rebuilt_sha256": "4c4de9002bac2ec2d0908f779ef2b671951d2b8805b4a7b48a31e28229a6a53e",
+    "reference_sha256": "bca15cfb7292275209ceecc4e34b7587350a7d89bc312bd39f150b5e77aaf15a"
+  },
+  "fallback": {
+    "loaded_sections_match": true,
+    "rebuilt_sha256": "24d65fff9369e549b2290dcdd60ef5cf307320d9a35a8dbcd2f7060ca0f86151",
+    "reference_sha256": "0fd770b7a74b83a83c9913dfa83b7d597bd895dd55de2e1690c0b649651e6347"
+  }
+}

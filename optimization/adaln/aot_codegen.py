@@ -44,7 +44,8 @@ def lower_kernel(build, arrangement, application, tensors, name, warps=WARPS, *,
 def compile_image(output, kernel, signature, constants, runtime_signature, warps=WARPS,
                   *, block=TILE, allow_shared=False, aligned_scalars=(), num_stages=1,
                   matrix_instr_nonkdim=0, kpack=1, attention_lds_swizzle=False,
-                  attention_query_block=32, buffer_addressing=False):
+                  attention_query_block=32, buffer_addressing=False, coalesce_pv_value=False,
+                  direct_attention_query=False):
     signature["BLOCK"] = "constexpr"
     if list(signature) != kernel.arg_names or [t for t in signature.values() if t != "constexpr"] != runtime_signature:
         raise RuntimeError(f"Unexpected {kernel.__name__} launcher signature: {signature}")
@@ -65,7 +66,8 @@ def compile_image(output, kernel, signature, constants, runtime_signature, warps
     if attention_lds_swizzle:
         from attention_codegen import swizzle_attention_pv
         compiled = swizzle_attention_pv(compiled, output, target, options,
-                                        query_block=attention_query_block)
+                                        query_block=attention_query_block, coalesce_value=coalesce_pv_value,
+                                        direct_query=direct_attention_query)
     if os.environ.get("H3_AOT_SAVE_IR") == "1":
         for kind in ("ttir", "ttgir", "llir", "amdgcn"):
             output.with_suffix("." + kind).write_text(

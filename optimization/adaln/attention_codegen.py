@@ -131,7 +131,8 @@ def elide_full_kv_load_mask(source):
         raise RuntimeError(f"预期一个完整 KV 循环中三个 K/V 上界，实际 {full_loops}/{removed}")
     source.write_text(ast.unparse(ast.fix_missing_locations(tree)) + "\n")
 
-def swizzle_attention_pv(compiled, output, target, options, *, query_block=32):
+def swizzle_attention_pv(compiled, output, target, options, *, query_block=32, coalesce_value=False,
+                         direct_query=False):
     """变更九齿输出的共享内存布局，保留点积与 softmax 的计算。"""
     text = compiled.asm["ttgir"]
     if query_block not in LONG_ATTENTION_LDS_SWIZZLES:
@@ -147,6 +148,12 @@ def swizzle_attention_pv(compiled, output, target, options, *, query_block=32):
         if text.count(original) != 1 or f"!ttg.memdesc<{shape}xbf16, {alias}, #smem>" not in text:
             raise RuntimeError(f"九齿 PV 布局与已验证的 gfx936 编译前提不符: {label}")
         text = text.replace(original, replacement)
+    if coalesce_value:
+        from attention_v_codegen import coalesce_pv_value
+        text = coalesce_pv_value(text)
+    if direct_query:
+        from attention_q_codegen import load_attention_query_direct
+        text = load_attention_query_direct(text)
     modified = output.with_name(
         "pv-swizzle.ttgir" if output.name == "dense-attention-aot.hsaco"
         else f"{output.stem}-pv-swizzle.ttgir")

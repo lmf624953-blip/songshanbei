@@ -18,8 +18,10 @@ for option in "${@:2}"; do
     --long-attention-q64) attention_options=(--optimize-long-attention); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-full-load) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-buffer) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops); attention_query_block=64; attention_warps=4 ;;
+    --long-attention-q64-vwide) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value); attention_query_block=64; attention_warps=4 ;;
+    --long-attention-q64-qdirect) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value --direct-attention-query); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-tail) attention_options=(--optimize-long-attention --split-kv-tail); attention_query_block=64; attention_warps=4 ;;
-    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--fused-qknorm-mrope] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer]\n' >&2; exit 2 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--deterministic-keyframe] [--fused-qknorm-mrope] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer | --long-attention-q64-vwide | --long-attention-q64-qdirect]\n' >&2; exit 2 ;;
   esac
 done
 if [[ "$fused_qknorm_mrope" == 1 ]]; then variant=qknorm-mrope; fi

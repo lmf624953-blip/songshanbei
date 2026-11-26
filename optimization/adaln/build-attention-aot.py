@@ -33,6 +33,10 @@ def main():
                         help="Remove proven redundant K/V load bounds in complete tiles; requires split-kv-tail")
     parser.add_argument("--guarded-buffer-ops", action="store_true",
                         help="Use narrow buffer addressing with per-buffer span checks and a fallback image")
+    parser.add_argument("--coalesce-pv-value", action="store_true",
+                        help="Coalesce V LDS reads and preserve coalesced global loads for guarded Q64/K32")
+    parser.add_argument("--direct-attention-query", action="store_true",
+                        help="Load hoisted Q directly in the matrix operand layout with coalesced PV")
     args = parser.parse_args()
     if args.fp16_pv and not args.fp32_scale:
         parser.error("--fp16-pv requires --fp32-scale")
@@ -48,6 +52,10 @@ def main():
         parser.error("--elide-full-kv-load-mask requires --split-kv-tail")
     if args.guarded_buffer_ops and not args.elide_full_kv_load_mask:
         parser.error("--guarded-buffer-ops requires --elide-full-kv-load-mask")
+    if args.coalesce_pv_value and not args.guarded_buffer_ops:
+        parser.error("--coalesce-pv-value requires --guarded-buffer-ops")
+    if args.direct_attention_query and not args.coalesce_pv_value:
+        parser.error("--direct-attention-query requires --coalesce-pv-value")
     build = args.destination.resolve()
     build.mkdir()
     arrangement, application, tensors = definition(head_dim=128, dtype=nt.bfloat16, causal=False)
@@ -95,7 +103,9 @@ def main():
                              aligned_scalars=aligned if args.aligned_strides else (), num_stages=args.stages,
                              matrix_instr_nonkdim=args.matrix_instr_nonkdim, kpack=args.kpack,
                              attention_lds_swizzle=args.optimize_long_attention,
-                             attention_query_block=args.query_block, buffer_addressing=buffer_addressing)
+                             attention_query_block=args.query_block, buffer_addressing=buffer_addressing,
+                             coalesce_pv_value=buffer_addressing and args.coalesce_pv_value,
+                             direct_attention_query=buffer_addressing and args.direct_attention_query)
 
     fallback = None
     host_source = "attention_aot_host.cc"
@@ -140,6 +150,18 @@ def main():
         record["codegen_sha256"] = hashlib.sha256(
             Path(__file__).with_name("attention_codegen.py").read_bytes()).hexdigest()
         record["generated_source_sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+    if args.coalesce_pv_value:
+        record["codegen_passes"].append("coalesce_pv_value")
+        record["pv_lds_swizzle"] = {**record["pv_lds_swizzle"],
+                                    "V": {"vec": 4, "perPhase": 2, "maxPhase": 8, "order": [0, 1]}}
+        record["v_producer"] = {"sizePerThread": [4, 4], "threadsPerWarp": [2, 32],
+                                "warpsPerCTA": [4, 1], "order": [1, 0]}
+        record["v_codegen_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("attention_v_codegen.py").read_bytes()).hexdigest()
+    if args.direct_attention_query:
+        record["codegen_passes"].append("direct_attention_query")
+        record["q_codegen_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("attention_q_codegen.py").read_bytes()).hexdigest()
     (build / "dense-attention-aot-build.json").write_text(json.dumps(record, indent=2) + "\n")
 
 

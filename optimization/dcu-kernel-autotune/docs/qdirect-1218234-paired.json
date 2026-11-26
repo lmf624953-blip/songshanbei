@@ -1,0 +1,111 @@
+{
+  "verdict": "PASS",
+  "hostname": "f12r2n16",
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q64-buffer-1218234",
+  "candidate": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-q64-qdirect-1218234",
+  "binaries": {
+    "reference": {
+      "dense-attention-aot.so": "96d7df7a589ef50415034c482743ec2b220add11ef9ffe93b21d2b79c0118226",
+      "dense-attention-aot.hsaco": "c22838f567f003ac34dde1f84ea058b592a95065d6b69c5cec19ad493acae33a"
+    },
+    "candidate": {
+      "dense-attention-aot.so": "96d7df7a589ef50415034c482743ec2b220add11ef9ffe93b21d2b79c0118226",
+      "dense-attention-aot.hsaco": "4c4de9002bac2ec2d0908f779ef2b671951d2b8805b4a7b48a31e28229a6a53e"
+    }
+  },
+  "iterations": 11,
+  "cases": [
+    {
+      "sequence": 27570,
+      "reference_ms": 40.43102264404297,
+      "candidate_ms": 38.10814666748047,
+      "paired_speedup_pct": 5.745709217981176,
+      "samples_ms": [
+        [
+          40.43102264404297,
+          40.456146240234375,
+          40.43086624145508,
+          40.44702911376953,
+          40.41422653198242,
+          40.429588317871094,
+          40.44062805175781,
+          40.417423248291016,
+          40.43726348876953,
+          40.43790817260742,
+          40.39278793334961
+        ],
+        [
+          38.11902618408203,
+          38.111507415771484,
+          38.107826232910156,
+          38.10814666748047,
+          38.10574722290039,
+          38.1148681640625,
+          38.105770111083984,
+          38.11281204223633,
+          38.10718536376953,
+          38.10270309448242,
+          38.11997985839844
+        ]
+      ],
+      "normal": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "stress": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      }
+    },
+    {
+      "sequence": 22016,
+      "reference_ms": 26.214065551757812,
+      "candidate_ms": 24.922548294067383,
+      "paired_speedup_pct": 4.9317567802595885,
+      "samples_ms": [
+        [
+          26.214065551757812,
+          26.210552215576172,
+          26.194232940673828,
+          26.13998794555664,
+          26.185428619384766,
+          26.174392700195312,
+          26.386232376098633,
+          26.25663185119629,
+          26.298391342163086,
+          26.243505477905273,
+          26.265592575073242
+        ],
+        [
+          24.926868438720703,
+          24.917911529541016,
+          24.915027618408203,
+          24.92894744873047,
+          24.922548294067383,
+          24.920148849487305,
+          24.933591842651367,
+          24.941591262817383,
+          24.919187545776367,
+          24.92542839050293,
+          24.916311264038086
+        ]
+      ],
+      "normal": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "stress": {
+        "finite": true,
+        "exact": true,
+        "max_abs": 0.0,
+        "rmse": 0.0
+      }
+    }
+  ]
+}
