@@ -1,0 +1,9 @@
+{
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/swiglu-row-1218234/t2048-w8/wide-norm-indexed.hsaco",
+  "rebuilt": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/swiglu-row-source-1218234/swiglu.hsaco",
+  "text_equal": true,
+  "reference_text_sha256": "81eb2149ad4fa12dd8f19d86d50079f1e6ce9c3a5b53219b2d9bf40f6709f64b",
+  "rebuilt_text_sha256": "81eb2149ad4fa12dd8f19d86d50079f1e6ce9c3a5b53219b2d9bf40f6709f64b",
+  "reference_text_bytes": 772,
+  "rebuilt_text_bytes": 772
+}

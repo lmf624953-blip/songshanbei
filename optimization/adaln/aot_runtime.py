@@ -109,7 +109,12 @@ def load_swiglu(build):
     record = json.loads((build / "swiglu-build.json").read_text())
     expected = [["ptr", name] for name in ("up", "gate", "output")]
     expected += [["i32", "input_rows"], ["i32", "elements"]]
-    if (record["arguments"] != expected or record["tile"] != 1024
-            or record["warps"] != 4 or record["shared"] != 0):
+    mode = record.get("mode", "linear")
+    if mode == "row":
+        expected = expected[:-1]
+    if mode not in {"linear", "row"}:
+        raise RuntimeError("Unknown SwiGLU mode")
+    if (record["arguments"] != expected or record["tile"] != (2048 if mode == "row" else 1024)
+            or record["warps"] != (8 if mode == "row" else 4) or record["shared"] != 0):
         raise RuntimeError("Unexpected packed SwiGLU ABI or geometry")
     return load_kernel(build, "swiglu", "swiglu-host.so", "songshan_prepare_swiglu")

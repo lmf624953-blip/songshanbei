@@ -234,8 +234,8 @@ control.set_swiglu_enabled = lambda enabled: set_kernel_enabled("swiglu", enable
 control.set_widenorm_indexed_enabled = lambda enabled: set_kernel_enabled("widenorm_indexed", enabled)
 control.set_short_attention_enabled = lambda enabled: set_kernel_enabled("short_attention", enabled)
 for registered_name, _, registered_setter, _ in registrations:
-    if registered_name == "attention":
-        control.set_attention_callback = registered_setter
+    if registered_name in {"attention", "widenorm_indexed", "swiglu"}:
+        setattr(control, f"set_{registered_name}_callback", registered_setter)
 if indexed_build:
     control.set_indexed_callback = indexed_register
 sys.modules[control.__name__] = control

@@ -18,10 +18,12 @@ def main():
     parser.add_argument("output", type=Path)
 
     parser.add_argument("--warps", type=int, choices=(4, 8, 16), default=4)
-    parser.add_argument("--mode", choices=("naive", "original-serial"), default="naive")
+    parser.add_argument("--mode", choices=("naive", "original-serial", "original-serial-compact"), default="naive")
     args = parser.parse_args()
+    if args.mode == "original-serial-compact" and args.warps != 4:
+        parser.error("compact 原库顺序模式仅验证了 4 warps")
     args.output.mkdir()
-    if args.mode=="original-serial":
+    if args.mode in {"original-serial", "original-serial-compact"}:
         os.environ["H3_AOT_SAVE_IR"]="1"
     hidden = nt.Tensor(shape=(None, 5376), dtype=nt.bfloat16)
     scale = nt.Tensor(shape=(None, 5376), dtype=nt.bfloat16)
@@ -55,7 +57,7 @@ def main():
     digest, shared = compile_image(
         args.output / "wide-norm-indexed.hsaco", kernel, signature, constants, runtime,
         args.warps, block=8192, allow_shared=True)
-    if args.mode=="original-serial":
+    if args.mode in {"original-serial", "original-serial-compact"}:
         import hashlib
         import triton
         from triton.backends.compiler import GPUTarget
@@ -72,10 +74,38 @@ def main():
         (args.output/"wide-norm-indexed.amdgcn").write_text(compiled.asm["amdgcn"])
         digest=hashlib.sha256(image).hexdigest()
         shared=compiled.metadata.shared
+    codegen = None
+    if args.mode == "original-serial-compact":
+        import hashlib
+        import shutil
+        import subprocess
+        builders = Path(__file__).resolve().parents[1] / "dcu-kernel-autotune/candidates/wide-norm-original-serial"
+        reference = args.output / "serial-source"
+        reference.mkdir()
+        shutil.copy2(args.output / "wide-norm-indexed.ttir", reference / "wide-norm-indexed.ttir")
+        (reference / "build.json").write_text(json.dumps(dict(arguments=arguments,warps=4,
+            shared=shared,mode="original-serial",hsaco_sha256=digest),indent=2)+"\n")
+        grouped,broadcast,vector = (args.output / name for name in ("grouped", "broadcast16", "vector8"))
+        jobs = [
+            ("build-grouped.py", [str(reference),str(grouped),"--warps","4"]),
+            ("build-group-broadcast.py", [str(grouped),str(broadcast),"--compact"]),
+            ("build-epilogue.py", [str(broadcast),str(vector),"--spt","8","--rematerialize-index"]),
+        ]
+        codegen = {}
+        for name,options in jobs:
+            builder = builders / name
+            subprocess.run([sys.executable,str(builder),*options],check=True)
+            codegen[name] = hashlib.sha256(builder.read_bytes()).hexdigest()
+        final = json.loads((vector / "build.json").read_text())
+        if final["arguments"] != [list(x) for x in arguments] or final["shared"] != 512:
+            raise RuntimeError("compact 归约 ABI 或共享内存不匹配")
+        for suffix in ("hsaco","amdgcn","ttgir"):
+            shutil.copy2(vector / ("wide-norm-indexed."+suffix),args.output / ("wide-norm-indexed."+suffix))
+        digest,shared = final["hsaco_sha256"],final["shared"]
     command = compile_host(args.output / "wide-norm-indexed-host.so", ("wide_norm_indexed_host.cc",))
     (args.output / "wide-norm-indexed-build.json").write_text(json.dumps(dict(
         arguments=arguments, warps=args.warps, shared=shared, source=str(source),
-        mode=args.mode, hsaco_sha256=digest, host_command=command, experimental=True), indent=2) + "\n")
+        mode=args.mode, codegen_sources=codegen, hsaco_sha256=digest, host_command=command, experimental=True), indent=2) + "\n")
 
 
 if __name__ == "__main__":

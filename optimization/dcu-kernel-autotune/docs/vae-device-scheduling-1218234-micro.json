@@ -1,0 +1,297 @@
+{
+  "scope": "独立 VAE 原窗口重算，排除每设备首次预热；不作为端到端收益",
+  "records": [
+    {
+      "height": 928,
+      "width": 768,
+      "trial": 0,
+      "devices": 2,
+      "warmup": true,
+      "seconds": 60.591666248161346,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8386288128,
+        "cuda:1": 6311332352,
+        "cuda:2": 0,
+        "cuda:3": 0
+      }
+    },
+    {
+      "height": 928,
+      "width": 768,
+      "trial": 1,
+      "devices": 4,
+      "warmup": true,
+      "seconds": 15.261719184927642,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8297961984,
+        "cuda:1": 6121971200,
+        "cuda:2": 6541520384,
+        "cuda:3": 5604624896
+      }
+    },
+    {
+      "height": 928,
+      "width": 768,
+      "trial": 2,
+      "devices": 2,
+      "warmup": false,
+      "seconds": 12.913515109103173,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 9270536704,
+        "cuda:1": 6539692544,
+        "cuda:2": 681485312,
+        "cuda:3": 33554432
+      }
+    },
+    {
+      "height": 928,
+      "width": 768,
+      "trial": 3,
+      "devices": 4,
+      "warmup": false,
+      "seconds": 14.059356440789998,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8180193792,
+        "cuda:1": 5834705408,
+        "cuda:2": 6045671424,
+        "cuda:3": 5600791040
+      }
+    },
+    {
+      "height": 928,
+      "width": 768,
+      "trial": 4,
+      "devices": 4,
+      "warmup": false,
+      "seconds": 12.944262742064893,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8386288128,
+        "cuda:1": 6448540672,
+        "cuda:2": 6019320832,
+        "cuda:3": 5736991232
+      }
+    },
+    {
+      "height": 928,
+      "width": 768,
+      "trial": 5,
+      "devices": 2,
+      "warmup": false,
+      "seconds": 12.845796740613878,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8888007168,
+        "cuda:1": 6273885184,
+        "cuda:2": 416506880,
+        "cuda:3": 180764672
+      }
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "trial": 0,
+      "devices": 2,
+      "warmup": true,
+      "seconds": 10.292161361780018,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 9299494912,
+        "cuda:1": 6471896576,
+        "cuda:2": 357622784,
+        "cuda:3": 180764672
+      }
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "trial": 1,
+      "devices": 4,
+      "warmup": true,
+      "seconds": 10.977959563024342,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8269023232,
+        "cuda:1": 5799764992,
+        "cuda:2": 5741422080,
+        "cuda:3": 5556589568
+      }
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "trial": 2,
+      "devices": 2,
+      "warmup": false,
+      "seconds": 10.347921082749963,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8475323392,
+        "cuda:1": 6167421952,
+        "cuda:2": 92438528,
+        "cuda:3": 121880576
+      }
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "trial": 3,
+      "devices": 4,
+      "warmup": false,
+      "seconds": 10.631611697841436,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8090920960,
+        "cuda:1": 6078353408,
+        "cuda:2": 5910111232,
+        "cuda:3": 5556795392
+      }
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "trial": 4,
+      "devices": 4,
+      "warmup": false,
+      "seconds": 9.462703165132552,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8326457344,
+        "cuda:1": 6216033792,
+        "cuda:2": 6013773312,
+        "cuda:3": 5674800128
+      }
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "trial": 5,
+      "devices": 2,
+      "warmup": false,
+      "seconds": 10.973421150818467,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "torch_peak_allocated_bytes": {
+        "cuda:0": 8504559616,
+        "cuda:1": 6148556800,
+        "cuda:2": 357879808,
+        "cuda:3": 151322624
+      }
+    }
+  ],
+  "summary": [
+    {
+      "height": 928,
+      "width": 768,
+      "baseline_seconds": 12.879655924858525,
+      "candidate_seconds": 13.501809591427445,
+      "reduction_percent": -4.8305146519335596
+    },
+    {
+      "height": 768,
+      "width": 768,
+      "baseline_seconds": 10.660671116784215,
+      "candidate_seconds": 10.047157431486994,
+      "reduction_percent": 5.754925544333711
+    }
+  ]
+}

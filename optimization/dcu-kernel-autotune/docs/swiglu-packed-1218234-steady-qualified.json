@@ -1,0 +1,74 @@
+{
+  "verdict": "PASS",
+  "old_wall_seconds": 171.40246838936582,
+  "new_wall_seconds": 169.35515765147284,
+  "old_transformer_seconds": 150.7572119133547,
+  "new_transformer_seconds": 148.96389880869538,
+  "wall_reduction_percent": 1.1944464727557058,
+  "transformer_reduction_percent": 1.1895371915540576,
+  "complete_requests": 7,
+  "quality": [
+    {
+      "index": 0,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    },
+    {
+      "index": 4,
+      "case": "B",
+      "old_ssim_percent": 99.40412322827537,
+      "new_ssim_percent": 99.40412322827537,
+      "no_regression": true
+    },
+    {
+      "index": 5,
+      "case": "C",
+      "old_ssim_percent": 99.63004744871529,
+      "new_ssim_percent": 99.63004744871529,
+      "no_regression": true
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "old_ssim_percent": 93.83201347926341,
+      "new_ssim_percent": 93.83201347926341,
+      "no_regression": true
+    }
+  ],
+  "selected_default_changed": true,
+  "all_seven_videos_match_previous": true,
+  "official_entry_matches_previous": true,
+  "matched_video_paths": [
+    "00-A/video.mp4",
+    "01-A/video.mp4",
+    "02-A/video.mp4",
+    "03-A/video.mp4",
+    "04-B/video.mp4",
+    "05-C/video.mp4",
+    "06-A/video.mp4"
+  ],
+  "scope": "同节点八卡，独立常驻，排除预热，三次正式 A；保留完整49次Transformer和原库BF16舍入"
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "完整七请求各卡采样峰值，非同一时刻峰值之和",
+  "used_mib": {
+    "wide-norm-original-serial-steady-1218234": {
+      "card0": 30704,
+      "card1": 24425,
+      "card2": 16853,
+      "card3": 16853,
+      "card4": 33688,
+      "card5": 33662,
+      "card6": 33662,
+      "card7": 33566
+    },
+    "swiglu-packed-steady-1218234": {
+      "card0": 30308,
+      "card1": 25011,
+      "card2": 16853,
+      "card3": 16853,
+      "card4": 33688,
+      "card5": 33662,
+      "card6": 33662,
+      "card7": 33566
+    }
+  }
+}

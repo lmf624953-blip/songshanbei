@@ -9,11 +9,14 @@ from songshan_h3.compiler_compat import configure_hygon_compiler
 
 def main():
     cli=argparse.ArgumentParser(description=__doc__);cli.add_argument('reference',type=Path);cli.add_argument('output',type=Path);cli.add_argument('--spt',type=int,choices=(2,4,8),required=True);cli.add_argument('--rematerialize-index',action='store_true');a=cli.parse_args();a.output.mkdir()
-    meta=json.loads((a.reference/'build.json').read_text());assert meta['mode']=='original-serial' and meta['warps']==4
+    meta=json.loads((a.reference/'build.json').read_text());assert meta['mode'] in ('original-serial','original-serial-group-broadcast') and meta['warps']==4
     source=(a.reference/'wide-norm-indexed.ttgir').read_text()
     header='#blocked = #ttg.blocked<{sizePerThread = [1], threadsPerWarp = [64], warpsPerCTA = [4], order = [0]}>'
     assert source.count(header)==1
-    marker='    %v229 = arith.divsi %offsets, %cst_2 : tensor<8192xi32, #blocked>'
+    match=re.search(r'^    %v229 = arith.divsi %offsets, (%\w+) : tensor<8192xi32, #blocked>',source,re.M)
+    assert match
+    marker=match[0]
+    assert re.search(re.escape(match[1])+r' = arith.constant dense<8192> : tensor<8192xi32, #blocked>',source)
     assert source.count(marker)==1
     cut=source.index(marker);before,after=source[:cut],source[cut:]
     after_body=after[:after.index('    tt.return')]

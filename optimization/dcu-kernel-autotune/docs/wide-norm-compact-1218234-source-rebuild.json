@@ -1,0 +1,9 @@
+{
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-epilogue-1218234/group16-spt8-remat/wide-norm-indexed.hsaco",
+  "rebuilt": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/wide-norm-compact-source-1218234/wide-norm-indexed.hsaco",
+  "text_equal": true,
+  "reference_text_sha256": "5024823726ad5892058dc46d53086a4bb4a03669a0657e095ada057c58aa0cd3",
+  "rebuilt_text_sha256": "5024823726ad5892058dc46d53086a4bb4a03669a0657e095ada057c58aa0cd3",
+  "reference_text_bytes": 6248,
+  "rebuilt_text_bytes": 6248
+}

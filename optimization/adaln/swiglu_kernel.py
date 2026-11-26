@@ -10,3 +10,9 @@ def application(up,gate,output):
     g=gate.source[row,column].to(ntl.float32)
     sig=(ntl.libdevice.fast_dividef(1.0,1.0+ntl.libdevice.fast_expf(-g))).to(output.dtype).to(ntl.float32)
     output=(g*sig)*u
+
+
+def application_row(up, gate, output):
+    g = gate.to(ntl.float32)
+    sig = ntl.libdevice.fast_dividef(1.0, 1.0 + ntl.libdevice.fast_expf(-g)).to(output.dtype).to(ntl.float32)
+    output = (g * sig) * up.to(ntl.float32)

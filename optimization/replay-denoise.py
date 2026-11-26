@@ -54,6 +54,7 @@ def main():
     parser.add_argument("--profile-once", action="store_true", help="Only one warmed candidate call under hipprof; diagnostic timing")
     parser.add_argument("--profile-drain-seconds", type=float, default=0,
                         help="Wait after the measured window before stopping hipprof")
+    parser.add_argument("--elementwise-reference-builds", type=Path, nargs=2, metavar=("WIDE_NORM", "SWIGLU"), help="Compare reference, compact norm, row SwiGLU and their combination on identical inputs")
     parser.add_argument("--swiglu-ablation", action="store_true", help="Compare packed SwiGLU on identical real inputs")
     parser.add_argument("--widenorm-indexed-ablation", action="store_true", help="Compare wide RMSNorm/AdaLN fusion on identical real inputs")
     parser.add_argument("--candidate-only", action="store_true", help="Only exercise the selected build, including its first call")
@@ -83,9 +84,24 @@ def main():
         from adaln.indexed_runtime import load_indexed
         old_indexed_host = load_indexed(args.indexed_ablation.resolve(strict=True))
         old_indexed_callback = ctypes.cast(old_indexed_host.songshan_launch_indexed, ctypes.c_void_p)
+    old_elementwise = None
+    if args.elementwise_reference_builds:
+        if args.swiglu_ablation or args.widenorm_indexed_ablation or args.profile_once or args.candidate_only:
+            parser.error("elementwise references require a separate four-variant replay")
+        from adaln.aot_runtime import load_widenorm_indexed, load_swiglu
+        wide,swiglu = (path.resolve(strict=True) for path in args.elementwise_reference_builds)
+        old_elementwise = (load_widenorm_indexed(wide), load_swiglu(swiglu))
+        old_wide_callback = ctypes.cast(old_elementwise[0].songshan_launch_widenorm_indexed, ctypes.c_void_p)
+        old_swiglu_callback = ctypes.cast(old_elementwise[1].songshan_launch_swiglu, ctypes.c_void_p)
     out = args.out.resolve()
     out.mkdir()
     snapshot(out)
+    if args.elementwise_reference_builds:
+        proof = {}
+        for name,path,stem in zip(("wide_norm","swiglu"),args.elementwise_reference_builds,("wide-norm-indexed","swiglu")):
+            proof[name] = dict(path=str(path.resolve()),metadata=json.loads((path / (stem+"-build.json")).read_text()),
+                              host_sha256=hashlib.sha256((path / (stem+"-host.so")).read_bytes()).hexdigest())
+        (out / "elementwise-reference-builds.json").write_text(json.dumps(proof,indent=2)+"\n")
     overrides = {}
     for name, path in (("fp16_pv", args.pv_build), ("bf16_pv_fast", args.fast_attention_build)):
         if path:
@@ -144,6 +160,8 @@ def main():
                     variants = ("candidate-no-short-attention", "candidate")
                 if args.qknorm_mrope_ablation:
                     variants = ("candidate-no-qknorm-mrope", "candidate")
+                if args.elementwise_reference_builds:
+                    variants = ("candidate-reference-elementwise", "candidate-compact-norm", "candidate-row-swiglu", "candidate")
                 if args.profile_once or args.candidate_only:
                     variants = ("candidate",)
                 for variant in variants:
@@ -154,7 +172,14 @@ def main():
                         selected_variant = "candidate-tf-no-reducecast" if variant.startswith("candidate-bf16-wire") else "candidate-tf"
                     if args.wire_ablation and variant == "candidate-bf16-wire-fast-attention":
                         selected_variant = "candidate-tf-no-tf-reducecast"
+                    if args.elementwise_reference_builds:
+                        selected_variant = "candidate"
                     control.select_variant(selected_variant)
+                    if args.elementwise_reference_builds:
+                        if variant in {"candidate-reference-elementwise", "candidate-row-swiglu"}:
+                            control.set_widenorm_indexed_callback(old_wide_callback)
+                        if variant in {"candidate-reference-elementwise", "candidate-compact-norm"}:
+                            control.set_swiglu_callback(old_swiglu_callback)
                     if args.precision_ablation:
                         control.set_widenorm_enabled(variant == "candidate-fp32-wire-wide-norm")
                         if variant == "candidate-fp32-wire-fp16-pv":
@@ -213,7 +238,7 @@ def main():
                         record["against_independent_pytorch"] = compare(result, expected)
                     if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
                         paired = tuple(x.detach().cpu().clone() for x in outputs(result))
-                    elif variant == "candidate" and paired is not None:
+                    elif variant == "candidate" and paired is not None and not args.elementwise_reference_builds:
                         key = "against_candidate_with_original_indexed" if args.indexed_ablation else "against_candidate_without_qknorm"
                         if args.wide_ablation:
                             key = "against_candidate_without_widenorm"
@@ -226,6 +251,11 @@ def main():
                         if args.widenorm_indexed_ablation:
                             key = "against_candidate_without_widenorm_indexed"
                         record[key] = compare(result, paired)
+                    if args.elementwise_reference_builds:
+                        if variant == "candidate-reference-elementwise":
+                            paired = tuple(x.detach().cpu().clone() for x in outputs(result))
+                        else:
+                            record["against_elementwise_reference"] = compare(result, paired)
                     print(json.dumps(record), flush=True)
                     records.append(record)
                     (out / "results.json").write_text(json.dumps(records, indent=2) + "\n")
