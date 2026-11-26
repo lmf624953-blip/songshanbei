@@ -13,6 +13,7 @@ wide_norm_mode=naive
 attention_options=()
 attention_query_block=32
 attention_warps=2
+packed_p_row_lds=0
 for option in "${@:2}"; do
   case "$option" in
     --fused-swiglu) fused_swiglu=1; swiglu_mode=linear ;;
@@ -31,10 +32,18 @@ for option in "${@:2}"; do
     --long-attention-q64-qdirect) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value --direct-attention-query); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q64-packed) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value --direct-attention-query --packed-attention-strides); attention_query_block=64; attention_warps=4 ;;
     --long-attention-q128-packed) attention_options=(--optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops --coalesce-pv-value --direct-attention-query --packed-attention-strides); attention_query_block=128; attention_warps=4 ;;
+    --packed-p-row-lds) packed_p_row_lds=1 ;;
     --long-attention-q64-tail) attention_options=(--optimize-long-attention --split-kv-tail); attention_query_block=64; attention_warps=4 ;;
-    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--fused-swiglu | --fused-swiglu-row] [--deterministic-keyframe] [--fused-qknorm-mrope] [--fused-wide-norm-indexed | --fused-wide-norm-indexed-original-serial | --fused-wide-norm-indexed-original-serial-compact] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer | --long-attention-q64-vwide | --long-attention-q64-qdirect | --long-attention-q64-packed | --long-attention-q128-packed]\n' >&2; exit 2 ;;
+    *) printf 'Usage: rebuild-v2.sh BUILD_DIR [--short-attention] [--fused-swiglu | --fused-swiglu-row] [--deterministic-keyframe] [--fused-qknorm-mrope] [--fused-wide-norm-indexed | --fused-wide-norm-indexed-original-serial | --fused-wide-norm-indexed-original-serial-compact] [--long-attention-lds | --long-attention-q64 | --long-attention-q64-tail | --long-attention-q64-full-load | --long-attention-q64-buffer | --long-attention-q64-vwide | --long-attention-q64-qdirect | --long-attention-q64-packed | --long-attention-q128-packed] [--packed-p-row-lds]\n' >&2; exit 2 ;;
   esac
 done
+if [[ "$packed_p_row_lds" == 1 ]]; then
+  if [[ "$attention_query_block" != 128 ]]; then
+    printf '%s\n' '--packed-p-row-lds requires --long-attention-q128-packed' >&2
+    exit 2
+  fi
+  attention_options+=(--packed-p-row-lds)
+fi
 if [[ "$fused_qknorm_mrope" == 1 ]]; then variant=qknorm-mrope; fi
 if [[ "$fused_wide_norm_indexed" == 1 ]]; then variant=wide-norm-indexed; fi
 if [[ "$fused_swiglu" == 1 ]]; then variant=swiglu; fi

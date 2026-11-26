@@ -22,6 +22,16 @@ LONG_ATTENTION_LDS_SWIZZLES = {
     },
 }
 
+Q128_PACKED_P_ROW_LDS = "#shared2 = #ttg.swizzled_shared<{vec = 4, perPhase = 2, maxPhase = 8, order = [1, 0]}>"
+
+
+def swizzle_q128_packed_probability(source):
+    original = "#shared2 = #ttg.swizzled_shared<{vec = 8, perPhase = 2, maxPhase = 16, order = [0, 1]}>"
+    descriptor = "!ttg.memdesc<128x32xbf16, #shared2, #smem>"
+    if source.count(original) != 1 or source.count(descriptor) != 4:
+        raise RuntimeError("Q128 packed P LDS layout does not match the verified full and tail tiles")
+    return source.replace(original, Q128_PACKED_P_ROW_LDS)
+
 
 def hoist_readonly_query(source, *, expected_loads=1):
     """将九齿生成代码中不依赖 KV 循环变量的只读 Q 加载提升到循环前。"""
@@ -138,7 +148,7 @@ def elide_full_kv_load_mask(source):
     source.write_text(ast.unparse(ast.fix_missing_locations(tree)) + "\n")
 
 def swizzle_attention_pv(compiled, output, target, options, *, query_block=32, coalesce_value=False,
-                         direct_query=False, packed_strides=False):
+                         direct_query=False, packed_strides=False, packed_p_row_lds=False):
     """变更九齿输出的共享内存布局，保留点积与 softmax 的计算。"""
     text = compiled.asm["ttgir"]
     if query_block not in LONG_ATTENTION_LDS_SWIZZLES:
@@ -163,6 +173,10 @@ def swizzle_attention_pv(compiled, output, target, options, *, query_block=32, c
     if packed_strides:
         from attention_stride_codegen import specialize_attention_strides
         text = specialize_attention_strides(text)
+    if packed_p_row_lds:
+        if not packed_strides or query_block != 128:
+            raise ValueError("P row LDS requires the Q128 packed image")
+        text = swizzle_q128_packed_probability(text)
     modified = output.with_name(
         "pv-swizzle.ttgir" if output.name == "dense-attention-aot.hsaco"
         else f"{output.stem}-pv-swizzle.ttgir")

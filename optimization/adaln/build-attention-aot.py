@@ -39,6 +39,8 @@ def main():
                         help="Load hoisted Q directly in the matrix operand layout with coalesced PV")
     parser.add_argument("--packed-attention-strides", action="store_true",
                         help="Add a guarded image for Q/K/V/output strides 896/896/2688/896")
+    parser.add_argument("--packed-p-row-lds", action="store_true",
+                        help="Use row-contiguous P LDS in the Q128 packed image")
     args = parser.parse_args()
     if args.fp16_pv and not args.fp32_scale:
         parser.error("--fp16-pv requires --fp32-scale")
@@ -60,6 +62,8 @@ def main():
         parser.error("--direct-attention-query requires --coalesce-pv-value")
     if args.packed_attention_strides and not args.direct_attention_query:
         parser.error("--packed-attention-strides requires --direct-attention-query")
+    if args.packed_p_row_lds and not (args.packed_attention_strides and args.query_block == 128):
+        parser.error("--packed-p-row-lds requires --packed-attention-strides and --query-block 128")
     build = args.destination.resolve()
     build.mkdir()
     arrangement, application, tensors = definition(head_dim=128, dtype=nt.bfloat16, causal=False)
@@ -110,7 +114,8 @@ def main():
                              attention_query_block=args.query_block, buffer_addressing=buffer_addressing,
                              coalesce_pv_value=buffer_addressing and args.coalesce_pv_value,
                              direct_attention_query=buffer_addressing and args.direct_attention_query,
-                             packed_attention_strides=packed_strides)
+                             packed_attention_strides=packed_strides,
+                             packed_p_row_lds=packed_strides and args.packed_p_row_lds)
 
     fallback = None
     host_source = "attention_aot_host.cc"
@@ -174,6 +179,8 @@ def main():
     if packed is not None:
         record["packed_strides"] = packed
         record["codegen_passes"].append("packed_attention_strides")
+    if args.packed_p_row_lds:
+        record["codegen_passes"].append("packed_p_row_lds")
         record["stride_codegen_sha256"] = hashlib.sha256(
             Path(__file__).with_name("attention_stride_codegen.py").read_bytes()).hexdigest()
     (build / "dense-attention-aot-build.json").write_text(json.dumps(record, indent=2) + "\n")

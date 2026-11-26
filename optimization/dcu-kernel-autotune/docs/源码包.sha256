@@ -63,7 +63,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-2af620b58d1dfe385af6b445700dda0ab18dcc4f4e2e6e90ad6dd019fc11e523  candidates/pv-v-lds-layout/README.md
+9386a8a99ccd3def8a5cb2e1817896ded5a4771d8137cf006e1ff99a3fb0952e  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
@@ -89,6 +89,7 @@ b8ddf51c3ba19ec23873633c7936c520256ad74e4dac2b8e33628612196eb488  candidates/pv-
 5021df32520a2a9f6cbacba580066663053a0fb93ebec7ddd2802a8e8a1665b1  candidates/pv-v-lds-layout/producer_layout.py
 ce44b3d555c0ddda9cec5898c4a615383c17cd3f8c7e33e8cc68fb80cc82ba15  candidates/pv-v-lds-layout/q_resources.py
 d9e0c64ca42467130352a0d95f7d0275f37f927252a932449683e80f9f2257a4  candidates/pv-v-lds-layout/q_resources_v2.py
+bc155d8df421007cc2e120fae1eb9f0baff9580e7cbf7369688b3f2c462a45ac  candidates/pv-v-lds-layout/qualify-p-lds-resident.py
 ec63a65f9ddf5c0564297d6fff094333c46ee2454447a6531ccf6c87a8936111  candidates/pv-v-lds-layout/screen-pv-wide-operand.py
 509ac9e1073f444fdd87b3d0d78ebb48838e32b0b692f543e0dec3fb473b8773  candidates/pv-v-lds-layout/screen.py
 9660bdcd4ffacf881d6654ef5b5fde714c11cb26f5632a164d326398d7843702  candidates/qk-mrope-batched/README.md
@@ -201,6 +202,7 @@ ff571e650b6bc2c11e57a9742d9337cd613c187e78f5b85edd135f29111f5a84  docs/q128-cach
 701ee2dedb82bc91857730627968a098bf03a8a0b2e660a5e403ad6b3c50821e  docs/q128-lengths-1218234.json
 5ccfddd0c99eca22a1903883f3f4078a25305167df22c46b741fe43ff20f72ac  docs/q128-lse-early-1218234.json
 74c9d851104730319dfa08bd8ae2c071b25fb89275d28a7e9976346d1b25eb4e  docs/q128-p-convert-1218234.json
+4583460f3587853cba5363f0d80d53465e890dafbef4cca573d552b5c2faa372  docs/q128-p-lds-axis-1218234-rebuild.json
 22304c788904d69fc4ec48497d2af79275728ee04842a405ca15e81f3d6d9c1a  docs/q128-p-lds-axis-1218234.json
 ebf472c2e19115e47a5aa75764ee36e89e6b6bebf6b4060270a4d15dcb55663c  docs/q128-packed-1218234-sequence-validation.json
 4ac183a88575f0acf1f978d0d2189f44a93aae4c12dcc58fd2c1013256d72713  docs/q128-packed-1218234-steady-measurement.json

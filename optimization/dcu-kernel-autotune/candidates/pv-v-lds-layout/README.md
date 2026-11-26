@@ -74,3 +74,5 @@ bash "$H3_AUTOTUNE_CODE_ROOT/optimization/run-optimized.sh" --config "$baseline_
 `row-v4-phase2` 使用 `vec=4, perPhase=2, maxPhase=8, order=[1,0]`。两个生产长度的单算子配对中位收益为 1.16% 和 1.05%，20 个边界长度均逐位一致。八卡第 1、25、49 次去噪输入上，音视频张量和各算子调用数一致，三步中位耗时之和缩短约 0.69%。独立 PMC 中，LDS 指令计数约下降 27%，bank conflict 计数下降 40%，L2 命中率基本持平。见 [测量记录](../../docs/q128-p-lds-axis-1218234.json)。
 
 普通官方入口 A 完整执行了 49 次 Transformer，输出规格和独立参考质量通过，MP4 与现用版逐字节一致。独立进程用时 261.734 秒，包含模型加载和首次编译。采用常驻 A/A/A/A/B/C/A 序列确认端到端收益和质量后，再决定是否替换当前默认。
+
+可在原 Q128 packed 构建命令中添加 `--packed-p-row-lds`，由 `rebuild-v2.sh` 直接生成这个布局。重建的 packed 镜像与微测镜像的可加载区段和映射一致，通用和回退镜像与基准一致，主机库的 SHA-256 也一致。正式常驻验证运行完后，可使用 `qualify-p-lds-resident.py BASELINE CANDIDATE --output RESULT` 检查三个正式 A 的性能、七条视频哈希和各请求的实际算子调用数。
