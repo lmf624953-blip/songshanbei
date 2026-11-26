@@ -146,4 +146,6 @@ H3_AOT_SAVE_IR=1 python "$code/optimization/adaln/build-attention-aot.py" "$cont
 python build-softmax-dpp-arithmetic.py "$control" "$candidate" all
 ```
 
-`all` 相对现用镜像在 27570/22016 token 配对分别缩短 7.10%/7.00%，20 个额外长度逐位一致。独立 PMC 中 VALU 指令减少约 15.6%，LDS 和全局读取指令数相同，scratch 为零。八卡第 1、25、49 次去噪的输出逐位一致，三个配对中位数合计缩短约 4.14%。设备镜像从重新生成的九齿 IR 构建，三个镜像的可加载区段均与实测版一致。见 [单卡配对、八卡回放、复建与 PMC](../../docs/softmax-dpp-arithmetic-a14r1n11.json)。
+`all` 相对上一版镜像在 27570/22016 token 配对分别缩短 7.10%/7.00%，20 个额外长度逐位一致。独立 PMC 中 VALU 指令减少约 15.6%，LDS 和全局读取指令数相同，scratch 为零。八卡第 1、25、49 次去噪的输出逐位一致，三个配对中位数合计缩短 4.13%。设备镜像从重新生成的九齿 IR 构建，三个镜像的可加载区段均与实测版一致。见 [单卡配对、八卡回放、复建与 PMC](../../docs/softmax-dpp-arithmetic-a14r1n11.json)。
+
+普通官方 A 通过规格检查，成片与上一验收版逐字节一致。独立常驻实例做三组 A 交替配对，端到端均值由 167.695 秒降至 161.959 秒，节省 3.420%；Transformer 均值由 146.748 秒降至 140.700 秒，节省 4.121%。三组端到端降幅分别为 3.954%、2.528%、3.769%。常驻 11 条请求包含 B、C 和返回 A，每条均执行 49 次 Transformer，成片分别与已验收结果逐字节一致。用 `summarize-softmax-dpp-steady.py` 从两次验收的原始记录重算配对与哈希检查。已将本地 `selected-best.env` 指向按上述步骤重建的 `attention-q128-softmax-dpp-a14r1n11`。见 [成片与常驻验收](../../docs/softmax-dpp-arithmetic-a14r1n11-qualified.json)。
