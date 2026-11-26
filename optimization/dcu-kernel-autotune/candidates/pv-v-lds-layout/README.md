@@ -232,3 +232,16 @@ python build-k-cross-block.py "$candidate" "$induction" after-pv --pair-with-lds
 ```
 
 十个候选在 27570/22016 token 均通过普通和放大输入的逐位校验。仅递推 K 地址叠加 K 预取和 LDS 分区后，相对正式版节省 4.88%/5.09%，19 组复测相对上一轮组合再省 0.87%/0.47%。双地址递推相对正式版节省 4.56%/5.17%，说明最佳选择随长度变化。掩码外提在本轮对照中回退。K 单独递推还通过另外 20 个长度和尾部哨兵检查，重建产物逐文件一致。独立 PMC 测得 220 VGPR、16 KiB LDS、0 B scratch，LDS 等待计数相对上一轮最快组合减少约 11%。按单 kernel 收益归档。见 [配对计时与独立 PMC](../../docs/k-loop-scalar-a14r1n11.json)。
+
+## 在线 softmax 的逐行最大值更新
+
+`build-softmax-schedule.py REFERENCE OUTPUT` 在固定的联合发射版和 K 地址递推组合上重排逐行指令，保留 RAW、WAR、WAW 与 `vcc` 依赖。五种纯重排逐位一致，叠加后没有额外收益。
+
+`--fold-max only` 折叠每行更新之前的两个 `max(x,x)`，完整块和尾块各减少 16 条指令。该变换锁定两个输入镜像的汇编摘要，两侧操作数源于前级最大值或初始负无穷。DTK 26.04 的 BW1000 探针覆盖 324 对取值，其中 80 对出现差异，均涉及 signaling NaN。排除 signaling NaN 的 225 对逐位一致，两种 max 生产者在探针输入上均未输出 signaling NaN。用 `hipcc --offload-arch=gfx936 -x hip probe-max-self.cc -o probe-max-self` 可复现。
+
+```bash
+python build-softmax-schedule.py "$induction" "$folded" --fold-max only
+python screen-softmax-special.py "$candidate" "$folded"
+```
+
+折叠直接应用到正式联合发射版时节省 1.35%/1.45%，叠加 K 地址递推和 LDS 组合后节省 6.90%/7.08%，19 组对上一轮组合的配对分别再省 2.10%/2.11%。最佳组合的独立重建逐文件一致，额外 20 个长度、尾部哨兵和 24 组特殊 BF16 输入逐位一致。独立 PMC 测得 220 VGPR、16 KiB LDS、0 B scratch。见 [配对、特殊值探针与八卡回放](../../docs/softmax-schedule-a14r1n11.json)。
