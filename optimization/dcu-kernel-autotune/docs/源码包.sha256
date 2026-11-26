@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-1e34442f7f196f009db9f334f6dad2d05022f38bf4605f0613c8dbc1dfec6e83  candidates/pv-v-lds-layout/README.md
+90aae886feb70a75a8d668d45b6ee3e1fffa27ffa6cb2d5237789a371af22dd8  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 07daea88808f2f1d293b205e27b6d5204ce5af78d27c01c3e4e14d1510ae9aa2  candidates/pv-v-lds-layout/build-dual-q128.py
@@ -74,7 +74,7 @@ b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
 10080bb8b0a7f58a7874c55047731fd396288b21753215e47e8cf1920c6b9871  candidates/pv-v-lds-layout/build-k-producer.py
 e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-v-lds-layout/build-k-resources.py
-ce3ea61a2685dc4d621d647be1896ce5a005453d74dc69f9267bb9d61442aa50  candidates/pv-v-lds-layout/build-mmac-issue.py
+f6aca49b40ef7146758ad8284069a92fd560cf721c198a8899e7dc7dae6be913  candidates/pv-v-lds-layout/build-mmac-issue.py
 3c740f14a5141d06f5b58cd7c71a55b604ffa1afb5e6f5b12a16e2483cc87ae1  candidates/pv-v-lds-layout/build-p-lds-axis.py
 cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-v-lds-layout/build-p-resources.py
 2b12171a926b8f205eb7f170b68eefe1e9d4deb733945fa0c0e3983ba92565e8  candidates/pv-v-lds-layout/build-p-wave-exchange.py
@@ -318,6 +318,7 @@ a2a564cdaa751aa12cdea16f914faf0269eb84e82e3bd1d39fbde4fac11bd3f0  docs/swiglu-pa
 a6ce9a1a741d483e2570999aef85c09fdaf7127509f74b5a7d56c6f08653d7bd  docs/swiglu-packed-mantissas-1218234-micro.json
 20b7aec63bc2be93ceee7a6a9192d34de391bee93f6cf72403075442c22e5754  docs/swiglu-row-1218234-micro.json
 fde7d0d17bb070d7654420ed2a7707018b56908f34bffb00a881605cfa782fd2  docs/swiglu-row-source-1218234-source-rebuild.json
+bce01abee4b8de044d3f9d22da889d99480887172572fe7d79c224aee03ee98f  docs/v-prefetch-a14r1n11.json
 12f639ccc6e9e80ba938ac96ac5b6f20394e04bed59e60600ab64fbaff68cbcb  docs/vae-device-scheduling-1218234-micro.json
 55cf0ecc0072ac93186776507956624aa66924f4b1bcc5fe9e4e177105860914  docs/wide-norm-compact-1218234-source-rebuild.json
 005f21606a90184628fc4cee533c1a8010e88bc6ea7e6c5a9753fc7a3a967ed9  docs/wide-norm-epilogue-1218234-micro.json

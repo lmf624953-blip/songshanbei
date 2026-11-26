@@ -23,6 +23,7 @@ MMAC = re.compile(
 )
 RESCALE = re.compile(r"\tv_mul_f32_e32 v(\d+), v\1, v(\d+)")
 QK_SCALE = re.compile(r"\tv_mul_f32_e32 v(\d+), v114, v(\d+)")
+V_REGISTER = re.compile(r"\bv(?:(9[7-9]|10[0-4])\b|\[(9[7-9]|10[0-4]):(9[7-9]|10[0-4])\])")
 
 
 def digest(data):
@@ -105,7 +106,85 @@ def pack_qk_scale(lines):
     return len(packed) - 2
 
 
-def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale):
+def prefetch_v(lines, mode):
+    start = lines.index("\ts_andn2_b64 vcc, exec, s[26:27]", lines.index(".Ltmp1:"))
+    end = lines.index(".LBB0_18:", start)
+    block = lines[start:end]
+    assert sum(line.startswith("\tglobal_load_dwordx2 ") for line in block) == 4
+    assert sum(line.startswith("\tv_mov_b32_e32 ") for line in block) == 8
+    insert = lines.index(".Ltmp0:") + 1
+    sync = lines.index("\ts_waitcnt vmcnt(0) lgkmcnt(0)", end)
+    assert all(not re.search(r"(?<!\d)(?:v(?:17[5-9]|18[0-2])\b|v\[(?:17[5-9]|18[0-2]):)", line)
+               for line in lines[insert:sync] if line not in block)
+    sources = {reg: reg + 78 for reg in range(97, 105)}
+
+    def rename(match):
+        if match[1]:
+            return f"v{sources[int(match[1])]}"
+        low, high = (sources[int(r)] for r in match.groups()[1:])
+        assert high - low == int(match[3]) - int(match[2])
+        return f"v[{low}:{high}]"
+
+    early = [V_REGISTER.sub(rename, line) for line in block]
+    early = [line.replace(".LBB0_18", ".Lh3_v_loaded") for line in early]
+    if mode == "copy":
+        copies = [f"\tv_mov_b64_e32 v[{reg}:{reg + 1}], v[{reg + 78}:{reg + 79}]"
+                  for reg in range(97, 105, 2)]
+    else:
+        # P's LDS read reuses v182. Move just this half of the last V pair.
+        copies = ["\tv_mov_b32_e32 v104, v182"]
+        sources[104] = 104
+        pack = lines.index("\tv_lshlrev_b32_e32 v122, 16, v99", sync)
+        pack_end = lines.index("\tv_add_u32_e32 v122, 0, v135", pack)
+        lines[pack:pack_end] = [V_REGISTER.sub(rename, line) for line in lines[pack:pack_end]]
+    lines[sync + 1:sync + 1] = copies
+    del lines[start:end]
+    lines[insert:insert] = early + [".Lh3_v_loaded:"]
+    return dict(stage="prefetch_v", mode=mode, loads=4, copy_instructions=len(copies))
+
+
+def change_kv_zero(lines, mode, v_prefetch):
+    v_join = ".Lh3_v_loaded" if v_prefetch else ".LBB0_18"
+    for operand, join in (("k", ".LBB0_16"), ("v", v_join)):
+        branch = lines.index(f"\ts_cbranch_vccnz {join}")
+        start = branch - 8
+        zeros = lines[start:branch]
+        registers = [re.fullmatch(r"\tv_mov_b32_e32 v(\d+), 0", line) for line in zeros]
+        assert all(registers)
+        first = int(registers[0][1])
+        assert [int(register[1]) for register in registers] == list(range(first, first + 8))
+        packed = [f"\tv_mov_b64_e32 v[{reg}:{reg + 1}], 0" for reg in range(first, first + 8, 2)]
+        if mode == "miss":
+            # vcc is zero only when all active lanes can take the complete load.
+            load = f".Lh3_{operand}_load"
+            lines[start:branch + 1] = [f"\ts_cbranch_vccz {load}", *packed,
+                                       f"\ts_branch {join}", f"{load}:"]
+        else:
+            lines[start:branch] = packed
+    return dict(stage="kv_zero", mode=mode, zero_registers_per_load=8)
+
+
+def elide_v_operations(lines, mode):
+    guard = "\ts_andn2_b64 vcc, exec, s[26:27]"
+    first = lines.index(guard, lines.index(".LBB0_14:"))
+    second = lines.index(guard, first + 1)
+    if mode in ("guard", "both"):
+        # The K and V load conditions are identical. Only the first guard writes vcc.
+        intervening = lines[first + 1:second]
+        assert all("s[26:27]" not in line and not line.startswith(("\tv_cmp", "\ts_cmp"))
+                   and ("vcc" not in line or line.startswith("\ts_cbranch_vcc"))
+                   for line in intervening)
+        del lines[second]
+    if mode in ("pack", "both"):
+        # Reapplying the same fixed mask to the result leaves it unchanged.
+        first = lines.index("\tv_bfi_b32 v122, s42, v175, v122")
+        assert lines[first + 1] == "\tv_perm_b32 v177, v177, v175, s44"
+        assert lines[first + 2] == lines[first]
+        del lines[first + 2]
+    return dict(stage="elide_v_operations", mode=mode)
+
+
+def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale, v_prefetch, kv_zero, elide_v):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', assembly, flags=re.M)
     if digest(normalized.encode()) != REFERENCE:
         raise ValueError("Expected the validated four-row Q128 DPP assembly")
@@ -132,6 +211,12 @@ def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale):
     if packed_qk_scale:
         count = pack_qk_scale(lines)
         changes.append(dict(stage="qk_scale", scalar_multiply=16, packed_multiply=count))
+    if v_prefetch:
+        changes.append(prefetch_v(lines, v_prefetch))
+    if kv_zero:
+        changes.append(change_kv_zero(lines, kv_zero, v_prefetch))
+    if elide_v:
+        changes.append(elide_v_operations(lines, elide_v))
     return "\n".join(lines) + "\n", list(reversed(changes))
 
 
@@ -144,11 +229,17 @@ def main():
     cli.add_argument("--pv-issue-ready", action="store_true")
     cli.add_argument("--pack-pv-rescale", action="store_true")
     cli.add_argument("--pack-qk-scale", action="store_true")
+    cli.add_argument("--prefetch-v", choices=("copy", "direct"))
+    cli.add_argument("--kv-zero", choices=("packed", "miss"))
+    cli.add_argument("--elide-v", choices=("guard", "pack", "both"))
     args = cli.parse_args()
+    if args.elide_v and args.prefetch_v != "direct":
+        cli.error("--elide-v requires --prefetch-v direct")
     asm_name, image_name = PACKED + ".amdgcn", PACKED + ".hsaco"
     source = (args.reference / asm_name).read_text()
     assembly, changes = transform(source, args.qk_wait_width, args.pv_wait_width,
-                                  args.pv_issue_ready, args.pack_pv_rescale, args.pack_qk_scale)
+                                  args.pv_issue_ready, args.pack_pv_rescale, args.pack_qk_scale,
+                                  args.prefetch_v, args.kv_zero, args.elide_v)
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
     options = backend.parse_options(dict(num_warps=4, num_stages=1, kpack=2))
@@ -163,6 +254,9 @@ def main():
         mmac_issue=dict(qk_wait_width=args.qk_wait_width, pv_wait_width=args.pv_wait_width,
                         pv_issue_ready=args.pv_issue_ready, sections=changes,
                         packed_pv_rescale=args.pack_pv_rescale, packed_qk_scale=args.pack_qk_scale,
+                        v_prefetch=args.prefetch_v,
+                        kv_zero=args.kv_zero,
+                        elide_v=args.elide_v,
                         reference_packed_sha256=digest(original_image))
     )
     args.output.mkdir()
