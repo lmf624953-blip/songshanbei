@@ -109,3 +109,11 @@ K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-o
 在 `--quad-dpp` 上加 `--rounding-mode paired` 可在软件舍入后直接拼接两个 BF16 高半字。`--rounding-mode unpacked` 在交换后才提取高半字，每次交换传递一个已舍入的 32 位整数。两种方式都复用原 RNE 舍入和 `0x7fff` NaN 编码。DTK 26.04 汇编器在 `gfx936` 上拒绝 `v_cvt_pk_bf16_f32`，接受 `v_perm_b32`。
 
 两种生产长度的普通与放大输入均通过逐位校验。直接打包回退 3.72%–3.77%，独立 PMC 的全局读取、LDS 和 VALU 指令计数与上一轮 DPP 相同。延迟截取回退 6.18%–6.24%。本轮只归档。见 [配对计时与 PMC](../../docs/p-round-pack-a14r1n11.json)。
+
+## P 的 LDS 宽访问与 wave 内等待
+
+`build-p-wave-lds.py REFERENCE OUTPUT` 以 `s_waitcnt lgkmcnt(0)` 代替 P 写后读前的 workgroup barrier。基准映射的全部 4096 个 BF16 存取位置均已逐一核对，每个元素由同一 wave 写入并读回。加 `--dedicated` 把 P 放进单独的 LDS 区域，省去 K 读取和 P 写入之间的 workgroup barrier。V 写前仍保留原 barrier，保护共享区里跨 wave 的 K 读取。
+
+通过 `--packed linear|swizzled` 将相同读写 lane 的两个或四个 BF16 合成一次访问，`--items 4` 选择四个。`--packed padded --items 4` 使用每槽 65 个 64 位字的布局，使编译器生成 `ds_write2_b64` 和 `ds_read2_b64`。`--packed wide-read --items 4` 将槽距调整为 66 个字，在读回端合并成 128 位。脚本枚举地址，按访问宽度核对连续线程的 bank 分布，并验证读回对齐。`--workgroup-publication` 保留 P 读写之间的原 barrier。各模式均由现用 Q128 packed LLVM IR 的固定 SHA-256 开始构建。
+
+17 个变体在长度 27570 和 22016 的普通和放大输入上均逐位一致，复建的可执行 `.text` 与实测镜像一致。最快的 128 位读回版保留原 barrier，配对耗时分别缩短 0.17% 和 0.09%。独立 PMC 的 LDS 指令下降约 54%，LDS 等待计数下降约 60%，全局读取指令相同，VALU 指令增加约 1%。只换 wave 内等待的版本慢约 1.7%。本轮没有进入八卡或官方成片回归的候选。见 [配对计时、复建与 PMC](../../docs/p-wave-lds-a14r1n11.json)。

@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-56e76348c13da2e7735fa64c4feb13c68ed3b2a5cca995c75eb5c521f26217d6  candidates/pv-v-lds-layout/README.md
+05c0f0aece6c8f5a246ba8047a019f430cb756663690612951352e4c38cfb2dc  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 16567e781f9ccdb388bebc2013fa80387745054da32acfa042b9940aff1d673a  candidates/pv-v-lds-layout/build-full-kv-unmasked.py
@@ -76,6 +76,7 @@ e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-
 3c740f14a5141d06f5b58cd7c71a55b604ffa1afb5e6f5b12a16e2483cc87ae1  candidates/pv-v-lds-layout/build-p-lds-axis.py
 cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-v-lds-layout/build-p-resources.py
 2b12171a926b8f205eb7f170b68eefe1e9d4deb733945fa0c0e3983ba92565e8  candidates/pv-v-lds-layout/build-p-wave-exchange.py
+9cea029bc1a84412fa700432301e61fb838774a0f7f72a42b5e88b0d075c8d69  candidates/pv-v-lds-layout/build-p-wave-lds.py
 9e1a79f07ff842aed67d52573abe1ffa3ca56298347f34bb8d18a73d6b37e54e  candidates/pv-v-lds-layout/build-producer.py
 1ae0f7f7da03209fe6f3e82fdff6950eadd17895ed78c3c4a216b7f73aa1744c  candidates/pv-v-lds-layout/build-pv-lds-order.py
 7d81816a5c6685d9d12a5c12b24871e1a0bb6833579c5e96fa3af449f3448004  candidates/pv-v-lds-layout/build-pv-lds-overlap.py
@@ -208,6 +209,7 @@ ffd40883c739b6e7ce8482c69bbd02f0bdfd6765cd03eae22d4c298aa301f561  docs/mrope-aot
 9b7aa258aac734c6fa3e872dddc65cd8577389414ed0e9c66d431fd18738276d  docs/p-round-pack-a14r1n11.json
 fc870872b7656a859ee9ca9e2793d46fb8bbcc558487d8840cd8e0f32ca82e86  docs/p-wave-dpp-a14r1n11.json
 8c15f1931cbb0ddf34150b4ab1a7f63f2d6d4602c652fecdb94f0d3e37359254  docs/p-wave-exchange-a14r1n11.json
+d198f6b2a008f6a78056a65e52172f7069fc05143dec8eacb07e19833c1a37ae  docs/p-wave-lds-a14r1n11.json
 6d961ad7fe06e1467bfb23913e691874ac892a94a9f7f5f4f5f43590b05ff200  docs/precise-pv-tail-1218234-results.json
 3c1fdccdfd941d657a77054c1add8791d4618c234f6e71f575c7ca674383ab4d  docs/pv-lds-overlap-a14r1n11.json
 d265f40c5264dcc6ca956e9ea210ac503b24f79fd8c983fd49f4e0af6a1c1cc3  docs/pv-lds-query-1218234-screen.json
