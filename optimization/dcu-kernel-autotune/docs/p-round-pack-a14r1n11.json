@@ -1,0 +1,347 @@
+{
+  "hostname": "a14r1n11",
+  "scope": "单卡 Q128 packed BF16 长注意力，两个生产长度；独立逐位验证、无 profiler 配对计时及 PMC",
+  "assembler_probe": {
+    "compiler": "/public/software/compiler/dtk-26.04/llvm/bin/clang",
+    "target": "gfx936",
+    "v_cvt_pk_bf16_f32": "instruction not supported on this GPU",
+    "v_perm_b32": "accepted"
+  },
+  "image_sha256": {
+    "paired": "2b656fed204eab8a7e8b2cac021b714a63313dbdb1ced3c55d0a103cb772d3ab",
+    "unpacked": "c904961c0f31d731e20dc593e825640169ab734a826d36d26f729e9b7a54cc40"
+  },
+  "screen": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "paired",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-round-pack-a14r1n11/paired",
+        "experiment": {
+          "p_wave_exchange": true,
+          "full_only": false,
+          "quad_dpp": true,
+          "rounding_mode": "paired",
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 204
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.106712341308594,
+                35.09583282470703,
+                35.09663009643555,
+                35.0921516418457,
+                35.08287048339844,
+                35.093910217285156,
+                35.108150482177734,
+                35.093910217285156,
+                35.10767364501953,
+                35.088951110839844,
+                35.09743118286133
+              ],
+              [
+                36.42767333984375,
+                36.423030853271484,
+                36.42463302612305,
+                36.41903305053711,
+                36.41887283325195,
+                36.418392181396484,
+                36.4217529296875,
+                36.41583251953125,
+                36.42143249511719,
+                36.41535186767578,
+                36.420310974121094
+              ]
+            ],
+            "medians_ms": [
+              35.09583282470703,
+              36.420310974121094
+            ],
+            "paired_gain_percent": -3.774107689655426,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.704151153564453,
+                23.69439125061035,
+                23.6715145111084,
+                23.686553955078125,
+                23.69615364074707,
+                23.705753326416016,
+                23.696151733398438,
+                23.727670669555664,
+                23.708953857421875,
+                23.683349609375,
+                23.713430404663086
+              ],
+              [
+                24.57935333251953,
+                24.576953887939453,
+                24.57503318786621,
+                24.570711135864258,
+                24.583351135253906,
+                24.57855224609375,
+                24.57887077331543,
+                24.576309204101562,
+                24.57695198059082,
+                24.568471908569336,
+                24.577590942382812
+              ]
+            ],
+            "medians_ms": [
+              23.69615364074707,
+              24.576953887939453
+            ],
+            "paired_gain_percent": -3.724774475083281,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "variant": "unpacked",
+        "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-round-pack-a14r1n11/unpacked",
+        "experiment": {
+          "p_wave_exchange": true,
+          "full_only": false,
+          "quad_dpp": true,
+          "rounding_mode": "unpacked",
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 56,
+            "vgpr_count": 208
+          }
+        },
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                35.08127212524414,
+                35.093902587890625,
+                35.08238220214844,
+                35.098388671875,
+                35.096946716308594,
+                35.09503173828125,
+                35.096153259277344,
+                35.09599304199219,
+                35.090553283691406,
+                35.105751037597656,
+                35.090232849121094
+              ],
+              [
+                37.28687286376953,
+                37.28927230834961,
+                37.25455093383789,
+                37.28847122192383,
+                37.23695373535156,
+                37.28847122192383,
+                37.239349365234375,
+                37.28702926635742,
+                37.22510528564453,
+                37.23342514038086,
+                37.30479049682617
+              ]
+            ],
+            "medians_ms": [
+              35.09503173828125,
+              37.28687286376953
+            ],
+            "paired_gain_percent": -6.239837875531262,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                23.69359016418457,
+                23.706552505493164,
+                23.701112747192383,
+                23.702714920043945,
+                23.694873809814453,
+                23.69615364074707,
+                23.699832916259766,
+                23.701271057128906,
+                23.697433471679688,
+                23.706872940063477,
+                23.705591201782227
+              ],
+              [
+                25.16383171081543,
+                25.164472579956055,
+                25.164472579956055,
+                25.167512893676758,
+                25.16111183166504,
+                25.16143226623535,
+                25.16271209716797,
+                25.170711517333984,
+                25.16463279724121,
+                25.165111541748047,
+                25.17487144470215
+              ]
+            ],
+            "medians_ms": [
+              23.701112747192383,
+              25.164472579956055
+            ],
+            "paired_gain_percent": -6.183613795315024,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "winners": []
+  },
+  "independent_pmc": {
+    "reference": {
+      "27570": {
+        "arch_vgpr": 216,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 271095552,
+        "SQ_WAIT_INST_LDS": 700325480.5,
+        "SQ_LDS_BANK_CONFLICT": 417070080,
+        "SQ_INSTS_VALU": 3210175584
+      },
+      "22016": {
+        "arch_vgpr": 216,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 172297216,
+        "SQ_WAIT_INST_LDS": 439920259.25,
+        "SQ_LDS_BANK_CONFLICT": 265072640,
+        "SQ_INSTS_VALU": 2041372368
+      }
+    },
+    "bpermute": {
+      "27570": {
+        "arch_vgpr": 208,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 187681536,
+        "SQ_WAIT_INST_LDS": 449058438.25,
+        "SQ_LDS_BANK_CONFLICT": 333656064,
+        "SQ_INSTS_VALU": 3371741856
+      },
+      "22016": {
+        "arch_vgpr": 208,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 119282688,
+        "SQ_WAIT_INST_LDS": 282194876.25,
+        "SQ_LDS_BANK_CONFLICT": 212058112,
+        "SQ_INSTS_VALU": 2144068752
+      }
+    },
+    "quad_dpp": {
+      "27570": {
+        "arch_vgpr": 204,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 31314920,
+        "SQ_INSTS_LDS": 145974528,
+        "SQ_WAIT_INST_LDS": 344625960.75,
+        "SQ_LDS_BANK_CONFLICT": 333656064,
+        "SQ_INSTS_VALU": 3413412576
+      },
+      "22016": {
+        "arch_vgpr": 204,
+        "lds": 8192,
+        "scr": 0,
+        "SQ_INSTS_VMEM_RD": 19918976,
+        "SQ_INSTS_LDS": 92775424,
+        "SQ_WAIT_INST_LDS": 217154897.5,
+        "SQ_LDS_BANK_CONFLICT": 212058112,
+        "SQ_INSTS_VALU": 2170561568
+      }
+    },
+    "paired": {
+      "27570": {
+        "samples": 4,
+        "arch_vgpr": 204.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VMEM_RD": 31314920.0,
+        "SQ_INSTS_LDS": 145974528.0,
+        "SQ_WAIT_INST_LDS": 344876562.5,
+        "SQ_LDS_BANK_CONFLICT": 333656064.0,
+        "SQ_INSTS_VALU": 3413412576.0
+      },
+      "22016": {
+        "samples": 4,
+        "arch_vgpr": 204.0,
+        "lds": 8192.0,
+        "scr": 0.0,
+        "SQ_INSTS_VMEM_RD": 19918976.0,
+        "SQ_INSTS_LDS": 92775424.0,
+        "SQ_WAIT_INST_LDS": 217603036.5,
+        "SQ_LDS_BANK_CONFLICT": 212058112.0,
+        "SQ_INSTS_VALU": 2170561568.0
+      }
+    }
+  },
+  "verdict": "两种变体均通过逐位校验，配对耗时均回退。直接打包与原 DPP 的动态 LDS、VALU 和全局读取指令计数相同。",
+  "selected_default_changed": false,
+  "winners": []
+}

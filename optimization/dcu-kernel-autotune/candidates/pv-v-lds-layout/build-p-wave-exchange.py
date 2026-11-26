@@ -41,7 +41,19 @@ def verify_permutation():
             assert addresses[addr] == (producer, register)
 
 
-def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp):
+def rounding_inputs(lines):
+    inputs = {}
+    for line in lines:
+        match = re.match(r"  %(o\d+) = select i1 %(o\d+), bfloat 0xR7FFF, bfloat %(o\d+),", line)
+        if not match:
+            continue
+        value, nan, _ = (int(group[1:]) for group in match.groups())
+        assert nan == value - 8
+        inputs[f"o{value}"] = (f"o{value - 4}", f"o{nan}")
+    return inputs
+
+
+def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp, rounding_mode):
     region = lines[start:end]
     stores, loads = {}, {}
     scalars = {}
@@ -64,13 +76,30 @@ def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp):
         code.append(f"  %{label} = {expr}")
         return "%" + label
 
+    rounding = rounding_inputs(lines[:start]) if rounding_mode != "separate" else {}
+
+    def rounded_word(reg):
+        value, nan = rounding[stores[STORES[reg]]]
+        return emit(f"select i1 %{nan}, i32 2147418112, i32 %{value}")
+
     values = {}
+    exchange_registers = range(16) if rounding_mode == "unpacked" else PAIR_BASES
+    if rounding_mode == "unpacked":
+        for reg in exchange_registers:
+            values[reg] = rounded_word(reg)
     for reg in PAIR_BASES:
-        low = emit(f"bitcast bfloat %{stores[STORES[reg]]} to i16")
-        high = emit(f"bitcast bfloat %{stores[STORES[reg | 2]]} to i16")
-        lo = emit(f"zext i16 {low} to i32")
-        hi = emit(f"zext i16 {high} to i32")
-        shifted = emit(f"shl i32 {hi}, 16")
+        if rounding_mode == "unpacked":
+            break
+        if rounding_mode == "paired":
+            lo, hi = rounded_word(reg), rounded_word(reg | 2)
+            lo = emit(f"lshr i32 {lo}, 16")
+            shifted = emit(f"and i32 {hi}, -65536")
+        else:
+            low = emit(f"bitcast bfloat %{stores[STORES[reg]]} to i16")
+            high = emit(f"bitcast bfloat %{stores[STORES[reg | 2]]} to i16")
+            lo = emit(f"zext i16 {low} to i32")
+            hi = emit(f"zext i16 {high} to i32")
+            shifted = emit(f"shl i32 {hi}, 16")
         values[reg] = emit(f"or i32 {lo}, {shifted}")
 
     lane = emit("and i32 %o20, 63")
@@ -79,7 +108,7 @@ def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp):
         bit = emit(f"and i32 {lane}, {lane_bit}")
         high = emit(f"icmp ne i32 {bit}, 0")
         remote = emit(f"xor i32 {address}, {4 * lane_bit}")
-        for reg in PAIR_BASES:
+        for reg in exchange_registers:
             if reg & reg_bit:
                 continue
             low_pack, high_pack = values[reg], values[reg | reg_bit]
@@ -98,8 +127,13 @@ def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp):
     hi_shr = emit(f"lshr i32 {hi}, 2")
     selector = emit(f"or i32 {lo_shl}, {hi_shr}")
     final_address = emit(f"shl i32 {selector}, 2")
-    for reg in PAIR_BASES:
+    for reg in exchange_registers:
         packed = emit(f"call i32 @llvm.amdgcn.ds.bpermute(i32 {final_address}, i32 {values[reg]})")
+        if rounding_mode == "unpacked":
+            shifted = emit(f"lshr i32 {packed}, 16")
+            value = emit(f"trunc i32 {shifted} to i16")
+            emit(f"insertelement <1 x i16> poison, i16 {value}, i32 0", loads[LOADS[reg]])
+            continue
         low = emit(f"trunc i32 {packed} to i16")
         shifted = emit(f"lshr i32 {packed}, 16")
         high = emit(f"trunc i32 {shifted} to i16")
@@ -112,7 +146,7 @@ def replace_stage(lines, start, end, prefix, pointer_offset, quad_dpp):
     lines[start:end] = code
 
 
-def transform(source, full_only, quad_dpp=False):
+def transform(source, full_only, quad_dpp=False, rounding_mode="separate"):
     if hashlib.sha256(source.encode()).hexdigest() != REFERENCE_SHA256:
         raise ValueError("Use the verified Q128 packed LLVM IR")
     verify_permutation()
@@ -130,7 +164,7 @@ def transform(source, full_only, quad_dpp=False):
         marker = f"load <1 x i16>, ptr addrspace(3) %o{241 + offset},"
         last_load = next(j for j in range(i, len(lines)) if marker in lines[j])
         end = next(j for j in range(last_load + 1, len(lines)) if "fence syncscope" in lines[j])
-        replace_stage(lines, start, end, f"p_exchange{n}", offset, quad_dpp)
+        replace_stage(lines, start, end, f"p_exchange{n}", offset, quad_dpp, rounding_mode)
     declaration = "declare i32 @llvm.amdgcn.ds.bpermute(i32, i32)"
     return "\n".join([*lines, declaration, ""])
 
@@ -142,9 +176,12 @@ def main():
     cli.add_argument("--full-only", action="store_true")
     cli.add_argument("--quad-dpp", action="store_true",
                      help="Use DPP quad permutations for the two register/lane exchanges")
+    cli.add_argument("--rounding-mode", choices=("separate", "paired", "unpacked"), default="separate",
+                     help="Keep scalar BF16 conversion, pack rounded words directly, or exchange rounded words")
     args = cli.parse_args()
     ref = args.reference.resolve(strict=True)
-    image_source = transform((ref / "dense-attention-packed.llir").read_text(), args.full_only, args.quad_dpp)
+    image_source = transform((ref / "dense-attention-packed.llir").read_text(), args.full_only,
+                             args.quad_dpp, args.rounding_mode)
     os.environ["AMDGCN_USE_BUFFER_OPS"] = "1"
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
@@ -165,7 +202,7 @@ def main():
     metadata = json.loads((ref / "dense-attention-aot-build.json").read_text())
     metadata["packed_strides"]["hsaco_sha256"] = hashlib.sha256(image).hexdigest()
     metadata["experiment"] = dict(p_wave_exchange=True, full_only=args.full_only,
-                                  quad_dpp=args.quad_dpp, resources=resources)
+                                  quad_dpp=args.quad_dpp, rounding_mode=args.rounding_mode, resources=resources)
     (args.output / "dense-attention-aot-build.json").write_text(json.dumps(metadata, indent=2) + "\n")
     print(json.dumps(metadata["experiment"]))
 
