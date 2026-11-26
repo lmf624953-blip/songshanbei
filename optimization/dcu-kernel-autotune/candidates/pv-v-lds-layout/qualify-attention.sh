@@ -35,10 +35,11 @@ bash "$code/optimization/run-sequence.sh" indexed --model "$model" --out "$root/
 
 previous="$accepted/steady-paired/sequence-validation.json"
 dog=$(jq -er '[.[] | select(.case == "A")][0].reference' "$previous")
-square=$(jq -er '[.[] | select(.case == "B")][0].reference' "$previous")
-last=$(jq -er '[.[] | select(.case == "C")][0].reference' "$previous")
+square_video=$(jq -er '[.[] | select(.case == "B")][0].reference' "$previous")
+last_video=$(jq -er '[.[] | select(.case == "C")][0].reference' "$previous")
 python "$code/optimization/validate-sequence.py" "$root/steady-paired" \
-    --dog-reference "$dog" --square-reference "$square" --last-frame-reference "$last" \
+    --dog-reference "$dog" --square-reference "$(dirname -- "$square_video")" \
+    --last-frame-reference "$(dirname -- "$last_video")" \
     > "$root/steady-quality.log" 2>&1
 printf "0\n" > "$root/qualification-exit-code"
 python "$script_dir/summarize-softmax-dpp-steady.py" "$root" "$accepted/steady-paired" "$accepted/official"
