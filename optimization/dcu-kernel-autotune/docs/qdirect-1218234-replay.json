@@ -1,0 +1,58 @@
+{
+  "verdict": "PASS",
+  "samples": [
+    {
+      "step": 1,
+      "base_seconds": 3.4138206993229687,
+      "candidate_seconds": 3.2979325959458947,
+      "output_sha256": [
+        "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098",
+        "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+      ],
+      "calls": {
+        "adaln": 32,
+        "indexed": 6400,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64
+      }
+    },
+    {
+      "step": 25,
+      "base_seconds": 3.414712221128866,
+      "candidate_seconds": 3.298661218956113,
+      "output_sha256": [
+        "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779",
+        "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+      ],
+      "calls": {
+        "adaln": 32,
+        "indexed": 6400,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64
+      }
+    },
+    {
+      "step": 49,
+      "base_seconds": 3.415609932038933,
+      "candidate_seconds": 3.298899754881859,
+      "output_sha256": [
+        "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79",
+        "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+      ],
+      "calls": {
+        "adaln": 32,
+        "indexed": 6400,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64
+      }
+    }
+  ],
+  "sequential_same_instance": true,
+  "reduction_percent": 3.4034012188938867
+}

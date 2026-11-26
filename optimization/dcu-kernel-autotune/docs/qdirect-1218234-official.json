@@ -1,0 +1,80 @@
+{
+  "verdict": "PASS",
+  "scope": "官方默认入口冷启动",
+  "diffusion": {
+    "seconds": 164.092,
+    "calls": 49
+  },
+  "entry_wall_s": 275.423,
+  "source_sha256": "eb9501ce8c4541a24884ccfc4494f1d5ba209609e2fd3bf18a924e5fccf015a0",
+  "default_parameters": {
+    "entry": "/public/home/acvduipmem/xsh/songshanbei/runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py",
+    "entry_sha256": "9bee7f79ad0968cb2af1ade301ef59a4db31d2c06ba9d2ade3435dc2bd98ca46",
+    "defaults": {
+      "--steps": 50,
+      "--seed": 42,
+      "--num-frames": 124
+    },
+    "source": "未传入 steps/num-frames/seed/height/width 覆盖参数"
+  },
+  "media": {
+    "local_checks_passed": true,
+    "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+    "transformer_calls": 49,
+    "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+    "media": {
+      "media_readable": true,
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      },
+      "video_specs_passed": true,
+      "similarity_evaluated": false,
+      "competition_validation_passed": false
+    },
+    "comparison": {
+      "exact": false,
+      "left_metadata": {
+        "width": 768,
+        "height": 928,
+        "declared_frames": 124,
+        "average_fps": 24.0,
+        "duration_seconds": 5.166666666666667
+      },
+      "right_metadata": {
+        "width": 768,
+        "height": 928,
+        "declared_frames": 124,
+        "average_fps": 24.0,
+        "duration_seconds": 5.166666666666667
+      },
+      "metadata_size_match": true,
+      "decoded_length_match": true,
+      "left_frames": 124,
+      "right_frames": 124,
+      "shape_mismatches": 0,
+      "different_elements": 224410185,
+      "compared_elements": 265125888,
+      "max_absolute_difference": 237,
+      "mean_absolute_difference": 5.597480216643348,
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "ssim_max_percent": 98.0362796408051,
+      "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+    }
+  },
+  "compared_to_selected": {
+    "exact": true,
+    "video_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+  }
+}
