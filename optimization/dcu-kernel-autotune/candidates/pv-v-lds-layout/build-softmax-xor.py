@@ -16,6 +16,7 @@ from triton.backends.compiler import GPUTarget
 
 
 REFERENCE_SHA256 = "170beed8a92797444a6525b06d5f0bd43935b89b2cac83ee0652f02dc7d07e9c"
+REFERENCE_NORMALIZED_SHA256 = "eb73de5d8905d1b637b84ff9700f71a0ffdef3031b5314cd1db2b043ba0d9611"
 LOCATIONS = {58: "max", 89: "max", 72: "sum", 107: "sum"}
 UPDATE = re.compile(
     r"  (%o\d+) = tail call i32 @llvm\.amdgcn\.update\.dpp\.i32\("
@@ -33,7 +34,9 @@ def verify_lane_maps():
 
 
 def transform(source, row8, row4, scope, mov_dpp):
-    if hashlib.sha256(source.encode()).hexdigest() != REFERENCE_SHA256:
+    normalized = re.sub(r'^(\s*!\d+ = !DIFile\(filename: "[^"]*", directory: )"[^"]*"',
+                        r'\1""', source, flags=re.M)
+    if hashlib.sha256(normalized.encode()).hexdigest() != REFERENCE_NORMALIZED_SHA256:
         raise ValueError("Use the verified Q128 packed LLVM IR")
     verify_lane_maps()
     source = re.sub(r"%(\d+)\b", r"%o\1", source)

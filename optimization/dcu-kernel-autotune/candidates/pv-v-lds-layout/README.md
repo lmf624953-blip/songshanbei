@@ -131,3 +131,19 @@ K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-o
 `build-softmax-xor.py REFERENCE OUTPUT` 在原归约树中以 `row_ror:8` 替换异或 8 的两条带 bank mask 的 DPP。`--scope max|sum` 分别限制到最大值或求和。`--row4 ds` 和 `--row8 ds` 可比较 `ds_swizzle_b32` 的地址映射。脚本核对 64 个 lane 的映射、完整与尾块的变更位置，并保留原 FP32 算术顺序和 BF16 MMAC。
 
 六个镜像在两个生产长度的普通与放大输入上均逐位一致。最大值和求和同时用 `row_ror:8` 时，27570/22016 token 配对分别缩短 1.69%/2.01%。静态 `v_mov_b32_dpp` 从 192 条降至 160 条，`s_nop` 从 42 条降至 15 条。独立 PMC 中 VALU 指令减少约 2.6%，LDS 和全局读指令计数相同，硬件仍分配 216 VGPR、8192 B LDS 和 0 B scratch。DS 路径均回退。`--mov-dpp` 与 `--dpp-combine` 的三种组合生成了和最优旋转镜像相同的可加载区段，未重复计时。本轮收益低于端到端优先线，继续归档。见 [配对、编译器对照与 PMC](../../docs/softmax-xor-a14r1n11.json)。
+
+## Softmax DPP 交换与算术融合
+
+`build-softmax-dpp-arithmetic.py REFERENCE OUTPUT {row,quad-last,quad,all}` 在行旋转版的归约树上分别融合不同级别的交换与 `v_max_f32_dpp`、`v_add_f32_dpp`。每个内联 DPP 前显式等待 VGPR 数据，非最后一级在输出后也保留等待。异或 4 的两条掩码交换、FP32 归约顺序及 BF16 MMAC 保留。四个候选的普通和放大输入均通过逐位比对。
+
+可直接从九齿重新生成基准。构建时保留 LLVM IR，融合脚本在校验摘要时只忽略 `DIFile` 的目录字段。以下命令假定已加载项目运行环境，`code` 指向交付仓库，`control` 和 `candidate` 是两个新的空路径。
+
+```bash
+H3_AOT_SAVE_IR=1 python "$code/optimization/adaln/build-attention-aot.py" "$control" \
+  --fp32-scale --aligned-strides --query-block 128 --key-block 32 --warps 4 --stages 1 --kpack 2 \
+  --optimize-long-attention --split-kv-tail --elide-full-kv-load-mask --guarded-buffer-ops \
+  --coalesce-pv-value --direct-attention-query --packed-attention-strides
+python build-softmax-dpp-arithmetic.py "$control" "$candidate" all
+```
+
+`all` 相对现用镜像在 27570/22016 token 配对分别缩短 7.10%/7.00%，20 个额外长度逐位一致。独立 PMC 中 VALU 指令减少约 15.6%，LDS 和全局读取指令数相同，scratch 为零。八卡第 1、25、49 次去噪的输出逐位一致，三个配对中位数合计缩短约 4.14%。设备镜像从重新生成的九齿 IR 构建，三个镜像的可加载区段均与实测版一致。见 [单卡配对、八卡回放、复建与 PMC](../../docs/softmax-dpp-arithmetic-a14r1n11.json)。
