@@ -25,7 +25,7 @@ def snapshot(destination):
         records[str(relative)] = hashlib.sha256(copied.read_bytes()).hexdigest()
     artifacts = {}
     for name in ("H3_ADALN_BUILD", "H3_ADALN_AOT_BUILD", "H3_INDEXED_BUILD",
-                 "H3_QKNORM_BUILD", "H3_QKNORM_MROPE_BUILD", "H3_WIDE_NORM_INDEXED_BUILD", "H3_ATTENTION_AOT_BUILD", "H3_SHORT_ATTENTION_AOT_BUILD",
+                 "H3_SWIGLU_BUILD", "H3_QKNORM_BUILD", "H3_QKNORM_MROPE_BUILD", "H3_WIDE_NORM_INDEXED_BUILD", "H3_ATTENTION_AOT_BUILD", "H3_SHORT_ATTENTION_AOT_BUILD",
                  "H3_REDUCECAST_BUILD", "H3_ENCODER_REDUCECAST_BUILD", "H3_WIDE_NORM_BUILD"):
         if not os.environ.get(name):
             continue

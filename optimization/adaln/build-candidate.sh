@@ -12,7 +12,7 @@ case "$host_opt" in
   *) printf 'Unsupported host optimization: %s\n' "$host_opt" >&2; exit 2;;
 esac
 case "$variant" in
-  adaln|indexed|dense|precision|encoder-precision|wide-norm|encoder-prefill|short-attention|qknorm-mrope|wide-norm-indexed) ;;
+  adaln|indexed|dense|precision|encoder-precision|wide-norm|encoder-prefill|short-attention|qknorm-mrope|wide-norm-indexed|swiglu) ;;
   *) printf 'Unknown variant: %s\n' "$variant" >&2; exit 2;;
 esac
 commit=$(git -C "$project" rev-parse --verify '45b2c3094d8d189e030f8984d7c07dead4db690a^{commit}')
@@ -44,14 +44,17 @@ fi
 if [[ "$variant" == encoder-prefill ]]; then
     git apply "$here/infinilm-encoder-prefill.patch"
 fi
-if [[ "$variant" == short-attention || "$variant" == qknorm-mrope || "$variant" == wide-norm-indexed ]]; then
+if [[ "$variant" == short-attention || "$variant" == qknorm-mrope || "$variant" == wide-norm-indexed || "$variant" == swiglu ]]; then
     git apply "$here/infinilm-short-attention.patch"
 fi
-if [[ "$variant" == qknorm-mrope || "$variant" == wide-norm-indexed ]]; then
+if [[ "$variant" == qknorm-mrope || "$variant" == wide-norm-indexed || "$variant" == swiglu ]]; then
     git apply "$here/infinilm-qknorm-mrope.patch"
 fi
-if [[ "$variant" == wide-norm-indexed ]]; then
+if [[ "$variant" == wide-norm-indexed || "$variant" == swiglu ]]; then
     git apply "$here/infinilm-wide-norm-indexed.patch"
+fi
+if [[ "$variant" == swiglu ]]; then
+    git apply "$here/infinilm-swiglu.patch"
 fi
 if [[ "$host_opt" == O3 ]]; then
   python3 - <<'PY'
@@ -128,13 +131,16 @@ if variant in {"wide-norm", "encoder-prefill"}:
     files["wide_norm_patch"] = project / "optimization/adaln/infinilm-wide-norm.patch"
 if variant == "encoder-prefill":
     files["encoder_prefill_patch"] = project / "optimization/adaln/infinilm-encoder-prefill.patch"
-if variant in {"short-attention", "qknorm-mrope", "wide-norm-indexed"}:
+if variant in {"short-attention", "qknorm-mrope", "wide-norm-indexed", "swiglu"}:
     files["short_attention_patch"] = project / "optimization/adaln/infinilm-short-attention.patch"
-if variant in {"qknorm-mrope", "wide-norm-indexed"}:
+if variant in {"qknorm-mrope", "wide-norm-indexed", "swiglu"}:
     files["qknorm_mrope_patch"] = project / "optimization/adaln/infinilm-qknorm-mrope.patch"
     files["qknorm_mrope_kernel"] = project / "optimization/adaln/qk_norm_mrope.py"
-if variant == "wide-norm-indexed":
+if variant in {"wide-norm-indexed", "swiglu"}:
     files["wide_norm_indexed_patch"] = project / "optimization/adaln/infinilm-wide-norm-indexed.patch"
+if variant == "swiglu":
+    files["swiglu_patch"] = project / "optimization/adaln/infinilm-swiglu.patch"
+    files["swiglu_kernel"] = project / "optimization/adaln/swiglu_kernel.py"
 record = {}
 for name, path in files.items():
     with path.open("rb") as stream:

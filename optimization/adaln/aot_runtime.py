@@ -103,3 +103,13 @@ def load_reducecast(build):
     if error:
         raise RuntimeError(f"Preparing reduction casts failed: {error.decode()}")
     return host
+
+
+def load_swiglu(build):
+    record = json.loads((build / "swiglu-build.json").read_text())
+    expected = [["ptr", name] for name in ("up", "gate", "output")]
+    expected += [["i32", "input_rows"], ["i32", "elements"]]
+    if (record["arguments"] != expected or record["tile"] != 1024
+            or record["warps"] != 4 or record["shared"] != 0):
+        raise RuntimeError("Unexpected packed SwiGLU ABI or geometry")
+    return load_kernel(build, "swiglu", "swiglu-host.so", "songshan_prepare_swiglu")

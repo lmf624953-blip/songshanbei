@@ -1,0 +1,7 @@
+{
+  "scope": "补丁空白格式整理；已实际 git apply --check 并应用，结果逐字节匹配被测原生源码",
+  "applied_source_equal": true,
+  "built_patch_sha256": "f5c8e3b3e0ae055333ef2455851edc21c715755c31b283d497ff73aff45d21a0",
+  "delivery_patch_sha256": "af353e0cbaa54249c22c0d82c32fb6fcc39393fa72e9b7dfb1e9a48d191f66ce",
+  "native_source_sha256": "e1471b8389f06ddb84715b2a72d40b7ccfcad62dacf9f3ce9976cc64df77c081"
+}

@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "rows": 37,
+      "magnitude": "all-finite-bf16",
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 1,
+      "magnitude": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "magnitude": 8,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 1024,
+      "magnitude": 64,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 22016,
+      "magnitude": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 27570,
+      "magnitude": 1,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    }
+  ]
+}

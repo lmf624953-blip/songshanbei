@@ -54,6 +54,7 @@ def main():
     parser.add_argument("--profile-once", action="store_true", help="Only one warmed candidate call under hipprof; diagnostic timing")
     parser.add_argument("--profile-drain-seconds", type=float, default=0,
                         help="Wait after the measured window before stopping hipprof")
+    parser.add_argument("--swiglu-ablation", action="store_true", help="Compare packed SwiGLU on identical real inputs")
     parser.add_argument("--widenorm-indexed-ablation", action="store_true", help="Compare wide RMSNorm/AdaLN fusion on identical real inputs")
     parser.add_argument("--candidate-only", action="store_true", help="Only exercise the selected build, including its first call")
     parser.add_argument("--indexed-ablation", type=Path, help="Compare the enabled indexed build against this original indexed build")
@@ -120,6 +121,8 @@ def main():
                 )
                 paired = None
                 variants = ("original", "candidate-no-qknorm", "candidate") if args.qknorm_ablation else ("original", "candidate")
+                if args.swiglu_ablation:
+                    variants = ("candidate-no-swiglu", "candidate")
                 if args.widenorm_indexed_ablation:
                     variants = ("candidate-no-widenorm-indexed", "candidate")
                 if args.indexed_ablation:
@@ -145,7 +148,7 @@ def main():
                     variants = ("candidate",)
                 for variant in variants:
                     selected_variant = variant
-                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed"}:
+                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
                         selected_variant = "candidate"
                     if args.precision_ablation and variant != "original":
                         selected_variant = "candidate-tf-no-reducecast" if variant.startswith("candidate-bf16-wire") else "candidate-tf"
@@ -158,6 +161,8 @@ def main():
                             control.set_attention_callback(pv_callback)
                     if variant == "candidate-bf16-wire-fast-attention":
                         control.set_attention_callback(fast_callback)
+                    if args.swiglu_ablation:
+                        control.set_swiglu_enabled(variant != "candidate-no-swiglu")
                     if args.widenorm_indexed_ablation:
                         control.set_widenorm_indexed_enabled(variant != "candidate-no-widenorm-indexed")
                     if variant == "candidate-no-widenorm":
@@ -206,7 +211,7 @@ def main():
                         expected = torch.load(args.reference_results / f"step-{step:02d}.pt",
                                               map_location="cpu", weights_only=True)
                         record["against_independent_pytorch"] = compare(result, expected)
-                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed"}:
+                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
                         paired = tuple(x.detach().cpu().clone() for x in outputs(result))
                     elif variant == "candidate" and paired is not None:
                         key = "against_candidate_with_original_indexed" if args.indexed_ablation else "against_candidate_without_qknorm"
@@ -216,6 +221,8 @@ def main():
                             key = "against_candidate_with_jit_short_attention"
                         if args.qknorm_mrope_ablation:
                             key = "against_candidate_without_qknorm_mrope"
+                        if args.swiglu_ablation:
+                            key = "against_candidate_without_swiglu"
                         if args.widenorm_indexed_ablation:
                             key = "against_candidate_without_widenorm_indexed"
                         record[key] = compare(result, paired)

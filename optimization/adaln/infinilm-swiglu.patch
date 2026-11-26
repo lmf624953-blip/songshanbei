@@ -1,0 +1,64 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -53,7 +53,12 @@
+     const infinicore::Tensor &, const infinicore::Tensor &, const infinicore::Tensor &,
+     const infinicore::Tensor &, std::uintptr_t);
+
++using SwiGLULaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
++    const infinicore::Tensor &, std::uintptr_t);
++
+ namespace {
++std::atomic<SwiGLULaunch> swiglu_launch{nullptr};
++std::atomic<std::uint64_t> swiglu_calls{0};
+ std::atomic<WideNormIndexedLaunch> widenorm_indexed_launch{nullptr};
+ std::atomic<std::uint64_t> widenorm_indexed_calls{0};
+ std::atomic<QKNormMRoPELaunch> qknorm_mrope_launch{nullptr};
+@@ -134,7 +139,39 @@
+     return widenorm_indexed_calls.load(std::memory_order_relaxed);
+ }
+
++extern "C" __attribute__((visibility("default")))
++void songshan_set_swiglu_launch(SwiGLULaunch launch) {
++    swiglu_launch.store(launch, std::memory_order_release);
++}
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_swiglu_calls() {
++    return swiglu_calls.load(std::memory_order_relaxed);
++}
++
+ namespace {
++
++std::optional<infinicore::Tensor> packed_swiglu(
++    const infinicore::Tensor &up, const infinicore::Tensor &gate) {
++    auto launch = swiglu_launch.load(std::memory_order_acquire);
++    constexpr size_t width = 1792;
++    if (!launch || infinicore::context::isGraphRecording()
++        || up->device().getType() != infinicore::Device::Type::HYGON
++        || gate->device() != up->device()
++        || up->dtype() != infinicore::DataType::BF16 || gate->dtype() != up->dtype()
++        || up->shape().size() != 3 || up->shape()[0] != 1 || up->shape()[2] != width
++        || gate->shape() != up->shape() || up->shape()[1] == 0
++        || up->shape()[1] > 2147483647ULL / (2 * width)
++        || up->strides()[1] != 2 * width || gate->strides()[1] != 2 * width
++        || up->strides()[2] != 1 || gate->strides()[2] != 1
++        || reinterpret_cast<std::uintptr_t>(up->data()) % 16 != 0
++        || reinterpret_cast<std::uintptr_t>(gate->data()) % 16 != 0)
++        return std::nullopt;
++    auto output = infinicore::Tensor::empty(up->shape(), up->dtype(), up->device());
++    launch(output, up, gate,
++           reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++    swiglu_calls.fetch_add(1, std::memory_order_relaxed);
++    return output;
++}
+
+ constexpr size_t H3_MODALITY_COUNT = 3;
+
+@@ -506,6 +543,7 @@
+ MiniMaxH3MLP::forward(const infinicore::Tensor &hidden_states) const {
+     auto hidden_states_mutable = hidden_states;
+     auto [up, gate] = gate_up_proj_->forward_split(hidden_states_mutable);
+-    auto activated = infinicore::op::swiglu(up, gate);
++    auto fused = packed_swiglu(up, gate);
++    auto activated = fused.has_value() ? fused.value() : infinicore::op::swiglu(up, gate);
+     return linear_forward(down_proj_, activated);
+ }
