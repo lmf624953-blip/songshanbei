@@ -117,3 +117,11 @@ K-only 在两个生产长度逐位一致，配对收益为 0.25% 和 0.47%。V-o
 通过 `--packed linear|swizzled` 将相同读写 lane 的两个或四个 BF16 合成一次访问，`--items 4` 选择四个。`--packed padded --items 4` 使用每槽 65 个 64 位字的布局，使编译器生成 `ds_write2_b64` 和 `ds_read2_b64`。`--packed wide-read --items 4` 将槽距调整为 66 个字，在读回端合并成 128 位。脚本枚举地址，按访问宽度核对连续线程的 bank 分布，并验证读回对齐。`--workgroup-publication` 保留 P 读写之间的原 barrier。各模式均由现用 Q128 packed LLVM IR 的固定 SHA-256 开始构建。
 
 17 个变体在长度 27570 和 22016 的普通和放大输入上均逐位一致，复建的可执行 `.text` 与实测镜像一致。最快的 128 位读回版保留原 barrier，配对耗时分别缩短 0.17% 和 0.09%。独立 PMC 的 LDS 指令下降约 54%，LDS 等待计数下降约 60%，全局读取指令相同，VALU 指令增加约 1%。只换 wave 内等待的版本慢约 1.7%。本轮没有进入八卡或官方成片回归的候选。见 [配对计时、复建与 PMC](../../docs/p-wave-lds-a14r1n11.json)。
+
+## 同一线程块内的双 Q128 K/V 复用
+
+`build-dual-q128.py REFERENCE OUTPUT` 将两个同一 head 的相邻 Q128 tile 放进同一个 512 线程块。每组仍按原四个 wave 计算 QK、在线 softmax 和 PV，Q 尾部掩码覆盖第二组无有效行的情况。`--shared-kv` 只让前四个 wave 读取并向 LDS 发布 K/V，两个 Q tile 各自读回 K/V，P 保留各自的 LDS 地址范围。K/V 前后同步仍由整个线程块参与。实验主机库只改变 packed 镜像的网格和线程数，保留另两个镜像的原有启动参数。
+
+用 `screen-dual-q128.py REFERENCE BUILDS OUTPUT` 复现时，`BUILDS` 下两个目录分别命名为 `independent-kv` 和 `shared-kv`。两个生产长度和 12 个边界长度的普通输入、放大输入及输出哨兵检查均通过。两个生产长度的三组对照各做 11 组无 profiler 交替配对。27570 token 下，单 Q128 为约 35.10 ms，独立双 Q128 为 115.45 ms，共享双 Q128 为 99.56 ms。共享版相对独立版节省约 13.86%。22016 token 的同类配对节省约 13.40%。
+
+独立 PMC 确认两种双 Q128 均分配 128 VGPR、16 KiB LDS，并分别使用 344 B、320 B scratch。共享版使总 VMEM 读指令数比独立版少约 15%，但与无 scratch 的单 Q128 相比仍约为 10.6 倍。此计数涵盖编译器生成的 scratch 读写，仅用于解释当前实现的整体访存变化。本轮没有候选进入八卡回放或官方成片验收。见 [配对、边界、复建和 PMC](../../docs/dual-q128-a14r1n11.json)。
