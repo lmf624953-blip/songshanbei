@@ -41,6 +41,16 @@ def load_widenorm(build):
     return load_kernel(build, "wide-norm", "wide-norm-host.so", "songshan_prepare_widenorm")
 
 
+def load_widenorm_indexed(build):
+    record = json.loads((build / "wide-norm-indexed-build.json").read_text())
+    expected = [["ptr", name] for name in ("hidden", "weight", "scale", "shift", "indices", "output")]
+    expected += [["i32", "rows"], ["i32", "table_rows"]]
+    if record["arguments"] != expected:
+        raise RuntimeError("Unexpected wide norm indexed ABI")
+    return load_kernel(build, "wide-norm-indexed", "wide-norm-indexed-host.so",
+                       "songshan_prepare_widenorm_indexed")
+
+
 def load_attention(build):
     record = json.loads((build / "dense-attention-aot-build.json").read_text())
     if "fallback" in record:

@@ -86,6 +86,7 @@ optional_kernels = (
     ("reducecast", os.environ.get("H3_REDUCECAST_BUILD")),
     ("encodercast", os.environ.get("H3_ENCODER_REDUCECAST_BUILD")),
     ("widenorm", os.environ.get("H3_WIDE_NORM_BUILD")),
+    ("widenorm_indexed", os.environ.get("H3_WIDE_NORM_INDEXED_BUILD")),
 )
 registrations = []
 
@@ -97,10 +98,10 @@ def device_callback(name, lib):
 
 if any(path for _, path in optional_kernels):
     sys.path.insert(0, str(here))
-    from aot_runtime import load_attention, load_qknorm, load_qknorm_mrope, load_reducecast, load_widenorm
+    from aot_runtime import load_attention, load_qknorm, load_qknorm_mrope, load_reducecast, load_widenorm, load_widenorm_indexed
     loaders = {"qknorm": load_qknorm, "qknorm_mrope": load_qknorm_mrope, "attention": load_attention, "short_attention": load_attention,
                "reducecast": load_reducecast, "encodercast": load_reducecast,
-               "widenorm": load_widenorm}
+               "widenorm": load_widenorm, "widenorm_indexed": load_widenorm_indexed}
     for name, path in optional_kernels:
         if not path:
             continue
@@ -228,6 +229,7 @@ control.select_variant, control.read_counters = select_variant, read_counters
 control.set_qknorm_enabled = lambda enabled: set_kernel_enabled("qknorm", enabled)
 control.set_qknorm_mrope_enabled = lambda enabled: set_kernel_enabled("qknorm_mrope", enabled)
 control.set_widenorm_enabled = lambda enabled: set_kernel_enabled("widenorm", enabled)
+control.set_widenorm_indexed_enabled = lambda enabled: set_kernel_enabled("widenorm_indexed", enabled)
 control.set_short_attention_enabled = lambda enabled: set_kernel_enabled("short_attention", enabled)
 for registered_name, _, registered_setter, _ in registrations:
     if registered_name == "attention":

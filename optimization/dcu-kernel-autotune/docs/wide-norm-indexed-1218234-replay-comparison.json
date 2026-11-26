@@ -1,0 +1,113 @@
+{
+  "baseline_hashes_match": true,
+  "reference_sum_seconds": 9.445302691776305,
+  "candidate_sum_seconds": 9.077796410303563,
+  "reduction_percent": 3.8908894025462826,
+  "real_output_errors": [
+    {
+      "step": 1,
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539001,
+          "max_abs_error": 0.7093949317932129,
+          "mean_abs_error": 0.020044565200805664,
+          "rmse": 0.027413825581845054,
+          "finite": true,
+          "output_sha256": "5de3a2c9c52d24decfa950b48a85d38708ca6bee97f131d24c00b26960437a8f"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.0931011438369751,
+          "mean_abs_error": 0.026969265192747116,
+          "rmse": 0.03204392681908085,
+          "finite": true,
+          "output_sha256": "37a14adfe9524e9e5b498a232f41688918174115df288b26b13d8c1517251ef6"
+        }
+      ]
+    },
+    {
+      "step": 25,
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2538993,
+          "max_abs_error": 0.3324474096298218,
+          "mean_abs_error": 0.008305051364004612,
+          "rmse": 0.0117314810946083,
+          "finite": true,
+          "output_sha256": "579cf3f11da6c726c8d6fefde0d36172f83f1afa070b5bea42bfb93dcb911e60"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.05072484910488129,
+          "mean_abs_error": 0.011710998602211475,
+          "rmse": 0.014248805718003193,
+          "finite": true,
+          "output_sha256": "9633a4d30fc42792f169be3495dc69b5569cb3e20da7a6a7ac2344a87f82cb40"
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "outputs": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2538996,
+          "max_abs_error": 0.4402232766151428,
+          "mean_abs_error": 0.012780560180544853,
+          "rmse": 0.01739038259227852,
+          "finite": true,
+          "output_sha256": "6561bcb0dbcf575365dd187e0643d1fd9b8ad7fee93e396537129ab15b9d6d5a"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.15520989894866943,
+          "mean_abs_error": 0.012451844289898872,
+          "rmse": 0.01641557442866795,
+          "finite": true,
+          "output_sha256": "6a669f88bf94767aa017b0c9e6e233edccdf6c89de0ee13c0b7ee6a72e6f10c6"
+        }
+      ]
+    }
+  ]
+}

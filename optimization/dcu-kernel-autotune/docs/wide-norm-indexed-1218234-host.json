@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "rows": 1,
+      "table_rows": 3,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 33,
+      "table_rows": 6,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 4096,
+      "table_rows": 3,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    },
+    {
+      "rows": 27570,
+      "table_rows": 6,
+      "exact": true,
+      "finite": true,
+      "tail_ok": true
+    }
+  ]
+}

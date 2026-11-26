@@ -1,0 +1,10 @@
+{
+  "elf_loads_equal": {
+    "sections": true,
+    "segments": true,
+    "elf_target": true
+  },
+  "abi_equal": true,
+  "old_sha256": "efb82eb96d68c786c9afdba210d36808f7ddf83f2be1558a68e05fc3db49165e",
+  "new_sha256": "fbbfb474438e588735b03c1b5f7e1752395390b6f6527e987b210dafb4f37974"
+}

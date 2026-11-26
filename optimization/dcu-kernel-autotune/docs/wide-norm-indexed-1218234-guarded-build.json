@@ -1,0 +1,5 @@
+{
+  "parent": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/infinilm-wide-norm-indexed-1218234",
+  "source_sha256": "60ad6ecd01ede343e13deb32c08e836c2162d1b258df40ff42b8922caa2b1644",
+  "method": "复用源构建目录，xmake 按依赖重建共享库，实际编译范围见日志"
+}

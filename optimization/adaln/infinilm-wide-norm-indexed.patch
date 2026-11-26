@@ -1,0 +1,102 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -49,7 +49,13 @@
+     const infinicore::Tensor &, const infinicore::Tensor &, const infinicore::Tensor &,
+     const infinicore::Tensor &, std::uintptr_t);
+ 
++using WideNormIndexedLaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
++    const infinicore::Tensor &, const infinicore::Tensor &, const infinicore::Tensor &,
++    const infinicore::Tensor &, std::uintptr_t);
++
+ namespace {
++std::atomic<WideNormIndexedLaunch> widenorm_indexed_launch{nullptr};
++std::atomic<std::uint64_t> widenorm_indexed_calls{0};
+ std::atomic<QKNormMRoPELaunch> qknorm_mrope_launch{nullptr};
+ std::atomic<std::uint64_t> qknorm_mrope_calls{0};
+ std::atomic<QKNormLaunch> qknorm_launch{nullptr};
+@@ -117,6 +123,15 @@
+ extern "C" __attribute__((visibility("default")))
+ std::uint64_t songshan_qknorm_mrope_calls() {
+     return qknorm_mrope_calls.load(std::memory_order_relaxed);
++}
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_widenorm_indexed_launch(WideNormIndexedLaunch launch) {
++    widenorm_indexed_launch.store(launch, std::memory_order_release);
++}
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_widenorm_indexed_calls() {
++    return widenorm_indexed_calls.load(std::memory_order_relaxed);
+ }
+ 
+ namespace {
+@@ -289,6 +304,44 @@
+            reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
+     indexed_calls.fetch_add(1, std::memory_order_relaxed);
+     return out;
++}
++
++std::optional<infinicore::Tensor> normalize_indexed(
++    const infinicore::Tensor &input, const std::shared_ptr<infinicore::nn::RMSNorm> &norm,
++    const infinicore::Tensor &scale, const infinicore::Tensor &shift,
++    const infinicore::Tensor &indices) {
++    auto launch = widenorm_indexed_launch.load(std::memory_order_acquire);
++    constexpr size_t width = 5376;
++    if (!launch || infinicore::context::isGraphRecording() || norm->eps() != 1e-5
++        || input->device().getType() != infinicore::Device::Type::HYGON
++        || input->dtype() != infinicore::DataType::BF16 || input->shape().size() != 3
++        || input->shape()[0] != 1 || input->shape()[2] != width
++        || input->shape()[1] == 0 || input->shape()[1] > std::numeric_limits<int>::max() / width
++        || !input->is_contiguous() || indices->device() != input->device()
++        || indices->dtype() != infinicore::DataType::I64 || !indices->is_contiguous()
++        || indices->shape().size() != 1 || indices->shape()[0] != input->shape()[1])
++        return std::nullopt;
++    auto weight = norm->weight();
++    if (weight->device() != input->device() || weight->dtype() != input->dtype()
++        || weight->shape().size() != 1 || weight->shape()[0] != width || !weight->is_contiguous())
++        return std::nullopt;
++    for (const auto &tensor : {input, weight, indices}) {
++        if (reinterpret_cast<std::uintptr_t>(tensor->data()) % 16 != 0) return std::nullopt;
++    }
++    for (const auto &table : {scale, shift}) {
++        if (table->device() != input->device() || table->dtype() != input->dtype()
++            || table->shape().size() != 3 || table->shape()[0] != 1 || table->shape()[2] != width
++            || table->shape()[1] == 0 || table->shape()[1] > std::numeric_limits<int>::max() / (6 * width)
++            || table->strides()[1] != 6 * width || table->strides()[2] != 1
++            || reinterpret_cast<std::uintptr_t>(table->data()) % 16 != 0)
++            return std::nullopt;
++    }
++    if (scale->shape() != shift->shape()) return std::nullopt;
++    auto output = infinicore::Tensor::empty(input->shape(), input->dtype(), input->device());
++    launch(output, input, weight, scale, shift, indices,
++           reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++    widenorm_indexed_calls.fetch_add(1, std::memory_order_relaxed);
++    return output;
+ }
+ 
+ void require_tensor(const std::optional<infinicore::Tensor> &tensor,
+@@ -586,13 +639,20 @@
+     auto scale_mlp = token_modulation->narrow({{2, 4 * hidden_size_, hidden_size_}});
+     auto gate_mlp = token_modulation->narrow({{2, 5 * hidden_size_, hidden_size_}});
+ 
+-    auto normalized = norm1_->forward(hidden_states);
+-    normalized = adaln(normalized, scale_msa, shift_msa);
++    const auto norm_adaln = [&](const infinicore::Tensor &input,
++                                const std::shared_ptr<infinicore::nn::RMSNorm> &norm,
++                                const infinicore::Tensor &scale, const infinicore::Tensor &shift) {
++        if (launch) {
++            auto fused = normalize_indexed(input, norm, scale, shift, adaln_indices);
++            if (fused.has_value()) return fused.value();
++        }
++        return adaln(norm->forward(input), scale, shift);
++    };
++    auto normalized = norm_adaln(hidden_states, norm1_, scale_msa, shift_msa);
+     auto attention_output = attn_->forward(normalized, rope, position_ids, rotary_cos_sin_cache);
+     auto output = residual(hidden_states, attention_output, gate_msa);
+ 
+-    normalized = norm2_->forward(output);
+-    normalized = adaln(normalized, scale_mlp, shift_mlp);
++    normalized = norm_adaln(output, norm2_, scale_mlp, shift_mlp);
+     auto mlp_output = ff_->forward(normalized);
+     output = residual(output, mlp_output, gate_mlp);
+     return output;
