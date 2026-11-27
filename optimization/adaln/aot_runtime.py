@@ -53,6 +53,8 @@ def load_widenorm_indexed(build):
 
 def load_attention(build):
     record = json.loads((build / "dense-attention-aot-build.json").read_text())
+    if record.get("experiment", {}).get("prepacked_v"):
+        raise RuntimeError("预排布 V 实验需要 screen-prepacked-v.py 的组合发射入口及预处理工作区")
     if "fallback" in record:
         image = build / "dense-attention-aot.hsaco"
         fallback = build / "dense-attention-fallback.hsaco"

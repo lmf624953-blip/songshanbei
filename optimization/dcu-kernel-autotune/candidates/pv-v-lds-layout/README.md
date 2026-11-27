@@ -351,3 +351,24 @@ python screen-pv-wide-operand.py "$release/attention" "$builds" "$results"
 `build-p-read2.py` 将完整块 16 条 `ds_read_u16` 替换为 8 条 `ds_read2_b32`。读取基址对齐到 dword，按 lane 选择低半字或高半字，再用原字节置换构造 PV 操作数。两组 4 KiB 偏移分别使用独立地址，满足 read2 的 8 位偏移限制。置换按源值生命周期调度，避免新寄存器分配覆盖尚未消费的数据。用 `--p-pending 3|7` 对比 V 读回之前的等待。
 
 两个版本在 27570/22016 token 均逐位一致。等待三条的版本经 19 组配对，回退 1.12%/0.74%。独立 PMC 显示，LDS 指令数下降约 15.4%，bank conflict 与 VMEM 读取计数持平，VALU 指令数增加约 0.78%，LDS 等待计数下降约 3%–4%。硬件仍分配 220 VGPR、16 KiB LDS、0 B scratch。代表镜像通过 20 个额外长度、24 组特殊 BF16 输入和逐文件重建校验。本轮归档。 [配对、逐位及独立 PMC](../../docs/p-read2-f12r2n09.json)
+
+## V 预排布与 Q tile 复用
+
+`v_prepack_kernel.py` 每次注意力调用重新整理 V 的完整 32-token 块，输出按 head、K/V 块、原 LDS 位布局连续存放。所有 Q tile 读取同一份整理结果。尾块继续从原 V 读取。预处理只有 BF16 数据搬运，完整点积、在线归约及 MMAC 累加次序沿用求和交错镜像。
+
+`build-v-prepack-aot.py` 把九齿预处理编译为 AOT。`build-prepacked-v.py` 让完整块直接读取预排布数据到 V 的 LDS 区域。实验借用原保留指针参数的 72 B 位置传递工作区，需要 `prepacked_attention_host.cc` 的组合发射入口。`load_attention` 会在装载该实验镜像前提示工作区依赖。`screen-prepacked-v.py --prepack` 由同一个主机调用连续发射预处理和注意力，每次重新计算 V。小于 32 token 或行步长不匹配时使用原注意力。工作区按设备、长度和 stream 分开持有。
+
+```bash
+mkdir "$builds"
+python build-v-prepack-aot.py "$prepack" --tile 2048 --warps 8
+python build-prepacked-v.py "$release/attention" "$builds/after-k-write" --position after-k-write
+python screen-prepacked-v.py "$release/attention" "$builds" "$results" --prepack "$prepack"
+hipprof --pmc --pmc-type 2 --kernel-name dense_attention_aot_kernel -o "$pmc" \
+  python profile-prepacked-v.py "$release/attention" "$builds/after-k-write" "$prepack"
+```
+
+在 `f12r2n09`，六个 V 发射位置和六组九齿预处理分块均做无 profiler 对照，两个生产长度的普通及放大输入逐位一致。最新 19 组配对中，27570 token 从 24.9977 ms 降为 23.5625 ms，22016 token 从 16.8874 ms 降为 15.9482 ms，组合耗时分别节省 5.73%/5.54%。预处理单独约 0.237/0.189 ms，工作区分别为 49,373,184/39,452,672 B。前期 Python 发射预处理的计时记录单独保留。
+
+主注意力的独立 PMC 测得 bank conflict 计数下降约 59.9%–60.0%，VMEM 读取指令下降约 33.3%，LDS 指令下降约 3.84%，仍分配 220 VGPR、16 KiB LDS、0 B scratch。预处理为 24 VGPR、0 B LDS、0 B scratch，无 LDS bank conflict。[主注意力原始 PMC TXT](../../docs/prepacked-v-f12r2n09-attention-pmc.txt) · [预处理原始 PMC TXT](../../docs/prepacked-v-f12r2n09-prepack-pmc.txt) · [基准原始 PMC TXT](../../docs/prepacked-v-f12r2n09-reference-pmc.txt)
+
+预排布位模式、20 个额外长度、24 组特殊 BF16 输入、连续更新 V 和不同步长回退均通过。主注意力及主机库独立重建逐字节一致，预处理重建的设备指令一致。实验首版误把 Q tile 索引用于 head 寻址，修正为原 head 偏移后开始有效计时，失败记录保留。按历史 A 的每卡 2450 次调用粗估，新增节省约 3.5 s，约占历史 142.89 s 的 2.46%。该估算跨节点，实际八卡端到端尚待验证。本轮按低于 3% 的优先线归档。 [完整配对、位模式校验及 PMC 记录](../../docs/prepacked-v-f12r2n09.json)
