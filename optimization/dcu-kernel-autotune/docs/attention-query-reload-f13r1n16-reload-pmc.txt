@@ -1,0 +1,48 @@
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     0
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      14
+ process id                                3917255
+ thread id                                 3917255
+ grid size                                 387072
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                200
+ sgpr count                                80
+ signal handle                             0x0
+ kernel time                               0.040439(s)
+ processed ALU instructions                43.4334078736(%)
+ performance                               4765.888090(Gflops)
+ shared memory operation                   198192960
+ shared memory bank conflict               0.0099677518(%)
+ L1 cache unit is active                   79.3512806896(%)
+ L1 cache unit is stalled                  0.1248387574(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         45.767793(%)
+
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     1
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      18
+ process id                                3917255
+ thread id                                 3917255
+ grid size                                 387072
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                200
+ sgpr count                                80
+ signal handle                             0x0
+ kernel time                               0.040868(s)
+ processed ALU instructions                42.9765377770(%)
+ performance                               4715.919784(Gflops)
+ shared memory operation                   198192960
+ shared memory bank conflict               0.0098629024(%)
+ L1 cache unit is active                   79.0671562790(%)
+ L1 cache unit is stalled                  0.1274492304(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         45.061034(%)
+
