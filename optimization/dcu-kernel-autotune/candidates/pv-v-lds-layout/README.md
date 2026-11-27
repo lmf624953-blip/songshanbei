@@ -460,3 +460,19 @@ python verify-p-nan-payload.py "$integrated" "$combined" "$verification_jsonl"
 真实八卡第 1/25/49 步的音视频输出与本轮正式基准逐位一致、调用数相同，各五次均值为 2.385210→2.283258、2.384882→2.282501、2.384840→2.281983 s，下降 4.274%/4.293%/4.313%。历史 capture 来自早期版本，本轮两侧均与其不同；逐位结论仅指本轮配对双方。独立重建的六个产物及汇编与已测试候选逐字节一致。独立 PMC 保持 220 VGPR、64 SGPR、16 KiB LDS、零 scratch，27570 token 的 bank conflict 约 0.01955%，22016 为 0%。PMC 的 `processed ALU instructions` 不是芯片峰值算力利用率，不能据此反推计算峰值。
 
 预计 49 次 Transformer 可节省约 5.017 秒，即约 3.65% 先前完整请求墙钟；这是回放投影，不是新的端到端实测。普通官方默认入口、三组完整 A 及 B/C/返回 A 验收已启动，正式配置仍保持此前已完整验收的版本。一次误用单卡可见环境的回放在加载 Transformer 前失败，原始失败日志保留；改为显式八卡后上述真实回放成功，不归因于硬件故障。 [逐位校验、无 profiler 配对、独立重建与真实八卡记录](../../docs/p-nan-ror4-f12r2n09.json) · [原始 PMC TXT](../../docs/p-nan-ror4-f12r2n09-basic-pmc.txt)
+
+## 稳定最大值时的恒等重缩放，准备中
+
+`build-stable-max-rescale.py` 已在 CPU 上构建三种对照，均以本轮待验收的 NaN payload + ROR4 组合为直接参考：`deferred` 只延后 8 条 alpha exp，`guard-scale` 加 wave 一致判断但保留 exp，只省去恒等缩放，`guarded` 同时省去 exp 与恒等缩放。这样区分 SFU 调度变化、条件分支代价和省去实际指令的收益，目前没有 GPU 校验或性能结论。
+
+判定使用 8 个原始 `old_max-new_max` 的 FP32 位模式，按位 OR 并忽略符号位，只有 wave 全部活跃 lane 的八项都是 ±0 时才走快路径。NaN、Inf、最小非零 FP32 均走原路径，不按输入类型或样例分支。快速路径为后续原有分母 FMA 精确写入 alpha=1；MMAC、加法层级、尾块、barrier 与输出格式化保持原样。原描述符为 FP32 denorm mode 3、IEEE mode 1；`v206` 只作为本段死寄存器，后续 tail 先完整重定义，VCC 和 SCC 也检查后续原定义。其收益取决于真实数据中 max 稳定的比例以及分支开销，需要实测，不能由指令数直接报成绩。
+
+```bash
+for mode in deferred guard-scale guarded; do
+  python build-stable-max-rescale.py "$combined" "$guard_builds/$mode" --mode "$mode"
+done
+# 下列GPU操作必须等完整八卡验收实际退出后串行执行。
+python verify-stable-max-values.py "$combined" "$guard_builds" "$value_edges"
+```
+
+冻结脚本的静态断言通过，生成汇编与三份 CPU 构建逐字节一致，8192 组整数谓词覆盖通过。`verify-stable-max-values.py` 另准备 90 条专用检查，用零 Q/K 强制从第二完整块起进入稳定 max，覆盖最小 BF16 subnormal、极小正规值、抵消、带符号零、最大量级和非有限 V；尚未执行这些 GPU 检查。`run-stable-max-followup.sh` 已在等待完整验收进程退出，核对完整 11 请求成功及冻结源码后，才依次执行 payload 扩展、稳定 max 专用校验及三个版本的普通/异常/边界和 19 组生产长度配对，不与正在进行的八卡性能验收重叠。 [准备记录](../../docs/stable-max-rescale-f12r2n09-preparation.json)

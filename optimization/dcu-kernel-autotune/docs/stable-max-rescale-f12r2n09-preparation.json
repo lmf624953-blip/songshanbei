@@ -1,0 +1,51 @@
+{
+  "kind": "stable-max-rescale-preparation",
+  "numerical_verified": false,
+  "gpu_timed": false,
+  "selected": false,
+  "cpu_guard_predicate_cases": 8192,
+  "source_sha256": {
+    "candidates/pv-v-lds-layout/build-stable-max-rescale.py": "fdcaba4e705e50508e55f30f076365e9713247aaf6ffad5f8c9a0c2d4ca6e158",
+    "candidates/pv-v-lds-layout/verify-stable-max-values.py": "be3564997127c64f004574b5e3bd545c7786ddc3456ffb8ac7bd95a907c47c02",
+    "candidates/pv-v-lds-layout/run-stable-max-followup.sh": "c1ae1eb43c2022a6adeb6bd90b4dbd49d3868694af3a33493938da7a56df8d85",
+    "candidates/pv-v-lds-layout/verify-p-nan-payload.py": "bc8e61ed049130c63efc3fb549d32ba1e241195f83b6a51ba7a9c0382836e4e8",
+    "candidates/pv-v-lds-layout/verify-p-nan-payload-edges.py": "7e6d1fb0e45356e72cd591d39e935e5c390c2768be9479755c2a574744c243cd",
+    "candidates/pv-v-lds-layout/screen.py": "509ac9e1073f444fdd87b3d0d78ebb48838e32b0b692f543e0dec3fb473b8773"
+  },
+  "variants": {
+    "deferred": {
+      "packed_sha256": "b7b97fa04d4883ba142dc9a54dbd81697c6c68a21805d482aa7666f9524dfcb0",
+      "metadata": {
+        "mode": "deferred",
+        "reference_packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+        "scope": "完整KV循环，无barrier或MMAC变更；wave内全部delta为±0时走恒等缩放",
+        "scratch": "v206仅在tail重新定义，无新增寄存器需求",
+        "numerical_verification": "尚未完成",
+        "caution": "后续必须验证极小V、带符号零、非有限值及跨长度；未计时、未选用"
+      }
+    },
+    "guard-scale": {
+      "packed_sha256": "930e3e064071a051363fb5f6efd59fb0d04664406dec8bf345c3c813606e5635",
+      "metadata": {
+        "mode": "guard-scale",
+        "reference_packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+        "scope": "完整KV循环，无barrier或MMAC变更；wave内全部delta为±0时走恒等缩放",
+        "scratch": "v206仅在tail重新定义，无新增寄存器需求",
+        "numerical_verification": "尚未完成",
+        "caution": "后续必须验证极小V、带符号零、非有限值及跨长度；未计时、未选用"
+      }
+    },
+    "guarded": {
+      "packed_sha256": "57b8e6243a784740179931d1ee8121f5353dc233c64f8455426e4fec92254e56",
+      "metadata": {
+        "mode": "guarded",
+        "reference_packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+        "scope": "完整KV循环，无barrier或MMAC变更；wave内全部delta为±0时走恒等缩放",
+        "scratch": "v206仅在tail重新定义，无新增寄存器需求",
+        "numerical_verification": "尚未完成",
+        "caution": "后续必须验证极小V、带符号零、非有限值及跨长度；未计时、未选用"
+      }
+    }
+  },
+  "next": "当前完整八卡验收结束后，先对三个候选做通用逐位校验及本轮稳定max极小V等专用校验，再做无profiler配对；目前只完成CPU构建。"
+}

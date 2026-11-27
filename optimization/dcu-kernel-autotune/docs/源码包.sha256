@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-38741b343c499f33d3b58a8d425809d46276bb6b9a240b64d503d30375e19cf1  candidates/pv-v-lds-layout/README.md
+e8ae891d85197fbd16c54e64f36e0fd28f45c59893cfc2ba01cfc795353d7d2a  candidates/pv-v-lds-layout/README.md
 4ef8f51cfac8fe54af779aadd562496e743bbb210208c534365ab55a86b4b70e  candidates/pv-v-lds-layout/bench-mmac-dependency-probe.py
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
@@ -111,6 +111,7 @@ f2367c1579ca4aed9399a54fd7f984860b89360a4e445ffb54217e2caaaab03a  candidates/pv-
 ff577f2ec641eeca4e69a1fcef2c73fd4aa0814e9116ec3bd45f35984dbae94b  candidates/pv-v-lds-layout/build-softmax-ror4.py
 81a42817e5c3860653236d5201018b336c4ff667f68ec1b4e18090fcc86ac6e4  candidates/pv-v-lds-layout/build-softmax-schedule.py
 302f1761bf96a9898ec5a506c4933dcd4eb307dd54163d922f4bbb5afbb1f539  candidates/pv-v-lds-layout/build-softmax-xor.py
+fdcaba4e705e50508e55f30f076365e9713247aaf6ffad5f8c9a0c2d4ca6e158  candidates/pv-v-lds-layout/build-stable-max-rescale.py
 dc71b01224d4115e350e99a45b57b89f3fd4d088ed8bd2cca56e581fc8eabbdb  candidates/pv-v-lds-layout/build-tail-p-vgpr.py
 7187cb899868868a9754962006c9c85ae990566bb9d6c30166b7e02126f72051  candidates/pv-v-lds-layout/build-v-pack-permute.py
 15cd13946863b4a1aaf5751aba8c9480bc3879464185e6abe9de9e0b91ea9328  candidates/pv-v-lds-layout/build-v-phase-qdirect.py
@@ -134,6 +135,7 @@ cff00eb53ad2415be206b733cea1d071417615fdcbcc1b021c6080f23e1f87aa  candidates/pv-
 ce44b3d555c0ddda9cec5898c4a615383c17cd3f8c7e33e8cc68fb80cc82ba15  candidates/pv-v-lds-layout/q_resources.py
 d9e0c64ca42467130352a0d95f7d0275f37f927252a932449683e80f9f2257a4  candidates/pv-v-lds-layout/q_resources_v2.py
 3c9cae5e9dbcac0d1b6b139fe898ef0db6661c134d93a005f15e0e215e95fffe  candidates/pv-v-lds-layout/qualify-attention.sh
+c1ae1eb43c2022a6adeb6bd90b4dbd49d3868694af3a33493938da7a56df8d85  candidates/pv-v-lds-layout/run-stable-max-followup.sh
 a656e7c1e74a932f00a7b429054594275720dcf90e8fff0efe946a08d115e9e6  candidates/pv-v-lds-layout/screen-dual-q128.py
 75c3bcbbc0a3a8055870a4ddec9dee2d7d0e8068bbb4ae8a7676154675cbd16d  candidates/pv-v-lds-layout/screen-prepacked-v.py
 ec63a65f9ddf5c0564297d6fff094333c46ee2454447a6531ccf6c87a8936111  candidates/pv-v-lds-layout/screen-pv-wide-operand.py
@@ -146,6 +148,7 @@ ec63a65f9ddf5c0564297d6fff094333c46ee2454447a6531ccf6c87a8936111  candidates/pv-
 bc8e61ed049130c63efc3fb549d32ba1e241195f83b6a51ba7a9c0382836e4e8  candidates/pv-v-lds-layout/verify-p-nan-payload.py
 0f645a5f38c1cf470c0de75bffe55430c7a886bcd3469137cc733de677f90b0a  candidates/pv-v-lds-layout/verify-p-row-prepacked.py
 f49cf0cc4cbc407c598b9a7a5c40271529b1b4a7e9b16b4f4a9906c4a0b2597d  candidates/pv-v-lds-layout/verify-prepacked-dispatch.py
+be3564997127c64f004574b5e3bd545c7786ddc3456ffb8ac7bd95a907c47c02  candidates/pv-v-lds-layout/verify-stable-max-values.py
 c4b0f693ab1f7ba5cd173c5286f4602e94e32b7a657a64800985641a261ef113  candidates/pv-v-lds-layout/verify-v-pack-layout.py
 9660bdcd4ffacf881d6654ef5b5fde714c11cb26f5632a164d326398d7843702  candidates/qk-mrope-batched/README.md
 f41fb7bc8dab452468d1db2bdf6978b14199a2c2b12868f4e63ec49c1097cd68  candidates/qk-mrope-batched/bench.py
@@ -373,6 +376,7 @@ f2395510aeac8a573f420f36a0a1368b96f1dd933611ddd1dab0f5d8eacabde7  docs/softmax-d
 42c2d0b4f7d71063197bdd14b62c6a2701f4412a4bcac6aa24eb9d6ce4f2a0ee  docs/softmax-schedule-a14r1n11-qualified.json
 4139b2bd31ffdeeb948a6f4603c31a99cfdfe1e50cd212ca4b6f60db19357ffb  docs/softmax-schedule-a14r1n11.json
 59d9c76e0509ecce90910e729e4aed34cc14652fe11ce2422f74aa5ae9e6e140  docs/softmax-xor-a14r1n11.json
+ce18fee630dfe431085c4ce7d4a125a844770fac0360148639369c18d9a12454  docs/stable-max-rescale-f12r2n09-preparation.json
 3925f159c0fa6fc7bf3fce50489ae0bcec3473a5a1832fb407941f224b2f9fb3  docs/swiglu-linear-1218234-compatibility.json
 f6638f070e0190545bdd54226b8f1c5118dfa3e90051be283a8020b9c3348765  docs/swiglu-packed-1218234-host-validation.json
 8e98676c4f006c7836a1abf097c82a904ff0933da09908019d8e570ae01ec91e  docs/swiglu-packed-1218234-micro.json
