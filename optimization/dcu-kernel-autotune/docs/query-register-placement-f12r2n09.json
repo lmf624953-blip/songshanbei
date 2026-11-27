@@ -1,0 +1,48 @@
+{
+  "status": "四个镜像仅完成CPU映射与编译检查，GPU排队等待完整验收结束",
+  "hostname": "f12r2n09",
+  "reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/integrated-fixed",
+  "raw": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p",
+  "gpu_measured": false,
+  "bitwise_gpu_verified": false,
+  "scope": "纯VGPR重命名，寄存器bank影响是假设，尚无硬件或性能结论",
+  "rows": [
+    {
+      "name": "q187",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/query-register-builds/q187",
+      "query_first": 187,
+      "inverse_exact": true,
+      "static_vgpr_count": 219,
+      "added_instructions": 0,
+      "packed_sha256": "1bea270959af55b376d5409cc9a848dffc8b52f5d990ed96e6cf6ef50405a554"
+    },
+    {
+      "name": "q188",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/query-register-builds/q188",
+      "query_first": 188,
+      "inverse_exact": true,
+      "static_vgpr_count": 220,
+      "added_instructions": 0,
+      "packed_sha256": "1469e848641de01fef92e971e3966689fd478fdb503c5d500020cf55e2949c05"
+    },
+    {
+      "name": "q189",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/query-register-builds/q189",
+      "query_first": 189,
+      "inverse_exact": true,
+      "static_vgpr_count": 221,
+      "added_instructions": 0,
+      "packed_sha256": "ca9f8b49aba371113f0b209717ea251f122fd1d52a4eefbfb023fceefd06715a"
+    },
+    {
+      "name": "q190",
+      "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/query-register-builds/q190",
+      "query_first": 190,
+      "inverse_exact": true,
+      "static_vgpr_count": 222,
+      "added_instructions": 0,
+      "packed_sha256": "855177422c0bd1c59b09e64c248144179a148acf3ec84f401f5d5747b086bee5"
+    }
+  ],
+  "selected_default_changed": false
+}

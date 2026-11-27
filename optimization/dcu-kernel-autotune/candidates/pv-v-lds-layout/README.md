@@ -412,3 +412,16 @@ HIP_VISIBLE_DEVICES=0 python bench-mmac-dependency-probe.py "$probe" "$probe_res
 ```
 
 目前五个镜像仅完成编译和 CPU 检查，设备代码摘要、内核描述符、元数据、静态 MMAC 数和预期输出公式一致性检查均通过。测量默认覆盖 80 和 320 个线程块，分别观察较低并发和更多驻留 wave 时的变化。GPU 数值验证与计时排在本轮完整验收结束之后；尚无依赖延迟结论，不能据此宣布存在新收益。
+
+## Q 常驻 VGPR 位置
+
+`build-query-register-placement.py` 在 P 行布局与 V 预排布组合上，将原 `v65:v96` 的 Q 常驻寄存器放到 VGPR 文件末端，并将原 `v97:v218` 紧凑移到 `v65:v186`。提供 187/188/189/190 四个 Q 起始位置，检查操作数寄存器位置是否影响 MMAC。该实验尚无收益结论。
+
+所有寄存器映射均为双射，硬件入口的 `v0` 不变。构建脚本逐一确认所有多寄存器操作数仍连续，并用逆映射恢复整份原汇编逐字节比较，再更新 VGPR 资源描述。四个版本均保留 128 条静态 BF16 MMAC，数学指令、浮点顺序及其余控制流不变，没有插入运行时拷贝。VGPR 静态需求分别为 219/220/221/222，实际分配粒度和性能需要运行后确认。
+
+```bash
+python build-query-register-placement.py "$integrated" "$register_candidate" --query-register 188
+python screen-pv-wide-operand.py "$integrated" "$register_builds" "$register_result"
+```
+
+四个版本仅完成编译和逆映射检查。普通/放大输入逐位比较、无 profiler 交替计时和独立 PMC 已串行安排在完整模型验收及依赖诊断之后。数值不通过的版本不得进入 PMC 或正式模型入口。
