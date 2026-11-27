@@ -53,3 +53,37 @@ bash optimization/run-optimized.sh --config "$candidate_config" --replay-run \
 当前回放的每组包含一次独立预热和五次正式 Transformer 调用。三步中位数为 2.064661→1.982741、2.064398→1.983129、2.064086→1.981949 秒，合计降幅 3.961250%。输出原始字节 SHA 同时与同实例参考及此前验收版匹配。完整 A 投影约 3.319847%，仍需完整请求实测证明。
 
 `summarize-replay.py` 核对实际 native/设备镜像、原始哈希和数学调用计数。捕获文件的旧版输出仅用于诊断，回放质量结论使用当前同实例及已验收 peer 输出。
+
+## 统一构建、复测与发布
+
+从仓库根目录可统一构建本候选；`accepted_peer_config` 必须是行分片归一化之前、已验收的 peer 配置。`build` 子命令仅构建更早的注意力前序，不能用它代替下面的 `build-sharded`。
+
+```bash
+bash optimization/reproduce-public-a.sh build-sharded \
+  "$accepted_peer_config" "$new_work" "$xmake_binary"
+```
+
+若使用私有源码版 xmake，预先设置 `XMAKE_PROGRAM_DIR` 为配套 Lua 脚本目录。此入口从冻结前序源码构建 native、九齿行分片镜像、发布 transport 和模型桥，把所有活动运行组件复制到 `new_work/release`，核对加载区段及固定主机库身份。构建不自动通过完整资格，也不改默认配置。
+
+```bash
+bash optimization/reproduce-public-a.sh resident "$release" "$model" "$new_output"
+bash optimization/reproduce-public-a.sh single "$release" "$model" "$other_new_output"
+```
+
+两种入口均识别 `h3-peer-sharded-norm-v1`。`resident` 生成八次完整 A，汇总三组配对；`single` 在新进程运行一次 A，另记加载与首次生成的进程总墙钟。完整 11 请求已经完成时，也可以直接运行 `report-benchmark.py QUALIFICATION/steady-paired NEW_JSON`，汇总相同的前八条记录，避免重跑。
+
+`package-runtime.py NEW_RELEASE --qualification QUALIFICATION` 只接受已正常完成、质量一致且完整 A 配对均值收益至少 3% 的资格记录。所有活动 `H3_*_BUILD` 运行组件复制到发布目录，native overlay 路径随之更新；原实验路径仅保留为来源记录。发布仍需验证实际加载，单独切换 `selected-best.env`。运行仍依赖账号中已准备的 `runtime`、权重及同版本 DTK，不宣称为独立容器。
+
+## 独立采样
+
+正式无 profiler 计时结束后，以新目录分别运行，不能重叠：
+
+```bash
+bash profile-model.sh trace "$candidate_config" "$new_trace"
+bash profile-model.sh pmc-gate "$candidate_config" "$new_gate_pmc"
+bash profile-model.sh pmc-norm "$candidate_config" "$new_norm_pmc"
+```
+
+`trace` 在权重加载和一次预热后，仅采集真实模型第 25 次去噪的一次 Transformer；停止前两秒用于排空 profiler，不能算入计算时间。输出 `hipprof_stream.json` 与回放数值结果。
+
+两项 PMC 使用相同主机桥和设备镜像，在独立八卡 Tensor 桥检查中采集官方 A 长度，保留原始 `pmc.txt`；这不是完整模型 PMC。检查按开启/关闭/开启运行，各三次残差链，且每步都执行当前 peer 参考，原始同名 kernel 记录因此同时包含参考和候选。必须按设备、寄存器/网格和执行次序区分：行分片 gate 与完整参考 gate 不同，局部 norm 与全行 norm 的网格也不同。不能把这些记录的整体均值当作候选模型耗时。

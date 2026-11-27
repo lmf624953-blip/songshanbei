@@ -9,6 +9,13 @@ project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 release=$(realpath -- "$1")
 model=$(realpath -- "$2")
 out=$(realpath -m -- "$3")
+if [[ -f "$release/release.json" ]] && python - "$release/release.json" <<'PYMODEL'
+import json,sys
+sys.exit(0 if json.load(open(sys.argv[1])).get('kind')=='h3-peer-sharded-norm-v1' else 1)
+PYMODEL
+then
+    exec bash "$project/optimization/dcu-kernel-autotune/candidates/peer-sharded-norm-model/benchmark.sh" "$release" "$model" "$out"
+fi
 if [[ -f "$release/release.json" ]] && python - "$release/release.json" <<'PYKIND'
 import json,sys
 sys.exit(0 if json.load(open(sys.argv[1])).get('kind')=='h3-peer-nt-indexed-gate-v1' else 1)

@@ -1,0 +1,347 @@
+{
+  "native_sha256": "ba2e14c8e7b4bacf473a4cf4b2be9e6305231313c057c0bd1a9e7a7c1ed5f26e",
+  "abi_codes": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    104,
+    13,
+    14,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    101,
+    100,
+    102,
+    103,
+    105
+  ],
+  "nt": {
+    "sections": {
+      ".note": {
+        "type": 7,
+        "flags": 2,
+        "address": 512,
+        "size": 1968,
+        "sha256": "e6f47947f6f7d0db9907beca24ce1ceb536970f963811519c223d268f9bb2beb"
+      },
+      ".dynsym": {
+        "type": 11,
+        "flags": 2,
+        "address": 2480,
+        "size": 72,
+        "sha256": "dd19e9b23b008b18542cce7b3d7d0a57020989bf1905d5f84cec5ec7286b277e"
+      },
+      ".gnu.hash": {
+        "type": 1879048182,
+        "flags": 2,
+        "address": 2552,
+        "size": 36,
+        "sha256": "3208ece69dbf8b572e0cfcfe6bfbac460ca0b55d98cacb545b01f6971c7aedea"
+      },
+      ".hash": {
+        "type": 5,
+        "flags": 2,
+        "address": 2588,
+        "size": 32,
+        "sha256": "ff6a5b2828b3fba91d1c1d7010523f424b5048b4b20829c5b5b2aa03b816a3fa"
+      },
+      ".dynstr": {
+        "type": 3,
+        "flags": 2,
+        "address": 2620,
+        "size": 44,
+        "sha256": "ab981c97e47dc393e71028741a857d0711507c279c8b57f2633417587e3954b0"
+      },
+      ".rodata": {
+        "type": 1,
+        "flags": 2,
+        "address": 2688,
+        "size": 64,
+        "sha256": "91d9a82c602a95355704debd7754dcaff7c77b595cbfc514295a514a2d6764b3"
+      },
+      ".text": {
+        "type": 1,
+        "flags": 6,
+        "address": 6912,
+        "size": 9424,
+        "sha256": "ac736a260de39fb5a3e2a2f57310c9fd487a8bd23bebdafe3e05f72030dd626b"
+      },
+      ".dynamic": {
+        "type": 6,
+        "flags": 3,
+        "address": 20432,
+        "size": 112,
+        "sha256": "c24b9c2d098eaba71cd480cdfdede67f61933501823010d13ba7ea93e8b04c02"
+      },
+      ".relro_padding": {
+        "type": 8,
+        "flags": 3,
+        "address": 20544,
+        "size": 4032,
+        "sha256": null
+      }
+    },
+    "segments": [
+      [
+        6,
+        4,
+        64,
+        64,
+        64,
+        448,
+        448,
+        8
+      ],
+      [
+        1,
+        4,
+        0,
+        0,
+        0,
+        2752,
+        2752,
+        4096
+      ],
+      [
+        1,
+        5,
+        2816,
+        6912,
+        6912,
+        9424,
+        9424,
+        4096
+      ],
+      [
+        1,
+        6,
+        12240,
+        20432,
+        20432,
+        112,
+        4144,
+        4096
+      ],
+      [
+        2,
+        6,
+        12240,
+        20432,
+        20432,
+        112,
+        112,
+        8
+      ],
+      [
+        1685382482,
+        4,
+        12240,
+        20432,
+        20432,
+        112,
+        4144,
+        1
+      ],
+      [
+        1685382481,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        4,
+        512,
+        512,
+        512,
+        1968,
+        1968,
+        4
+      ]
+    ],
+    "elf_target": {
+      "machine": 224,
+      "flags": 1410,
+      "entry": 0
+    }
+  },
+  "host_sha256": {
+    "peer-gate-bridge.so": "da8c3fb51c7859d37c770b982a5a329d10b982c94186057f4aef9d0fc943c3aa",
+    "peer-transport.so": "40c74f002dd5d2480a69a8aafcd5935e51877f2193873a1f6e213a28b5c3e294"
+  },
+  "norm": {
+    "sections": {
+      ".note": {
+        "type": 7,
+        "flags": 2,
+        "address": 512,
+        "size": 1016,
+        "sha256": "a5d611288b3e397c429e4f3946df48aa3e47b73cfa50e0e6f28898028c79830f"
+      },
+      ".dynsym": {
+        "type": 11,
+        "flags": 2,
+        "address": 1528,
+        "size": 72,
+        "sha256": "212c83328d9dafae57f2040872859a467eef6a67606985e0dcb86f200e0dccc2"
+      },
+      ".gnu.hash": {
+        "type": 1879048182,
+        "flags": 2,
+        "address": 1600,
+        "size": 36,
+        "sha256": "098a8f718da3fa2925c8934cbad476f9052885ff313d484b1d00a82df8d83419"
+      },
+      ".hash": {
+        "type": 5,
+        "flags": 2,
+        "address": 1636,
+        "size": 32,
+        "sha256": "6fa80282e29f146a54676d191e42c4af937e732f64e2496d76f93cbabb0b2ae5"
+      },
+      ".dynstr": {
+        "type": 3,
+        "flags": 2,
+        "address": 1668,
+        "size": 54,
+        "sha256": "f5aed81ba8d73005bf8bf16dcc05d9a6a2100b688f80535192c70025c4a117ca"
+      },
+      ".rodata": {
+        "type": 1,
+        "flags": 2,
+        "address": 1728,
+        "size": 64,
+        "sha256": "707f269520f6e50817b2c05e800ba08328961844e47f454e0282df9140e89444"
+      },
+      ".text": {
+        "type": 1,
+        "flags": 6,
+        "address": 5888,
+        "size": 6248,
+        "sha256": "5024823726ad5892058dc46d53086a4bb4a03669a0657e095ada057c58aa0cd3"
+      },
+      ".dynamic": {
+        "type": 6,
+        "flags": 3,
+        "address": 16232,
+        "size": 112,
+        "sha256": "5f10e2e39bf009145bb2f473c68faf00ccc6e7ca41656fad1610819e3520918c"
+      },
+      ".relro_padding": {
+        "type": 8,
+        "flags": 3,
+        "address": 16344,
+        "size": 40,
+        "sha256": null
+      }
+    },
+    "segments": [
+      [
+        6,
+        4,
+        64,
+        64,
+        64,
+        448,
+        448,
+        8
+      ],
+      [
+        1,
+        4,
+        0,
+        0,
+        0,
+        1792,
+        1792,
+        4096
+      ],
+      [
+        1,
+        5,
+        1792,
+        5888,
+        5888,
+        6248,
+        6248,
+        4096
+      ],
+      [
+        1,
+        6,
+        8040,
+        16232,
+        16232,
+        112,
+        152,
+        4096
+      ],
+      [
+        2,
+        6,
+        8040,
+        16232,
+        16232,
+        112,
+        112,
+        8
+      ],
+      [
+        1685382482,
+        4,
+        8040,
+        16232,
+        16232,
+        112,
+        152,
+        1
+      ],
+      [
+        1685382481,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        4,
+        512,
+        512,
+        512,
+        1016,
+        1016,
+        4
+      ]
+    ],
+    "elf_target": {
+      "machine": 224,
+      "flags": 1410,
+      "entry": 0
+    }
+  },
+  "norm_host_sha256": "fda12374fdf350995bf59028978c4c6029825afe591eb1370716e4adaf6cc0bc",
+  "scope": "已通过真实八卡逐位的模型镜像；完整生成资格另看qualification"
+}

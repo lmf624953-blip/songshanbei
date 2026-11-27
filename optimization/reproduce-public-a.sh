@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 冻结注意力版本的构建，以及注意力/分片门控发布版的统一复测。
+# 冻结注意力前序的构建，以及分片门控/归一化发布版的统一复测。
 set -eo pipefail
 project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 scripts="$project/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout"
@@ -9,10 +9,12 @@ usage() {
     cat <<'EOF'
 用法：
   bash optimization/reproduce-public-a.sh build NEW_WORK_DIR
+  bash optimization/reproduce-public-a.sh build-sharded ACCEPTED_PEER_CONFIG NEW_WORK_DIR XMAKE_BINARY
   bash optimization/reproduce-public-a.sh resident RELEASE_DIR MODEL_DIR NEW_OUTPUT_DIR
   bash optimization/reproduce-public-a.sh single RELEASE_DIR MODEL_DIR NEW_OUTPUT_DIR
 
-build 从源码生成 NEW_WORK_DIR/release，不运行模型。
+build 从源码生成注意力前序 NEW_WORK_DIR/release，不运行模型。
+build-sharded 在已验收 peer 配置基础上构建行分片归一化，不自动切换默认。
 resident 运行八次完整 A，排除双方各一次预热，汇总三组配对。
 single 用新进程运行一次官方 A，另记进程总墙钟及原入口计时。
 目录均使用绝对路径；NEW_WORK_DIR 和 NEW_OUTPUT_DIR 必须尚不存在。
@@ -51,7 +53,11 @@ case "$mode" in
             "$work/prepacked" "$work/softmax" > "$work/softmax.log" 2>&1
         bash "$scripts/build-stable-paired-release.sh" \
             "$work/softmax" "$work/release" > "$work/release.log" 2>&1
-        printf '已构建当前验收版：%s\n' "$work/release"
+        printf '已构建注意力前序：%s\n' "$work/release"
+        ;;
+    build-sharded)
+        [[ $# == 3 ]] || { usage >&2; exit 2; }
+        exec bash "$project/optimization/dcu-kernel-autotune/candidates/peer-sharded-norm-model/build-release.sh" "$@"
         ;;
     resident)
         [[ $# == 3 ]] || { usage >&2; exit 2; }
@@ -72,15 +78,21 @@ case "$mode" in
             export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 OMP_NUM_THREADS=4
             if python - "$release/release.json" <<'PYKIND'
 import json,sys
-sys.exit(0 if json.load(open(sys.argv[1])).get('kind')=='h3-peer-nt-indexed-gate-v1' else 1)
+sys.exit(0 if json.load(open(sys.argv[1])).get('kind') in ('h3-peer-nt-indexed-gate-v1','h3-peer-sharded-norm-v1') else 1)
 PYKIND
             then
-                python - "$project" <<'PYPEER'
-import os,sys
+                python - "$project" "$release/release.json" <<'PYPEER'
+import json,os,sys
 from pathlib import Path
-sys.path.insert(0,str(Path(sys.argv[1])/'optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel'))
-from peer_identity import check
-check(os.environ['H3_PEER_GATE_BUILD'],os.environ['H3_ADALN_BUILD'])
+base=Path(sys.argv[1])/'optimization/dcu-kernel-autotune/candidates'
+if json.load(open(sys.argv[2]))['kind']=='h3-peer-sharded-norm-v1':
+    sys.path.insert(0,str(base/'peer-sharded-norm-model'))
+    from model_identity import check
+    check(os.environ['H3_PEER_SHARDED_NORM_BUILD'],os.environ['H3_ADALN_BUILD'],os.environ['H3_PEER_GATE_BUILD'],os.environ['H3_WIDE_NORM_INDEXED_BUILD'])
+else:
+    sys.path.insert(0,str(base/'rccl-sequence-parallel'))
+    from peer_identity import check
+    check(os.environ['H3_PEER_GATE_BUILD'],os.environ['H3_ADALN_BUILD'])
 PYPEER
             else
             reference=$(python -c 'import json,sys; from pathlib import Path
