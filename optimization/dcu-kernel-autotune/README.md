@@ -107,3 +107,7 @@ H3 候选构建默认限制 180 s，使用 `H3_AUTOTUNE_BUILD_TIMEOUT_SECONDS` �
 ## 2026-11-27 融合流水线与现用热点
 
 用户提出的 QK 分阶段拆分已实测退化，新的无 spill 双 Q128 共享 K/V 也未胜出。融合内 guard 与 P 同步只有不足1%单 kernel收益，按完整请求3%门槛归档；正式最佳仍为已验收127.831秒。现用版本另做一次真实八卡诊断，注意力/AllReduce/GEMM约占42.8%/25.7%/20.4%，通信包含等待，诊断不是新成绩。 [可重建源码、对照及原始 PMC](docs/融合流水线与双Q复用-f13r1n16.md)
+
+## 当前 GEMM 覆盖与集合顺序闸门
+
+2026-11-27 在 `f13r1n16` 以实际Tensile目录审核短名称映射，补测26个旧目录外候选及16个主要RK1，共336形状组合，128个逐位一致；最快候选又做39组配对，完整A粗略收益投影仅约0.324%，不合入。八卡直接RS/AG及2/4/8分块在默认与Ring/Simple16下均不保持原BF16位结果，重复整段对照通过。独立rank链探针的106902采样组均匹配8类串行舍入链，尚未证明完整分片映射，继续研究保持原序的自定义分片。 [GEMM源码与用法](candidates/rocblas-coverage/README.md) · [集合源码与后续限制](candidates/rccl-sequence-parallel/README.md) · [完整原始样本](docs/gemm-coverage-f13r1n16.json)
