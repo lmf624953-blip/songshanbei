@@ -2,7 +2,9 @@
 
 v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
 
-当前本地默认采用 Q128 packed 长注意力、Q/K RMSNorm 与 MRoPE 融合、compact 原库顺序宽 RMSNorm 与索引 AdaLN 融合，以及按行分块的 BF16 SwiGLU。普通官方 A 和常驻 A,A,A,A,B,C,A 均通过规格与独立质量比较，各条成片的 SHA-256 与上一版一致。三次正式 A 的端到端均值为 **167.721 ± 0.972 秒**，Transformer 均值为 **146.721 ± 0.010 秒**，比同节点上一版分别减少 **0.965%** 和 **1.506%**。七请求显存采样最高值为 **33688 MiB**。官方 A 采用 768×928、50 steps、124 帧和 seed 42，执行 49 次 Transformer。[七请求验收](dcu-kernel-autotune/docs/elementwise-compact-row-1218234-steady-qualified.json)
+当前本地正式配置采用 Q128 packed K/V 联合发射、Q/K RMSNorm 与 MRoPE 融合、compact 原库顺序宽 RMSNorm 与索引 AdaLN 融合，以及按行分块的 BF16 SwiGLU。八卡常驻公开 A 的三组配对，端到端均值为 **147.55 秒**，Transformer 均值为 **127.65 秒**。官方 A 采用 768×928、50 steps、124 帧和 seed 42，执行 49 次 Transformer。普通 A 与常驻 A、B、C、返回 A 均通过规格和成片比对。 [联合发射版验收](dcu-kernel-autotune/docs/joint-kv-a14r1n11-qualified.json)
+
+最新的 softmax 求和回写和 DPP 交错候选在同轮八卡 A 配对中达到 **142.89 秒**，比该轮基准 147.80 秒节省 **3.32%**。普通官方 A 和常驻 B 成片与正式版逐字节一致。该次常驻进程在 C 执行期间结束，正式配置采用上面的联合发射镜像。 [候选重建说明](dcu-kernel-autotune/candidates/pv-v-lds-layout/README.md#在线求和回写与-dpp-交错) · [已完成的端到端配对](dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json)
 
 ## 准备运行环境
 
@@ -27,7 +29,7 @@ module load compiler/dtk/26.04 compiler/gcc/11.4.0
 
 模型根目录需要直接包含 `model_index.json`。准备独立 PyTorch 参考时使用同一组离线依赖执行 `reproduce-local.py reference`，然后执行 `reproduce-local.py generate`，两个阶段均传入对应的 `--cache` 和 `--model`。
 
-## 构建当前版本和验收公开样例
+## 构建 Q128 packed 基础版并运行公开样例
 
 ```bash
 mkdir -p "$project/artifacts"

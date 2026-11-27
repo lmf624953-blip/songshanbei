@@ -258,3 +258,11 @@ python screen-softmax-special.py "$candidate" "$interleaved"
 ```
 
 四个候选在 27570/22016 token 的普通和放大输入均逐位一致。最快组合相对正式联合发射版节省 8.47%/8.59%，19 组配对相对最大值折叠版再省 1.70%/1.67%。重建产物逐文件一致，20 个额外长度、尾部哨兵和 24 个特殊 BF16 输入通过。独立 PMC 测得 220 VGPR、16 KiB LDS、0 B scratch。见 [配对、特殊值和八卡回放](../../docs/softmax-row-sum-a14r1n11.json)。
+
+从完整推理的标准 Q128 packed 构建重建候选时，为 `rebuild-v2.sh` 设置 `H3_AOT_SAVE_IR=1` 并启用 `--long-attention-q128-packed`。令 `build` 指向该构建目录，`release` 为新的输出目录。生成的 `candidate.env` 可通过 `run-optimized.sh --config` 加载。
+
+```bash
+bash build-row-sum-release.sh "$build/attention" "$build/candidate.env" "$release"
+```
+
+在 `a14r1n11` 的三组八卡 A 配对中，端到端均值由 147.80 秒降至 142.89 秒，节省 3.32%。Transformer 均值由 127.67 秒降至 121.97 秒。普通官方 A 与常驻 A、B 已完成的成片均和联合发射版逐字节一致。该轮计时全部来自同一个常驻进程，C 和返回 A 回归待完成。 [已完成的端到端配对与成片检查](../../docs/softmax-row-sum-a14r1n11-steady-partial.json)

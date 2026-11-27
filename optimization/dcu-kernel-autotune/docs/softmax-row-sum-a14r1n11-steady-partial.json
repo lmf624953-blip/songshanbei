@@ -1,0 +1,520 @@
+{
+  "hostname": "a14r1n11",
+  "timed_pairs": [
+    [
+      2,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "wall": {
+    "reference": {
+      "samples": [
+        147.0394495781511,
+        148.69214749429375,
+        147.67100685555488
+      ],
+      "mean": 147.80086797599992,
+      "median": 147.67100685555488,
+      "stdev": 0.8339667460144845
+    },
+    "candidate": {
+      "samples": [
+        143.245521010831,
+        143.02439589984715,
+        142.39123847242445
+      ],
+      "mean": 142.88705179436752,
+      "median": 143.02439589984715,
+      "stdev": 0.4433928465132047
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        2.580211350222472,
+        3.811735649768666,
+        3.575358830115427
+      ],
+      "mean": 3.3224352767021883,
+      "median": 3.575358830115427,
+      "stdev": 0.6535600722172143
+    },
+    "mean_time_reduction_percent": 3.3246192995499246
+  },
+  "transformer": {
+    "reference": {
+      "samples": [
+        127.66564407106489,
+        127.6785836527124,
+        127.65794814750552
+      ],
+      "mean": 127.66739195709427,
+      "median": 127.66564407106489,
+      "stdev": 0.010428199651167327
+    },
+    "candidate": {
+      "samples": [
+        121.95995642337948,
+        121.97523716744035,
+        121.96513818204403
+      ],
+      "mean": 121.96677725762129,
+      "median": 121.96513818204403,
+      "stdev": 0.007771113904998385
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        4.469242832871578,
+        4.466956260092325,
+        4.45942461716805
+      ],
+      "mean": 4.465207903377318,
+      "median": 4.466956260092325,
+      "stdev": 0.005137305062231978
+    },
+    "mean_time_reduction_percent": 4.465208078652383
+  },
+  "official": {
+    "entry_defaults": {
+      "--steps": 50,
+      "--seed": 42,
+      "--num-frames": 124
+    },
+    "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+    "validation": {
+      "local_checks_passed": true,
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "transformer_calls": 49,
+      "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "comparison": {
+        "exact": false,
+        "left_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "right_metadata": {
+          "width": 768,
+          "height": 928,
+          "declared_frames": 124,
+          "average_fps": 24.0,
+          "duration_seconds": 5.166666666666667
+        },
+        "metadata_size_match": true,
+        "decoded_length_match": true,
+        "left_frames": 124,
+        "right_frames": 124,
+        "shape_mismatches": 0,
+        "different_elements": 224410185,
+        "compared_elements": 265125888,
+        "max_absolute_difference": 237,
+        "mean_absolute_difference": 5.597480216643348,
+        "ssim_match_percent": 93.83201347926341,
+        "ssim_min_percent": 87.9202020874348,
+        "ssim_max_percent": 98.0362796408051,
+        "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+      }
+    }
+  },
+  "partial_resident_run": {
+    "expected_sequence": [
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "B",
+      "C",
+      "A"
+    ],
+    "generation_completed": false,
+    "independent_sequence_validation_completed": false,
+    "completed_records": [
+      {
+        "index": 0,
+        "case": "A",
+        "attention_variant": "base",
+        "wall_seconds": 209.14974775444716,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.0376755865290761,
+          "input.arguments": 5.6500546634197235e-05,
+          "compute.condition_encoder": 38.77229243144393,
+          "input.video_vae_encode": 1.936449117027223,
+          "compute.h3_transformer": 130.09650819934905,
+          "output.video_vae_decode": 31.565046870149672,
+          "output.audio_vae_decode": 1.858906365931034,
+          "generation.pipeline_total": 207.6089044539258,
+          "output.media_encode": 1.5024875402450562
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 1,
+        "case": "A",
+        "attention_variant": "fast",
+        "wall_seconds": 141.00002829451114,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.031417133286595345,
+          "input.arguments": 4.658009856939316e-05,
+          "compute.condition_encoder": 0.32349735125899315,
+          "input.video_vae_encode": 0.866664201952517,
+          "compute.h3_transformer": 121.94772842805833,
+          "output.video_vae_decode": 12.754212414845824,
+          "output.audio_vae_decode": 0.24158437550067902,
+          "generation.pipeline_total": 139.4562403485179,
+          "output.media_encode": 1.5116691775619984
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 2,
+        "case": "A",
+        "attention_variant": "base",
+        "wall_seconds": 147.0394495781511,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.031323582865297794,
+          "input.arguments": 4.374980926513672e-05,
+          "compute.condition_encoder": 0.32654433604329824,
+          "input.video_vae_encode": 0.8640468409284949,
+          "compute.h3_transformer": 127.66564407106489,
+          "output.video_vae_decode": 12.92795606981963,
+          "output.audio_vae_decode": 0.24171929620206356,
+          "generation.pipeline_total": 145.47916509397328,
+          "output.media_encode": 1.5282235154882073
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 3,
+        "case": "A",
+        "attention_variant": "fast",
+        "wall_seconds": 143.245521010831,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.03125789202749729,
+          "input.arguments": 5.0980597734451294e-05,
+          "compute.condition_encoder": 0.32652042526751757,
+          "input.video_vae_encode": 0.8634825246408582,
+          "compute.h3_transformer": 121.95995642337948,
+          "output.video_vae_decode": 14.976304504089057,
+          "output.audio_vae_decode": 0.2425748035311699,
+          "generation.pipeline_total": 141.70032274443656,
+          "output.media_encode": 1.5130732478573918
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 4,
+        "case": "A",
+        "attention_variant": "fast",
+        "wall_seconds": 143.02439589984715,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.034740202128887177,
+          "input.arguments": 5.239993333816528e-05,
+          "compute.condition_encoder": 0.3314635679125786,
+          "input.video_vae_encode": 0.8633323749527335,
+          "compute.h3_transformer": 121.97523716744035,
+          "output.video_vae_decode": 14.7365104239434,
+          "output.audio_vae_decode": 0.24182503763586283,
+          "generation.pipeline_total": 141.47485215496272,
+          "output.media_encode": 1.5139132654294372
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 5,
+        "case": "A",
+        "attention_variant": "base",
+        "wall_seconds": 148.69214749429375,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.031203181482851505,
+          "input.arguments": 5.43203204870224e-05,
+          "compute.condition_encoder": 0.3273809440433979,
+          "input.video_vae_encode": 0.8632477344945073,
+          "compute.h3_transformer": 127.6785836527124,
+          "output.video_vae_decode": 14.765376806259155,
+          "output.audio_vae_decode": 0.24220358952879906,
+          "generation.pipeline_total": 147.21747598797083,
+          "output.media_encode": 1.442596728913486
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 6,
+        "case": "A",
+        "attention_variant": "base",
+        "wall_seconds": 147.67100685555488,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.031811016611754894,
+          "input.arguments": 5.0751492381095886e-05,
+          "compute.condition_encoder": 0.3099788771942258,
+          "input.video_vae_encode": 0.8629145296290517,
+          "compute.h3_transformer": 127.65794814750552,
+          "output.video_vae_decode": 13.736084481701255,
+          "output.audio_vae_decode": 0.23943039774894714,
+          "generation.pipeline_total": 146.15031509287655,
+          "output.media_encode": 1.4880320793017745
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 7,
+        "case": "A",
+        "attention_variant": "fast",
+        "wall_seconds": 142.39123847242445,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.03231694083660841,
+          "input.arguments": 5.409959703683853e-05,
+          "compute.condition_encoder": 0.30740431416779757,
+          "input.video_vae_encode": 0.8637317884713411,
+          "compute.h3_transformer": 121.96513818204403,
+          "output.video_vae_decode": 14.193507794290781,
+          "output.audio_vae_decode": 0.24142524227499962,
+          "generation.pipeline_total": 140.89178625773638,
+          "output.media_encode": 1.4662543963640928
+        },
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+          "text": "A dog falls asleep"
+        }
+      },
+      {
+        "index": 8,
+        "case": "B",
+        "attention_variant": "fast",
+        "wall_seconds": 109.64142794720829,
+        "transformer_calls": 49,
+        "stage_seconds": {
+          "input.files_and_references": 0.010075804777443409,
+          "input.arguments": 4.292931407690048e-05,
+          "compute.condition_encoder": 0.291377792134881,
+          "input.video_vae_encode": 0.6914212349802256,
+          "compute.h3_transformer": 93.44801735598594,
+          "output.video_vae_decode": 11.172384027391672,
+          "output.audio_vae_decode": 0.2411128506064415,
+          "generation.pipeline_total": 108.62451858539134,
+          "output.media_encode": 1.0060018105432391
+        },
+        "output_sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+        "matched_previously_accepted_media": true,
+        "command_options": {
+          "task": "fl2va",
+          "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+          "last_frame": null,
+          "gpus": "0,1,2,3,4,5,6,7",
+          "steps": 50,
+          "num_frames": 124,
+          "seed": 42,
+          "height": null,
+          "width": null,
+          "legacy": false,
+          "legacy_text_gpus": null,
+          "legacy_transformer_gpus": null,
+          "legacy_memory_fraction": 0.4,
+          "first_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/softmax-row-sum-a14r1n11/steady-paired/square-first-frame.png",
+          "text": "A small sailboat moves across the water under a bright sun."
+        }
+      }
+    ],
+    "pending": [
+      {
+        "index": 9,
+        "case": "C"
+      },
+      {
+        "index": 10,
+        "case": "A"
+      }
+    ]
+  },
+  "release_rebuild": {
+    "verified_on": "f12r2n09",
+    "exact_artifact_sha256": {
+      "dense-attention-packed.hsaco": "3e24409034ea3006f69f50fb4f6004fdedb007d992276a2c45d4c4bd2ab30fea",
+      "dense-attention-aot.hsaco": "d00576ed5df9aa7c924d0727d576bb3a0bd34e9e0a06fd53e2cb96f54c3afca5",
+      "dense-attention-fallback.hsaco": "45602e6ad33266ac135be3c3eaff95159ca5ff51be15c78437ba34dad00997a5",
+      "dense-attention-aot.so": "fa78252de1d473dabdf5ac869c770da4b297de84283e75286609f659a0117374"
+    }
+  },
+  "promoted": false,
+  "selected_default": "attention-q128-joint-kv-a14r1n11"
+}
