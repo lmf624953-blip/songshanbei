@@ -1,0 +1,103 @@
+{
+  "selected": true,
+  "selected_at": "2026-11-27T17:46:41.332996+08:00",
+  "name": "stable-paired-f12r2n09",
+  "attention": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-stable-paired-f12r2n09",
+  "configuration": "/public/home/acvduipmem/xsh/songshanbei/optimization/selected-best.env",
+  "qualification": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/qualification",
+  "reference_configuration": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/work/selection-history/before-stable-paired-f12r2n09.env",
+  "wall_seconds": 127.83100072247908,
+  "reference_wall_seconds": 132.55644915842763,
+  "wall_reduction_percent": 3.5648574369254837,
+  "transformer_seconds": 107.2876984522057,
+  "transformer_reduction_percent": 4.106416474301522,
+  "artifacts": {
+    "dense-attention-packed.hsaco": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+    "dense-attention-aot.hsaco": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+    "dense-attention-fallback.hsaco": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+    "dense-attention-packed-reference.hsaco": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+    "prepack-value.hsaco": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+    "dense-attention-aot.so": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+  },
+  "cpu_release_rebuild_verification": {
+    "scope": "CPU重建一致性；不代替GPU数值或完整模型资格验收",
+    "artifacts": {
+      "dense-attention-packed.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+        "rebuilt_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd"
+      },
+      "dense-attention-aot.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+        "rebuilt_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f"
+      },
+      "dense-attention-fallback.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+        "rebuilt_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba"
+      },
+      "dense-attention-packed-reference.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+        "rebuilt_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9"
+      },
+      "prepack-value.hsaco": {
+        "byte_equal": false,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+        "rebuilt_sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4"
+      },
+      "dense-attention-aot.so": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516",
+        "rebuilt_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+      }
+    },
+    "images": {
+      "base": {
+        "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified/attention",
+        "packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+        "packed_text_sha256": "e9240c600e74a73b51cb429f459ab18b389343616c3054c85edbb6ee7f91b13e",
+        "packed_lds_bytes": 16384,
+        "value_prepack": {
+          "tile": 2048,
+          "warps": 8,
+          "minimum_rows": 4096,
+          "sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+          "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+          "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+        }
+      },
+      "fast": {
+        "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/release-rebuild/attention",
+        "packed_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+        "packed_text_sha256": "159f8bda3813d74da66b2f15fa1232100b0807eac33921334279f787d1d22e9a",
+        "packed_lds_bytes": 16384,
+        "value_prepack": {
+          "tile": 2048,
+          "warps": 8,
+          "minimum_rows": 4096,
+          "sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+          "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+          "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+        }
+      }
+    },
+    "source_files_match": true,
+    "reference_manifest_matches": true,
+    "prior_summary_all_fields_equal": true
+  },
+  "pause_after_integration_requested": true
+}

@@ -1,5 +1,7 @@
 # MiniMax-H3 长注意力自动调优
 
+2026-11-27 当前完整验收版为 stable-max guarded / 成对 P 算术组合，官方 A 常驻预热后三次均值为 **127.831001 秒**，同轮基准 132.556449 秒。普通官方 A 及完整 11 请求均通过；本轮整合后按用户指令暂停。当前复测使用 [统一入口](../reproduce-public-a.sh) 和 [计时说明](../公开A耗时复测说明.md)，取 `wall.candidate.mean`。完整取舍见 [暂停分析](../本轮最优整合与暂停分析.md)。下文保留早期 v3 轮次和框架用法。
+
 公共轮次驱动来自 `MD/matpl/dcu-kernel-autotune` 的工作树，基准提交为 `667b45b`。三个公共脚本的复制前 SHA-256 见 [framework.sha256](docs/framework.sha256)。本地适配支持 DTK 26.04 的 PMC CSV，并修正报告在 PMC 匹配数为零时的退出问题。源码、轮次和结果均为本次 H3 调优所用。
 
 ## 运行
@@ -33,7 +35,7 @@ printf 'WAVES_PER_EU=2\nSCHEDULE_HINT=none\n' > rounds/h3-long-attention/round_0
 
 框架状态 `PASS` 表示通过数值校验并执行剖析。每种长度的实际收益和硬件资源见 按长度对照（本机 `reports/h3-long-attention/按长度对照.md`），用 `python3 scripts/report-h3-attention.py` 更新。也可查看各轮的 调优目录（本机 `rounds/h3-long-attention/`） 和 框架汇总（本机 `reports/h3-long-attention/summary.md`）。
 
-## 当前进展
+## 历史进展
 
 第 1–10 轮排除了强制增加 wave 并发、调度提示、尾部 mask 分支、提前归约 LSE、Q 类型转换、PV 转置及单次累加物化 Q 等写法。其中第 9 轮数值失败，框架拦截后没有执行 trace/PMC；其余轮次数值通过但没有可靠收益。
 

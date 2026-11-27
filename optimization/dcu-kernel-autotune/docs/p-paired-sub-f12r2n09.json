@@ -1,6 +1,6 @@
 {
   "node": "f12r2n09",
-  "scope": "单算子、非新完整请求成绩",
+  "scope": "单算子、真实八卡、普通官方A及完整11请求验收",
   "experiment": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm",
   "reference": "已验收132.824526秒的P/ROR4组合",
   "source_sha256": {
@@ -19322,7 +19322,7 @@
     }
   ],
   "selected_micro_candidate": "guard-packed",
-  "decision": "纯重命名无可靠收益；仅成对P减法约1.76%单kernel，单项不足3%完整请求；与未选用stable-max组合约8.03%/7.48%单kernel，投影略超3%完整请求。保持正向Phi的较简单方案优先；负Phi新增复杂度未带来值得单独采用的收益。",
+  "decision": "纯重命名无可靠收益；仅成对P减法约1.76%单kernel，单项不足3%完整请求；与未选用stable-max组合约8.03%/7.48%单kernel，投影略超3%完整请求。保持正向Phi的较简单方案优先；负Phi新增复杂度未带来值得单独采用的收益。 完整验收已通过，三组完整请求均值132.556449→127.831001秒，下降3.564857%；已选为正式配置。本轮收尾后按用户指令暂停。",
   "projection": {
     "saving_seconds": 4.10267333984375,
     "end_to_end_reduction_percent": 3.0887919937237136,
@@ -19460,88 +19460,1798 @@
   "pmc_raw": "p-paired-sub-f12r2n09-basic-pmc.txt",
   "pmc_device_note": "HIP_VISIBLE_DEVICES=1；PyTorch逻辑cuda:0映射物理GPU1，原始hipprof TXT自身标为gpu id1。PMC独立进程，计时不参与选版。",
   "qualification": {
-    "state": "official-passed-eleven-request-running",
-    "session": 19380,
+    "state": "complete",
+    "exit_code": 0,
+    "eligible": true,
     "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/qualification",
-    "note": "按用户指令，本轮完成整合后暂停；不再启动新优化方向。",
-    "official": {
-      "process_exit_code": 0,
-      "validation_exit_code": 0,
-      "process_wall_seconds": 900.36,
-      "pipeline_seconds": 184.202,
-      "transformer_seconds": 110.06,
-      "total_end_to_end_seconds": 845.521,
-      "model_components_seconds": 659.023,
-      "matched_accepted_media": true,
-      "validation": {
-        "local_checks_passed": true,
-        "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
-        "transformer_calls": 49,
-        "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
-        "media": {
-          "media_readable": true,
-          "video": {
-            "width": 768,
-            "height": 928,
-            "fps": 24.0,
-            "codec": "h264",
-            "frames": 124
-          },
-          "audio": {
-            "codec": "aac",
-            "sample_rate": 32000,
-            "channels": 2,
-            "decoded_frames": 162,
-            "decoded_samples": 165888
-          },
-          "video_specs_passed": true,
-          "similarity_evaluated": false,
-          "competition_validation_passed": false
+    "matched_previously_accepted_media": true,
+    "public_a": {
+      "protocol": "minimax-h3-public-a-resident-paired-v1",
+      "comparison": "softmax-compact-vs-stable-paired",
+      "metric": "wall_seconds",
+      "units": "seconds",
+      "timed_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "completed_sequence": [
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "B",
+        "C",
+        "A"
+      ],
+      "summarized_request_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "runtime": {
+        "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+        "executable": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/.venv/bin/python",
+        "hostname": "f12r2n09",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127
+        ],
+        "native_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/infinilm/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+        "native_sha256": "d754a550f68b71eff3157906f53646b325f66a468d6dc900d53cb4520c0369b0",
+        "torch_version": "2.9.0",
+        "hip_version": "6.3.26093"
+      },
+      "environment": {
+        "H3_PY_ATTENTION_FP32_SCALE": "1",
+        "H3_VAE_DEVICES": "0,1",
+        "H3_VAE_DETERMINISTIC_ENCODE": "1",
+        "H3_ENCODER_INITIAL_CACHE": "512",
+        "H3_ENCODER_TP_COUNT": "4",
+        "TRITON_CACHE_DIR": "/tmp/h3-inference-cache-8tr1ojf2/triton",
+        "NINETOOTHED_CACHE_DIR": "/tmp/h3-inference-cache-8tr1ojf2/ninetoothed",
+        "HIP_VISIBLE_DEVICES": "0,1,2,3,4,5,6,7",
+        "OMP_NUM_THREADS": "4"
+      },
+      "images": {
+        "base": {
+          "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-p-nan-ror4-f12r2n09",
+          "packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+          "packed_text_sha256": "e9240c600e74a73b51cb429f459ab18b389343616c3054c85edbb6ee7f91b13e",
+          "packed_lds_bytes": 16384,
+          "value_prepack": {
+            "tile": 2048,
+            "warps": 8,
+            "minimum_rows": 4096,
+            "sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+            "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+            "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+          }
         },
-        "comparison": {
-          "exact": false,
-          "left_metadata": {
-            "width": 768,
-            "height": 928,
-            "declared_frames": 124,
-            "average_fps": 24.0,
-            "duration_seconds": 5.166666666666667
-          },
-          "right_metadata": {
-            "width": 768,
-            "height": 928,
-            "declared_frames": 124,
-            "average_fps": 24.0,
-            "duration_seconds": 5.166666666666667
-          },
-          "metadata_size_match": true,
-          "decoded_length_match": true,
-          "left_frames": 124,
-          "right_frames": 124,
-          "shape_mismatches": 0,
-          "different_elements": 224410185,
-          "compared_elements": 265125888,
-          "max_absolute_difference": 237,
-          "mean_absolute_difference": 5.597480216643348,
-          "ssim_match_percent": 93.83201347926341,
-          "ssim_min_percent": 87.9202020874348,
-          "ssim_max_percent": 98.0362796408051,
-          "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+        "fast": {
+          "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/builds/guard-packed",
+          "packed_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+          "packed_text_sha256": "159f8bda3813d74da66b2f15fa1232100b0807eac33921334279f787d1d22e9a",
+          "packed_lds_bytes": 16384,
+          "value_prepack": {
+            "tile": 2048,
+            "warps": 8,
+            "minimum_rows": 4096,
+            "sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+            "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+            "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+          }
         }
       },
-      "entry_defaults": {
-        "entry": "/public/home/acvduipmem/xsh/songshanbei/runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py",
-        "entry_sha256": "9bee7f79ad0968cb2af1ade301ef59a4db31d2c06ba9d2ade3435dc2bd98ca46",
-        "defaults": {
+      "input": {
+        "task": "fl2va",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "text": "A dog falls asleep",
+        "legacy": false,
+        "last_frame": null,
+        "height": 928,
+        "width": 768,
+        "transformer_calls": 49,
+        "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54"
+      },
+      "model_load_seconds": {
+        "model.pipeline_create": 0.027460196055471897,
+        "model.condition_encoder_create_and_load": 353.92755106883124,
+        "model.transformer_create_and_load": 249.6667074826546,
+        "model.remaining_components_create_and_load": 61.68592318799347
+      },
+      "requests": [
+        {
+          "index": 0,
+          "attention_variant": "base",
+          "warmup": true,
+          "wall_seconds": 191.47664065705612,
+          "stage_seconds": {
+            "input.files_and_references": 0.039436136838048697,
+            "input.arguments": 6.19012862443924e-05,
+            "compute.condition_encoder": 36.73842968000099,
+            "input.video_vae_encode": 1.911780518013984,
+            "compute.h3_transformer": 114.43678796151653,
+            "output.video_vae_decode": 31.33036177465692,
+            "output.audio_vae_decode": 1.8527084682136774,
+            "generation.pipeline_total": 189.681098068133,
+            "output.media_encode": 1.7553248670883477
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 1,
+          "attention_variant": "fast",
+          "warmup": true,
+          "wall_seconds": 128.29582960205153,
+          "stage_seconds": {
+            "input.files_and_references": 0.03229774907231331,
+            "input.arguments": 5.318131297826767e-05,
+            "compute.condition_encoder": 0.30876985378563404,
+            "input.video_vae_encode": 0.8647706848569214,
+            "compute.h3_transformer": 107.2827958012931,
+            "output.video_vae_decode": 14.705621833913028,
+            "output.audio_vae_decode": 0.24163435865193605,
+            "generation.pipeline_total": 126.75779945915565,
+            "output.media_encode": 1.5048597981221974
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 2,
+          "attention_variant": "base",
+          "warmup": false,
+          "wall_seconds": 133.00225279806182,
+          "stage_seconds": {
+            "input.files_and_references": 0.03199703712016344,
+            "input.arguments": 5.52409328520298e-05,
+            "compute.condition_encoder": 0.32038177317008376,
+            "input.video_vae_encode": 0.8619857681915164,
+            "compute.h3_transformer": 111.87208255566657,
+            "output.video_vae_decode": 14.82010504975915,
+            "output.audio_vae_decode": 0.24096237495541573,
+            "generation.pipeline_total": 131.46071486081928,
+            "output.media_encode": 1.5086741838604212
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 3,
+          "attention_variant": "fast",
+          "warmup": false,
+          "wall_seconds": 127.59681273484603,
+          "stage_seconds": {
+            "input.files_and_references": 0.03198598697781563,
+            "input.arguments": 5.513988435268402e-05,
+            "compute.condition_encoder": 0.8328782101161778,
+            "input.video_vae_encode": 0.8627772522158921,
+            "compute.h3_transformer": 107.27287709759548,
+            "output.video_vae_decode": 13.574547320138663,
+            "output.audio_vae_decode": 0.24287946801632643,
+            "generation.pipeline_total": 126.08389291306958,
+            "output.media_encode": 1.4800582490861416
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 4,
+          "attention_variant": "fast",
+          "warmup": false,
+          "wall_seconds": 127.41328453179449,
+          "stage_seconds": {
+            "input.files_and_references": 0.03192192688584328,
+            "input.arguments": 4.6510249376297e-05,
+            "compute.condition_encoder": 0.30372409010306,
+            "input.video_vae_encode": 0.8620044370181859,
+            "compute.h3_transformer": 107.2922994075343,
+            "output.video_vae_decode": 13.832109358161688,
+            "output.audio_vae_decode": 0.23947882372885942,
+            "generation.pipeline_total": 125.87833022000268,
+            "output.media_encode": 1.5021774000488222
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 5,
+          "attention_variant": "base",
+          "warmup": false,
+          "wall_seconds": 131.82659496599808,
+          "stage_seconds": {
+            "input.files_and_references": 0.034034160897135735,
+            "input.arguments": 5.55599108338356e-05,
+            "compute.condition_encoder": 0.30209640925750136,
+            "input.video_vae_encode": 0.8624296397902071,
+            "compute.h3_transformer": 111.88895744457841,
+            "output.video_vae_decode": 13.54778008023277,
+            "output.audio_vae_decode": 0.2414381681010127,
+            "generation.pipeline_total": 130.1858046259731,
+            "output.media_encode": 1.6059040534310043
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 6,
+          "attention_variant": "base",
+          "warmup": false,
+          "wall_seconds": 132.84049971122295,
+          "stage_seconds": {
+            "input.files_and_references": 0.032583251129835844,
+            "input.arguments": 5.608983337879181e-05,
+            "compute.condition_encoder": 0.3091253670863807,
+            "input.video_vae_encode": 0.8621116480790079,
+            "compute.h3_transformer": 111.88508304860443,
+            "output.video_vae_decode": 14.591605740133673,
+            "output.audio_vae_decode": 0.2409872841089964,
+            "generation.pipeline_total": 131.24009911483154,
+            "output.media_encode": 1.5669652889482677
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        },
+        {
+          "index": 7,
+          "attention_variant": "fast",
+          "warmup": false,
+          "wall_seconds": 128.4829049007967,
+          "stage_seconds": {
+            "input.files_and_references": 0.034182021860033274,
+            "input.arguments": 6.717117503285408e-05,
+            "compute.condition_encoder": 0.30514791002497077,
+            "input.video_vae_encode": 0.8616900248453021,
+            "compute.h3_transformer": 107.29791885148734,
+            "output.video_vae_decode": 14.907858555205166,
+            "output.audio_vae_decode": 0.24044066108763218,
+            "generation.pipeline_total": 126.91142770089209,
+            "output.media_encode": 1.536414491944015
+          },
+          "transformer_calls": 49,
+          "candidate_calls": {
+            "adaln": 392,
+            "indexed": 39200,
+            "qknorm": 1568,
+            "qknorm_mrope": 19600,
+            "attention": 19600,
+            "short_attention": 784,
+            "widenorm_indexed": 39200,
+            "swiglu": 20384
+          },
+          "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+        }
+      ],
+      "output_matches_reference_sha256": true,
+      "wall": {
+        "reference": {
+          "samples": [
+            133.00225279806182,
+            131.82659496599808,
+            132.84049971122295
+          ],
+          "mean": 132.55644915842763,
+          "median": 132.84049971122295,
+          "stdev": 0.6372255267412784
+        },
+        "candidate": {
+          "samples": [
+            127.59681273484603,
+            127.41328453179449,
+            128.4829049007967
+          ],
+          "mean": 127.83100072247908,
+          "median": 127.59681273484603,
+          "stdev": 0.571974600493611
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            4.064171808745909,
+            3.3478149347192954,
+            3.280321001425812
+          ],
+          "mean": 3.564102581630339,
+          "median": 3.3478149347192954,
+          "stdev": 0.43438552196042307
+        },
+        "mean_time_reduction_percent": 3.5648574369254837
+      },
+      "stages": {
+        "input.files_and_references": {
+          "reference": {
+            "samples": [
+              0.03199703712016344,
+              0.034034160897135735,
+              0.032583251129835844
+            ],
+            "mean": 0.032871483049045004,
+            "median": 0.032583251129835844,
+            "stdev": 0.0010487023172067057
+          },
+          "candidate": {
+            "samples": [
+              0.03198598697781563,
+              0.03192192688584328,
+              0.034182021860033274
+            ],
+            "mean": 0.032696645241230726,
+            "median": 0.03198598697781563,
+            "stdev": 0.001286772590091133
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              0.034534892422422026,
+              6.2062173875137905,
+              -4.90672561748593
+            ],
+            "mean": 0.44467555415009424,
+            "median": 0.034534892422422026,
+            "stdev": 5.567812593819485
+          },
+          "mean_time_reduction_percent": 0.5318829319426066
+        },
+        "input.arguments": {
+          "reference": {
+            "samples": [
+              5.52409328520298e-05,
+              5.55599108338356e-05,
+              5.608983337879181e-05
+            ],
+            "mean": 5.563022568821907e-05,
+            "median": 5.55599108338356e-05,
+            "stdev": 4.287961755244912e-07
+          },
+          "candidate": {
+            "samples": [
+              5.513988435268402e-05,
+              4.6510249376297e-05,
+              6.717117503285408e-05
+            ],
+            "mean": 5.6273769587278366e-05,
+            "median": 5.513988435268402e-05,
+            "stdev": 1.0377029152911155e-05
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              0.1829232312503648,
+              16.28811371674741,
+              -19.756417494105527
+            ],
+            "mean": -1.0951268487025838,
+            "median": 0.1829232312503648,
+            "stdev": 18.0562209932668
+          },
+          "mean_time_reduction_percent": -1.156824174444404
+        },
+        "compute.condition_encoder": {
+          "reference": {
+            "samples": [
+              0.32038177317008376,
+              0.30209640925750136,
+              0.3091253670863807
+            ],
+            "mean": 0.3105345165046553,
+            "median": 0.3091253670863807,
+            "stdev": 0.009223768747977168
+          },
+          "candidate": {
+            "samples": [
+              0.8328782101161778,
+              0.30372409010306,
+              0.30514791002497077
+            ],
+            "mean": 0.4805834034147362,
+            "median": 0.30514791002497077,
+            "stdev": 0.30509708280709125
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              -159.96429256105677,
+              -0.5387951646162126,
+              1.2866809019586256
+            ],
+            "mean": -53.072135607904784,
+            "median": -0.5387951646162126,
+            "stdev": 92.57582300088056
+          },
+          "mean_time_reduction_percent": -54.76005979114134
+        },
+        "input.video_vae_encode": {
+          "reference": {
+            "samples": [
+              0.8619857681915164,
+              0.8624296397902071,
+              0.8621116480790079
+            ],
+            "mean": 0.8621756853535771,
+            "median": 0.8621116480790079,
+            "stdev": 0.00022875987067614263
+          },
+          "candidate": {
+            "samples": [
+              0.8627772522158921,
+              0.8620044370181859,
+              0.8616900248453021
+            ],
+            "mean": 0.86215723802646,
+            "median": 0.8620044370181859,
+            "stdev": 0.000559488114205472
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              -0.09182100837190621,
+              0.049302894103309125,
+              0.0489058736934167
+            ],
+            "mean": 0.0021292531416065388,
+            "median": 0.0489058736934167,
+            "stdev": 0.08136355532512418
+          },
+          "mean_time_reduction_percent": 0.0021396250706740005
+        },
+        "compute.h3_transformer": {
+          "reference": {
+            "samples": [
+              111.87208255566657,
+              111.88895744457841,
+              111.88508304860443
+            ],
+            "mean": 111.88204101628314,
+            "median": 111.88508304860443,
+            "stdev": 0.008839170743322683
+          },
+          "candidate": {
+            "samples": [
+              107.27287709759548,
+              107.2922994075343,
+              107.29791885148734
+            ],
+            "mean": 107.2876984522057,
+            "median": 107.2922994075343,
+            "stdev": 0.013139594816692426
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              4.111128847344514,
+              4.1082320740372875,
+              4.099888986205924
+            ],
+            "mean": 4.106416635862575,
+            "median": 4.1082320740372875,
+            "stdev": 0.005835707448831412
+          },
+          "mean_time_reduction_percent": 4.106416474301522
+        },
+        "output.video_vae_decode": {
+          "reference": {
+            "samples": [
+              14.82010504975915,
+              13.54778008023277,
+              14.591605740133673
+            ],
+            "mean": 14.319830290041864,
+            "median": 14.591605740133673,
+            "stdev": 0.6783060728568853
+          },
+          "candidate": {
+            "samples": [
+              13.574547320138663,
+              13.832109358161688,
+              14.907858555205166
+            ],
+            "mean": 14.104838411168506,
+            "median": 13.832109358161688,
+            "stdev": 0.7072591919898517
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              8.404513499995259,
+              -2.0987148908903297,
+              -2.1673612945945386
+            ],
+            "mean": 1.379479104836797,
+            "median": -2.0987148908903297,
+            "stdev": 6.083955068214668
+          },
+          "mean_time_reduction_percent": 1.5013577292383506
+        },
+        "output.audio_vae_decode": {
+          "reference": {
+            "samples": [
+              0.24096237495541573,
+              0.2414381681010127,
+              0.2409872841089964
+            ],
+            "mean": 0.24112927572180828,
+            "median": 0.2409872841089964,
+            "stdev": 0.00026779841846239
+          },
+          "candidate": {
+            "samples": [
+              0.24287946801632643,
+              0.23947882372885942,
+              0.24044066108763218
+            ],
+            "mean": 0.240932984277606,
+            "median": 0.24044066108763218,
+            "stdev": 0.0017529637717334596
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              -0.7955985083834882,
+              0.8115304997400097,
+              0.22682649974052893
+            ],
+            "mean": 0.08091949703235013,
+            "median": 0.22682649974052893,
+            "stdev": 0.8134387206590721
+          },
+          "mean_time_reduction_percent": 0.08140506523510727
+        },
+        "generation.pipeline_total": {
+          "reference": {
+            "samples": [
+              131.46071486081928,
+              130.1858046259731,
+              131.24009911483154
+            ],
+            "mean": 130.96220620054132,
+            "median": 131.24009911483154,
+            "stdev": 0.6813716904806214
+          },
+          "candidate": {
+            "samples": [
+              126.08389291306958,
+              125.87833022000268,
+              126.91142770089209
+            ],
+            "mean": 126.29121694465478,
+            "median": 126.08389291306958,
+            "stdev": 0.5468638238259768
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              4.090059873356289,
+              3.3087128188406534,
+              3.2982841701086896
+            ],
+            "mean": 3.565685620768544,
+            "median": 3.3087128188406534,
+            "stdev": 0.4541513588676254
+          },
+          "mean_time_reduction_percent": 3.566669645694498
+        },
+        "output.media_encode": {
+          "reference": {
+            "samples": [
+              1.5086741838604212,
+              1.6059040534310043,
+              1.5669652889482677
+            ],
+            "mean": 1.5605145087465644,
+            "median": 1.5669652889482677,
+            "stdev": 0.048934868019502885
+          },
+          "candidate": {
+            "samples": [
+              1.4800582490861416,
+              1.5021774000488222,
+              1.536414491944015
+            ],
+            "mean": 1.506216713692993,
+            "median": 1.5021774000488222,
+            "stdev": 0.028394428472869302
+          },
+          "paired_reduction_percent": {
+            "samples": [
+              1.8967604192083876,
+              6.459081609550132,
+              1.9496792443154942
+            ],
+            "mean": 3.435173757691338,
+            "median": 1.9496792443154942,
+            "stdev": 2.6189146841607176
+          },
+          "mean_time_reduction_percent": 3.4794803091696025
+        }
+      }
+    },
+    "qualified": {
+      "official": {
+        "validation": {
+          "local_checks_passed": true,
+          "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+          "transformer_calls": 49,
+          "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+          "media": {
+            "media_readable": true,
+            "video": {
+              "width": 768,
+              "height": 928,
+              "fps": 24.0,
+              "codec": "h264",
+              "frames": 124
+            },
+            "audio": {
+              "codec": "aac",
+              "sample_rate": 32000,
+              "channels": 2,
+              "decoded_frames": 162,
+              "decoded_samples": 165888
+            },
+            "video_specs_passed": true,
+            "similarity_evaluated": false,
+            "competition_validation_passed": false
+          },
+          "comparison": {
+            "exact": false,
+            "left_metadata": {
+              "width": 768,
+              "height": 928,
+              "declared_frames": 124,
+              "average_fps": 24.0,
+              "duration_seconds": 5.166666666666667
+            },
+            "right_metadata": {
+              "width": 768,
+              "height": 928,
+              "declared_frames": 124,
+              "average_fps": 24.0,
+              "duration_seconds": 5.166666666666667
+            },
+            "metadata_size_match": true,
+            "decoded_length_match": true,
+            "left_frames": 124,
+            "right_frames": 124,
+            "shape_mismatches": 0,
+            "different_elements": 224410185,
+            "compared_elements": 265125888,
+            "max_absolute_difference": 237,
+            "mean_absolute_difference": 5.597480216643348,
+            "ssim_match_percent": 93.83201347926341,
+            "ssim_min_percent": 87.9202020874348,
+            "ssim_max_percent": 98.0362796408051,
+            "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+          }
+        },
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "entry_defaults": {
           "--steps": 50,
           "--seed": 42,
           "--num-frames": 124
+        }
+      },
+      "matched_previously_accepted_media": true,
+      "records": [
+        {
+          "index": 0,
+          "case": "A",
+          "attention_variant": "base",
+          "wall_seconds": 191.47664065705612,
+          "transformer_seconds": 114.43678796151653,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 9551614464,
+            "1": 6259962368,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 0,
+            "variant": "candidate",
+            "wall_seconds": 191.47664065705612,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
         },
-        "source": "未传入 steps/num-frames/seed/height/width 覆盖参数"
-      }
+        {
+          "index": 1,
+          "case": "A",
+          "attention_variant": "fast",
+          "wall_seconds": 128.29582960205153,
+          "transformer_seconds": 107.2827958012931,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 10466862080,
+            "1": 6408045568,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 1,
+            "variant": "candidate",
+            "wall_seconds": 128.29582960205153,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 2,
+          "case": "A",
+          "attention_variant": "base",
+          "wall_seconds": 133.00225279806182,
+          "transformer_seconds": 111.87208255566657,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 10908763136,
+            "1": 6573214720,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 2,
+            "variant": "candidate",
+            "wall_seconds": 133.00225279806182,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 3,
+          "case": "A",
+          "attention_variant": "fast",
+          "wall_seconds": 127.59681273484603,
+          "transformer_seconds": 107.27287709759548,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 10084389888,
+            "1": 6370216448,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 3,
+            "variant": "candidate",
+            "wall_seconds": 127.59681273484603,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 4,
+          "case": "A",
+          "attention_variant": "fast",
+          "wall_seconds": 127.41328453179449,
+          "transformer_seconds": 107.2922994075343,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 10290037760,
+            "1": 6448147456,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 4,
+            "variant": "candidate",
+            "wall_seconds": 127.41328453179449,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 5,
+          "case": "A",
+          "attention_variant": "base",
+          "wall_seconds": 131.82659496599808,
+          "transformer_seconds": 111.88895744457841,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 10822646784,
+            "1": 6584144384,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 5,
+            "variant": "candidate",
+            "wall_seconds": 131.82659496599808,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 6,
+          "case": "A",
+          "attention_variant": "base",
+          "wall_seconds": 132.84049971122295,
+          "transformer_seconds": 111.88508304860443,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 10792306688,
+            "1": 6715730944,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 6,
+            "variant": "candidate",
+            "wall_seconds": 132.84049971122295,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 7,
+          "case": "A",
+          "attention_variant": "fast",
+          "wall_seconds": 128.4829049007967,
+          "transformer_seconds": 107.29791885148734,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 11204676608,
+            "1": 6930077184,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 7,
+            "variant": "candidate",
+            "wall_seconds": 128.4829049007967,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 8,
+          "case": "B",
+          "attention_variant": "fast",
+          "wall_seconds": 99.44431691523641,
+          "transformer_seconds": 83.2511246507056,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+          "peak_torch_allocated_bytes": {
+            "0": 11207766528,
+            "1": 6942689792,
+            "2": 0,
+            "3": 0,
+            "4": 13213184,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "B",
+            "index": 8,
+            "variant": "candidate",
+            "wall_seconds": 99.44431691523641,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/旧文档/optimization/sequence-reference-B-1201424/00-B/video.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 768,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 768,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 57773100,
+              "compared_elements": 219414528,
+              "max_absolute_difference": 234,
+              "mean_absolute_difference": 0.8855353962705697,
+              "ssim_match_percent": 99.40412322827537,
+              "ssim_min_percent": 99.17931498954825,
+              "ssim_max_percent": 99.86587996696518,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.008158768251807783,
+              "candidate_rms": 0.0060807307717949295,
+              "max_absolute_error": 0.024111899081617594,
+              "mean_absolute_error": 0.002460233706159571,
+              "rmse": 0.003270646765585316,
+              "snr_db": 7.939819100170448,
+              "correlation": 0.9357112923346455,
+              "reference_peak": 0.06807353347539902,
+              "candidate_peak": 0.05385071039199829,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 9,
+          "case": "C",
+          "attention_variant": "fast",
+          "wall_seconds": 106.74652247829363,
+          "transformer_seconds": 89.4889965984039,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+          "peak_torch_allocated_bytes": {
+            "0": 11185621504,
+            "1": 7157738496,
+            "2": 0,
+            "3": 0,
+            "4": 26780672,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "C",
+            "index": 9,
+            "variant": "candidate",
+            "wall_seconds": 106.74652247829363,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/旧文档/optimization/sequence-reference-C-1201424/00-C/video.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 768,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 768,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 52402555,
+              "compared_elements": 219414528,
+              "max_absolute_difference": 212,
+              "mean_absolute_difference": 0.6505503455085708,
+              "ssim_match_percent": 99.63004744871529,
+              "ssim_min_percent": 99.3410113516413,
+              "ssim_max_percent": 99.84916773354621,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.009546768453824349,
+              "candidate_rms": 0.009159982069324021,
+              "max_absolute_error": 0.03528235387057066,
+              "mean_absolute_error": 0.0023383262728015127,
+              "rmse": 0.003276673945807852,
+              "snr_db": 9.288463229327247,
+              "correlation": 0.9394671321368571,
+              "reference_peak": 0.07043834030628204,
+              "candidate_peak": 0.07224920392036438,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        },
+        {
+          "index": 10,
+          "case": "A",
+          "attention_variant": "fast",
+          "wall_seconds": 128.0771004902199,
+          "transformer_seconds": 107.27651018602774,
+          "transformer_calls": 49,
+          "attention_calls": 19600,
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "peak_torch_allocated_bytes": {
+            "0": 9995260928,
+            "1": 7328428544,
+            "2": 0,
+            "3": 0,
+            "4": 15828480,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "independent_quality": {
+            "case": "A",
+            "index": 10,
+            "variant": "candidate",
+            "wall_seconds": 128.0771004902199,
+            "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+            "comparison": {
+              "exact": false,
+              "left_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "right_metadata": {
+                "width": 768,
+                "height": 928,
+                "declared_frames": 124,
+                "average_fps": 24.0,
+                "duration_seconds": 5.166666666666667
+              },
+              "metadata_size_match": true,
+              "decoded_length_match": true,
+              "left_frames": 124,
+              "right_frames": 124,
+              "shape_mismatches": 0,
+              "different_elements": 224410185,
+              "compared_elements": 265125888,
+              "max_absolute_difference": 237,
+              "mean_absolute_difference": 5.597480216643348,
+              "ssim_match_percent": 93.83201347926341,
+              "ssim_min_percent": 87.9202020874348,
+              "ssim_max_percent": 98.0362796408051,
+              "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+            },
+            "audio_comparison": {
+              "sample_rate": 32000,
+              "channels": 2,
+              "reference_samples": 165600,
+              "candidate_samples": 165600,
+              "sample_length_match": true,
+              "compared_samples": 165600,
+              "reference_rms": 0.023822446924466185,
+              "candidate_rms": 0.024674512137782028,
+              "max_absolute_error": 0.04925673082470894,
+              "mean_absolute_error": 0.00043783742626061654,
+              "rmse": 0.0020183097472610714,
+              "snr_db": 21.439971008554608,
+              "correlation": 0.9971525035546781,
+              "reference_peak": 0.49654465913772583,
+              "candidate_peak": 0.5286788940429688,
+              "note": "AAC 解码后逐样本比较，受编码及生成波动影响；没有人为对齐、重采样搜索或相位调整。"
+            }
+          }
+        }
+      ],
+      "timed_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "wall": {
+        "reference": {
+          "samples": [
+            133.00225279806182,
+            131.82659496599808,
+            132.84049971122295
+          ],
+          "mean": 132.55644915842763,
+          "median": 132.84049971122295,
+          "stdev": 0.6372255267412784
+        },
+        "candidate": {
+          "samples": [
+            127.59681273484603,
+            127.41328453179449,
+            128.4829049007967
+          ],
+          "mean": 127.83100072247908,
+          "median": 127.59681273484603,
+          "stdev": 0.571974600493611
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            4.064171808745909,
+            3.3478149347192954,
+            3.280321001425812
+          ],
+          "mean": 3.564102581630339,
+          "median": 3.3478149347192954,
+          "stdev": 0.43438552196042307
+        },
+        "mean_time_reduction_percent": 3.5648574369254837
+      },
+      "transformer": {
+        "reference": {
+          "samples": [
+            111.87208255566657,
+            111.88895744457841,
+            111.88508304860443
+          ],
+          "mean": 111.88204101628314,
+          "median": 111.88508304860443,
+          "stdev": 0.008839170743322683
+        },
+        "candidate": {
+          "samples": [
+            107.27287709759548,
+            107.2922994075343,
+            107.29791885148734
+          ],
+          "mean": 107.2876984522057,
+          "median": 107.2922994075343,
+          "stdev": 0.013139594816692426
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            4.111128847344514,
+            4.1082320740372875,
+            4.099888986205924
+          ],
+          "mean": 4.106416635862575,
+          "median": 4.1082320740372875,
+          "stdev": 0.005835707448831412
+        },
+        "mean_time_reduction_percent": 4.106416474301522
+      },
+      "eligible": true
     }
   },
-  "selected": false,
+  "selected": true,
   "logit_followup": {
     "source_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/logit-source",
     "source_sha256": "05fd054f97cbb1f4c5875af748af5e5794d2ee6fce3c5466b731a031e187f822",
@@ -27665,6 +29375,32 @@
       "source_files_match": true,
       "reference_manifest_matches": true,
       "prior_summary_all_fields_equal": true
+    },
+    "manifest": {
+      "kind": "p-row-prepacked-v-softmax-stable-paired-v1",
+      "reference_release": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified",
+      "reference_manifest_sha256": "bd44dd5dfd4976d129ddbff14c0bf1b037dcac1f31859aae7d530cc707f263c7",
+      "candidate_config": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/release-rebuild/candidate.env",
+      "source_commit_base": "41b55089e2cf543bc3291b1617ace0d0b32ac732",
+      "source_files": {
+        "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-stable-paired-release.sh": "a399fd485fae51ec4010771af0919148416d11cd13f3a860e9b55cc704a914e1",
+        "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-stable-max-rescale.py": "fdcaba4e705e50508e55f30f076365e9713247aaf6ffad5f8c9a0c2d4ca6e158",
+        "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-p-paired-sub.py": "05fd054f97cbb1f4c5875af748af5e5794d2ee6fce3c5466b731a031e187f822",
+        "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-qk-online-order.py": "4804e605515d15c404d9c72ccbc9a1d08b1b120351491589945b78fe81c1a59e",
+        "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-public-a.py": "0ce9d5f55bb90d60c6912e64ac21b3ef54e112db8b069f6b7a7f9edfa059b243",
+        "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-softmax-dpp-steady.py": "3d602b94c961736c50b79e73994068c12d07c4f976cea2e3662e1156f353392f",
+        "optimization/dcu-kernel-autotune/adapters/compare-h3-device.py": "cbdb0fc3a902f6b372f6e39b9a18780b0cfc32880cddbccf0486c564f49da1d1"
+      },
+      "artifacts": {
+        "dense-attention-packed.hsaco": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+        "dense-attention-aot.hsaco": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+        "dense-attention-fallback.hsaco": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+        "dense-attention-packed-reference.hsaco": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+        "prepack-value.hsaco": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+        "dense-attention-aot.so": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+      },
+      "qualified": false,
+      "qualification_note": "重建与冻结指令检查不代替完整模型质量及稳态性能验收"
     }
   },
   "running_max_fold": {
@@ -27683,5 +29419,139 @@
     ],
     "decision": "用户要求本轮收尾后暂停，停止新方向，不作有效收益或质量结论。"
   },
-  "pause_requested_after_round": true
+  "pause_requested_after_round": true,
+  "selection": {
+    "selected": true,
+    "selected_at": "2026-11-27T17:46:41.332996+08:00",
+    "name": "stable-paired-f12r2n09",
+    "attention": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-stable-paired-f12r2n09",
+    "configuration": "/public/home/acvduipmem/xsh/songshanbei/optimization/selected-best.env",
+    "qualification": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/qualification",
+    "reference_configuration": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/work/selection-history/before-stable-paired-f12r2n09.env",
+    "wall_seconds": 127.83100072247908,
+    "reference_wall_seconds": 132.55644915842763,
+    "wall_reduction_percent": 3.5648574369254837,
+    "transformer_seconds": 107.2876984522057,
+    "transformer_reduction_percent": 4.106416474301522,
+    "artifacts": {
+      "dense-attention-packed.hsaco": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+      "dense-attention-aot.hsaco": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+      "dense-attention-fallback.hsaco": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+      "dense-attention-packed-reference.hsaco": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+      "prepack-value.hsaco": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+      "dense-attention-aot.so": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+    },
+    "cpu_release_rebuild_verification": {
+      "scope": "CPU重建一致性；不代替GPU数值或完整模型资格验收",
+      "artifacts": {
+        "dense-attention-packed.hsaco": {
+          "byte_equal": true,
+          "loaded_sections_equal": true,
+          "mapping_equal": true,
+          "original_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+          "rebuilt_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd"
+        },
+        "dense-attention-aot.hsaco": {
+          "byte_equal": true,
+          "loaded_sections_equal": true,
+          "mapping_equal": true,
+          "original_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+          "rebuilt_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f"
+        },
+        "dense-attention-fallback.hsaco": {
+          "byte_equal": true,
+          "loaded_sections_equal": true,
+          "mapping_equal": true,
+          "original_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+          "rebuilt_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba"
+        },
+        "dense-attention-packed-reference.hsaco": {
+          "byte_equal": true,
+          "loaded_sections_equal": true,
+          "mapping_equal": true,
+          "original_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+          "rebuilt_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9"
+        },
+        "prepack-value.hsaco": {
+          "byte_equal": false,
+          "loaded_sections_equal": true,
+          "mapping_equal": true,
+          "original_sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+          "rebuilt_sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4"
+        },
+        "dense-attention-aot.so": {
+          "byte_equal": true,
+          "loaded_sections_equal": true,
+          "mapping_equal": true,
+          "original_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516",
+          "rebuilt_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+        }
+      },
+      "images": {
+        "base": {
+          "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified/attention",
+          "packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+          "packed_text_sha256": "e9240c600e74a73b51cb429f459ab18b389343616c3054c85edbb6ee7f91b13e",
+          "packed_lds_bytes": 16384,
+          "value_prepack": {
+            "tile": 2048,
+            "warps": 8,
+            "minimum_rows": 4096,
+            "sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+            "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+            "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+          }
+        },
+        "fast": {
+          "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-paired-sub-f12r2n09-MsyW72Nm/release-rebuild/attention",
+          "packed_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+          "packed_text_sha256": "159f8bda3813d74da66b2f15fa1232100b0807eac33921334279f787d1d22e9a",
+          "packed_lds_bytes": 16384,
+          "value_prepack": {
+            "tile": 2048,
+            "warps": 8,
+            "minimum_rows": 4096,
+            "sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+            "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+            "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+          }
+        }
+      },
+      "source_files_match": true,
+      "reference_manifest_matches": true,
+      "prior_summary_all_fields_equal": true
+    },
+    "pause_after_integration_requested": true
+  },
+  "ordinary_process": {
+    "process_wall_seconds": 900.36,
+    "model_components_seconds": 659.023,
+    "generation_pipeline_seconds": 184.202,
+    "transformer_seconds": 110.06,
+    "total_end_to_end_seconds": 845.521,
+    "note": "普通默认入口首次进程，含共享盘权重读取；与常驻主字段分开报告。"
+  },
+  "vram_sampling": {
+    "samples": 563,
+    "interval_seconds": 5,
+    "max_device_used_mib": 33784,
+    "scope": "从官方A条件编码器加载中段起至完整11请求验收结束，整卡五秒采样，可能漏掉瞬时峰值；混合实例保留两侧工作区，不作独立显存差或首段加载峰值证明。"
+  },
+  "final_source_sha256": {
+    "optimization/reproduce-public-a.sh": "2d7d7b286d190dfd5a1ea23e3c14d3321349191e230c02dd8a7434d147229890",
+    "optimization/benchmark-public-a.sh": "0563386e85a5a67e6577b7729610737f4e13e9ec0d523023695b74591de4a402",
+    "optimization/run-sequence.py": "247bb242f54825d28939170d75c99a2a67d8f7061c97870ed259d52f07a09281",
+    "optimization/load-candidate-config.sh": "26608b8adf3e01a735df9fd2ad43c8351879e11f43053de7b462c12cf2b4cc12",
+    "optimization/source_snapshot.py": "72ac8a25dc6ee6870d110f6e57e99a98a2a1def0308eea10966f1b003f59867c",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-row-sum-release.sh": "f2367c1579ca4aed9399a54fd7f984860b89360a4e445ffb54217e2caaaab03a",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-p-row-prepacked-release.sh": "cc654fa7e791cbad807d0724ab97276b10879e8b78890e330f0d88b831534ffc",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-softmax-compact-release.sh": "201ede5bdb603d426771cc6ac9b61c134b5abf08fae27c6ca909cb82a20879cb",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-stable-paired-release.sh": "a399fd485fae51ec4010771af0919148416d11cd13f3a860e9b55cc704a914e1",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-stable-max-rescale.py": "fdcaba4e705e50508e55f30f076365e9713247aaf6ffad5f8c9a0c2d4ca6e158",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-p-paired-sub.py": "05fd054f97cbb1f4c5875af748af5e5794d2ee6fce3c5466b731a031e187f822",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-qk-online-order.py": "4804e605515d15c404d9c72ccbc9a1d08b1b120351491589945b78fe81c1a59e",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-public-a.py": "0ce9d5f55bb90d60c6912e64ac21b3ef54e112db8b069f6b7a7f9edfa059b243",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-softmax-dpp-steady.py": "3d602b94c961736c50b79e73994068c12d07c4f976cea2e3662e1156f353392f",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/verify-softmax-release-rebuild.py": "b7db5d353dd7b91f38bcffccfb7bc5a5e867ec70ab738a5d68ac0db0b23974d8"
+  }
 }

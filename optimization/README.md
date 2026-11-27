@@ -1,12 +1,14 @@
 # MiniMax-H3 决赛推理
 
-v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
+当前完整验收最优版为 Q128/K32 packed 的 **P 行 LDS + V 预排布 + 内部 P/ROR4 精简 + stable-max guarded / 成对 P 算术**。在 `f12r2n09` 的同一八卡常驻进程内，双方各一次完整预热后三组官方 A 的完整请求均值为 **132.556449→127.831001 秒，下降 3.564857%**；Transformer 为 **111.882041→107.287698 秒，下降 4.106416%**。候选样本为 127.596813、127.413285、128.482905 秒，标准差 0.571975 秒，三组请求分别下降 4.064172%、3.347815%、3.280321%。
 
-当前本地正式配置采用 Q128/K32 packed 长注意力的 P 行 LDS 布局与 V 预排布，并精简完整 KV 块中冗余的内部 P NaN payload 规范化及 xor4 DPP 归约。其余 Q/K RMSNorm/MRoPE、compact 原库顺序宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU 保留。在 `f12r2n09` 的同一八卡常驻进程内，双方各一次完整预热后三组 A 的请求墙钟由 **137.001043 降至 132.824526 秒，下降 3.048529%**；Transformer 由 116.891928 降至 111.878162 秒，下降 4.289232%。候选样本为 132.061697、133.824807、132.587075 秒。 [统一计时结果](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09-public-a.json)
+普通官方默认 A 和完整 A×8/B/C/返回 A 均通过，所有成片与对应已验收版本逐字节一致；A/B/C 参考 SSIM 为 93.832013%/99.404123%/99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。没有跨进程编译缓存优化。用户要求本轮整合后暂停，后续不再启动新优化实验。
 
-普通官方默认入口 A 和常驻 A×8/B/C/返回 A 共 11 请求均通过，所有 MP4 与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 为 93.832013%、99.404123%、99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。未启用跨进程编译缓存优化。三组完整请求分别下降 3.329599%、2.557911%、3.260003%；不能承诺每次均超过 3%。整卡显存五秒采样最高读数 33784 MiB，采样从首次预热中段开始，可能漏掉瞬时峰值，且混合实例保留双方工作区，不作独立显存差的依据。 [完整验收](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09-qualified.json) · [来源、取舍及原始 PMC](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09.json)
+[统一成绩](dcu-kernel-autotune/docs/p-paired-sub-f12r2n09-public-a.json) · [完整验收](dcu-kernel-autotune/docs/p-paired-sub-f12r2n09-qualified.json) · [来源与原始 PMC](dcu-kernel-autotune/docs/p-paired-sub-f12r2n09.json) · [本轮整合与暂停分析](本轮最优整合与暂停分析.md)
 
-复测当前验收组合使用 [统一入口](reproduce-public-a.sh) 和 [公开 A 耗时复测说明](公开A耗时复测说明.md)。已准备 `runtime` 后，在仓库根目录运行以下命令，`model` 指向包含 `model_index.json` 的权重目录；输出目录必须尚不存在。
+## 复测当前 127.831 秒版本
+
+准备好下文的 `runtime` 和注意力主机桥后，在仓库根目录运行。构建只需一次，已有对应发布目录可直接复用；输出目录必须尚不存在。
 
 ```bash
 repo=$(pwd)
@@ -16,14 +18,16 @@ job=$(mktemp -d "$repo/artifacts/public-a-retest-XXXXXXXX")
 bash "$repo/optimization/reproduce-public-a.sh" build "$job/build-work"
 bash "$repo/optimization/reproduce-public-a.sh" resident \
   "$job/build-work/release" "$model" "$job/resident"
-# 需要另测普通入口首次启动总耗时时，在常驻配对结束后执行：
+# 需要另测首次进程启动到退出的耗时时，在常驻配对结束后执行：
 bash "$repo/optimization/reproduce-public-a.sh" single \
   "$job/build-work/release" "$model" "$job/single"
 ```
 
-`resident/benchmark.json` 的 `comparison` 为 `p-row-prepacked-v-vs-softmax-compact`，正式成绩读取 `wall.candidate.mean`；`single/process-time.txt` 单独记录新进程启动到退出的总耗时，两者不能混用。普通官方 A 的本轮新进程为 880.90 秒，模型组件加载约 635.48 秒，首次生成管线 191.064 秒，均与稳态均值单列。
+正式成绩读取 `resident/benchmark.json` 的 `wall.candidate.mean`，比较名为 `softmax-compact-vs-stable-paired`。包含输入准备、条件编码、完整去噪、音视频解码和 MP4 写出，排除模型加载及双方各一次完整预热。`single/process-time.txt` 则是新进程从启动到退出，不能混作常驻成绩；本轮为 900.36 秒，模型组件创建加载约 659.02 秒，首次生成管线 184.202 秒。完整流程和计时边界见 [公开 A 耗时复测说明](公开A耗时复测说明.md)。
 
-此前 `f12r2n09` 的 P 行布局 + V 预排布已验收均值为 137.344178 秒，其同轮基准为 142.320005 秒；更早 `a14r1n11` 求和交错候选为 142.89 秒。当前 132.824526 秒只与本轮同节点 137.001043 秒比较，不混用不同版本或时间的绝对秒数。下节保留旧 142.89 秒重建入口。
+默认 `build` 依次经过基础构建、求和交错、P 行/V 预排布、精简 softmax、稳定 max 与成对 P 算术。`build-work/softmax` 保留本轮约 132 秒基准，`build-work/release` 为当前正式版；实际设备代码按冻结指令哈希核对。其他 Q/K RMSNorm/MRoPE、原库归约顺序 compact 宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU 均保持原样。
+
+整卡显存五秒采样最高为 33784 MiB，起于普通 A 条件编码器加载中段，可能漏瞬时峰值；混合实例保留两侧工作区，不作为独立显存差证明。历史 132.824526 秒版固定于 `34c842da`，137.344178 秒版固定于 `e9d66702`。本轮只与同轮 132.556449 秒基准比较，下文保留历史构建和剖析用法。
 
 ## 复测 142.89 秒的公开 A 常驻配对
 

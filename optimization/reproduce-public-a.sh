@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 当前已验收 132.825 秒版本的构建、常驻配对及普通入口复测。
+# 当前已验收 127.831 秒版本的构建、常驻配对及普通入口复测。
 set -eo pipefail
 project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 scripts="$project/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout"
@@ -48,7 +48,9 @@ case "$mode" in
         bash "$scripts/build-p-row-prepacked-release.sh" \
             "$work/row-sum" "$work/prepacked" > "$work/prepacked.log" 2>&1
         bash "$scripts/build-softmax-compact-release.sh" \
-            "$work/prepacked" "$work/release" > "$work/release.log" 2>&1
+            "$work/prepacked" "$work/softmax" > "$work/softmax.log" 2>&1
+        bash "$scripts/build-stable-paired-release.sh" \
+            "$work/softmax" "$work/release" > "$work/release.log" 2>&1
         printf '已构建当前验收版：%s\n' "$work/release"
         ;;
     resident)
