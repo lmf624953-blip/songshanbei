@@ -6,6 +6,31 @@ v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 
 
 最新的 softmax 求和回写和 DPP 交错候选在同轮八卡 A 配对中达到 **142.89 秒**，比该轮基准 147.80 秒节省 **3.32%**。普通官方 A 和常驻 B 成片与正式版逐字节一致。该次常驻进程在 C 执行期间结束，正式配置采用上面的联合发射镜像。 [候选重建说明](dcu-kernel-autotune/candidates/pv-v-lds-layout/README.md#在线求和回写与-dpp-交错) · [已完成的端到端配对](dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json)
 
+## 复测 142.89 秒的公开 A 常驻配对
+
+在独占八张 BW1000 的单节点上使用 DTK 26.04、相同的 MiniMax-H3 权重和官方首帧。准备好下文的运行环境后，从仓库根目录运行。将 `model` 指向包含 `model_index.json` 的权重目录。
+
+```bash
+repo=$(pwd)
+model=/path/to/MiniMax-H3
+mkdir -p "$repo/artifacts"
+job=$(mktemp -d "$repo/artifacts/public-a-XXXXXXXX")
+H3_BUILD_JOBS=8 H3_AOT_SAVE_IR=1 bash "$repo/optimization/rebuild-v2.sh" "$job/build" \
+  --short-attention --deterministic-keyframe --long-attention-q128-packed \
+  --fused-wide-norm-indexed-original-serial-compact --fused-swiglu-row
+
+bash "$repo/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-row-sum-release.sh" \
+  "$job/build/attention" "$job/build/candidate.env" "$job/release"
+
+bash "$repo/optimization/benchmark-public-a.sh" "$job/release" "$model" "$job/bench"
+```
+
+使用 `benchmark.json` 中的 `wall.reference.mean`、`wall.candidate.mean` 和 `wall.mean_time_reduction_percent` 对照公布成绩。脚本在同一模型进程内先分别预热基准和候选一次，随后用请求 02→03、05→04、06→07 做三组配对。请求墙钟包含输入准备、条件编码、49 次 Transformer 调用、音视频解码和 MP4 写出，计时在设备同步后结束。模型加载单列于 `model_load_seconds`，整个常驻进程的墙钟在 `process-time.txt`。阶段耗时、逐请求样本、机器环境和镜像哈希随结果保存。
+
+脚本核对首帧、两套 packed 镜像的设备指令、官方参数和每次请求的算子调用数，并要求八条请求生成的 MP4 逐字节一致。`output_matches_reference_sha256` 记录成片是否也与历史参考视频逐字节一致。
+
+公布成绩来自 `a14r1n11` 上的八卡同进程配对。复测时提供完整 `benchmark.json`，用 `stages["compute.h3_transformer"]` 和 `stages["output.video_vae_decode"]` 定位节点间的耗时差异。绝对秒数随节点状态、依赖版本和视频写盘性能变化。 [原始参考成绩](dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json)
+
 ## 准备运行环境
 
 需要 DTK 26.04、GCC 11.4、CPython 3.11、海光 Torch 2.9、比赛离线依赖、官方首帧和 MiniMax-H3 权重。仓库根目录为 `project`，先将 `base_py`、`cache`、`model` 指向当前账号可读的绝对路径。

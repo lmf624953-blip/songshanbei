@@ -14,7 +14,7 @@ from triton.backends.amd.compiler import HIPBackend
 from triton.backends.compiler import GPUTarget
 
 
-REFERENCE = "29bb5d483d866616337d33a5eba8544ecd91cee04df2bd007534f6064f8df2c2"
+REFERENCE = "3cfbd108917e4762ba6b46ab25d10b1512535c9acd63bea02a64e1dca0405c4f"
 PACKED = "dense-attention-packed"
 WAIT = re.compile(r"\ts_waitcnt lgkmcnt\(([0-7])\)")
 LDS = re.compile(r"\tds_(read_b128|read2st64_b64) v\[(\d+):(\d+)\], .*")
@@ -216,6 +216,9 @@ def join_kv_loads(lines, wait):
 def transform(assembly, qk, pv, issue_ready, packed_rescale, packed_qk_scale, v_prefetch, kv_zero, elide_v,
               joint_kv_wait):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', assembly, flags=re.M)
+    # LLVM also records the compilation directory in the DWARF string table.
+    normalized = re.sub(r'(^\.Linfo_string2:\n[ \t]*\.asciz[ \t]+)"/[^"\n]*"',
+                        r'\1"<directory>"', normalized, flags=re.M)
     if digest(normalized.encode()) != REFERENCE:
         raise ValueError("Expected the validated four-row Q128 DPP assembly")
     lines = assembly.splitlines()

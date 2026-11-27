@@ -15,10 +15,10 @@ from triton.backends.compiler import GPUTarget
 
 STEM = "dense-attention-packed"
 REFERENCES = {
-    "3581fe29fb7046ee58cdfc6cc972e15967ef529d15bd1f89d4c04e957f98e331",
-    "a343dc1a5367d1ee522f180d00aeea5ffb46f4066fe13066ffa21d4e410e0935",
+    "5d18866b7f2ca268278df74acdabef735828a6201efe0798f63151d40d25dec8",
+    "e61aaa7dacdf81adefec52d56e24b22b3e21b01b1848e9fdbfdbf95b9c853fcf",
 }
-FOLDED_REFERENCE = "6fb3acc01ebc382130551e98367de04718700112ff9bd3cde8742121df44c87e"
+FOLDED_REFERENCE = "51c3d00a93fa9cf8d6c238b6d502647ffb530970bbd2ba0b19c90a1c536de1f0"
 OPERATIONS = {
     "v_max_f32_e32", "v_sub_f32_e32", "v_exp_f32_e32", "v_add_u32_e32",
     "v_add3_u32", "v_bfe_u32", "v_lshrrev_b32_e32", "v_cmp_o_f32_e32",
@@ -141,9 +141,12 @@ def update_row_sum(lines, mode):
 
 def transform(source, scope, exp_latency, favor_order, fold_max, fold_only, row_sum=None):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', source, flags=re.M)
+    # LLVM also records the compilation directory in the DWARF string table.
+    normalized = re.sub(r'(^\.Linfo_string2:\n[ \t]*\.asciz[ \t]+)"/[^"\n]*"',
+                        r'\1"<directory>"', normalized, flags=re.M)
     source_id = digest(normalized.encode())
     if row_sum:
-        if source_id not in (FOLDED_REFERENCE, "3581fe29fb7046ee58cdfc6cc972e15967ef529d15bd1f89d4c04e957f98e331"):
+        if source_id not in (FOLDED_REFERENCE, "5d18866b7f2ca268278df74acdabef735828a6201efe0798f63151d40d25dec8"):
             raise ValueError("Expected the verified folded or joint K/V image for row sum updates")
         return update_row_sum(source.splitlines(), row_sum), {"row_sum": 8}
     if source_id not in REFERENCES:

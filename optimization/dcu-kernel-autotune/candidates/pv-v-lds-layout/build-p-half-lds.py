@@ -13,7 +13,7 @@ from triton.backends.amd.compiler import HIPBackend
 from triton.backends.compiler import GPUTarget
 
 
-REFERENCE = "3581fe29fb7046ee58cdfc6cc972e15967ef529d15bd1f89d4c04e957f98e331"
+REFERENCE = "5d18866b7f2ca268278df74acdabef735828a6201efe0798f63151d40d25dec8"
 SHIFT = re.compile(r"\tv_lshrrev_b32_e32 (v\d+), 16, \1")
 SELECT = re.compile(r"\tv_cndmask_b32_e32 (v\d+), (v\d+), (v\d+), vcc")
 STORE = re.compile(r"\tds_write_b16 v\d+, (v\d+)(?: offset:\d+)?")
@@ -136,6 +136,9 @@ def overlap_lds(lines, stores, reads, end, part, order, p_pending):
 
 def transform(source, mode, scope, read_order, overlap, p_pending):
     normalized = re.sub(r'(^\s*\.file\s+\d+ )"[^"]+"', r'\1"<directory>"', source, flags=re.M)
+    # LLVM also records the compilation directory in the DWARF string table.
+    normalized = re.sub(r'(^\.Linfo_string2:\n[ \t]*\.asciz[ \t]+)"/[^"\n]*"',
+                        r'\1"<directory>"', normalized, flags=re.M)
     if digest(normalized.encode()) != REFERENCE:
         raise ValueError("Expected the qualified joint K/V assembly")
     lines = source.splitlines()
