@@ -2055,5 +2055,76 @@
     },
     "process_wall_seconds": 883.3,
     "metric_note": "新进程首次运行，模型加载约630.32秒，不与历史常驻142.89秒直接比较"
+  },
+  "release_wrapper": {
+    "path": "candidates/pv-v-lds-layout/build-p-row-prepacked-release.sh",
+    "gpu_visible_devices": "",
+    "build_exit_code": 0,
+    "artifact_identity": {
+      "dense-attention-packed.hsaco": {
+        "byte_equal": true,
+        "allocated_sections_equal": true,
+        "target_equal": true,
+        "reference_sha256": "96874b5cd49aa9343c7dffccbb135fcf4cac8343316217b7829953e1023e0803",
+        "rebuilt_sha256": "96874b5cd49aa9343c7dffccbb135fcf4cac8343316217b7829953e1023e0803"
+      },
+      "dense-attention-aot.hsaco": {
+        "byte_equal": true,
+        "allocated_sections_equal": true,
+        "target_equal": true,
+        "reference_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+        "rebuilt_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f"
+      },
+      "dense-attention-fallback.hsaco": {
+        "byte_equal": true,
+        "allocated_sections_equal": true,
+        "target_equal": true,
+        "reference_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+        "rebuilt_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba"
+      },
+      "dense-attention-packed-reference.hsaco": {
+        "byte_equal": true,
+        "allocated_sections_equal": true,
+        "target_equal": true,
+        "reference_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+        "rebuilt_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9"
+      },
+      "prepack-value.hsaco": {
+        "byte_equal": false,
+        "allocated_sections_equal": true,
+        "target_equal": true,
+        "reference_sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+        "rebuilt_sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4"
+      },
+      "dense-attention-aot.so": {
+        "byte_equal": true,
+        "allocated_sections_equal": true,
+        "target_equal": true,
+        "reference_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516",
+        "rebuilt_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+      }
+    },
+    "provenance_sources": 16,
+    "benchmark_script": "optimization/benchmark-public-a.sh",
+    "report_incomplete_run_rejected": true
+  },
+  "first_pair_preliminary": {
+    "status": "preliminary_one_of_three_pairs",
+    "base": {
+      "index": 2,
+      "variant": "base",
+      "wall_seconds": 142.98386500403285,
+      "transformer_seconds": 122.0001375018619,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+    },
+    "candidate": {
+      "index": 3,
+      "variant": "fast",
+      "wall_seconds": 136.992860134691,
+      "transformer_seconds": 116.86265031248331,
+      "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
+    },
+    "wall_reduction_percent": 4.189986659804501,
+    "transformer_reduction_percent": 4.211050327136057
   }
 }

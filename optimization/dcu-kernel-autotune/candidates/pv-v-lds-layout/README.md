@@ -377,6 +377,18 @@ hipprof --pmc --pmc-type 2 --kernel-name dense_attention_aot_kernel -o "$pmc" \
 
 ## P 行布局与 V 预排布组合
 
+已有通过 `build-row-sum-release.sh` 构建的求和交错发布目录时，可使用下面的固定配置构建入口。它核对两份基准设备镜像，构建九齿 V 位复制、P/V 组合及正式主机 ABI，输出可直接传给 `run-optimized.sh --config` 的 `candidate.env`，并记录构建源码和全部设备/主机产物摘要。
+
+```bash
+bash build-p-row-prepacked-release.sh "$row_sum_release" "$new_release"
+bash "$H3_AUTOTUNE_CODE_ROOT/optimization/benchmark-public-a.sh" \
+  "$new_release" "$model" "$new_benchmark_output"
+```
+
+该入口已在 `HIP_VISIBLE_DEVICES=` 的 CPU 构建环境跑通，六个产物的可加载 ELF 区段均与本轮验收镜像相同，其中五个文件逐字节相同，V 预处理文件仅非加载内容不同。`release.json` 的 `qualified=false` 表示重建入口不会替代新环境的实际规格、质量和计时检查。
+
+统一 `benchmark-public-a.sh` 根据发布元数据选择求和交错基准和新组合，仍执行同一八卡常驻进程中的两次预热和三组 A 配对。汇总时同时核对主注意力、V 预排布设备指令、主机库摘要、回退镜像及运行快照；报告中的 `comparison` 区分两组已冻结的对照组合。`summarize-public-a.py report` 也接受已完整结束的 A×8/B/C/A 资格验收目录，只统计前八条 A，明确保留原完整序列，便于直接复用本轮证据。
+
 `build-p-row-lds.py` 从已冻结的求和交错汇编重建完整 KV 循环的 P LDS 映射。构建前枚举 256 线程的 4096 个 BF16 写入位置，验证新布局为双射，并逐项核对 PV 的八个打包寄存器。保留 16 次原高 BF16 写入，将 16 次半字读取和 8 条置换换为 4 次 64 位读取。QK、在线 softmax、PV 的浮点算术、舍入和累加顺序不变，尾 KV 块保持原实现。
 
 `build-prepacked-v.py --p-row-layout` 将两种供数方式组合。以下命令中的 `reference` 为求和交错正式三镜像目录，`prepack` 由上一节的九齿构建命令生成。所有输出路径需要尚不存在。

@@ -179,3 +179,21 @@ rg 'model\.|generation.pipeline_total|compute.h3_transformer|output.video_vae_de
 - 仓库提交、实际运行目录和模型路径。完整权重一致性以双方的权重文件清单及 SHA-256 核对，入口脚本不自动对所有模型权重做哈希。
 
 公开成绩始终注明“八卡 BW1000、常驻预热后三次完整 A 请求均值”或“新进程普通入口单次总耗时”，并附原始字段和样本。后续优化继续沿用这两种明确区分的协议。
+
+## 7. 后续 P 行布局与 V 预排布组合
+
+本地 `xsh-opt` 新增了组合候选的统一构建入口。它已通过普通官方 A 和真实八卡去噪回放，三组稳态配对及多用例验收仍在进行。上述固定提交 `0ba8bb17` 用于旧的 142.89 秒结果；本节需要包含 `build-p-row-prepacked-release.sh` 的后续源码，不能在旧提交上直接执行。
+
+复用第 2 节生成的 `$job/release`，运行以下命令即可构建组合并以相同口径复测。
+
+```bash
+bash "$repo/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-p-row-prepacked-release.sh" \
+  "$job/release" "$job/p-row-prepacked-release"
+
+bash "$repo/optimization/benchmark-public-a.sh" \
+  "$job/p-row-prepacked-release" "$model" "$job/p-row-prepacked-resident"
+```
+
+这一组的 base 为求和交错版，fast 为 P 行布局与 V 预排布组合。输出仍读取 `benchmark.json` 中的 `wall.reference.mean`、`wall.candidate.mean` 和 `wall.mean_time_reduction_percent`，`comparison` 应为 `row-sum-vs-p-row-prepacked-v`。设备同步、完整模型计算、预热和配对顺序与前述协议相同。
+
+新构建入口记录 16 份相关源码及六个设备/主机产物的 SHA-256。汇总程序要求主注意力和 V 预排布的设备指令符合冻结版本，主机库及回退镜像与运行快照一致。`release.json` 中的 `qualified=false` 表示构建本身不会代替新环境的模型质量验收；对应完整结果另行保存。
