@@ -1,5 +1,7 @@
 # Q128 packed 资源与调度实验
 
+2026-11-27 新增 P 行布局与 V 预排布组合，构建和验证方法见文末对应章节。此组合尚在真实八卡与完整入口验收中，正式默认保持不变。
+
 正式推理使用仓库 `optimization/rebuild-v2.sh --long-attention-q128-packed --fused-qknorm-mrope` 构建的三镜像方案。当前实验基准来自该方案的 packed 分支，长度动态，实验主机只用于每卡七个 head、dim128 和步长 896/896/2688/896 的回放。不要将提取出的单镜像目录当作通用正式推理配置。
 
 ## 重建实验基准
@@ -372,3 +374,27 @@ hipprof --pmc --pmc-type 2 --kernel-name dense_attention_aot_kernel -o "$pmc" \
 主注意力的独立 PMC 测得 bank conflict 计数下降约 59.9%–60.0%，VMEM 读取指令下降约 33.3%，LDS 指令下降约 3.84%，仍分配 220 VGPR、16 KiB LDS、0 B scratch。预处理为 24 VGPR、0 B LDS、0 B scratch，无 LDS bank conflict。[主注意力原始 PMC TXT](../../docs/prepacked-v-f12r2n09-attention-pmc.txt) · [预处理原始 PMC TXT](../../docs/prepacked-v-f12r2n09-prepack-pmc.txt) · [基准原始 PMC TXT](../../docs/prepacked-v-f12r2n09-reference-pmc.txt)
 
 预排布位模式、20 个额外长度、24 组特殊 BF16 输入、连续更新 V 和不同步长回退均通过。主注意力及主机库独立重建逐字节一致，预处理重建的设备指令一致。实验首版误把 Q tile 索引用于 head 寻址，修正为原 head 偏移后开始有效计时，失败记录保留。按历史 A 的每卡 2450 次调用粗估，新增节省约 3.5 s，约占历史 142.89 s 的 2.46%。该估算跨节点，实际八卡端到端尚待验证。本轮按低于 3% 的优先线归档。 [完整配对、位模式校验及 PMC 记录](../../docs/prepacked-v-f12r2n09.json)
+
+## P 行布局与 V 预排布组合
+
+`build-p-row-lds.py` 从已冻结的求和交错汇编重建完整 KV 循环的 P LDS 映射。构建前枚举 256 线程的 4096 个 BF16 写入位置，验证新布局为双射，并逐项核对 PV 的八个打包寄存器。保留 16 次原高 BF16 写入，将 16 次半字读取和 8 条置换换为 4 次 64 位读取。QK、在线 softmax、PV 的浮点算术、舍入和累加顺序不变，尾 KV 块保持原实现。
+
+`build-prepacked-v.py --p-row-layout` 将两种供数方式组合。以下命令中的 `reference` 为求和交错正式三镜像目录，`prepack` 由上一节的九齿构建命令生成。所有输出路径需要尚不存在。
+
+```bash
+python build-p-row-lds.py "$reference" "$plain"
+python build-prepacked-v.py "$reference" "$combined" --position after-k-write --p-row-layout
+python build-prepacked-dispatch.py "$reference" "$combined" "$prepack" "$integrated"
+HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python verify-prepacked-dispatch.py \
+  "$reference" "$integrated" "$native_results"
+hipprof --pmc --kernel-name dense_attention_aot_kernel -o "$pmc" \
+  python profile-prepacked-v.py "$reference" "$combined" "$prepack"
+```
+
+正式主机 ABI 的组合入口保持原来的三个分派镜像作为回退，针对不小于 4096 的 packed 输入发射 V 位复制和新的长注意力。工作区按 device/stream 管理，仅复用分配空间，每次重新计算 V；其余步长及短长度走原三镜像。动态长度增大时按需重新分配，缩小时复用空间。`aot_runtime.load_attention` 验证新主机库、预处理镜像和回退镜像摘要，尚未集成正式主机的实验镜像仍被拒绝。
+
+`f12r2n09` 的 19 组无 profiler 配对中，单改 P 节省约 3.58% 单算子耗时；组合的正式主机调用在 27570 token 下由 24.9961 降为 22.9014 ms，在 22016 token 下由 16.8878 降为 15.4809 ms，配对收益约 8.39%/8.33%，均包含 V 预排布。组合与上一轮仅预排布 V 相比，实验主机调用再节省约 2.69%/2.91%。
+
+实验入口的 53 条记录覆盖三组 19 对计时、20 个边界长度、零值/放大输入/零 scale 和连续更新 V；正式主机的 40 条记录覆盖生产长度配对、八张卡、短长度回退、Q/K/V/O 步长回退、双 stream 及工作区增长/缩小。数值逐位比较、有限值和输出尾部哨兵全部通过。独立 `hipprof --pmc` 原始 TXT 的 `shared memory bank conflict` 为 27570 token 约 0.0178%、22016 token 0%，分配资源仍为 220 VGPR、16 KiB LDS、零 scratch。
+
+按历史调用次数估计可节省约 5.13 s，相当于历史 142.89 s 的 3.59%。此为跨节点估算，尚不能作为完整生成的实测成绩。候选正在做真实八卡 Transformer 回放，后续仍需完整官方入口和多用例稳态验收，正式默认配置保持不变。 [配对和验证记录](../../docs/p-row-prepacked-f12r2n09.json) · [原始 PMC TXT](../../docs/p-row-prepacked-f12r2n09-basic-pmc.txt)

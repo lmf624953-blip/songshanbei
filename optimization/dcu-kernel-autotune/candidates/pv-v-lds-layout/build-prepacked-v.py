@@ -96,14 +96,19 @@ def main():
     mode.add_argument("--early", action="store_true")
     mode.add_argument("--position", choices=("before-k-write", "after-k-write", "after-k-read",
                                           "after-qk", "after-max", "late"))
+    cli.add_argument("--p-row-layout", action="store_true")
     args = cli.parse_args()
     scripts = Path(__file__).parent
     helper = runpy.run_path(str(scripts / "build-disjoint-k-lds.py"))
     lines = helper["verified_assembly"]((args.reference / (helper["STEM"] + ".amdgcn")).read_text())
     position = args.position or ("before-k-write" if args.early else "late")
     transform(lines, position)
+    if args.p_row_layout:
+        row = runpy.run_path(str(scripts / "build-p-row-lds.py"))
+        row["transform"](lines)
     helper["write_variant"](args.reference, args.output, "\n".join(lines) + "\n", 16384, "prepacked_v",
-                            dict(position=position, packed_pointer_argument_offset=72))
+                            dict(position=position, packed_pointer_argument_offset=72,
+                                 p_row_layout=args.p_row_layout))
     code_root = os.environ.get("H3_AUTOTUNE_CODE_ROOT")
     code = Path(code_root) / "optimization" if code_root else scripts.parents[2]
     sys.path.insert(0, str(code / "adaln"))

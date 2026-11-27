@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-40fe2380f923182b85d704a4b36a5404f3f42535cf069471d5abc019967a8f9c  candidates/pv-v-lds-layout/README.md
+6387f9b76dd15747b0f947766f68d8149264e5360d5b1cb84ff9407e5735da58  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 ed04b8a92c672fa9e245dc7b2ad6725473926ba4665926d12fb9863bca8d51fd  candidates/pv-v-lds-layout/build-disjoint-k-lds.py
@@ -83,9 +83,11 @@ c43b76d19f96c0d7bd5ada09c45a12425da4c8a04e8547554537cc312a88d0e4  candidates/pv-
 9d8a9f93a0eb309c0c8a38396dc078a0210070c961463e042ce56ad8080ac4a5  candidates/pv-v-lds-layout/build-p-lds-pipeline.py
 531420b127569e075dda598d12ce520fc6d5699b2a14e1164a1610b2b7483722  candidates/pv-v-lds-layout/build-p-read2.py
 cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-v-lds-layout/build-p-resources.py
+42acd616d48d3120a63fb546cc48b7f2413f962637f08acf250a7748e76a8ee6  candidates/pv-v-lds-layout/build-p-row-lds.py
 2b12171a926b8f205eb7f170b68eefe1e9d4deb733945fa0c0e3983ba92565e8  candidates/pv-v-lds-layout/build-p-wave-exchange.py
 9cea029bc1a84412fa700432301e61fb838774a0f7f72a42b5e88b0d075c8d69  candidates/pv-v-lds-layout/build-p-wave-lds.py
-593fefbdc1446149b6a9fe8f5d133a7c0fff164dadcdf03e6f4d8019dea4ccc4  candidates/pv-v-lds-layout/build-prepacked-v.py
+5609f8931b900fcaaf17d3ddc8cf012fa92a24c86105dbf7557fadd4bd4b4c11  candidates/pv-v-lds-layout/build-prepacked-dispatch.py
+fb89c4982bb53104910f177c9786fb52de3c13d7a28b6b0b40c5ffb8fa340e7d  candidates/pv-v-lds-layout/build-prepacked-v.py
 9e1a79f07ff842aed67d52573abe1ffa3ca56298347f34bb8d18a73d6b37e54e  candidates/pv-v-lds-layout/build-producer.py
 1ae0f7f7da03209fe6f3e82fdff6950eadd17895ed78c3c4a216b7f73aa1744c  candidates/pv-v-lds-layout/build-pv-lds-order.py
 7d81816a5c6685d9d12a5c12b24871e1a0bb6833579c5e96fa3af449f3448004  candidates/pv-v-lds-layout/build-pv-lds-overlap.py
@@ -115,6 +117,7 @@ ffc197a128750980c1650a4e09504af3870d2cc4c3b949fa9e9748b8716d3365  candidates/pv-
 b8ddf51c3ba19ec23873633c7936c520256ad74e4dac2b8e33628612196eb488  candidates/pv-v-lds-layout/k_resources.py
 9d797636872aa8428294f1067c0fccd2f10e8fd00e685315f9bccb7963fd0adf  candidates/pv-v-lds-layout/p_resources.py
 cf0a92286792d713859eae6238dce79ace3007e61276bd84bcab447e9cf9acf2  candidates/pv-v-lds-layout/prepacked_attention_host.cc
+0bb9973a12a38052811c66cad6cea40cffa97bbe4a89274963d88f93898ff6f8  candidates/pv-v-lds-layout/prepacked_dispatch_extension.cc
 0c79111e57d5d73c11b52b3ca531e6b32c1e05d96c6e9202c653ac7e56ffcf2c  candidates/pv-v-lds-layout/prepare-q128-packed-reference.py
 8852dc32b68394627b3dddff98d6c4f72e4bb590088fe6eb1fccc1ea4e93bd0a  candidates/pv-v-lds-layout/probe-global-to-lds.cc
 bdd7f3bf5b22117a3099af742455e9294ca8131dae93cd10510e548338141ee2  candidates/pv-v-lds-layout/probe-lds-d16.cc
@@ -133,6 +136,8 @@ ec63a65f9ddf5c0564297d6fff094333c46ee2454447a6531ccf6c87a8936111  candidates/pv-
 172e9e020fbe524de004dda16a4568494d0c22a7b7d1ae05a7b592da2c6a5752  candidates/pv-v-lds-layout/summarize-public-a.py
 3d602b94c961736c50b79e73994068c12d07c4f976cea2e3662e1156f353392f  candidates/pv-v-lds-layout/summarize-softmax-dpp-steady.py
 3fdcbb77afdd6d04aed1127ad3f4fbc2fbe69d89177b82a622294a20eb046ea7  candidates/pv-v-lds-layout/v_prepack_kernel.py
+0f645a5f38c1cf470c0de75bffe55430c7a886bcd3469137cc733de677f90b0a  candidates/pv-v-lds-layout/verify-p-row-prepacked.py
+f49cf0cc4cbc407c598b9a7a5c40271529b1b4a7e9b16b4f4a9906c4a0b2597d  candidates/pv-v-lds-layout/verify-prepacked-dispatch.py
 c4b0f693ab1f7ba5cd173c5286f4602e94e32b7a657a64800985641a261ef113  candidates/pv-v-lds-layout/verify-v-pack-layout.py
 9660bdcd4ffacf881d6654ef5b5fde714c11cb26f5632a164d326398d7843702  candidates/qk-mrope-batched/README.md
 f41fb7bc8dab452468d1db2bdf6978b14199a2c2b12868f4e63ec49c1097cd68  candidates/qk-mrope-batched/bench.py
@@ -253,6 +258,8 @@ ffd40883c739b6e7ce8482c69bbd02f0bdfd6765cd03eae22d4c298aa301f561  docs/mrope-aot
 24eaa7c1f98fc09aa9844ff8d18903e55f78bcc30a33d3d071d843e6d8a6a5d7  docs/p-half-lds-a14r1n11.json
 3b222724fa853aca7658d4fe5cd42cd54520f36d9ea476a1b0a0226308a31794  docs/p-read2-f12r2n09.json
 9b7aa258aac734c6fa3e872dddc65cd8577389414ed0e9c66d431fd18738276d  docs/p-round-pack-a14r1n11.json
+1c87901f9ea7ee3ce3b6c18494fe792ab027b63dff5f5b8fdde70bc94096e9e6  docs/p-row-prepacked-f12r2n09-basic-pmc.txt
+85338d352782ddf12b8bfc0ca95f271d66ffdd403885ae66e175a495ad34667c  docs/p-row-prepacked-f12r2n09.json
 fc870872b7656a859ee9ca9e2793d46fb8bbcc558487d8840cd8e0f32ca82e86  docs/p-wave-dpp-a14r1n11.json
 8c15f1931cbb0ddf34150b4ab1a7f63f2d6d4602c652fecdb94f0d3e37359254  docs/p-wave-exchange-a14r1n11.json
 d198f6b2a008f6a78056a65e52172f7069fc05143dec8eacb07e19833c1a37ae  docs/p-wave-lds-a14r1n11.json

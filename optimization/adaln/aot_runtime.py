@@ -53,8 +53,16 @@ def load_widenorm_indexed(build):
 
 def load_attention(build):
     record = json.loads((build / "dense-attention-aot-build.json").read_text())
-    if record.get("experiment", {}).get("prepacked_v"):
+    prepacked = record.get("prepacked_value_dispatch")
+    if record.get("experiment", {}).get("prepacked_v") and not prepacked:
         raise RuntimeError("预排布 V 实验需要 screen-prepacked-v.py 的组合发射入口及预处理工作区")
+    if prepacked:
+        if prepacked["version"] != 1 or prepacked["minimum_rows"] != 4096:
+            raise RuntimeError("Unsupported prepacked attention dispatch version")
+        verify_device_image(build / "dense-attention-aot.so", prepacked["host_sha256"])
+        verify_device_image(build / "prepack-value.hsaco", prepacked["prepack"]["hsaco_sha256"])
+        verify_device_image(build / prepacked["reference_packed"]["file"],
+                            prepacked["reference_packed"]["hsaco_sha256"])
     if "fallback" in record:
         image = build / "dense-attention-aot.hsaco"
         fallback = build / "dense-attention-fallback.hsaco"
@@ -77,9 +85,22 @@ def load_attention(build):
             prepare_packed = host.songshan_prepare_attention_strides
             prepare_packed.argtypes = [ctypes.c_char_p, ctypes.c_int]
             prepare_packed.restype = ctypes.c_char_p
-            error = prepare_packed(os.fsencode(build / "dense-attention-packed.hsaco"), packed["shared"])
+            packed_image = build / (prepacked["reference_packed"]["file"] if prepacked
+                                    else "dense-attention-packed.hsaco")
+            packed_shared = prepacked["reference_packed"]["shared"] if prepacked else packed["shared"]
+            error = prepare_packed(os.fsencode(packed_image), packed_shared)
             if error:
                 raise RuntimeError(f"Preparing packed attention failed: {error.decode()}")
+        if prepacked:
+            prepare_value = host.songshan_prepare_prepacked_value
+            prepare_value.argtypes = [ctypes.c_char_p, ctypes.c_char_p] + [ctypes.c_int] * 3
+            prepare_value.restype = ctypes.c_char_p
+            pack = prepacked["prepack"]
+            error = prepare_value(os.fsencode(build / "dense-attention-packed.hsaco"),
+                                  os.fsencode(build / "prepack-value.hsaco"),
+                                  pack["tile"], pack["warps"], packed["shared"])
+            if error:
+                raise RuntimeError(f"Preparing prepacked value failed: {error.decode()}")
     else:
         host = load_kernel(build, "dense-attention-aot", "dense-attention-aot.so", "songshan_prepare_attention")
     if hasattr(host, "songshan_attention_query_block"):
