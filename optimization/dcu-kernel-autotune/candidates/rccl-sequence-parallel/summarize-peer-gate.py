@@ -80,6 +80,8 @@ def main():
     accepted_order = read(accepted / "steady-paired/complete.json")["sequence"]
     accepted_hashes = {case: digest(accepted / f"steady-paired/{accepted_order.index(case):02d}-{case}/video.mp4")
                        for case in ("A", "B", "C")}
+    accepted_counts = {case: read(accepted / f"steady-paired/{accepted_order.index(case):02d}-{case}/record.json")["candidate_calls"]
+                       for case in ("A", "B", "C")}
     samples = [json.loads(line) for line in Path(str(sequence) + ".vram.jsonl").read_text().splitlines()]
     records = []
     for i, case in enumerate(ORDER):
@@ -91,6 +93,8 @@ def main():
                 and options["seed"] == 42 and options["gpus"] == "0,1,2,3,4,5,6,7" and not options["legacy"], "工作量不符")
         require(not row["diagnostic_capture"] and not row["diagnostic_finite_checks"]
                 and row["media"]["video_specs_passed"] and counts["attention"] > 0, "诊断或规格不合格")
+        require(all(counts.get(name) == value for name, value in accepted_counts[case].items()
+                    if name != "indexed"), "保留的注意力、归约、SwiGLU等计算调用数与已验收版本不符")
         if case == "A":
             spec = row["media"]["video"]
             require(row["first_frame_sha256"] == FIRST_FRAME and options["text"] == "A dog falls asleep"
