@@ -6,7 +6,22 @@ v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 
 
 普通官方默认入口 A 和常驻 A×8/B/C/返回 A 共 11 请求均已通过，所有 MP4 与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 分别为 93.832013%、99.404123%、99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。当前配置未启用跨进程编译缓存优化。整卡显存每五秒采样的最高读数为 31960 MiB；该常驻实例混用基准和候选，不能据此推断独立实例的显存差。 [完整验收](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-qualified.json) · [构建与资源记录](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09.json)
 
-复测当前组合时，先按下节命令生成求和交错的 `$job/release`，再运行 [公开 A 耗时复测说明](公开A耗时复测说明.md#7-后续-p-行布局与-v-预排布组合) 中的组合构建与统一计时命令。`benchmark.json` 的 `comparison` 为 `row-sum-vs-p-row-prepacked-v`，正式成绩读取 `wall.candidate.mean`。
+复测当前验收组合使用 [统一入口](reproduce-public-a.sh) 和 [公开 A 耗时复测说明](公开A耗时复测说明.md)。已准备 `runtime` 后，在仓库根目录运行以下命令，`model` 指向包含 `model_index.json` 的权重目录；输出目录必须尚不存在。
+
+```bash
+repo=$(pwd)
+model=/path/to/MiniMax-H3
+mkdir -p "$repo/artifacts"
+job=$(mktemp -d "$repo/artifacts/public-a-retest-XXXXXXXX")
+bash "$repo/optimization/reproduce-public-a.sh" build "$job/build-work"
+bash "$repo/optimization/reproduce-public-a.sh" resident \
+  "$job/build-work/release" "$model" "$job/resident"
+# 需要另测普通入口首次启动总耗时时，在常驻配对结束后执行：
+bash "$repo/optimization/reproduce-public-a.sh" single \
+  "$job/build-work/release" "$model" "$job/single"
+```
+
+`resident/benchmark.json` 的 `comparison` 为 `row-sum-vs-p-row-prepacked-v`，正式成绩读取 `wall.candidate.mean`；`single/process-time.txt` 单独记录新进程启动到退出的总耗时，两者不能混用。
 
 此前 `a14r1n11` 的联合发射版约为 147.55 秒，求和交错候选为 142.89 秒；下节保留其复测入口和原始记录。当前 137.344 秒与同轮 142.320 秒配对比较，不用跨节点绝对秒数计算加速比。
 

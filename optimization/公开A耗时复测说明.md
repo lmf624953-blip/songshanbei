@@ -1,201 +1,172 @@
 # 官方公开 A 耗时复测说明
 
-本文固定已公布 142.89 秒成绩的版本、输入和计时方法。复测主入口是仓库已有的 `optimization/benchmark-public-a.sh`。它在同一八卡常驻进程内完成双方预热和三组配对，输出可比较的 `benchmark.json`。
+当前通过完整验收的版本为 **P 行 LDS 布局 + V 预排布**。正式成绩 **137.344178 秒** 指：八卡 BW1000、模型常驻、双方各一次完整预热后，三次完整 A 请求的墙钟均值。协议为 `minimax-h3-public-a-resident-paired-v1`。
 
-142.89 秒是模型已加载并完成预热后的完整请求墙钟均值。普通入口第一次运行、模型加载和整个进程退出的耗时需要分别报告。统一协议能够保证测量定义一致，绝对秒数仍受节点、软件版本和存储状态影响。
+统一入口：[reproduce-public-a.sh](reproduce-public-a.sh)；底层计时：[benchmark-public-a.sh](benchmark-public-a.sh)；原始结果：[p-row-prepacked-f12r2n09-public-a.json](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json)。可以固定版本、输入、预热和统计边界，换节点后不能保证绝对秒数完全一致。
 
-## 1. 固定源码和运行条件
+## 1. 获取正确版本及运行环境
 
-已在 GitHub `xsh-opt` 发布的复测入口对应提交 `0ba8bb171b2d63d1aefb0c8a45a15bd16e1407f9`。以下克隆命令面向第三方的新目录，不需要切换已有实验工作区。
+验收源码锚点为 `067b267bfec81e95952f8c9dae9abcc1428d624a`；本文与统一入口在包含它的后续 `xsh-opt` 提交中。旧提交 `0ba8bb17` 是此前 142.89 秒版本，不能用于复测 137.344 秒。
 
 ```bash
 git clone --branch xsh-opt git@github.com:lmf624953-blip/songshanbei.git songshanbei-retest
 cd songshanbei-retest
-git checkout --detach 0ba8bb171b2d63d1aefb0c8a45a15bd16e1407f9
 repo=$(pwd)
+git rev-parse HEAD
+git merge-base --is-ancestor 067b267bfec81e95952f8c9dae9abcc1428d624a HEAD
+test -f "$repo/optimization/reproduce-public-a.sh"
 ```
 
-需要独占同一节点的八张 BW1000，设备架构为 `gfx936`。使用 DTK 26.04、GCC 11.4、CPython 3.11、海光 Torch 2.9 和相同的比赛离线依赖。模型目录直接包含 `model_index.json`。同批八卡同时只运行这一项性能任务，性能测量不附加 hipprof、PMC、张量抓取或有限值诊断。
+不要 shallow clone，原生构建需要历史基线 `45b2c3094d8d189e030f8984d7c07dead4db690a`。需要独占同节点八张 BW1000、`gfx936`、DTK 26.04、GCC 11.4、CPython 3.11、海光 Torch 2.9 及比赛离线依赖。仓库不含模型权重和这些软件环境。
 
-已有当前账号的适配环境时，在新克隆的仓库根目录运行下列命令。其他账号将 `runtime` 的链接目标改为自己的已适配运行目录，准备方法见 [optimization/README.md](README.md) 的“准备运行环境”。源码仓库不包含模型权重、DTK、Torch 和离线依赖，单独克隆仓库后仍须完成该准备。
+新账号按 [README](README.md#准备运行环境) 准备 `runtime`，包括注意力主机桥；当前账号可复用：
 
 ```bash
 module load compiler/dtk/26.04 compiler/gcc/11.4.0
+# 新克隆目录尚无 runtime 时执行；其他账号改为自己的运行目录。
 ln -s /public/home/acvduipmem/xsh/songshanbei/runtime "$repo/runtime"
 model=/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3
 test -x "$repo/runtime/.venv/bin/python"
+test -r "$repo/runtime/artifacts/attention-bridge-build.json"
 test -r "$model/model_index.json"
 hy-smi
 ```
 
-若仓库已有正确的 `runtime`，跳过 `ln -s`。新账号的模型路径也需要改为自己的路径。两侧配对使用同一模型目录，不清理系统页缓存，不在配对之间切换共享盘和节点本地盘。
+使用干净 Bash；不附加 hipprof/PMC、张量抓取或有限值检查，同批八卡只运行这一项性能任务。双方使用相同权重目录，不在配对之间切换权重位置或清理页缓存。权重一致性由交付方核对，入口不自动哈希所有权重。
 
-## 2. 从源码构建被测版本
-
-以下所有路径均为绝对路径，构建目录必须是新目录。构建时间不计入推理成绩。
+## 2. 从源码构建当前验收版
 
 ```bash
 mkdir -p "$repo/artifacts"
 job=$(mktemp -d "$repo/artifacts/public-a-retest-XXXXXXXX")
-
-H3_BUILD_JOBS=8 H3_AOT_SAVE_IR=1 \
-  bash "$repo/optimization/rebuild-v2.sh" "$job/build" \
-  --short-attention --deterministic-keyframe --long-attention-q128-packed \
-  --fused-wide-norm-indexed-original-serial-compact --fused-swiglu-row \
-  > "$job/build.log" 2>&1
-
-bash "$repo/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-row-sum-release.sh" \
-  "$job/build/attention" "$job/build/candidate.env" "$job/release" \
-  > "$job/release.log" 2>&1
+bash "$repo/optimization/reproduce-public-a.sh" build "$job/build-work"
+release="$job/build-work/release"
 ```
 
-`release/joint-kv` 是本轮约 147.80 秒的对照镜像，`release/attention` 是约 142.89 秒的求和交错候选。两者保留其余优化，配对中的 `base` 指联合发射版。历史固定原版和早期 v3 的秒数属于其他版本或节点。
+`build-work` 必须尚不存在。脚本依次构建 Q128/K32 packed 基础版、求和交错版、P 行布局 + V 预排布组合。配置为 `$release/candidate.env`；配对基准为 `$job/build-work/row-sum/attention`。脚本不依赖 `selected-best.env`，不会自动加入未验收的实验 kernel。
 
-最新 kernel 探索的预排布 V、P 布局等实验不属于这组 142.89 秒成绩。该候选的公开 A 配对和普通官方 A 已完成，历史 A/B/C/返回 A 连续验收未全部完成，当前正式默认配置仍采用联合发射版。复测时显式指定本节生成的配置。
+构建不运行模型，不计入推理成绩。保留 `build-work/{build,row-sum,release}.log`、`build-exit-code`、提交及工作区状态。`release.json` 记录源码和产物 SHA-256，`qualified=false` 表示构建操作不代替新环境质量验收。
 
-## 3. 复测约 142.89 秒的常驻请求指标
+## 3. 常驻配对计时
 
 ```bash
-bash "$repo/optimization/benchmark-public-a.sh" \
-  "$job/release" "$model" "$job/resident"
+bash "$repo/optimization/reproduce-public-a.sh" resident \
+  "$release" "$model" "$job/resident"
 ```
 
-脚本固定以下工作量，每次重新执行完整生成。
+等价底层命令为 `bash "$repo/optimization/benchmark-public-a.sh" "$release" "$model" "$job/resident"`，两条选一条；输出目录必须尚不存在。八次完整生成通常需要二十分钟左右，另加启动和模型加载。
 
-| 项目 | 固定值 |
-| --- | --- |
-| 任务 | `fl2va` |
-| 首帧 | `runtime/unified-dog-input/first_frame.png` |
-| 首帧 SHA-256 | `b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54` |
-| 提示词 | `A dog falls asleep` |
-| 视频画布 | 768×928，由官方首帧和原入口解析 |
-| steps / 帧数 / seed | 50 / 124 / 42 |
-| Transformer 调用数 | 每次完整请求 49 次 |
-| 卡数 | 8，`HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7` |
-| 主机线程 | `OMP_NUM_THREADS=4` |
-| 编码器 / VAE 配置 | 编码器 TP=4、初始容量 512、VAE 设备 0/1、确定性首帧编码 |
+固定 `fl2va`、官方小狗首帧、提示词 `A dog falls asleep`、768×928、50 steps、124 帧、seed 42，每次请求 49 次 Transformer。首帧 SHA-256 为 `b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54`。
 
-请求顺序如下，索引从 0 开始。
+脚本显式设置八卡 `HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7` 和 `OMP_NUM_THREADS=4`；编码器 TP=4、初始容量 512、VAE 设备 0/1、确定性首帧编码。模型只加载一次，每次请求重新执行完整计算。
 
-| 请求 | 注意力镜像 | 用途 |
+| 请求编号 | 注意力版本 | 统计用途 |
 | --- | --- | --- |
-| 00 | base | 基准完整预热 |
-| 01 | fast | 候选完整预热 |
+| 00 | base，求和交错版 | 完整预热，不计均值 |
+| 01 | fast，当前组合版 | 完整预热，不计均值 |
 | 02 / 03 | base / fast | 正式配对 1 |
 | 04 / 05 | fast / base | 正式配对 2，反转执行顺序 |
 | 06 / 07 | base / fast | 正式配对 3 |
 
-正式统计仅使用 base 的 02/05/06 和 fast 的 03/04/07。脚本完成八次完整 A 生成，时间通常在二十多分钟量级，另加模型加载和启动开销。
+正式样本固定为 base 的 02/05/06、fast 的 03/04/07。不能选最小值、加入预热，或用八次总耗时除以八。
 
-`wall_seconds` 使用 `time.perf_counter()`，从请求输入准备开始，到 MP4 写出且全部相关设备同步结束。包含输入准备、条件编码、VAE 首帧编码、49 次 Transformer、视频及音频 VAE 解码、媒体编码和写出。模型创建加载在请求循环前，媒体规格检查在本次请求计时后。阶段计时中的 `generation.pipeline_total` 包含其内部组件，不能与组件耗时重复相加。
+`wall_seconds` 使用 `time.perf_counter()`，从请求 `prepare_generation_inputs()` 前开始，到 MP4 写出且相关设备同步后结束。包含输入准备、条件编码、首帧 VAE 编码、49 次 Transformer、视频和音频 VAE 解码、媒体编码和写出。模型加载在请求循环前，媒体规格验证在本次计时后。实现见 [run-sequence.py](run-sequence.py)。
 
-标准启动脚本为每个进程创建新的九齿/Triton 缓存目录。预热后同一进程自然复用已编译代码，未设置 `H3_BENCH_JIT_CACHE`，也未启用另行实验的跨进程缓存优化。
+每个进程创建新的九齿/Triton 缓存目录，同进程预热后自然复用代码。未启用 `H3_BENCH_JIT_CACHE` 或跨进程编译缓存优化。
 
-## 4. 唯一对照字段与历史样本
+脚本核对设备指令冻结哈希、主机库及回退镜像、运行快照、官方输入、49 次调用和成片规格，要求八条 MP4 逐字节一致；失败退出，不把部分记录当作有效成绩。该性能协议不代替独立参考质量验收。
+
+## 4. 唯一主字段及原始样本
 
 ```bash
 python3 - "$job/resident/benchmark.json" <<'PY'
 import json
 import sys
-d = json.load(open(sys.argv[1]))
-for key in ("wall",):
-    x = d[key]
-    print("base samples", x["reference"]["samples"])
-    print("fast samples", x["candidate"]["samples"])
-    print("base mean", x["reference"]["mean"], "s")
-    print("fast mean", x["candidate"]["mean"], "s")
-    print("time reduction", x["mean_time_reduction_percent"], "%")
-for stage in ("compute.h3_transformer", "output.video_vae_decode", "generation.pipeline_total"):
-    x = d["stages"][stage]
-    print(stage, x["reference"]["mean"], "->", x["candidate"]["mean"], "s")
-print("model_load_seconds", d["model_load_seconds"])
-print("runtime", d["runtime"])
-print("images", d["images"])
+r = json.load(open(sys.argv[1]))
+assert r["protocol"] == "minimax-h3-public-a-resident-paired-v1"
+assert r["comparison"] == "row-sum-vs-p-row-prepacked-v"
+w = r["wall"]
+for name in ("reference", "candidate"):
+    x = w[name]
+    print(name, "samples =", x["samples"])
+    print(name, "mean =", x["mean"], "s; stdev =", x["stdev"], "s")
+print("time reduction =", w["mean_time_reduction_percent"], "%")
+print("paired reductions =", w["paired_reduction_percent"]["samples"])
+for name, x in r["stages"].items():
+    print(name, x["reference"]["mean"], "->", x["candidate"]["mean"], "s")
+print("model_load_seconds =", r["model_load_seconds"])
+print("node =", r["runtime"]["hostname"])
+print("images =", r["images"])
 PY
 ```
 
-历史证据在 `dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json`，原节点为 `a14r1n11`。
+`f12r2n09` 上的正式结果，单位秒：
 
-| 指标 | base | fast |
+| 指标 | base，求和交错版 | fast，当前组合版 |
 | --- | --- | --- |
-| 请求墙钟样本，秒 | 147.039450 / 148.692147 / 147.671007 | 143.245521 / 143.024396 / 142.391238 |
-| 请求墙钟均值，秒 | 147.800868 | 142.887052 |
-| 请求墙钟样本标准差，秒 | 0.833967 | 0.443393 |
-| Transformer 合计均值，秒 | 127.667392 | 121.966777 |
+| 样本 1 | 142.983865004 | 136.992860135 |
+| 样本 2 | 142.283798470 | 138.403012385 |
+| 样本 3 | 141.692351870 | 136.636661931 |
+| 请求墙钟均值 | 142.320005115 | **137.344178150** |
+| 样本标准差 | 0.646517 | 0.934113 |
+| Transformer 合计均值 | 121.994201339 | 116.859849044 |
 
-本轮平均请求耗时下降 3.324619%，Transformer 耗时下降 4.465208%。第三方复测同时提交绝对秒数和同节点配对收益。更换节点后，不将两节点的绝对秒数之比当作优化收益。
+同轮请求耗时下降 3.496225%，Transformer 下降 4.208686%。不同节点先对照同节点配对收益，再检查绝对时间。167 秒、142.89 秒属于其他版本或节点，不混作当前基准。
 
-脚本检查两套 packed 镜像的设备 `.text` 哈希、首帧、参数、49 次 Transformer 调用、媒体规格和算子调用数，并要求八条成片逐字节一致。任一检查失败时该轮不生成有效汇总。`output_matches_reference_sha256` 额外显示是否与历史优化成片哈希一致，官方参考相似度仍以独立比较为准。
+主成绩只读取 `wall.candidate.mean`，注明“八卡 BW1000、模型常驻、双方各一次预热后三组完整 A 请求均值”。`generation.pipeline_total` 包含其内部组件，不与 Transformer/VAE 分项重复相加。
 
-## 5. 普通入口单次计时，用于排查 280 秒
-
-如果别人执行的是普通推理入口，按以下命令另测同一个候选。新进程包含模型加载和首次编译等开销，完整保留这条结果，连同常驻结果一起交付。
-
-```bash
-mkdir "$job/single"
-(
-  export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-  export OMP_NUM_THREADS=4
-  /usr/bin/time -o "$job/single/process-time.txt" -f 'process.wall %e s' \
-    bash "$repo/optimization/run-optimized.sh" \
-    --config "$job/release/candidate.env" fl2va \
-    --model-path "$model" \
-    --first-frame "$repo/runtime/unified-dog-input/first_frame.png" \
-    --text "A dog falls asleep" --gpus 0,1,2,3,4,5,6,7 \
-    --steps 50 --num-frames 124 --seed 42 \
-    --output "$job/single/video.mp4" \
-    > "$job/single/run.log" 2>&1
-)
-```
-
-建议从独立 Bash 会话执行，以避免手动设置的历史环境变量残留。此命令显式选定重建配置；不依赖本机的 `selected-best.env`。
-
-读取所有计时字段。
+## 5. 新进程普通入口计时，排查 280 秒
 
 ```bash
+bash "$repo/optimization/reproduce-public-a.sh" single \
+  "$release" "$model" "$job/single"
 cat "$job/single/process-time.txt"
 rg 'model\.|generation.pipeline_total|compute.h3_transformer|output.video_vae_decode|output.media_encode|total.end_to_end' \
   "$job/single/run.log"
 ```
 
-| 字段 | 边界和用途 |
-| --- | --- |
-| 常驻 `benchmark.json` 的 `wall.candidate.mean` | 三次预热后完整请求均值，对照 142.89 秒 |
-| 单次日志 `generation.pipeline_total` | 生成管线，包含首次调用触发的编译，模型已加载，不包含 MP4 媒体编码 |
-| 单次日志 `total.end_to_end` | 官方 Python `main()` 解析参数后开始，到媒体写出、设备同步和原生引擎清理后结束，包含模型加载；不包含此前导入和宿主启动的全部时间 |
-| `single/process-time.txt` 的 `process.wall` | 从 Bash 启动普通入口到退出，包含环境初始化、Python 导入、模型加载、首次生成、写出和退出清理 |
-| `resident/process-time.txt` 的 `process.wall` | 整个常驻进程和八次请求的总墙钟，需要按该含义报告 |
-
-如果 280 秒来自单次 `process.wall` 或 `total.end_to_end`，应与本节单次结果比较。如果它来自三次正式常驻 `wall_seconds`，则需要比较源码及镜像、Torch/DTK、节点状态与阶段耗时。尚未拿到对方的命令和日志，不能认定 280 秒完全由启动或首次编译造成。
-
-## 6. 交付结果
-
-交付整个 `$job`，至少保留以下文件。
-
-- `build.log`、`release.log`、两份 `candidate.env` 和构建元数据。
-- `resident/benchmark.json`、`command.log`、`devices.log`、`run.log`、`process-time.txt` 和 `process-exit-code`。
-- `resident/sequence/source/manifest.json`、`attention-overrides.json`、`complete.json`，以及 00–07 每条请求的 `record.json` 和视频。
-- 若测了普通入口，保留 `single/run.log`、`single/process-time.txt` 和 `single/video.mp4`。
-- 仓库提交、实际运行目录和模型路径。完整权重一致性以双方的权重文件清单及 SHA-256 核对，入口脚本不自动对所有模型权重做哈希。
-
-公开成绩始终注明“八卡 BW1000、常驻预热后三次完整 A 请求均值”或“新进程普通入口单次总耗时”，并附原始字段和样本。后续优化继续沿用这两种明确区分的协议。
-
-## 7. 后续 P 行布局与 V 预排布组合
-
-本地 `xsh-opt` 已整合组合版的统一构建入口。它已通过普通官方 A、真实八卡去噪回放、三组稳态配对及 B/C/返回 A 验收，并被选为当前本地正式配置。上述固定提交 `0ba8bb17` 用于旧的 142.89 秒结果；本节需要包含 `build-p-row-prepacked-release.sh` 的后续源码，不能在旧提交上直接执行。
-
-复用第 2 节生成的 `$job/release`，运行以下命令即可构建组合并以相同口径复测。
+展开的普通入口如下，与 `single` 二选一。脚本另外保存配置、产物清单、命令、设备信息、退出码及日志，镜像检查在被计时进程启动前完成。
 
 ```bash
-bash "$repo/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-p-row-prepacked-release.sh" \
-  "$job/release" "$job/p-row-prepacked-release"
-
-bash "$repo/optimization/benchmark-public-a.sh" \
-  "$job/p-row-prepacked-release" "$model" "$job/p-row-prepacked-resident"
+export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export OMP_NUM_THREADS=4
+/usr/bin/time -f 'process.wall %e s' \
+  bash "$repo/optimization/run-optimized.sh" --config "$release/candidate.env" fl2va \
+  --model-path "$model" --first-frame "$repo/runtime/unified-dog-input/first_frame.png" \
+  --text "A dog falls asleep" --gpus 0,1,2,3,4,5,6,7 \
+  --steps 50 --num-frames 124 --seed 42 --output "$job/single-manual.mp4"
 ```
 
-这一组的 base 为求和交错版，fast 为 P 行布局与 V 预排布组合。输出仍读取 `benchmark.json` 中的 `wall.reference.mean`、`wall.candidate.mean` 和 `wall.mean_time_reduction_percent`，`comparison` 应为 `row-sum-vs-p-row-prepacked-v`。设备同步、完整模型计算、预热和配对顺序与前述协议相同。
+| 字段 | 边界 | 与 137.344 秒直接比较 |
+| --- | --- | --- |
+| `resident/benchmark.json: wall.candidate.mean` | 预热后三次完整 A 请求均值，含 MP4 写出 | 可以 |
+| 单次 `generation.pipeline_total` | 模型加载后生成管线，含首次 JIT，不含 MP4 编码 | 不可以 |
+| 单次 `total.end_to_end` | 官方 Python `main()` 开始到生成、写出、同步、原生引擎清理，含模型加载 | 不可以 |
+| `single/process-time.txt: process.wall` | 普通入口启动到退出，含环境、导入、加载、首次生成和清理 | 不可以 |
+| `resident/process-time.txt: process.wall` | 八次请求及整个常驻进程启动、退出 | 不可以 |
 
-`f12r2n09` 的三组正式 A 基准样本为 142.983865/142.283798/141.692352 s，组合样本为 136.992860/138.403012/136.636662 s，均值为 142.320005→137.344178 s，下降 3.496225%。Transformer 均值为 121.994201→116.859849 s，下降 4.208686%。完整 11 请求成片全部与对应已验收版本逐字节一致。[本轮统一计时结果](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json) 保留了与复测脚本一致的字段、环境及镜像身份。
+当前验收轮普通新进程曾测得 `process.wall=883.30 s`，其中模型创建加载约 630.324 s、首次 `generation.pipeline_total=198.561 s`、`total.end_to_end=831.044 s`。与 137.344 秒同时保留，后者不是首次启动总耗时。这些单次数字仅描述该次共享盘读取和节点状态。
 
-新构建入口记录 16 份相关源码及六个设备/主机产物的 SHA-256。汇总程序要求主注意力和 V 预排布的设备指令符合冻结版本，主机库及回退镜像与运行快照一致。`release.json` 中的 `qualified=false` 表示构建本身不会代替新环境的模型质量验收；对应完整结果另行保存。
+280 秒若来自 `process.wall` 或 `total.end_to_end`，应按普通入口比较；若来自同协议预热后的 `wall_seconds`，再核对版本、产物、DTK/Torch、节点负载及分项。未看到对方命令和日志前，不能断定原因。
+
+## 6. 交付清单及已有记录复核
+
+交付整个 `$job`，至少包含：
+
+- `build-work/source-commit.txt`、`source-status.txt`、构建日志、配置、`release.json`。
+- `resident/benchmark.json`、`command.log`、`devices.log`、`run.log`、`process-time.txt`、`process-exit-code`。
+- `resident/sequence/source/manifest.json`、`attention-overrides.json`、`complete.json`、00–07 的 `record.json` 和 MP4。
+- 测了普通入口时保留 `single/` 的配置、清单、日志、命令、退出码、进程时间及视频。
+- 模型路径及双方核对的权重清单。移动构建前保留原配置和运行快照。
+
+已有完整八次配对或 A×8/B/C/A，可只重算汇总：
+
+```bash
+"$repo/runtime/.venv/bin/python" \
+  "$repo/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-public-a.py" \
+  report /absolute/path/to/sequence /absolute/path/to/new-benchmark.json
+```
+
+末尾 JSON 必须尚不存在，原构建仍须可读以核对运行快照。完整 11 请求验收见 [qualified.json](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-qualified.json)，所有成片与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 为 93.832013%/99.404123%/99.630047%。
+
+历史 142.89 秒证据保留于 [softmax-row-sum-a14r1n11-steady-partial.json](dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json)，对应 `0ba8bb17`、`joint-kv-vs-row-sum` 比较。
