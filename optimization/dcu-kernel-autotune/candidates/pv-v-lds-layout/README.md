@@ -441,3 +441,22 @@ python screen-pv-wide-operand.py "$integrated" "$register_builds" "$register_res
 ```
 
 四个版本均通过两个生产长度的普通/放大输入逐位比较、有限值和输出哨兵检查。11 组无 profiler 配对的变化在约 ±0.02% 范围，没有可靠收益。独立 PMC 中 q188 分配 220 VGPR，q190 为 224 VGPR，均为 64 SGPR、16 KiB LDS、零 scratch，bank conflict 保持约 0.0178%/0%。本轮归档，未进入新的整模型复跑。 [计时与原始 PMC](../../docs/query-register-placement-f12r2n09.json)
+
+## 内部 P 的 NaN payload 与 xor4 归约
+
+在已验收的 137.344178 秒组合上，`build-p-nan-payload.py` 删除完整 KV 块内部 P 格式化的 16 条有序比较、16 条 NaN 掩码和一条常量。所有 FP32 数学、RNE 舍入、MMAC、尾块和最终输出 BF16 NaN 规范化保留；16 个原始 FP32 概率继续进入在线分母。脚本检查 VCC 读者与下一次完整定义、临时寄存器覆盖和最终代码不变。有限概率的舍入结果相同，非有限输入由不变的分母及最终规范化处理；覆盖异常输入的最终输出逐位测试仍是必要门槛，不以通常模型输入有限作为前提。
+
+`build-softmax-ror4.py` 利用前一级 xor8 归约的对称性，把完整块 xor4 的两条 bank-mask DPP 改成一条 `row_ror:4`，删除 8 条 max 和 8 条 sum 指令。CPU 枚举 64 个 lane 的来源，逐项检查前驱、读写依赖及尾部不变。有限 FP32 操作数保持原有加法层级；NaN payload 和带符号零仍另做最终输出逐位比较。
+
+```bash
+python build-p-nan-payload.py "$integrated" "$nan_only"
+python build-softmax-ror4.py "$integrated" "$ror_only"
+python build-softmax-ror4.py "$nan_only" "$combined"
+python verify-p-nan-payload.py "$integrated" "$combined" "$verification_jsonl"
+```
+
+三个版本分别通过 95 个边界、普通/零值/溢出/非有限输入测试，以及两个生产长度的 19 组无 profiler 配对。长度小于 4096 时调用原回退，不能计作新 shader 的覆盖。27570/22016 token 的单项收益分别为：NaN payload 6.51%/6.40%，ROR4 2.78%/2.76%；两项单独预计均不足 3% 完整请求收益，单项不选版。组合由 22.9032/15.4837 ms 降至 20.8552/14.1163 ms，下降 8.947%/8.829%。首次内联扩展测试的 36 条记录覆盖两种符号的全部 254 个 BF16 NaN payload、带符号零和最大有限 Q/K，输出逐位相同。独立 `verify-p-nan-payload-edges.py` 已补为可复用入口，尚待本轮 GPU 验收结束后复核，不把新增脚本描述为已经执行。
+
+真实八卡第 1/25/49 步的音视频输出与本轮正式基准逐位一致、调用数相同，各五次均值为 2.385210→2.283258、2.384882→2.282501、2.384840→2.281983 s，下降 4.274%/4.293%/4.313%。历史 capture 来自早期版本，本轮两侧均与其不同；逐位结论仅指本轮配对双方。独立重建的六个产物及汇编与已测试候选逐字节一致。独立 PMC 保持 220 VGPR、64 SGPR、16 KiB LDS、零 scratch，27570 token 的 bank conflict 约 0.01955%，22016 为 0%。PMC 的 `processed ALU instructions` 不是芯片峰值算力利用率，不能据此反推计算峰值。
+
+预计 49 次 Transformer 可节省约 5.017 秒，即约 3.65% 先前完整请求墙钟；这是回放投影，不是新的端到端实测。普通官方默认入口、三组完整 A 及 B/C/返回 A 验收已启动，正式配置仍保持此前已完整验收的版本。一次误用单卡可见环境的回放在加载 Transformer 前失败，原始失败日志保留；改为显式八卡后上述真实回放成功，不归因于硬件故障。 [逐位校验、无 profiler 配对、独立重建与真实八卡记录](../../docs/p-nan-ror4-f12r2n09.json) · [原始 PMC TXT](../../docs/p-nan-ror4-f12r2n09-basic-pmc.txt)

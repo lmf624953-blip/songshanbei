@@ -1,0 +1,4105 @@
+{
+  "hostname": "f12r2n09",
+  "scope": "kernel和真实八卡Transformer回放；完整官方及稳态验收进行中",
+  "reference": "当前已验收137.344178秒的P行布局加V预排布",
+  "experiment": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0",
+  "source_sha256": {
+    "candidates/pv-v-lds-layout/build-p-nan-payload.py": "70ca68afee71111d7ccec3f45c69c91c895262f9d9d4a8db457747359f3af840",
+    "candidates/pv-v-lds-layout/build-softmax-ror4.py": "ff577f2ec641eeca4e69a1fcef2c73fd4aa0814e9116ec3bd45f35984dbae94b",
+    "candidates/pv-v-lds-layout/verify-p-nan-payload.py": "bc8e61ed049130c63efc3fb549d32ba1e241195f83b6a51ba7a9c0382836e4e8",
+    "candidates/pv-v-lds-layout/verify-p-nan-payload-edges.py": "7e6d1fb0e45356e72cd591d39e935e5c390c2768be9479755c2a574744c243cd"
+  },
+  "transformations": {
+    "p_nan_payload": "删除完整KV块内部P规范化的16比较、16掩码、1常量，保留RNE及最终BF16规范化；FP32在线分母不变",
+    "ror4": "利用xor8对称性将xor4的成对掩码DPP替换为单条ror4；删除8max和8sum指令"
+  },
+  "micro": {
+    "full-kv": {
+      "bitwise_count": 95,
+      "actual_new_packed_path_sequences": [
+        4096,
+        4097,
+        8193,
+        22016,
+        27570
+      ],
+      "note": "其余短长度调用未修改的回退路径",
+      "records": [
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4096,
+          "candidate_nan": 4096
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 32,
+          "candidate_nan": 32
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4224,
+          "candidate_nan": 4224
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 33,
+          "candidate_nan": 33
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 16512,
+          "candidate_nan": 16512
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 7680,
+          "candidate_nan": 7680
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 129,
+          "candidate_nan": 129
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 524416,
+          "candidate_nan": 524416
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 262528,
+          "candidate_nan": 262528
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4097,
+          "candidate_nan": 4097
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3528960,
+          "candidate_nan": 3528960
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 1778176,
+          "candidate_nan": 1778176
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 27570,
+          "candidate_nan": 27570
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 1,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 2,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 31,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 63,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 64,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 65,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 127,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 128,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 255,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 256,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 257,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4095,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4096,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 8193,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 22016,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "paired",
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              22.903024673461914,
+              22.90190887451172,
+              22.903987884521484,
+              22.90350341796875,
+              22.89886474609375,
+              22.90462875366211,
+              22.948627471923828,
+              22.899667739868164,
+              22.899028778076172,
+              22.903987884521484,
+              22.899507522583008,
+              22.900148391723633,
+              22.916627883911133,
+              22.899023056030273,
+              22.89598846435547,
+              22.900623321533203,
+              22.941743850708008,
+              22.906387329101562,
+              22.896467208862305
+            ],
+            [
+              21.42542839050293,
+              21.409908294677734,
+              21.418548583984375,
+              21.405588150024414,
+              21.461584091186523,
+              21.40686798095703,
+              21.41678810119629,
+              21.4073486328125,
+              21.407508850097656,
+              21.41278839111328,
+              21.420948028564453,
+              21.406707763671875,
+              21.41422462463379,
+              21.407184600830078,
+              21.420148849487305,
+              21.413427352905273,
+              21.417583465576172,
+              21.40814781188965,
+              21.41742706298828
+            ]
+          ],
+          "medians_ms": [
+            22.90190887451172,
+            21.413427352905273
+          ],
+          "paired_gain_percent": 6.5147433255857585,
+          "passed": true
+        },
+        {
+          "kind": "paired",
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              15.48046875,
+              15.479989051818848,
+              15.475829124450684,
+              15.4830322265625,
+              15.477110862731934,
+              15.480952262878418,
+              15.484471321105957,
+              15.482551574707031,
+              15.477592468261719,
+              15.47903060913086,
+              15.524469375610352,
+              15.53118896484375,
+              15.480789184570312,
+              15.531670570373535,
+              15.52639102935791,
+              15.488471031188965,
+              15.47727108001709,
+              15.47887134552002,
+              15.531670570373535
+            ],
+            [
+              14.49647045135498,
+              14.486550331115723,
+              14.495512008666992,
+              14.491671562194824,
+              14.490551948547363,
+              14.490391731262207,
+              14.494871139526367,
+              14.489272117614746,
+              14.493270874023438,
+              14.493271827697754,
+              14.496789932250977,
+              14.49055004119873,
+              14.491512298583984,
+              14.488632202148438,
+              14.489750862121582,
+              14.539992332458496,
+              14.49503231048584,
+              14.488631248474121,
+              14.497912406921387
+            ]
+          ],
+          "medians_ms": [
+            15.480952262878418,
+            14.491671562194824
+          ],
+          "paired_gain_percent": 6.397366286867545,
+          "passed": true
+        }
+      ]
+    },
+    "ror4": {
+      "bitwise_count": 95,
+      "actual_new_packed_path_sequences": [
+        4096,
+        4097,
+        8193,
+        22016,
+        27570
+      ],
+      "note": "其余短长度调用未修改的回退路径",
+      "records": [
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4096,
+          "candidate_nan": 4096
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 32,
+          "candidate_nan": 32
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4224,
+          "candidate_nan": 4224
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 33,
+          "candidate_nan": 33
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 16512,
+          "candidate_nan": 16512
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 7680,
+          "candidate_nan": 7680
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 129,
+          "candidate_nan": 129
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 524416,
+          "candidate_nan": 524416
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 262528,
+          "candidate_nan": 262528
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4097,
+          "candidate_nan": 4097
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3528960,
+          "candidate_nan": 3528960
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 1778176,
+          "candidate_nan": 1778176
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 27570,
+          "candidate_nan": 27570
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 1,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 2,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 31,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 63,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 64,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 65,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 127,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 128,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 255,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 256,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 257,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4095,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4096,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 8193,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 22016,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "paired",
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              22.918067932128906,
+              22.903827667236328,
+              22.89726448059082,
+              22.90190887451172,
+              22.899507522583008,
+              22.90510368347168,
+              22.889583587646484,
+              22.904468536376953,
+              22.895828247070312,
+              22.90414810180664,
+              22.895347595214844,
+              22.947668075561523,
+              22.89390754699707,
+              22.90030860900879,
+              22.9470272064209,
+              22.901748657226562,
+              22.8955078125,
+              22.90414810180664,
+              22.943988800048828
+            ],
+            [
+              22.281747817993164,
+              22.263347625732422,
+              22.3219051361084,
+              22.26478385925293,
+              22.25726890563965,
+              22.24878692626953,
+              22.26894760131836,
+              22.277427673339844,
+              22.259347915649414,
+              22.25246810913086,
+              22.26030731201172,
+              22.243507385253906,
+              22.257108688354492,
+              22.274227142333984,
+              22.2590274810791,
+              22.251508712768555,
+              22.263988494873047,
+              22.24814796447754,
+              22.238067626953125
+            ]
+          ],
+          "medians_ms": [
+            22.90190887451172,
+            22.259347915649414
+          ],
+          "paired_gain_percent": 2.781973409945171,
+          "passed": true
+        },
+        {
+          "kind": "paired",
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              15.527511596679688,
+              15.47711181640625,
+              15.47983169555664,
+              15.483832359313965,
+              15.479670524597168,
+              15.493599891662598,
+              15.480799674987793,
+              15.485431671142578,
+              15.488951683044434,
+              15.483190536499023,
+              15.478551864624023,
+              15.484151840209961,
+              15.47535228729248,
+              15.496950149536133,
+              15.483830451965332,
+              15.481749534606934,
+              15.482069969177246,
+              15.480792045593262,
+              15.47711181640625
+            ],
+            [
+              15.060952186584473,
+              15.053272247314453,
+              15.056471824645996,
+              15.047191619873047,
+              15.05183219909668,
+              15.054719924926758,
+              15.062238693237305,
+              15.055680274963379,
+              15.055352210998535,
+              15.055671691894531,
+              15.058551788330078,
+              15.056471824645996,
+              15.066390037536621,
+              15.196310043334961,
+              15.064310073852539,
+              15.053110122680664,
+              15.066390037536621,
+              15.044469833374023,
+              15.046072006225586
+            ]
+          ],
+          "medians_ms": [
+            15.482069969177246,
+            15.055680274963379
+          ],
+          "paired_gain_percent": 2.7620499978135427,
+          "passed": true
+        }
+      ]
+    },
+    "combined": {
+      "bitwise_count": 95,
+      "actual_new_packed_path_sequences": [
+        4096,
+        4097,
+        8193,
+        22016,
+        27570
+      ],
+      "note": "其余短长度调用未修改的回退路径",
+      "records": [
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4096,
+          "candidate_nan": 4096
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 32,
+          "candidate_nan": 32
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4224,
+          "candidate_nan": 4224
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 33,
+          "candidate_nan": 33
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 16512,
+          "candidate_nan": 16512
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 7680,
+          "candidate_nan": 7680
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 129,
+          "candidate_nan": 129
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 524416,
+          "candidate_nan": 524416
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 262528,
+          "candidate_nan": 262528
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4097,
+          "candidate_nan": 4097
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3528960,
+          "candidate_nan": 3528960
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 1778176,
+          "candidate_nan": 1778176
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 27570,
+          "candidate_nan": 27570
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 1,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 2,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 31,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 63,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 64,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 65,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 127,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 128,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 255,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 256,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 257,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4095,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4096,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 8193,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 22016,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "paired",
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              22.896303176879883,
+              22.9052677154541,
+              22.903827667236328,
+              22.897748947143555,
+              22.89934730529785,
+              22.90414810180664,
+              22.94830894470215,
+              22.901744842529297,
+              22.897743225097656,
+              22.910066604614258,
+              22.903825759887695,
+              22.90190887451172,
+              22.90030860900879,
+              22.900943756103516,
+              22.892948150634766,
+              22.903186798095703,
+              22.94414520263672,
+              22.948957443237305,
+              22.938236236572266
+            ],
+            [
+              20.851987838745117,
+              20.903507232666016,
+              20.85454750061035,
+              20.85582733154297,
+              20.901588439941406,
+              20.90846824645996,
+              20.855186462402344,
+              20.85614585876465,
+              20.863985061645508,
+              20.869586944580078,
+              20.8486270904541,
+              20.848787307739258,
+              20.846385955810547,
+              20.847505569458008,
+              20.847829818725586,
+              20.850067138671875,
+              20.857908248901367,
+              20.85791778564453,
+              20.847990036010742
+            ]
+          ],
+          "medians_ms": [
+            22.903186798095703,
+            20.855186462402344
+          ],
+          "paired_gain_percent": 8.947326169229996,
+          "passed": true
+        },
+        {
+          "kind": "paired",
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              15.476790428161621,
+              15.485910415649414,
+              15.523988723754883,
+              15.481110572814941,
+              15.478072166442871,
+              15.486712455749512,
+              15.47903060913086,
+              15.483670234680176,
+              15.487509727478027,
+              15.480308532714844,
+              15.472149848937988,
+              15.527669906616211,
+              15.47758960723877,
+              15.48143196105957,
+              15.4830322265625,
+              15.568632125854492,
+              15.496790885925293,
+              15.513912200927734,
+              15.488311767578125
+            ],
+            [
+              14.158230781555176,
+              14.111510276794434,
+              14.111832618713379,
+              14.116312980651855,
+              14.111831665039062,
+              14.107993125915527,
+              14.105433464050293,
+              14.116632461547852,
+              14.111189842224121,
+              14.106071472167969,
+              14.11759090423584,
+              14.105270385742188,
+              14.115033149719238,
+              14.116633415222168,
+              14.132152557373047,
+              14.134392738342285,
+              14.134073257446289,
+              14.125911712646484,
+              14.121432304382324
+            ]
+          ],
+          "medians_ms": [
+            15.483670234680176,
+            14.116312980651855
+          ],
+          "paired_gain_percent": 8.828900076097245,
+          "passed": true
+        }
+      ]
+    }
+  },
+  "edge_results": [
+    {
+      "sequence": 4096,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 4096,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 4096,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 4096,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 524288
+    },
+    {
+      "sequence": 4096,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 524288
+    },
+    {
+      "sequence": 4096,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 524288
+    },
+    {
+      "sequence": 4096,
+      "case": "signed-zero",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "signed-zero",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "signed-zero",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "largest-finite-qk",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 3670016
+    },
+    {
+      "sequence": 4096,
+      "case": "largest-finite-qk",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 3670016
+    },
+    {
+      "sequence": 4096,
+      "case": "largest-finite-qk",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 3670016
+    },
+    {
+      "sequence": 4097,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 4097,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 4097,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 4097,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 524416
+    },
+    {
+      "sequence": 4097,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 524416
+    },
+    {
+      "sequence": 4097,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 524416
+    },
+    {
+      "sequence": 4097,
+      "case": "signed-zero",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "signed-zero",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "signed-zero",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "largest-finite-qk",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 3670912
+    },
+    {
+      "sequence": 4097,
+      "case": "largest-finite-qk",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 3670912
+    },
+    {
+      "sequence": 4097,
+      "case": "largest-finite-qk",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 3670912
+    },
+    {
+      "sequence": 27570,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 27570,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 27570,
+      "case": "all-bf16-q-nan-payloads",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 32512
+    },
+    {
+      "sequence": 27570,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 3528960
+    },
+    {
+      "sequence": 27570,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 3528960
+    },
+    {
+      "sequence": 27570,
+      "case": "all-bf16-k-nan-payloads",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 3528960
+    },
+    {
+      "sequence": 27570,
+      "case": "signed-zero",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "signed-zero",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "signed-zero",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "largest-finite-qk",
+      "variant": "full-kv",
+      "bitwise_equal": true,
+      "reference_nan": 24702720
+    },
+    {
+      "sequence": 27570,
+      "case": "largest-finite-qk",
+      "variant": "ror4",
+      "bitwise_equal": true,
+      "reference_nan": 24702720
+    },
+    {
+      "sequence": 27570,
+      "case": "largest-finite-qk",
+      "variant": "combined",
+      "bitwise_equal": true,
+      "reference_nan": 24702720
+    }
+  ],
+  "edge_provenance": "原36条来自初次内联Python；新增独立edges脚本尚待本轮正式验收结束后单独复核，不宣称其已执行",
+  "independent_rebuild": {
+    "dense-attention-packed.hsaco": {
+      "byte_equal": true,
+      "sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c"
+    },
+    "dense-attention-aot.hsaco": {
+      "byte_equal": true,
+      "sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f"
+    },
+    "dense-attention-fallback.hsaco": {
+      "byte_equal": true,
+      "sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba"
+    },
+    "dense-attention-packed-reference.hsaco": {
+      "byte_equal": true,
+      "sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9"
+    },
+    "prepack-value.hsaco": {
+      "byte_equal": true,
+      "sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd"
+    },
+    "dense-attention-aot.so": {
+      "byte_equal": true,
+      "sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+    },
+    "dense-attention-packed.amdgcn": {
+      "byte_equal": true,
+      "sha256": "4adc93add6040f745f846ab0fa8b65749a3f47be093195cb89081b87ff73d77a"
+    }
+  },
+  "replay_eight": {
+    "exit_code": 0,
+    "steps": [
+      {
+        "step": 1,
+        "base": 2.3852099337615074,
+        "fast": 2.28325818432495,
+        "reduction_percent": 4.274330237916546
+      },
+      {
+        "step": 25,
+        "base": 2.38488187789917,
+        "fast": 2.2825014831498267,
+        "reduction_percent": 4.292891639544405
+      },
+      {
+        "step": 49,
+        "base": 2.3848396874032916,
+        "fast": 2.2819825931452216,
+        "reduction_percent": 4.312956329994022
+      }
+    ],
+    "records": [
+      {
+        "step": 1,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.387081972323358,
+          2.3854270316660404,
+          2.3843568139709532,
+          2.3845556848682463,
+          2.3846281659789383
+        ],
+        "mean_seconds": 2.3852099337615074,
+        "median_seconds": 2.3846281659789383,
+        "warmup_seconds": 6.206969884224236,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.7370049953460693,
+            "mean_abs_error": 0.02384854666888714,
+            "rmse": 0.03359978274970103,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.09959760308265686,
+            "mean_abs_error": 0.026621470227837563,
+            "rmse": 0.03233205743545516,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 1,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.2840603631921113,
+          2.282372852321714,
+          2.2825063029304147,
+          2.2823211322538555,
+          2.2850302709266543
+        ],
+        "mean_seconds": 2.28325818432495,
+        "median_seconds": 2.2825063029304147,
+        "warmup_seconds": 2.282943225931376,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.7370049953460693,
+            "mean_abs_error": 0.02384854666888714,
+            "rmse": 0.03359978274970103,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.09959760308265686,
+            "mean_abs_error": 0.026621470227837563,
+            "rmse": 0.03233205743545516,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+          }
+        ]
+      },
+      {
+        "step": 25,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.2838972620666027,
+          2.282364561688155,
+          2.2818202888593078,
+          2.281857789028436,
+          2.2825675141066313
+        ],
+        "mean_seconds": 2.2825014831498267,
+        "median_seconds": 2.282364561688155,
+        "warmup_seconds": 2.2841561241075397,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2538994,
+            "max_abs_error": 0.4010007381439209,
+            "mean_abs_error": 0.008604387752711773,
+            "rmse": 0.012172585110222416,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.053460896015167236,
+            "mean_abs_error": 0.00826754979789257,
+            "rmse": 0.010348869412489126,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 25,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.3851792798377573,
+          2.3847857173532248,
+          2.385680472943932,
+          2.384593406226486,
+          2.3841705131344497
+        ],
+        "mean_seconds": 2.38488187789917,
+        "median_seconds": 2.3847857173532248,
+        "warmup_seconds": 2.3845942551270127,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2538994,
+            "max_abs_error": 0.4010007381439209,
+            "mean_abs_error": 0.008604387752711773,
+            "rmse": 0.012172585110222416,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.053460896015167236,
+            "mean_abs_error": 0.00826754979789257,
+            "rmse": 0.010348869412489126,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_candidate_without_qknorm": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ],
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+          }
+        ]
+      },
+      {
+        "step": 49,
+        "variant": "candidate",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.3847338780760765,
+          2.3844407238066196,
+          2.3845973759889603,
+          2.385113309137523,
+          2.3853131500072777
+        ],
+        "mean_seconds": 2.3848396874032916,
+        "median_seconds": 2.3847338780760765,
+        "warmup_seconds": 2.3853063811548054,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.48146843910217285,
+            "mean_abs_error": 0.013386040925979614,
+            "rmse": 0.018223751494279513,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.115581214427948,
+            "mean_abs_error": 0.012662931345403194,
+            "rmse": 0.016394232593819127,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ],
+        "diagnostic_profiler": false
+      },
+      {
+        "step": 49,
+        "variant": "candidate-alternative-attention",
+        "warmup_calls": 1,
+        "samples_seconds": [
+          2.2813464952632785,
+          2.2815296058543026,
+          2.282285891007632,
+          2.283112956676632,
+          2.281638016924262
+        ],
+        "mean_seconds": 2.2819825931452216,
+        "median_seconds": 2.281638016924262,
+        "warmup_seconds": 2.282101459801197,
+        "kernel_calls": {
+          "adaln": 48,
+          "indexed": 4800,
+          "qknorm": 192,
+          "qknorm_mrope": 2400,
+          "attention": 2400,
+          "short_attention": 96,
+          "widenorm_indexed": 4800,
+          "swiglu": 2496
+        },
+        "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+        "against_capture": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": false,
+            "mismatches": 2539000,
+            "max_abs_error": 0.48146843910217285,
+            "mean_abs_error": 0.013386040925979614,
+            "rmse": 0.018223751494279513,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": false,
+            "mismatches": 13248,
+            "max_abs_error": 0.115581214427948,
+            "mean_abs_error": 0.012662931345403194,
+            "rmse": 0.016394232593819127,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ],
+        "diagnostic_profiler": false,
+        "against_paired_attention": [
+          {
+            "name": "video",
+            "shape": [
+              1,
+              26448,
+              96
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+          },
+          {
+            "name": "audio",
+            "shape": [
+              1,
+              414,
+              32
+            ],
+            "exact": true,
+            "mismatches": 0,
+            "max_abs_error": 0.0,
+            "mean_abs_error": 0.0,
+            "rmse": 0.0,
+            "finite": true,
+            "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+          }
+        ]
+      }
+    ],
+    "projected_49_call_saving_seconds": 5.017424227918185,
+    "projected_end_to_end_reduction_percent": 3.6531757628846764,
+    "note": "只与本轮当前基准配对输出逐位比较；历史capture属早期模型版本，两侧均与它不同，不能声称与历史capture逐位一致"
+  },
+  "pmc_raw": "p-nan-ror4-f12r2n09-basic-pmc.txt",
+  "qualification": {
+    "state": "running",
+    "session": 7100,
+    "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/qualification"
+  },
+  "selected": false
+}
