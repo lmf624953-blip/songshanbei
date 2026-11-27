@@ -19,7 +19,7 @@ bash "$repo/optimization/reproduce-public-a.sh" single "$release" "$model" "$new
 
 新账号或新克隆需要先准备相同运行环境；当前统一脚本识别 peer 发布目录。源码重建步骤见[peer 构建说明](dcu-kernel-autotune/candidates/rccl-sequence-parallel/README.md)：使用其 `build-peer-release.sh REFERENCE_CONFIG NEW_RELEASE XMAKE_BINARY`，前序配置可以由下文的注意力构建流程生成。`reproduce-public-a.sh build` 仅生成下文的注意力前序，不会自动接入 peer 或行分片归一化，不能把其输出当作最新组合。
 
-另有 `peer-sharded-norm-model` 行分片归一化候选，真实八卡回放及普通默认 A 已通过，完整稳态资格正在执行；尚未替换本节正式默认，也尚无新的完整请求成绩。其 `build-sharded`、`resident`、`single` 与 `h3-peer-sharded-norm-v1` 发布目录说明见[模型候选 README](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)。
+另有 `peer-sharded-norm-model` 行分片归一化候选，真实八卡回放、普通默认 A 及完整 11 请求资格均已通过，正式配对 **122.526417 → 116.975680 秒，下降 4.530237%**；稳定发布目录实际加载与独立采样正在进行，尚未替换本节正式默认。其 `build-sharded`、`resident`、`single` 与 `h3-peer-sharded-norm-v1` 发布目录说明见[模型候选 README](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)，原始样本、质量与阶段见[完整资格报告](dcu-kernel-autotune/docs/行分片归一化模型-f13r1n16.md)。
 
 ## 历史注意力版本：127.831 秒的固定源码与复测记录
 

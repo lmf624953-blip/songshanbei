@@ -1,0 +1,2664 @@
+{
+  "protocol": "minimax-h3-public-a-sharded-norm-paired-v1",
+  "comparison": "accepted-peer-vs-sharded-norm",
+  "metric": "wall_seconds",
+  "units": "seconds",
+  "timed_pairs": [
+    [
+      2,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "completed_sequence": [
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "B",
+    "C",
+    "A"
+  ],
+  "wall": {
+    "reference": {
+      "samples": [
+        122.20316658914089,
+        122.09751231689006,
+        123.27857228997163
+      ],
+      "mean": 122.5264170653342,
+      "median": 122.20316658914089,
+      "stdev": 0.6535241524023885
+    },
+    "candidate": {
+      "samples": [
+        116.59544301801361,
+        117.82542466698214,
+        116.50617288285866
+      ],
+      "mean": 116.9756801892848,
+      "median": 116.59544301801361,
+      "stdev": 0.7372527024640103
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        4.588852914082819,
+        3.498914571510847,
+        5.493573847678224
+      ],
+      "mean": 4.527113777757297,
+      "median": 4.588852914082819,
+      "stdev": 0.998761832328312
+    },
+    "mean_time_reduction_percent": 4.530236833000356
+  },
+  "stages": {
+    "generation.pipeline_total": {
+      "reference": {
+        "samples": [
+          120.57663056300953,
+          120.41232544300146,
+          121.66459886613302
+        ],
+        "mean": 120.88451829071467,
+        "median": 120.57663056300953,
+        "stdev": 0.6805463402472914
+      },
+      "candidate": {
+        "samples": [
+          115.14715418312699,
+          116.20290183811449,
+          115.0501117061358
+        ],
+        "mean": 115.46672257579242,
+        "median": 115.14715418312699,
+        "stdev": 0.6393936504923546
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          4.502925943883684,
+          3.495841135365796,
+          5.436657188402938
+        ],
+        "mean": 4.47847475588414,
+        "median": 4.502925943883684,
+        "stdev": 0.9706390335122576
+      },
+      "mean_time_reduction_percent": 4.481794518875459
+    },
+    "compute.h3_transformer": {
+      "reference": {
+        "samples": [
+          101.15788370347582,
+          101.1945549075026,
+          101.15948825934902
+        ],
+        "mean": 101.17064229010914,
+        "median": 101.15948825934902,
+        "stdev": 0.02072446869866679
+      },
+      "candidate": {
+        "samples": [
+          97.19097717897967,
+          97.21465288591571,
+          97.20125975832343
+        ],
+        "mean": 97.2022966077396,
+        "median": 97.20125975832343,
+        "stdev": 0.011871860311857248
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          3.9215001137472894,
+          3.932921119347521,
+          3.9128593561857716
+        ],
+        "mean": 3.9224268630935275,
+        "median": 3.9215001137472894,
+        "stdev": 0.010062938614172122
+      },
+      "mean_time_reduction_percent": 3.9224280804605605
+    },
+    "compute.condition_encoder": {
+      "reference": {
+        "samples": [
+          0.31499729095958173,
+          0.3251810260117054,
+          0.31182888080365956
+        ],
+        "mean": 0.3173357325916489,
+        "median": 0.31499729095958173,
+        "stdev": 0.0069764731321867845
+      },
+      "candidate": {
+        "samples": [
+          0.32808113493956625,
+          0.3194209299981594,
+          0.3278417440596968
+        ],
+        "mean": 0.3251146029991408,
+        "median": 0.3278417440596968,
+        "stdev": 0.004932318033128
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          -4.153636985298181,
+          1.771350587146081,
+          -5.135144382639667
+        ],
+        "mean": -2.5058102602639223,
+        "median": -4.153636985298181,
+        "stdev": 3.7364980769059426
+      },
+      "mean_time_reduction_percent": -2.451306174682144
+    },
+    "input.video_vae_encode": {
+      "reference": {
+        "samples": [
+          0.8643524420913309,
+          0.8648625949863344,
+          0.8654045788571239
+        ],
+        "mean": 0.8648732053115964,
+        "median": 0.8648625949863344,
+        "stdev": 0.0005261486270389232
+      },
+      "candidate": {
+        "samples": [
+          0.8636816781945527,
+          0.8650480071082711,
+          0.8639836090151221
+        ],
+        "mean": 0.8642377647726486,
+        "median": 0.8639836090151221,
+        "stdev": 0.0007177464990710101
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          0.0776030545081019,
+          -0.021438332864831544,
+          0.16419717167182046
+        ],
+        "mean": 0.0734539644383636,
+        "median": 0.0776030545081019,
+        "stdev": 0.09288727764042522
+      },
+      "mean_time_reduction_percent": 0.0734721037772057
+    },
+    "output.video_vae_decode": {
+      "reference": {
+        "samples": [
+          14.61097101913765,
+          14.435846980195493,
+          15.717626894125715
+        ],
+        "mean": 14.921481631152952,
+        "median": 14.61097101913765,
+        "stdev": 0.6950198321410189
+      },
+      "candidate": {
+        "samples": [
+          13.22616083198227,
+          14.16710470803082,
+          13.11867537884973
+        ],
+        "mean": 13.503980306287607,
+        "median": 13.22616083198227,
+        "stdev": 0.5767917820143139
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          9.47787922747596,
+          1.861631482609638,
+          16.535266632695766
+        ],
+        "mean": 9.291592447593787,
+        "median": 9.47787922747596,
+        "stdev": 7.338591091124368
+      },
+      "mean_time_reduction_percent": 9.499735749470728
+    },
+    "output.audio_vae_decode": {
+      "reference": {
+        "samples": [
+          0.24092848296277225,
+          0.24263122398406267,
+          0.2426008339971304
+        ],
+        "mean": 0.24205351364798844,
+        "median": 0.2426008339971304,
+        "stdev": 0.0009744236346861363
+      },
+      "candidate": {
+        "samples": [
+          0.24233623198233545,
+          0.24216659110970795,
+          0.23994840611703694
+        ],
+        "mean": 0.24148374306969345,
+        "median": 0.24216659110970795,
+        "stdev": 0.0013323434898932342
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          -0.5843016160860914,
+          0.19149756025845788,
+          1.093330074918386
+        ],
+        "mean": 0.23350867303025083,
+        "median": 0.19149756025845788,
+        "stdev": 0.8396045038367046
+      },
+      "mean_time_reduction_percent": 0.23539033567742118
+    },
+    "output.media_encode": {
+      "reference": {
+        "samples": [
+          1.5937205939553678,
+          1.6486399180721492,
+          1.5812633731402457
+        ],
+        "mean": 1.6078746283892542,
+        "median": 1.5937205939553678,
+        "stdev": 0.03584901978864881
+      },
+      "candidate": {
+        "samples": [
+          1.4157806269358844,
+          1.589417186100036,
+          1.4235335860867053
+        ],
+        "mean": 1.476243799707542,
+        "median": 1.4235335860867053,
+        "stdev": 0.09808765791146785
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          11.165066680719981,
+          3.5922175196003936,
+          9.974921934750391
+        ],
+        "mean": 8.244068711690256,
+        "median": 9.974921934750391,
+        "stdev": 4.072333577213519
+      },
+      "mean_time_reduction_percent": 8.186635099378247
+    }
+  },
+  "runtime": {
+    "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+    "executable": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/.venv/bin/python",
+    "hostname": "f13r1n16",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "native_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/native/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+    "native_sha256": "ba2e14c8e7b4bacf473a4cf4b2be9e6305231313c057c0bd1a9e7a7c1ed5f26e",
+    "torch_version": "2.9.0",
+    "hip_version": "6.3.26093"
+  },
+  "environment": {
+    "H3_PY_ATTENTION_FP32_SCALE": "1",
+    "H3_VAE_DEVICES": "0,1",
+    "H3_VAE_DETERMINISTIC_ENCODE": "1",
+    "H3_ENCODER_INITIAL_CACHE": "512",
+    "H3_ENCODER_TP_COUNT": "4",
+    "H3_PEER_GATE_ENABLED": "1",
+    "TRITON_CACHE_DIR": "/tmp/h3-inference-cache-ud7i3qv_/triton",
+    "NINETOOTHED_CACHE_DIR": "/tmp/h3-inference-cache-ud7i3qv_/ninetoothed",
+    "HIP_VISIBLE_DEVICES": "0,1,2,3,4,5,6,7",
+    "OMP_NUM_THREADS": "4"
+  },
+  "native": {
+    "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/native/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+    "sha256": "ba2e14c8e7b4bacf473a4cf4b2be9e6305231313c057c0bd1a9e7a7c1ed5f26e"
+  },
+  "peer_build": {
+    "nt": {
+      "bitcast_compat": {
+        "frontend_sha256": "f3c3f273580946ca9a8db7a070649d8636e1431dbe19bdb3c548a7d1fc132394",
+        "emitter_sha256": "0deb2e0a2a6376ec333ec93d8078122dab4c7eab7f254f0c149c33f8eabeb4f9"
+      },
+      "hsaco_sha256": "8499ec13b54cd9c692a1d1ea585b6de7a1c10f466dd418ba4a43a7533bee9b37",
+      "warps": 4,
+      "tile": 1024,
+      "shared": 0,
+      "arguments": [
+        {
+          "kind": "tensor",
+          "source": "p0"
+        },
+        {
+          "kind": "tensor",
+          "source": "p1"
+        },
+        {
+          "kind": "tensor",
+          "source": "p2"
+        },
+        {
+          "kind": "tensor",
+          "source": "p3"
+        },
+        {
+          "kind": "tensor",
+          "source": "p4"
+        },
+        {
+          "kind": "tensor",
+          "source": "p5"
+        },
+        {
+          "kind": "tensor",
+          "source": "p6"
+        },
+        {
+          "kind": "tensor",
+          "source": "p7"
+        },
+        {
+          "kind": "tensor",
+          "source": "owners"
+        },
+        {
+          "kind": "tensor",
+          "source": "residual"
+        },
+        {
+          "kind": "tensor",
+          "source": "gate"
+        },
+        {
+          "kind": "tensor",
+          "source": "indices"
+        },
+        {
+          "kind": "scalar",
+          "source": "rank",
+          "dim": null
+        },
+        {
+          "kind": "scalar",
+          "source": "ringbits",
+          "dim": null
+        },
+        {
+          "kind": "tensor",
+          "source": "output"
+        },
+        {
+          "kind": "shape",
+          "source": "p0",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p1",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p2",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p3",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p4",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p5",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p6",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p7",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "owners",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "residual",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "gate",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "indices",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "output",
+          "dim": 0
+        }
+      ],
+      "numerical_verified": false,
+      "source_sha256": "8f4bb1adc5a3811e90d0189a2713b4acad919ed987d4ccb6d48e1adc3007d50b",
+      "lowered": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/nt/h3_peer_gate.triton.py"
+    },
+    "abi_codes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      101,
+      100,
+      102,
+      103,
+      101
+    ],
+    "transport_command": [
+      "hipcc",
+      "-O3",
+      "-std=c++17",
+      "--offload-arch=gfx936",
+      "-shared",
+      "-fPIC",
+      "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel/peer_transport.hip",
+      "-o",
+      "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/peer/peer-transport.so"
+    ],
+    "bridge_command": [
+      "/public/software/compiler/gcc-11.4.0/bin/g++",
+      "-std=c++17",
+      "-O2",
+      "-shared",
+      "-fPIC",
+      "-DENABLE_ATEN",
+      "-D_GLIBCXX_USE_CXX11_ABI=1",
+      "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+      "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+      "-D__HIP_PLATFORM_AMD__",
+      "-I/public/software/compiler/dtk-26.04/include",
+      "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel/peer_gate_bridge.cc",
+      "-L/public/software/compiler/dtk-26.04/lib",
+      "-lamdhip64",
+      "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+      "-linfinicore_cpp_api",
+      "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+      "-ltorch_python",
+      "-ltorch",
+      "-ltorch_cpu",
+      "-lc10",
+      "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+      "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+      "-o",
+      "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/peer/peer-gate-bridge.so"
+    ],
+    "sha256": {
+      "h3_peer_gate.triton.json": "aaaf5bef47dd41ac657e520f17a97814c4a388651e5250e155de99a247e08574",
+      "h3_peer_gate.triton.py": "19b3c05a1764736baca3a868790d253dc14d0288da3bbd328c8ea5a5ddc367c6",
+      "peer-gate-bridge.so": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0",
+      "peer-gate.ttir": "abd7edad9b27e9858b0b73709db50c71d1f153f4d48ae4a8abe8ef2ea29ee1e8",
+      "peer-gate.llir": "9d7993e2abbb1a2fe8f462eb358a9e7a7c9d068414f275b1d9ee175c8e8579cb",
+      "peer-gate.amdgcn": "67be5d25e30dd5b1267d12b39d11b6a75db994261230855851a013847c8d3066",
+      "peer-gate.hsaco": "8499ec13b54cd9c692a1d1ea585b6de7a1c10f466dd418ba4a43a7533bee9b37",
+      "peer-gate-build.json": "03f235c30bc1ca84f6926401c8366ed10f6e4b5310d989768816e3c3e6816100",
+      "peer-gate.ttgir": "b0ecd398f1b6520e56335681b227b921fccaea566923ab86294d9852768fcc6f",
+      "peer-transport.so": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c"
+    },
+    "source_sha256": {
+      "peer_transport.hip": "fe6bc14094c76684469c4738d30adaa834a1b24727db9af57068de6110626b4d",
+      "peer_gate_bridge.cc": "20176b7a602c2a4c62ef21e3853031a7a31eb2643fb648fa7bb0b219d0bd38a5",
+      "peer_nt_kernel.py": "8f4bb1adc5a3811e90d0189a2713b4acad919ed987d4ccb6d48e1adc3007d50b",
+      "nt_bitcast_compat.py": "7b485149c0d4bcdc1fd3560d89ecb9ffeba78d78fcb9042967d099456cc81283"
+    }
+  },
+  "sharded_norm_build": {
+    "model_bridge": true,
+    "qualified": false,
+    "nt": {
+      "row_aligned_partition": true,
+      "bitcast_compat": {
+        "frontend_sha256": "f3c3f273580946ca9a8db7a070649d8636e1431dbe19bdb3c548a7d1fc132394",
+        "emitter_sha256": "0deb2e0a2a6376ec333ec93d8078122dab4c7eab7f254f0c149c33f8eabeb4f9"
+      },
+      "hsaco_sha256": "2807de6fad1af99613732dc6dae5bc627f7bbb82e2d443813c452894f64fd165",
+      "warps": 4,
+      "tile": 1024,
+      "shared": 0,
+      "arguments": [
+        {
+          "kind": "tensor",
+          "source": "p0"
+        },
+        {
+          "kind": "tensor",
+          "source": "p1"
+        },
+        {
+          "kind": "tensor",
+          "source": "p2"
+        },
+        {
+          "kind": "tensor",
+          "source": "p3"
+        },
+        {
+          "kind": "tensor",
+          "source": "p4"
+        },
+        {
+          "kind": "tensor",
+          "source": "p5"
+        },
+        {
+          "kind": "tensor",
+          "source": "p6"
+        },
+        {
+          "kind": "tensor",
+          "source": "p7"
+        },
+        {
+          "kind": "tensor",
+          "source": "owners"
+        },
+        {
+          "kind": "tensor",
+          "source": "residual"
+        },
+        {
+          "kind": "tensor",
+          "source": "gate"
+        },
+        {
+          "kind": "tensor",
+          "source": "indices"
+        },
+        {
+          "kind": "scalar",
+          "source": "offset",
+          "dim": null
+        },
+        {
+          "kind": "scalar",
+          "source": "ringbits",
+          "dim": null
+        },
+        {
+          "kind": "tensor",
+          "source": "output"
+        },
+        {
+          "kind": "shape",
+          "source": "p0",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p1",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p2",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p3",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p4",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p5",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p6",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p7",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "owners",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "residual",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "gate",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "indices",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "output",
+          "dim": 0
+        }
+      ],
+      "numerical_verified": false,
+      "source_sha256": "bd991cfda1df2ab008f246560ec4bf594709df8487cbbf23f5d7f5ab6318cf0a",
+      "lowered": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-norm-f13r1n16-58c__2tz/nt/h3_peer_gate.triton.py"
+    },
+    "abi_codes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      104,
+      13,
+      14,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      101,
+      100,
+      102,
+      103,
+      105
+    ],
+    "transport_command": [
+      "hipcc",
+      "-O3",
+      "-std=c++17",
+      "--offload-arch=gfx936",
+      "-shared",
+      "-fPIC",
+      "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/peer-sharded-norm/chain_transport.hip",
+      "-o",
+      "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/bridge-v2/peer-transport.so"
+    ],
+    "bridge_command": [
+      "/public/software/compiler/gcc-11.4.0/bin/g++",
+      "-std=c++17",
+      "-O2",
+      "-shared",
+      "-fPIC",
+      "-DENABLE_ATEN",
+      "-D_GLIBCXX_USE_CXX11_ABI=1",
+      "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+      "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+      "-D__HIP_PLATFORM_AMD__",
+      "-I/public/software/compiler/dtk-26.04/include",
+      "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/peer-sharded-norm-model/model_bridge.cc",
+      "-L/public/software/compiler/dtk-26.04/lib",
+      "-lamdhip64",
+      "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+      "-linfinicore_cpp_api",
+      "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+      "-ltorch_python",
+      "-ltorch",
+      "-ltorch_cpu",
+      "-lc10",
+      "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+      "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+      "-o",
+      "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/bridge-v2/peer-gate-bridge.so"
+    ],
+    "source_sha256": {
+      "peer-sharded-norm/chain_transport.hip": "e180ae758b911bf9c77d0883bcea200e52cb89c38bb65c81a6f6eb9a7d898463",
+      "peer-sharded-norm-model/model_bridge.cc": "751f44c9d80d7bec010064001772bca080079c7589f869992518e3067be0744b",
+      "peer-sharded-norm-model/build-bridge.py": "586566e98f7cc91713935d889e6b0c2b357a5b330f0907a75d97badbe1f6ab78"
+    },
+    "sha256": {
+      "peer-gate.hsaco": "2807de6fad1af99613732dc6dae5bc627f7bbb82e2d443813c452894f64fd165",
+      "peer-transport.so": "40c74f002dd5d2480a69a8aafcd5935e51877f2193873a1f6e213a28b5c3e294",
+      "peer-gate.amdgcn": "0bb8fde35aeb3404f74af2ddd5937492952bdfea9c0470dcd8d97c5ef8c0c8c4",
+      "peer-gate-build.json": "aa2aff1731716fbb540428c69b74af2b1470d546dbbae8d822ed38261c08c770",
+      "peer-gate-bridge.so": "da8c3fb51c7859d37c770b982a5a329d10b982c94186057f4aef9d0fc943c3aa"
+    }
+  },
+  "official_validation": {
+    "local_checks_passed": true,
+    "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+    "transformer_calls": 49,
+    "reference": "/public/home/acvduipmem/xsh/songshanbei/runtime/outputs/unified_fl2va/20261123_114003/reference.mp4",
+    "media": {
+      "media_readable": true,
+      "video": {
+        "width": 768,
+        "height": 928,
+        "fps": 24.0,
+        "codec": "h264",
+        "frames": 124
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 32000,
+        "channels": 2,
+        "decoded_frames": 162,
+        "decoded_samples": 165888
+      },
+      "video_specs_passed": true,
+      "similarity_evaluated": false,
+      "competition_validation_passed": false
+    },
+    "comparison": {
+      "exact": false,
+      "left_metadata": {
+        "width": 768,
+        "height": 928,
+        "declared_frames": 124,
+        "average_fps": 24.0,
+        "duration_seconds": 5.166666666666667
+      },
+      "right_metadata": {
+        "width": 768,
+        "height": 928,
+        "declared_frames": 124,
+        "average_fps": 24.0,
+        "duration_seconds": 5.166666666666667
+      },
+      "metadata_size_match": true,
+      "decoded_length_match": true,
+      "left_frames": 124,
+      "right_frames": 124,
+      "shape_mismatches": 0,
+      "different_elements": 224410185,
+      "compared_elements": 265125888,
+      "max_absolute_difference": 237,
+      "mean_absolute_difference": 5.597480216643348,
+      "ssim_match_percent": 93.83201347926341,
+      "ssim_min_percent": 87.9202020874348,
+      "ssim_max_percent": 98.0362796408051,
+      "ssim_method": "grayscale frames scaled to at most 512 pixels per side"
+    }
+  },
+  "matched_previously_accepted_media": true,
+  "records": [
+    {
+      "case": "A",
+      "index": 0,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 185.1762372998055,
+      "stage_seconds": {
+        "input.files_and_references": 0.038846350042149425,
+        "input.arguments": 5.664094351232052e-05,
+        "compute.condition_encoder": 38.00911619188264,
+        "input.video_vae_encode": 1.9015175478998572,
+        "compute.h3_transformer": 104.9114699261263,
+        "output.video_vae_decode": 33.53598225815222,
+        "output.audio_vae_decode": 1.8577348859980702,
+        "generation.pipeline_total": 183.63476645294577,
+        "output.media_encode": 1.5018428119365126
+      },
+      "started_epoch_ns": 1795811072705107902,
+      "finished_epoch_ns": 1795811257881347882,
+      "torch_peak_allocated_bytes": {
+        "0": 9787150848,
+        "1": 6362478592,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28324284,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "off",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 0,
+          "fused": 0,
+          "fallback": 0,
+          "norm_batches": 0,
+          "materialized": 0,
+          "replica_checks": 0,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 0,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": []
+        },
+        "reference": {
+          "batches": 4900,
+          "fused": 4900,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 0,
+        "sharded_norm": 0,
+        "sharded_materialized": 0,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 0
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": true,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 27667,
+        "card1": 22361,
+        "card2": 15315,
+        "card3": 15315,
+        "card4": 31984,
+        "card5": 31976,
+        "card6": 31976,
+        "card7": 31880
+      },
+      "vram_samples": 37
+    },
+    {
+      "case": "A",
+      "index": 1,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 119.96764713805169,
+      "stage_seconds": {
+        "input.files_and_references": 0.0322498579043895,
+        "input.arguments": 5.0421105697751045e-05,
+        "compute.condition_encoder": 0.30609942390583456,
+        "input.video_vae_encode": 0.8669371691066772,
+        "compute.h3_transformer": 97.70800768421032,
+        "output.video_vae_decode": 15.829486954025924,
+        "output.audio_vae_decode": 0.2437227121554315,
+        "generation.pipeline_total": 118.28532809298486,
+        "output.media_encode": 1.6491131810471416
+      },
+      "started_epoch_ns": 1795811258034250688,
+      "finished_epoch_ns": 1795811378001899866,
+      "torch_peak_allocated_bytes": {
+        "0": 10173244416,
+        "1": 6109769728,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28414344,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 4900,
+          "fused": 4900,
+          "fallback": 0,
+          "norm_batches": 4851,
+          "materialized": 49,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 392,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 4900,
+          "fused": 4900,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 99,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": true,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 28012,
+        "card1": 22381,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 23
+    },
+    {
+      "case": "A",
+      "index": 2,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 122.20316658914089,
+      "stage_seconds": {
+        "input.files_and_references": 0.031983366003260016,
+        "input.arguments": 4.854099825024605e-05,
+        "compute.condition_encoder": 0.31499729095958173,
+        "input.video_vae_encode": 0.8643524420913309,
+        "compute.h3_transformer": 101.15788370347582,
+        "output.video_vae_decode": 14.61097101913765,
+        "output.audio_vae_decode": 0.24092848296277225,
+        "generation.pipeline_total": 120.57663056300953,
+        "output.media_encode": 1.5937205939553678
+      },
+      "started_epoch_ns": 1795811378151973073,
+      "finished_epoch_ns": 1795811500355142082,
+      "torch_peak_allocated_bytes": {
+        "0": 10026451968,
+        "1": 6407572480,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28417264,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "off",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 4900,
+          "fused": 4900,
+          "fallback": 0,
+          "norm_batches": 4851,
+          "materialized": 49,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 392,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 9800,
+          "fused": 9800,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 0,
+        "sharded_norm": 0,
+        "sharded_materialized": 0,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 0
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 29024,
+        "card1": 22411,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 24
+    },
+    {
+      "case": "A",
+      "index": 3,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 116.59544301801361,
+      "stage_seconds": {
+        "input.files_and_references": 0.031818614806979895,
+        "input.arguments": 4.2430125176906586e-05,
+        "compute.condition_encoder": 0.32808113493956625,
+        "input.video_vae_encode": 0.8636816781945527,
+        "compute.h3_transformer": 97.19097717897967,
+        "output.video_vae_decode": 13.22616083198227,
+        "output.audio_vae_decode": 0.24233623198233545,
+        "generation.pipeline_total": 115.14715418312699,
+        "output.media_encode": 1.4157806269358844
+      },
+      "started_epoch_ns": 1795811500491257380,
+      "finished_epoch_ns": 1795811617086703558,
+      "torch_peak_allocated_bytes": {
+        "0": 9967301632,
+        "1": 6543739904,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28426232,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 9800,
+          "fused": 9800,
+          "fallback": 0,
+          "norm_batches": 9702,
+          "materialized": 98,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 784,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 9800,
+          "fused": 9800,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 29024,
+        "card1": 22677,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 23
+    },
+    {
+      "case": "A",
+      "index": 4,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 117.82542466698214,
+      "stage_seconds": {
+        "input.files_and_references": 0.03231677785515785,
+        "input.arguments": 4.515983164310455e-05,
+        "compute.condition_encoder": 0.3194209299981594,
+        "input.video_vae_encode": 0.8650480071082711,
+        "compute.h3_transformer": 97.21465288591571,
+        "output.video_vae_decode": 14.16710470803082,
+        "output.audio_vae_decode": 0.24216659110970795,
+        "generation.pipeline_total": 116.20290183811449,
+        "output.media_encode": 1.589417186100036
+      },
+      "started_epoch_ns": 1795811617241279205,
+      "finished_epoch_ns": 1795811735066706802,
+      "torch_peak_allocated_bytes": {
+        "0": 10819634176,
+        "1": 6724197376,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28431144,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 14700,
+          "fused": 14700,
+          "fallback": 0,
+          "norm_batches": 14553,
+          "materialized": 147,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 1176,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 9800,
+          "fused": 9800,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 29024,
+        "card1": 22883,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 23
+    },
+    {
+      "case": "A",
+      "index": 5,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 122.09751231689006,
+      "stage_seconds": {
+        "input.files_and_references": 0.03562663006596267,
+        "input.arguments": 5.155010148882866e-05,
+        "compute.condition_encoder": 0.3251810260117054,
+        "input.video_vae_encode": 0.8648625949863344,
+        "compute.h3_transformer": 101.1945549075026,
+        "output.video_vae_decode": 14.435846980195493,
+        "output.audio_vae_decode": 0.24263122398406267,
+        "generation.pipeline_total": 120.41232544300146,
+        "output.media_encode": 1.6486399180721492
+      },
+      "started_epoch_ns": 1795811735214259163,
+      "finished_epoch_ns": 1795811857311774100,
+      "torch_peak_allocated_bytes": {
+        "0": 10906219520,
+        "1": 6930023424,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28434668,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "off",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 14700,
+          "fused": 14700,
+          "fallback": 0,
+          "norm_batches": 14553,
+          "materialized": 147,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 1176,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 14700,
+          "fused": 14700,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 0,
+        "sharded_norm": 0,
+        "sharded_materialized": 0,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 0
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 29024,
+        "card1": 23115,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 24
+    },
+    {
+      "case": "A",
+      "index": 6,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 123.27857228997163,
+      "stage_seconds": {
+        "input.files_and_references": 0.03181680501438677,
+        "input.arguments": 5.656084977090359e-05,
+        "compute.condition_encoder": 0.31182888080365956,
+        "input.video_vae_encode": 0.8654045788571239,
+        "compute.h3_transformer": 101.15948825934902,
+        "output.video_vae_decode": 15.717626894125715,
+        "output.audio_vae_decode": 0.2426008339971304,
+        "generation.pipeline_total": 121.66459886613302,
+        "output.media_encode": 1.5812633731402457
+      },
+      "started_epoch_ns": 1795811857454995623,
+      "finished_epoch_ns": 1795811980733570113,
+      "torch_peak_allocated_bytes": {
+        "0": 11643696128,
+        "1": 7187183104,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28442132,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "off",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 14700,
+          "fused": 14700,
+          "fallback": 0,
+          "norm_batches": 14553,
+          "materialized": 147,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 1176,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 19600,
+          "fused": 19600,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 0,
+        "sharded_norm": 0,
+        "sharded_materialized": 0,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 0
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 29024,
+        "card1": 23231,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 24
+    },
+    {
+      "case": "A",
+      "index": 7,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 116.50617288285866,
+      "stage_seconds": {
+        "input.files_and_references": 0.031654453836381435,
+        "input.arguments": 6.082095205783844e-05,
+        "compute.condition_encoder": 0.3278417440596968,
+        "input.video_vae_encode": 0.8639836090151221,
+        "compute.h3_transformer": 97.20125975832343,
+        "output.video_vae_decode": 13.11867537884973,
+        "output.audio_vae_decode": 0.23994840611703694,
+        "generation.pipeline_total": 115.0501117061358,
+        "output.media_encode": 1.4235335860867053
+      },
+      "started_epoch_ns": 1795811980874610262,
+      "finished_epoch_ns": 1795812097380785515,
+      "torch_peak_allocated_bytes": {
+        "0": 11526327296,
+        "1": 7342676992,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28442472,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 19600,
+          "fused": 19600,
+          "fallback": 0,
+          "norm_batches": 19404,
+          "materialized": 196,
+          "replica_checks": 99,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 1568,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 19600,
+          "fused": 19600,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 30036,
+        "card1": 23463,
+        "card2": 15369,
+        "card3": 15369,
+        "card4": 32068,
+        "card5": 32038,
+        "card6": 32038,
+        "card7": 31942
+      },
+      "vram_samples": 23
+    },
+    {
+      "case": "B",
+      "index": 8,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/qualification/steady-paired/square-first-frame.png",
+        "text": "A small sailboat moves across the water under a bright sun."
+      },
+      "first_frame_sha256": "6126f6e95e87abcd5a4d810ef8ca9bf1ada520fa053d9fa5460eb139d49323a7",
+      "last_frame_sha256": null,
+      "wall_seconds": 92.34485865803435,
+      "stage_seconds": {
+        "input.files_and_references": 0.010011505102738738,
+        "input.arguments": 4.705996252596378e-05,
+        "compute.condition_encoder": 0.29501778190024197,
+        "input.video_vae_encode": 0.6921650818549097,
+        "compute.h3_transformer": 75.58217385108583,
+        "output.video_vae_decode": 11.566561743849888,
+        "output.audio_vae_decode": 0.24111966416239738,
+        "generation.pipeline_total": 91.20183157990687,
+        "output.media_encode": 1.1321281478740275
+      },
+      "started_epoch_ns": 1795812097541235249,
+      "finished_epoch_ns": 1795812189886096647,
+      "torch_peak_allocated_bytes": {
+        "0": 11088675328,
+        "1": 7365027328,
+        "2": 0,
+        "3": 0,
+        "4": 13213184,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28442472,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 768,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 24500,
+          "fused": 24500,
+          "fallback": 0,
+          "norm_batches": 24255,
+          "materialized": 245,
+          "replica_checks": 198,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 1960,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            },
+            {
+              "count": 123105024,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 19600,
+          "fused": 19600,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 99,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+      "warmup": false,
+      "ssim_percent": 99.40412322827537,
+      "sampled_device_peak_mib": {
+        "card0": 31618,
+        "card1": 25045,
+        "card2": 16951,
+        "card3": 16951,
+        "card4": 33650,
+        "card5": 33628,
+        "card6": 33628,
+        "card7": 33532
+      },
+      "vram_samples": 18
+    },
+    {
+      "case": "C",
+      "index": 9,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/qualification/steady-paired/square-last-frame.png",
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-sharded-model-f13r1n16-_t_cba4k/qualification/steady-paired/square-first-frame.png",
+        "text": "A small sailboat moves to the right across the water under a bright sun."
+      },
+      "first_frame_sha256": "6126f6e95e87abcd5a4d810ef8ca9bf1ada520fa053d9fa5460eb139d49323a7",
+      "last_frame_sha256": "3f34cc71734b96b3ea830886bbe2532e874a819019e7f293f96d2ce2e338b2f4",
+      "wall_seconds": 99.30579731310718,
+      "stage_seconds": {
+        "input.files_and_references": 0.020153359975665808,
+        "input.arguments": 5.678110755980015e-05,
+        "compute.condition_encoder": 0.6278982369694859,
+        "input.video_vae_encode": 1.3844020650722086,
+        "compute.h3_transformer": 81.33670627954416,
+        "output.video_vae_decode": 11.855655306950212,
+        "output.audio_vae_decode": 0.24245509295724332,
+        "generation.pipeline_total": 98.23654178995639,
+        "output.media_encode": 1.0481819969136268
+      },
+      "started_epoch_ns": 1795812189966312894,
+      "finished_epoch_ns": 1795812289272112847,
+      "torch_peak_allocated_bytes": {
+        "0": 9620370944,
+        "1": 7274569728,
+        "2": 0,
+        "3": 0,
+        "4": 26780672,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28442472,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 768,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 29400,
+          "fused": 29400,
+          "fallback": 0,
+          "norm_batches": 29106,
+          "materialized": 294,
+          "replica_checks": 297,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 2352,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            },
+            {
+              "count": 123105024,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            },
+            {
+              "count": 129357312,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 19600,
+          "fused": 19600,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 99,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+      "warmup": false,
+      "ssim_percent": 99.63004744871529,
+      "sampled_device_peak_mib": {
+        "card0": 31754,
+        "card1": 25197,
+        "card2": 17103,
+        "card3": 17103,
+        "card4": 33932,
+        "card5": 33906,
+        "card6": 33906,
+        "card7": 33810
+      },
+      "vram_samples": 19
+    },
+    {
+      "case": "A",
+      "index": 10,
+      "variant": "candidate",
+      "command_options": {
+        "task": "fl2va",
+        "model_path": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "last_frame": null,
+        "gpus": "0,1,2,3,4,5,6,7",
+        "steps": 50,
+        "num_frames": 124,
+        "seed": 42,
+        "height": null,
+        "width": null,
+        "legacy": false,
+        "legacy_text_gpus": null,
+        "legacy_transformer_gpus": null,
+        "legacy_memory_fraction": 0.4,
+        "first_frame": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/unified-dog-input/first_frame.png",
+        "text": "A dog falls asleep"
+      },
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "last_frame_sha256": null,
+      "wall_seconds": 117.08343687397428,
+      "stage_seconds": {
+        "input.files_and_references": 0.03359597688540816,
+        "input.arguments": 5.519995465874672e-05,
+        "compute.condition_encoder": 0.3213515521492809,
+        "input.video_vae_encode": 0.8647924850229174,
+        "compute.h3_transformer": 97.17062209220603,
+        "output.video_vae_decode": 13.58400896890089,
+        "output.audio_vae_decode": 0.2426359939854592,
+        "generation.pipeline_total": 115.51515379501507,
+        "output.media_encode": 1.5337809179909527
+      },
+      "started_epoch_ns": 1795812289337209197,
+      "finished_epoch_ns": 1795812406420648781,
+      "torch_peak_allocated_bytes": {
+        "0": 9878823936,
+        "1": 6363166208,
+        "2": 0,
+        "3": 0,
+        "4": 15828480,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "process_peak_host_rss_kib": 28463544,
+      "transformer_calls": 49,
+      "diagnostic_capture": false,
+      "diagnostic_finite_checks": false,
+      "encoder_capture_calls": 0,
+      "finite_transformer_calls": 0,
+      "media": {
+        "media_readable": true,
+        "video": {
+          "width": 768,
+          "height": 928,
+          "fps": 24.0,
+          "codec": "h264",
+          "frames": 124
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 32000,
+          "channels": 2,
+          "decoded_frames": 162,
+          "decoded_samples": 165888
+        },
+        "video_specs_passed": true,
+        "similarity_evaluated": false,
+        "competition_validation_passed": false
+      },
+      "peer_gate_variant": "on",
+      "peer_gate_stats": {
+        "comparison": "accepted-peer-vs-sharded-norm",
+        "candidate": {
+          "batches": 34300,
+          "fused": 34300,
+          "fallback": 0,
+          "norm_batches": 33957,
+          "materialized": 343,
+          "replica_checks": 297,
+          "replica_fallbacks": 0,
+          "full_norm_calls": 2744,
+          "pending_ranks": 0,
+          "failed": false,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            },
+            {
+              "count": 123105024,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            },
+            {
+              "count": 129357312,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        },
+        "reference": {
+          "batches": 19600,
+          "fused": 19600,
+          "fallback": 0,
+          "calibrations": [
+            {
+              "count": 148216320,
+              "ok": true,
+              "ringbits": 16205000,
+              "channels": 16,
+              "chunk": 524288,
+              "alignment": 1024
+            }
+          ]
+        }
+      },
+      "candidate_calls": {
+        "adaln": 392,
+        "indexed": 0,
+        "qknorm": 1568,
+        "qknorm_mrope": 19600,
+        "attention": 19600,
+        "short_attention": 784,
+        "widenorm_indexed": 39200,
+        "swiglu": 20384,
+        "peer_gate": 39200,
+        "peer_deferred": 39200,
+        "peer_batches": 4900,
+        "peer_fused": 4900,
+        "peer_fallback": 0,
+        "sharded_gate": 4900,
+        "sharded_norm": 4851,
+        "sharded_materialized": 49,
+        "sharded_replica_checks": 0,
+        "sharded_replica_fallbacks": 0,
+        "sharded_full_norm": 392
+      },
+      "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+      "warmup": false,
+      "ssim_percent": 93.83201347926341,
+      "sampled_device_peak_mib": {
+        "card0": 31756,
+        "card1": 25197,
+        "card2": 17103,
+        "card3": 17103,
+        "card4": 33938,
+        "card5": 33913,
+        "card6": 33912,
+        "card7": 33816
+      },
+      "vram_samples": 23
+    }
+  ],
+  "model_load_seconds": {
+    "model.pipeline_create": 0.041597418021410704,
+    "model.condition_encoder_create_and_load": 336.94966602302156,
+    "model.transformer_create_and_load": 236.75886206282303,
+    "model.remaining_components_create_and_load": 57.71193536603823
+  },
+  "resource_note": "hy-smi每五秒整卡显存采样；同实例关闭候选的请求也可能保留候选工作区，不代表独立进程的显存差。"
+}
