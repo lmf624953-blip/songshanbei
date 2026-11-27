@@ -328,3 +328,26 @@ python build-k-direct-lds.py "$release/attention" "$builds/early-v" --prefetch -
 `build-k-direct-lds.py` 保留原 K 读取地址、MMAC 顺序、LDS 分配和尾部路径。完整块正常路径以直写代替暂存 VGPR 及两条显式 LDS 写入，受掩码路径在原地址写零。默认在原覆盖同步点后发射，`--prefetch` 将覆盖同步与发射提到循环回边。四个变体对两个生产长度均逐位一致。首轮配对中，消费前才发射的两个版本回退 3.42%–3.82%，跨块预取的两个版本收益为 0.30%–0.66%。
 
 跨块版叠加 V 延后等待后，19 组复测相对求和交错基准节省 0.38%/0.70%，相对只做 V 延后等待回退 0.86%/0.46%。独立 PMC 中，直写的两个代表镜像均减少约 3.84% 的 LDS 指令，bank conflict 与 VMEM 读取指令数持平。组合版通过 20 个额外长度及 24 组特殊 BF16 输入，两个代表镜像逐文件复建一致。 [设备探针、配对、逐位校验及独立 PMC](../../docs/k-direct-lds-f12r2n09.json)
+
+## V 的位模式打包与双读取
+
+原 V LDS 每个 dword 存储同一特征列、相邻两行的 BF16，两个全局元素相隔 2688 个 BF16。`probe-v-direct-lds.cc` 在 gfx936 上验证 `buffer_load_ushort ... lds` 会零扩展成整个 dword，并将 `m0+2` 的目标对齐到原 dword。两次半字读取会覆盖前一次值，32×128 V tile 的原布局拼接产生 2048 个 dword 差异。该探针按目标拼接的差异返回 1，保留完整输出。其结论覆盖本轮测试的指令和寻址方式。
+
+`build-v-pack-permute.py` 直接用八条 `v_perm_b32` 构造原 LDS 数据，保留全局读取与共享内存地址。完整块少七条位运算，另有三种版本比较 V 等待位置。原等待版在 27570/22016 token 的 19 组配对中节省 1.41%/1.35%，相对上一轮只延后 V 等待的版本再省 0.20%/0.22%。叠加延后等待后，相对求和交错基准节省 1.29%/1.27%。
+
+`build-v-two-loads.py` 改为每线程两行、每行八列，使用两条 `global_load_dwordx4`。K 消费前的等待同步改为 `vmcnt(2)`，与其后的两条 V 请求对应。首版沿用 `vmcnt(4)` 时出现逐位差异，原始失败记录归档。修正等待计数后的四个镜像均通过两个长度逐位检查。最快组合在 19 组配对中回退 1.73%/1.95%。独立 PMC 测得 VMEM 读取指令数减少约 33.3%，LDS bank conflict 计数增加约 79.9%，LDS 等待计数增加约 33%。
+
+```bash
+python build-v-pack-permute.py "$release/attention" "$builds/compact"
+python build-v-two-loads.py "$release/attention" "$builds/two-early" --wait-at early
+python verify-v-pack-layout.py "$release/attention" "$builds/compact" "$builds/two-early"
+python screen-pv-wide-operand.py "$release/attention" "$builds" "$results"
+```
+
+`verify-v-pack-layout.py` 解释实际打包汇编，分别使用元素索引和随机 16 位载荷，检查全部 4096 个 BF16 的最终 LDS 地址。基准与八个候选均通过。三个代表镜像各通过 20 个额外长度、24 组特殊 BF16 输入和逐文件重建校验。原等待的八置换版 VALU 指令约减少 1.83%，LDS、VMEM 读取与 bank conflict 计数持平。本轮按单卡结果归档。 [布局、设备探针、配对及独立 PMC](../../docs/v-supply-f12r2n09.json)
+
+## P 的配对 dword 读取
+
+`build-p-read2.py` 将完整块 16 条 `ds_read_u16` 替换为 8 条 `ds_read2_b32`。读取基址对齐到 dword，按 lane 选择低半字或高半字，再用原字节置换构造 PV 操作数。两组 4 KiB 偏移分别使用独立地址，满足 read2 的 8 位偏移限制。置换按源值生命周期调度，避免新寄存器分配覆盖尚未消费的数据。用 `--p-pending 3|7` 对比 V 读回之前的等待。
+
+两个版本在 27570/22016 token 均逐位一致。等待三条的版本经 19 组配对，回退 1.12%/0.74%。独立 PMC 显示，LDS 指令数下降约 15.4%，bank conflict 与 VMEM 读取计数持平，VALU 指令数增加约 0.78%，LDS 等待计数下降约 3%–4%。硬件仍分配 220 VGPR、16 KiB LDS、0 B scratch。代表镜像通过 20 个额外长度、24 组特殊 BF16 输入和逐文件重建校验。本轮归档。 [配对、逐位及独立 PMC](../../docs/p-read2-f12r2n09.json)

@@ -1,0 +1,1209 @@
+{
+  "node": "f12r2n09",
+  "device": "gfx936",
+  "scope": "单卡 P dword 配对读取，无 profiler 配对及独立 PMC",
+  "reference": "validation/benchmark-a-clean-pCISwp3y/release/attention",
+  "reference_packed_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+  "source": "validation/p-read2-f12r2n09-xljEJhTL",
+  "screen": {
+    "scope": "单算子，非端到端验收",
+    "records": [
+      {
+        "variant": "pending3",
+        "build": "validation/p-read2-f12r2n09-xljEJhTL/builds/pending3",
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                25.004947662353516,
+                25.003028869628906,
+                24.99854850769043,
+                25.00542449951172,
+                25.00062370300293,
+                25.007667541503906,
+                25.0067081451416,
+                24.9923038482666,
+                24.9923038482666,
+                25.00750732421875,
+                24.99614715576172
+              ],
+              [
+                25.27134895324707,
+                25.274547576904297,
+                25.290708541870117,
+                25.280467987060547,
+                25.293424606323242,
+                25.26382827758789,
+                25.260303497314453,
+                25.281423568725586,
+                25.280303955078125,
+                25.271503448486328,
+                25.27438735961914
+              ]
+            ],
+            "medians_ms": [
+              25.003028869628906,
+              25.274547576904297
+            ],
+            "paired_gain_percent": -1.09993528625838,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                16.887672424316406,
+                16.890071868896484,
+                16.88111114501953,
+                16.893911361694336,
+                16.887832641601562,
+                16.886552810668945,
+                16.889432907104492,
+                16.891511917114258,
+                16.88207244873047,
+                16.896631240844727,
+                16.888151168823242
+              ],
+              [
+                17.019031524658203,
+                17.007192611694336,
+                17.01871109008789,
+                17.021272659301758,
+                17.023832321166992,
+                17.016311645507812,
+                17.017911911010742,
+                17.023191452026367,
+                17.013591766357422,
+                17.01759147644043,
+                17.019031524658203
+              ]
+            ],
+            "medians_ms": [
+              16.888151168823242,
+              17.01871109008789
+            ],
+            "paired_gain_percent": -0.7749833272251649,
+            "passed": true
+          }
+        ],
+        "packed_sha256": "a262ee588f8f6bea9a71f7bdebfaea32df852972e7467dc336d0bfc341ee5546",
+        "options": {
+          "pending": 3,
+          "full_block_reads": 8,
+          "selector_vgpr": 217,
+          "reference_packed_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+          "static_barriers": 8
+        }
+      },
+      {
+        "variant": "pending7",
+        "build": "validation/p-read2-f12r2n09-xljEJhTL/builds/pending7",
+        "skipped": false,
+        "cases": [
+          {
+            "sequence": 27570,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                24.996944427490234,
+                25.005104064941406,
+                25.003828048706055,
+                24.999507904052734,
+                24.993267059326172,
+                24.998868942260742,
+                25.000627517700195,
+                25.00078773498535,
+                24.986228942871094,
+                25.000947952270508,
+                25.00286865234375
+              ],
+              [
+                25.40894317626953,
+                25.403343200683594,
+                25.38606834411621,
+                25.391508102416992,
+                25.389585494995117,
+                25.393428802490234,
+                25.3955078125,
+                25.39166831970215,
+                25.395828247070312,
+                25.394548416137695,
+                25.391508102416992
+              ]
+            ],
+            "medians_ms": [
+              25.000627517700195,
+              25.393428802490234
+            ],
+            "paired_gain_percent": -1.5783108473459206,
+            "passed": true
+          },
+          {
+            "sequence": 22016,
+            "normal": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "stress": {
+              "exact": true,
+              "finite": true,
+              "tail_ok": true,
+              "max_abs": 0.0
+            },
+            "samples_ms": [
+              [
+                16.882871627807617,
+                16.901912689208984,
+                16.882551193237305,
+                16.883031845092773,
+                16.88207244873047,
+                16.88319206237793,
+                16.885751724243164,
+                16.885108947753906,
+                16.879987716674805,
+                16.892629623413086,
+                16.886709213256836
+              ],
+              [
+                17.072792053222656,
+                17.098072052001953,
+                17.079511642456055,
+                17.077112197875977,
+                17.073591232299805,
+                17.0443115234375,
+                17.053112030029297,
+                17.105432510375977,
+                17.064468383789062,
+                17.059188842773438,
+                17.063030242919922
+              ]
+            ],
+            "medians_ms": [
+              16.88319206237793,
+              17.072792053222656
+            ],
+            "paired_gain_percent": -1.1249296304677303,
+            "passed": true
+          }
+        ],
+        "packed_sha256": "e135f76bd682be99fcc755a50ae3fe1c8edf9b91e177362b13821879618feca8",
+        "options": {
+          "pending": 7,
+          "full_block_reads": 8,
+          "selector_vgpr": 217,
+          "reference_packed_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+          "static_barriers": 8
+        }
+      }
+    ],
+    "winners": []
+  },
+  "retimed_19_pairs": [
+    {
+      "pairs": 19,
+      "sequence": 27570,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          24.98798179626465,
+          25.020305633544922,
+          25.003347396850586,
+          25.004627227783203,
+          25.002227783203125,
+          24.993104934692383,
+          25.005903244018555,
+          24.992786407470703,
+          24.999347686767578,
+          24.999984741210938,
+          25.00334358215332,
+          24.99774742126465,
+          24.99454689025879,
+          25.00798797607422,
+          24.995664596557617,
+          25.007343292236328,
+          24.995983123779297,
+          24.997108459472656,
+          25.002065658569336
+        ],
+        [
+          25.291828155517578,
+          25.2708683013916,
+          25.293107986450195,
+          25.27278709411621,
+          25.28782844543457,
+          25.27182388305664,
+          25.258867263793945,
+          25.27806854248047,
+          25.278705596923828,
+          25.290386199951172,
+          25.299184799194336,
+          25.25086784362793,
+          25.26974868774414,
+          25.27054786682129,
+          25.281423568725586,
+          25.28078269958496,
+          25.27486228942871,
+          25.293907165527344,
+          25.27806854248047
+        ]
+      ],
+      "medians_ms": [
+        24.999984741210938,
+        25.27806854248047
+      ],
+      "paired_gain_percent": -1.1156959270952171,
+      "passed": true
+    },
+    {
+      "pairs": 19,
+      "sequence": 22016,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          16.888628005981445,
+          16.8934326171875,
+          16.89023208618164,
+          16.895191192626953,
+          16.885751724243164,
+          16.886871337890625,
+          16.886552810668945,
+          16.89166831970215,
+          16.888948440551758,
+          16.892311096191406,
+          16.887191772460938,
+          16.889591217041016,
+          16.885112762451172,
+          16.88911247253418,
+          16.885591506958008,
+          16.888792037963867,
+          16.88751220703125,
+          16.892791748046875,
+          16.894872665405273
+        ],
+        [
+          17.026548385620117,
+          17.016948699951172,
+          17.013269424438477,
+          17.009592056274414,
+          17.020790100097656,
+          17.013111114501953,
+          17.026071548461914,
+          17.018709182739258,
+          17.015827178955078,
+          17.01614761352539,
+          17.012630462646484,
+          17.001909255981445,
+          17.020790100097656,
+          17.01279067993164,
+          17.020469665527344,
+          17.014551162719727,
+          17.009592056274414,
+          17.01295280456543,
+          17.012310028076172
+        ]
+      ],
+      "medians_ms": [
+        16.888948440551758,
+        17.014551162719727
+      ],
+      "paired_gain_percent": -0.7428037288598199,
+      "passed": true
+    }
+  ],
+  "boundary_checks": [
+    {
+      "pairs": 1,
+      "sequence": 1,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.05119999870657921
+        ],
+        [
+          0.03488000109791756
+        ]
+      ],
+      "medians_ms": [
+        0.05119999870657921,
+        0.03488000109791756
+      ],
+      "paired_gain_percent": 31.874996134647414,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 31,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03311999887228012
+        ],
+        [
+          0.03392000123858452
+        ]
+      ],
+      "medians_ms": [
+        0.03311999887228012,
+        0.03392000123858452
+      ],
+      "paired_gain_percent": -2.4154661640823916,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 32,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04095999896526337
+        ],
+        [
+          0.03407999873161316
+        ]
+      ],
+      "medians_ms": [
+        0.04095999896526337,
+        0.03407999873161316
+      ],
+      "paired_gain_percent": 16.79687599475985,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 33,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03855999931693077
+        ],
+        [
+          0.03728000074625015
+        ]
+      ],
+      "medians_ms": [
+        0.03855999931693077,
+        0.03728000074625015
+      ],
+      "paired_gain_percent": 3.3194984267507555,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 63,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03936000168323517
+        ],
+        [
+          0.03791999816894531
+        ]
+      ],
+      "medians_ms": [
+        0.03936000168323517,
+        0.03791999816894531
+      ],
+      "paired_gain_percent": 3.658545357489673,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 64,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.03951999917626381
+        ],
+        [
+          0.03680000081658363
+        ]
+      ],
+      "medians_ms": [
+        0.03951999917626381,
+        0.03680000081658363
+      ],
+      "paired_gain_percent": 6.882587085967962,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 65,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.042399998754262924
+        ],
+        [
+          0.044319998472929
+        ]
+      ],
+      "medians_ms": [
+        0.042399998754262924,
+        0.044319998472929
+      ],
+      "paired_gain_percent": -4.5283013563132135,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 127,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.05215999856591225
+        ],
+        [
+          0.048958998173475266
+        ]
+      ],
+      "medians_ms": [
+        0.05215999856591225,
+        0.048958998173475266
+      ],
+      "paired_gain_percent": 6.136887424166659,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 128,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04623999819159508
+        ],
+        [
+          0.04383999854326248
+        ]
+      ],
+      "medians_ms": [
+        0.04623999819159508,
+        0.04383999854326248
+      ],
+      "paired_gain_percent": 5.190310861147129,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 129,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.04912000149488449
+        ],
+        [
+          0.04992000013589859
+        ]
+      ],
+      "medians_ms": [
+        0.04912000149488449,
+        0.04992000013589859
+      ],
+      "paired_gain_percent": -1.6286616788833141,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 255,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.058400001376867294
+        ],
+        [
+          0.058880001306533813
+        ]
+      ],
+      "medians_ms": [
+        0.058400001376867294,
+        0.058880001306533813
+      ],
+      "paired_gain_percent": -0.8219176684072016,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 256,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.058720000088214874
+        ],
+        [
+          0.0568000003695488
+        ]
+      ],
+      "medians_ms": [
+        0.058720000088214874,
+        0.0568000003695488
+      ],
+      "paired_gain_percent": 3.2697542843693195,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 257,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.057920001447200775
+        ],
+        [
+          0.05503999814391136
+        ]
+      ],
+      "medians_ms": [
+        0.057920001447200775,
+        0.05503999814391136
+      ],
+      "paired_gain_percent": 4.972381269559866,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 1023,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.11503999680280685
+        ],
+        [
+          0.11488000303506851
+        ]
+      ],
+      "medians_ms": [
+        0.11503999680280685,
+        0.11488000303506851
+      ],
+      "paired_gain_percent": 0.13907664480605764,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 4095,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.7025600075721741
+        ],
+        [
+          0.702879011631012
+        ]
+      ],
+      "medians_ms": [
+        0.7025600075721741,
+        0.702879011631012
+      ],
+      "paired_gain_percent": -0.04540595186171004,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 4096,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.6945589780807495
+        ],
+        [
+          0.6985599994659424
+        ]
+      ],
+      "medians_ms": [
+        0.6945589780807495,
+        0.6985599994659424
+      ],
+      "paired_gain_percent": -0.5760520721002971,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 4097,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          0.6999989748001099
+        ],
+        [
+          0.7046399712562561
+        ]
+      ],
+      "medians_ms": [
+        0.6999989748001099,
+        0.7046399712562561
+      ],
+      "paired_gain_percent": -0.6630004647466103,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 22017,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          16.91438865661621
+        ],
+        [
+          17.041908264160156
+        ]
+      ],
+      "medians_ms": [
+        16.91438865661621,
+        17.041908264160156
+      ],
+      "paired_gain_percent": -0.7539120102579844,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 27569,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          24.995981216430664
+        ],
+        [
+          25.28382682800293
+        ]
+      ],
+      "medians_ms": [
+        24.995981216430664,
+        25.28382682800293
+      ],
+      "paired_gain_percent": -1.1515675623209987,
+      "passed": true
+    },
+    {
+      "pairs": 1,
+      "sequence": 27571,
+      "normal": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "stress": {
+        "exact": true,
+        "finite": true,
+        "tail_ok": true,
+        "max_abs": 0.0
+      },
+      "samples_ms": [
+        [
+          24.98750114440918
+        ],
+        [
+          25.29582405090332
+        ]
+      ],
+      "medians_ms": [
+        24.98750114440918,
+        25.29582405090332
+      ],
+      "paired_gain_percent": -1.233908523754601,
+      "passed": true
+    }
+  ],
+  "special_bf16": [
+    {
+      "sequence": 31,
+      "case": "min_bf16_subnormal",
+      "mismatches": 0
+    },
+    {
+      "sequence": 31,
+      "case": "negative_zero",
+      "mismatches": 0
+    },
+    {
+      "sequence": 31,
+      "case": "max_finite",
+      "mismatches": 0
+    },
+    {
+      "sequence": 31,
+      "case": "inf",
+      "mismatches": 0
+    },
+    {
+      "sequence": 31,
+      "case": "quiet_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 31,
+      "case": "signaling_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 64,
+      "case": "min_bf16_subnormal",
+      "mismatches": 0
+    },
+    {
+      "sequence": 64,
+      "case": "negative_zero",
+      "mismatches": 0
+    },
+    {
+      "sequence": 64,
+      "case": "max_finite",
+      "mismatches": 0
+    },
+    {
+      "sequence": 64,
+      "case": "inf",
+      "mismatches": 0
+    },
+    {
+      "sequence": 64,
+      "case": "quiet_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 64,
+      "case": "signaling_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 257,
+      "case": "min_bf16_subnormal",
+      "mismatches": 0
+    },
+    {
+      "sequence": 257,
+      "case": "negative_zero",
+      "mismatches": 0
+    },
+    {
+      "sequence": 257,
+      "case": "max_finite",
+      "mismatches": 0
+    },
+    {
+      "sequence": 257,
+      "case": "inf",
+      "mismatches": 0
+    },
+    {
+      "sequence": 257,
+      "case": "quiet_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 257,
+      "case": "signaling_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 1023,
+      "case": "min_bf16_subnormal",
+      "mismatches": 0
+    },
+    {
+      "sequence": 1023,
+      "case": "negative_zero",
+      "mismatches": 0
+    },
+    {
+      "sequence": 1023,
+      "case": "max_finite",
+      "mismatches": 0
+    },
+    {
+      "sequence": 1023,
+      "case": "inf",
+      "mismatches": 0
+    },
+    {
+      "sequence": 1023,
+      "case": "quiet_nan",
+      "mismatches": 0
+    },
+    {
+      "sequence": 1023,
+      "case": "signaling_nan",
+      "mismatches": 0
+    }
+  ],
+  "rebuilt_files": {
+    "dense-attention-packed.amdgcn": "a2bb2a59ae8f346d641f0653820bb111db0fad31e7c297522456c05674185aab",
+    "dense-attention-packed.hsaco": "a262ee588f8f6bea9a71f7bdebfaea32df852972e7467dc336d0bfc341ee5546",
+    "dense-attention-aot.hsaco": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+    "dense-attention-fallback.hsaco": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+    "dense-attention-aot.so": "fa78252de1d473dabdf5ac869c770da4b297de84283e75286609f659a0117374"
+  },
+  "independent_pmc": {
+    "reference": {
+      "source": "validation/disjoint-k-lds-f12r2n09-wQ5mV2gz/reference-pmc.txt",
+      "sha256": "a16cd06b29e2bbf2be3ba101725f443a1a5fc62702980ea2dc449dffd1be8cee",
+      "dispatches": [
+        {
+          "sequence": 27570,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 271095552,
+          "SQ_INSTS_VALU": 1995906528,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_LDS_BANK_CONFLICT": 417070080,
+          "SQ_WAIT_INST_LDS": 847055735
+        },
+        {
+          "sequence": 27570,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 271095552,
+          "SQ_INSTS_VALU": 1995906528,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_LDS_BANK_CONFLICT": 417070080,
+          "SQ_WAIT_INST_LDS": 847045173
+        },
+        {
+          "sequence": 22016,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 172297216,
+          "SQ_INSTS_VALU": 1269425360,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_LDS_BANK_CONFLICT": 265072640,
+          "SQ_WAIT_INST_LDS": 534858243
+        },
+        {
+          "sequence": 22016,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 172297216,
+          "SQ_INSTS_VALU": 1269425360,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_LDS_BANK_CONFLICT": 265072640,
+          "SQ_WAIT_INST_LDS": 534771367
+        }
+      ]
+    },
+    "pending3": {
+      "source": "validation/p-read2-f12r2n09-xljEJhTL/pending3-pmc.txt",
+      "sha256": "f2df62371797823387c656fc1fed69d792ec5411beb2a8063f17ff6a4ed5d6c9",
+      "dispatches": [
+        {
+          "sequence": 27570,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 229436928,
+          "SQ_INSTS_VALU": 2011558752,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_LDS_BANK_CONFLICT": 417070080,
+          "SQ_WAIT_INST_LDS": 820188259
+        },
+        {
+          "sequence": 27570,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 229436928,
+          "SQ_INSTS_VALU": 2011558752,
+          "SQ_INSTS_VMEM_RD": 31314920,
+          "SQ_LDS_BANK_CONFLICT": 417070080,
+          "SQ_WAIT_INST_LDS": 819239221
+        },
+        {
+          "sequence": 22016,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 145789952,
+          "SQ_INSTS_VALU": 1279389664,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_LDS_BANK_CONFLICT": 265072640,
+          "SQ_WAIT_INST_LDS": 514201919
+        },
+        {
+          "sequence": 22016,
+          "lds": 16384,
+          "scratch": 0,
+          "vgpr": 220,
+          "SQ_INSTS_LDS": 145789952,
+          "SQ_INSTS_VALU": 1279389664,
+          "SQ_INSTS_VMEM_RD": 19918976,
+          "SQ_LDS_BANK_CONFLICT": 265072640,
+          "SQ_WAIT_INST_LDS": 513655654
+        }
+      ]
+    }
+  },
+  "selected_default_changed": false,
+  "verdict": "LDS 指令减少约 15.4%，bank conflict 计数相同，但实际耗时回退；原样保留全部归约及 MMAC 次序，候选归档。"
+}
