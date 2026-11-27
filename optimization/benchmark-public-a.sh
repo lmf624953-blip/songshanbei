@@ -21,7 +21,7 @@ import json
 from pathlib import Path
 import sys
 record = json.load(open(sys.argv[1]))
-if record.get("kind") not in ("p-row-prepacked-v-v1", "p-row-prepacked-v-softmax-v1"):
+if record.get("kind") not in ("p-row-prepacked-v-v1", "p-row-prepacked-v-softmax-v1", "p-row-prepacked-v-softmax-stable-paired-v1"):
     sys.exit("不支持的公开 A 配对发布类型")
 print((Path(record["reference_release"]) / "attention").resolve(strict=True))
 ' "$release/release.json")

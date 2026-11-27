@@ -24,7 +24,8 @@ def main():
     elf = runpy.run_path(str(code / "optimization/dcu-kernel-autotune/adapters/compare-h3-device.py"))["elf_loads"]
     summary = runpy.run_path(str(here / "summarize-public-a.py"))
     release = json.loads((args.rebuilt_release / "release.json").read_text())
-    assert release["kind"] == "p-row-prepacked-v-softmax-v1"
+    assert release["kind"] in ("p-row-prepacked-v-softmax-v1",
+                               "p-row-prepacked-v-softmax-stable-paired-v1")
     digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
     reference = Path(release["reference_release"])
     assert digest(reference / "release.json") == release["reference_manifest_sha256"]

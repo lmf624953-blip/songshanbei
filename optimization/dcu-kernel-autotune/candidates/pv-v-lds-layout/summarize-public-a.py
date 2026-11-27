@@ -26,6 +26,10 @@ SOFTMAX_TEXT_HASHES = {
     "base": PREPACKED_TEXT_HASHES["fast"],
     "fast": "e9240c600e74a73b51cb429f459ab18b389343616c3054c85edbb6ee7f91b13e",
 }
+STABLE_PAIRED_TEXT_HASHES = {
+    "base": SOFTMAX_TEXT_HASHES["fast"],
+    "fast": "159f8bda3813d74da66b2f15fa1232100b0807eac33921334279f787d1d22e9a",
+}
 PREPACK_TEXT_HASH = "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9"
 FIRST_FRAME = "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54"
 REFERENCE_VIDEO = "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
@@ -60,10 +64,14 @@ def images(base, fast):
     prepacked = records["fast"].get("prepacked_value_dispatch")
     experiment = records["fast"].get("experiment", {})
     compact_softmax = bool(experiment.get("p_nan_payload") and experiment.get("softmax_ror4"))
+    stable_paired = bool(experiment.get("stable_max_rescale", {}).get("mode") == "guarded"
+                         and experiment.get("paired_p_sub", {}).get("mode") == "packed")
+    if stable_paired:
+        require(compact_softmax, "稳定 max / P 成对组合需要冻结的精简 softmax 上游")
     if compact_softmax:
         require(prepacked and records["base"].get("prepacked_value_dispatch"),
                 "精简 softmax 的双方必须均为预排布 V 版本")
-    expected_text = SOFTMAX_TEXT_HASHES if compact_softmax else (PREPACKED_TEXT_HASHES if prepacked else TEXT_HASHES)
+    expected_text = (STABLE_PAIRED_TEXT_HASHES if stable_paired else SOFTMAX_TEXT_HASHES) if compact_softmax else (PREPACKED_TEXT_HASHES if prepacked else TEXT_HASHES)
     for variant, path in (("base", base), ("fast", fast)):
         metadata = records[variant]
         packed = metadata["packed_strides"]
@@ -175,7 +183,8 @@ def report(sequence):
     stages = {stage: timing(rows, lambda row: row["stage_seconds"][stage])
               for stage in rows[2]["stage_seconds"]}
     return dict(protocol="minimax-h3-public-a-resident-paired-v1",
-                comparison=("p-row-prepacked-v-vs-softmax-compact" if "value_prepack" in identity["base"]
+                comparison=("softmax-compact-vs-stable-paired" if identity["fast"]["packed_text_sha256"] == STABLE_PAIRED_TEXT_HASHES["fast"]
+                            else "p-row-prepacked-v-vs-softmax-compact" if "value_prepack" in identity["base"]
                             else ("row-sum-vs-p-row-prepacked-v" if "value_prepack" in identity["fast"]
                                   else "joint-kv-vs-row-sum")),
                 metric="wall_seconds", units="seconds", timed_pairs=PAIRING["PAIRS"],

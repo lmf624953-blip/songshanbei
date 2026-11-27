@@ -503,4 +503,10 @@ python verify-stable-max-values.py "$combined" "$guard_builds" "$value_edges"
 
 首批 GPU0 的后半计时出现明显扰动，本任务退出后驱动仍显示其他进程占用约 58 GB、利用率 100%；整批性能仅保留，不用于选版，数值检查结果不因此失效。移到空闲物理 GPU1，两批 39 组配对中基准 CV 均小于 0.15%，首尾自身配对接近零。仅 P 成对算术约 1.76% 单 kernel 收益；与尚未选用 stable-max 组合由 20.861586→19.187025 ms、14.117272→13.062872 ms，配对下降 8.0295%/7.4775%。负向 Phi 版本没有足以承担额外复杂度的独立收益，优先较简单的正向 Phi 组合。
 
-按 2450 次长注意力调用，该组合仅投影约 3.089% 完整请求收益，不是新的端到端实测。GPU0 持续存在其他任务，八卡去噪与完整入口、多用例稳态尚未开始；当前正式配置保持已验收的 132.824526 秒。独立 `hipprof --pmc` 在物理 GPU1 完成，原始 TXT 标记 gpu id1，220 VGPR、64 SGPR、16 KiB LDS、零 scratch；27570 token 的 bank conflict 约 0.0213%，22016 为零。 [全部原始配对、扰动证据、数值检查与取舍](../../docs/p-paired-sub-f12r2n09.json) · [原始 PMC TXT](../../docs/p-paired-sub-f12r2n09-basic-pmc.txt)
+按 2450 次长注意力调用，该组合仅投影约 3.089% 完整请求收益，不是新的端到端实测。GPU0 的外部任务退出后，2026-11-27 16:46 在八卡空闲条件下启动真实回放。第 1/25/49 次去噪中双方视频和音频输出逐位一致，单次 Transformer 平均下降 4.1325%，对应完整请求投影约 3.4808%。普通官方 A 和完整 11 请求正在收尾验证，尚未选用；当前正式配置仍为已验收的 132.824526 秒。独立 `hipprof --pmc` 在物理 GPU1 完成，原始 TXT 标记 gpu id1，220 VGPR、64 SGPR、16 KiB LDS、零 scratch；27570 token 的 bank conflict 约 0.0213%，22016 为零。 [全部原始配对、扰动证据、数值检查与取舍](../../docs/p-paired-sub-f12r2n09.json) · [原始 PMC TXT](../../docs/p-paired-sub-f12r2n09-basic-pmc.txt)
+
+额外四个负 logit 变体均完成 95 条通用逐位检查、168 条专用边界及独立的 GPU1 配对。仅负 logit 标量约退化 0.31%，packed 约改善 1.37%；与 guard 组合约 7.96%/7.42%，没有胜过正 Phi 的 `guard-packed`，不选用。负 logit 的缩放系数只在完整循环入口和出口翻转，尾部保持原样；gfx936 packed FMA 只接受实际探测可用的向量操作数。
+
+`build-stable-paired-release.sh SOFTMAX_RELEASE NEW_OUTPUT_DIR` 将已冻结的精简 softmax 发布目录依次经过 stable-max guarded 和正 Phi packed 变换，提供完整主机 ABI、六个产物及来源清单。独立 CPU 发布重建的可加载区段和 ELF 映射均与真实回放候选相同；V 预排布镜像只有调试信息差异，其余五个产物逐字节相同。重建不会自动把候选设为正式版本。
+
+`build-running-max-fold.py` 的 max3/min3 方向仅完成 CPU 构建，未执行 GPU 数值或性能验证。用户要求本轮收尾整合后暂停，因此不启动该方向后续测试，不能将其计入有效性能或已验收优化。

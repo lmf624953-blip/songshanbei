@@ -75,7 +75,7 @@ def rename_max(source):
     return result
 
 
-def negative_max(source, negative_state=False):
+def negative_max(source, negative_state=False, negative_logits=False):
     lines = source.splitlines()
     first, end = lines.index(".LBB0_18:"), lines.index(".LBB0_20:")
     entry = lines.index(".LBB0_14:")
@@ -83,19 +83,36 @@ def negative_max(source, negative_state=False):
     phi = {116, 118, 120, 122, 123, 126, 128, 130}
     changes = dict(maximum=0, subtract=0, restore=0)
     registers = helpers()["registers"]
+    if negative_logits:
+        assert negative_state
+        count = dict(local=0, dpp=0)
+        for index in range(entry, first):
+            if lines[index].startswith("\tv_max_f32_e32 "):
+                lines[index] = lines[index].replace("v_max_f32_e32", "v_min_f32_e32", 1)
+                count["local"] += 1
+            elif lines[index].startswith("\tv_max_f32_dpp "):
+                lines[index] = lines[index].replace("v_max_f32_dpp", "v_min_f32_dpp", 1)
+                count["dpp"] += 1
+        assert count == dict(local=8, dpp=32), count
+        # v114 是只读 QK 的 log2 缩放系数；完整循环翻转，尾部前恢复。
+        access = [line for line in source.splitlines()[entry:end] if 114 in registers(line)]
+        assert access == ["\tv_mov_b32_e32 v174, v114", "\tv_mov_b32_e32 v175, v114"], access
     for index in range(first, end):
         line = lines[index]
         if registers(line).isdisjoint(range(208, 216)):
             continue
         match = re.fullmatch(r"\tv_max_f32_e32 (v\d+), (v\d+), (v\d+)", line)
         if match:
-            old = match[2] if negative_state else "-" + match[2]
-            lines[index] = f"\tv_min_f32_e64 {match[1]}, {old}, -{match[3]}"
+            if negative_logits:
+                lines[index] = f"\tv_min_f32_e32 {match[1]}, {match[2]}, {match[3]}"
+            else:
+                old = match[2] if negative_state else "-" + match[2]
+                lines[index] = f"\tv_min_f32_e64 {match[1]}, {old}, -{match[3]}"
             changes["maximum"] += 1
             continue
         match = re.fullmatch(r"\tv_sub_f32_e32 (v\d+), (v\d+), (v\d+)", line)
         if match:
-            if negative_state and int(match[2][1:]) in phi:
+            if negative_state and int(match[2][1:]) in phi or negative_logits:
                 lines[index] = f"\tv_sub_f32_e32 {match[1]}, {match[3]}, {match[2]}"
             else:
                 lines[index] = line.replace("v_sub_f32_e32", "v_add_f32_e32", 1)
@@ -113,22 +130,36 @@ def negative_max(source, negative_state=False):
         assert not any(re.search(r"branch\S* \.LBB0_14$", line) for line in lines)
         assert sum(line.endswith(" .Lh3_v_guard") for line in lines) == 2
         lines[entry + 1:entry + 1] = [f"\tv_xor_b32_e32 v{r}, 0x80000000, v{r}" for r in sorted(phi)]
+    if negative_logits:
+        lines[lines.index(".LBB0_14:") + 1:lines.index(".LBB0_14:") + 1] = [
+            "\tv_xor_b32_e32 v114, 0x80000000, v114"]
+        lines[lines.index(".Lh3_folded_sum_exit:") + 1:lines.index(".Lh3_folded_sum_exit:") + 1] = [
+            "\tv_xor_b32_e32 v114, 0x80000000, v114"]
+        # gfx936 的 packed FMA 只接受向量操作数，不能用 SGPR 或 inline -1。
+        index = lines.index(".LBB0_18:") + 1
+        lines[index:index] = ["\tv_mov_b32_e32 v206, -1.0", "\tv_mov_b32_e32 v207, -1.0"]
     result = "\n".join(lines) + "\n"
     assert result[result.index(".LBB0_20:"):] == source[source.index(".LBB0_20:"):]
     return result
 
 
-def paired_sub(source):
+def paired_sub(source, negative_logits=False):
     lines = source.splitlines()
     first, end = lines.index(".LBB0_18:"), lines.index("\tds_write_b16_d16_hi v132, v122")
     helper = helpers()
     registers, uses = helper["registers"], helper["uses"]
     records = {}
     for index in range(first, end):
-        match = re.fullmatch(r"\tv_add_f32_e32 (v\d+), v(\d+), v(\d+)", lines[index])
-        if not match or not 158 <= int(match[2]) <= 173:
+        if negative_logits:
+            match = re.fullmatch(r"\tv_sub_f32_e32 (v\d+), v(\d+), v(\d+)", lines[index])
+            if match:
+                temporary, maximum, score = match[1], int(match[2]), int(match[3])
+        else:
+            match = re.fullmatch(r"\tv_add_f32_e32 (v\d+), v(\d+), v(\d+)", lines[index])
+            if match:
+                temporary, score, maximum = match[1], int(match[2]), int(match[3])
+        if not match or not 158 <= score <= 173:
             continue
-        temporary, score, maximum = match[1], int(match[2]), int(match[3])
         offset = score - 158
         expected = 208 + (offset % 4) + (4 if offset >= 8 else 0)
         assert maximum == expected, lines[index]
@@ -147,7 +178,7 @@ def paired_sub(source):
         assert left[0] < right[0] and left[2] + 1 == right[2]
         for item in (left, right):
             maximum = item[2]
-            assert any(line.startswith(f"\tv_min_f32_e64 v{maximum},")
+            assert any(line.startswith((f"\tv_min_f32_e64 v{maximum},", f"\tv_min_f32_e32 v{maximum},"))
                        for line in lines[first:left[0]])
         for actual_score, item in ((score, left), (score + 1, right)):
             for index in range(left[0] + 1, item[3]):
@@ -156,8 +187,12 @@ def paired_sub(source):
                 reads, writes = uses(lines[index])
                 assert actual_score not in writes, lines[index]
                 assert index == item[0], lines[index]
-        lines[left[0]] = (f"\tv_pk_add_f32 v[{score}:{score + 1}], v[{score}:{score + 1}], "
-                          f"v[{left[2]}:{right[2]}]")
+        if negative_logits:
+            lines[left[0]] = (f"\tv_pk_fma_f32 v[{score}:{score + 1}], v[{score}:{score + 1}], "
+                              f"v[206:207], v[{left[2]}:{right[2]}]")
+        else:
+            lines[left[0]] = (f"\tv_pk_add_f32 v[{score}:{score + 1}], v[{score}:{score + 1}], "
+                              f"v[{left[2]}:{right[2]}]")
         drops.append(right[0])
         lines[left[3]] = f"\tv_exp_f32_e32 {left[4]}, v{score}"
         lines[right[3]] = f"\tv_exp_f32_e32 {right[4]}, v{score + 1}"
@@ -173,7 +208,8 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("reference", type=Path)
     cli.add_argument("output", type=Path)
-    cli.add_argument("--mode", choices=("rename", "neg-scalar", "packed", "state-neg-scalar", "state-packed"), required=True)
+    cli.add_argument("--mode", choices=("rename", "neg-scalar", "packed", "state-neg-scalar", "state-packed",
+                                       "logit-neg-scalar", "logit-packed"), required=True)
     args = cli.parse_args()
     record = json.loads((args.reference / "dense-attention-aot-build.json").read_text())
     packed = args.reference / "dense-attention-packed.hsaco"
@@ -181,10 +217,11 @@ def main():
     assert original_digest == record["packed_strides"]["hsaco_sha256"]
     source = (args.reference / "dense-attention-packed.amdgcn").read_text()
     updated = rename_max(source)
+    negative_logits = args.mode.startswith("logit-")
     if args.mode != "rename":
-        updated = negative_max(updated, args.mode.startswith("state-"))
+        updated = negative_max(updated, args.mode.startswith("state-") or negative_logits, negative_logits)
     if args.mode.endswith("packed"):
-        updated = paired_sub(updated)
+        updated = paired_sub(updated, negative_logits)
     assert updated.count("v_mmac_f32_16x16x16_bf16") == source.count("v_mmac_f32_16x16x16_bf16")
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
@@ -196,7 +233,7 @@ def main():
     record["experiment"]["paired_p_sub"] = dict(
         mode=args.mode, reference_packed_sha256=original_digest,
         negative_max=args.mode != "rename",
-        negative_phi_state=args.mode.startswith("state-"),
+        negative_phi_state=args.mode.startswith("state-") or negative_logits, negative_logits=negative_logits,
         max_registers="v208:215，尾部入口前恢复原位置", removed_scalar_sub=8 if args.mode.endswith("packed") else 0,
         unchanged="MMAC、SFU数量、RNE、sum和尾部", numerical_verification="尚未完成")
     (args.output / "dense-attention-aot-build.json").write_text(json.dumps(record, indent=2) + "\n")
