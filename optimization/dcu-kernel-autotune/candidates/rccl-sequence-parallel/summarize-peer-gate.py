@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 from statistics import mean, median, stdev
+from peer_identity import check as check_identity
 
 ORDER = ["A"] * 8 + ["B", "C", "A"]
 PEERS = ["off", "on", "off", "on", "on", "off", "off", "on", "on", "on", "on"]
@@ -75,6 +76,10 @@ def main():
     require(attention["dense-attention-packed.hsaco"]["sha256"] == STABLE_PACKED, "未沿用已验收注意力")
     peer = manifest["builds"]["H3_PEER_GATE_BUILD"]["artifacts"]["peer-runtime-build.json"]
     require(peer["nt"]["tile"] == 1024 and peer["nt"]["warps"] == 4, "九齿候选配置不符")
+    identity = check_identity(manifest["builds"]["H3_PEER_GATE_BUILD"]["path"],
+                              manifest["builds"]["H3_ADALN_BUILD"]["path"])
+    require(identity["nt_sha256"] == manifest["builds"]["H3_PEER_GATE_BUILD"]["artifacts"]["peer-gate.hsaco"]["sha256"],
+            "实际设备镜像与冻结版本不符")
     quality = read(sequence / "sequence-validation.json")
     require(len(quality) == 11, "缺少独立参考质量比较")
     accepted_order = read(accepted / "steady-paired/complete.json")["sequence"]

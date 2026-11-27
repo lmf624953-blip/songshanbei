@@ -9,6 +9,13 @@ project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 release=$(realpath -- "$1")
 model=$(realpath -- "$2")
 out=$(realpath -m -- "$3")
+if [[ -f "$release/release.json" ]] && python - "$release/release.json" <<'PYKIND'
+import json,sys
+sys.exit(0 if json.load(open(sys.argv[1])).get('kind')=='h3-peer-nt-indexed-gate-v1' else 1)
+PYKIND
+then
+    exec bash "$project/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel/benchmark-peer-gate.sh" "$release" "$model" "$out"
+fi
 summary="$project/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-public-a.py"
 test -r "$model/model_index.json"
 export IFAB_AFS_HOME="$project/runtime"

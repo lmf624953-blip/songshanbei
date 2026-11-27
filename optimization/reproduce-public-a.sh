@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 当前已验收 127.831 秒版本的构建、常驻配对及普通入口复测。
+# 冻结注意力版本的构建，以及注意力/分片门控发布版的统一复测。
 set -eo pipefail
 project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 scripts="$project/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout"
@@ -70,11 +70,25 @@ case "$mode" in
             source "$IFAB_AFS_HOME/scripts/unified_dog_env.sh"
             source "$project/optimization/load-candidate-config.sh" "$release/candidate.env"
             export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 OMP_NUM_THREADS=4
+            if python - "$release/release.json" <<'PYKIND'
+import json,sys
+sys.exit(0 if json.load(open(sys.argv[1])).get('kind')=='h3-peer-nt-indexed-gate-v1' else 1)
+PYKIND
+            then
+                python - "$project" <<'PYPEER'
+import os,sys
+from pathlib import Path
+sys.path.insert(0,str(Path(sys.argv[1])/'optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel'))
+from peer_identity import check
+check(os.environ['H3_PEER_GATE_BUILD'],os.environ['H3_ADALN_BUILD'])
+PYPEER
+            else
             reference=$(python -c 'import json,sys; from pathlib import Path
 d=json.load(open(sys.argv[1])); assert d["kind"] in ("p-row-prepacked-v-v1", "p-row-prepacked-v-softmax-v1", "p-row-prepacked-v-softmax-stable-paired-v1")
 print(Path(d["reference_release"]) / "attention")' "$release/release.json")
             python "$scripts/summarize-public-a.py" check "$reference" "$release/attention" \
                 --first-frame "$IFAB_AFS_HOME/unified-dog-input/first_frame.png"
+            fi
         )
         mkdir -- "$out"
         cp -- "$release/release.json" "$out/release.json"

@@ -1,0 +1,162 @@
+{
+  "scope": "tile1024九齿分片门控实测镜像的可加载身份；调试信息不参与等价判定。",
+  "nt": {
+    "sections": {
+      ".note": {
+        "type": 7,
+        "flags": 2,
+        "address": 512,
+        "size": 1968,
+        "sha256": "e6f47947f6f7d0db9907beca24ce1ceb536970f963811519c223d268f9bb2beb"
+      },
+      ".dynsym": {
+        "type": 11,
+        "flags": 2,
+        "address": 2480,
+        "size": 72,
+        "sha256": "7d3569ec866bfe54e722b2842af968d13d357cc0b3e377524db2f561bf754cfd"
+      },
+      ".gnu.hash": {
+        "type": 1879048182,
+        "flags": 2,
+        "address": 2552,
+        "size": 36,
+        "sha256": "3208ece69dbf8b572e0cfcfe6bfbac460ca0b55d98cacb545b01f6971c7aedea"
+      },
+      ".hash": {
+        "type": 5,
+        "flags": 2,
+        "address": 2588,
+        "size": 32,
+        "sha256": "ff6a5b2828b3fba91d1c1d7010523f424b5048b4b20829c5b5b2aa03b816a3fa"
+      },
+      ".dynstr": {
+        "type": 3,
+        "flags": 2,
+        "address": 2620,
+        "size": 44,
+        "sha256": "ab981c97e47dc393e71028741a857d0711507c279c8b57f2633417587e3954b0"
+      },
+      ".rodata": {
+        "type": 1,
+        "flags": 2,
+        "address": 2688,
+        "size": 64,
+        "sha256": "91d9a82c602a95355704debd7754dcaff7c77b595cbfc514295a514a2d6764b3"
+      },
+      ".text": {
+        "type": 1,
+        "flags": 6,
+        "address": 6912,
+        "size": 9572,
+        "sha256": "3e25c46878ba9af004621364ff4541e0f301d42596bf6b00809d50041045fadc"
+      },
+      ".dynamic": {
+        "type": 6,
+        "flags": 3,
+        "address": 20584,
+        "size": 112,
+        "sha256": "c24b9c2d098eaba71cd480cdfdede67f61933501823010d13ba7ea93e8b04c02"
+      },
+      ".relro_padding": {
+        "type": 8,
+        "flags": 3,
+        "address": 20696,
+        "size": 3880,
+        "sha256": null
+      }
+    },
+    "segments": [
+      [
+        6,
+        4,
+        64,
+        64,
+        64,
+        448,
+        448,
+        8
+      ],
+      [
+        1,
+        4,
+        0,
+        0,
+        0,
+        2752,
+        2752,
+        4096
+      ],
+      [
+        1,
+        5,
+        2816,
+        6912,
+        6912,
+        9572,
+        9572,
+        4096
+      ],
+      [
+        1,
+        6,
+        12392,
+        20584,
+        20584,
+        112,
+        3992,
+        4096
+      ],
+      [
+        2,
+        6,
+        12392,
+        20584,
+        20584,
+        112,
+        112,
+        8
+      ],
+      [
+        1685382482,
+        4,
+        12392,
+        20584,
+        20584,
+        112,
+        3992,
+        1
+      ],
+      [
+        1685382481,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        4,
+        512,
+        512,
+        512,
+        1968,
+        1968,
+        4
+      ]
+    ],
+    "elf_target": {
+      "machine": 224,
+      "flags": 1410,
+      "entry": 0
+    }
+  },
+  "native_sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510",
+  "host_sha256": {
+    "peer-gate-bridge.so": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0",
+    "peer-transport.so": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c"
+  }
+}

@@ -23,6 +23,17 @@ bash "$here/build-peer-release.sh" "$accepted_config" "$new_release" "$xmake_bin
 
 统一入口已在新目录完整执行，构建退出码0；生成的native、主机桥和transport逐字节一致，九齿镜像加载区段及映射一致。`reference.env`保存求值后的前序配置，不依赖以后可能改变的`selected-best.env`。`candidate.env`是新发布目录的候选入口；`release.json`初始`qualified=false`，仍须完整模型验收后才能选为正式版本。
 
+新发布目录接入现有统一复测命令，普通入口和常驻性能口径保持分开：
+
+```bash
+bash "$H3_AUTOTUNE_CODE_ROOT/optimization/reproduce-public-a.sh" resident \
+  "$new_release" "$model" "$new_benchmark_output"
+bash "$H3_AUTOTUNE_CODE_ROOT/optimization/reproduce-public-a.sh" single \
+  "$new_release" "$model" "$new_single_output"
+```
+
+`resident`只运行8个完整A，顺序为`off,on,off,on,on,off,off,on`，排除双方各一次预热，读取`benchmark.json`的`wall.candidate.mean`；它不代替B/C资格验收。`single`使用新进程运行一次完整A，保留模型加载、首次生成和进程总墙钟。`peer-image-identity.json`固定设备加载内容和主机库身份，允许HSACO调试路径变化；复测前会核对原生库、九齿镜像及通信桥。`report-peer-benchmark.py`也支持直接汇总完整11请求的前8条，避免重复生成A。本轮完整请求尚在执行，新汇总入口的实际记录验证待其结束后完成。
+
 需要分步研究时可使用以下命令；不要把统一入口与分步入口的输出指向同一目录：
 
 ```bash
