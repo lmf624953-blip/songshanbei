@@ -77,6 +77,8 @@ def write_variant(reference, output, assembly, shared, name, details):
     original = packed["hsaco_sha256"]
     assert packed["shared"] == K_REGION
     packed.update(hsaco_sha256=digest(image), shared=shared)
+    record["experiment"]["resources"]["vgpr_count"] = int(
+        re.search(r"^\s*\.vgpr_count:\s*(\d+)", assembly, re.M)[1])
     record["experiment"][name] = dict(details, reference_packed_sha256=original,
                                        static_barriers=assembly.count("\ts_barrier\n"))
     output.mkdir()
