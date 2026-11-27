@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import runpy
@@ -103,7 +104,8 @@ def main():
     transform(lines, position)
     helper["write_variant"](args.reference, args.output, "\n".join(lines) + "\n", 16384, "prepacked_v",
                             dict(position=position, packed_pointer_argument_offset=72))
-    code = scripts.parents[2]
+    code_root = os.environ.get("H3_AUTOTUNE_CODE_ROOT")
+    code = Path(code_root) / "optimization" if code_root else scripts.parents[2]
     sys.path.insert(0, str(code / "adaln"))
     from aot_codegen import compile_host
     command = compile_host(args.output / "prepacked-host.so", (scripts / "prepacked_attention_host.cc",))

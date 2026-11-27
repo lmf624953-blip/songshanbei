@@ -4,6 +4,7 @@
 import argparse
 from functools import partial
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -18,7 +19,8 @@ def main():
     cli.add_argument("--tile", type=int, choices=(256, 512, 1024, 2048, 4096), default=1024)
     cli.add_argument("--warps", type=int, choices=(2, 4, 8), default=4)
     args = cli.parse_args()
-    code = Path(__file__).resolve().parents[3]
+    code_root = os.environ.get("H3_AUTOTUNE_CODE_ROOT")
+    code = Path(code_root) / "optimization" if code_root else Path(__file__).resolve().parents[3]
     sys.path.insert(0, str(code / "adaln"))
     from aot_codegen import lower_kernel, compile_image
     args.output.mkdir()

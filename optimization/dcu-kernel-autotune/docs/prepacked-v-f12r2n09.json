@@ -5172,12 +5172,12 @@
     "projected_percent": 2.4608490691310387
   },
   "source_sha256": {
-    "build-prepacked-v.py": "e30c21ea83393cd5cd5f3b7bd7ae3291a1e5c754f9f1e57daab870a47dc8f241",
+    "build-prepacked-v.py": "593fefbdc1446149b6a9fe8f5d133a7c0fff164dadcdf03e6f4d8019dea4ccc4",
     "screen-prepacked-v.py": "75c3bcbbc0a3a8055870a4ddec9dee2d7d0e8068bbb4ae8a7676154675cbd16d",
     "profile-prepacked-v.py": "96a4282dcb322c82dd6edd50d3235a9f9ac451918264121674b0ad4f68e2a38e",
     "v_prepack_kernel.py": "3fdcbb77afdd6d04aed1127ad3f4fbc2fbe69d89177b82a622294a20eb046ea7",
     "prepacked_attention_host.cc": "cf0a92286792d713859eae6238dce79ace3007e61276bd84bcab447e9cf9acf2",
-    "build-v-prepack-aot.py": "0d5e292a47d724fb4b1b78ca2b4810e33301d88bf12f5baa16e8f79d227803d4"
+    "build-v-prepack-aot.py": "54c58168b344605348d9996001c12754399e2d42790bfdf7f1ab1747f26d2719"
   },
   "rebuild": {
     "path": "validation/prepacked-v-verify-f12r2n09-SDcwwHpm/final-rebuild",
@@ -5520,5 +5520,10 @@
     "目前为单卡实验，八卡真实去噪和端到端未经验证。",
     "分块与发射位置搜索覆盖本轮参数，收益受形状与节点影响。"
   ],
-  "verdict": "主注意力 bank conflict 降低约60%，组合 AOT 单卡耗时下降约5.5%–5.7%；跨节点外推新增端到端约2.46%，按3%优先线归档。"
+  "verdict": "主注意力 bank conflict 降低约60%，组合 AOT 单卡耗时下降约5.5%–5.7%；跨节点外推新增端到端约2.46%，按3%优先线归档。",
+  "framework_entry_rebuild": {
+    "path": "validation/prepacked-v-verify-f12r2n09-SDcwwHpm/framework-rebuild",
+    "code_root_environment": "H3_AUTOTUNE_CODE_ROOT",
+    "attention_text_and_host_byte_identical": true
+  }
 }
