@@ -4100,7 +4100,7 @@
     "state": "running",
     "session": 7100,
     "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/qualification",
-    "phase": "普通官方默认A通过，11请求稳态实例已启动"
+    "phase": "两次完整预热及第一组正式配对完成；剩余正式配对和B/C/A仍在运行"
   },
   "selected": false,
   "official_default_a": {
@@ -4197,5 +4197,60 @@
     "five_artifacts_byte_equal": true,
     "prior_137_summary_all_fields_equal": true,
     "kind": "p-row-prepacked-v-softmax-v1"
+  },
+  "first_official_pair": {
+    "status": "preliminary_one_of_three_pairs",
+    "records": [
+      {
+        "index": 2,
+        "variant": "base",
+        "wall_seconds": 136.6102712219581,
+        "transformer_seconds": 116.87328180484474,
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "candidate_calls": {
+          "adaln": 392,
+          "indexed": 39200,
+          "qknorm": 1568,
+          "qknorm_mrope": 19600,
+          "attention": 19600,
+          "short_attention": 784,
+          "widenorm_indexed": 39200,
+          "swiglu": 20384
+        }
+      },
+      {
+        "index": 3,
+        "variant": "fast",
+        "wall_seconds": 132.06169746117666,
+        "transformer_seconds": 111.87072606105357,
+        "output_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "candidate_calls": {
+          "adaln": 392,
+          "indexed": 39200,
+          "qknorm": 1568,
+          "qknorm_mrope": 19600,
+          "attention": 19600,
+          "short_attention": 784,
+          "widenorm_indexed": 39200,
+          "swiglu": 20384
+        }
+      }
+    ],
+    "wall_time_reduction_percent": 3.3295986605510253,
+    "transformer_reduction_percent": 4.280324524594459,
+    "selected": false,
+    "note": "仅第一组，不是三次均值；全部稳态配对及B/C/A仍在原进程进行"
+  },
+  "rules_reference_review": {
+    "source": "/public/home/acvduipmem/xsh/songshanbei/比赛文档/MiniMax-H3_InfiniLM_InfiniCore_赛题完整整理.pdf",
+    "sha256": "b70e62d1a07b0798b28a4a849ed710ba3f192b58bb2b99e303b0ffadb567a784",
+    "extraction": "私有artifacts目录中的pypdf 7.1.1，仅用于读取文档，不进入推理依赖",
+    "clauses": [
+      "第5条：连续多用例、以稳态生成过程为主，同时保留完整日志，不提前返回或复用历史成片",
+      "第6、7条：九齿算子和目标后端可优化，保持计算语义，不直接手写独立Triton/CUDA模型算子",
+      "第11、12条：完整源代码、编译链、日志与干净环境重建证据"
+    ],
+    "implementation_boundary": "已有九齿注意力表达经九齿生成Triton及LLVM/AMDGPU代码，两个后处理仅变换这一目标代码，再调用同一AMDGPU后端汇编；V预排布由九齿表达；C++仅调度与工作区管理。没有按提示词、seed或用例标识分支。",
+    "evidence": "源文件摘要、上游发布清单、冻结设备.text、真实49次调用、普通默认入口及正在进行的完整稳态回归。"
   }
 }
