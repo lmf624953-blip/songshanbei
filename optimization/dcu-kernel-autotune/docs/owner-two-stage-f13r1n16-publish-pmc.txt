@@ -1,0 +1,576 @@
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     0
+ gpu id                                    0
+ dispatch queue id                         24
+ dispatch queue index                      94
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001790(s)
+ processed ALU instructions                6.0732178612(%)
+ performance                               953.787052(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.1399407775(%)
+ L1 cache unit is stalled                  85.5418395325(%)
+ L2 cache write unit is stalled            93.0346197900(%)
+ L2 cache hit rate                         0.033144(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     1
+ gpu id                                    1
+ dispatch queue id                         25
+ dispatch queue index                      157
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001826(s)
+ processed ALU instructions                5.9594374741(%)
+ performance                               934.735210(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.7102631777(%)
+ L1 cache unit is stalled                  85.3555074856(%)
+ L2 cache write unit is stalled            90.4125783654(%)
+ L2 cache hit rate                         0.032875(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     2
+ gpu id                                    2
+ dispatch queue id                         27
+ dispatch queue index                      157
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001825(s)
+ processed ALU instructions                5.9592265703(%)
+ performance                               935.144346(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.3902163072(%)
+ L1 cache unit is stalled                  84.3646265653(%)
+ L2 cache write unit is stalled            93.4317815408(%)
+ L2 cache hit rate                         0.034217(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     3
+ gpu id                                    3
+ dispatch queue id                         26
+ dispatch queue index                      157
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001794(s)
+ processed ALU instructions                6.0673558610(%)
+ performance                               951.574741(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.7738530170(%)
+ L1 cache unit is stalled                  84.8892297373(%)
+ L2 cache write unit is stalled            93.3087806036(%)
+ L2 cache hit rate                         0.036691(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     4
+ gpu id                                    4
+ dispatch queue id                         28
+ dispatch queue index                      157
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001772(s)
+ processed ALU instructions                6.1377729439(%)
+ performance                               963.607480(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   95.3154535253(%)
+ L1 cache unit is stalled                  86.7364602210(%)
+ L2 cache write unit is stalled            93.1289151756(%)
+ L2 cache hit rate                         0.036000(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     5
+ gpu id                                    5
+ dispatch queue id                         31
+ dispatch queue index                      157
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001809(s)
+ processed ALU instructions                6.0112657143(%)
+ performance                               943.580251(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.2813592491(%)
+ L1 cache unit is stalled                  84.4363969619(%)
+ L2 cache write unit is stalled            92.6629700854(%)
+ L2 cache hit rate                         0.031111(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     6
+ gpu id                                    6
+ dispatch queue id                         30
+ dispatch queue index                      157
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001798(s)
+ processed ALU instructions                6.0490933654(%)
+ performance                               949.458213(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.6116916335(%)
+ L1 cache unit is stalled                  85.9675876889(%)
+ L2 cache write unit is stalled            93.3628124307(%)
+ L2 cache hit rate                         0.036461(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     7
+ gpu id                                    7
+ dispatch queue id                         29
+ dispatch queue index                      93
+ process id                                3253057
+ thread id                                 3253138
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001769(s)
+ processed ALU instructions                6.1420832499(%)
+ performance                               963.901431(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.5551632791(%)
+ L1 cache unit is stalled                  85.9190849571(%)
+ L2 cache write unit is stalled            91.9017836102(%)
+ L2 cache hit rate                         0.030368(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     8
+ gpu id                                    0
+ dispatch queue id                         24
+ dispatch queue index                      111
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001858(s)
+ processed ALU instructions                5.8522159602(%)
+ performance                               918.875355(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.9809147563(%)
+ L1 cache unit is stalled                  86.0160319488(%)
+ L2 cache write unit is stalled            93.5715634766(%)
+ L2 cache hit rate                         0.029654(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     9
+ gpu id                                    1
+ dispatch queue id                         25
+ dispatch queue index                      173
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001856(s)
+ processed ALU instructions                5.8561281840(%)
+ performance                               919.509394(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.6705537966(%)
+ L1 cache unit is stalled                  85.0672885302(%)
+ L2 cache write unit is stalled            93.0741968040(%)
+ L2 cache hit rate                         0.034869(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     10
+ gpu id                                    2
+ dispatch queue id                         27
+ dispatch queue index                      173
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001847(s)
+ processed ALU instructions                5.8921539035(%)
+ performance                               924.448642(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.3479137964(%)
+ L1 cache unit is stalled                  85.6421913692(%)
+ L2 cache write unit is stalled            93.4441729163(%)
+ L2 cache hit rate                         0.037668(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     11
+ gpu id                                    3
+ dispatch queue id                         26
+ dispatch queue index                      173
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001812(s)
+ processed ALU instructions                6.0010821128(%)
+ performance                               942.080000(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.6831171688(%)
+ L1 cache unit is stalled                  84.9716458374(%)
+ L2 cache write unit is stalled            92.9276766362(%)
+ L2 cache hit rate                         0.036000(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     12
+ gpu id                                    4
+ dispatch queue id                         28
+ dispatch queue index                      173
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001787(s)
+ processed ALU instructions                6.0826157758(%)
+ performance                               955.152731(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.6298167633(%)
+ L1 cache unit is stalled                  85.5079090351(%)
+ L2 cache write unit is stalled            93.0974366422(%)
+ L2 cache hit rate                         0.036672(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     13
+ gpu id                                    5
+ dispatch queue id                         31
+ dispatch queue index                      173
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001792(s)
+ processed ALU instructions                6.0690324039(%)
+ performance                               952.595349(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.7124630979(%)
+ L1 cache unit is stalled                  84.8216713867(%)
+ L2 cache write unit is stalled            92.7274931493(%)
+ L2 cache hit rate                         0.035272(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     14
+ gpu id                                    6
+ dispatch queue id                         30
+ dispatch queue index                      172
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001821(s)
+ processed ALU instructions                5.9725791034(%)
+ performance                               937.197985(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.2676797714(%)
+ L1 cache unit is stalled                  85.4921133036(%)
+ L2 cache write unit is stalled            92.7012678618(%)
+ L2 cache hit rate                         0.035310(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     15
+ gpu id                                    7
+ dispatch queue id                         29
+ dispatch queue index                      108
+ process id                                3253057
+ thread id                                 3253137
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001791(s)
+ processed ALU instructions                6.0695647103(%)
+ performance                               952.360789(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.3737818522(%)
+ L1 cache unit is stalled                  85.0544020963(%)
+ L2 cache write unit is stalled            92.3016341584(%)
+ L2 cache hit rate                         0.033901(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     16
+ gpu id                                    0
+ dispatch queue id                         24
+ dispatch queue index                      129
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001855(s)
+ processed ALU instructions                5.8554226516(%)
+ performance                               920.222680(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.2851469721(%)
+ L1 cache unit is stalled                  84.9415806522(%)
+ L2 cache write unit is stalled            93.2394849038(%)
+ L2 cache hit rate                         0.028695(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     17
+ gpu id                                    1
+ dispatch queue id                         25
+ dispatch queue index                      190
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001851(s)
+ processed ALU instructions                5.8719639645(%)
+ performance                               922.051833(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   92.3324496245(%)
+ L1 cache unit is stalled                  83.7066596407(%)
+ L2 cache write unit is stalled            93.3259527535(%)
+ L2 cache hit rate                         0.035291(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     18
+ gpu id                                    2
+ dispatch queue id                         27
+ dispatch queue index                      190
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001834(s)
+ processed ALU instructions                5.9305132706(%)
+ performance                               930.657870(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   95.3270891306(%)
+ L1 cache unit is stalled                  86.7021747777(%)
+ L2 cache write unit is stalled            93.1418301402(%)
+ L2 cache hit rate                         0.036365(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     19
+ gpu id                                    3
+ dispatch queue id                         26
+ dispatch queue index                      190
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001804(s)
+ processed ALU instructions                6.0288422731(%)
+ performance                               946.089918(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   92.3473920368(%)
+ L1 cache unit is stalled                  83.2420650477(%)
+ L2 cache write unit is stalled            93.0700356008(%)
+ L2 cache hit rate                         0.031955(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     20
+ gpu id                                    4
+ dispatch queue id                         28
+ dispatch queue index                      190
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001776(s)
+ processed ALU instructions                6.1283706608(%)
+ performance                               961.436605(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.2665036518(%)
+ L1 cache unit is stalled                  85.7952638426(%)
+ L2 cache write unit is stalled            91.6737770481(%)
+ L2 cache hit rate                         0.035617(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     21
+ gpu id                                    5
+ dispatch queue id                         31
+ dispatch queue index                      189
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001774(s)
+ processed ALU instructions                6.1273525143(%)
+ performance                               962.043464(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.6241168940(%)
+ L1 cache unit is stalled                  85.9095500235(%)
+ L2 cache write unit is stalled            93.1880324319(%)
+ L2 cache hit rate                         0.029884(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     22
+ gpu id                                    6
+ dispatch queue id                         30
+ dispatch queue index                      188
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001808(s)
+ processed ALU instructions                6.0154261125(%)
+ performance                               944.331908(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.6171572652(%)
+ L1 cache unit is stalled                  85.1051366248(%)
+ L2 cache write unit is stalled            92.7293754680(%)
+ L2 cache hit rate                         0.034026(%)
+
+kernel-name:"_Z13publish_ownerPKt9Addressesmi"
+ kernel dispatch index                     23
+ gpu id                                    7
+ dispatch queue id                         29
+ dispatch queue index                      124
+ process id                                3253057
+ thread id                                 3253132
+ grid size                                 1310720
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                28
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.001793(s)
+ processed ALU instructions                6.0605906223(%)
+ performance                               951.001244(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   94.7719973158(%)
+ L1 cache unit is stalled                  85.9076912048(%)
+ L2 cache write unit is stalled            93.3031245099(%)
+ L2 cache hit rate                         0.032576(%)
+
