@@ -1,0 +1,19 @@
+{
+  "selected": true,
+  "name": "peer-gate-nt-f13r1n16",
+  "selected_at": "2026-11-28T01:20:41+0800",
+  "release": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/peer-gate-nt-f13r1n16",
+  "configuration": "/public/home/acvduipmem/xsh/songshanbei/optimization/selected-best.env",
+  "reference_configuration": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/work/selection-history/before-peer-gate-nt-f13r1n16.env",
+  "qualification": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/qualification-nt",
+  "wall_seconds": 120.69804317139399,
+  "reference_wall_seconds": 128.43644944229163,
+  "wall_reduction_percent": 6.02508579495934,
+  "transformer_seconds": 101.1383581336122,
+  "transformer_reduction_percent": 5.67014273102725,
+  "release_profile": {
+    "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/real8-release-summary.json",
+    "sha256": "b43b18eda287e89cbf4e58df39febe4480aa7adbaaaf59e1d54143d25624f1b8"
+  },
+  "remaining_direction": "保持输入/输出独立与数值顺序，实测九齿分片门控直接向八卡最终输出发布；尚未实现。"
+}

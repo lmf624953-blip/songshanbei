@@ -1,6 +1,6 @@
 # 保持 BF16 累加顺序的 peer 分片与门控融合实验
 
-2026-11-28，`f13r1n16` 上已把分片累加和门控计算移植为九齿表达，HIP仅处理通信发布、事件依赖、位置映射及独立校准探针。真实八卡第1、25、49次去噪回放，均与同实例关闭候选的完整视频/音频Transformer输出逐位一致；单次Transformer均值分别从2.19034/2.18794/2.18643秒降到2.06358/2.06461/2.06342秒，约节省5.63%–5.79%。关闭回调的第25次输出也与此前正式版本输出哈希一致。**普通官方A已通过，成片与已验收版逐字节一致、平均SSIM 93.832013%；同实例A×8/B/C/返回A验收进行中，尚无新的稳态完整请求成绩，正式默认仍为已验收127.831秒。** [本轮九齿实测](../../docs/peer-gate-nt-f13r1n16.json)
+2026-11-28，`f13r1n16` 上九齿分片门控已通过普通官方默认A、同实例完整A×8/B/C/返回A、真实八卡1/25/49逐位、稳定重建目录装载、独立PMC/trace和Tree回退检查。正式完整A从128.436449降到120.698043秒，下降6.025086%；Transformer从107.217758降到101.138358秒，下降5.670143%。所有成片与此前对应验收版逐字节一致，默认配置已切换至`validated-build/peer-gate-nt-f13r1n16`。 [完整报告](../../docs/分片门控融合-f13r1n16.md) · [原始记录](../../docs/peer-gate-nt-f13r1n16.json)
 
 先前`peer_reduce.hip`是可行性研究原型，39组配对的6.370→4.920ms及5.59%完整请求粗略投影仅适用于该HIP原型。正式候选的九齿tile1024版本，独立算子6.358→5.231ms；接入实际InfiniCCL、八个主机worker与动态校准后，独立算子6.392→5.406ms。两者均逐位通过，数值与真实模型回放分开记录，不把HIP原型成绩当九齿版本成绩。
 
@@ -10,7 +10,7 @@
 
 `peer_transport.hip`是输入就绪依赖、分片发布与完成依赖；`peer_gate_bridge.cc`在八个原有`RankWorker`上汇合后调度九齿镜像，保留原设备和stream。每个新count/communicator用两组独立有限BF16探针校准实际InfiniCCL rank环、通道、块和尾部，并在所有位置及八卡验证；不通过则执行原AllReduce和现用九齿门控。探针和工作区不替换真实模型输入，不减少模型层数或投影计算。
 
-`prepare-native-hook.py`给已验收H3源码添加回调。`build-peer-native.py`从该版本源码包重建私有overlay，`build-peer-bridge.py`固定镜像、桥和transport的哈希。`peer_gate_runtime.py`装载并提供实验对照开关。开关用于同实例消融和安全回退；通过完整资格验收之前，不修改`selected-best.env`。
+`prepare-native-hook.py`给已验收H3源码添加回调。`build-peer-native.py`从该版本源码包重建私有overlay，`build-peer-bridge.py`固定镜像、桥和transport的哈希。`peer_gate_runtime.py`装载并提供实验对照开关。开关用于同实例消融和安全回退；本轮完整资格验收已通过，`selected-best.env`已选择稳定发布目录。
 
 在已经激活正式DTK/GCC/venv、设置`H3_AUTOTUNE_CODE_ROOT`后，以全新目录构建：
 
@@ -32,7 +32,7 @@ bash "$H3_AUTOTUNE_CODE_ROOT/optimization/reproduce-public-a.sh" single \
   "$new_release" "$model" "$new_single_output"
 ```
 
-`resident`只运行8个完整A，顺序为`off,on,off,on,on,off,off,on`，排除双方各一次预热，读取`benchmark.json`的`wall.candidate.mean`；它不代替B/C资格验收。`single`使用新进程运行一次完整A，保留模型加载、首次生成和进程总墙钟。`peer-image-identity.json`固定设备加载内容和主机库身份，允许HSACO调试路径变化；复测前会核对原生库、九齿镜像及通信桥。`report-peer-benchmark.py`也支持直接汇总完整11请求的前8条，避免重复生成A。本轮完整请求尚在执行，新汇总入口的实际记录验证待其结束后完成。
+`resident`只运行8个完整A，顺序为`off,on,off,on,on,off,off,on`，排除双方各一次预热，读取`benchmark.json`的`wall.candidate.mean`；它不代替B/C资格验收。`single`使用新进程运行一次完整A，保留模型加载、首次生成和进程总墙钟。`peer-image-identity.json`固定设备加载内容和主机库身份，允许HSACO调试路径变化；复测前会核对原生库、九齿镜像及通信桥。`report-peer-benchmark.py`也支持直接汇总完整11请求的前8条，避免重复生成A。新汇总入口已直接复用本轮11请求的前8条，端到端及全部阶段统计与完整验收完全一致。
 
 需要分步研究时可使用以下命令；不要把统一入口与分步入口的输出指向同一目录：
 
@@ -93,4 +93,4 @@ python bench-peer-reduce.py "$DTK_ROOT/lib/librccl.so.1" "$new_peer_library" "$n
 
 `ring_order_map.py`和HIP原型源代码中的rank环描述该原型在本节点验证的条件，不能直接将该实验库替换正式通信库。当前九齿模型桥已经增加运行时校准及回退，仍需完整请求资格验收。[模型接入状态与约束](模型接入方案.md) · [HIP原型完整记录](../../docs/peer-reduce-f13r1n16.json) · [HIP原型原始PMC TXT](../../docs/peer-reduce-f13r1n16-basic-pmc.txt)
 
-独立九齿PMC与时间线使用`profile-peer-gate.sh CONFIG NEW_OUTPUT`，在完整请求计时结束后单独运行；脚本保留原始`pmc.txt`、`trace_stream.json`及对应数值结果。该九齿采集目前待执行，不用先前HIP原型的PMC冒充。
+独立九齿PMC与时间线使用`profile-peer-gate.sh CONFIG NEW_OUTPUT`，在完整请求计时结束后单独运行；脚本保留原始`pmc.txt`、`trace_stream.json`及对应数值结果。该九齿采集已通过，原始TXT为`docs/peer-gate-nt-f13r1n16-basic-pmc.txt`，覆盖八卡各三次；不使用先前HIP原型的PMC代替。

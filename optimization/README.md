@@ -1,12 +1,16 @@
 # MiniMax-H3 决赛推理
 
-当前完整验收最优版为 Q128/K32 packed 的 **P 行 LDS + V 预排布 + 内部 P/ROR4 精简 + stable-max guarded / 成对 P 算术**。在 `f12r2n09` 的同一八卡常驻进程内，双方各一次完整预热后三组官方 A 的完整请求均值为 **132.556449→127.831001 秒，下降 3.564857%**；Transformer 为 **111.882041→107.287698 秒，下降 4.106416%**。候选样本为 127.596813、127.413285、128.482905 秒，标准差 0.571975 秒，三组请求分别下降 4.064172%、3.347815%、3.280321%。
+当前完整验收最优版为 **九齿分片BF16累加/门控融合**，沿用下述已验收长注意力。`f13r1n16`同一八卡实例三组完整官方A为 **128.436449→120.698043秒，下降6.025086%**；49次Transformer为 **107.217758→101.138358秒，下降5.670143%**。普通默认入口及A×8/B/C/返回A全部通过，成片逐字节一致；原始PMC、Tree回退、稳定发布目录的真实八卡装载及重建来源均已核验。未启用跨进程编译缓存。[完整报告与适用范围](dcu-kernel-autotune/docs/分片门控融合-f13r1n16.md) · [选版记录](dcu-kernel-autotune/docs/peer-gate-nt-f13r1n16-selection.json)
+
+复测新版本先用下文`build`构建前序注意力发布目录，再运行`dcu-kernel-autotune/candidates/rccl-sequence-parallel/build-peer-release.sh REFERENCE_CONFIG NEW_RELEASE XMAKE_BINARY`。随后统一`reproduce-public-a.sh resident NEW_RELEASE MODEL NEW_OUTPUT`读取`benchmark.json`的`wall.candidate.mean`；`single`单列新进程加载及首次生成。新版本完整流程见[候选构建及复测说明](dcu-kernel-autotune/candidates/rccl-sequence-parallel/README.md)。
+
+上一阶段完整验收版为 Q128/K32 packed 的 **P 行 LDS + V 预排布 + 内部 P/ROR4 精简 + stable-max guarded / 成对 P 算术**。在 `f12r2n09` 的同一八卡常驻进程内，双方各一次完整预热后三组官方 A 的完整请求均值为 **132.556449→127.831001 秒，下降 3.564857%**；Transformer 为 **111.882041→107.287698 秒，下降 4.106416%**。候选样本为 127.596813、127.413285、128.482905 秒，标准差 0.571975 秒，三组请求分别下降 4.064172%、3.347815%、3.280321%。
 
 普通官方默认 A 和完整 A×8/B/C/返回 A 均通过，所有成片与对应已验收版本逐字节一致；A/B/C 参考 SSIM 为 93.832013%/99.404123%/99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。没有跨进程编译缓存优化。用户已恢复持续优化。新节点实测 QK/在线softmax+PV 拆分，降低QK到120VGPR并优化合并访存后仍退化，未采用；融合内K预取有小收益但不足3%完整请求，先归档。[本轮拆分与预取证据](dcu-kernel-autotune/docs/qk-split-f13r1n16.json)
 
 [统一成绩](dcu-kernel-autotune/docs/p-paired-sub-f12r2n09-public-a.json) · [完整验收](dcu-kernel-autotune/docs/p-paired-sub-f12r2n09-qualified.json) · [来源与原始 PMC](dcu-kernel-autotune/docs/p-paired-sub-f12r2n09.json) · [本轮整合与暂停分析](本轮最优整合与暂停分析.md)
 
-## 复测当前 127.831 秒版本
+## 构建或复测前序 127.831 秒注意力版本
 
 准备好下文的 `runtime` 和注意力主机桥后，在仓库根目录运行。构建只需一次，已有对应发布目录可直接复用；输出目录必须尚不存在。
 
@@ -25,7 +29,7 @@ bash "$repo/optimization/reproduce-public-a.sh" single \
 
 正式成绩读取 `resident/benchmark.json` 的 `wall.candidate.mean`，比较名为 `softmax-compact-vs-stable-paired`。包含输入准备、条件编码、完整去噪、音视频解码和 MP4 写出，排除模型加载及双方各一次完整预热。`single/process-time.txt` 则是新进程从启动到退出，不能混作常驻成绩；本轮为 900.36 秒，模型组件创建加载约 659.02 秒，首次生成管线 184.202 秒。完整流程和计时边界见 [公开 A 耗时复测说明](公开A耗时复测说明.md)。
 
-默认 `build` 依次经过基础构建、求和交错、P 行/V 预排布、精简 softmax、稳定 max 与成对 P 算术。`build-work/softmax` 保留本轮约 132 秒基准，`build-work/release` 为当前正式版；实际设备代码按冻结指令哈希核对。其他 Q/K RMSNorm/MRoPE、原库归约顺序 compact 宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU 均保持原样。
+默认 `build` 依次经过基础构建、求和交错、P 行/V 预排布、精简 softmax、稳定 max 与成对 P 算术。`build-work/softmax` 保留本轮约 132 秒基准，`build-work/release` 为该阶段正式版；实际设备代码按冻结指令哈希核对。其他 Q/K RMSNorm/MRoPE、原库归约顺序 compact 宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU 均保持原样。
 
 整卡显存五秒采样最高为 33784 MiB，起于普通 A 条件编码器加载中段，可能漏瞬时峰值；混合实例保留两侧工作区，不作为独立显存差证明。历史 132.824526 秒版固定于 `34c842da`，137.344178 秒版固定于 `e9d66702`。本轮只与同轮 132.556449 秒基准比较，下文保留历史构建和剖析用法。
 
