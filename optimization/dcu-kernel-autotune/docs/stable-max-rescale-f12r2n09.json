@@ -1,0 +1,4545 @@
+{
+  "scope": "单卡三个对照，非新的完整请求成绩",
+  "reference": "已验收132.824526秒精简softmax组合",
+  "variants": {
+    "deferred": {
+      "records": [
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4096,
+          "candidate_nan": 4096
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 32,
+          "candidate_nan": 32
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4224,
+          "candidate_nan": 4224
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 33,
+          "candidate_nan": 33
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 16512,
+          "candidate_nan": 16512
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 7680,
+          "candidate_nan": 7680
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 129,
+          "candidate_nan": 129
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 524416,
+          "candidate_nan": 524416
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 262528,
+          "candidate_nan": 262528
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4097,
+          "candidate_nan": 4097
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3528960,
+          "candidate_nan": 3528960
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 1778176,
+          "candidate_nan": 1778176
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 27570,
+          "candidate_nan": 27570
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 1,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 2,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 31,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 63,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 64,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 65,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 127,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 128,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 255,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 256,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 257,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4095,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4096,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 8193,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 22016,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "paired",
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              20.867984771728516,
+              20.853748321533203,
+              20.85550880432129,
+              20.861108779907227,
+              20.859987258911133,
+              20.84990882873535,
+              20.850223541259766,
+              20.856304168701172,
+              20.897266387939453,
+              20.894546508789062,
+              20.862228393554688,
+              20.879987716674805,
+              20.906227111816406,
+              20.842227935791016,
+              20.849748611450195,
+              20.85918617248535,
+              20.851985931396484,
+              20.86574363708496,
+              20.85246467590332
+            ],
+            [
+              20.765588760375977,
+              20.71150779724121,
+              20.71822738647461,
+              20.699508666992188,
+              20.70878791809082,
+              20.70286750793457,
+              20.710063934326172,
+              20.723344802856445,
+              20.726388931274414,
+              20.71358871459961,
+              20.711347579956055,
+              20.720947265625,
+              20.71470832824707,
+              20.702707290649414,
+              20.710548400878906,
+              20.710065841674805,
+              20.711668014526367,
+              20.699987411499023,
+              20.726703643798828
+            ]
+          ],
+          "medians_ms": [
+            20.85918617248535,
+            20.71150779724121
+          ],
+          "paired_gain_percent": 0.705237236328482,
+          "passed": true
+        },
+        {
+          "kind": "paired",
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              14.117591857910156,
+              14.111831665039062,
+              14.112470626831055,
+              14.168312072753906,
+              14.11583137512207,
+              14.118871688842773,
+              14.113752365112305,
+              14.1140718460083,
+              14.147512435913086,
+              14.117112159729004,
+              14.115510940551758,
+              14.11423110961914,
+              14.11919116973877,
+              14.12031078338623,
+              14.123191833496094,
+              14.116951942443848,
+              14.111031532287598,
+              14.113752365112305,
+              14.10975170135498
+            ],
+            [
+              14.025912284851074,
+              14.027831077575684,
+              14.026552200317383,
+              14.011832237243652,
+              14.075672149658203,
+              14.024632453918457,
+              14.02047061920166,
+              14.0595121383667,
+              14.020792007446289,
+              14.018071174621582,
+              14.025430679321289,
+              14.069271087646484,
+              14.026871681213379,
+              14.017751693725586,
+              14.062711715698242,
+              14.022392272949219,
+              14.031991958618164,
+              14.02623176574707,
+              14.029911041259766
+            ]
+          ],
+          "medians_ms": [
+            14.11583137512207,
+            14.02623176574707
+          ],
+          "paired_gain_percent": 0.6381650767715463,
+          "passed": true
+        }
+      ],
+      "projected_end_to_end_saving_seconds": 0.36181201934814455,
+      "projected_end_to_end_reduction_percent": 0.27239850117780046
+    },
+    "guard-scale": {
+      "records": [
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4096,
+          "candidate_nan": 4096
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 32,
+          "candidate_nan": 32
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4224,
+          "candidate_nan": 4224
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 33,
+          "candidate_nan": 33
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 16512,
+          "candidate_nan": 16512
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 7680,
+          "candidate_nan": 7680
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 129,
+          "candidate_nan": 129
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 524416,
+          "candidate_nan": 524416
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 262528,
+          "candidate_nan": 262528
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4097,
+          "candidate_nan": 4097
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3528960,
+          "candidate_nan": 3528960
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 1778176,
+          "candidate_nan": 1778176
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 27570,
+          "candidate_nan": 27570
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 1,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 2,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 31,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 63,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 64,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 65,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 127,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 128,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 255,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 256,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 257,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4095,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4096,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 8193,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 22016,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "paired",
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              20.857587814331055,
+              20.844467163085938,
+              20.846067428588867,
+              20.85454750061035,
+              20.857908248901367,
+              20.857908248901367,
+              20.843027114868164,
+              20.857744216918945,
+              20.84494400024414,
+              20.85230827331543,
+              20.848308563232422,
+              20.875347137451172,
+              20.874067306518555,
+              20.850067138671875,
+              20.847028732299805,
+              20.853107452392578,
+              20.862228393554688,
+              20.866228103637695,
+              20.866867065429688
+            ],
+            [
+              20.167827606201172,
+              20.1334285736084,
+              20.188627243041992,
+              20.1575870513916,
+              20.165428161621094,
+              20.139667510986328,
+              20.143827438354492,
+              20.151668548583984,
+              20.16846466064453,
+              20.155664443969727,
+              20.17182731628418,
+              20.16286849975586,
+              20.16478729248047,
+              20.1575870513916,
+              20.157268524169922,
+              20.156307220458984,
+              20.161588668823242,
+              20.211828231811523,
+              20.154067993164062
+            ]
+          ],
+          "medians_ms": [
+            20.85454750061035,
+            20.1575870513916
+          ],
+          "paired_gain_percent": 3.3414695316963283,
+          "passed": true
+        },
+        {
+          "kind": "paired",
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              14.117589950561523,
+              14.159829139709473,
+              14.114709854125977,
+              14.118870735168457,
+              14.110391616821289,
+              14.120311737060547,
+              14.11599063873291,
+              14.114871978759766,
+              14.114232063293457,
+              14.11487102508545,
+              14.113752365112305,
+              14.121271133422852,
+              14.113910675048828,
+              14.162712097167969,
+              14.156791687011719,
+              14.118391990661621,
+              14.163030624389648,
+              14.10959243774414,
+              14.116151809692383
+            ],
+            [
+              13.670550346374512,
+              13.670069694519043,
+              13.683032035827637,
+              13.666872024536133,
+              13.67103099822998,
+              13.679032325744629,
+              13.682711601257324,
+              13.680630683898926,
+              13.674711227416992,
+              13.715352058410645,
+              13.683671951293945,
+              13.66543197631836,
+              13.680791854858398,
+              13.661432266235352,
+              13.718070983886719,
+              13.667511940002441,
+              13.73375129699707,
+              13.669912338256836,
+              13.72607135772705
+            ]
+          ],
+          "medians_ms": [
+            14.116151809692383,
+            13.679032325744629
+          ],
+          "paired_gain_percent": 3.113737949466533,
+          "passed": true
+        }
+      ],
+      "projected_end_to_end_saving_seconds": 1.7075531005859375,
+      "projected_end_to_end_reduction_percent": 1.2855706289667257
+    },
+    "guarded": {
+      "records": [
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4096,
+          "candidate_nan": 4096
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 32,
+          "candidate_nan": 32
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 32,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 28672,
+          "candidate_nan": 28672
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4224,
+          "candidate_nan": 4224
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 2048,
+          "candidate_nan": 2048
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 33,
+          "candidate_nan": 33
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 33,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 29568,
+          "candidate_nan": 29568
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 16512,
+          "candidate_nan": 16512
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 7680,
+          "candidate_nan": 7680
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 129,
+          "candidate_nan": 129
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 129,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 115584,
+          "candidate_nan": 115584
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 524416,
+          "candidate_nan": 524416
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 262528,
+          "candidate_nan": 262528
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 4097,
+          "candidate_nan": 4097
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 4097,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3670912,
+          "candidate_nan": 3670912
+        },
+        {
+          "kind": "bitwise",
+          "case": "random",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-q-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 128,
+          "candidate_nan": 128
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 3528960,
+          "candidate_nan": 3528960
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-k-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-k-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 1778176,
+          "candidate_nan": 1778176
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-q-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "qk-overflow",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "one-v-nan",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 27570,
+          "candidate_nan": 27570
+        },
+        {
+          "kind": "bitwise",
+          "case": "all-v-inf",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "tiny-qk",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "negative-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "zero-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "nan-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "inf-scale",
+          "sequence": 27570,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 24702720,
+          "candidate_nan": 24702720
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 1,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 2,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 31,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 63,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 64,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 65,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 127,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 128,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 255,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 256,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 257,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4095,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 4096,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 8193,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "bitwise",
+          "case": "boundary",
+          "sequence": 22016,
+          "exact": true,
+          "tail_ok": true,
+          "mismatches": 0,
+          "reference_nan": 0,
+          "candidate_nan": 0
+        },
+        {
+          "kind": "paired",
+          "sequence": 27570,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              20.84638786315918,
+              20.85230827331543,
+              20.89230728149414,
+              20.84670639038086,
+              20.858705520629883,
+              20.859987258911133,
+              20.849748611450195,
+              20.85102653503418,
+              20.84510612487793,
+              20.86798858642578,
+              20.899028778076172,
+              20.860944747924805,
+              20.853424072265625,
+              20.856624603271484,
+              20.8460636138916,
+              20.847827911376953,
+              20.857587814331055,
+              20.86606788635254,
+              20.858867645263672
+            ],
+            [
+              19.443668365478516,
+              19.442707061767578,
+              19.447187423706055,
+              19.441268920898438,
+              19.4521484375,
+              19.433427810668945,
+              19.484628677368164,
+              19.42974853515625,
+              19.454387664794922,
+              19.440948486328125,
+              19.49054718017578,
+              19.446548461914062,
+              19.437423706054688,
+              19.47902488708496,
+              19.42862319946289,
+              19.4351863861084,
+              19.437747955322266,
+              19.430387496948242,
+              19.45726776123047
+            ]
+          ],
+          "medians_ms": [
+            20.856624603271484,
+            19.442707061767578
+          ],
+          "paired_gain_percent": 6.775965013111296,
+          "passed": true
+        },
+        {
+          "kind": "paired",
+          "sequence": 22016,
+          "normal": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "stress": {
+            "exact": true,
+            "finite": true,
+            "tail_ok": true,
+            "max_abs": 0.0
+          },
+          "samples_ms": [
+            [
+              14.126871109008789,
+              14.117751121520996,
+              14.1220703125,
+              14.113590240478516,
+              14.109748840332031,
+              14.168791770935059,
+              14.116150856018066,
+              14.111031532287598,
+              14.111831665039062,
+              14.111031532287598,
+              14.10991096496582,
+              14.123190879821777,
+              14.112791061401367,
+              14.173911094665527,
+              14.121912002563477,
+              14.121591567993164,
+              14.116471290588379,
+              14.113910675048828,
+              14.114391326904297
+            ],
+            [
+              13.229591369628906,
+              13.228951454162598,
+              13.23742961883545,
+              13.218550682067871,
+              13.23406982421875,
+              13.229111671447754,
+              13.232791900634766,
+              13.235831260681152,
+              13.229911804199219,
+              13.21743106842041,
+              13.243512153625488,
+              13.23807144165039,
+              13.236472129821777,
+              13.238871574401855,
+              13.233591079711914,
+              13.23791217803955,
+              13.22815227508545,
+              13.279031753540039,
+              13.235191345214844
+            ]
+          ],
+          "medians_ms": [
+            14.116150856018066,
+            13.23406982421875
+          ],
+          "paired_gain_percent": 6.264242239903883,
+          "passed": true
+        }
+      ],
+      "projected_end_to_end_saving_seconds": 3.4640979766845703,
+      "projected_end_to_end_reduction_percent": 2.608025843038559
+    }
+  },
+  "value_edge_records": [
+    {
+      "sequence": 4096,
+      "case": "tiny-normal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "tiny-normal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "tiny-normal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "minimum-bf16-subnormal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "minimum-bf16-subnormal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "minimum-bf16-subnormal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "signed-zero",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "signed-zero",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "signed-zero",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "alternating-tiny",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "alternating-tiny",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "alternating-tiny",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "alternating-large",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "alternating-large",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "alternating-large",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "random-large",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "random-large",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "random-large",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "positive-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "positive-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "positive-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "negative-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "negative-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "negative-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "mixed-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670016,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "mixed-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670016,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "mixed-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670016,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "nan",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670016,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "nan",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670016,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "nan",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670016,
+      "reference_nonzero": 3670016,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-alternating",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-alternating",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-alternating",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-late",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-late",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-late",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-anchor",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-anchor",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4096,
+      "case": "weighted-subnormal-anchor",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "tiny-normal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "tiny-normal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "tiny-normal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "minimum-bf16-subnormal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "minimum-bf16-subnormal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "minimum-bf16-subnormal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "signed-zero",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "signed-zero",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "signed-zero",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "alternating-tiny",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "alternating-tiny",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "alternating-tiny",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "alternating-large",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "alternating-large",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "alternating-large",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "random-large",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "random-large",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "random-large",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "positive-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "positive-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "positive-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "negative-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "negative-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "negative-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "mixed-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670912,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "mixed-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670912,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "mixed-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670912,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "nan",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670912,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "nan",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670912,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "nan",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 3670912,
+      "reference_nonzero": 3670912,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-alternating",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-alternating",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-alternating",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-late",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-late",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-late",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-anchor",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-anchor",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 4097,
+      "case": "weighted-subnormal-anchor",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "tiny-normal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "tiny-normal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "tiny-normal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "minimum-bf16-subnormal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "minimum-bf16-subnormal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "minimum-bf16-subnormal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "signed-zero",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "signed-zero",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "signed-zero",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "alternating-tiny",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "alternating-tiny",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "alternating-tiny",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "alternating-large",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "alternating-large",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "alternating-large",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "random-large",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "random-large",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "random-large",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "positive-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "positive-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "positive-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "negative-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "negative-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "negative-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "mixed-inf",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 24702720,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "mixed-inf",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 24702720,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "mixed-inf",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 24702720,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "nan",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 24702720,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "nan",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 24702720,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "nan",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 24702720,
+      "reference_nonzero": 24702720,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-alternating",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-alternating",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-alternating",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-late",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-late",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-late",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-anchor",
+      "variant": "deferred",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-anchor",
+      "variant": "guard-scale",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    },
+    {
+      "sequence": 27570,
+      "case": "weighted-subnormal-anchor",
+      "variant": "guarded",
+      "bitwise_equal": true,
+      "tail_ok": true,
+      "reference_nan": 0,
+      "reference_nonzero": 0,
+      "reference_subnormal_bf16": 0
+    }
+  ],
+  "value_edge_count": 126,
+  "initial_failure": {
+    "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/stable-max-verification",
+    "exit_code": 1,
+    "reason": "测试脚本将Python大整数2**120传给BF16 fill_，12条已通过之后输入构造抛OverflowError；与kernel输出无关",
+    "fix": "显式float(2**120)及float(2**100)，并追加强制稳定max的加权极小V覆盖",
+    "original_source_sha256": "be3564997127c64f004574b5e3bd545c7786ddc3456ffb8ac7bd95a907c47c02"
+  },
+  "corrected_source_sha256": "253876e74ba5b3dcc5e419472d3f46108a616c6ec7e930f5a8edd432834cd71a",
+  "retry_exit_code": 0,
+  "selected": false,
+  "decision": "guarded生产长度单算子下降6.776%/6.264%，按2450次调用仅投影约2.61%完整请求收益，单项先归档，不开启新的整模型验收。研究与其他未选用的小项组合超过3%。",
+  "coverage_limit": "加权极小V用例保留reference_nonzero和reference_subnormal_bf16；部分参考输出为0，不能据此声称已观察到非零内部FP32 subnormal。"
+}

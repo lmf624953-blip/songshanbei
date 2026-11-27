@@ -2,9 +2,9 @@
 
 v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
 
-当前本地正式配置采用 Q128/K32 packed 长注意力的 P 行 LDS 布局与 V 预排布，叠加 Q/K RMSNorm/MRoPE、compact 原库顺序宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU。在 `f12r2n09` 的同一八卡常驻进程中，双方各预热一次后做三组完整 A 配对，请求墙钟由求和交错基准的 **142.320 秒降至 137.344 秒，下降 3.496%**；Transformer 由 121.994 降至 116.860 秒，下降 4.209%。三个候选样本为 136.993、138.403、136.637 秒。 [统一计时结果](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json)
+当前本地正式配置采用 Q128/K32 packed 长注意力的 P 行 LDS 布局与 V 预排布，并精简完整 KV 块中冗余的内部 P NaN payload 规范化及 xor4 DPP 归约。其余 Q/K RMSNorm/MRoPE、compact 原库顺序宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU 保留。在 `f12r2n09` 的同一八卡常驻进程内，双方各一次完整预热后三组 A 的请求墙钟由 **137.001043 降至 132.824526 秒，下降 3.048529%**；Transformer 由 116.891928 降至 111.878162 秒，下降 4.289232%。候选样本为 132.061697、133.824807、132.587075 秒。 [统一计时结果](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09-public-a.json)
 
-普通官方默认入口 A 和常驻 A×8/B/C/返回 A 共 11 请求均已通过，所有 MP4 与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 分别为 93.832013%、99.404123%、99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。当前配置未启用跨进程编译缓存优化。整卡显存每五秒采样的最高读数为 31960 MiB；该常驻实例混用基准和候选，不能据此推断独立实例的显存差。 [完整验收](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-qualified.json) · [构建与资源记录](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09.json)
+普通官方默认入口 A 和常驻 A×8/B/C/返回 A 共 11 请求均通过，所有 MP4 与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 为 93.832013%、99.404123%、99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。未启用跨进程编译缓存优化。三组完整请求分别下降 3.329599%、2.557911%、3.260003%；不能承诺每次均超过 3%。整卡显存五秒采样最高读数 33784 MiB，采样从首次预热中段开始，可能漏掉瞬时峰值，且混合实例保留双方工作区，不作独立显存差的依据。 [完整验收](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09-qualified.json) · [来源、取舍及原始 PMC](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09.json)
 
 复测当前验收组合使用 [统一入口](reproduce-public-a.sh) 和 [公开 A 耗时复测说明](公开A耗时复测说明.md)。已准备 `runtime` 后，在仓库根目录运行以下命令，`model` 指向包含 `model_index.json` 的权重目录；输出目录必须尚不存在。
 
@@ -21,9 +21,9 @@ bash "$repo/optimization/reproduce-public-a.sh" single \
   "$job/build-work/release" "$model" "$job/single"
 ```
 
-`resident/benchmark.json` 的 `comparison` 为 `row-sum-vs-p-row-prepacked-v`，正式成绩读取 `wall.candidate.mean`；`single/process-time.txt` 单独记录新进程启动到退出的总耗时，两者不能混用。
+`resident/benchmark.json` 的 `comparison` 为 `p-row-prepacked-v-vs-softmax-compact`，正式成绩读取 `wall.candidate.mean`；`single/process-time.txt` 单独记录新进程启动到退出的总耗时，两者不能混用。普通官方 A 的本轮新进程为 880.90 秒，模型组件加载约 635.48 秒，首次生成管线 191.064 秒，均与稳态均值单列。
 
-此前 `a14r1n11` 的联合发射版约为 147.55 秒，求和交错候选为 142.89 秒；下节保留其复测入口和原始记录。当前 137.344 秒与同轮 142.320 秒配对比较，不用跨节点绝对秒数计算加速比。
+此前 `f12r2n09` 的 P 行布局 + V 预排布已验收均值为 137.344178 秒，其同轮基准为 142.320005 秒；更早 `a14r1n11` 求和交错候选为 142.89 秒。当前 132.824526 秒只与本轮同节点 137.001043 秒比较，不混用不同版本或时间的绝对秒数。下节保留旧 142.89 秒重建入口。
 
 ## 复测 142.89 秒的公开 A 常驻配对
 

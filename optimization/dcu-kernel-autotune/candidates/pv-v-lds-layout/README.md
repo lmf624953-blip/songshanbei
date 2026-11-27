@@ -455,15 +455,15 @@ python build-softmax-ror4.py "$nan_only" "$combined"
 python verify-p-nan-payload.py "$integrated" "$combined" "$verification_jsonl"
 ```
 
-三个版本分别通过 95 个边界、普通/零值/溢出/非有限输入测试，以及两个生产长度的 19 组无 profiler 配对。长度小于 4096 时调用原回退，不能计作新 shader 的覆盖。27570/22016 token 的单项收益分别为：NaN payload 6.51%/6.40%，ROR4 2.78%/2.76%；两项单独预计均不足 3% 完整请求收益，单项不选版。组合由 22.9032/15.4837 ms 降至 20.8552/14.1163 ms，下降 8.947%/8.829%。首次内联扩展测试的 36 条记录覆盖两种符号的全部 254 个 BF16 NaN payload、带符号零和最大有限 Q/K，输出逐位相同。独立 `verify-p-nan-payload-edges.py` 已补为可复用入口，尚待本轮 GPU 验收结束后复核，不把新增脚本描述为已经执行。
+三个版本分别通过 95 个边界、普通/零值/溢出/非有限输入测试，以及两个生产长度的 19 组无 profiler 配对。长度小于 4096 时调用原回退，不能计作新 shader 的覆盖。27570/22016 token 的单项收益分别为：NaN payload 6.51%/6.40%，ROR4 2.78%/2.76%；两项单独预计均不足 3% 完整请求收益，单项不选版。组合由 22.9032/15.4837 ms 降至 20.8552/14.1163 ms，下降 8.947%/8.829%。首次内联扩展测试的 36 条记录覆盖两种符号的全部 254 个 BF16 NaN payload、带符号零和最大有限 Q/K，输出逐位相同。独立 `verify-p-nan-payload-edges.py` 已在完整验收退出后执行，36 条结果及尾部保护全部通过。
 
 真实八卡第 1/25/49 步的音视频输出与本轮正式基准逐位一致、调用数相同，各五次均值为 2.385210→2.283258、2.384882→2.282501、2.384840→2.281983 s，下降 4.274%/4.293%/4.313%。历史 capture 来自早期版本，本轮两侧均与其不同；逐位结论仅指本轮配对双方。独立重建的六个产物及汇编与已测试候选逐字节一致。独立 PMC 保持 220 VGPR、64 SGPR、16 KiB LDS、零 scratch，27570 token 的 bank conflict 约 0.01955%，22016 为 0%。PMC 的 `processed ALU instructions` 不是芯片峰值算力利用率，不能据此反推计算峰值。
 
-预计 49 次 Transformer 可节省约 5.017 秒，即约 3.65% 先前完整请求墙钟；这是回放投影，不是新的端到端实测。普通官方默认入口 A 已通过，49 次 Transformer、规格和独立质量均通过，SSIM 93.832013%，MP4 与已验收版逐字节一致。新进程墙钟 880.90 s、模型组件创建加载约 635.48 s、首次生成管线 191.064 s、Transformer 114.281 s，首次进程耗时单列。三组完整 A 及 B/C/返回 A 的独立稳态实例已经启动，正式配置仍保持此前已完整验收的版本。一次误用单卡可见环境的回放在加载 Transformer 前失败，原始失败日志保留；改为显式八卡后上述真实回放成功，不归因于硬件故障。 [逐位校验、无 profiler 配对、独立重建与真实八卡记录](../../docs/p-nan-ror4-f12r2n09.json) · [原始 PMC TXT](../../docs/p-nan-ror4-f12r2n09-basic-pmc.txt)
+预计 49 次 Transformer 可节省约 5.017 秒，即约 3.65% 先前完整请求墙钟；这是回放投影，不是新的端到端实测。普通官方默认入口 A 及 11 条连续请求均已通过。三组完整 A 请求由 137.001043±0.366754 s 降为 132.824526±0.905221 s，下降 3.048529%；Transformer 116.891928→111.878162 s，下降 4.289232%。三组分别下降 3.329599%/2.557911%/3.260003%，中位数 3.260003%，全部为正；八条 A 和 B/C/返回 A 均与对应已验收 MP4 逐字节一致，SSIM 为 93.832013%/99.404123%/99.630047%。新进程墙钟 880.90 s、模型组件创建加载约 635.48 s、首次生成管线 191.064 s、Transformer 114.281 s，单列而不混作稳态成绩。正式配置已切换到该组合，旧配置已备份。五秒显存采样最高读数 33784 MiB，未覆盖前面的加载且可能漏瞬时峰值，混合实例不作独立显存差依据。一次误用单卡可见环境的回放在加载 Transformer 前失败，原始失败日志保留；改为显式八卡后上述真实回放成功，不归因于硬件故障。 [逐位校验、无 profiler 配对、独立重建与真实八卡记录](../../docs/p-nan-ror4-f12r2n09.json) · [原始 PMC TXT](../../docs/p-nan-ror4-f12r2n09-basic-pmc.txt)
 
 ## 精简 softmax 候选的完整发布重建
 
-`build-softmax-compact-release.sh` 从上一节已冻结的 P 行布局 + V 预排布发布目录，依次执行内部 P payload 与 ROR4 变换，生成完整主机 ABI 的候选目录及配置。其余五个产物直接保留，短长度、其他步长和预排布回退均不变。此为仍在完整验收中的候选，重建成功和注册设备代码身份不表示已经选为正式版本。
+`build-softmax-compact-release.sh` 从上一节已冻结的 P 行布局 + V 预排布发布目录，依次执行内部 P payload 与 ROR4 变换，生成完整主机 ABI 的候选目录及配置。其余五个产物直接保留，短长度、其他步长和预排布回退均不变。该版本已完成完整验收并选为正式配置；重建操作本身仍不替代新环境的质量与性能验收。
 
 ```bash
 bash build-softmax-compact-release.sh "$current_prepacked_release" "$softmax_release"
@@ -471,13 +471,13 @@ bash "$code/optimization/benchmark-public-a.sh" \
   "$softmax_release" "$model" "$new_benchmark_output"
 ```
 
-计时仍是双方各预热一次后的三组完整 A 配对，`protocol` 和 `wall.candidate.mean` 的定义不变；`comparison` 为 `p-row-prepacked-v-vs-softmax-compact`，基准是此前约 137.344 秒的组合。当前 `reproduce-public-a.sh build` 默认仍重建已完成验收的旧组合，只有显式传入本节目录才会测新候选；不要把两组基准混用。
+计时仍是双方各预热一次后的三组完整 A 配对，`protocol` 和 `wall.candidate.mean` 的定义不变；`comparison` 为 `p-row-prepacked-v-vs-softmax-compact`，基准是此前约 137.344 秒的组合。当前 `reproduce-public-a.sh build` 已串接本节发布重建；其 `build-work/prepacked` 保留约 137 秒基准，`build-work/release` 是本轮约 132.825 秒正式版本。
 
 CPU 独立发布重建中，六个产物的可加载区段及映射均与实际八卡回放/普通官方 A 所用候选相同，五个逐字节相同，V 预排布镜像只在调试信息上不同。`verify-softmax-release-rebuild.py` 同时核对上游发布清单、七份构建相关源码及六个产物摘要；传入旧序列和旧 JSON 时，按 JSON 协议核对旧计时全部字段。新的汇总程序实际重算 137.344 秒结果后全字段相等，三阶段的冻结镜像检查通过，错误基准、未冻结的后续 shader 及未完成运行均被拒绝。基准快照里的构建 JSON 是内嵌数据，按结构比较，其余产物按 SHA-256 比较。 [重建及计时协议回归记录](../../docs/softmax-compact-release-f12r2n09.json)
 
-## 稳定最大值时的恒等重缩放，准备中
+## 稳定最大值时的恒等重缩放，单项收益不足 3% 归档
 
-`build-stable-max-rescale.py` 已在 CPU 上构建三种对照，均以本轮待验收的 NaN payload + ROR4 组合为直接参考：`deferred` 只延后 8 条 alpha exp，`guard-scale` 加 wave 一致判断但保留 exp，只省去恒等缩放，`guarded` 同时省去 exp 与恒等缩放。这样区分 SFU 调度变化、条件分支代价和省去实际指令的收益，目前没有 GPU 校验或性能结论。
+`build-stable-max-rescale.py` 已在 CPU 上构建三种对照，均以本轮待验收的 NaN payload + ROR4 组合为直接参考：`deferred` 只延后 8 条 alpha exp，`guard-scale` 加 wave 一致判断但保留 exp，只省去恒等缩放，`guarded` 同时省去 exp 与恒等缩放。这样区分 SFU 调度变化、条件分支代价和省去实际指令的收益；准备阶段没有 GPU 结论，实际结果见本节末尾。
 
 判定使用 8 个原始 `old_max-new_max` 的 FP32 位模式，按位 OR 并忽略符号位，只有 wave 全部活跃 lane 的八项都是 ±0 时才走快路径。NaN、Inf、最小非零 FP32 均走原路径，不按输入类型或样例分支。快速路径为后续原有分母 FMA 精确写入 alpha=1；MMAC、加法层级、尾块、barrier 与输出格式化保持原样。原描述符为 FP32 denorm mode 3、IEEE mode 1；`v206` 只作为本段死寄存器，后续 tail 先完整重定义，VCC 和 SCC 也检查后续原定义。其收益取决于真实数据中 max 稳定的比例以及分支开销，需要实测，不能由指令数直接报成绩。
 
@@ -489,4 +489,8 @@ done
 python verify-stable-max-values.py "$combined" "$guard_builds" "$value_edges"
 ```
 
-冻结脚本的静态断言通过，生成汇编与三份 CPU 构建逐字节一致，8192 组整数谓词覆盖通过。`verify-stable-max-values.py` 另准备 90 条专用检查，用零 Q/K 强制从第二完整块起进入稳定 max，覆盖最小 BF16 subnormal、极小正规值、抵消、带符号零、最大量级和非有限 V；尚未执行这些 GPU 检查。`run-stable-max-followup.sh` 已在等待完整验收进程退出，核对完整 11 请求成功及冻结源码后，才依次执行 payload 扩展、稳定 max 专用校验及三个版本的普通/异常/边界和 19 组生产长度配对，不与正在进行的八卡性能验收重叠。 [准备记录](../../docs/stable-max-rescale-f12r2n09-preparation.json)
+冻结脚本的静态断言通过，生成汇编与三份 CPU 构建逐字节一致，8192 组整数谓词覆盖通过。`verify-stable-max-values.py` 另准备 90 条专用检查，用零 Q/K 强制从第二完整块起进入稳定 max，覆盖最小 BF16 subnormal、极小正规值、抵消、带符号零、最大量级和非有限 V；准备阶段尚未执行这些 GPU 检查。原 `run-stable-max-followup.sh` 等待完整验收进程实际退出并核对源码后才启动，12 条专用记录通过后遇到后述输入构造错误。修正后的独立重试扩为 126 条，随后完成通用校验及 19 组配对，全程未与完整八卡测速重叠。 [准备记录](../../docs/stable-max-rescale-f12r2n09-preparation.json)
+
+稳定 max 的后续 GPU 测试已完成。首次脚本在 12 条结果已通过后，将 Python 大整数 `2**120` 交给 BF16 `fill_` 时发生类型转换溢出，未进入该用例的 kernel 比较；原始失败和源码快照保留。修正为显式浮点数，并加入加权极小 V 后，126 条专用最终 BF16 位模式及尾部保护检查、每变体 95 条通用检查均通过。部分加权极小 V 的参考输出为零，记录保留非零和 BF16 subnormal 数量，不宣称观测到非零内部 FP32 subnormal。
+
+19 组无 profiler 配对中，`deferred` 在 27570/22016 token 节省 0.705%/0.638%，`guard-scale` 为 3.341%/3.114%，`guarded` 为 6.776%/6.264%。最佳主长度由 20.856625 降至 19.442707 ms；按每次完整 A 的 2450 次长注意力调用，仅投影约 3.464 秒、2.608% 完整请求收益。三个单项均先归档，未单独采用，也未新跑整模型验收；投影不是新的端到端实测。下一步研究与其他未选用的小项组合超过 3%。 [修正输入构造、全部逐位及配对原始记录](../../docs/stable-max-rescale-f12r2n09.json)

@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import math
 import os
 from pathlib import Path
 import runpy
@@ -27,7 +28,9 @@ def main():
         for rows in (4096, 4097, 27570):
             for case in ("tiny-normal", "minimum-bf16-subnormal", "signed-zero",
                          "alternating-tiny", "alternating-large", "random-large",
-                         "positive-inf", "negative-inf", "mixed-inf", "nan"):
+                         "positive-inf", "negative-inf", "mixed-inf", "nan",
+                         "weighted-subnormal", "weighted-subnormal-alternating",
+                         "weighted-subnormal-late", "weighted-subnormal-anchor"):
                 def packed(heads):
                     return torch.randn((1, rows, heads, 128), device="cuda",
                                        dtype=torch.bfloat16, generator=generator)
@@ -42,11 +45,11 @@ def main():
                     v.fill_(-0.0)
                     v[:, :, ::2] = 0.0
                 elif case in ("alternating-tiny", "alternating-large"):
-                    value = 2 ** -133 if case == "alternating-tiny" else 2 ** 120
+                    value = 2 ** -133 if case == "alternating-tiny" else float(2 ** 120)
                     v.fill_(-value)
                     v[:, :, ::2] = value
                 elif case == "random-large":
-                    v.mul_(2 ** 100)
+                    v.mul_(float(2 ** 100))
                 elif case == "positive-inf":
                     v.fill_(float("inf"))
                 elif case == "negative-inf":
@@ -54,8 +57,23 @@ def main():
                 elif case == "mixed-inf":
                     v.fill_(float("inf"))
                     v[:, :, ::2] = float("-inf")
-                else:
+                elif case == "nan":
                     v.fill_(float("nan"))
+                else:
+                    # max=0 此后不变；普通 key 的 P 约为 2^-16，使正常 BF16 V
+                    # 产生 FP32 subnormal 累加器，检查 packed 乘1的硬件语义。
+                    q[..., 0] = 1.0
+                    k[..., 0] = -16.0 * math.log(2.0) / (128 ** -0.5)
+                    k[:, :, 0, 0] = 0.0
+                    value = torch.finfo(torch.bfloat16).tiny
+                    v.fill_(value)
+                    if case == "weighted-subnormal-alternating":
+                        v[:, :, ::2] = -value
+                    if case == "weighted-subnormal-late":
+                        v[:, :, :32] = 0.0
+                    if case == "weighted-subnormal-anchor":
+                        v[:, :, 1] = float(2 ** -110)
+                    v[:, :, 0] = 0.0
                 expected = torch.empty((1, rows, 7, 128), device="cuda",
                                        dtype=torch.bfloat16).transpose(1, 2)
                 reference(q, k, v, 128 ** -0.5, expected)
@@ -68,12 +86,16 @@ def main():
                     exact = torch.equal(expected.view(torch.int16), actual.view(torch.int16))
                     tail_ok = bool((storage[:, -2:] == -19).all())
                     record = dict(sequence=rows, case=case, variant=name, bitwise_equal=exact,
-                                  tail_ok=tail_ok, reference_nan=int(torch.isnan(expected).sum()))
+                                  tail_ok=tail_ok, reference_nan=int(torch.isnan(expected).sum()),
+                                  reference_nonzero=int(torch.count_nonzero(expected)))
+                    absolute_bits = expected.view(torch.int16) & 0x7fff
+                    record["reference_subnormal_bf16"] = int(torch.count_nonzero(
+                        (absolute_bits > 0) & (absolute_bits < 0x80)))
                     stream.write(json.dumps(record) + "\n")
                     stream.flush()
                     if not exact or not tail_ok:
                         raise ValueError(record)
-    print("90 组稳定 max 的 V 边界输入逐位一致，尾部保护通过")
+    print("126 组稳定 max 的 V 边界输入逐位一致，尾部保护通过")
 
 
 if __name__ == "__main__":
