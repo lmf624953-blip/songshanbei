@@ -266,3 +266,23 @@ bash build-row-sum-release.sh "$build/attention" "$build/candidate.env" "$releas
 ```
 
 在 `a14r1n11` 的三组八卡 A 配对中，端到端均值由 147.80 秒降至 142.89 秒，节省 3.32%。Transformer 均值由 127.67 秒降至 121.97 秒。普通官方 A 与常驻 A、B 已完成的成片均和联合发射版逐字节一致。该轮计时全部来自同一个常驻进程，C 和返回 A 回归待完成。 [已完成的端到端配对与成片检查](../../docs/softmax-row-sum-a14r1n11-steady-partial.json)
+
+## 独立 K 分区与 P 写入流水
+
+`build-disjoint-k-lds.py` 在求和交错镜像的 16 KiB 基础上为 K 增加 8 KiB。K 分区的读写使用原偏移加 16384 B，保留每次发布后的读取顺序。独立分区允许分别移除覆盖 K 前及覆盖 P 前的线程块同步。用 `--allocation-only` 保持设备指令一致，只调整发射时的 LDS 分配。
+
+`build-p-lds-pipeline.py` 保持 16 KiB。它将完整块的 P 写入按寄存器最后一次赋值提前，保持原 LDS 地址和写入顺序。可独立测量同步前移、每次发射一条或四条、移除已有屏障后的等待。用 `--k-in-v-region` 比较 K/V 共用分区、P 独立的布局，P 可在 K/V 覆盖同步之前发射。
+
+```bash
+ref="$release/attention"
+mkdir "$builds"
+python build-disjoint-k-lds.py "$ref" "$builds/drop-both" --remove-k-fence --remove-p-fence
+python build-p-lds-pipeline.py "$ref" "$builds/early-four" --move-p-fence --store-batch 4
+python build-p-lds-pipeline.py "$ref" "$builds/alias-pending" \
+  --k-in-v-region --store-batch 4 --keep-p-pending
+python screen-pv-wide-operand.py "$ref" "$builds" "$results"
+```
+
+在 `f12r2n09` 的 27570/22016 token 上，13 个布局和时序候选均通过正常输入、放大输入及输出哨兵校验。独立 K 分区同时移除两处同步后，相对只换布局快约 2.2%–2.6%，相对 16 KiB 基准仍回退 10.01%/9.40%。机器码一致的 24 KiB 分配对照回退 12.57%/12.36%，采样的平均活跃 wave 从约 11.32/10.59 降至 7.75/7.30 每 CU。独立 PMC 中，三个分区变体采样的 LDS 指令、bank conflict、全局读取指令数相同。移除同步降低 LDS 等待计数约 30%，但额外分配的代价更大。移除两处同步的镜像通过另外 20 个长度与 24 组特殊 BF16 输入。
+
+16 KiB 组的 `early-four` 在 19 组复测中节省 0.67%/0.66%，对应独立 PMC 的 LDS 等待计数下降约 10%。K/V 复用分区的最快组合节省 0.39%/0.35%。代表性构建逐文件复建一致。本轮收益低于进入八卡验证的优先线，保留实验版本和原默认。 [配对、边界及 PMC 记录](../../docs/kp-lds-f12r2n09.json)

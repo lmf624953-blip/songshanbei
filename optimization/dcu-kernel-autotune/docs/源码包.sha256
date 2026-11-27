@@ -66,9 +66,10 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-0de04e986ebfdeea834aac6b274fc0cf39420ea8905e70421736bc26ae646360  candidates/pv-v-lds-layout/README.md
+0b987c1dc6c94882614d2759ba46114c090c5a8fc399e1522d276b930747c235  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
+526583d7dc9d5b450278c4a4829e58857aac1cec6e5562295bbbd277c01fa821  candidates/pv-v-lds-layout/build-disjoint-k-lds.py
 07daea88808f2f1d293b205e27b6d5204ce5af78d27c01c3e4e14d1510ae9aa2  candidates/pv-v-lds-layout/build-dual-q128.py
 16567e781f9ccdb388bebc2013fa80387745054da32acfa042b9940aff1d673a  candidates/pv-v-lds-layout/build-full-kv-unmasked.py
 346b06774664a7d31d083ec0d3ac670ffe2b5532f62bc7e7ca83ab49df53a4b1  candidates/pv-v-lds-layout/build-k-cross-block.py
@@ -78,6 +79,7 @@ e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-
 3cbe87743eabea1f9b76b4cfee23d85e4dd56da0e1458c470476f49728d32006  candidates/pv-v-lds-layout/build-mmac-issue.py
 c43b76d19f96c0d7bd5ada09c45a12425da4c8a04e8547554537cc312a88d0e4  candidates/pv-v-lds-layout/build-p-half-lds.py
 3c740f14a5141d06f5b58cd7c71a55b604ffa1afb5e6f5b12a16e2483cc87ae1  candidates/pv-v-lds-layout/build-p-lds-axis.py
+9d8a9f93a0eb309c0c8a38396dc078a0210070c961463e042ce56ad8080ac4a5  candidates/pv-v-lds-layout/build-p-lds-pipeline.py
 cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-v-lds-layout/build-p-resources.py
 2b12171a926b8f205eb7f170b68eefe1e9d4deb733945fa0c0e3983ba92565e8  candidates/pv-v-lds-layout/build-p-wave-exchange.py
 9cea029bc1a84412fa700432301e61fb838774a0f7f72a42b5e88b0d075c8d69  candidates/pv-v-lds-layout/build-p-wave-lds.py
@@ -226,6 +228,7 @@ f2096ef6785a1f2d760a1c42567e75a5730803476b08750a4492e48163b9fb9c  docs/k-cross-b
 7079388a61d4862472ab5d99142cefff7791d5bc365c32c9c95f9f658142af24  docs/k-loop-scalar-a14r1n11.json
 ab51b6f67eb0122b472910f6fceeda1d7c2a48a02eb92203e16b016e2e93fa06  docs/k-pretranspose-a14r1n11.json
 92094b5f1ca4cd1bbca7f0120888a6b0ce37527b9a7566c893d3f54306e0b08f  docs/k-producer-a14r1n11.json
+5c78d36f1bf1f5f2906d744f7c178a71e34d7cb9f9e3d7dc2204b6c539652495  docs/kp-lds-f12r2n09.json
 6c9edb645899d22c061ffa00b6d3f235cfa842e3cc7ad1a174ac0e5298e7ed91  docs/mmac-issue-a14r1n11.json
 ffd40883c739b6e7ce8482c69bbd02f0bdfd6765cd03eae22d4c298aa301f561  docs/mrope-aot-screen.json
 24eaa7c1f98fc09aa9844ff8d18903e55f78bcc30a33d3d071d843e6d8a6a5d7  docs/p-half-lds-a14r1n11.json
