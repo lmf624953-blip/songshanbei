@@ -2162,5 +2162,45 @@
   },
   "official_process_time": "process.wall 878.74 s\nprocess.peak_rss 28357428 KiB\n",
   "official_sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
-  "official_matches_accepted": true
+  "official_matches_accepted": true,
+  "unified_release_rebuild": {
+    "peer-gate.hsaco": {
+      "byte_equal": false,
+      "loaded_sections_equal": true,
+      "mapping_equal": true,
+      "original_sha256": "7cdb0467abde2195e50e57a7a1244802b2a5ff7cee6100c67c2cebc7dd1ba62f",
+      "rebuilt_sha256": "8499ec13b54cd9c692a1d1ea585b6de7a1c10f466dd418ba4a43a7533bee9b37"
+    },
+    "peer-gate-bridge.so": {
+      "byte_equal": true,
+      "loaded_sections_equal": true,
+      "mapping_equal": true,
+      "original_sha256": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0",
+      "rebuilt_sha256": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0"
+    },
+    "peer-transport.so": {
+      "byte_equal": true,
+      "loaded_sections_equal": true,
+      "mapping_equal": true,
+      "original_sha256": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c",
+      "rebuilt_sha256": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c"
+    },
+    "native": {
+      "byte_equal": true,
+      "original": {
+        "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/native-release/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+        "sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510"
+      },
+      "rebuilt": {
+        "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/native/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+        "sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510"
+      }
+    },
+    "frozen_reference_env": "# 已求值的前序正式配置；不追踪未来selected-best变化。\nexport H3_ADALN_AOT_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/adaln\nexport H3_ADALN_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/infinilm\nexport H3_ATTENTION_AOT_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-stable-paired-f12r2n09\nexport H3_ENCODER_INITIAL_CACHE=512\nexport H3_ENCODER_TP_COUNT=4\nexport H3_INDEXED_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed\nexport H3_PY_ATTENTION_FP32_SCALE=1\nexport H3_QKNORM_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/qknorm\nexport H3_QKNORM_MROPE_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/qknorm-mrope\nexport H3_SHORT_ATTENTION_AOT_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/short-attention\nexport H3_SWIGLU_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/swiglu\nexport H3_VAE_DETERMINISTIC_ENCODE=1\nexport H3_VAE_DEVICES=0,1\nexport H3_WIDE_NORM_INDEXED_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/wide-norm-indexed\n",
+    "candidate_env": "# 九齿分片通信/门控候选；资格以独立完整请求记录为准。\nsource /public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/reference.env\nexport H3_ADALN_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/native\nexport H3_PEER_GATE_BUILD=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper/peer\nexport H3_PEER_GATE_ENABLED=1\n",
+    "qualified": false,
+    "build_exit": 0,
+    "native_compile_seconds": 252.23829544498585,
+    "release_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/release-wrapper"
+  }
 }

@@ -16,6 +16,16 @@
 
 ```bash
 here="$H3_AUTOTUNE_CODE_ROOT/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel"
+# 统一入口：冻结前序配置并依次构建设备镜像、通信桥和native。
+# 若使用私有源码版xmake，先设置XMAKE_PROGRAM_DIR为其Lua脚本目录。
+bash "$here/build-peer-release.sh" "$accepted_config" "$new_release" "$xmake_binary"
+```
+
+统一入口已在新目录完整执行，构建退出码0；生成的native、主机桥和transport逐字节一致，九齿镜像加载区段及映射一致。`reference.env`保存求值后的前序配置，不依赖以后可能改变的`selected-best.env`。`candidate.env`是新发布目录的候选入口；`release.json`初始`qualified=false`，仍须完整模型验收后才能选为正式版本。
+
+需要分步研究时可使用以下命令；不要把统一入口与分步入口的输出指向同一目录：
+
+```bash
 python "$here/build-peer-nt.py" "$new_nt" --tile 1024 --warps 4
 python "$here/build-peer-bridge.py" "$new_nt" "$new_peer_runtime"
 # xmake也可使用源码附带工具的私有构建，并设置其XMAKE_PROGRAM_DIR。
