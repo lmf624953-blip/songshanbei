@@ -1,5 +1,30 @@
 # 官方公开 A 耗时复测说明
 
+## 当前已验收版本与入口
+
+2026-11-28 当前正式默认是九齿分片求和/门控发布版 `peer-gate-nt-f13r1n16`，在 `f13r1n16` 同实例三组完整 A 配对中为 **128.436449 → 120.698043 秒**，下降 **6.025086%**。协议为 `minimax-h3-public-a-peer-gate-paired-v1`，比较为 `selected-stable-paired-vs-peer-gate`，主字段仍为 `wall.candidate.mean`。阶段、质量及原始记录见[完整报告](dcu-kernel-autotune/docs/分片门控融合-f13r1n16.md)。
+
+当前账号可以直接复用已经验收的发布目录，无需重建：
+
+```bash
+repo=/public/home/acvduipmem/xsh/songshanbei/submission-xsh
+release=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/peer-gate-nt-f13r1n16
+model=/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3
+# 输出目录必须尚不存在。
+bash "$repo/optimization/reproduce-public-a.sh" resident "$release" "$model" "$new_resident_output"
+bash "$repo/optimization/reproduce-public-a.sh" single "$release" "$model" "$new_single_output"
+```
+
+两种模式分别启动任务，应串行执行。`resident` 是同一模型实例中的八个完整 A，排除双方各一次预热，读取后三组配对；`single` 是新进程从启动到退出，包含加载和首次生成。本轮后者为 **878.74 秒**，不能与 120.698043 秒直接比较。阶段存在嵌套，不能将 `generation.pipeline_total` 与其中的 Transformer、VAE 再相加。
+
+新账号或新克隆需要先准备相同运行环境；当前统一脚本识别 peer 发布目录。源码重建步骤见[peer 构建说明](dcu-kernel-autotune/candidates/rccl-sequence-parallel/README.md)：使用其 `build-peer-release.sh REFERENCE_CONFIG NEW_RELEASE XMAKE_BINARY`，前序配置可以由下文的注意力构建流程生成。`reproduce-public-a.sh build` 仅生成下文的注意力前序，不会自动接入 peer 或行分片归一化，不能把其输出当作最新组合。
+
+另有 `peer-sharded-norm-model` 行分片归一化候选，真实八卡回放及普通默认 A 已通过，完整稳态资格正在执行；尚未替换本节正式默认，也尚无新的完整请求成绩。其 `build-sharded`、`resident`、`single` 与 `h3-peer-sharded-norm-v1` 发布目录说明见[模型候选 README](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)。
+
+## 历史注意力版本：127.831 秒的固定源码与复测记录
+
+以下第 1–5 节完整保留 `f12r2n09` 注意力版本的原始构建、样本与协议。“本轮”“当前 fast”均指该历史版本。其对照和成绩字段不能套用至上节的 peer 或行分片归一化版本。
+
 当前完整验收版为 **P 行 LDS + V 预排布 + 内部 P/ROR4 精简 + stable-max guarded / 成对 P 算术**。在 `f12r2n09` 的八卡 BW1000 上，模型常驻、双方各一次完整预热后三次完整 A 请求均值为 **127.831000722 秒**。同轮基准为上一版精简 softmax，均值 132.556449158 秒；下降 3.564857%。
 
 统一入口：[reproduce-public-a.sh](reproduce-public-a.sh)。主协议固定为 `minimax-h3-public-a-resident-paired-v1`，当前比较为 `softmax-compact-vs-stable-paired`，主字段为 `wall.candidate.mean`。代码、输入和统计口径可以固定；节点负载、依赖、频率和写盘速度会影响绝对秒数。
