@@ -5104,6 +5104,18 @@
       "card7": 33662
     },
     "maximum_mib": 33784,
-    "scope": "从首次预热中段至所有11条生成结束；未覆盖此前模型加载峰值。混合实例同时保留两套预排布工作区，不据此推断独立候选显存差。"
+    "scope": "从首次预热中段至所有11条生成结束；未覆盖此前模型加载峰值。混合实例同时保留两套预排布工作区，不据此推断独立候选显存差。 该数字是最高采样读数，不保证捕获瞬时峰值。"
+  },
+  "payload_input_bitcheck": {
+    "q": {
+      "payload_count": 254,
+      "preserved_int16_bits": true,
+      "replicated_components": 128
+    },
+    "k": {
+      "payload_count": 254,
+      "preserved_int16_bits": true,
+      "replicated_components": 128
+    }
   }
 }
