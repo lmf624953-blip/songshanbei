@@ -397,4 +397,4 @@ hipprof --pmc --kernel-name dense_attention_aot_kernel -o "$pmc" \
 
 实验入口的 53 条记录覆盖三组 19 对计时、20 个边界长度、零值/放大输入/零 scale 和连续更新 V；正式主机的 40 条记录覆盖生产长度配对、八张卡、短长度回退、Q/K/V/O 步长回退、双 stream 及工作区增长/缩小。数值逐位比较、有限值和输出尾部哨兵全部通过。独立 `hipprof --pmc` 原始 TXT 的 `shared memory bank conflict` 为 27570 token 约 0.0178%、22016 token 0%，分配资源仍为 220 VGPR、16 KiB LDS、零 scratch。
 
-按历史调用次数估计可节省约 5.13 s，相当于历史 142.89 s 的 3.59%。此为跨节点估算，尚不能作为完整生成的实测成绩。候选正在做真实八卡 Transformer 回放，后续仍需完整官方入口和多用例稳态验收，正式默认配置保持不变。 [配对和验证记录](../../docs/p-row-prepacked-f12r2n09.json) · [原始 PMC TXT](../../docs/p-row-prepacked-f12r2n09-basic-pmc.txt)
+按历史调用次数估计可节省约 5.13 s，相当于历史 142.89 s 的 3.59%。此为跨节点估算，尚不能作为完整生成的实测成绩。真实八卡第 1/25/49 步各做五次正式计时，中位数分别由 2.489466/2.488783/2.488489 s 降至 2.384881/2.384666/2.384024 s，三处中位数合计节省约 4.19%，音视频张量逐位相同、算子调用数相同。完整官方入口和三组 A 配对、B/C/返回 A 验收正在运行，正式默认配置保持不变。 [配对和验证记录](../../docs/p-row-prepacked-f12r2n09.json) · [原始 PMC TXT](../../docs/p-row-prepacked-f12r2n09-basic-pmc.txt)
