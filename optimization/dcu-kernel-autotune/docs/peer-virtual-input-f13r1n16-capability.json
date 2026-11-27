@@ -1,0 +1,37 @@
+{
+  "scope": "仅HIP VMM/跨卡复制能力，不是模型或性能成绩",
+  "probe_exit_code": 0,
+  "result": {
+    "hip_runtime_version": 60326113,
+    "vmm_supported": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "granularity": [
+      4096,
+      4096,
+      4096,
+      4096,
+      4096,
+      4096,
+      4096,
+      4096
+    ],
+    "mapped_bytes": 32768,
+    "exact_consumer_devices": 8,
+    "status": "memory-copy-pass"
+  },
+  "node": "f13r1n16",
+  "source_commit": "990352e15fd53e468bc343cf00a797016122cbaf",
+  "sha256": {
+    "probe-vmm.cc": "0b4e66794c8952a1503bcf7bb976d2abd210949b2982f74861b65d4c83f7a3d3",
+    "probe-vmm": "8db527b0dc24cf483f3d500de9970bcdd2b058b90bf7f0a415912b068aa73a96",
+    "compiler.txt": "857d05f1c621a79e60b76c5838f95d2949bccb3bfd6decfdb6035361cf332d01"
+  }
+}

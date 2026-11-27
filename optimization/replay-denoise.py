@@ -292,7 +292,7 @@ def main():
                             paired = tuple(x.detach().cpu().clone() for x in outputs(result))
                         else:
                             record["against_paired_attention"] = compare(result, paired)
-                    if args.peer_gate_ablation:
+                    if hasattr(control, "peer_gate_stats"):
                         record["peer_gate_stats"] = control.peer_gate_stats()
                     print(json.dumps(record), flush=True)
                     records.append(record)

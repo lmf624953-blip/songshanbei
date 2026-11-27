@@ -1,8 +1,8 @@
 # MiniMax-H3 决赛推理
 
-当前完整验收最优版为 **九齿分片BF16累加/门控融合**，沿用下述已验收长注意力。`f13r1n16`同一八卡实例三组完整官方A为 **128.436449→120.698043秒，下降6.025086%**；49次Transformer为 **107.217758→101.138358秒，下降5.670143%**。普通默认入口及A×8/B/C/返回A全部通过，成片逐字节一致；原始PMC、Tree回退、稳定发布目录的真实八卡装载及重建来源均已核验。未启用跨进程编译缓存。[完整报告与适用范围](dcu-kernel-autotune/docs/分片门控融合-f13r1n16.md) · [选版记录](dcu-kernel-autotune/docs/peer-gate-nt-f13r1n16-selection.json)
+当前完整验收最优版为 **九齿分片 BF16 求和/门控 + 按完整行分片归一化后发布**，沿用已验收长注意力。`f13r1n16` 同一八卡实例三组完整官方 A 为 **122.526417→116.975680 秒，下降 4.530237%**；49 次 Transformer 为 **101.170642→97.202297 秒，下降 3.922428%**。普通默认入口、A×8/B/C/返回 A、独立重建、稳定发布实际加载、真实模型 trace 与独立模型桥 PMC 全部通过，成片逐字节一致，本地默认已切换。未启用跨进程编译缓存。[完整报告与适用范围](dcu-kernel-autotune/docs/行分片归一化模型-f13r1n16.md) · [选版记录](dcu-kernel-autotune/docs/peer-sharded-norm-model-f13r1n16-selection.json)
 
-复测新版本先用下文`build`构建前序注意力发布目录，再运行`dcu-kernel-autotune/candidates/rccl-sequence-parallel/build-peer-release.sh REFERENCE_CONFIG NEW_RELEASE XMAKE_BINARY`。随后统一`reproduce-public-a.sh resident NEW_RELEASE MODEL NEW_OUTPUT`读取`benchmark.json`的`wall.candidate.mean`；`single`单列新进程加载及首次生成。新版本完整流程见[候选构建及复测说明](dcu-kernel-autotune/candidates/rccl-sequence-parallel/README.md)。
+已有稳定发布目录可直接用 `reproduce-public-a.sh resident RELEASE MODEL NEW_OUTPUT`，读取 `benchmark.json` 的 `wall.candidate.mean`；`single` 单列新进程加载与首次生成，本轮普通入口 875.75 秒。新构建先生成下文注意力前序，再用 `rccl-sequence-parallel/build-peer-release.sh` 构建 peer 参考，最后 `reproduce-public-a.sh build-sharded ACCEPTED_PEER_CONFIG NEW_WORK XMAKE_BINARY`。完整命令与计时口径见[复测说明](公开A耗时复测说明.md)及[模型构建说明](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)。前序 peer 版 120.698043 秒保留作为参考，不将跨轮绝对时间差当本轮加速比。
 
 上一阶段完整验收版为 Q128/K32 packed 的 **P 行 LDS + V 预排布 + 内部 P/ROR4 精简 + stable-max guarded / 成对 P 算术**。在 `f12r2n09` 的同一八卡常驻进程内，双方各一次完整预热后三组官方 A 的完整请求均值为 **132.556449→127.831001 秒，下降 3.564857%**；Transformer 为 **111.882041→107.287698 秒，下降 4.106416%**。候选样本为 127.596813、127.413285、128.482905 秒，标准差 0.571975 秒，三组请求分别下降 4.064172%、3.347815%、3.280321%。
 

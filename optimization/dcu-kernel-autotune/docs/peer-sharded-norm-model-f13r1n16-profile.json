@@ -1,0 +1,1989 @@
+{
+  "scope": "真实八卡单次Transformer独立trace；排除加载、预热和2秒排空，非正式成绩",
+  "identity": {
+    "native_sha256": "ba2e14c8e7b4bacf473a4cf4b2be9e6305231313c057c0bd1a9e7a7c1ed5f26e",
+    "model_nt_sha256": "2807de6fad1af99613732dc6dae5bc627f7bbb82e2d443813c452894f64fd165",
+    "reference_nt_sha256": "8499ec13b54cd9c692a1d1ea585b6de7a1c10f466dd418ba4a43a7533bee9b37",
+    "host_sha256": {
+      "peer-gate-bridge.so": "da8c3fb51c7859d37c770b982a5a329d10b982c94186057f4aef9d0fc943c3aa",
+      "peer-transport.so": "40c74f002dd5d2480a69a8aafcd5935e51877f2193873a1f6e213a28b5c3e294"
+    },
+    "norm_host_sha256": "fda12374fdf350995bf59028978c4c6029825afe591eb1370716e4adaf6cc0bc"
+  },
+  "state_evidence": "legacy-format:fixed-bridge-final-materialization-counters-and-normal-exit",
+  "trace_sha256": "d47c1a5062e30cde32e4d3e57328673efc54308acaaf26f10df9861a3be71afe",
+  "output_hashes": {
+    "video": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779",
+    "audio": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+  },
+  "device0_groups_ms": {
+    "长短注意力合计": 937.377468,
+    "GEMM": 444.99740399999996,
+    "行分片求和与门控": 252.460016,
+    "行分片发布": 217.791259,
+    "QK归一化与MRoPE": 37.910368000000005,
+    "其他设备操作": 36.545589000000014,
+    "首层完整及后续局部归一化": 15.047357,
+    "SwiGLU": 12.795663
+  },
+  "timeline": {
+    "wall_ms": 1984.893365,
+    "any_device_active_pct": 99.38190437751804,
+    "all_devices_idle": {
+      "idle_ms": 12.268539,
+      "internal_idle_ms": 11.354994,
+      "leading_idle_ms": 0.488912,
+      "trailing_idle_ms": 0.424633,
+      "internal_gap_counts_at_least_ms": {
+        "0.01": 215,
+        "0.1": 6,
+        "0.5": 2,
+        "1": 0,
+        "5": 0,
+        "10": 0
+      },
+      "largest_internal_gaps": [
+        {
+          "begin_ms": 1.024592,
+          "end_ms": 1.655632,
+          "duration_ms": 0.63104,
+          "previous": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void at::native::vectorized_elementwise_kernel<4, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>)",
+            "stream": "0"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPCOPY",
+            "name": "Memset",
+            "stream": "0"
+          }
+        },
+        {
+          "begin_ms": 1.90907,
+          "end_ms": 2.49755,
+          "duration_ms": 0.58848,
+          "previous": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>::result_type*)",
+            "stream": "0"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+            "stream": "101"
+          }
+        },
+        {
+          "begin_ms": 1984.159259,
+          "end_ms": 1984.318012,
+          "duration_ms": 0.158753,
+          "previous": {
+            "device": 6,
+            "category": "HIPOPS",
+            "name": "void embeddingKernel<float, long>(float*, long const*, float const*, unsigned long, unsigned long, unsigned long)",
+            "stream": "133"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPCOPY",
+            "name": "DeviceToDevice",
+            "stream": "101"
+          }
+        },
+        {
+          "begin_ms": 1984.336572,
+          "end_ms": 1984.464412,
+          "duration_ms": 0.12784,
+          "previous": {
+            "device": 0,
+            "category": "HIPCOPY",
+            "name": "DeviceToDevice",
+            "stream": "101"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPCOPY",
+            "name": "DeviceToDevice",
+            "stream": "101"
+          }
+        },
+        {
+          "begin_ms": 1.679792,
+          "end_ms": 1.79403,
+          "duration_ms": 0.114238,
+          "previous": {
+            "device": 0,
+            "category": "HIPCOPY",
+            "name": "Memset",
+            "stream": "0"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy_contig<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 2, 128, 1>(at::native::(anonymous namespace)::OpaqueType<4u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+            "stream": "0"
+          }
+        },
+        {
+          "begin_ms": 0.492112,
+          "end_ms": 0.592432,
+          "duration_ms": 0.10032,
+          "previous": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}>::result_type*)",
+            "stream": "0"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void at::native::vectorized_elementwise_kernel<4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+            "stream": "0"
+          }
+        },
+        {
+          "begin_ms": 1545.259297,
+          "end_ms": 1545.348977,
+          "duration_ms": 0.08968,
+          "previous": {
+            "device": 7,
+            "category": "HIPOPS",
+            "name": "publish_rows(unsigned short const*, Addresses, unsigned long, int)",
+            "stream": "101"
+          },
+          "next": {
+            "device": 3,
+            "category": "HIPOPS",
+            "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+            "stream": "133"
+          }
+        },
+        {
+          "begin_ms": 642.756017,
+          "end_ms": 642.845206,
+          "duration_ms": 0.089189,
+          "previous": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "publish_rows(unsigned short const*, Addresses, unsigned long, int)",
+            "stream": "101"
+          },
+          "next": {
+            "device": 6,
+            "category": "HIPOPS",
+            "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+            "stream": "133"
+          }
+        },
+        {
+          "begin_ms": 0.595472,
+          "end_ms": 0.682992,
+          "duration_ms": 0.08752,
+          "previous": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void at::native::vectorized_elementwise_kernel<4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+            "stream": "0"
+          },
+          "next": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<double>, std::array<char*, 1ul> >(int, at::native::FillFunctor<double>, std::array<char*, 1ul>)",
+            "stream": "0"
+          }
+        },
+        {
+          "begin_ms": 838.874989,
+          "end_ms": 838.962198,
+          "duration_ms": 0.087209,
+          "previous": {
+            "device": 0,
+            "category": "HIPOPS",
+            "name": "publish_rows(unsigned short const*, Addresses, unsigned long, int)",
+            "stream": "101"
+          },
+          "next": {
+            "device": 3,
+            "category": "HIPOPS",
+            "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+            "stream": "133"
+          }
+        }
+      ]
+    },
+    "devices": {
+      "0": {
+        "device_activity_pct": 98.48224808792185,
+        "busy_ms": 1954.767608,
+        "compute_busy_ms": 1944.399772,
+        "communication_busy_ms": 8.514558,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 9,
+          "HIPOPS": 1075,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 30.125757,
+        "internal_idle_ms": 29.212212,
+        "leading_idle_ms": 0.488912,
+        "trailing_idle_ms": 0.424633,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 216,
+          "0.1": 132,
+          "0.5": 2,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 1.024592,
+            "end_ms": 1.655632,
+            "duration_ms": 0.63104,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPCOPY",
+              "name": "Memset",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 1.90907,
+            "end_ms": 2.49755,
+            "duration_ms": 0.58848,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>::result_type*)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 470.32045,
+            "end_ms": 470.78797,
+            "duration_ms": 0.46752,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1294.196472,
+            "end_ms": 1294.618391,
+            "duration_ms": 0.421919,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1490.142917,
+            "end_ms": 1490.559875,
+            "duration_ms": 0.416958,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1097.751379,
+            "end_ms": 1098.160017,
+            "duration_ms": 0.408638,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1842.549206,
+            "end_ms": 1842.914166,
+            "duration_ms": 0.36496,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1254.889132,
+            "end_ms": 1255.21345,
+            "duration_ms": 0.324318,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1137.303518,
+            "end_ms": 1137.612158,
+            "duration_ms": 0.30864,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1686.11843,
+            "end_ms": 1686.42643,
+            "duration_ms": 0.308,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          }
+        ]
+      },
+      "1": {
+        "device_activity_pct": 98.36369360829617,
+        "busy_ms": 1952.414428,
+        "compute_busy_ms": 1944.274434,
+        "communication_busy_ms": 6.116155,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 32.478937,
+        "internal_idle_ms": 28.951876,
+        "leading_idle_ms": 2.75435,
+        "trailing_idle_ms": 0.772711,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 211,
+          "0.1": 121,
+          "0.5": 2,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 1137.081064,
+            "end_ms": 1137.612103,
+            "duration_ms": 0.531039,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1294.114936,
+            "end_ms": 1294.616376,
+            "duration_ms": 0.50144,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 3.14715,
+            "end_ms": 3.64427,
+            "duration_ms": 0.49712,
+            "previous": {
+              "device": 1,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1490.127847,
+            "end_ms": 1490.558725,
+            "duration_ms": 0.430878,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1646.845168,
+            "end_ms": 1647.255086,
+            "duration_ms": 0.409918,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1097.799659,
+            "end_ms": 1098.159337,
+            "duration_ms": 0.359678,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 116.972175,
+            "end_ms": 117.311374,
+            "duration_ms": 0.339199,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1842.585702,
+            "end_ms": 1842.914022,
+            "duration_ms": 0.32832,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 2.77819,
+            "end_ms": 3.08907,
+            "duration_ms": 0.31088,
+            "previous": {
+              "device": 1,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 127.393446,
+            "end_ms": 127.701125,
+            "duration_ms": 0.307679,
+            "previous": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+              "stream": "133"
+            },
+            "next": {
+              "device": 1,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          }
+        ]
+      },
+      "2": {
+        "device_activity_pct": 98.42398047413494,
+        "busy_ms": 1953.611058,
+        "compute_busy_ms": 1945.208343,
+        "communication_busy_ms": 6.340316,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 31.282307,
+        "internal_idle_ms": 28.021012,
+        "leading_idle_ms": 2.50635,
+        "trailing_idle_ms": 0.754945,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 210,
+          "0.1": 106,
+          "0.5": 0,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 470.293695,
+            "end_ms": 470.769375,
+            "duration_ms": 0.47568,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1490.090387,
+            "end_ms": 1490.559505,
+            "duration_ms": 0.469118,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1842.477985,
+            "end_ms": 1842.916544,
+            "duration_ms": 0.438559,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1294.176648,
+            "end_ms": 1294.614728,
+            "duration_ms": 0.43808,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1646.837928,
+            "end_ms": 1647.266406,
+            "duration_ms": 0.428478,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 862.338631,
+            "end_ms": 862.722149,
+            "duration_ms": 0.383518,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 2.96203,
+            "end_ms": 3.33755,
+            "duration_ms": 0.37552,
+            "previous": {
+              "device": 2,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1254.859071,
+            "end_ms": 1255.208669,
+            "duration_ms": 0.349598,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1058.473931,
+            "end_ms": 1058.78833,
+            "duration_ms": 0.314399,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1097.862659,
+            "end_ms": 1098.167617,
+            "duration_ms": 0.304958,
+            "previous": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 2,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          }
+        ]
+      },
+      "3": {
+        "device_activity_pct": 98.43863577023949,
+        "busy_ms": 1953.90195,
+        "compute_busy_ms": 1945.981794,
+        "communication_busy_ms": 5.863517,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 30.991415,
+        "internal_idle_ms": 27.629871,
+        "leading_idle_ms": 2.54267,
+        "trailing_idle_ms": 0.818874,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 210,
+          "0.1": 93,
+          "0.5": 2,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 1490.021807,
+            "end_ms": 1490.558605,
+            "duration_ms": 0.536798,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 470.261869,
+            "end_ms": 470.769069,
+            "duration_ms": 0.5072,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1294.17741,
+            "end_ms": 1294.61581,
+            "duration_ms": 0.4384,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1137.214481,
+            "end_ms": 1137.61976,
+            "duration_ms": 0.405279,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1058.384871,
+            "end_ms": 1058.78727,
+            "duration_ms": 0.402399,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 2.90523,
+            "end_ms": 3.28011,
+            "duration_ms": 0.37488,
+            "previous": {
+              "device": 3,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 705.620755,
+            "end_ms": 705.965075,
+            "duration_ms": 0.34432,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1529.407705,
+            "end_ms": 1529.738905,
+            "duration_ms": 0.3312,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1646.938398,
+            "end_ms": 1647.267356,
+            "duration_ms": 0.328958,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 862.409181,
+            "end_ms": 862.718619,
+            "duration_ms": 0.309438,
+            "previous": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 3,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          }
+        ]
+      },
+      "4": {
+        "device_activity_pct": 98.45475366380703,
+        "busy_ms": 1954.221873,
+        "compute_busy_ms": 1947.982833,
+        "communication_busy_ms": 4.20592,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 30.671492,
+        "internal_idle_ms": 27.259609,
+        "leading_idle_ms": 2.66267,
+        "trailing_idle_ms": 0.749213,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 211,
+          "0.1": 94,
+          "0.5": 4,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 470.248502,
+            "end_ms": 470.784981,
+            "duration_ms": 0.536479,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 3.20891,
+            "end_ms": 3.741069,
+            "duration_ms": 0.532159,
+            "previous": {
+              "device": 4,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1490.041059,
+            "end_ms": 1490.557697,
+            "duration_ms": 0.516638,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1294.102582,
+            "end_ms": 1294.616822,
+            "duration_ms": 0.51424,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 2.66427,
+            "end_ms": 3.15035,
+            "duration_ms": 0.48608,
+            "previous": {
+              "device": 4,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1646.842108,
+            "end_ms": 1647.267066,
+            "duration_ms": 0.424958,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1842.560798,
+            "end_ms": 1842.917758,
+            "duration_ms": 0.35696,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 705.617105,
+            "end_ms": 705.968625,
+            "duration_ms": 0.35152,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 901.673362,
+            "end_ms": 902.000242,
+            "duration_ms": 0.32688,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1411.698373,
+            "end_ms": 1411.992293,
+            "duration_ms": 0.29392,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          }
+        ]
+      },
+      "5": {
+        "device_activity_pct": 98.4745631914589,
+        "busy_ms": 1954.615071,
+        "compute_busy_ms": 1947.921156,
+        "communication_busy_ms": 4.636478,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 30.278294,
+        "internal_idle_ms": 26.819582,
+        "leading_idle_ms": 2.66827,
+        "trailing_idle_ms": 0.790442,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 211,
+          "0.1": 99,
+          "0.5": 2,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 470.222874,
+            "end_ms": 470.783513,
+            "duration_ms": 0.560639,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 2.67979,
+            "end_ms": 3.21211,
+            "duration_ms": 0.53232,
+            "previous": {
+              "device": 5,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1137.130893,
+            "end_ms": 1137.609293,
+            "duration_ms": 0.4784,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1646.839988,
+            "end_ms": 1647.268466,
+            "duration_ms": 0.428478,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 3.57691,
+            "end_ms": 3.977069,
+            "duration_ms": 0.400159,
+            "previous": {
+              "device": 5,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1294.222645,
+            "end_ms": 1294.617205,
+            "duration_ms": 0.39456,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1411.627842,
+            "end_ms": 1411.99184,
+            "duration_ms": 0.363998,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 705.603545,
+            "end_ms": 705.966585,
+            "duration_ms": 0.36304,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1108.255239,
+            "end_ms": 1108.592838,
+            "duration_ms": 0.337599,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1490.233559,
+            "end_ms": 1490.558197,
+            "duration_ms": 0.324638,
+            "previous": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 5,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          }
+        ]
+      },
+      "6": {
+        "device_activity_pct": 98.55395657489137,
+        "busy_ms": 1956.190945,
+        "compute_busy_ms": 1949.901509,
+        "communication_busy_ms": 4.212318,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 28.70242,
+        "internal_idle_ms": 25.281164,
+        "leading_idle_ms": 2.68715,
+        "trailing_idle_ms": 0.734106,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 211,
+          "0.1": 77,
+          "0.5": 1,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 3.02427,
+            "end_ms": 3.69451,
+            "duration_ms": 0.67024,
+            "previous": {
+              "device": 6,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 470.291147,
+            "end_ms": 470.777547,
+            "duration_ms": 0.4864,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1646.822687,
+            "end_ms": 1647.266045,
+            "duration_ms": 0.443358,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1137.189562,
+            "end_ms": 1137.612122,
+            "duration_ms": 0.42256,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1725.253533,
+            "end_ms": 1725.611931,
+            "duration_ms": 0.358398,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1097.820629,
+            "end_ms": 1098.160467,
+            "duration_ms": 0.339838,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1490.225819,
+            "end_ms": 1490.557497,
+            "duration_ms": 0.331678,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 234.583974,
+            "end_ms": 234.905254,
+            "duration_ms": 0.32128,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 1068.872469,
+            "end_ms": 1069.171669,
+            "duration_ms": 0.2992,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          },
+          {
+            "begin_ms": 901.701755,
+            "end_ms": 901.994875,
+            "duration_ms": 0.29312,
+            "previous": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "133"
+            },
+            "next": {
+              "device": 6,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "133"
+            }
+          }
+        ]
+      },
+      "7": {
+        "device_activity_pct": 98.50311066962531,
+        "busy_ms": 1955.181708,
+        "compute_busy_ms": 1948.940753,
+        "communication_busy_ms": 4.217277,
+        "compute_communication_overlap_ms": 0.0,
+        "event_counts": {
+          "HIPCOPY": 17,
+          "HIPOPS": 1062,
+          "RCCLOPS": 54
+        },
+        "idle_ms": 29.711657,
+        "internal_idle_ms": 26.221072,
+        "leading_idle_ms": 2.72203,
+        "trailing_idle_ms": 0.768555,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 212,
+          "0.1": 94,
+          "0.5": 0,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 470.301063,
+            "end_ms": 470.774343,
+            "duration_ms": 0.47328,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1137.156085,
+            "end_ms": 1137.611925,
+            "duration_ms": 0.45584,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 705.543661,
+            "end_ms": 705.958379,
+            "duration_ms": 0.414718,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 3.08571,
+            "end_ms": 3.47883,
+            "duration_ms": 0.39312,
+            "previous": {
+              "device": 7,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1646.894189,
+            "end_ms": 1647.280427,
+            "duration_ms": 0.386238,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1097.78235,
+            "end_ms": 1098.161548,
+            "duration_ms": 0.379198,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 352.36641,
+            "end_ms": 352.731369,
+            "duration_ms": 0.364959,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 862.423822,
+            "end_ms": 862.71854,
+            "duration_ms": 0.294718,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 1842.616663,
+            "end_ms": 1842.910263,
+            "duration_ms": 0.2936,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 755.24875,
+            "end_ms": 755.541869,
+            "duration_ms": 0.293119,
+            "previous": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+              "stream": "101"
+            },
+            "next": {
+              "device": 7,
+              "category": "HIPOPS",
+              "name": "h3_peer_gate_kernel",
+              "stream": "101"
+            }
+          }
+        ]
+      }
+    },
+    "host_api": [
+      {
+        "category": "HIP",
+        "name": "hipDeviceSynchronize",
+        "calls": 12,
+        "total_ms": 1512.008228
+      },
+      {
+        "category": "HIP",
+        "name": "hipStreamWaitEvent",
+        "calls": 12800,
+        "total_ms": 293.670718
+      },
+      {
+        "category": "HIP",
+        "name": "hipModuleLaunchKernel",
+        "calls": 3272,
+        "total_ms": 75.911958
+      },
+      {
+        "category": "HIP",
+        "name": "hipLaunchKernel",
+        "calls": 3085,
+        "total_ms": 61.043892
+      },
+      {
+        "category": "HIP",
+        "name": "hipExtModuleLaunchKernel",
+        "calls": 2152,
+        "total_ms": 54.13958
+      },
+      {
+        "category": "HIP",
+        "name": "hipEventRecord",
+        "calls": 1600,
+        "total_ms": 26.996986
+      },
+      {
+        "category": "RCCL",
+        "name": "ncclAllGather",
+        "calls": 400,
+        "total_ms": 18.126252
+      },
+      {
+        "category": "HIP",
+        "name": "hipMemcpyAsync",
+        "calls": 103,
+        "total_ms": 13.607017
+      },
+      {
+        "category": "HIP",
+        "name": "hipExtLaunchKernel",
+        "calls": 432,
+        "total_ms": 11.504092
+      },
+      {
+        "category": "HIP",
+        "name": "hipMalloc",
+        "calls": 17,
+        "total_ms": 6.984445
+      },
+      {
+        "category": "HIP",
+        "name": "hipSetDevice",
+        "calls": 5676,
+        "total_ms": 1.629448
+      },
+      {
+        "category": "HIP",
+        "name": "hipGetDevice",
+        "calls": 2312,
+        "total_ms": 1.3895
+      },
+      {
+        "category": "HIP",
+        "name": "hipPointerGetAttributes",
+        "calls": 896,
+        "total_ms": 1.290034
+      },
+      {
+        "category": "RCCL",
+        "name": "ncclAllReduce",
+        "calls": 32,
+        "total_ms": 1.048737
+      },
+      {
+        "category": "HIP",
+        "name": "__hipPushCallConfiguration",
+        "calls": 1821,
+        "total_ms": 0.798753
+      },
+      {
+        "category": "HIP",
+        "name": "__hipPopCallConfiguration",
+        "calls": 1821,
+        "total_ms": 0.75172
+      },
+      {
+        "category": "HIP",
+        "name": "hipStreamGetCaptureInfo_v2",
+        "calls": 432,
+        "total_ms": 0.666583
+      },
+      {
+        "category": "HIP",
+        "name": "hipGetLastError",
+        "calls": 1712,
+        "total_ms": 0.625991
+      },
+      {
+        "category": "HIP",
+        "name": "hipMemsetAsync",
+        "calls": 8,
+        "total_ms": 0.101421
+      },
+      {
+        "category": "HIP",
+        "name": "hipStreamSynchronize",
+        "calls": 1,
+        "total_ms": 0.0442
+      },
+      {
+        "category": "HIP",
+        "name": "hipPointerGetAttribute",
+        "calls": 32,
+        "total_ms": 0.03967
+      },
+      {
+        "category": "HIP",
+        "name": "hipStreamIsCapturing",
+        "calls": 1,
+        "total_ms": 0.00272
+      }
+    ]
+  },
+  "record": {
+    "step": 25,
+    "variant": "candidate",
+    "warmup_calls": 1,
+    "samples_seconds": [
+      1.9848145751748234
+    ],
+    "mean_seconds": 1.9848145751748234,
+    "median_seconds": 1.9848145751748234,
+    "warmup_seconds": 8.681490584975109,
+    "kernel_calls": {
+      "adaln": 16,
+      "indexed": 0,
+      "qknorm": 64,
+      "qknorm_mrope": 800,
+      "attention": 800,
+      "short_attention": 32,
+      "widenorm_indexed": 1600,
+      "swiglu": 832,
+      "peer_gate": 1600,
+      "peer_deferred": 1600,
+      "peer_batches": 200,
+      "peer_fused": 200,
+      "peer_fallback": 0,
+      "sharded_gate": 200,
+      "sharded_norm": 198,
+      "sharded_materialized": 2,
+      "sharded_replica_checks": 99,
+      "sharded_replica_fallbacks": 0,
+      "sharded_full_norm": 16
+    },
+    "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+    "against_capture": [
+      {
+        "name": "video",
+        "shape": [
+          1,
+          26448,
+          96
+        ],
+        "exact": false,
+        "mismatches": 2538994,
+        "max_abs_error": 0.4010007381439209,
+        "mean_abs_error": 0.008604387752711773,
+        "rmse": 0.012172585110222416,
+        "finite": true,
+        "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+      },
+      {
+        "name": "audio",
+        "shape": [
+          1,
+          414,
+          32
+        ],
+        "exact": false,
+        "mismatches": 13248,
+        "max_abs_error": 0.053460896015167236,
+        "mean_abs_error": 0.00826754979789257,
+        "rmse": 0.010348869412489126,
+        "finite": true,
+        "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+      }
+    ],
+    "diagnostic_profiler": true
+  }
+}

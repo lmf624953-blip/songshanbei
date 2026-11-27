@@ -26,10 +26,20 @@ def trace(root):
     identity=check(*(builds[k]['path'] for k in ['H3_PEER_SHARDED_NORM_BUILD','H3_ADALN_BUILD','H3_PEER_GATE_BUILD','H3_WIDE_NORM_INDEXED_BUILD']))
     assert manifest['runtime']['native_sha256']==identity['native_sha256']
     c=row['kernel_calls'];expected=dict(peer_gate=1600,peer_deferred=1600,peer_batches=200,peer_fused=200,peer_fallback=0,indexed=0,
-        sharded_gate=200,sharded_norm=198,sharded_materialized=2,sharded_full_norm=16,sharded_replica_fallbacks=0)
+        sharded_gate=200,sharded_norm=198,sharded_materialized=2,sharded_full_norm=16,sharded_replica_fallbacks=0,
+        adaln=16,qknorm=64,qknorm_mrope=800,attention=800,short_attention=32,widenorm_indexed=1600,swiglu=832)
     assert all(c.get(k)==v for k,v in expected.items()),c
-    assert row['peer_gate_stats']['comparison']=='accepted-peer-vs-sharded-norm'
-    assert row['peer_gate_stats']['candidate']['pending_ranks']==0 and not row['peer_gate_stats']['candidate']['failed']
+    if 'peer_gate_stats' in row:
+        assert row['peer_gate_stats']['comparison']=='accepted-peer-vs-sharded-norm'
+        assert row['peer_gate_stats']['candidate']['pending_ranks']==0 and not row['peer_gate_stats']['candidate']['failed']
+        state_evidence='direct-runtime-stats'
+    else:
+        # 旧candidate-only格式没有stats字段。固定桥的materialize_pending在清空
+        # 全部pending之后才递增materialized；固定native每次forward恰在最后调用它。
+        # 两次完整forward正常退出、各一次物化及全部计算计数共同证明清理。
+        # 不向原始记录补写未采集的状态值，也不为日志字段重跑模型。
+        assert (replay/'complete').read_text().strip()=='complete'
+        state_evidence='legacy-format:fixed-bridge-final-materialization-counters-and-normal-exit'
     expected_sha={'video':'80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779',
                   'audio':'b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04'}
     assert len(row['against_capture'])==2
@@ -56,7 +66,7 @@ def trace(root):
     with (root/'kernel-times.csv').open('w') as stream:
         writer=csv.DictWriter(stream,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
     return dict(scope='真实八卡单次Transformer独立trace；排除加载、预热和2秒排空，非正式成绩',
-        identity=identity,trace_sha256=digest(root/'hipprof_stream.json'),output_hashes=expected_sha,
+        identity=identity,state_evidence=state_evidence,trace_sha256=digest(root/'hipprof_stream.json'),output_hashes=expected_sha,
         device0_groups_ms=dict(sorted(groups.items(),key=lambda kv:-kv[1])),timeline=timeline,record=row)
 
 

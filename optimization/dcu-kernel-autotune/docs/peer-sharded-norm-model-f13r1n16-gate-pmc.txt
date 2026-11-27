@@ -1,0 +1,192 @@
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     0
+ gpu id                                    0
+ dispatch queue id                         24
+ dispatch queue index                      213
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4631552
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bda500
+ kernel time                               0.002396(s)
+ processed ALU instructions                31.3380607697(%)
+ performance                               4839.909712(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   98.4615747526(%)
+ L1 cache unit is stalled                  3.3251771820(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         30.557140(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     1
+ gpu id                                    1
+ dispatch queue id                         27
+ dispatch queue index                      271
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4631552
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bddf00
+ kernel time                               0.002398(s)
+ processed ALU instructions                31.3466044683(%)
+ performance                               4837.004876(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   97.9967223496(%)
+ L1 cache unit is stalled                  3.4202691205(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         29.914332(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     2
+ gpu id                                    2
+ dispatch queue id                         25
+ dispatch queue index                      271
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4631552
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bdc200
+ kernel time                               0.002394(s)
+ processed ALU instructions                31.3786001047(%)
+ performance                               4843.467282(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   98.2392388211(%)
+ L1 cache unit is stalled                  3.3750245895(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         30.093162(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     3
+ gpu id                                    3
+ dispatch queue id                         26
+ dispatch queue index                      271
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4632832
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bd8b00
+ kernel time                               0.002394(s)
+ processed ALU instructions                31.3929356447(%)
+ performance                               4844.850350(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   98.0905404567(%)
+ L1 cache unit is stalled                  3.3812868351(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         29.988795(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     4
+ gpu id                                    4
+ dispatch queue id                         31
+ dispatch queue index                      271
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4631552
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bd7900
+ kernel time                               0.002396(s)
+ processed ALU instructions                31.3614911669(%)
+ performance                               4840.232912(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   98.2410746007(%)
+ L1 cache unit is stalled                  3.3580545347(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         30.159376(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     5
+ gpu id                                    5
+ dispatch queue id                         30
+ dispatch queue index                      271
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4631552
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bd6700
+ kernel time                               0.002397(s)
+ processed ALU instructions                31.3545278141(%)
+ performance                               4838.942392(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   98.0782056461(%)
+ L1 cache unit is stalled                  3.3849075910(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         30.106104(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     6
+ gpu id                                    6
+ dispatch queue id                         29
+ dispatch queue index                      271
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4631552
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bd5500
+ kernel time                               0.002720(s)
+ processed ALU instructions                27.6445651895(%)
+ performance                               4264.178780(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   97.9832234301(%)
+ L1 cache unit is stalled                  3.0137107512(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         30.204509(%)
+
+kernel-name:"h3_peer_gate_kernel"
+ kernel dispatch index                     7
+ gpu id                                    7
+ dispatch queue id                         28
+ dispatch queue index                      207
+ process id                                3711296
+ thread id                                 3711374
+ grid size                                 4632832
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                60
+ sgpr count                                48
+ signal handle                             0x151173bd4300
+ kernel time                               0.002945(s)
+ processed ALU instructions                25.5398464263(%)
+ performance                               3938.457039(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   98.9707551647(%)
+ L1 cache unit is stalled                  3.0359045056(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         30.878929(%)
+

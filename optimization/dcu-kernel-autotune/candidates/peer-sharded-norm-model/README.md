@@ -1,6 +1,6 @@
 # 模型级行分片归一化候选
 
-本目录在独立原型基础上接入真实 H3 Transformer。当前状态：独立 Tensor 桥闸门、回退、异常唤醒、独立重建、真实八卡第 1/25/49 次去噪、普通官方默认 A 及完整 A×8/B/C/返回 A 均已通过。正式完整 A 配对 **122.526417 → 116.975680 秒，下降 4.530237%**，Transformer **101.170642 → 97.202297 秒**。全部成片与对应验收版逐字节一致。**稳定发布目录实际加载及独立采样正在执行，正式默认尚未改变**。[完整资格报告](../../docs/行分片归一化模型-f13r1n16.md) · [原始资格 JSON](../../docs/peer-sharded-norm-model-f13r1n16-qualified.json)
+本目录在独立原型基础上接入真实 H3 Transformer。当前状态：独立 Tensor 桥闸门、回退、异常唤醒、独立重建、真实八卡第 1/25/49 次去噪、普通官方默认 A 及完整 A×8/B/C/返回 A 均已通过。正式完整 A 配对 **122.526417 → 116.975680 秒，下降 4.530237%**，Transformer **101.170642 → 97.202297 秒**。全部成片与对应验收版逐字节一致。**稳定发布目录实际加载、真实模型 trace 与两项独立模型桥 PMC 均通过，本地默认已切换到 `peer-sharded-norm-f13r1n16`**。[完整资格报告](../../docs/行分片归一化模型-f13r1n16.md) · [原始资格 JSON](../../docs/peer-sharded-norm-model-f13r1n16-qualified.json)
 
 ## 模型边界
 
@@ -89,3 +89,5 @@ bash profile-model.sh pmc-norm "$candidate_config" "$new_norm_pmc"
 两项 PMC 使用相同主机桥和设备镜像，在独立八卡 Tensor 桥检查中采集官方 A 长度，保留原始 `pmc.txt`；这不是完整模型 PMC。检查仍按开启/关闭/开启运行，各三次残差链，每步执行当前 peer 参考；使用 `--pmc-off` 配合 `--profile-candidate-once`，只在首组开启候选的第三次 gate/norm 期间启动采集，避免参考同名 kernel 混入。每份 TXT 应仅有八卡各一次、共八条目标 kernel 记录；必须核对实际计数，不能仅以文件非空判断通过。profiler 耗时不作为正式模型性能。
 
 `summarize-profile.py MODE OUTPUT` 在采集正常退出后验证：真实 trace 的两个输出原始 SHA、预热加正式调用数、ROI 内八卡各 100 次 gate/publish/norm、末层物化状态、实际加载版本；PMC 的八条目标记录、逐 rank 行分片网格、寄存器、LDS/scratch 及完整独立输出检查。输出 `validation-summary.json`，保留所有原始字段。两类诊断不能代替无 profiler 的完整请求配对。
+
+首次稳定目录 trace 的模型采样退出码为 0，旧版 `candidate-only` 记录未输出 `peer_gate_stats`，使最初 CPU 汇总因缺字段退出。已直接复用该次 trace 和输出；旧记录不补写未采集状态。汇总核对固定 native/桥身份、两次完整 forward 的全部计算计数和两次末层物化、完整回放正常退出：固定桥在清空全部 pending 之后才递增物化计数，因此记录证明最终清理。此取证形式以 `state_evidence` 明确标注；带直接状态的新记录仍严格核对 pending 为零及 failed 为 false。回放入口现已在所有具有 peer 状态接口的模式保存该字段，普通入口退出日志也单独打印行分片桥统计。

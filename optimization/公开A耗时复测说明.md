@@ -1,8 +1,29 @@
 # 官方公开 A 耗时复测说明
 
-## 当前已验收版本与入口
+## 当前正式默认：行分片归一化 116.976 秒
 
-2026-11-28 当前正式默认是九齿分片求和/门控发布版 `peer-gate-nt-f13r1n16`，在 `f13r1n16` 同实例三组完整 A 配对中为 **128.436449 → 120.698043 秒**，下降 **6.025086%**。协议为 `minimax-h3-public-a-peer-gate-paired-v1`，比较为 `selected-stable-paired-vs-peer-gate`，主字段仍为 `wall.candidate.mean`。阶段、质量及原始记录见[完整报告](dcu-kernel-autotune/docs/分片门控融合-f13r1n16.md)。
+2026-11-28 当前本地默认为 `peer-sharded-norm-f13r1n16`。同一八卡 BW1000 实例的三组完整官方 A 为 **122.526417 → 116.975680 秒，下降 4.530237%**；Transformer 为 **101.170642 → 97.202297 秒，下降 3.922428%**。普通默认 A、A×8/B/C/返回 A、质量、独立重建、实际稳定目录加载、真实模型时间线和独立模型桥 PMC 均通过。全部成片与对应验收版逐字节一致。[完整报告](dcu-kernel-autotune/docs/行分片归一化模型-f13r1n16.md) · [原始资格](dcu-kernel-autotune/docs/peer-sharded-norm-model-f13r1n16-qualified.json) · [选版证明](dcu-kernel-autotune/docs/peer-sharded-norm-model-f13r1n16-selection.json)
+
+```bash
+repo=/public/home/acvduipmem/xsh/songshanbei/submission-xsh
+release=/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/peer-sharded-norm-f13r1n16
+model=/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3
+# 先定义两个尚不存在的绝对输出目录；两条命令串行执行。
+bash "$repo/optimization/reproduce-public-a.sh" resident "$release" "$model" "$new_resident_output"
+bash "$repo/optimization/reproduce-public-a.sh" single "$release" "$model" "$new_single_output"
+```
+
+`resident` 模型只加载一次，顺序 `off,on,off,on,on,off,off,on`，排除双方各一次预热，正式配对 `(2,3)/(5,4)/(6,7)`。`off` 使用当前 peer 前序，`on` 使用行分片归一化。读取 `benchmark.json` 的 `wall.candidate.mean`；协议为 `minimax-h3-public-a-sharded-norm-paired-v1`，比较为 `accepted-peer-vs-sharded-norm`。它包含输入准备、完整生成、MP4 写出与同步。不能与前序版本的协议字段混用。
+
+`single/process-time.txt` 单列新进程从启动到退出，包含环境、模型加载、首次生成与清理；本轮普通默认 A 为 **875.75 秒**，不是 116.975680 秒。官方 Python `total.end_to_end=823.827 s`，首次生成管线 182.571 s。VAE 阶段也有波动；仅 Transformer 差额折算为参考完整请求的 **3.238767%**，不将全部端到端改善归因于 kernel。
+
+已有完整 11 请求时，可直接运行 `peer-sharded-norm-model/report-benchmark.py QUALIFICATION/steady-paired NEW_JSON` 汇总同一批前八条记录；已确认完整验收与统一复测的 `wall`、全部 `stages` 完全相等，无需为汇总重跑 A。正式输入仍为 768×928、50 steps、124 帧、seed 42、49 次 Transformer；未启用跨进程编译缓存优化。
+
+新账号先准备相同 runtime 与权重，再构建下文注意力前序、用 peer 的 `build-peer-release.sh` 构建 peer 参考，最后 `reproduce-public-a.sh build-sharded ACCEPTED_PEER_CONFIG NEW_WORK XMAKE_BINARY`。详细构建与各入口见[模型 README](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)。构建不自动通过新环境资格，也不会修改默认。
+
+## 前序 peer 版本：120.698 秒的记录与入口
+
+2026-11-28 前序已验收版是九齿分片求和/门控发布版 `peer-gate-nt-f13r1n16`，在 `f13r1n16` 同实例三组完整 A 配对中为 **128.436449 → 120.698043 秒**，下降 **6.025086%**。协议为 `minimax-h3-public-a-peer-gate-paired-v1`，比较为 `selected-stable-paired-vs-peer-gate`，主字段仍为 `wall.candidate.mean`。阶段、质量及原始记录见[完整报告](dcu-kernel-autotune/docs/分片门控融合-f13r1n16.md)。
 
 当前账号可以直接复用已经验收的发布目录，无需重建：
 
@@ -19,7 +40,7 @@ bash "$repo/optimization/reproduce-public-a.sh" single "$release" "$model" "$new
 
 新账号或新克隆需要先准备相同运行环境；当前统一脚本识别 peer 发布目录。源码重建步骤见[peer 构建说明](dcu-kernel-autotune/candidates/rccl-sequence-parallel/README.md)：使用其 `build-peer-release.sh REFERENCE_CONFIG NEW_RELEASE XMAKE_BINARY`，前序配置可以由下文的注意力构建流程生成。`reproduce-public-a.sh build` 仅生成下文的注意力前序，不会自动接入 peer 或行分片归一化，不能把其输出当作最新组合。
 
-另有 `peer-sharded-norm-model` 行分片归一化候选，真实八卡回放、普通默认 A 及完整 11 请求资格均已通过，正式配对 **122.526417 → 116.975680 秒，下降 4.530237%**；稳定发布目录实际加载与独立采样正在进行，尚未替换本节正式默认。其 `build-sharded`、`resident`、`single` 与 `h3-peer-sharded-norm-v1` 发布目录说明见[模型候选 README](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)，原始样本、质量与阶段见[完整资格报告](dcu-kernel-autotune/docs/行分片归一化模型-f13r1n16.md)。
+该 peer 版本现在作为行分片归一化的已验收参考保留；最新默认及新协议见本文首节。
 
 ## 历史注意力版本：127.831 秒的固定源码与复测记录
 

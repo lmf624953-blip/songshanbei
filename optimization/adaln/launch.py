@@ -271,6 +271,8 @@ sys.argv[0] = str(entry)
 try:
     runpy.run_path(str(entry), run_name="__main__")
 finally:
+    if sharded_norm_plugin:
+        print("[sharded_norm] stats", json.dumps(sharded_norm_plugin["stats"]()), flush=True)
     if peer_gate_plugin:
         peer_gate_plugin["enabled"](False)
         print("[peer_gate] stats", json.dumps(peer_gate_plugin["stats"]()), flush=True)
