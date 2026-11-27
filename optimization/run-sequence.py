@@ -61,6 +61,7 @@ def main():
     parser.add_argument("--variants", help="Comma-separated original/candidate/candidate-tf modes, one per request")
     parser.add_argument("--fast-attention-build", type=Path, help="Optional attention-only override for paired complete requests")
     parser.add_argument("--attention-variants", help="Comma-separated base/fast selections, one per request")
+    parser.add_argument("--peer-gate-variants", help="Comma-separated off/on selections for the peer gate candidate")
     parser.add_argument("--capture-denoise", action="store_true", help="Save live inputs from the first request; diagnostic timing")
     parser.add_argument("--capture-boundaries", action="store_true", help="Save the first denoising input/output from every request; diagnostic timing")
     parser.add_argument("--check-finite", action="store_true", help="Check all transformer outputs before the scheduler; diagnostic timing")
@@ -76,6 +77,12 @@ def main():
         parser.error("--variants must specify an original/candidate/candidate-tf mode for every request")
     if not control and any(v != "original" for v in variants):
         parser.error("Candidate variants require the native candidate launcher")
+    peer_order = args.peer_gate_variants.split(",") if args.peer_gate_variants else None
+    if peer_order is not None:
+        if (len(peer_order) != len(order) or any(v not in {"off", "on"} for v in peer_order)
+                or not control or not hasattr(control, "set_peer_gate_enabled")
+                or any(v != "candidate" for v in variants) or args.fast_attention_build):
+            parser.error("Peer gate pairing requires off/on for each candidate request and one fixed attention build")
 
     attention_order = args.attention_variants.split(",") if args.attention_variants else ["base"] * len(order)
     if len(attention_order) != len(order) or any(v not in {"base", "fast"} for v in attention_order):
@@ -187,6 +194,8 @@ def main():
                 control.select_variant(variant)
                 if attention_order[index] == "fast":
                     control.set_attention_callback(fast_callback)
+                if peer_order is not None:
+                    control.set_peer_gate_enabled(peer_order[index] == "on")
             counters_before = control.read_counters() if control else {}
             finite_before = finite_calls
             print(f"[request] index={index} case={case} variant={variant}", flush=True)
@@ -243,10 +252,22 @@ def main():
             }
             if args.fast_attention_build:
                 record["attention_variant"] = attention_order[index]
+            if peer_order is not None:
+                record["peer_gate_variant"] = peer_order[index]
+                record["peer_gate_stats"] = control.peer_gate_stats()
             record["candidate_calls"] = {name: count - counters_before[name]
                                          for name, count in (control.read_counters() if control else {}).items()}
             if variant == "original" and any(record["candidate_calls"].values()):
                 raise RuntimeError("An original request unexpectedly executed candidate kernels")
+            if peer_order is not None:
+                counts = record["candidate_calls"]
+                if peer_order[index] == "off" and any(counts.get(name, 0) for name in
+                        ("peer_gate", "peer_deferred", "peer_batches", "peer_fused", "peer_fallback")):
+                    raise RuntimeError("A disabled peer gate request executed the candidate")
+                if peer_order[index] == "on" and (counts.get("peer_gate") != 39200
+                        or counts.get("peer_deferred") != 39200 or counts.get("peer_batches") != 4900
+                        or counts.get("peer_fused", 0) + counts.get("peer_fallback", 0) != 4900):
+                    raise RuntimeError("Peer gate counters do not cover the complete 49-call Transformer")
             if variant in {"candidate-no-reducecast", "candidate-tf-no-reducecast"} and any(record["candidate_calls"].get(name, 0) for name in ("reducecast", "encodercast")):
                 raise RuntimeError("The disabled communication precision candidate executed")
             if variant.endswith("no-encodercast") and record["candidate_calls"].get("encodercast", 0):
@@ -267,6 +288,7 @@ def main():
             text_encoder.close()
     (out / "complete.json").write_text(json.dumps({
         "sequence": order, "variants": variants, "attention_variants": attention_order,
+        "peer_gate_variants": peer_order,
         "model_load_seconds": {key: sum(values) for key, values in model_timings.values.items()},
     }, indent=2) + "\n")
 

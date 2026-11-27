@@ -1,0 +1,526 @@
+{
+  "scope": "固定当前实测native的对象链接顺序，并核对每个编译对象；避免文件遍历顺序影响ELF布局。",
+  "native_sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510",
+  "objects": [
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/cache/mamba_cache.cpp.o",
+      "sha256": "fb14dd2219c5eb26b2138ee180e08dedc89cce4b26bb9bdd2b42805bc7e36c41"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/cache/kv_cache.cpp.o",
+      "sha256": "844ccd6d4a8b66d142ef1ab51aed14fffdeee0dfd789d4a04859c395f18f1f38"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/config/model_config.cpp.o",
+      "sha256": "2d36aa59e494b6b47e2d6b0d11633c098d65f2693fb2863f94878324d1eb561a"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/config/quant_config.cpp.o",
+      "sha256": "d3b0861b1eed6cce7bb3a8d8c0b09e49c658bc1f8b5774285e7cceb6c74bd7c2"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/config/config_factory.cpp.o",
+      "sha256": "58df381d5e2fbf805a96dc4327e502597d74ce2bc0965ccd2f6049fb757c286e"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/distributed/tcp_rendezvous.cpp.o",
+      "sha256": "0d6a6582170df4141befcf6c85fad018dcabfc00de755e54bb84264307ca0c1d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/distributed/communication_group.cpp.o",
+      "sha256": "7d8a0ad9a1a3866b663d0c8272ee29c5d9d20aae208d5f26aecc5f9eff8a0f78"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/distributed/dist_config.cpp.o",
+      "sha256": "83547da224db9963966898e4cd7f35cfa02ae2584495d8ce72ce68b0b3345f80"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/infer_engine.cpp.o",
+      "sha256": "2bfa1dfb01ab6451e75dbb9684359eefdd66bbc2e2d5359588408bba120b250a"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/rank_worker.cpp.o",
+      "sha256": "120ea1be8ed12d37d4319e91fbe00fbd94206a27f83755028c2dd724b1527519"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/compiler/paged_compiler.cpp.o",
+      "sha256": "4451a8efd15c291d76ad23836d485c130ab71a60159ac991e4d049dd1bdae340"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/compiler/general_compiler.cpp.o",
+      "sha256": "e1b51b3d3146b4aa9371f86110d163818fc06446a2aaa477348183a9e71b8233"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/compiler/static_batching_compiler.cpp.o",
+      "sha256": "9e74a3eb15de7de5194bd015eaa5df06f9e0c43975c54cec274c378a196faa3d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/rank_barrier.cpp.o",
+      "sha256": "8afb9039a0a4d113e1e5d586dd3b670ebe88c7e14278d21648190931627e89b2"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/global_state/global_state.cpp.o",
+      "sha256": "3bc3d85e3afa7f582428de1d4c3670cd6405cdf8ecf32e3dfaaf0699636db017"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/baichuan/baichuan_for_causal_lm.cpp.o",
+      "sha256": "051699d9399463cc803843adfcc1adeedc7a127d111f17ceaead4453fd47e6f1"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/chatglm/chatglm_for_causal_lm.cpp.o",
+      "sha256": "5d2661516aea14e1008421d1729dc48672358da0f1368599729566db29bbd64d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_allocate_kv_cache_tensors.cpp.o",
+      "sha256": "1f929cecc2bec55283bdc3cb7ded650b18667024daacf1c933b8734a48aaffb9"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_attention.cpp.o",
+      "sha256": "2e6295291c3e749d85332019360278f2e92c02cde07d55d3543f651d8d23b6a6"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_decoder_layer.cpp.o",
+      "sha256": "9721d019a7a7efe16d3090dde68f4bb863a1ab415cb62174e9c0d3f36547501d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_for_causal_lm.cpp.o",
+      "sha256": "fb2850d242ad616803276fd25deb71e4b6e216d0a1a7bc5db81fbe624a81e32a"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_mla_attention.cpp.o",
+      "sha256": "1d72b77494124266b8b1731a3a566eee9f8aef4f0fb1e4db3780abbfb7c92bb1"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_moe.cpp.o",
+      "sha256": "fd8c2e12eea25d02c82632a1d24e9f384fb5ee81aa3a837c8977731e60e23bcd"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/fm9g/fm9g_for_causal_lm.cpp.o",
+      "sha256": "d873f893be2dc0a35ff4c3c0fafcfbef68d2c0ac759addbf477de686d6260983"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/glm4/glm4_for_causal_lm.cpp.o",
+      "sha256": "72f602167548e8c01f09d28a493f3d65c994671ff828f9eda6250a7b24203dfe"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/glm4/glm4_decoder_layer.cpp.o",
+      "sha256": "6410d64094c9d5a79224f049a3024994357e70b8c4b8a206f526d2e65277d650"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/infinilm_model.cpp.o",
+      "sha256": "10a1befc90447677a7397830a6d83937cc17269e87f1176a4a416ca2bf253148"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_decoder_layer.cpp.o",
+      "sha256": "c69974ee2f529fa6305092b9207434bdf30ad6bb0d4cbc260c5327a27d921e18"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_moe.cpp.o",
+      "sha256": "4bb26176cec43d45062046ee4df56f554e9414dcc7ecdc6ceffdd6a38a6067bc"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_vision.cpp.o",
+      "sha256": "74aed8130daa74c5ee0c4fe84c05fc879c252ab7d834afa9acc117ec8de288ce"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_attention.cpp.o",
+      "sha256": "1a6bc085da161b4027377f9b8c61bfe057fd924e0aec490e4861fb2126b2b1e8"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_for_conditional_generation.cpp.o",
+      "sha256": "a9795e678b23ea72e379133c7e264b6f7b70f947e78b82e2bbc72ce0b185f780"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_decoder_layer.cpp.o",
+      "sha256": "3afe1e6e6548d4e4247d831a3afd3d22b603a508ed0f788f172670d699525c01"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_moe.cpp.o",
+      "sha256": "e89aca82e4fe2290c16607e70f2548d69a3f7412c38fd7fc8b6bb53d77afee4d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_text_model.cpp.o",
+      "sha256": "979c7a504da1bf74a0f5d7eccd9241462352ce1a9a29c01a09be258ce6b0bfb2"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_allocate_cache.cpp.o",
+      "sha256": "de874a11a8e804b6a4720d4c049382a95ad9fc96db103f2af2c7d04c0a291f2e"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_delta_attention.cpp.o",
+      "sha256": "3300b9379a85e7f0d13a4c2702751cce7c9ba02303293f22aabac28dbd744a52"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_for_conditional_generation.cpp.o",
+      "sha256": "0863fb2150549060ea6eac01d1ad52180cca02ff5fc64dbe718d8d07d158cfc7"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_mla_attention.cpp.o",
+      "sha256": "675be5d961bdb912f0b04bb76559b4f9082031bad6271008b19d2dd7839db2d9"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_vision.cpp.o",
+      "sha256": "d79a7e97da3fef26d169ef0760c455d09014ad69477e660d0c22edd848789be8"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/mamba/mamba_for_causal_lm.cpp.o",
+      "sha256": "e95aecd7d3ac68c47531d814a801e97aa6ea2234f113344c867dadad5670bacc"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_eagle/minicpm_eagle_for_causal_lm.cpp.o",
+      "sha256": "b075faaaf673165496cd5951058bc280f2543342bbbdc4c2ad7fe544f5e84306"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/mistral/mistral_for_causal_lm.cpp.o",
+      "sha256": "e1a23f93b88f2ef88ce966b2e7684a75692d61d2c7a1f9c30a276feffead3b8d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/model_factory.cpp.o",
+      "sha256": "f2eb186c7c0165a1bd55e83ac1d4141dd764e7b7962c0aad45fc5a6e997f6f73"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen2/qwen2_for_causal_lm.cpp.o",
+      "sha256": "3dd5fff25b368a7b9586e5b5dee656f7873b5f09cb6485ea8c5d7b1cd39d35f1"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_attention.cpp.o",
+      "sha256": "bc2b93358b94b25105b6a8fa27b0b394738496a572617773a96b9cfe63c7e1e0"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_for_causal_lm.cpp.o",
+      "sha256": "7c5ccb643dd4bff9e9e8001b18eb3b3018ebe0a5887b68f1ed2debc88dd21b21"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_decoderLayer.cpp.o",
+      "sha256": "31819cbefb186c3a0e97481e5b5964f663056d3cec27d03a695c9df328961d7b"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_fused_qkv_linear.cpp.o",
+      "sha256": "04dcbb4f1212829f6f2e8f17098ce28b68f2284dcca7a45e602a1c53745a4e71"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_model.cpp.o",
+      "sha256": "48f1cc491d9297dc3aabca7022ffeabdee74d4131857c7b5033fa76abb9def58"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_vision.cpp.o",
+      "sha256": "a8af863895ca3094b4a31b2235440d449f83737b87b156bcae3d97988f9062b1"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5_moe/qwen3_5_moe_decoder_layer.cpp.o",
+      "sha256": "08ffed632f477307eaba08b23c7e6f8260ae5bab40302a6a2eb43785005da6dc"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5_moe/qwen3_5_moe_for_causal_lm.cpp.o",
+      "sha256": "58f11b075bcc37281dc1f7389baf5a768e74818c5dad570b7b71bf696a321807"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_decoderLayer.cpp.o",
+      "sha256": "2435fbf571ca148e54bb55c3a66dab3fae203a198967f855a493b2dfe1bdbf92"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_gated_deltanet.cpp.o",
+      "sha256": "0c01859ad72e62af0b148526512d8ec123d44f153a8112c7dbf4cdfe99e9cf77"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_allocate_kv_cache_tensors.cpp.o",
+      "sha256": "23fab6b0a9faf02ed4d95e025a447bf5c4727c45386cbb03884d1234f9befce0"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_attention.cpp.o",
+      "sha256": "26207630370228b59701a4f5144ee7871cce48c862a05df482f8b27de15895a7"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_for_causal_lm.cpp.o",
+      "sha256": "dc2ff8c44fbdd8c3006b986b294b550b67693087aa1d3ef528b6b1f704a40e50"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_sparse_moe_block.cpp.o",
+      "sha256": "e9a4238e5503c6b734e6bb8577965707ebd4e677e4f32adf3ceb9ae6a1f6c247"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_vl/qwen3_vl_for_conditional_generation.cpp.o",
+      "sha256": "da7f2c3fc6168c2c0cac077d038374200bf57917c5ec580e7c5202eeb0ac1ac5"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_vl/qwen3_vl_attention.cpp.o",
+      "sha256": "228dc6a53104ff5e8c6c7c62317a94d79b7bc122d26ffec67eee9422707d600f"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_vl/qwen3_vl_text_model.cpp.o",
+      "sha256": "68cd97d976a7bde4e52ca40a1cd5f5a4bb0ce857d0b3b586331fdb97ac447622"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/videonsa/videonsa_attention.cpp.o",
+      "sha256": "64e93cf5662e143189f925eb243fd7b984826766f36fd493d1df625ff859af65"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/videonsa/videonsa_for_conditional_generation.cpp.o",
+      "sha256": "b342b565906674a1144f0bbc7c0613c07753696ad7f89cad3c619a458afb2ab7"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/videonsa/videonsa_vision.cpp.o",
+      "sha256": "a6e9be11669b21251cfe8b61ff7eb638403ca68da928ef8e75fa6174a75fc25b"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek/deepseek_decoder_layer.cpp.o",
+      "sha256": "33b7bd72fc7eeaf93ad7cfc1fbd5bffb3f0dc3563def9f457a1e715507c1e63d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek/deepseek_for_causal_lm.cpp.o",
+      "sha256": "9c29234b94fd9adfc8f0434fe571c21de76644164ecd8a3812d8fae16b4ace3c"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_decoder_layer.cpp.o",
+      "sha256": "cbf4da875b9d3dd293ac696823562d4b1a5144ae6aacfe50aeefc77422d37e7f"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_model.cpp.o",
+      "sha256": "020907e24d1157bd958ec95a96b135d3e69b6b5abaca580613630c83807a831b"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_attention.cpp.o",
+      "sha256": "784965f8982eef164da5fbf5824a12eafce264a6f592b8f7e2cd2b1d6c0fb10e"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_for_causal_lm.cpp.o",
+      "sha256": "281f3c636ca932375ade52466f7018dc809c45e2d10c50fce2342fa4cc93c51e"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_moe.cpp.o",
+      "sha256": "0b6cf768d6f2f236833143aa007222d7a79800a8d0bb3a0c7af116f2bcebe8ab"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_vision.cpp.o",
+      "sha256": "3e4388e955bd5c455c19d2d4538ba4f4424a887fa298c62be2d0a3c42c723461"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/gpt2/gpt2_for_causal_lm.cpp.o",
+      "sha256": "3cb7844760c5aa22d88ce13eac3f35e3b9ca0ab903be6d418a60e070b5f2043b"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/internlm3/internlm3_for_causal_lm.cpp.o",
+      "sha256": "06d24c594ef7aed966035c7848e37cad0129a36dea46c880bee864d742ada0ac"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/llama/llama_for_causal_lm.cpp.o",
+      "sha256": "f472270d7973d9475a0dde8f45eb0209b0e34f64c8a45464e4f7995537ed72f2"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm4/minicpm4_for_causal_lm.cpp.o",
+      "sha256": "ae48d05a822212d8d902e1b2e50d84d47cc15de00d407dfdd5025757d30aeb81"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_decoderLayer.cpp.o",
+      "sha256": "0eb9e56d63c497cdf274c1a7be9fd54234793603e0b3bcabcc617fe293df4f55"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_allocate_kv_cache_tensors.cpp.o",
+      "sha256": "a46cf63cb62b2f43f44c3f4260d5eab50e4b26c792b554c74469d9850c6d6de3"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_attention.cpp.o",
+      "sha256": "1a0e4c5bf04eabb58d85887ff3a7f0541ad698d49bc36b1a8763ccd1a803af7d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_for_causal_lm.cpp.o",
+      "sha256": "d5ebd32acfd4f5e1aab8def5b1682992f2aa48228aafddf72c8224328762e90d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpmv/minicpmv_model.cpp.o",
+      "sha256": "5fd2858954bbe01523d95a134c01d42fa2d5704b59710ab6283d2e1f59826c2b"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpmv/resampler.cpp.o",
+      "sha256": "c9001cc6b2092141791427f6c47a8361343abf8f61810147ad36ee5c0fcb2f8d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpmv/siglip_vision.cpp.o",
+      "sha256": "fa9de3d7b2ca2b156246fb1e6c90d110cbd9024d5ffb94d0b916a6c62a7cf824"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minimax_h3/minimax_h3_transformer.cpp.o",
+      "sha256": "0642dba1cf17329a1d4de4ede471317ca8e0cc834cd4c0264d8ab89bc3c75f5d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/models_registry.cpp.o",
+      "sha256": "ef3ee63d49e497bb2a5ec09c8e9725fe90594e1e0a62176cb7c82479ba8067b3"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3/qwen3_attention.cpp.o",
+      "sha256": "e6cac6eb0263da67d26c5de8884f880bd8abb5f7e9bdc0d6d3580e4789da29da"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3/qwen3_for_causal_lm.cpp.o",
+      "sha256": "366e126fce0ee436c57b7d153f3077409bb3f3a12a7bc17a6bff8d2915b4b834"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_sparse_moe_block.cpp.o",
+      "sha256": "81ca5e75f463f0537e582224933e2df0f287ce8744ee5f8cfc606f900da64bcb"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_topk_router.cpp.o",
+      "sha256": "53f56617952d9de50604051f01bee541dd326d1f5093dad8a26b1ecdb0570659"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_experts.cpp.o",
+      "sha256": "93b36fbc62f447a680d00c850f4b27293b523e40aebf7e460519d9e91757c24d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_for_causal_lm.cpp.o",
+      "sha256": "31311aeeef8ab1814b3d1ade5972546822d25cb9bfd23cbda8eb0b9364f72e01"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/debug_utils/hooks.cpp.o",
+      "sha256": "88e36a7a494ef11656cb1030224011c3cca8c0a2dac1c2fe6542ed2295bee3d7"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/attention.cpp.o",
+      "sha256": "a5ce02caaf72c70c66fe343551f5f0a46a9bf412395f8c4176ce4501368e1e77"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/paged_attn.cpp.o",
+      "sha256": "1bbc0435feec22626504806085f309171df5d1f8cc065026b0d776371c87210a"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/static_attn.cpp.o",
+      "sha256": "0ba19ff30089a0c69e79a1b7263aee38340fe7094a9d5b2ac3275ce0409d38da"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/attention_layer.cpp.o",
+      "sha256": "57da0c427bebbad6a93c4353e39cab070d06cdaa66d882064c44caba6629e4f8"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/flash_attn.cpp.o",
+      "sha256": "3a5ff2380fd51ed8620256395bcb3350f5b02f7fc1cbd4d2bb94b87edaaf1152"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/dispatcher/dispatcher_factory.cpp.o",
+      "sha256": "7c9e699be6b6fe9525fd0228876e0627f93897e77171ddc60d1660d6e70dd597"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/dispatcher/standard_dispatcher.cpp.o",
+      "sha256": "84f72c53d92349aa6bf1f9e2a598ca79a776a0cc3e75f35360a0ce72cddaf59f"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/allgather_reduce_scatter_dispatcher.cpp.o",
+      "sha256": "d2824a0478000433ac7f810825e5ccf35ca41d0849106bcc40af12b6e223715e"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/deepep_dispatcher.cpp.o",
+      "sha256": "1ec46ac743358f66064c0a27a5146dd3b98fa3409a1744897745c383bd9bf2dd"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/ep_config.cpp.o",
+      "sha256": "ed9bb318551ff82a250431eb9d8f6563830764cb887f3ef7e5a652823ab30f98"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/base_ep_dispatcher.cpp.o",
+      "sha256": "d2403374848680e34b296ef7b2368c3f53cb492b993f43e1c61f21c2e1030037"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/local_allreduce_dispatcher.cpp.o",
+      "sha256": "64361ab331a807cd66b06c652a92cac7ff856fc4f7d68e173114312d7303e14d"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/legacy/moe_mlp.cpp.o",
+      "sha256": "42f2a05df76d73df8b7972211da1401df701e81a7b347b2f9fade2938fba95ad"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/router/topk_router.cpp.o",
+      "sha256": "4e33b826f439eafe06a5326c36d9a826eac48c313db57b44a7e614f22cd880c4"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/sparse_moe_block.cpp.o",
+      "sha256": "5c6439f26b00b4038db21e8ccf4ab48db82a00add1842bccf55271a7625c4257"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/experts/fused_moe_experts.cpp.o",
+      "sha256": "02d3410fa745b7d74560b0a7ea292c974bfa604f70f521d882292867013ed96b"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/fused_moe.cpp.o",
+      "sha256": "f40ac740cc8ee2049003d5e575ce6f0c78b5644dd2eb401b9ff9bab49e277fc8"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/runner/cuda_fused_moe_runner.cpp.o",
+      "sha256": "05aacf5f2afe1bf0a03c61e3bfdbb18f3c2374e15875b362369528fc4e231ada"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/awq.cpp.o",
+      "sha256": "56de028ae29be0f4945549eb096c074225483ee0c327f1cc3121f7acc5942a6a"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/awq_marlin.cpp.o",
+      "sha256": "8e50efdee4b6125013fec997a7b4085854cc4eecc7479ffe04478d0fb4189c08"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/base_quantization.cpp.o",
+      "sha256": "9517eb454dcc9a4f49b6bca7d81866ecce1217779ec7d5fd3028c10de9392930"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/gptq_marlin.cpp.o",
+      "sha256": "17528d8e6fa37522533d8501fb6475d98ec86d0142963f68e007f3be2e7b4db7"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/marlin_utils.cpp.o",
+      "sha256": "3916fe1643ce77781bf37b6f03c0cbd7ff30942e8528287fed3b8c1d1757afd7"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/mxfp4.cpp.o",
+      "sha256": "7b509f5c7260a18c3e24045cf0667e7759f3e77dbea14dc2e45395efcaff03f1"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/compressed_tensors.cpp.o",
+      "sha256": "8c72a88ea01a0decae4057c9c9b4ae19fab4598f63b3d62acafc635170505180"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/gptq.cpp.o",
+      "sha256": "27a48664da588968f1709371cc7b4414d7744043c7f83c061bf2e8be0897efb5"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/gptq_qy.cpp.o",
+      "sha256": "a825f87f9432e4c1a6ebccf7b65d97a9239512b88aec820fe86289219c009eb5"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/kv_quant.cpp.o",
+      "sha256": "78bd7965766e54d9c9c4c0a736d7c6f87ca2a8286ff0d7395987ca98d1469eea"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/none_quantization.cpp.o",
+      "sha256": "f45b0e4acfc28fb3a0b47d9c6b937a793f0750d08b135f25bba83fa96682b558"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/linear/base_linear.cpp.o",
+      "sha256": "93999c88387d5e9f169371e57747764bcab30c3dcc66f149698b6e084d178264"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/linear/fused_linear.cpp.o",
+      "sha256": "5c2da9cb821b6dd59b82a76e8916cd3274a89d6a43db2ba5949780ad052b05f0"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/linear/linear.cpp.o",
+      "sha256": "1a0dfff761d13f09f6fc9c63f55197fda3de8a692681ba9425be2905eb1eb393"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/mlp/mlp.cpp.o",
+      "sha256": "a666125ea1e499e9075e2879be2df8da27bbd8605a0f494390aadf63f47b06e4"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/rotary_embedding/rope_scaling_creators.cpp.o",
+      "sha256": "264526cd0523db620361372d1ab48aa0972f4c5a42c3697c52912f8bb39ecc80"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/rotary_embedding/rotary_embedding_factory.cpp.o",
+      "sha256": "51a8c8804c46983d55f22b098b193852a33a7e07dd104d2fb02ba595c3ac1f99"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/rotary_embedding/rotary_embedding.cpp.o",
+      "sha256": "b2fbc2735fde0ea0956f28df9e26a69e3f49772480ad6d92c4aae1abfb30b555"
+    },
+    {
+      "path": "build/.objs/_infinilm/linux/x86_64/release/csrc/pybind11/bindings.cc.o",
+      "sha256": "2387baee789dda2d7d54d35c2efd46e9402d303a73bb280f0ab3aa0bf44f5cfb"
+    }
+  ]
+}

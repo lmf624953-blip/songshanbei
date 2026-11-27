@@ -60,12 +60,15 @@ def main():
     parser.add_argument("--widenorm-indexed-ablation", action="store_true", help="Compare wide RMSNorm/AdaLN fusion on identical real inputs")
     parser.add_argument("--candidate-only", action="store_true", help="Only exercise the selected build, including its first call")
     parser.add_argument("--indexed-ablation", type=Path, help="Compare the enabled indexed build against this original indexed build")
+    parser.add_argument("--peer-gate-ablation", action="store_true", help="Compare selected native with peer gate disabled/enabled on the same inputs")
     args = parser.parse_args()
     if args.iterations < 3:
         parser.error("Use at least three timed trials")
     if args.profile_drain_seconds < 0 or (args.profile_drain_seconds and not args.profile_once):
         parser.error("A nonnegative profile drain delay requires --profile-once")
     control = sys.modules["songshan_candidate_control"]
+    if args.peer_gate_ablation and not hasattr(control, "set_peer_gate_enabled"):
+        parser.error("Peer gate ablation requires the registered peer runtime")
     attention_override = None
     if args.attention_ablation:
         if any((args.qknorm_ablation, args.qknorm_mrope_ablation, args.wide_ablation,
@@ -178,11 +181,13 @@ def main():
                     variants = ("candidate", "candidate-alternative-attention")
                     if step_index % 2:
                         variants = variants[::-1]
+                if args.peer_gate_ablation:
+                    variants = ("candidate-no-peer-gate", "candidate")
                 if args.profile_once or args.candidate_only:
                     variants = ("candidate",)
                 for variant in variants:
                     selected_variant = variant
-                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
+                    if variant in {"candidate-no-peer-gate", "candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
                         selected_variant = "candidate"
                     if args.precision_ablation and variant != "original":
                         selected_variant = "candidate-tf-no-reducecast" if variant.startswith("candidate-bf16-wire") else "candidate-tf"
@@ -192,7 +197,11 @@ def main():
                         selected_variant = "candidate"
                     if attention_override is not None:
                         selected_variant = "candidate"
+                    if args.peer_gate_ablation:
+                        selected_variant = "candidate"
                     control.select_variant(selected_variant)
+                    if args.peer_gate_ablation:
+                        control.set_peer_gate_enabled(variant != "candidate-no-peer-gate")
                     if variant == "candidate-alternative-attention":
                         control.set_attention_callback(attention_override)
                     if args.elementwise_reference_builds:
@@ -256,7 +265,7 @@ def main():
                         expected = torch.load(args.reference_results / f"step-{step:02d}.pt",
                                               map_location="cpu", weights_only=True)
                         record["against_independent_pytorch"] = compare(result, expected)
-                    if variant in {"candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
+                    if variant in {"candidate-no-peer-gate", "candidate-no-qknorm", "candidate-old-indexed", "candidate-no-widenorm", "candidate-no-short-attention", "candidate-no-qknorm-mrope", "candidate-no-widenorm-indexed", "candidate-no-swiglu"}:
                         paired = tuple(x.detach().cpu().clone() for x in outputs(result))
                     elif variant == "candidate" and paired is not None and not args.elementwise_reference_builds:
                         key = "against_candidate_with_original_indexed" if args.indexed_ablation else "against_candidate_without_qknorm"
@@ -270,6 +279,8 @@ def main():
                             key = "against_candidate_without_swiglu"
                         if args.widenorm_indexed_ablation:
                             key = "against_candidate_without_widenorm_indexed"
+                        if args.peer_gate_ablation:
+                            key = "against_candidate_without_peer_gate"
                         record[key] = compare(result, paired)
                     if args.elementwise_reference_builds:
                         if variant == "candidate-reference-elementwise":
@@ -281,6 +292,8 @@ def main():
                             paired = tuple(x.detach().cpu().clone() for x in outputs(result))
                         else:
                             record["against_paired_attention"] = compare(result, paired)
+                    if args.peer_gate_ablation:
+                        record["peer_gate_stats"] = control.peer_gate_stats()
                     print(json.dumps(record), flush=True)
                     records.append(record)
                     (out / "results.json").write_text(json.dumps(records, indent=2) + "\n")

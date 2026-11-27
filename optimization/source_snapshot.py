@@ -15,6 +15,9 @@ def snapshot(destination):
     files = []
     for root in (project / "optimization", project / "optimization/adaln"):
         files.extend(p for p in root.iterdir() if p.is_file() and p.suffix in {".py", ".sh", ".cc", ".patch"})
+    if os.environ.get("H3_PEER_GATE_BUILD"):
+        peer_source = project / "optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel"
+        files.extend(p for p in peer_source.iterdir() if p.is_file() and p.suffix in {".py", ".sh", ".cc", ".hip", ".patch", ".md", ".json"})
     files.append(project / "runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py")
     records = {}
     for source in sorted(files):
@@ -26,7 +29,7 @@ def snapshot(destination):
     artifacts = {}
     for name in ("H3_ADALN_BUILD", "H3_ADALN_AOT_BUILD", "H3_INDEXED_BUILD",
                  "H3_SWIGLU_BUILD", "H3_QKNORM_BUILD", "H3_QKNORM_MROPE_BUILD", "H3_WIDE_NORM_INDEXED_BUILD", "H3_ATTENTION_AOT_BUILD", "H3_SHORT_ATTENTION_AOT_BUILD",
-                 "H3_REDUCECAST_BUILD", "H3_ENCODER_REDUCECAST_BUILD", "H3_WIDE_NORM_BUILD"):
+                 "H3_REDUCECAST_BUILD", "H3_ENCODER_REDUCECAST_BUILD", "H3_WIDE_NORM_BUILD", "H3_PEER_GATE_BUILD"):
         if not os.environ.get(name):
             continue
         build = Path(os.environ[name]).resolve(strict=True)
@@ -46,7 +49,7 @@ def snapshot(destination):
     names = ("H3_PY_ATTENTION_FP32_SCALE", "H3_VAE_DEVICES", "H3_VAE_BATCH", "H3_VAE_CACHE_REPLICAS",
              "H3_VAE_DETERMINISTIC_ENCODE",
              "H3_ENCODER_PREFILL", "H3_ENCODER_INITIAL_CACHE", "H3_ENCODER_TP_COUNT", "H3_INDEXED_AUDIT",
-             "H3_INDEXED_PAIRED", "H3_BENCH_JIT_CACHE", "H3_NATIVE_CXX_OPTIMIZE",
+             "H3_INDEXED_PAIRED", "H3_PEER_GATE_ENABLED", "H3_BENCH_JIT_CACHE", "H3_NATIVE_CXX_OPTIMIZE",
              "ROCBLAS_TENSILE_LIBPATH", "TRITON_CACHE_DIR", "NINETOOTHED_CACHE_DIR")
     names += ("NCCL_ALGO", "NCCL_PROTO", "NCCL_MIN_NCHANNELS", "NCCL_MAX_NCHANNELS",
               "HIP_VISIBLE_DEVICES", "ROCR_VISIBLE_DEVICES", "CUDA_VISIBLE_DEVICES", "OMP_NUM_THREADS",

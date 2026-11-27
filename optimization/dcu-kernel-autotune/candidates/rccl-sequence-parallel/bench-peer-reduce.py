@@ -23,10 +23,20 @@ def main():
     cli.add_argument('--gather',choices=['read','write'],default='read')
     cli.add_argument('--case',choices=['random','tiny','wide','special'],default='random')
     cli.add_argument('--indexed-build',type=Path,help='提供现用九齿构建，比较AllReduce+indexed_gate与分片融合')
+    cli.add_argument('--nt-build',type=Path,help='使用九齿分片镜像及独立transport库')
+    cli.add_argument('--bridge-build',type=Path,help='以InfiniCCL路径和八线程主机桥进行接入前验证')
     args=cli.parse_args();assert args.pairs>0
     helper=Path(__file__).resolve().parent.parent/'rccl-allreduce/bench-allreduce.py'
     spec=importlib.util.spec_from_file_location('rccl_helper',helper);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    lib=module.load_rccl(args.rccl.resolve(strict=True));peer=ct.CDLL(str(args.peer.resolve(strict=True)))
+    if args.bridge_build:
+        from bridge_micro import InfiniCCLProxy,install_adapter as install_bridge
+        lib=InfiniCCLProxy(args.rccl);peer=ct.CDLL(str(args.peer.resolve(strict=True)));install_bridge(peer,args.bridge_build,args.indexed_build,lib)
+    else:
+        lib=module.load_rccl(args.rccl.resolve(strict=True));peer=ct.CDLL(str(args.peer.resolve(strict=True)))
+    if args.nt_build:
+        assert args.indexed_build
+        from nt_peer_launcher import install_adapter
+        install_adapter(peer,args.nt_build)
     peer.peer_setup.restype=ct.c_int;peer.peer_cleanup.restype=ct.c_int
     pointer=ct.POINTER(ct.c_uint64);peer.peer_execute.argtypes=[pointer,pointer,pointer,pointer,pointer,ct.c_size_t,ct.c_int,ct.c_int];peer.peer_execute.restype=ct.c_int
     if args.gather=='write':
@@ -140,7 +150,7 @@ def main():
                         if pair%2:b=measured(custom,candidate);a=measured(baseline,reference)
                         else:a=measured(baseline,reference);b=measured(custom,candidate)
                         samples.append(dict(reference=a,candidate=b))
-                    row=dict(count=count,vec=vec,blocks=blocks,gather=args.gather,case=args.case,indexed_gate=native_record,fixed_order=args.fixed_order,seed=args.seed,order_model=dict(channels=args.channels,chunk=args.chunk,alignment=args.alignment),mismatches=mismatch,tail_ok=tail,exact=not any(mismatch) and all(tail),samples=samples,reference_median_ms=statistics.median(s['reference']['gpu_ms'] for s in samples),candidate_median_ms=statistics.median(s['candidate']['gpu_ms'] for s in samples),paired_gain_percent=statistics.median(100*(1-s['candidate']['gpu_ms']/s['reference']['gpu_ms']) for s in samples))
+                    row=dict(count=count,vec=vec,blocks=blocks,gather=args.gather,case=args.case,indexed_gate=native_record,nt_build=str(args.nt_build) if args.nt_build else None,bridge_stats=json.loads(peer.h3_peer_bridge_stats()) if args.bridge_build else None,fixed_order=args.fixed_order,seed=args.seed,order_model=dict(channels=args.channels,chunk=args.chunk,alignment=args.alignment),mismatches=mismatch,tail_ok=tail,exact=not any(mismatch) and all(tail),samples=samples,reference_median_ms=statistics.median(s['reference']['gpu_ms'] for s in samples),candidate_median_ms=statistics.median(s['candidate']['gpu_ms'] for s in samples),paired_gain_percent=statistics.median(100*(1-s['candidate']['gpu_ms']/s['reference']['gpu_ms']) for s in samples))
                     records.append(row);args.output.write_text(json.dumps(dict(scope='无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩',records=records),ensure_ascii=False,indent=2)+'\n');print(json.dumps(row),flush=True)
             del sources,reference,candidate,shards,maps,hostmap,x,residuals,tables,indices,reference_out
             for rank in range(ranks):

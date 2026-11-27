@@ -1,6 +1,34 @@
 # 保持 BF16 累加顺序的 peer 分片与门控融合实验
 
-2026-11-27，在 `f13r1n16` 上实现新的八卡 peer 原型。最终候选把每个输出元素按现用 RCCL rank 顺序逐步 BF16 相加，在该卡负责的分片上执行原门控残差计算，再推送结果到八卡。与 **现用 RCCL + 九齿 indexed_gate** 的39组无profiler配对：公开A对应消息约 **6.370 → 4.920 ms**，两个其他长度同样约节省22.5%–22.8%，完整BF16输出和尾部检查全部通过。按49次Transformer、每次100个相关投影，仅作完整A粗略投影约 **5.59%**；尚未接入模型，没有新的完整请求成绩。正式默认仍为已验收127.831秒。
+2026-11-28，`f13r1n16` 上已把分片累加和门控计算移植为九齿表达，HIP仅处理通信发布、事件依赖、位置映射及独立校准探针。真实八卡第1、25、49次去噪回放，均与同实例关闭候选的完整视频/音频Transformer输出逐位一致；单次Transformer均值分别从2.19034/2.18794/2.18643秒降到2.06358/2.06461/2.06342秒，约节省5.63%–5.79%。关闭回调的第25次输出也与此前正式版本输出哈希一致。**普通官方A及同实例A×8/B/C/返回A验收进行中，尚无新的完整请求成绩；正式默认仍为已验收127.831秒。** [本轮九齿实测](../../docs/peer-gate-nt-f13r1n16.json)
+
+先前`peer_reduce.hip`是可行性研究原型，39组配对的6.370→4.920ms及5.59%完整请求粗略投影仅适用于该HIP原型。正式候选的九齿tile1024版本，独立算子6.358→5.231ms；接入实际InfiniCCL、八个主机worker与动态校准后，独立算子6.392→5.406ms。两者均逐位通过，数值与真实模型回放分开记录，不把HIP原型成绩当九齿版本成绩。
+
+## 九齿计算与模型桥
+
+`peer_nt_kernel.py`表达8份输入按原循环rank顺序累加、每步BF16 RNE、原indexed门控和残差；`nt_bitcast_compat.py`在构建进程内补齐当前九齿lowering的`bitcast=True`语义，保存前端和发射器来源哈希，不修改已安装包。`build-peer-nt.py`保存九齿表达、lowered源码、IR、HSACO和运行时ABI。tile256/1024/2048已比较，选1024、4 warps、0 LDS。
+
+`peer_transport.hip`是输入就绪依赖、分片发布与完成依赖；`peer_gate_bridge.cc`在八个原有`RankWorker`上汇合后调度九齿镜像，保留原设备和stream。每个新count/communicator用两组独立有限BF16探针校准实际InfiniCCL rank环、通道、块和尾部，并在所有位置及八卡验证；不通过则执行原AllReduce和现用九齿门控。探针和工作区不替换真实模型输入，不减少模型层数或投影计算。
+
+`prepare-native-hook.py`给已验收H3源码添加回调。`build-peer-native.py`从该版本源码包重建私有overlay，`build-peer-bridge.py`固定镜像、桥和transport的哈希。`peer_gate_runtime.py`装载并提供实验对照开关。开关用于同实例消融和安全回退；通过完整资格验收之前，不修改`selected-best.env`。
+
+在已经激活正式DTK/GCC/venv、设置`H3_AUTOTUNE_CODE_ROOT`后，以全新目录构建：
+
+```bash
+here="$H3_AUTOTUNE_CODE_ROOT/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel"
+python "$here/build-peer-nt.py" "$new_nt" --tile 1024 --warps 4
+python "$here/build-peer-bridge.py" "$new_nt" "$new_peer_runtime"
+# xmake也可使用源码附带工具的私有构建，并设置其XMAKE_PROGRAM_DIR。
+python "$here/build-peer-native.py" "$accepted_native" "$new_native" --xmake "$xmake_binary" --jobs 8
+python "$here/bench-peer-reduce.py" "$INFINI_ROOT/lib/libinfiniccl.so" \
+  "$new_peer_runtime/peer-gate-bridge.so" "$new_micro_json" \
+  --bridge-build "$new_peer_runtime" --indexed-build "$current_indexed_build" \
+  --gather write --vectors 1 --blocks 5120 --pairs 39 --counts 148216320
+```
+
+候选配置先加载当前已验收配置，再覆盖`H3_ADALN_BUILD`和`H3_PEER_GATE_BUILD`为新构建，其他计算保持不变。`qualify-peer-gate.sh CANDIDATE_CONFIG NEW_OUTPUT ACCEPTED_QUALIFICATION`先验证普通官方默认入口，再执行11个完整请求，对照顺序`off,on,off,on,on,off,off,on,on,on,on`，排除前两个预热，正式配对为`(2,3)/(5,4)/(6,7)`，记录整卡显存。`summarize-peer-gate.py`核对49次Transformer、所有门控/投影计数、实际库和镜像哈希、独立参考质量，以及A/B/C成片与已有验收版逐字节相同。主字段仍为`wall.candidate.mean`，协议名区分为`minimax-h3-public-a-peer-gate-paired-v1`；新成绩必须来自此完整测量。
+
+CPU独立重建已确认：九齿HSACO因调试路径造成整文件哈希差异，可加载区段及映射完全一致；主机桥和transport逐字节一致。InfiniLM的130个编译对象全部逐字节一致，xmake的遍历顺序会改变链接布局，因此保存`native-link-order.json`并用`link-peer-native.py`逐对象校验后按固定顺序链接，最终native也逐字节一致。构建脚本已调用这一固定链接步骤，拒绝把未知编译对象宣称为同一构建。
 
 ## 为什么先检查集合顺序
 
@@ -42,4 +70,4 @@ python bench-peer-reduce.py "$DTK_ROOT/lib/librccl.so.1" "$new_peer_library" "$n
 
 省略`--indexed-build`只比较AllReduce；`--case special|tiny|wide`可检查特殊值。`--fixed-order`只用于性能可行性，不能当作逐位合格。完整结果必须读取JSON的`exact`，不能只依据程序退出码，因为实验记录也保留不通过的候选。
 
-`ring_order_map.py` 和源代码中的rank环目前描述本节点已经验证的实验条件；换节点、通信参数或尺寸后需重新验证。模型接入还需运行时校准及回退，不能直接将这个实验库替换正式通信库。[模型接入状态与约束](模型接入方案.md) · [完整原始记录](../../docs/peer-reduce-f13r1n16.json) · [原始PMC TXT](../../docs/peer-reduce-f13r1n16-basic-pmc.txt)
+`ring_order_map.py`和HIP原型源代码中的rank环描述该原型在本节点验证的条件，不能直接将该实验库替换正式通信库。当前九齿模型桥已经增加运行时校准及回退，仍需完整请求资格验收。[模型接入状态与约束](模型接入方案.md) · [HIP原型完整记录](../../docs/peer-reduce-f13r1n16.json) · [HIP原型原始PMC TXT](../../docs/peer-reduce-f13r1n16-basic-pmc.txt)

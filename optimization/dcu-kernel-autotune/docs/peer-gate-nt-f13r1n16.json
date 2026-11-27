@@ -1,0 +1,2107 @@
+{
+  "node": "f13r1n16",
+  "status": "真实八卡回放逐位通过，普通官方A及同实例11请求资格验收进行中；正式最佳配置仍127.831000722秒。",
+  "scope": "九齿分片BF16累加与indexed_gate；HIP仅通信、内存与元数据探针。",
+  "root": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm",
+  "replay": [
+    {
+      "step": 1,
+      "reference_seconds": 2.1903374863322824,
+      "candidate_seconds": 2.063582165942838,
+      "reduction_percent": 5.787022373510853,
+      "exact": true
+    },
+    {
+      "step": 25,
+      "reference_seconds": 2.1879380746589354,
+      "candidate_seconds": 2.0646055095518627,
+      "reduction_percent": 5.636931252101284,
+      "exact": true
+    },
+    {
+      "step": 49,
+      "reference_seconds": 2.1864309517356255,
+      "candidate_seconds": 2.0634229683782905,
+      "reduction_percent": 5.625971552391773,
+      "exact": true
+    }
+  ],
+  "replay_raw": [
+    {
+      "step": 1,
+      "variant": "candidate-no-peer-gate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.1910385629162192,
+        2.1889366910327226,
+        2.1910372050479054
+      ],
+      "mean_seconds": 2.1903374863322824,
+      "median_seconds": 2.1910372050479054,
+      "warmup_seconds": 6.304351300001144,
+      "kernel_calls": {
+        "adaln": 32,
+        "indexed": 3200,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64,
+        "widenorm_indexed": 3200,
+        "swiglu": 1664,
+        "peer_gate": 0,
+        "peer_deferred": 0,
+        "peer_batches": 0,
+        "peer_fused": 0,
+        "peer_fallback": 0
+      },
+      "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539000,
+          "max_abs_error": 0.7370049953460693,
+          "mean_abs_error": 0.02384854666888714,
+          "rmse": 0.03359978274970103,
+          "finite": true,
+          "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.09959760308265686,
+          "mean_abs_error": 0.026621470227837563,
+          "rmse": 0.03233205743545516,
+          "finite": true,
+          "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      ],
+      "diagnostic_profiler": false,
+      "peer_gate_stats": {
+        "batches": 0,
+        "fused": 0,
+        "fallback": 0,
+        "calibrations": []
+      }
+    },
+    {
+      "step": 1,
+      "variant": "candidate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.064125936012715,
+        2.0632273899391294,
+        2.063393171876669
+      ],
+      "mean_seconds": 2.063582165942838,
+      "median_seconds": 2.063393171876669,
+      "warmup_seconds": 2.089474449167028,
+      "kernel_calls": {
+        "adaln": 32,
+        "indexed": 0,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64,
+        "widenorm_indexed": 3200,
+        "swiglu": 1664,
+        "peer_gate": 3200,
+        "peer_deferred": 3200,
+        "peer_batches": 400,
+        "peer_fused": 400,
+        "peer_fallback": 0
+      },
+      "capture_sha256": "7ab40a491b13bd62f5593c0aefcfacefcfec62c477c50b3a4a998641a6be3b38",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539000,
+          "max_abs_error": 0.7370049953460693,
+          "mean_abs_error": 0.02384854666888714,
+          "rmse": 0.03359978274970103,
+          "finite": true,
+          "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.09959760308265686,
+          "mean_abs_error": 0.026621470227837563,
+          "rmse": 0.03233205743545516,
+          "finite": true,
+          "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      ],
+      "diagnostic_profiler": false,
+      "against_candidate_without_peer_gate": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": true,
+          "mismatches": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "finite": true,
+          "output_sha256": "3af5a3fd33c64da881c474bc17e72bbf116afe171ae7deefe0d4b2d77a2e2098"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": true,
+          "mismatches": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "finite": true,
+          "output_sha256": "3d3b5a1fcf460eb75d5ac24ef32c1b8a1257a16843e1949f7165084732623cfc"
+        }
+      ],
+      "peer_gate_stats": {
+        "batches": 400,
+        "fused": 400,
+        "fallback": 0,
+        "calibrations": [
+          {
+            "count": 148216320,
+            "ok": true,
+            "ringbits": 16205000,
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          }
+        ]
+      }
+    },
+    {
+      "step": 25,
+      "variant": "candidate-no-peer-gate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.188732960028574,
+        2.1868177170399576,
+        2.1882635469082743
+      ],
+      "mean_seconds": 2.1879380746589354,
+      "median_seconds": 2.1882635469082743,
+      "warmup_seconds": 2.187551672104746,
+      "kernel_calls": {
+        "adaln": 32,
+        "indexed": 3200,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64,
+        "widenorm_indexed": 3200,
+        "swiglu": 1664,
+        "peer_gate": 0,
+        "peer_deferred": 0,
+        "peer_batches": 0,
+        "peer_fused": 0,
+        "peer_fallback": 0
+      },
+      "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2538994,
+          "max_abs_error": 0.4010007381439209,
+          "mean_abs_error": 0.008604387752711773,
+          "rmse": 0.012172585110222416,
+          "finite": true,
+          "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.053460896015167236,
+          "mean_abs_error": 0.00826754979789257,
+          "rmse": 0.010348869412489126,
+          "finite": true,
+          "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ],
+      "diagnostic_profiler": false,
+      "peer_gate_stats": {
+        "batches": 400,
+        "fused": 400,
+        "fallback": 0,
+        "calibrations": [
+          {
+            "count": 148216320,
+            "ok": true,
+            "ringbits": 16205000,
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          }
+        ]
+      }
+    },
+    {
+      "step": 25,
+      "variant": "candidate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.066065858816728,
+        2.063388451933861,
+        2.064362217905
+      ],
+      "mean_seconds": 2.0646055095518627,
+      "median_seconds": 2.064362217905,
+      "warmup_seconds": 2.0644336079712957,
+      "kernel_calls": {
+        "adaln": 32,
+        "indexed": 0,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64,
+        "widenorm_indexed": 3200,
+        "swiglu": 1664,
+        "peer_gate": 3200,
+        "peer_deferred": 3200,
+        "peer_batches": 400,
+        "peer_fused": 400,
+        "peer_fallback": 0
+      },
+      "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2538994,
+          "max_abs_error": 0.4010007381439209,
+          "mean_abs_error": 0.008604387752711773,
+          "rmse": 0.012172585110222416,
+          "finite": true,
+          "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.053460896015167236,
+          "mean_abs_error": 0.00826754979789257,
+          "rmse": 0.010348869412489126,
+          "finite": true,
+          "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ],
+      "diagnostic_profiler": false,
+      "against_candidate_without_peer_gate": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": true,
+          "mismatches": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "finite": true,
+          "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": true,
+          "mismatches": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "finite": true,
+          "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ],
+      "peer_gate_stats": {
+        "batches": 800,
+        "fused": 800,
+        "fallback": 0,
+        "calibrations": [
+          {
+            "count": 148216320,
+            "ok": true,
+            "ringbits": 16205000,
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          }
+        ]
+      }
+    },
+    {
+      "step": 49,
+      "variant": "candidate-no-peer-gate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.1861440930515528,
+        2.1852592469658703,
+        2.187889515189454
+      ],
+      "mean_seconds": 2.1864309517356255,
+      "median_seconds": 2.1861440930515528,
+      "warmup_seconds": 2.19024700880982,
+      "kernel_calls": {
+        "adaln": 32,
+        "indexed": 3200,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64,
+        "widenorm_indexed": 3200,
+        "swiglu": 1664,
+        "peer_gate": 0,
+        "peer_deferred": 0,
+        "peer_batches": 0,
+        "peer_fused": 0,
+        "peer_fallback": 0
+      },
+      "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539000,
+          "max_abs_error": 0.48146843910217285,
+          "mean_abs_error": 0.013386040925979614,
+          "rmse": 0.018223751494279513,
+          "finite": true,
+          "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.115581214427948,
+          "mean_abs_error": 0.012662931345403194,
+          "rmse": 0.016394232593819127,
+          "finite": true,
+          "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      ],
+      "diagnostic_profiler": false,
+      "peer_gate_stats": {
+        "batches": 800,
+        "fused": 800,
+        "fallback": 0,
+        "calibrations": [
+          {
+            "count": 148216320,
+            "ok": true,
+            "ringbits": 16205000,
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          }
+        ]
+      }
+    },
+    {
+      "step": 49,
+      "variant": "candidate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.0625778960529715,
+        2.0630266300868243,
+        2.064664378995076
+      ],
+      "mean_seconds": 2.0634229683782905,
+      "median_seconds": 2.0630266300868243,
+      "warmup_seconds": 2.062896498013288,
+      "kernel_calls": {
+        "adaln": 32,
+        "indexed": 0,
+        "qknorm": 128,
+        "qknorm_mrope": 1600,
+        "attention": 1600,
+        "short_attention": 64,
+        "widenorm_indexed": 3200,
+        "swiglu": 1664,
+        "peer_gate": 3200,
+        "peer_deferred": 3200,
+        "peer_batches": 400,
+        "peer_fused": 400,
+        "peer_fallback": 0
+      },
+      "capture_sha256": "c121437dc277caa35d49dc9be0ee0d99b4f4ecc90016e4b3a9d53345017605dc",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2539000,
+          "max_abs_error": 0.48146843910217285,
+          "mean_abs_error": 0.013386040925979614,
+          "rmse": 0.018223751494279513,
+          "finite": true,
+          "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.115581214427948,
+          "mean_abs_error": 0.012662931345403194,
+          "rmse": 0.016394232593819127,
+          "finite": true,
+          "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      ],
+      "diagnostic_profiler": false,
+      "against_candidate_without_peer_gate": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": true,
+          "mismatches": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "finite": true,
+          "output_sha256": "8645d22504ebb5aa7e591745c7b9eba15fd8a8bab49a917e8da0253b236a9d79"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": true,
+          "mismatches": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "finite": true,
+          "output_sha256": "842218c68dda1d2d6f93d01528873683939de6a78cfe54136f9f1fdff2c63ae2"
+        }
+      ],
+      "peer_gate_stats": {
+        "batches": 1200,
+        "fused": 1200,
+        "fallback": 0,
+        "calibrations": [
+          {
+            "count": 148216320,
+            "ok": true,
+            "ringbits": 16205000,
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          }
+        ]
+      }
+    }
+  ],
+  "nt_build": {
+    "nt": {
+      "bitcast_compat": {
+        "frontend_sha256": "f3c3f273580946ca9a8db7a070649d8636e1431dbe19bdb3c548a7d1fc132394",
+        "emitter_sha256": "0deb2e0a2a6376ec333ec93d8078122dab4c7eab7f254f0c149c33f8eabeb4f9"
+      },
+      "hsaco_sha256": "7cdb0467abde2195e50e57a7a1244802b2a5ff7cee6100c67c2cebc7dd1ba62f",
+      "warps": 4,
+      "tile": 1024,
+      "shared": 0,
+      "arguments": [
+        {
+          "kind": "tensor",
+          "source": "p0"
+        },
+        {
+          "kind": "tensor",
+          "source": "p1"
+        },
+        {
+          "kind": "tensor",
+          "source": "p2"
+        },
+        {
+          "kind": "tensor",
+          "source": "p3"
+        },
+        {
+          "kind": "tensor",
+          "source": "p4"
+        },
+        {
+          "kind": "tensor",
+          "source": "p5"
+        },
+        {
+          "kind": "tensor",
+          "source": "p6"
+        },
+        {
+          "kind": "tensor",
+          "source": "p7"
+        },
+        {
+          "kind": "tensor",
+          "source": "owners"
+        },
+        {
+          "kind": "tensor",
+          "source": "residual"
+        },
+        {
+          "kind": "tensor",
+          "source": "gate"
+        },
+        {
+          "kind": "tensor",
+          "source": "indices"
+        },
+        {
+          "kind": "scalar",
+          "source": "rank",
+          "dim": null
+        },
+        {
+          "kind": "scalar",
+          "source": "ringbits",
+          "dim": null
+        },
+        {
+          "kind": "tensor",
+          "source": "output"
+        },
+        {
+          "kind": "shape",
+          "source": "p0",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p1",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p2",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p3",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p4",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p5",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p6",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "p7",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "owners",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "residual",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "gate",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "indices",
+          "dim": 0
+        },
+        {
+          "kind": "shape",
+          "source": "output",
+          "dim": 0
+        }
+      ],
+      "numerical_verified": false,
+      "source_sha256": "8f4bb1adc5a3811e90d0189a2713b4acad919ed987d4ccb6d48e1adc3007d50b",
+      "lowered": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/nt-gate-t1024/h3_peer_gate.triton.py"
+    },
+    "abi_codes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      101,
+      100,
+      102,
+      103,
+      101
+    ],
+    "transport_command": [
+      "hipcc",
+      "-O3",
+      "-std=c++17",
+      "--offload-arch=gfx936",
+      "-shared",
+      "-fPIC",
+      "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel/peer_transport.hip",
+      "-o",
+      "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/peer-nt-runtime/peer-transport.so"
+    ],
+    "bridge_command": [
+      "/public/software/compiler/gcc-11.4.0/bin/g++",
+      "-std=c++17",
+      "-O2",
+      "-shared",
+      "-fPIC",
+      "-DENABLE_ATEN",
+      "-D_GLIBCXX_USE_CXX11_ABI=1",
+      "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+      "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+      "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+      "-D__HIP_PLATFORM_AMD__",
+      "-I/public/software/compiler/dtk-26.04/include",
+      "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel/peer_gate_bridge.cc",
+      "-L/public/software/compiler/dtk-26.04/lib",
+      "-lamdhip64",
+      "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+      "-linfinicore_cpp_api",
+      "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+      "-ltorch_python",
+      "-ltorch",
+      "-ltorch_cpu",
+      "-lc10",
+      "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+      "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+      "-o",
+      "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/peer-nt-runtime/peer-gate-bridge.so"
+    ],
+    "sha256": {
+      "h3_peer_gate.triton.json": "aaaf5bef47dd41ac657e520f17a97814c4a388651e5250e155de99a247e08574",
+      "peer-gate.ttgir": "e0b6668b3e0136fa7bddc8d72572821f8f32022846c7aca9d37cb97726489556",
+      "peer-gate.amdgcn": "91a27f4c1abf3f2904bac6b36ddb746f8c701f1d60f24bdc96112bb2d383668e",
+      "peer-transport.so": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c",
+      "h3_peer_gate.triton.py": "19b3c05a1764736baca3a868790d253dc14d0288da3bbd328c8ea5a5ddc367c6",
+      "peer-gate.llir": "55b8224a86d00f1f099ed9a86103db9f0a56e26b6517e2f894b9401ca86b3533",
+      "peer-gate.hsaco": "7cdb0467abde2195e50e57a7a1244802b2a5ff7cee6100c67c2cebc7dd1ba62f",
+      "peer-gate.ttir": "b7a459c7a038e49a92611520225c42393f8ffd556af8cfd5cdd1b1ab8b4c1e06",
+      "peer-gate-build.json": "daee4b3368cef57d10ed726cd13beb46fc1070b2c1bda3b66cf9741a7b2fdb87",
+      "peer-gate-bridge.so": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0"
+    },
+    "source_sha256": {
+      "peer_transport.hip": "fe6bc14094c76684469c4738d30adaa834a1b24727db9af57068de6110626b4d",
+      "peer_gate_bridge.cc": "20176b7a602c2a4c62ef21e3853031a7a31eb2643fb648fa7bb0b219d0bd38a5",
+      "peer_nt_kernel.py": "8f4bb1adc5a3811e90d0189a2713b4acad919ed987d4ccb6d48e1adc3007d50b",
+      "nt_bitcast_compat.py": "7b485149c0d4bcdc1fd3560d89ecb9ffeba78d78fcb9042967d099456cc81283"
+    }
+  },
+  "micro": {
+    "nt-t256.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "random",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/nt-gate-t256-c",
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.53647518157959,
+                "wall_ms": 6.573881953954697
+              },
+              "candidate": {
+                "gpu_ms": 5.387357234954834,
+                "wall_ms": 5.425885086879134
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.378396034240723,
+                "wall_ms": 6.409260910004377
+              },
+              "candidate": {
+                "gpu_ms": 5.286236763000488,
+                "wall_ms": 5.325733916833997
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.342397212982178,
+                "wall_ms": 6.367711117491126
+              },
+              "candidate": {
+                "gpu_ms": 5.261756896972656,
+                "wall_ms": 5.299044074490666
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.383516788482666,
+                "wall_ms": 6.402522092685103
+              },
+              "candidate": {
+                "gpu_ms": 5.324477195739746,
+                "wall_ms": 5.361743969842792
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.35087776184082,
+                "wall_ms": 6.379261147230864
+              },
+              "candidate": {
+                "gpu_ms": 5.284316062927246,
+                "wall_ms": 5.323314806446433
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.380476951599121,
+                "wall_ms": 6.400221027433872
+              },
+              "candidate": {
+                "gpu_ms": 5.254396915435791,
+                "wall_ms": 5.292953923344612
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.376956939697266,
+                "wall_ms": 6.407790817320347
+              },
+              "candidate": {
+                "gpu_ms": 5.239037036895752,
+                "wall_ms": 5.277824122458696
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3691182136535645,
+                "wall_ms": 6.397702032700181
+              },
+              "candidate": {
+                "gpu_ms": 5.211677074432373,
+                "wall_ms": 5.250154063105583
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.357758045196533,
+                "wall_ms": 6.377431098371744
+              },
+              "candidate": {
+                "gpu_ms": 5.292637825012207,
+                "wall_ms": 5.331344902515411
+              }
+            }
+          ],
+          "reference_median_ms": 6.376956939697266,
+          "candidate_median_ms": 5.284316062927246,
+          "paired_gain_percent": 17.12278863490552
+        }
+      ]
+    },
+    "nt-t1024.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "random",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/nt-gate-t1024",
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.465433120727539,
+                "wall_ms": 6.503541953861713
+              },
+              "candidate": {
+                "gpu_ms": 5.263998031616211,
+                "wall_ms": 5.296173971146345
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.401756763458252,
+                "wall_ms": 6.436440860852599
+              },
+              "candidate": {
+                "gpu_ms": 5.221436977386475,
+                "wall_ms": 5.263264058157802
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.320957183837891,
+                "wall_ms": 6.347450893372297
+              },
+              "candidate": {
+                "gpu_ms": 5.197597980499268,
+                "wall_ms": 5.229823989793658
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.357914924621582,
+                "wall_ms": 6.391571136191487
+              },
+              "candidate": {
+                "gpu_ms": 5.229598045349121,
+                "wall_ms": 5.271654110401869
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.342076778411865,
+                "wall_ms": 6.369061069563031
+              },
+              "candidate": {
+                "gpu_ms": 5.248958110809326,
+                "wall_ms": 5.284374114125967
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.384156227111816,
+                "wall_ms": 6.419191136956215
+              },
+              "candidate": {
+                "gpu_ms": 5.25119686126709,
+                "wall_ms": 5.2921639289706945
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.321596145629883,
+                "wall_ms": 6.3552709762007
+              },
+              "candidate": {
+                "gpu_ms": 5.24495792388916,
+                "wall_ms": 5.28237409889698
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.375677108764648,
+                "wall_ms": 6.393931107595563
+              },
+              "candidate": {
+                "gpu_ms": 5.2203168869018555,
+                "wall_ms": 5.258144112303853
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3428778648376465,
+                "wall_ms": 6.369540933519602
+              },
+              "candidate": {
+                "gpu_ms": 5.230556964874268,
+                "wall_ms": 5.2678638603538275
+              }
+            }
+          ],
+          "reference_median_ms": 6.357914924621582,
+          "candidate_median_ms": 5.230556964874268,
+          "paired_gain_percent": 17.74664953289883
+        }
+      ]
+    },
+    "nt-t2048.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "random",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/nt-gate-t2048",
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.521114826202393,
+                "wall_ms": 6.565102143213153
+              },
+              "candidate": {
+                "gpu_ms": 5.386557102203369,
+                "wall_ms": 5.429724929854274
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.434717178344727,
+                "wall_ms": 6.465172162279487
+              },
+              "candidate": {
+                "gpu_ms": 5.282717227935791,
+                "wall_ms": 5.3262540604919195
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.376154899597168,
+                "wall_ms": 6.3974810764193535
+              },
+              "candidate": {
+                "gpu_ms": 5.30191707611084,
+                "wall_ms": 5.340975010767579
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.406557083129883,
+                "wall_ms": 6.447060965001583
+              },
+              "candidate": {
+                "gpu_ms": 5.254558086395264,
+                "wall_ms": 5.292123882099986
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3483147621154785,
+                "wall_ms": 6.376791978254914
+              },
+              "candidate": {
+                "gpu_ms": 5.289115905761719,
+                "wall_ms": 5.327083868905902
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.406877040863037,
+                "wall_ms": 6.450732005760074
+              },
+              "candidate": {
+                "gpu_ms": 5.267676830291748,
+                "wall_ms": 5.31371496617794
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3451151847839355,
+                "wall_ms": 6.3755810260772705
+              },
+              "candidate": {
+                "gpu_ms": 5.312637805938721,
+                "wall_ms": 5.3524449467659
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3455939292907715,
+                "wall_ms": 6.382060935720801
+              },
+              "candidate": {
+                "gpu_ms": 5.271838188171387,
+                "wall_ms": 5.313143832609057
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3441572189331055,
+                "wall_ms": 6.38794107362628
+              },
+              "candidate": {
+                "gpu_ms": 5.27359676361084,
+                "wall_ms": 5.312334978953004
+              }
+            }
+          ],
+          "reference_median_ms": 6.376154899597168,
+          "candidate_median_ms": 5.282717227935791,
+          "paired_gain_percent": 16.921280388948478
+        }
+      ]
+    },
+    "bridge-micro.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "random",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": null,
+          "bridge_stats": {
+            "batches": 7,
+            "fused": 7,
+            "fallback": 0,
+            "calibrations": [
+              {
+                "count": 148216320,
+                "ok": true,
+                "ringbits": 16205000,
+                "channels": 16,
+                "chunk": 524288,
+                "alignment": 1024
+              }
+            ]
+          },
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.521275997161865,
+                "wall_ms": 6.5704218577593565
+              },
+              "candidate": {
+                "gpu_ms": 5.440157890319824,
+                "wall_ms": 5.483194952830672
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.376154899597168,
+                "wall_ms": 6.4085309859365225
+              },
+              "candidate": {
+                "gpu_ms": 5.405757904052734,
+                "wall_ms": 5.4533949587494135
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.3924760818481445,
+                "wall_ms": 6.407940993085504
+              },
+              "candidate": {
+                "gpu_ms": 5.403518199920654,
+                "wall_ms": 5.447736009955406
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.394237041473389,
+                "wall_ms": 6.43503200262785
+              },
+              "candidate": {
+                "gpu_ms": 5.358397960662842,
+                "wall_ms": 5.420655012130737
+              }
+            },
+            {
+              "reference": {
+                "gpu_ms": 6.383518218994141,
+                "wall_ms": 6.422020960599184
+              },
+              "candidate": {
+                "gpu_ms": 5.41407585144043,
+                "wall_ms": 5.465625086799264
+              }
+            }
+          ],
+          "reference_median_ms": 6.3924760818481445,
+          "candidate_median_ms": 5.405757904052734,
+          "paired_gain_percent": 15.470654395339878
+        }
+      ]
+    },
+    "bridge-special.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "special",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": null,
+          "bridge_stats": {
+            "batches": 3,
+            "fused": 3,
+            "fallback": 0,
+            "calibrations": [
+              {
+                "count": 148216320,
+                "ok": true,
+                "ringbits": 16205000,
+                "channels": 16,
+                "chunk": 524288,
+                "alignment": 1024
+              }
+            ]
+          },
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.538234233856201,
+                "wall_ms": 6.578832166269422
+              },
+              "candidate": {
+                "gpu_ms": 5.358558177947998,
+                "wall_ms": 5.3999340161681175
+              }
+            }
+          ],
+          "reference_median_ms": 6.538234233856201,
+          "candidate_median_ms": 5.358558177947998,
+          "paired_gain_percent": 18.042731626218277
+        }
+      ]
+    },
+    "bridge-tiny.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "tiny",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": null,
+          "bridge_stats": {
+            "batches": 3,
+            "fused": 3,
+            "fallback": 0,
+            "calibrations": [
+              {
+                "count": 148216320,
+                "ok": true,
+                "ringbits": 16205000,
+                "channels": 16,
+                "chunk": 524288,
+                "alignment": 1024
+              }
+            ]
+          },
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.484314918518066,
+                "wall_ms": 6.5117820631712675
+              },
+              "candidate": {
+                "gpu_ms": 6.013917922973633,
+                "wall_ms": 6.055239820852876
+              }
+            }
+          ],
+          "reference_median_ms": 6.484314918518066,
+          "candidate_median_ms": 6.013917922973633,
+          "paired_gain_percent": 7.254382328055387
+        }
+      ]
+    },
+    "bridge-wide.json": {
+      "scope": "无profiler八卡原地AllReduce微测；即使数值通过也不是模型成绩",
+      "records": [
+        {
+          "count": 148216320,
+          "vec": 1,
+          "blocks": 5120,
+          "gather": "write",
+          "case": "wide",
+          "indexed_gate": {
+            "build": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/indexed",
+            "gate_sha256": "afb514170530adfb57df1ecfa2270c0d91180e02a5b6adf04ccfb1a0e467892f",
+            "tile": 2048
+          },
+          "nt_build": null,
+          "bridge_stats": {
+            "batches": 3,
+            "fused": 3,
+            "fallback": 0,
+            "calibrations": [
+              {
+                "count": 148216320,
+                "ok": true,
+                "ringbits": 16205000,
+                "channels": 16,
+                "chunk": 524288,
+                "alignment": 1024
+              }
+            ]
+          },
+          "fixed_order": false,
+          "seed": 104729,
+          "order_model": {
+            "channels": 16,
+            "chunk": 524288,
+            "alignment": 1024
+          },
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "tail_ok": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "exact": true,
+          "samples": [
+            {
+              "reference": {
+                "gpu_ms": 6.451035022735596,
+                "wall_ms": 6.488651968538761
+              },
+              "candidate": {
+                "gpu_ms": 5.494237899780273,
+                "wall_ms": 5.5422859732061625
+              }
+            }
+          ],
+          "reference_median_ms": 6.451035022735596,
+          "candidate_median_ms": 5.494237899780273,
+          "paired_gain_percent": 14.831683901625869
+        }
+      ]
+    }
+  },
+  "cpu_rebuild": {
+    "native_byte_equal": true,
+    "native_original": {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/native-release/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+      "sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510"
+    },
+    "native_rebuilt": {
+      "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/native-release-rebuilt/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+      "sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510"
+    },
+    "packaging_note": "初次编译成功后，source-commit.txt应为source-commit导致打包失败；修正后复用同一已编译产物完成打包，无重复编译。",
+    "nt_artifacts": {
+      "peer-gate.hsaco": {
+        "byte_equal": false,
+        "original_sha256": "7cdb0467abde2195e50e57a7a1244802b2a5ff7cee6100c67c2cebc7dd1ba62f",
+        "rebuilt_sha256": "126d45fa13d3b2424260b9c4546ace9146f6234cd4520f371fc4a6de15fd33a0"
+      },
+      "peer-gate-bridge.so": {
+        "byte_equal": true,
+        "original_sha256": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0",
+        "rebuilt_sha256": "4d7369bb1b453eb4016dd666c7e586e9da64cb510ce94d4e4665491de7ad1de0"
+      },
+      "peer-transport.so": {
+        "byte_equal": true,
+        "original_sha256": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c",
+        "rebuilt_sha256": "218b19f230d9284c82efd2acd24323486a67e5ed2c98fa5932c5c3cc60e5563c"
+      }
+    },
+    "nt_elf": {
+      "loaded_sections_equal": true,
+      "mapping_equal": true,
+      "changed_sections": {}
+    },
+    "native_elf_before_fixed_link": {
+      "loaded_sections_equal": false,
+      "mapping_equal": false,
+      "changed_sections": {
+        ".dynsym": [
+          {
+            "type": 11,
+            "flags": 2,
+            "address": 84528,
+            "size": 148296,
+            "sha256": "f891290a568213e6be84b5cc5c900299acdea0f3a03a4d6d980dc667e539f389"
+          },
+          {
+            "type": 11,
+            "flags": 2,
+            "address": 84528,
+            "size": 148296,
+            "sha256": "8327b24c44256db74858e1b2733785c22dcb9d5a16f60ec8b6ab3e1e846fe45b"
+          }
+        ],
+        ".dynstr": [
+          {
+            "type": 3,
+            "flags": 2,
+            "address": 232824,
+            "size": 634852,
+            "sha256": "de67d7edee1dc79dc18944cc223fd278672d46e53efef3a0f2194635a342d0e4"
+          },
+          {
+            "type": 3,
+            "flags": 2,
+            "address": 232824,
+            "size": 634852,
+            "sha256": "91089d476d589e12b0a6c2ceb1a7b0b821d5fef582a261ddbab9f4c399557be1"
+          }
+        ],
+        ".rela.dyn": [
+          {
+            "type": 4,
+            "flags": 2,
+            "address": 880536,
+            "size": 285456,
+            "sha256": "054eed3ce33129d9e8545be73382d7a6adc0c65643db58326968ad110d5f1a16"
+          },
+          {
+            "type": 4,
+            "flags": 2,
+            "address": 880536,
+            "size": 285456,
+            "sha256": "8f865d120ecd3eedd55bd6551cafd02018f9915191aaaf75abe4ed6ff205ab93"
+          }
+        ],
+        ".rela.plt": [
+          {
+            "type": 4,
+            "flags": 66,
+            "address": 1165992,
+            "size": 36096,
+            "sha256": "8c0348f3bc447e68e51ac5994d3a40921c1dc906f097a7e9cb1ec2538059a103"
+          },
+          {
+            "type": 4,
+            "flags": 66,
+            "address": 1165992,
+            "size": 36072,
+            "sha256": "2c3ccf09a538f4e89c8bb03c82516dac469431710c3f763620ff97439acf2f74"
+          }
+        ],
+        ".init": [
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 1202088,
+            "size": 27,
+            "sha256": "94ed21c8beb1ec5b1f976507a3e1938ae07d3932acbc991d0c947b0201988b67"
+          },
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 1202064,
+            "size": 27,
+            "sha256": "c6ab13d6d8e5b6b5fa1af57534bc695802d97fef91b56b0d3f705651ae7098ab"
+          }
+        ],
+        ".plt": [
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 1202128,
+            "size": 24080,
+            "sha256": "d2f542332f055edd4caa6556c5a5a1257a9775e48dc394c372a1017651606e6e"
+          },
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 1202096,
+            "size": 24064,
+            "sha256": "cce9b3b7d6172ccf1b6e69c4e43ed1671c291f7b9eb32b7e171f8320f962dfdd"
+          }
+        ],
+        ".text": [
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 1226208,
+            "size": 3677005,
+            "sha256": "ba195d41964e71651a0501f22b9ce528259eca07fb75b96bd5ebfe1db9d408f6"
+          },
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 1226160,
+            "size": 3679357,
+            "sha256": "2f2ec288be574786b8946fb1987e4a4b0f6e0702088453839f9b5dc30e4bf299"
+          }
+        ],
+        ".fini": [
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 4903216,
+            "size": 13,
+            "sha256": "6a4f3e5efc7c1f7ee7d6f21afd9ed040ba1d7f0b97bb12b016f5b176cc558bd8"
+          },
+          {
+            "type": 1,
+            "flags": 6,
+            "address": 4905520,
+            "size": 13,
+            "sha256": "6a4f3e5efc7c1f7ee7d6f21afd9ed040ba1d7f0b97bb12b016f5b176cc558bd8"
+          }
+        ],
+        ".rodata": [
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 4903232,
+            "size": 180560,
+            "sha256": "ad008d142740f12e689a6df9b7f0c16e06cd74181402edb15e1543f99c8e90c3"
+          },
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 4905536,
+            "size": 180112,
+            "sha256": "cd978ae971d5ed72ac904d3cd0849819e27e0bc021105a03223cef553090e679"
+          }
+        ],
+        ".eh_frame_hdr": [
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 5083792,
+            "size": 49324,
+            "sha256": "48b2e906ec2f29de440a7007d2b246dd0461f41234dcda3c32f81334d08d0528"
+          },
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 5085648,
+            "size": 49324,
+            "sha256": "4c515cac3085950e00a79abed83ad3b9ac9139ca3dc7979b2d6385723d10dea3"
+          }
+        ],
+        ".eh_frame": [
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 5133120,
+            "size": 303240,
+            "sha256": "bc5b8540ac7a522362f2956112e9a8dca450cf7508c34573983884f179efc57c"
+          },
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 5134976,
+            "size": 303360,
+            "sha256": "958fab67ad736d7c986a44b08153ce0b424939d7b8a1a4fe31f91c8e02f41fad"
+          }
+        ],
+        ".gcc_except_table": [
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 5436360,
+            "size": 562412,
+            "sha256": "75fc281be3bfa240cc73a6696d41c76f32fe330738cb2ff0c269da5ee568663a"
+          },
+          {
+            "type": 1,
+            "flags": 2,
+            "address": 5438336,
+            "size": 562412,
+            "sha256": "0ba1dd7ed9904facf5935f0e794a3bef2d72636627017090860e37743349ca20"
+          }
+        ],
+        ".tbss": [
+          {
+            "type": 8,
+            "flags": 1027,
+            "address": 8096608,
+            "size": 184,
+            "sha256": null
+          },
+          {
+            "type": 8,
+            "flags": 1027,
+            "address": 8100704,
+            "size": 184,
+            "sha256": null
+          }
+        ],
+        ".init_array": [
+          {
+            "type": 14,
+            "flags": 3,
+            "address": 8096608,
+            "size": 952,
+            "sha256": "d1439892ea78c2bfbc215054b24a91b5f14aaab23ef525193df5f0b6fd194ca1"
+          },
+          {
+            "type": 14,
+            "flags": 3,
+            "address": 8100704,
+            "size": 952,
+            "sha256": "9462bc4bcb539ce0090be10831be58bc18902d315b95bf8dd81d717bc568004e"
+          }
+        ],
+        ".fini_array": [
+          {
+            "type": 15,
+            "flags": 3,
+            "address": 8097560,
+            "size": 8,
+            "sha256": "4dc3699eb4f72dbe7aff7963a7238a03bb7f83ef0a39ca08205556aff69c2eb6"
+          },
+          {
+            "type": 15,
+            "flags": 3,
+            "address": 8101656,
+            "size": 8,
+            "sha256": "c32427738b661a00e7d38a54e335e6d2c81fac8eb509506c64a702dc69152a14"
+          }
+        ],
+        ".data.rel.ro": [
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8097568,
+            "size": 103456,
+            "sha256": "e5919c6bc8c0e5dd2386be8ca37b0395887bcc4bcfc9a52f03a55fc3ae2a0428"
+          },
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8101664,
+            "size": 103456,
+            "sha256": "d292f9fbe512e3f6c3d629b69a8446aefdc4f4afb65370d1856a2cae20ee1e23"
+          }
+        ],
+        ".dynamic": [
+          {
+            "type": 6,
+            "flags": 3,
+            "address": 8201024,
+            "size": 592,
+            "sha256": "460d247c13b62d152e25fd733b5655a491acecdab9bc1b898f13f089f8a3beb7"
+          },
+          {
+            "type": 6,
+            "flags": 3,
+            "address": 8205120,
+            "size": 592,
+            "sha256": "3b7f4ab60e1a19eefb7921cf47cdf1478f63342683f974ab97b4b25006eb5858"
+          }
+        ],
+        ".got": [
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8201616,
+            "size": 6768,
+            "sha256": "303ba13ea0773c49b89ce062b3c541cca5fde83ee3e491fcee266f881d81d1c7"
+          },
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8205712,
+            "size": 6768,
+            "sha256": "b11619b47c46e49cf04692022ee989d1fb7547f61d276aa087b9a3538f564031"
+          }
+        ],
+        ".got.plt": [
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8208384,
+            "size": 12056,
+            "sha256": "4fd2551ba84f42162e28f5ef3b283f5187382de48be9771d4c883bac93079301"
+          },
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8212480,
+            "size": 12048,
+            "sha256": "559ca406db62dd7b0149574fe1518048ef6962ac6103c12e0dea2cddbd3b99ab"
+          }
+        ],
+        ".data": [
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8220448,
+            "size": 584,
+            "sha256": "1a2013b690b53e8c32a0a00493a9d935a766d7207616ff129c98152d659d4758"
+          },
+          {
+            "type": 1,
+            "flags": 3,
+            "address": 8224544,
+            "size": 584,
+            "sha256": "b5ca16401d9f827a90bc433e97c47854ef48dda35608573b45131d16954e910e"
+          }
+        ],
+        ".bss": [
+          {
+            "type": 8,
+            "flags": 3,
+            "address": 8221056,
+            "size": 1760,
+            "sha256": null
+          },
+          {
+            "type": 8,
+            "flags": 3,
+            "address": 8225152,
+            "size": 1760,
+            "sha256": null
+          }
+        ]
+      }
+    },
+    "native_fixed_link_record": {
+      "command": [
+        "/public/software/compiler/gcc-11.4.0/bin/g++",
+        "-o",
+        "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/peer-reduce-f13r1n16-QXqOGdOm/native-release-rebuilt/source/InfiniLM/build/linux/x86_64/release/_infinilm.cpython-311-x86_64-linux-gnu.so",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/cache/mamba_cache.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/cache/kv_cache.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/config/model_config.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/config/quant_config.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/config/config_factory.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/distributed/tcp_rendezvous.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/distributed/communication_group.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/distributed/dist_config.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/infer_engine.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/rank_worker.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/compiler/paged_compiler.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/compiler/general_compiler.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/compiler/static_batching_compiler.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/engine/rank_barrier.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/global_state/global_state.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/baichuan/baichuan_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/chatglm/chatglm_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_allocate_kv_cache_tensors.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_mla_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek_v2/deepseek_v2_moe.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/fm9g/fm9g_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/glm4/glm4_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/glm4/glm4_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/infinilm_model.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_moe.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_vision.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k25/kimi_k25_for_conditional_generation.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_moe.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_text_model.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_allocate_cache.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_delta_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_for_conditional_generation.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_mla_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/kimi_k3/kimi_k3_vision.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/mamba/mamba_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_eagle/minicpm_eagle_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/mistral/mistral_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/model_factory.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen2/qwen2_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_decoderLayer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_fused_qkv_linear.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_model.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5/qwen3_5_vision.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5_moe/qwen3_5_moe_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_5_moe/qwen3_5_moe_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_decoderLayer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_gated_deltanet.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_allocate_kv_cache_tensors.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_next/qwen3_next_sparse_moe_block.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_vl/qwen3_vl_for_conditional_generation.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_vl/qwen3_vl_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_vl/qwen3_vl_text_model.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/videonsa/videonsa_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/videonsa/videonsa_for_conditional_generation.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/videonsa/videonsa_vision.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek/deepseek_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/deepseek/deepseek_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_decoder_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_model.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_moe.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/ernie4_5_vl/ernie4_5_vision.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/gpt2/gpt2_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/internlm3/internlm3_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/llama/llama_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm4/minicpm4_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_decoderLayer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_allocate_kv_cache_tensors.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpm_sala/minicpm_sala_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpmv/minicpmv_model.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpmv/resampler.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minicpmv/siglip_vision.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/minimax_h3/minimax_h3_transformer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/models_registry.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3/qwen3_attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3/qwen3_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_sparse_moe_block.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_topk_router.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_experts.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/models/qwen3_moe/qwen3_moe_for_causal_lm.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/debug_utils/hooks.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/attention.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/paged_attn.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/static_attn.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/attention_layer.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/attention/backends/flash_attn.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/dispatcher/dispatcher_factory.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/dispatcher/standard_dispatcher.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/allgather_reduce_scatter_dispatcher.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/deepep_dispatcher.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/ep_config.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/base_ep_dispatcher.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/ep/local_allreduce_dispatcher.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/legacy/moe_mlp.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/router/topk_router.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/sparse_moe_block.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/experts/fused_moe_experts.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/fused_moe.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/moe/runner/cuda_fused_moe_runner.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/awq.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/awq_marlin.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/base_quantization.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/gptq_marlin.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/marlin_utils.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/mxfp4.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/compressed_tensors.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/gptq.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/gptq_qy.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/kv_quant.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/quantization/none_quantization.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/linear/base_linear.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/linear/fused_linear.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/linear/linear.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/mlp/mlp.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/rotary_embedding/rope_scaling_creators.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/rotary_embedding/rotary_embedding_factory.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/layers/rotary_embedding/rotary_embedding.cpp.o",
+        "build/.objs/_infinilm/linux/x86_64/release/csrc/pybind11/bindings.cc.o",
+        "-shared",
+        "-m64",
+        "-fPIC",
+        "-L/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/.infini/lib",
+        "-linfinicore_cpp_api",
+        "-linfiniop",
+        "-linfinirt",
+        "-linfiniccl"
+      ],
+      "sha256": "2ba472da0249afd0482f6da0648926c8d8864dc59e15fc9fcc807fb7e1eda510",
+      "link_plan_sha256": "d3a302da153ab9201138c99a1d13c51c7ac60b18d67f957c13ec132b4bb5b413"
+    },
+    "native_object_files_byte_equal": true,
+    "native_object_count": 130
+  }
+}

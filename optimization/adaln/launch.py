@@ -239,6 +239,14 @@ for registered_name, _, registered_setter, _ in registrations:
 if indexed_build:
     control.set_indexed_callback = indexed_register
 sys.modules[control.__name__] = control
+peer_gate_plugin = None
+if os.environ.get("H3_PEER_GATE_BUILD"):
+    if not indexed_build:
+        raise RuntimeError("Peer gate requires the selected indexed kernel build")
+    peer_source = here.parent / "dcu-kernel-autotune/candidates/rccl-sequence-parallel"
+    sys.path.insert(0, str(peer_source))
+    from peer_gate_runtime import install as install_peer_gate
+    peer_gate_plugin = install_peer_gate(infinilm, indexed_host, control, os.environ["H3_PEER_GATE_BUILD"])
 entry = here.parents[1] / "runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py"
 if os.environ.get("H3_PROFILE_CANDIDATE") == "1":
     entry = here.parent / "profile-entry.py"
@@ -252,6 +260,9 @@ sys.argv[0] = str(entry)
 try:
     runpy.run_path(str(entry), run_name="__main__")
 finally:
+    if peer_gate_plugin:
+        peer_gate_plugin["enabled"](False)
+        print("[peer_gate] stats", json.dumps(peer_gate_plugin["stats"]()), flush=True)
     optional_counts = {}
     if condition_prefill:
         prefill_set, prefill_count = condition_prefill
@@ -276,7 +287,7 @@ finally:
             print(f"[adaln] indexed audit compared {checked} tensors, {incorrect} mismatches", flush=True)
 if count == 0:
     raise RuntimeError("No MiniMax-H3 AdaLN calls reached the candidate")
-if indexed_build and indexed_count == 0:
+if indexed_build and indexed_count == 0 and not (peer_gate_plugin and peer_gate_plugin["calls"]()):
     raise RuntimeError("No MiniMax-H3 calls reached the indexed kernels")
 if indexed_build and audit_path and (checked == 0 or incorrect):
     raise RuntimeError("Indexed AdaLN audit did not pass")
