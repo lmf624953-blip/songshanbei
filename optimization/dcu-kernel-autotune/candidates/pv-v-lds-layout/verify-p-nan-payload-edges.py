@@ -16,12 +16,13 @@ def main():
     cli.add_argument("reference", type=Path)
     cli.add_argument("builds", type=Path)
     cli.add_argument("output", type=Path)
+    cli.add_argument("--variants", nargs="+", default=("full-kv", "ror4", "combined"))
     args = cli.parse_args()
     code = Path(os.environ["H3_AUTOTUNE_CODE_ROOT"]) / "optimization"
     sys.path.insert(0, str(code))
     load = runpy.run_path(str(code / "bench-attention.py"))["native_launcher"]
     baseline = load(args.reference)
-    candidates = {name: load(args.builds / name) for name in ("full-kv", "ror4", "combined")}
+    candidates = {name: load(args.builds / name) for name in args.variants}
     generator = torch.Generator(device="cuda").manual_seed(20261127)
     bits = [sign | 0x7f80 | payload for sign in (0, 0x8000) for payload in range(1, 128)]
     payloads = torch.tensor([x if x < 32768 else x - 65536 for x in bits],
@@ -62,7 +63,7 @@ def main():
                     stream.flush()
                     if not exact or not tail_ok:
                         raise ValueError(record)
-    print("36 组 payload / 零 / 最大有限值输出逐位一致，尾部保护通过")
+    print(f"{12 * len(candidates)} 组 payload / 零 / 最大有限值输出逐位一致，尾部保护通过")
 
 
 if __name__ == "__main__":

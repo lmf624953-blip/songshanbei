@@ -1,0 +1,96 @@
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     0
+ gpu id                                    1
+ dispatch queue id                         0
+ dispatch queue index                      14
+ process id                                1310879
+ thread id                                 1310879
+ grid size                                 387072
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.018933(s)
+ processed ALU instructions                89.0791065113(%)
+ performance                               9617.071393(Gflops)
+ shared memory operation                   198192960
+ shared memory bank conflict               0.0212826985(%)
+ L1 cache unit is active                   19.6804241647(%)
+ L1 cache unit is stalled                  0.1469295326(%)
+ L2 cache write unit is stalled            0.0045077938(%)
+ L2 cache hit rate                         97.484713(%)
+
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     1
+ gpu id                                    1
+ dispatch queue id                         0
+ dispatch queue index                      18
+ process id                                1310879
+ thread id                                 1310879
+ grid size                                 387072
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.018943(s)
+ processed ALU instructions                89.0281723115(%)
+ performance                               9612.441197(Gflops)
+ shared memory operation                   198192960
+ shared memory bank conflict               0.0212705294(%)
+ L1 cache unit is active                   19.6588770504(%)
+ L1 cache unit is stalled                  0.1478087257(%)
+ L2 cache write unit is stalled            0.0045861062(%)
+ L2 cache hit rate                         97.485135(%)
+
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     2
+ gpu id                                    1
+ dispatch queue id                         0
+ dispatch queue index                      45
+ process id                                1310879
+ thread id                                 1310879
+ grid size                                 308224
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.012855(s)
+ processed ALU instructions                83.7206305239(%)
+ performance                               9036.031080(Gflops)
+ shared memory operation                   125909504
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   18.9175965152(%)
+ L1 cache unit is stalled                  0.1803738083(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         97.112809(%)
+
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     3
+ gpu id                                    1
+ dispatch queue id                         0
+ dispatch queue index                      49
+ process id                                1310879
+ thread id                                 1310879
+ grid size                                 308224
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.012860(s)
+ processed ALU instructions                83.6912104001(%)
+ performance                               9032.771420(Gflops)
+ shared memory operation                   125909504
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   18.9002669957(%)
+ L1 cache unit is stalled                  0.1750165072(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         97.113136(%)
+

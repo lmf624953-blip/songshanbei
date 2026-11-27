@@ -17,12 +17,13 @@ def main():
     cli.add_argument("reference", type=Path)
     cli.add_argument("builds", type=Path)
     cli.add_argument("output", type=Path)
+    cli.add_argument("--variants", nargs="+", default=("deferred", "guard-scale", "guarded"))
     args = cli.parse_args()
     code = Path(os.environ["H3_AUTOTUNE_CODE_ROOT"]) / "optimization"
     sys.path.insert(0, str(code))
     load = runpy.run_path(str(code / "bench-attention.py"))["native_launcher"]
     reference = load(args.reference)
-    variants = {name: load(args.builds / name) for name in ("deferred", "guard-scale", "guarded")}
+    variants = {name: load(args.builds / name) for name in args.variants}
     generator = torch.Generator(device="cuda").manual_seed(20261127)
     with args.output.open("x") as stream:
         for rows in (4096, 4097, 27570):
@@ -95,7 +96,7 @@ def main():
                     stream.flush()
                     if not exact or not tail_ok:
                         raise ValueError(record)
-    print("126 组稳定 max 的 V 边界输入逐位一致，尾部保护通过")
+    print(f"{42 * len(variants)} 组稳定 max 的 V 边界输入逐位一致，尾部保护通过")
 
 
 if __name__ == "__main__":
