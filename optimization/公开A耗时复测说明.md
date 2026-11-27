@@ -6,9 +6,12 @@
 
 ## 1. 代码与环境
 
+本轮默认源码构建固定在提交 `782a321940c01438c768f29b87e9c7ac7bf2a20b`。后续文档提交可包含它；第三方要复现本轮时固定该提交。
+
 ```bash
 git clone --branch xsh-opt git@github.com:lmf624953-blip/songshanbei.git songshanbei-retest
 cd songshanbei-retest
+git checkout --detach 782a321940c01438c768f29b87e9c7ac7bf2a20b
 repo=$(pwd)
 git rev-parse HEAD
 module load compiler/dtk/26.04 compiler/gcc/11.4.0
