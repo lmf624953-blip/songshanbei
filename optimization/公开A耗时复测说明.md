@@ -1,19 +1,19 @@
 # 官方公开 A 耗时复测说明
 
-当前通过完整验收的版本为 **P 行 LDS 布局 + V 预排布**。正式成绩 **137.344178 秒** 指：八卡 BW1000、模型常驻、双方各一次完整预热后，三次完整 A 请求的墙钟均值。协议为 `minimax-h3-public-a-resident-paired-v1`。
+当前通过完整验收的版本为 **P 行 LDS 布局 + V 预排布 + 内部 P/ROR4 精简**。正式成绩 **132.824526 秒** 指：八卡 BW1000、模型常驻、双方各一次完整预热后，三次完整 A 请求的墙钟均值。协议为 `minimax-h3-public-a-resident-paired-v1`。
 
-统一入口：[reproduce-public-a.sh](reproduce-public-a.sh)；底层计时：[benchmark-public-a.sh](benchmark-public-a.sh)；原始结果：[p-row-prepacked-f12r2n09-public-a.json](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json)。可以固定版本、输入、预热和统计边界，换节点后不能保证绝对秒数完全一致。
+统一入口：[reproduce-public-a.sh](reproduce-public-a.sh)；底层计时：[benchmark-public-a.sh](benchmark-public-a.sh)；原始结果：[p-nan-ror4-f12r2n09-public-a.json](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09-public-a.json)。可以固定版本、输入、预热和统计边界，换节点后不能保证绝对秒数完全一致。
 
 ## 1. 获取正确版本及运行环境
 
-验收源码锚点为 `067b267bfec81e95952f8c9dae9abcc1428d624a`；本文与统一入口在包含它的后续 `xsh-opt` 提交中。旧提交 `0ba8bb17` 是此前 142.89 秒版本，不能用于复测 137.344 秒。
+验收源码与当前默认构建的锚点为 `35ca414e7b76df4c94c0db5207a166a40fc4444c`；本文位于包含它的后续 `xsh-opt` 提交中。旧提交 `e9d66702` 对应 137.344 秒，`0ba8bb17` 对应更早 142.89 秒，不能混作当前版本。
 
 ```bash
 git clone --branch xsh-opt git@github.com:lmf624953-blip/songshanbei.git songshanbei-retest
 cd songshanbei-retest
 repo=$(pwd)
 git rev-parse HEAD
-git merge-base --is-ancestor 067b267bfec81e95952f8c9dae9abcc1428d624a HEAD
+git merge-base --is-ancestor 35ca414e7b76df4c94c0db5207a166a40fc4444c HEAD
 test -f "$repo/optimization/reproduce-public-a.sh"
 ```
 
@@ -43,9 +43,9 @@ bash "$repo/optimization/reproduce-public-a.sh" build "$job/build-work"
 release="$job/build-work/release"
 ```
 
-`build-work` 必须尚不存在。脚本依次构建 Q128/K32 packed 基础版、求和交错版、P 行布局 + V 预排布组合。配置为 `$release/candidate.env`；配对基准为 `$job/build-work/row-sum/attention`。脚本不依赖 `selected-best.env`，不会自动加入未验收的实验 kernel。
+`build-work` 必须尚不存在。脚本依次构建 Q128/K32 packed 基础版、求和交错版、P 行布局 + V 预排布，再执行内部 P payload 与 ROR4 的后端变换。配置为 `$release/candidate.env`；本轮配对基准是 `$job/build-work/prepacked/attention`，保留上一阶段已验收的设备代码。脚本不依赖 `selected-best.env`，不会自动加入未验收的实验 kernel。
 
-构建不运行模型，不计入推理成绩。保留 `build-work/{build,row-sum,release}.log`、`build-exit-code`、提交及工作区状态。`release.json` 记录源码和产物 SHA-256，`qualified=false` 表示构建操作不代替新环境质量验收。
+构建不运行模型，不计入推理成绩。保留 `build-work/{build,row-sum,prepacked,release}.log`、`build-exit-code`、提交及工作区状态。`release.json` 记录源码和产物 SHA-256，`qualified=false` 表示构建操作不代替新环境质量验收。
 
 ## 3. 常驻配对计时
 
@@ -62,7 +62,7 @@ bash "$repo/optimization/reproduce-public-a.sh" resident \
 
 | 请求编号 | 注意力版本 | 统计用途 |
 | --- | --- | --- |
-| 00 | base，求和交错版 | 完整预热，不计均值 |
+| 00 | base，P 行布局 + V 预排布版 | 完整预热，不计均值 |
 | 01 | fast，当前组合版 | 完整预热，不计均值 |
 | 02 / 03 | base / fast | 正式配对 1 |
 | 04 / 05 | fast / base | 正式配对 2，反转执行顺序 |
@@ -84,7 +84,7 @@ import json
 import sys
 r = json.load(open(sys.argv[1]))
 assert r["protocol"] == "minimax-h3-public-a-resident-paired-v1"
-assert r["comparison"] == "row-sum-vs-p-row-prepacked-v"
+assert r["comparison"] == "p-row-prepacked-v-vs-softmax-compact"
 w = r["wall"]
 for name in ("reference", "candidate"):
     x = w[name]
@@ -102,16 +102,16 @@ PY
 
 `f12r2n09` 上的正式结果，单位秒：
 
-| 指标 | base，求和交错版 | fast，当前组合版 |
+| 指标 | base，P 行布局 + V 预排布版 | fast，内部 P/ROR4 精简版 |
 | --- | --- | --- |
-| 样本 1 | 142.983865004 | 136.992860135 |
-| 样本 2 | 142.283798470 | 138.403012385 |
-| 样本 3 | 141.692351870 | 136.636661931 |
-| 请求墙钟均值 | 142.320005115 | **137.344178150** |
-| 样本标准差 | 0.646517 | 0.934113 |
-| Transformer 合计均值 | 121.994201339 | 116.859849044 |
+| 样本 1 | 136.610271222 | 132.061697461 |
+| 样本 2 | 137.337784735 | 133.824806544 |
+| 样本 3 | 137.055074502 | 132.587075457 |
+| 请求墙钟均值 | 137.001043486 | **132.824526487** |
+| 样本标准差 | 0.366754 | 0.905221 |
+| Transformer 合计均值 | 116.891927942 | 111.878161641 |
 
-同轮请求耗时下降 3.496225%，Transformer 下降 4.208686%。不同节点先对照同节点配对收益，再检查绝对时间。167 秒、142.89 秒属于其他版本或节点，不混作当前基准。
+同轮请求耗时下降 3.048529%，Transformer 下降 4.289232%。三组完整请求分别下降 3.329599%、2.557911%、3.260003%，中位数 3.260003%；不是每次都超过 3%。本轮视频 VAE 均值为 13.638821→14.419966 秒，完整请求与 Transformer 收益分别报告，不排除不利的其他阶段波动。不同节点先对照同节点配对收益，再检查绝对时间。167 秒、142.89 秒属于其他版本或节点，不混作当前基准。
 
 主成绩只读取 `wall.candidate.mean`，注明“八卡 BW1000、模型常驻、双方各一次预热后三组完整 A 请求均值”。`generation.pipeline_total` 包含其内部组件，不与 Transformer/VAE 分项重复相加。
 
@@ -137,7 +137,7 @@ export OMP_NUM_THREADS=4
   --steps 50 --num-frames 124 --seed 42 --output "$job/single-manual.mp4"
 ```
 
-| 字段 | 边界 | 与 137.344 秒直接比较 |
+| 字段 | 边界 | 与 132.825 秒直接比较 |
 | --- | --- | --- |
 | `resident/benchmark.json: wall.candidate.mean` | 预热后三次完整 A 请求均值，含 MP4 写出 | 可以 |
 | 单次 `generation.pipeline_total` | 模型加载后生成管线，含首次 JIT，不含 MP4 编码 | 不可以 |
@@ -145,7 +145,7 @@ export OMP_NUM_THREADS=4
 | `single/process-time.txt: process.wall` | 普通入口启动到退出，含环境、导入、加载、首次生成和清理 | 不可以 |
 | `resident/process-time.txt: process.wall` | 八次请求及整个常驻进程启动、退出 | 不可以 |
 
-当前验收轮普通新进程曾测得 `process.wall=883.30 s`，其中模型创建加载约 630.324 s、首次 `generation.pipeline_total=198.561 s`、`total.end_to_end=831.044 s`。与 137.344 秒同时保留，后者不是首次启动总耗时。这些单次数字仅描述该次共享盘读取和节点状态。
+当前验收轮普通新进程曾测得 `process.wall=880.90 s`，其中模型创建加载约 635.477 s、首次 `generation.pipeline_total=191.064 s`、`total.end_to_end=828.529 s`。与 132.825 秒同时保留，后者不是首次启动总耗时。这些单次数字仅描述该次共享盘读取和节点状态。
 
 280 秒若来自 `process.wall` 或 `total.end_to_end`，应按普通入口比较；若来自同协议预热后的 `wall_seconds`，再核对版本、产物、DTK/Torch、节点负载及分项。未看到对方命令和日志前，不能断定原因。
 
@@ -167,6 +167,8 @@ export OMP_NUM_THREADS=4
   report /absolute/path/to/sequence /absolute/path/to/new-benchmark.json
 ```
 
-末尾 JSON 必须尚不存在，原构建仍须可读以核对运行快照。完整 11 请求验收见 [qualified.json](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-qualified.json)，所有成片与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 为 93.832013%/99.404123%/99.630047%。
+末尾 JSON 必须尚不存在，原构建仍须可读以核对运行快照。完整 11 请求验收见 [qualified.json](dcu-kernel-autotune/docs/p-nan-ror4-f12r2n09-qualified.json)，所有成片与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 为 93.832013%/99.404123%/99.630047%。
 
 历史 142.89 秒证据保留于 [softmax-row-sum-a14r1n11-steady-partial.json](dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json)，对应 `0ba8bb17`、`joint-kv-vs-row-sum` 比较。
+
+此前 137.344178 秒的原始结果仍保留于 [P 行布局 + V 预排布记录](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json)，完整旧复测脚本可固定到提交 `e9d6670286283245554d1e33e81919a880c8e3f6`。当前默认 `build` 生成内部 P/ROR4 精简版，不能用新默认版本对照旧候选字段。

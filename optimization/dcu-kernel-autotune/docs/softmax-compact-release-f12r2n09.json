@@ -122,6 +122,13 @@
     "optimization/benchmark-public-a.sh": "ebbcc5cb3700f9201cf0650bd7358122dd20c205b673a1bc6f4e180884f71d5c",
     "optimization/reproduce-public-a.sh": "aee55918d151d656b5eb24454176eebf64347796169d88fb10b318d981dab47f"
   },
-  "selected": false,
-  "note": "新候选普通官方A已通过；完整稳态和B/C/A仍在同一个既有进程进行。重建核验不替代资格验收。"
+  "selected": true,
+  "note": "独立CPU发布重建和协议回归之后，普通官方A及完整11请求资格验收已成功，132.824526秒版本已选用。原source_sha256保存当时CPU验证快照。",
+  "default_build_update": {
+    "path": "optimization/reproduce-public-a.sh",
+    "sha256": "4f1548135ed74c3975e800416324a4ace7bf13caf6650902aa36b0e7b3a0bdab",
+    "chain": "rebuild-v2 -> row-sum -> prepacked -> softmax-compact",
+    "verification_note": "各既有构建阶段和新叶子发布重建已独立核对；默认包装新增串接，未为包装重复生成整条基线。"
+  },
+  "selection_reference": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/selection.json"
 }
