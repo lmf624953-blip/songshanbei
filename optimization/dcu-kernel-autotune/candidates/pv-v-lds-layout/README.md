@@ -313,3 +313,18 @@ python screen-pv-wide-operand.py "$ref" "$builds" "$results"
 四组 19 个变体在 27570 和 22016 token 的普通输入、放大输入和输出哨兵检查中均通过。V 在 P 同步点等待的两个寄存器布局用 19 组复测，分别节省约 1.19%–1.20% 和 1.12%–1.13%。提到最大值归约后即等待、推到 V 打包才等待，以及下一块 K/V 联合发射均无正收益。P 前移或 QK 交错叠加到 V 版本后，收益小于单独延后等待。
 
 单独 QK 交错最好约 0.10%/0.08%。PV 提前处理求和回退 0.39%–2.72%。独立 PMC 保留在原始 TXT，三种代表候选均为 220 VGPR、16 KiB LDS、0 B scratch。V 版本在 27570 token 的 VALU 指令数约下降 1.30%，VMEM 读取指令数持平。四个代表镜像逐文件复建一致，分别通过 20 个额外长度和哨兵检查，三个代表镜像各通过 24 组特殊 BF16 输入。本轮验证范围为单卡。 [配对、逐位与 PMC 记录](../../docs/online-pipeline-f12r2n09.json)
+
+## 完整 K 块的全局内存直达 LDS
+
+DTK 26.04 和 gfx936 上，`probe-global-to-lds.cc` 验证每个 lane 的四个 dword 按 lane 顺序写入 LDS。对 32×128 BF16 K tile 使用 896 元素的 packed 行步长，通过 `tid ^ (tid >> 4)` 选择源 lane，继续使用原 QK 的 LDS 地址。分别用 `buffer_load_dwordx4 ... lds` 与 `global_load_dwordx4 ... lds` 传输，两者的 2048 个 dword 均与原 swizzle 一致。
+
+```bash
+hipcc --offload-arch=gfx936 -O2 -std=c++17 -x hip probe-global-to-lds.cc -o "$probe"
+"$probe" k-tile-buffer
+"$probe" k-tile-global
+python build-k-direct-lds.py "$release/attention" "$builds/early-v" --prefetch --v-wait-fence
+```
+
+`build-k-direct-lds.py` 保留原 K 读取地址、MMAC 顺序、LDS 分配和尾部路径。完整块正常路径以直写代替暂存 VGPR 及两条显式 LDS 写入，受掩码路径在原地址写零。默认在原覆盖同步点后发射，`--prefetch` 将覆盖同步与发射提到循环回边。四个变体对两个生产长度均逐位一致。首轮配对中，消费前才发射的两个版本回退 3.42%–3.82%，跨块预取的两个版本收益为 0.30%–0.66%。
+
+跨块版叠加 V 延后等待后，19 组复测相对求和交错基准节省 0.38%/0.70%，相对只做 V 延后等待回退 0.86%/0.46%。独立 PMC 中，直写的两个代表镜像均减少约 3.84% 的 LDS 指令，bank conflict 与 VMEM 读取指令数持平。组合版通过 20 个额外长度及 24 组特殊 BF16 输入，两个代表镜像逐文件复建一致。 [设备探针、配对、逐位校验及独立 PMC](../../docs/k-direct-lds-f12r2n09.json)
