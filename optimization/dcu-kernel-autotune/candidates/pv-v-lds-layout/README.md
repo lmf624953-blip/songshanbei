@@ -542,3 +542,7 @@ python verify-p-nan-payload.py "$selected_attention" "$new_split_build" "$new_ed
 ```
 
 [所有原始记录及取舍](../../docs/qk-split-f13r1n16.json) · [AoS 原始 PMC](../../docs/qk-split-f13r1n16-aos-pmc.txt) · [SoA4 原始 PMC](../../docs/qk-split-f13r1n16-soa4-pmc.txt) · [原始时间线](../../docs/qk-split-f13r1n16-trace.json)
+
+## 继续验证：无 spill 双 Q、PV 读取与融合流水线
+
+2026-11-27 在 `f13r1n16` 完成新的 8-wave 双 Q128 独立/共享 K/V 对照，均为 220 VGPR、32 KiB LDS、零 scratch，保留原序计算与末尾单 Q tile。两者仍明显慢于正式单 Q128；共享仅比独立追回约 0.6%。单 Q 的 SGPR80 对照接近零，LDS32 KiB 对照退化约13%。另外完成 guard 分类精简、V 布局置换后的 PV 宽读取及 wave 内 P 发布；guard 和 P 同步仅有不足1%的单 kernel 收益，依用户门槛归档。12 个候选完成通用逐位检查，关键候选独立重建通过，没有新完整生成成绩，正式127.831秒配置不变。 [方法、原始 PMC 与全部结果](../../docs/融合流水线与双Q复用-f13r1n16.md)

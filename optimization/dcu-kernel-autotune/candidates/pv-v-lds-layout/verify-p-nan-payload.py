@@ -17,17 +17,22 @@ def main():
         cli.add_argument(name, type=Path)
     cli.add_argument("--qk-split-batch", type=int,
                      help="验证两阶段QK实验时，用指定批次的完整拆分发射替代原生单镜像")
+    cli.add_argument("--dualq-no-spill", action="store_true",
+                     help="验证同源双Q128发射，保留原生短长度回退")
     args = cli.parse_args()
     code = Path(os.environ["H3_AUTOTUNE_CODE_ROOT"]) / "optimization"
     sys.path.insert(0, str(code))
     load = runpy.run_path(str(code / "bench-attention.py"))["native_launcher"]
     baseline = load(args.reference)
-    if args.qk_split_batch:
+    if args.qk_split_batch or args.dualq_no_spill:
         from importlib.util import spec_from_file_location, module_from_spec
-        spec = spec_from_file_location("qk_split_verification", Path(__file__).with_name("screen-qk-split.py"))
+        assert not (args.qk_split_batch and args.dualq_no_spill)
+        filename = "screen-dualq-no-spill.py" if args.dualq_no_spill else "screen-qk-split.py"
+        spec = spec_from_file_location("custom_attention_verification", Path(__file__).with_name(filename))
         module = module_from_spec(spec)
         spec.loader.exec_module(module)
-        candidate = module.launcher(args.candidate, args.reference, args.qk_split_batch, baseline)
+        candidate = (module.launcher(args.candidate, args.reference, baseline) if args.dualq_no_spill
+                     else module.launcher(args.candidate, args.reference, args.qk_split_batch, baseline))
     else:
         candidate = load(args.candidate)
     generator = torch.Generator(device="cuda").manual_seed(20261127)

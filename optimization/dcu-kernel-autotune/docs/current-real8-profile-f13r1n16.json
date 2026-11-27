@@ -1,0 +1,2932 @@
+{
+  "node": "f13r1n16",
+  "scope": "当前已验收stable-paired，第25次真实去噪单次预热后独立hipprof/rccl trace；不是无profiler正式成绩",
+  "profile_exit_code": 0,
+  "raw_trace": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/fused-pipeline-f13r1n16-OqP00aVf/hipprof_stream.json",
+  "raw_trace_sha256": "63b8f6db5dc75f37567f9fcfc12798d2a839ffe1c20d37d3c1d78f3f1d131947",
+  "profile_record": [
+    {
+      "step": 25,
+      "variant": "candidate",
+      "warmup_calls": 1,
+      "samples_seconds": [
+        2.189710976090282
+      ],
+      "mean_seconds": 2.189710976090282,
+      "median_seconds": 2.189710976090282,
+      "warmup_seconds": 6.78606598614715,
+      "kernel_calls": {
+        "adaln": 16,
+        "indexed": 1600,
+        "qknorm": 64,
+        "qknorm_mrope": 800,
+        "attention": 800,
+        "short_attention": 32,
+        "widenorm_indexed": 1600,
+        "swiglu": 832
+      },
+      "capture_sha256": "bba4c9a0dc4ffa6ab1f10aa515cc08a7fc2afdf117c37aefd46dcabe497285ab",
+      "against_capture": [
+        {
+          "name": "video",
+          "shape": [
+            1,
+            26448,
+            96
+          ],
+          "exact": false,
+          "mismatches": 2538994,
+          "max_abs_error": 0.4010007381439209,
+          "mean_abs_error": 0.008604387752711773,
+          "rmse": 0.012172585110222416,
+          "finite": true,
+          "output_sha256": "80ba4e37aa043fb988ee3e581205cbdbd5bd8d6be09e5090ba01b389ea64e779"
+        },
+        {
+          "name": "audio",
+          "shape": [
+            1,
+            414,
+            32
+          ],
+          "exact": false,
+          "mismatches": 13248,
+          "max_abs_error": 0.053460896015167236,
+          "mean_abs_error": 0.00826754979789257,
+          "rmse": 0.010348869412489126,
+          "finite": true,
+          "output_sha256": "b8a5b45150b569216dadef7b46bf46a8aedf68af70ee84dde82093eb30587c04"
+        }
+      ],
+      "diagnostic_profiler": true
+    }
+  ],
+  "source_runtime": {
+    "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+    "executable": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/runtime/.venv/bin/python",
+    "hostname": "f13r1n16",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "native_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/infinilm/overlay/infinilm/lib/_infinilm.cpython-311-x86_64-linux-gnu.so",
+    "native_sha256": "d754a550f68b71eff3157906f53646b325f66a468d6dc900d53cb4520c0369b0",
+    "torch_version": "2.9.0",
+    "hip_version": "6.3.26093"
+  },
+  "selected_attention": {
+    "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validated-build/attention-stable-paired-f12r2n09",
+    "artifacts": {
+      "prepack-value.hsaco": {
+        "bytes": 6488,
+        "sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd"
+      },
+      "dense-attention-aot-build.json": {
+        "source": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/attention/dense_attention_aot.triton.py",
+        "hsaco_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+        "warps": 4,
+        "shared": 8192,
+        "fp32_scale": true,
+        "fp16_pv": false,
+        "query_block": 128,
+        "key_block": 32,
+        "aligned_strides": true,
+        "host_command": [
+          "/public/software/compiler/gcc-11.4.0/bin/g++",
+          "-std=c++17",
+          "-O2",
+          "-shared",
+          "-fPIC",
+          "-DENABLE_ATEN",
+          "-D_GLIBCXX_USE_CXX11_ABI=1",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+          "-D__HIP_PLATFORM_AMD__",
+          "-I/public/software/compiler/dtk-26.04/include",
+          "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/adaln/attention_buffer_host.cc",
+          "-L/public/software/compiler/dtk-26.04/lib",
+          "-lamdhip64",
+          "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-linfinicore_cpp_api",
+          "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-ltorch_python",
+          "-ltorch",
+          "-ltorch_cpu",
+          "-lc10",
+          "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-o",
+          "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/benchmark-a-clean-pCISwp3y/build/attention/dense-attention-aot.so",
+          "-DH3_ATTENTION_QUERY_BLOCK=128"
+        ],
+        "num_stages": 1,
+        "matrix_instr_nonkdim": 0,
+        "kpack": 2,
+        "optimize_long_attention": true,
+        "split_kv_tail": true,
+        "elide_full_kv_load_mask": true,
+        "buffer_ops_limit_bytes": 2147483648,
+        "fallback": {
+          "hsaco_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+          "shared": 32768
+        },
+        "application_sha256": "bf9a780ad8de0f491693796c857b5d2104e92540f29694d1d30f1e868e270618",
+        "codegen_passes": [
+          "split_kv_tail",
+          "readonly_query_licm",
+          "elide_full_kv_load_mask",
+          "pv_lds_swizzle",
+          "coalesce_pv_value",
+          "direct_attention_query",
+          "packed_attention_strides"
+        ],
+        "pv_lds_swizzle": {
+          "P": {
+            "vec": 8,
+            "perPhase": 2,
+            "maxPhase": 16,
+            "order": [
+              0,
+              1
+            ]
+          },
+          "V": {
+            "vec": 4,
+            "perPhase": 2,
+            "maxPhase": 8,
+            "order": [
+              0,
+              1
+            ]
+          }
+        },
+        "codegen_sha256": "bcace674e03c7f59ed40e418f231b327c4d4d56cdf8c9597baa057d5ef15982b",
+        "generated_source_sha256": "309b4d8074405bb9fbc2f86dbcd14a96b56cfddfd1b1aa6aeca722ac76f0dd54",
+        "v_producer": {
+          "sizePerThread": [
+            4,
+            4
+          ],
+          "threadsPerWarp": [
+            2,
+            32
+          ],
+          "warpsPerCTA": [
+            4,
+            1
+          ],
+          "order": [
+            1,
+            0
+          ]
+        },
+        "v_codegen_sha256": "0c064bf7543ddf6fa5fe30a623b7239850fbbcb5f895bf2d332412912310c9df",
+        "q_codegen_sha256": "9278d1ad1a29a0fe32e34626c94090b2716748368e1dbf97ac73fc9bf98b899c",
+        "packed_strides": {
+          "hsaco_sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd",
+          "shared": 16384,
+          "strides": [
+            896,
+            896,
+            2688,
+            896
+          ]
+        },
+        "stride_codegen_sha256": "8e479ff8acd592a24550cb6728fb76276e8f38e6c972ee75a62f6ea034828d53",
+        "experiment": {
+          "scope": "all",
+          "xor4": "both",
+          "fused": {
+            "sum_177": 16,
+            "sum_78": 16,
+            "sum_260": 16,
+            "sum_296": 16,
+            "max_177": 16,
+            "max_78": 16,
+            "max_260": 16,
+            "max_296": 16
+          },
+          "bundles": {
+            "max": 16,
+            "sum": 16
+          },
+          "bundle_width": 4,
+          "resources": {
+            "private_segment_fixed_size": 0,
+            "sgpr_count": 58,
+            "vgpr_count": 219
+          },
+          "isa": {
+            "s_barrier": 12,
+            "v_mmac_f32_16x16x16_bf16": 128,
+            "s_nop": 8,
+            "v_max_f32_dpp": 80,
+            "v_add_f32_dpp": 80
+          },
+          "mmac_issue": {
+            "qk_wait_width": 2,
+            "pv_wait_width": 4,
+            "pv_issue_ready": false,
+            "sections": [
+              {
+                "stage": "joint_kv_load",
+                "k_loads": 2,
+                "v_loads": 4,
+                "k_vmcnt": 4,
+                "copy_instructions": 4
+              },
+              {
+                "stage": "elide_v_operations",
+                "mode": "pack"
+              },
+              {
+                "stage": "kv_zero",
+                "mode": "miss",
+                "zero_registers_per_load": 8
+              },
+              {
+                "stage": "prefetch_v",
+                "mode": "direct",
+                "loads": 4,
+                "copy_instructions": 1
+              },
+              {
+                "stage": "qk_scale",
+                "scalar_multiply": 16,
+                "packed_multiply": 8
+              },
+              {
+                "stage": "qk",
+                "reference_line": 611,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv_rescale",
+                "scalar_multiply": 64,
+                "packed_multiply": 32
+              },
+              {
+                "stage": "pv",
+                "reference_line": 1109,
+                "waits_before": 8,
+                "waits_after": 2
+              },
+              {
+                "stage": "qk",
+                "reference_line": 1435,
+                "waits_before": 8,
+                "waits_after": 4
+              },
+              {
+                "stage": "pv",
+                "reference_line": 2012,
+                "waits_before": 8,
+                "waits_after": 2
+              }
+            ],
+            "packed_pv_rescale": true,
+            "packed_qk_scale": true,
+            "v_prefetch": "direct",
+            "kv_zero": "miss",
+            "elide_v": "pack",
+            "joint_kv_wait": 4,
+            "reference_packed_sha256": "87cae371bad6afadd0b051772145a00cc6505849bfeee216f0575289a02fa51c"
+          },
+          "k_cross_block": {
+            "placement": "after-pv",
+            "temporary_vgprs": "166:173",
+            "include_v": false,
+            "pair_with_lds": true,
+            "loop_mask": false,
+            "address_induction": "k",
+            "reference_packed_sha256": "78387bbc123802dac3581bba15eefdcebd182a32c739a0696f16da818e1ce227"
+          },
+          "softmax_schedule": {
+            "scope": "both",
+            "groups": {
+              "row_sum": 8
+            },
+            "exp_latency": 16,
+            "favor_order": false,
+            "reference_packed_sha256": "be6d609b63d605d293a3a28b4f8498a2687ff7398e1c4dea6241031a276e524b",
+            "fold_max": null,
+            "row_sum": "interleave"
+          },
+          "prepacked_v": {
+            "position": "after-k-write",
+            "packed_pointer_argument_offset": 72,
+            "p_row_layout": true,
+            "reference_packed_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+            "static_barriers": 8
+          },
+          "p_nan_payload": {
+            "scope": "完整KV循环的内部P，仅payload规范化；RNE及最终输出转换保留",
+            "removed_compare": 16,
+            "removed_mask": 16,
+            "removed_constant": 1,
+            "last_round_destination": "v123",
+            "numerical_verification": "尚未完成",
+            "invariants": [
+              "原始FP32概率继续用于在线分母",
+              "最终归一化及BF16 NaN规范化不变",
+              "VCC仅供已删除掩码使用，后续先完整重定义",
+              "全部MMAC保留"
+            ],
+            "reference_packed_sha256": "96874b5cd49aa9343c7dffccbb135fcf4cac8343316217b7829953e1023e0803"
+          },
+          "softmax_ror4": {
+            "scope": "完整KV循环",
+            "max_pairs": 8,
+            "sum_pairs": 8,
+            "removed_instructions": 16,
+            "invariant": "xor8后两个相距8的prefix由交换同一对操作数得到；xor4与ror4的源数值相同",
+            "reference_packed_sha256": "4cefa896462bb408e210726c7ecc5f591f05f026a4cf3420872e22c8e8941411"
+          },
+          "stable_max_rescale": {
+            "mode": "guarded",
+            "reference_packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+            "scope": "完整KV循环，无barrier或MMAC变更；wave内全部delta为±0时走恒等缩放",
+            "scratch": "v206仅在tail重新定义，无新增寄存器需求",
+            "numerical_verification": "尚未完成",
+            "caution": "后续必须验证极小V、带符号零、非有限值及跨长度；未计时、未选用"
+          },
+          "paired_p_sub": {
+            "mode": "packed",
+            "reference_packed_sha256": "57b8e6243a784740179931d1ee8121f5353dc233c64f8455426e4fec92254e56",
+            "negative_max": true,
+            "max_registers": "v208:215，尾部入口前恢复原位置",
+            "removed_scalar_sub": 8,
+            "unchanged": "MMAC、SFU数量、RNE、sum和尾部",
+            "numerical_verification": "尚未完成"
+          }
+        },
+        "prepacked_host_command": [
+          "/public/software/compiler/gcc-11.4.0/bin/g++",
+          "-std=c++17",
+          "-O2",
+          "-shared",
+          "-fPIC",
+          "-DENABLE_ATEN",
+          "-D_GLIBCXX_USE_CXX11_ABI=1",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+          "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+          "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+          "-D__HIP_PLATFORM_AMD__",
+          "-I/public/software/compiler/dtk-26.04/include",
+          "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/prepacked_attention_host.cc",
+          "-L/public/software/compiler/dtk-26.04/lib",
+          "-lamdhip64",
+          "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-linfinicore_cpp_api",
+          "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-ltorch_python",
+          "-ltorch",
+          "-ltorch_cpu",
+          "-lc10",
+          "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+          "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+          "-o",
+          "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/combined-builds/after-k-write/prepacked-host.so"
+        ],
+        "prepacked_value_dispatch": {
+          "version": 1,
+          "minimum_rows": 4096,
+          "prepack": {
+            "source": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/prepacked-v-verify-f12r2n09-SDcwwHpm/prepack/h3_prepack_value.triton.py",
+            "hsaco_sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+            "shared": 0,
+            "warps": 8,
+            "tile": 2048,
+            "arguments": [
+              {
+                "kind": "tensor",
+                "source": "value"
+              },
+              {
+                "kind": "scalar",
+                "source": "blocks"
+              },
+              {
+                "kind": "tensor",
+                "source": "output"
+              },
+              {
+                "kind": "shape",
+                "source": "value",
+                "dim": 0
+              },
+              {
+                "kind": "shape",
+                "source": "output",
+                "dim": 0
+              }
+            ]
+          },
+          "reference_packed": {
+            "file": "dense-attention-packed-reference.hsaco",
+            "hsaco_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+            "shared": 16384
+          },
+          "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516",
+          "host_command": [
+            "/public/software/compiler/gcc-11.4.0/bin/g++",
+            "-std=c++17",
+            "-O2",
+            "-shared",
+            "-fPIC",
+            "-DENABLE_ATEN",
+            "-D_GLIBCXX_USE_CXX11_ABI=1",
+            "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.venv/lib/python3.11/site-packages/pybind11/include",
+            "-I/public/home/acvduipmem/miniconda3/envs/flaggem/include/python3.11",
+            "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include",
+            "-I/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/include/torch/csrc/api/include",
+            "-I/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/include",
+            "-D__HIP_PLATFORM_AMD__",
+            "-I/public/software/compiler/dtk-26.04/include",
+            "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/integrated-fixed/prepacked-dispatch.cc",
+            "-L/public/software/compiler/dtk-26.04/lib",
+            "-lamdhip64",
+            "-L/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+            "-linfinicore_cpp_api",
+            "-L/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+            "-ltorch_python",
+            "-ltorch",
+            "-ltorch_cpu",
+            "-lc10",
+            "-Wl,-rpath,/public/home/acvduipmem/xsh/songshanbei/runtime/.infini/lib",
+            "-Wl,-rpath,/public/home/acvduipmem/miniconda3/envs/flaggem/lib/python3.11/site-packages/torch/lib",
+            "-o",
+            "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/integrated-fixed/dense-attention-aot.so",
+            "-DH3_ATTENTION_QUERY_BLOCK=128"
+          ],
+          "host_source_sha256": "50a83252b58cbece6dab4c73c1eef5c7a4258eb02e07f4ca01615e244a7cb5ee",
+          "workspace": "按 device/stream 分配，仅复用分配空间，每次重新计算 V；短长度和其他 stride 回退"
+        }
+      },
+      "dense-attention-packed-reference.hsaco": {
+        "bytes": 26656,
+        "sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9"
+      },
+      "dense-attention-aot.so": {
+        "bytes": 35768,
+        "sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+      },
+      "prepacked-host.so": {
+        "bytes": 20080,
+        "sha256": "8b387240234bc0fa4654e9a606cbfdcc5010470e003792af7d39757a9a67a07e"
+      },
+      "dense-attention-packed.hsaco": {
+        "bytes": 26440,
+        "sha256": "a00cc85245e936216531503c3c1dfb57293d00d907dd517b4b1b6c8932f8a3cd"
+      },
+      "dense-attention-aot.hsaco": {
+        "bytes": 37720,
+        "sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f"
+      },
+      "dense-attention-fallback.hsaco": {
+        "bytes": 35880,
+        "sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba"
+      }
+    }
+  },
+  "windows": {
+    "compute.h3_transformer.25": {
+      "wall_ms": 2189.812486,
+      "any_device_active_pct": 99.85807519959496,
+      "all_devices_idle": {
+        "idle_ms": 3.107887,
+        "internal_idle_ms": 2.337794,
+        "leading_idle_ms": 0.358476,
+        "trailing_idle_ms": 0.411617,
+        "internal_gap_counts_at_least_ms": {
+          "0.01": 16,
+          "0.1": 5,
+          "0.5": 2,
+          "1": 0,
+          "5": 0,
+          "10": 0
+        },
+        "largest_internal_gaps": [
+          {
+            "begin_ms": 0.869036,
+            "end_ms": 1.415755,
+            "duration_ms": 0.546719,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPCOPY",
+              "name": "Memset",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 1.653835,
+            "end_ms": 2.169515,
+            "duration_ms": 0.51568,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>::result_type*)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 2188.692354,
+            "end_ms": 2189.079429,
+            "duration_ms": 0.387075,
+            "previous": {
+              "device": 4,
+              "category": "HIPOPS",
+              "name": "void embeddingKernel<float, long>(float*, long const*, float const*, unsigned long, unsigned long, unsigned long)",
+              "stream": "133"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 2189.097829,
+            "end_ms": 2189.396869,
+            "duration_ms": 0.29904,
+            "previous": {
+              "device": 0,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "101"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPCOPY",
+              "name": "DeviceToDevice",
+              "stream": "101"
+            }
+          },
+          {
+            "begin_ms": 0.362956,
+            "end_ms": 0.463436,
+            "duration_ms": 0.10048,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}>::result_type*)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 1.440875,
+            "end_ms": 1.540555,
+            "duration_ms": 0.09968,
+            "previous": {
+              "device": 0,
+              "category": "HIPCOPY",
+              "name": "Memset",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy_contig<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 2, 128, 1>(at::native::(anonymous namespace)::OpaqueType<4u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 0.467116,
+            "end_ms": 0.545516,
+            "duration_ms": 0.0784,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<double>, std::array<char*, 1ul> >(int, at::native::FillFunctor<double>, std::array<char*, 1ul>)",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 0.669996,
+            "end_ms": 0.726796,
+            "duration_ms": 0.0568,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 0.737676,
+            "end_ms": 0.787916,
+            "duration_ms": 0.05024,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int, bool)#1})",
+              "stream": "0"
+            }
+          },
+          {
+            "begin_ms": 0.628556,
+            "end_ms": 0.665996,
+            "duration_ms": 0.03744,
+            "previous": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::reciprocal_kernel_cuda(at::TensorIteratorBase&)::{lambda()#1}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::reciprocal_kernel_cuda(at::TensorIteratorBase&)::{lambda()#1}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>)",
+              "stream": "0"
+            },
+            "next": {
+              "device": 0,
+              "category": "HIPOPS",
+              "name": "void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+              "stream": "0"
+            }
+          }
+        ]
+      },
+      "devices": {
+        "0": {
+          "device_activity_pct": 99.8521676618114,
+          "busy_ms": 2186.575235,
+          "compute_busy_ms": 1622.293749,
+          "communication_busy_ms": 562.428047,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 9,
+            "HIPOPS": 975,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 3.237251,
+          "internal_idle_ms": 2.467158,
+          "leading_idle_ms": 0.358476,
+          "trailing_idle_ms": 0.411617,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 16,
+            "0.1": 5,
+            "0.5": 2,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 0.869036,
+              "end_ms": 1.415755,
+              "duration_ms": 0.546719,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::sin_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>)",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPCOPY",
+                "name": "Memset",
+                "stream": "0"
+              }
+            },
+            {
+              "begin_ms": 1.653835,
+              "end_ms": 2.169515,
+              "duration_ms": 0.51568,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#4}::operator()() const::{lambda(long)#1}>::result_type*)",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 2188.581191,
+              "end_ms": 2189.079429,
+              "duration_ms": 0.498238,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void embeddingKernel<float, long>(float*, long const*, float const*, unsigned long, unsigned long, unsigned long)",
+                "stream": "101"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 2189.097829,
+              "end_ms": 2189.396869,
+              "duration_ms": 0.29904,
+              "previous": {
+                "device": 0,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 0.362956,
+              "end_ms": 0.463436,
+              "duration_ms": 0.10048,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void (anonymous namespace)::elementwise_kernel_with_index<int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}>(int, at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}, function_traits<at::native::arange_cuda_out(c10::Scalar const&, c10::Scalar const&, c10::Scalar const&, at::Tensor&)::{lambda()#1}::operator()() const::{lambda()#7}::operator()() const::{lambda(long)#1}>::result_type*)",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+                "stream": "0"
+              }
+            },
+            {
+              "begin_ms": 1.440875,
+              "end_ms": 1.540555,
+              "duration_ms": 0.09968,
+              "previous": {
+                "device": 0,
+                "category": "HIPCOPY",
+                "name": "Memset",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy_contig<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 2, 128, 1>(at::native::(anonymous namespace)::OpaqueType<4u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+                "stream": "0"
+              }
+            },
+            {
+              "begin_ms": 0.467116,
+              "end_ms": 0.545516,
+              "duration_ms": 0.0784,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<double>, std::array<char*, 1ul> >(int, at::native::FillFunctor<double>, std::array<char*, 1ul>)",
+                "stream": "0"
+              }
+            },
+            {
+              "begin_ms": 0.669996,
+              "end_ms": 0.726796,
+              "duration_ms": 0.0568,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})",
+                "stream": "0"
+              }
+            },
+            {
+              "begin_ms": 0.737676,
+              "end_ms": 0.787916,
+              "duration_ms": 0.05024,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int, bool)#1})",
+                "stream": "0"
+              }
+            },
+            {
+              "begin_ms": 0.628556,
+              "end_ms": 0.665996,
+              "duration_ms": 0.03744,
+              "previous": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::reciprocal_kernel_cuda(at::TensorIteratorBase&)::{lambda()#1}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::reciprocal_kernel_cuda(at::TensorIteratorBase&)::{lambda()#1}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>)",
+                "stream": "0"
+              },
+              "next": {
+                "device": 0,
+                "category": "HIPOPS",
+                "name": "void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+                "stream": "0"
+              }
+            }
+          ]
+        },
+        "1": {
+          "device_activity_pct": 99.73848961787314,
+          "busy_ms": 2184.085899,
+          "compute_busy_ms": 1621.659097,
+          "communication_busy_ms": 560.364804,
+          "compute_communication_overlap_ms": 0.002321,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.726587,
+          "internal_idle_ms": 2.192703,
+          "leading_idle_ms": 2.337035,
+          "trailing_idle_ms": 1.196849,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.374795,
+              "end_ms": 2.884875,
+              "duration_ms": 0.51008,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 2.955115,
+              "end_ms": 3.268074,
+              "duration_ms": 0.312959,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.524874,
+              "end_ms": 3.805834,
+              "duration_ms": 0.28096,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.971754,
+              "end_ms": 4.225994,
+              "duration_ms": 0.25424,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.286954,
+              "end_ms": 4.507274,
+              "duration_ms": 0.22032,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.516234,
+              "end_ms": 4.733674,
+              "duration_ms": 0.21744,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.276234,
+              "end_ms": 3.447754,
+              "duration_ms": 0.17152,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.815114,
+              "end_ms": 3.953514,
+              "duration_ms": 0.1384,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.736074,
+              "end_ms": 4.768095,
+              "duration_ms": 0.032021,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.496554,
+              "end_ms": 3.518794,
+              "duration_ms": 0.02224,
+              "previous": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 1,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            }
+          ]
+        },
+        "2": {
+          "device_activity_pct": 99.74930237017563,
+          "busy_ms": 2184.322678,
+          "compute_busy_ms": 1620.450169,
+          "communication_busy_ms": 561.759543,
+          "compute_communication_overlap_ms": 0.002073,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.489808,
+          "internal_idle_ms": 2.089978,
+          "leading_idle_ms": 2.182475,
+          "trailing_idle_ms": 1.217355,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.732555,
+              "end_ms": 3.178154,
+              "duration_ms": 0.445599,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 2.220555,
+              "end_ms": 2.604555,
+              "duration_ms": 0.384,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.541354,
+              "end_ms": 3.818794,
+              "duration_ms": 0.27744,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.000554,
+              "end_ms": 4.264714,
+              "duration_ms": 0.26416,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.267274,
+              "end_ms": 4.495594,
+              "duration_ms": 0.22832,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.322794,
+              "end_ms": 3.532874,
+              "duration_ms": 0.21008,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.849994,
+              "end_ms": 3.981674,
+              "duration_ms": 0.13168,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.500234,
+              "end_ms": 4.557132,
+              "duration_ms": 0.056898,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.258474,
+              "end_ms": 3.283434,
+              "duration_ms": 0.02496,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.289514,
+              "end_ms": 3.314154,
+              "duration_ms": 0.02464,
+              "previous": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 2,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            }
+          ]
+        },
+        "3": {
+          "device_activity_pct": 99.7360848000937,
+          "busy_ms": 2184.033238,
+          "compute_busy_ms": 1619.674253,
+          "communication_busy_ms": 562.221476,
+          "compute_communication_overlap_ms": 0.001689,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.779248,
+          "internal_idle_ms": 2.318805,
+          "leading_idle_ms": 2.285355,
+          "trailing_idle_ms": 1.175088,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.324235,
+              "end_ms": 2.809515,
+              "duration_ms": 0.48528,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 2.881035,
+              "end_ms": 3.348874,
+              "duration_ms": 0.467839,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.356554,
+              "end_ms": 3.619434,
+              "duration_ms": 0.26288,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.163274,
+              "end_ms": 4.378954,
+              "duration_ms": 0.21568,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.625514,
+              "end_ms": 4.836074,
+              "duration_ms": 0.21056,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.668874,
+              "end_ms": 3.875114,
+              "duration_ms": 0.20624,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.879914,
+              "end_ms": 4.069354,
+              "duration_ms": 0.18944,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.436874,
+              "end_ms": 4.607274,
+              "duration_ms": 0.1704,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.860234,
+              "end_ms": 4.915039,
+              "duration_ms": 0.054805,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.133674,
+              "end_ms": 4.154314,
+              "duration_ms": 0.02064,
+              "previous": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 3,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            }
+          ]
+        },
+        "4": {
+          "device_activity_pct": 99.72861420610239,
+          "busy_ms": 2183.869646,
+          "compute_busy_ms": 1619.985905,
+          "communication_busy_ms": 561.769022,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.94284,
+          "internal_idle_ms": 2.343433,
+          "leading_idle_ms": 2.479275,
+          "trailing_idle_ms": 1.120132,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.516555,
+              "end_ms": 3.049995,
+              "duration_ms": 0.53344,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.110315,
+              "end_ms": 3.504394,
+              "duration_ms": 0.394079,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.797994,
+              "end_ms": 4.141194,
+              "duration_ms": 0.3432,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.511594,
+              "end_ms": 3.749354,
+              "duration_ms": 0.23776,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.362314,
+              "end_ms": 4.562474,
+              "duration_ms": 0.20016,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.147114,
+              "end_ms": 4.338154,
+              "duration_ms": 0.19104,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.588234,
+              "end_ms": 4.765834,
+              "duration_ms": 0.1776,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.920074,
+              "end_ms": 5.001354,
+              "duration_ms": 0.08128,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.832714,
+              "end_ms": 4.900394,
+              "duration_ms": 0.06768,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 5.055274,
+              "end_ms": 5.109428,
+              "duration_ms": 0.054154,
+              "previous": {
+                "device": 4,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 4,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "133"
+              }
+            }
+          ]
+        },
+        "5": {
+          "device_activity_pct": 99.73363550362001,
+          "busy_ms": 2183.979603,
+          "compute_busy_ms": 1620.707771,
+          "communication_busy_ms": 561.180475,
+          "compute_communication_overlap_ms": 0.0,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.832883,
+          "internal_idle_ms": 2.389514,
+          "leading_idle_ms": 2.234315,
+          "trailing_idle_ms": 1.209054,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 0,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.272395,
+              "end_ms": 2.736715,
+              "duration_ms": 0.46432,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 2.805195,
+              "end_ms": 3.193194,
+              "duration_ms": 0.387999,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.200874,
+              "end_ms": 3.548874,
+              "duration_ms": 0.348,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.610154,
+              "end_ms": 3.860074,
+              "duration_ms": 0.24992,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.940234,
+              "end_ms": 4.166474,
+              "duration_ms": 0.22624,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.222314,
+              "end_ms": 4.447274,
+              "duration_ms": 0.22496,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.648074,
+              "end_ms": 4.841994,
+              "duration_ms": 0.19392,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.456554,
+              "end_ms": 4.642954,
+              "duration_ms": 0.1864,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.844234,
+              "end_ms": 4.888242,
+              "duration_ms": 0.044008,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.865834,
+              "end_ms": 3.888874,
+              "duration_ms": 0.02304,
+              "previous": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 5,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            }
+          ]
+        },
+        "6": {
+          "device_activity_pct": 99.72470898588163,
+          "busy_ms": 2183.784129,
+          "compute_busy_ms": 1621.518715,
+          "communication_busy_ms": 560.098839,
+          "compute_communication_overlap_ms": 0.001743,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 6.028357,
+          "internal_idle_ms": 2.405684,
+          "leading_idle_ms": 2.410155,
+          "trailing_idle_ms": 1.212518,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 7,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.449035,
+              "end_ms": 2.959115,
+              "duration_ms": 0.51008,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.306474,
+              "end_ms": 3.691114,
+              "duration_ms": 0.38464,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.913514,
+              "end_ms": 4.295114,
+              "duration_ms": 0.3816,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.556074,
+              "end_ms": 4.925354,
+              "duration_ms": 0.36928,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.046795,
+              "end_ms": 3.297834,
+              "duration_ms": 0.251039,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.323434,
+              "end_ms": 4.529994,
+              "duration_ms": 0.20656,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 3.739594,
+              "end_ms": 3.907114,
+              "duration_ms": 0.16752,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 5.096234,
+              "end_ms": 5.153073,
+              "duration_ms": 0.056839,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 4.991114,
+              "end_ms": 5.012874,
+              "duration_ms": 0.02176,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            },
+            {
+              "begin_ms": 5.042794,
+              "end_ms": 5.063114,
+              "duration_ms": 0.02032,
+              "previous": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              },
+              "next": {
+                "device": 6,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "133"
+              }
+            }
+          ]
+        },
+        "7": {
+          "device_activity_pct": 99.72858740015423,
+          "busy_ms": 2183.869059,
+          "compute_busy_ms": 1622.06995,
+          "communication_busy_ms": 559.660309,
+          "compute_communication_overlap_ms": 0.001838,
+          "event_counts": {
+            "HIPCOPY": 17,
+            "HIPOPS": 962,
+            "RCCLOPS": 154
+          },
+          "idle_ms": 5.943427,
+          "internal_idle_ms": 2.190871,
+          "leading_idle_ms": 2.547915,
+          "trailing_idle_ms": 1.204641,
+          "internal_gap_counts_at_least_ms": {
+            "0.01": 11,
+            "0.1": 8,
+            "0.5": 1,
+            "1": 0,
+            "5": 0,
+            "10": 0
+          },
+          "largest_internal_gaps": [
+            {
+              "begin_ms": 2.586635,
+              "end_ms": 3.113675,
+              "duration_ms": 0.52704,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 4.049514,
+              "end_ms": 4.460554,
+              "duration_ms": 0.41104,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 3.682314,
+              "end_ms": 4.015434,
+              "duration_ms": 0.33312,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 3.438474,
+              "end_ms": 3.676714,
+              "duration_ms": 0.23824,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 4.477034,
+              "end_ms": 4.659274,
+              "duration_ms": 0.18224,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 3.169994,
+              "end_ms": 3.332874,
+              "duration_ms": 0.16288,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 4.881034,
+              "end_ms": 4.994954,
+              "duration_ms": 0.11392,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 4.758634,
+              "end_ms": 4.871274,
+              "duration_ms": 0.11264,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 4.997194,
+              "end_ms": 5.049122,
+              "duration_ms": 0.051928,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPOPS",
+                "name": "rearrange_unit_double4_block_1_grid_1_constrain_0",
+                "stream": "101"
+              }
+            },
+            {
+              "begin_ms": 3.340394,
+              "end_ms": 3.365194,
+              "duration_ms": 0.0248,
+              "previous": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              },
+              "next": {
+                "device": 7,
+                "category": "HIPCOPY",
+                "name": "DeviceToDevice",
+                "stream": "101"
+              }
+            }
+          ]
+        }
+      },
+      "host_api": [
+        {
+          "category": "HIP",
+          "name": "hipDeviceSynchronize",
+          "calls": 12,
+          "total_ms": 2129.086776
+        },
+        {
+          "category": "HIP",
+          "name": "hipModuleLaunchKernel",
+          "calls": 3272,
+          "total_ms": 73.55109
+        },
+        {
+          "category": "HIP",
+          "name": "hipExtModuleLaunchKernel",
+          "calls": 2152,
+          "total_ms": 47.443449
+        },
+        {
+          "category": "HIP",
+          "name": "hipLaunchKernel",
+          "calls": 2285,
+          "total_ms": 38.713831
+        },
+        {
+          "category": "RCCL",
+          "name": "ncclAllReduce",
+          "calls": 832,
+          "total_ms": 28.535426
+        },
+        {
+          "category": "HIP",
+          "name": "hipExtLaunchKernel",
+          "calls": 1232,
+          "total_ms": 20.59754
+        },
+        {
+          "category": "HIP",
+          "name": "hipMemcpyAsync",
+          "calls": 103,
+          "total_ms": 19.368956
+        },
+        {
+          "category": "RCCL",
+          "name": "ncclAllGather",
+          "calls": 400,
+          "total_ms": 14.719455
+        },
+        {
+          "category": "HIP",
+          "name": "hipMalloc",
+          "calls": 17,
+          "total_ms": 5.472675
+        },
+        {
+          "category": "HIP",
+          "name": "hipPointerGetAttributes",
+          "calls": 896,
+          "total_ms": 2.577953
+        },
+        {
+          "category": "HIP",
+          "name": "hipStreamGetCaptureInfo_v2",
+          "calls": 1232,
+          "total_ms": 2.161582
+        },
+        {
+          "category": "HIP",
+          "name": "hipGetDevice",
+          "calls": 2712,
+          "total_ms": 1.962893
+        },
+        {
+          "category": "HIP",
+          "name": "__hipPushCallConfiguration",
+          "calls": 1021,
+          "total_ms": 0.736463
+        },
+        {
+          "category": "HIP",
+          "name": "__hipPopCallConfiguration",
+          "calls": 1021,
+          "total_ms": 0.707206
+        },
+        {
+          "category": "HIP",
+          "name": "hipGetLastError",
+          "calls": 912,
+          "total_ms": 0.6222
+        },
+        {
+          "category": "HIP",
+          "name": "hipSetDevice",
+          "calls": 484,
+          "total_ms": 0.317281
+        },
+        {
+          "category": "HIP",
+          "name": "hipMemsetAsync",
+          "calls": 8,
+          "total_ms": 0.137281
+        },
+        {
+          "category": "HIP",
+          "name": "hipPointerGetAttribute",
+          "calls": 32,
+          "total_ms": 0.03731
+        },
+        {
+          "category": "HIP",
+          "name": "hipStreamSynchronize",
+          "calls": 1,
+          "total_ms": 0.036491
+        },
+        {
+          "category": "HIP",
+          "name": "hipStreamIsCapturing",
+          "calls": 1,
+          "total_ms": 0.00165
+        }
+      ]
+    }
+  },
+  "per_device_kernel_groups": {
+    "0": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 937.375073,
+        "share_of_profile_wall_percent": 42.806179935170945
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 562.428047,
+        "share_of_profile_wall_percent": 25.68384510526533
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 446.64570199999997,
+        "share_of_profile_wall_percent": 20.396527321654883
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 91.890201,
+        "share_of_profile_wall_percent": 4.196258884606616
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.436931,
+        "share_of_profile_wall_percent": 3.170907620808954
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.83262,
+        "share_of_profile_wall_percent": 1.72766482253038
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.768955,
+        "share_of_profile_wall_percent": 0.583107233228188
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.558552,
+        "share_of_profile_wall_percent": 0.527832957109187
+      },
+      "other_compute": {
+        "calls": 302,
+        "kernel_duration_sum_ms": 14.785753999999999,
+        "share_of_profile_wall_percent": 0.675206397558188
+      },
+      "copies_and_memset": {
+        "calls": 9,
+        "kernel_duration_sum_ms": 1.974719,
+        "share_of_profile_wall_percent": 0.0901775386077509
+      }
+    },
+    "1": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 937.133762,
+        "share_of_profile_wall_percent": 42.795160224508834
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 560.364804,
+        "share_of_profile_wall_percent": 25.58962502874322
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 446.42409999999995,
+        "share_of_profile_wall_percent": 20.386407642393905
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.249514,
+        "share_of_profile_wall_percent": 4.2126672758408965
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.209705,
+        "share_of_profile_wall_percent": 3.1605311159048717
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.829245,
+        "share_of_profile_wall_percent": 1.7275106997449097
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.767669,
+        "share_of_profile_wall_percent": 0.5830485067386725
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.456793,
+        "share_of_profile_wall_percent": 0.523186029545728
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.588309000000002,
+        "share_of_profile_wall_percent": 0.6661898721130958
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.102559,
+        "share_of_profile_wall_percent": 0.09601548139131398
+      }
+    },
+    "2": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 936.922699,
+        "share_of_profile_wall_percent": 42.78552181933262
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 561.759543,
+        "share_of_profile_wall_percent": 25.653317194575536
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 445.26392500000003,
+        "share_of_profile_wall_percent": 20.33342707865079
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.378194,
+        "share_of_profile_wall_percent": 4.2185435780732865
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.438196,
+        "share_of_profile_wall_percent": 3.170965388312249
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.830537,
+        "share_of_profile_wall_percent": 1.7275697002304882
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.794711,
+        "share_of_profile_wall_percent": 0.5842834069948764
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.283678,
+        "share_of_profile_wall_percent": 0.5152805581363372
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.538229000000001,
+        "share_of_profile_wall_percent": 0.6639029183067687
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.207359,
+        "share_of_profile_wall_percent": 0.10080127929273301
+      }
+    },
+    "3": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 937.209932,
+        "share_of_profile_wall_percent": 42.79863860452936
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 562.221476,
+        "share_of_profile_wall_percent": 25.674411831808328
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 444.40569700000003,
+        "share_of_profile_wall_percent": 20.29423522978305
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.024438,
+        "share_of_profile_wall_percent": 4.20238895285941
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.400926,
+        "share_of_profile_wall_percent": 3.1692634161005513
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.83262,
+        "share_of_profile_wall_percent": 1.72766482253038
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.794391,
+        "share_of_profile_wall_percent": 0.5842687938715132
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.427994,
+        "share_of_profile_wall_percent": 0.5218708941090585
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.579196000000001,
+        "share_of_profile_wall_percent": 0.6657737177593207
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.179198,
+        "share_of_profile_wall_percent": 0.0995152787707687
+      }
+    },
+    "4": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 937.165166,
+        "share_of_profile_wall_percent": 42.79659431990288
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 561.769022,
+        "share_of_profile_wall_percent": 25.65375006268916
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 444.65451899999994,
+        "share_of_profile_wall_percent": 20.3055979378501
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.176596,
+        "share_of_profile_wall_percent": 4.209337401686549
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.167486,
+        "share_of_profile_wall_percent": 3.1586031426071615
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.839506,
+        "share_of_profile_wall_percent": 1.72797927867875
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.815348,
+        "share_of_profile_wall_percent": 0.5852258164537656
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.566552,
+        "share_of_profile_wall_percent": 0.5281982851932647
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.602872000000001,
+        "share_of_profile_wall_percent": 0.6668549062241489
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.213759,
+        "share_of_profile_wall_percent": 0.10109354175999526
+      }
+    },
+    "5": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 937.03983,
+        "share_of_profile_wall_percent": 42.790870724809636
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 561.180475,
+        "share_of_profile_wall_percent": 25.626873469201694
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 445.62874,
+        "share_of_profile_wall_percent": 20.35008672427489
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.150002,
+        "share_of_profile_wall_percent": 4.2081229598030525
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.17354,
+        "share_of_profile_wall_percent": 3.1588796046347873
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.838845,
+        "share_of_profile_wall_percent": 1.727949093445803
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.78367,
+        "share_of_profile_wall_percent": 0.5837792085728386
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.475189,
+        "share_of_profile_wall_percent": 0.5240261014750649
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.620145999999998,
+        "share_of_profile_wall_percent": 0.6676437408896936
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.131837,
+        "share_of_profile_wall_percent": 0.09735249084701766
+      }
+    },
+    "6": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 937.291878,
+        "share_of_profile_wall_percent": 42.80238075142659
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 560.098839,
+        "share_of_profile_wall_percent": 25.577479468257998
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 445.78194599999995,
+        "share_of_profile_wall_percent": 20.357083031081046
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.251299,
+        "share_of_profile_wall_percent": 4.212748789669656
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.634675,
+        "share_of_profile_wall_percent": 3.1799378003911887
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.839817,
+        "share_of_profile_wall_percent": 1.7279934808080184
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.780955,
+        "share_of_profile_wall_percent": 0.5836552253543047
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.341273,
+        "share_of_profile_wall_percent": 0.5179106920116446
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.596951999999998,
+        "share_of_profile_wall_percent": 0.6665845634419312
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.209438,
+        "share_of_profile_wall_percent": 0.10089621892858275
+      }
+    },
+    "7": {
+      "attention_long_and_short": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 936.972422,
+        "share_of_profile_wall_percent": 42.7877924703732
+      },
+      "allreduce": {
+        "calls": 154,
+        "kernel_duration_sum_ms": 559.660309,
+        "share_of_profile_wall_percent": 25.55745355266917
+      },
+      "gemm": {
+        "calls": 269,
+        "kernel_duration_sum_ms": 446.69751600000006,
+        "share_of_profile_wall_percent": 20.398893460323436
+      },
+      "wide_norm_indexed": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 92.487151,
+        "share_of_profile_wall_percent": 4.223519209580395
+      },
+      "indexed_gate": {
+        "calls": 100,
+        "kernel_duration_sum_ms": 69.293391,
+        "share_of_profile_wall_percent": 3.1643527216603884
+      },
+      "qk_norm_mrope": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 37.84093,
+        "share_of_profile_wall_percent": 1.7280443070777158
+      },
+      "swiglu": {
+        "calls": 52,
+        "kernel_duration_sum_ms": 12.788154,
+        "share_of_profile_wall_percent": 0.5839839749639641
+      },
+      "value_prepack": {
+        "calls": 50,
+        "kernel_duration_sum_ms": 11.343511,
+        "share_of_profile_wall_percent": 0.5180128925431654
+      },
+      "other_compute": {
+        "calls": 289,
+        "kernel_duration_sum_ms": 14.646875000000007,
+        "share_of_profile_wall_percent": 0.6688643476846085
+      },
+      "copies_and_memset": {
+        "calls": 17,
+        "kernel_duration_sum_ms": 2.281918,
+        "share_of_profile_wall_percent": 0.1042060913703275
+      }
+    }
+  },
+  "attribution_note": "各组为kernel时长求和/采集窗口墙钟，不等于消融测量；AllReduce包含等待，不能全部解释为实际传输；GPU0不代表8卡总和。",
+  "old_search_audit": {
+    "rccl": "a14r1n11默认/4/8/16/32通道已测；4/8慢且输出位模式改变，16/32大消息约0.4%收益，无胜出，不无依据重复。",
+    "gemm": "a14r1n11覆盖16个MMAC与49个tile256候选，四个主形状均慢于默认，1420全搜索超时；此为有限覆盖，不宣称rocBLAS全局最优。"
+  },
+  "selected_default_changed": false
+}
