@@ -53,11 +53,26 @@ def main():
             check(hip.hipModuleLaunchKernel(functions[index], blocks, 1, 1, 256, 1, 1,
                   16384, torch.cuda.current_stream().cuda_stream, parameters, None))
 
+        def verify(variant, phase):
+            exact = output == variant["expected_output"]
+            if not bool(exact.all()):
+                finite = torch.isfinite(output)
+                failure = dict(status="numerical_check_failed", phase=phase,
+                               blocks=blocks, variant=variant,
+                               mismatches=int((~exact).sum()), finite_elements=int(finite.sum()),
+                               elements=output.numel(),
+                               finite_values=torch.unique(output[finite])[:16].cpu().tolist(),
+                               first_values=[str(value) for value in output[:16].cpu().tolist()])
+                with args.output.open("x") as stream:
+                    json.dump(failure, stream, indent=2)
+                    stream.write("\n")
+                raise ValueError(failure)
+
         for index, variant in enumerate(meta["variants"]):
             output.fill_(float("nan"))
             run(index)
             torch.cuda.synchronize()
-            assert bool((output == variant["expected_output"]).all()), variant
+            verify(variant, "initial")
         samples = [[] for _ in functions]
         start, end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
         for trial in range(21):
@@ -71,6 +86,7 @@ def main():
                 run(index)
                 end.record()
                 end.synchronize()
+                verify(meta["variants"][index], f"trial-{trial}")
                 if trial >= 2:
                     samples[index].append(start.elapsed_time(end))
         return dict(blocks=blocks, records=[dict(variant, samples_ms=times, median_ms=median(times))

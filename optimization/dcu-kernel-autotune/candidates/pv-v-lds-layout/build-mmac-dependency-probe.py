@@ -27,7 +27,8 @@ def assembly(source, chains, iterations):
     ]
     lines += [f"\tv_mov_b32_e32 v{register}, 0" for register in range(64)]
     lines += [f"\tv_mov_b32_e32 v{register}, 0x3f803f80" for register in range(64, 68)]
-    lines += [f"\ts_mov_b32 s0, {iterations}", ".Ldependency_loop:"]
+    # VALU 初始化后的 MMAC 源寄存器显式等待；不把未就绪的输入当作依赖吞吐。
+    lines += [f"\ts_mov_b32 s0, {iterations}", "\ts_nop 15", ".Ldependency_loop:"]
     for index in range(64):
         first = (index % chains) * 4
         accumulator = f"v[{first}:{first + 3}]"
@@ -77,6 +78,7 @@ def main():
     metadata = dict(scope="独立硬件诊断，未测量；不包含真实QK/PV，不可作为模型镜像",
                     loop_iterations=args.iterations, static_mmacs=64,
                     block_threads=256, dynamic_lds_bytes=16384,
+                    initial_operand_wait_cycles=16,
                     descriptor="沿用候选的219静态VGPR和54静态SGPR，保持所有探针资源分配相同",
                     variants=variants, original_packed_sha256=record["packed_strides"]["hsaco_sha256"])
     (args.output / "probe-build.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n")

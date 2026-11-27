@@ -2,9 +2,13 @@
 
 v3 在八张海光 BW1000 上运行，包含 InfiniLM 优化补丁、九齿 AOT 内核、优化推理入口、连续请求验收和剖析脚本。原始框架以提交 `45b2c3094d8d189e030f8984d7c07dead4db690a` 为构建基线。克隆时保留这个提交的历史。
 
-当前本地正式配置采用 Q128 packed K/V 联合发射、Q/K RMSNorm 与 MRoPE 融合、compact 原库顺序宽 RMSNorm 与索引 AdaLN 融合，以及按行分块的 BF16 SwiGLU。八卡常驻公开 A 的三组配对，端到端均值为 **147.55 秒**，Transformer 均值为 **127.65 秒**。官方 A 采用 768×928、50 steps、124 帧和 seed 42，执行 49 次 Transformer。普通 A 与常驻 A、B、C、返回 A 均通过规格和成片比对。 [联合发射版验收](dcu-kernel-autotune/docs/joint-kv-a14r1n11-qualified.json)
+当前本地正式配置采用 Q128/K32 packed 长注意力的 P 行 LDS 布局与 V 预排布，叠加 Q/K RMSNorm/MRoPE、compact 原库顺序宽 RMSNorm/索引 AdaLN 和按行 BF16 SwiGLU。在 `f12r2n09` 的同一八卡常驻进程中，双方各预热一次后做三组完整 A 配对，请求墙钟由求和交错基准的 **142.320 秒降至 137.344 秒，下降 3.496%**；Transformer 由 121.994 降至 116.860 秒，下降 4.209%。三个候选样本为 136.993、138.403、136.637 秒。 [统一计时结果](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json)
 
-最新的 softmax 求和回写和 DPP 交错候选在同轮八卡 A 配对中达到 **142.89 秒**，比该轮基准 147.80 秒节省 **3.32%**。普通官方 A 和常驻 B 成片与正式版逐字节一致。该次常驻进程在 C 执行期间结束，正式配置采用上面的联合发射镜像。 [候选重建说明](dcu-kernel-autotune/candidates/pv-v-lds-layout/README.md#在线求和回写与-dpp-交错) · [已完成的端到端配对](dcu-kernel-autotune/docs/softmax-row-sum-a14r1n11-steady-partial.json)
+普通官方默认入口 A 和常驻 A×8/B/C/返回 A 共 11 请求均已通过，所有 MP4 与对应已验收版本逐字节一致，A/B/C 独立参考 SSIM 分别为 93.832013%、99.404123%、99.630047%。官方 A 保持 768×928、50 steps、124 帧、seed 42 和 49 次 Transformer。当前配置未启用跨进程编译缓存优化。整卡显存每五秒采样的最高读数为 31960 MiB；该常驻实例混用基准和候选，不能据此推断独立实例的显存差。 [完整验收](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-qualified.json) · [构建与资源记录](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09.json)
+
+复测当前组合时，先按下节命令生成求和交错的 `$job/release`，再运行 [公开 A 耗时复测说明](公开A耗时复测说明.md#7-后续-p-行布局与-v-预排布组合) 中的组合构建与统一计时命令。`benchmark.json` 的 `comparison` 为 `row-sum-vs-p-row-prepacked-v`，正式成绩读取 `wall.candidate.mean`。
+
+此前 `a14r1n11` 的联合发射版约为 147.55 秒，求和交错候选为 142.89 秒；下节保留其复测入口和原始记录。当前 137.344 秒与同轮 142.320 秒配对比较，不用跨节点绝对秒数计算加速比。
 
 ## 复测 142.89 秒的公开 A 常驻配对
 

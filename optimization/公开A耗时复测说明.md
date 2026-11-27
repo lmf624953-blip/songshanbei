@@ -182,7 +182,7 @@ rg 'model\.|generation.pipeline_total|compute.h3_transformer|output.video_vae_de
 
 ## 7. 后续 P 行布局与 V 预排布组合
 
-本地 `xsh-opt` 新增了组合候选的统一构建入口。它已通过普通官方 A 和真实八卡去噪回放，三组稳态配对及多用例验收仍在进行。上述固定提交 `0ba8bb17` 用于旧的 142.89 秒结果；本节需要包含 `build-p-row-prepacked-release.sh` 的后续源码，不能在旧提交上直接执行。
+本地 `xsh-opt` 已整合组合版的统一构建入口。它已通过普通官方 A、真实八卡去噪回放、三组稳态配对及 B/C/返回 A 验收，并被选为当前本地正式配置。上述固定提交 `0ba8bb17` 用于旧的 142.89 秒结果；本节需要包含 `build-p-row-prepacked-release.sh` 的后续源码，不能在旧提交上直接执行。
 
 复用第 2 节生成的 `$job/release`，运行以下命令即可构建组合并以相同口径复测。
 
@@ -195,5 +195,7 @@ bash "$repo/optimization/benchmark-public-a.sh" \
 ```
 
 这一组的 base 为求和交错版，fast 为 P 行布局与 V 预排布组合。输出仍读取 `benchmark.json` 中的 `wall.reference.mean`、`wall.candidate.mean` 和 `wall.mean_time_reduction_percent`，`comparison` 应为 `row-sum-vs-p-row-prepacked-v`。设备同步、完整模型计算、预热和配对顺序与前述协议相同。
+
+`f12r2n09` 的三组正式 A 基准样本为 142.983865/142.283798/141.692352 s，组合样本为 136.992860/138.403012/136.636662 s，均值为 142.320005→137.344178 s，下降 3.496225%。Transformer 均值为 121.994201→116.859849 s，下降 4.208686%。完整 11 请求成片全部与对应已验收版本逐字节一致。[本轮统一计时结果](dcu-kernel-autotune/docs/p-row-prepacked-f12r2n09-public-a.json) 保留了与复测脚本一致的字段、环境及镜像身份。
 
 新构建入口记录 16 份相关源码及六个设备/主机产物的 SHA-256。汇总程序要求主注意力和 V 预排布的设备指令符合冻结版本，主机库及回退镜像与运行快照一致。`release.json` 中的 `qualified=false` 表示构建本身不会代替新环境的模型质量验收；对应完整结果另行保存。
