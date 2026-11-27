@@ -1,0 +1,288 @@
+kernel-name:"_ZN2at6native12_GLOBAL__N_143distribution_elementwise_grid_stride_kernelIfLi4EZNS0_9templates4cuda20normal_and_transformIN3c108BFloat16EfPNS_17CUDAGeneratorImplEZZZNS4_13normal_kernelIS9_EEvRKNS_10TensorBaseEddT_ENKUlvE_clEvENKUlvE2_clEvEUlfE_EEvRNS_18TensorIteratorBaseET1_T2_EUlP25hiprandStatePhilox4_32_10E0_ZNS1_27distribution_nullary_kernelIS7_f15HIP_vector_typeIfLj4EES9_SO_SH_EEvSJ_SL_RKT3_T4_EUlifE_EEvlNS_15PhiloxCudaStateESK_SL_"
+ kernel dispatch index                     0
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      2
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 204800
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                48
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.000298(s)
+ processed ALU instructions                89.5891036823(%)
+ performance                               11974.055914(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   21.1339551663(%)
+ L1 cache unit is stalled                  5.6535179845(%)
+ L2 cache write unit is stalled            0.4198559341(%)
+ L2 cache hit rate                         0.517627(%)
+
+kernel-name:"_ZN2at6native12_GLOBAL__N_143distribution_elementwise_grid_stride_kernelIfLi4EZNS0_9templates4cuda20normal_and_transformIN3c108BFloat16EfPNS_17CUDAGeneratorImplEZZZNS4_13normal_kernelIS9_EEvRKNS_10TensorBaseEddT_ENKUlvE_clEvENKUlvE2_clEvEUlfE_EEvRNS_18TensorIteratorBaseET1_T2_EUlP25hiprandStatePhilox4_32_10E0_ZNS1_27distribution_nullary_kernelIS7_f15HIP_vector_typeIfLj4EES9_SO_SH_EEvSJ_SL_RKT3_T4_EUlifE_EEvlNS_15PhiloxCudaStateESK_SL_"
+ kernel dispatch index                     1
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      5
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 204800
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                48
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.000302(s)
+ processed ALU instructions                88.0982694036(%)
+ performance                               11802.726020(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   23.6620844176(%)
+ L1 cache unit is stalled                  8.6005274643(%)
+ L2 cache write unit is stalled            0.7750924813(%)
+ L2 cache hit rate                         0.622611(%)
+
+kernel-name:"_ZN2at6native12_GLOBAL__N_143distribution_elementwise_grid_stride_kernelIfLi4EZNS0_9templates4cuda20normal_and_transformIN3c108BFloat16EfPNS_17CUDAGeneratorImplEZZZNS4_13normal_kernelIS9_EEvRKNS_10TensorBaseEddT_ENKUlvE_clEvENKUlvE2_clEvEUlfE_EEvRNS_18TensorIteratorBaseET1_T2_EUlP25hiprandStatePhilox4_32_10E0_ZNS1_27distribution_nullary_kernelIS7_f15HIP_vector_typeIfLj4EES9_SO_SH_EEvSJ_SL_RKT3_T4_EUlifE_EEvlNS_15PhiloxCudaStateESK_SL_"
+ kernel dispatch index                     2
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      8
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 204800
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                48
+ sgpr count                                48
+ signal handle                             0x0
+ kernel time                               0.000780(s)
+ processed ALU instructions                92.7683783396(%)
+ performance                               13369.623705(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   26.6018248074(%)
+ L1 cache unit is stalled                  10.8584452721(%)
+ L2 cache write unit is stalled            0.3575273306(%)
+ L2 cache hit rate                         0.365801(%)
+
+kernel-name:"h3_prepack_value_kernel"
+ kernel dispatch index                     3
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      15
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 6171648
+ work group size                           512
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                24
+ sgpr count                                32
+ signal handle                             0x0
+ kernel time                               0.000271(s)
+ processed ALU instructions                66.1599381881(%)
+ performance                               10331.593628(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   78.7540281357(%)
+ L1 cache unit is stalled                  39.9917906123(%)
+ L2 cache write unit is stalled            0.1915131185(%)
+ L2 cache hit rate                         60.050995(%)
+
+kernel-name:"dense_attention_aot_kernel"
+ kernel dispatch index                     4
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      16
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 387072
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.018947(s)
+ processed ALU instructions                89.0099782015(%)
+ performance                               9610.085673(Gflops)
+ shared memory operation                   198192960
+ shared memory bank conflict               0.0212661825(%)
+ L1 cache unit is active                   19.6445309958(%)
+ L1 cache unit is stalled                  0.1444169995(%)
+ L2 cache write unit is stalled            0.0043179352(%)
+ L2 cache hit rate                         97.484944(%)
+
+kernel-name:"h3_prepack_value_kernel"
+ kernel dispatch index                     5
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      22
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 6171648
+ work group size                           512
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                24
+ sgpr count                                32
+ signal handle                             0x0
+ kernel time                               0.000226(s)
+ processed ALU instructions                78.6990999675(%)
+ performance                               12384.760396(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   93.4640813616(%)
+ L1 cache unit is stalled                  47.3044909156(%)
+ L2 cache write unit is stalled            0.2317331510(%)
+ L2 cache hit rate                         60.046832(%)
+
+kernel-name:"h3_split_qk_kernel"
+ kernel dispatch index                     6
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      23
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 262144
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                120
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.027936(s)
+ processed ALU instructions                8.8455357421(%)
+ performance                               842.101410(Gflops)
+ shared memory operation                   35266560
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   96.7809463188(%)
+ L1 cache unit is stalled                  85.1996681410(%)
+ L2 cache write unit is stalled            0.0757786669(%)
+ L2 cache hit rate                         75.626907(%)
+
+kernel-name:"h3_split_softmax_pv_kernel"
+ kernel dispatch index                     7
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      24
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 262144
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.014408(s)
+ processed ALU instructions                64.3811319027(%)
+ performance                               7274.665220(Gflops)
+ shared memory operation                   98959360
+ shared memory bank conflict               0.0189361166(%)
+ L1 cache unit is active                   31.0543708103(%)
+ L1 cache unit is stalled                  0.2447057350(%)
+ L2 cache write unit is stalled            0.0021543531(%)
+ L2 cache hit rate                         19.399759(%)
+
+kernel-name:"h3_split_qk_kernel"
+ kernel dispatch index                     8
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      25
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 124928
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                120
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.013977(s)
+ processed ALU instructions                8.4220469290(%)
+ performance                               802.081158(Gflops)
+ shared memory operation                   16806720
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   91.8659263850(%)
+ L1 cache unit is stalled                  80.5677810389(%)
+ L2 cache write unit is stalled            0.0070576234(%)
+ L2 cache hit rate                         75.812004(%)
+
+kernel-name:"h3_split_softmax_pv_kernel"
+ kernel dispatch index                     9
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      26
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 124928
+ work group size                           256
+ shared memory size                        16384
+ scratch size                              0
+ vgpr count                                220
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.008112(s)
+ processed ALU instructions                54.4693042729(%)
+ performance                               6157.204639(Gflops)
+ shared memory operation                   47160320
+ shared memory bank conflict               0.0160216318(%)
+ L1 cache unit is active                   25.8524819330(%)
+ L1 cache unit is stalled                  0.1738617911(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         19.668152(%)
+
+kernel-name:"_ZN2at6native29vectorized_elementwise_kernelILi8ENS0_13BinaryFunctorIssbNS0_12_GLOBAL__N_116CompareEqFunctorIsEEEESt5arrayIPcLm3EEEEviT0_T1_"
+ kernel dispatch index                     10
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      30
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 1543936
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                40
+ sgpr count                                32
+ signal handle                             0x0
+ kernel time                               0.000145(s)
+ processed ALU instructions                17.4794863553(%)
+ performance                               2919.304194(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   62.8736867038(%)
+ L1 cache unit is stalled                  39.4727993300(%)
+ L2 cache write unit is stalled            0.1806046661(%)
+ L2 cache hit rate                         0.150443(%)
+
+kernel-name:"_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIbNS0_14func_wrapper_tIbZZZNS0_15and_kernel_cudaERNS_14TensorIteratorEENKUlvE_clEvENKUlvE10_clEvEUlbbE_EEjbLi4ELi4EEEEEvT1_"
+ kernel dispatch index                     11
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      34
+ process id                                2231784
+ thread id                                 2231784
+ grid size                                 81920
+ work group size                           512
+ shared memory size                        528
+ scratch size                              20
+ vgpr count                                24
+ sgpr count                                64
+ signal handle                             0x0
+ kernel time                               0.000053(s)
+ processed ALU instructions                4.1153918866(%)
+ performance                               5102.713678(Gflops)
+ shared memory operation                   13998
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   4.7246313487(%)
+ L1 cache unit is stalled                  0.4202679360(%)
+ L2 cache write unit is stalled            0.0000000000(%)
+ L2 cache hit rate                         14.314969(%)
+

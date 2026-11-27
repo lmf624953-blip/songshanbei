@@ -510,3 +510,35 @@ python verify-stable-max-values.py "$combined" "$guard_builds" "$value_edges"
 `build-stable-paired-release.sh SOFTMAX_RELEASE NEW_OUTPUT_DIR` 将已冻结的精简 softmax 发布目录依次经过 stable-max guarded 和正 Phi packed 变换，提供完整主机 ABI、六个产物及来源清单。独立 CPU 发布重建的可加载区段和 ELF 映射均与真实回放候选相同；V 预排布镜像只有调试信息差异，其余五个产物逐字节相同。每次重建不会自动代替完整资格验收；当前默认 `reproduce-public-a.sh build` 已串接本节发布入口，上游精简softmax保存在 `build-work/softmax`。
 
 `build-running-max-fold.py` 的 max3/min3 方向仅完成 CPU 构建，未执行 GPU 数值或性能验证。用户要求本轮收尾整合后暂停，因此不启动该方向后续测试，不能将其计入有效性能或已验收优化。
+
+## 恢复优化：拆分 QK 与在线 softmax/PV 的实测
+
+2026-11-27 用户恢复长期目标，要求尝试按计算和访存特点拆分 kernel。在 `f13r1n16` 以已验收 `stable-paired` 为基准，`build-qk-split.py` 从同一九齿生成汇编拆出 QK producer 与在线 softmax/PV consumer。producer 保留 QK 的原 MMAC 累加顺序和 FP32 scale；consumer 按原 KV 顺序执行 max、exp、分母、BF16 RNE、PV 和尾块。QK 只保存完整 KV 块分数，末尾由 consumer 原路径计算。未采用全局一次 softmax 或改变归约树。
+
+中间分数按 Q tile 批次分配，避免一次物化所有头、所有 query 的完整矩阵；每次发射重算分数。实际比较 256/1024-block 批次、AoS/SoA4 两种布局。初始 1024 批次暴露 32 位偏移超过 4 GB 后环绕，已用 64 位地址修正，失败记录保留。SoA4 最初的 immediate offset 超出 gfx936 的 13-bit signed 范围，改为地址递增。producer 经 CFG 上保守死定义消除和保持四寄存器组的编号压缩，由原资源布局降至 **120 VGPR**；consumer 仍为 **220 VGPR**，两侧均零 scratch。
+
+| 生产长度 | 融合基准 | 拆分 AoS，1024 批次 | 拆分 SoA4，1024 批次 |
+| --- | ---: | ---: | ---: |
+| 27570 token | 约 19.20 ms | 64.695 ms | 44.301 ms |
+| 22016 token | 约 13.06 ms | 41.476 ms | 29.100 ms |
+
+表格来自独立的 19 组无 profiler 配对，每次覆盖 V 预排布及全部批次的两个阶段；精确对应基准、全部样本和配对百分比见 JSON。SoA4 改善了中间结果的合并读写，但整体仍退化约 2.2–2.3 倍。27570 token 的 QK 写入/读回共约 **42.66 GB/调用**，1024 批次的总工作区约 14.495 GB。仅减少寄存器并不能抵消这个流量。
+
+AoS/SoA4 分别通过 95 条通用最终 BF16 位模式与尾部检查，5 个常用/边界长度的普通及放大 Q/K 也通过；小于 4096 为旧回退覆盖。SoA4 两个阶段及主机库的独立重建逐字节一致。独立原始 PMC 中，SoA4 的 QK producer `L1 cache unit is stalled` 约 69.96%–77.26%，consumer 的 L2 hit 约 32%；同进程融合参考 L1 stalled 约 0.147%、L2 hit 约 97.485%。这些是不同 kernel 的采集字段，不当作统一命中率或正式计时。原始 trace 的四段目标 kernel 在该 GPU 时间轴上相接，本次退化没有显示来自两阶段间的大量主机空泡。
+
+该两阶段方案不采用，也不为负收益候选重新运行八卡或完整生成。结论只适用于已测试的 QK→全局 FP32 缓冲→在线 softmax/PV 拆分；不宣称所有拆分形式都不可行。当前正式默认仍为已验收的 **127.831001 秒**。
+
+恢复后的融合内对照也已执行。`build-running-max-fold.py --paired-positive-phi` 将旧 max 并入局部 max3，晚期负 max 合并改为符号翻转；95 条通用检查通过，但生产长度回退约 0.12%/0.09%，不采用。
+
+`build-k-early-staging.py` 将 K 暂存独立放在 v220:227，比较同资源 `control`、`after-qk`、`before-pv`。三个变体各 95 条通用检查通过。39 组配对中，control 约零变化，after-qk 为 1.197%/1.372% 单 kernel 收益，before-pv 为 0.439%/0.605%；首尾自身配对均接近零。after-qk 按2450调用只投影约 **0.441% 完整 A**，按低于3%单项先归档，不单独合入。负收益拆分与此小收益均不能写成新的完整生成成绩。
+
+```bash
+python build-qk-split.py "$selected_attention" "$new_split_build" \
+  --compact-producer --score-layout soa4
+python screen-qk-split.py "$selected_attention" "$new_split_build" "$new_result" \
+  --batches 256 1024 --lengths 4096 4097 8193 22016 27570 --pairs 19
+python verify-p-nan-payload.py "$selected_attention" "$new_split_build" "$new_edges" \
+  --qk-split-batch 1024
+```
+
+[所有原始记录及取舍](../../docs/qk-split-f13r1n16.json) · [AoS 原始 PMC](../../docs/qk-split-f13r1n16-aos-pmc.txt) · [SoA4 原始 PMC](../../docs/qk-split-f13r1n16-soa4-pmc.txt) · [原始时间线](../../docs/qk-split-f13r1n16-trace.json)

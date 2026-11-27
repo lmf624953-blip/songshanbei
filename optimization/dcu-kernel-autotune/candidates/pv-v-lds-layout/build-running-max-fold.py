@@ -13,7 +13,8 @@ from triton.backends.amd.compiler import HIPBackend
 from triton.backends.compiler import GPUTarget
 
 
-def transform(source, negative_logits=False):
+def transform(source, negative_logits=False, paired_positive_phi=False):
+    assert not (negative_logits and paired_positive_phi)
     lines = source.splitlines()
     first, middle, end = (lines.index(name) for name in
                           (".LBB0_14:", ".LBB0_18:", ".LBB0_20:"))
@@ -35,11 +36,15 @@ def transform(source, negative_logits=False):
         assert len(positions) == 1, original
         # 旧 max 在 query 对应的 DPP 子组内广播，不改变 QK/PV 或求和顺序。
         lines[positions[0]] = f"\tv_{operation}3_f32 v{97 + row}, v{left}, v{right}, v{old_max}"
-        target = 208 + row if negative_logits else new_max
-        late = f"\tv_{operation}_f32_e32 v{target}, v{old_max}, v{new_max}"
+        target = 208 + row if negative_logits or paired_positive_phi else new_max
+        late = (f"\tv_min_f32_e64 v{target}, -v{old_max}, -v{new_max}" if paired_positive_phi
+                else f"\tv_{operation}_f32_e32 v{target}, v{old_max}, v{new_max}")
         positions = [i for i in range(middle, end) if lines[i] == late]
         assert len(positions) == 1, late
-        drops.append(positions[0])
+        if paired_positive_phi:
+            lines[positions[0]] = f"\tv_xor_b32_e32 v{target}, 0x80000000, v{new_max}"
+        else:
+            drops.append(positions[0])
         if negative_logits:
             # 负 logit 版本已将 new_max 放在连续寄存器；最后一条 DPP 直接写该位置。
             final = max(i for i in range(first, middle)
@@ -55,7 +60,7 @@ def transform(source, negative_logits=False):
     assert result[result.index(".LBB0_20:"):] == source[source.index(".LBB0_20:"):]
     assert result.count("v_mmac_f32_16x16x16_bf16") == source.count("v_mmac_f32_16x16x16_bf16")
     assert result.count("v_exp_f32_e32") == source.count("v_exp_f32_e32")
-    assert len(lines) == len(source.splitlines()) - 8
+    assert len(lines) == len(source.splitlines()) - (0 if paired_positive_phi else 8)
     return result
 
 
@@ -64,6 +69,7 @@ def main():
     cli.add_argument("reference", type=Path)
     cli.add_argument("output", type=Path)
     cli.add_argument("--negative-logits", action="store_true")
+    cli.add_argument("--paired-positive-phi", action="store_true")
     args = cli.parse_args()
     record = json.loads((args.reference / "dense-attention-aot-build.json").read_text())
     packed = args.reference / "dense-attention-packed.hsaco"
@@ -72,7 +78,10 @@ def main():
     source = (args.reference / "dense-attention-packed.amdgcn").read_text()
     if args.negative_logits:
         assert record["experiment"]["paired_p_sub"]["negative_logits"]
-    updated = transform(source, args.negative_logits)
+    if args.paired_positive_phi:
+        assert record["experiment"]["paired_p_sub"]["mode"] == "packed"
+        assert not record["experiment"]["paired_p_sub"].get("negative_phi_state", False)
+    updated = transform(source, args.negative_logits, args.paired_positive_phi)
     configure_hygon_compiler()
     backend = HIPBackend(GPUTarget("hip", "gfx936", 64))
     image = backend.make_hsaco(updated, {}, backend.parse_options(dict(num_warps=4, num_stages=1, kpack=2)))
@@ -81,8 +90,9 @@ def main():
     (args.output / "dense-attention-packed.amdgcn").write_text(updated)
     record["packed_strides"]["hsaco_sha256"] = hashlib.sha256(image).hexdigest()
     record["experiment"]["running_max_fold"] = dict(
-        reference_packed_sha256=digest, local_max3=8, removed_late_max=8,
+        reference_packed_sha256=digest, local_max3=8, removed_late_max=0 if args.paired_positive_phi else 8,
         negative_logits=args.negative_logits,
+        paired_positive_phi=args.paired_positive_phi,
         unchanged="QK/PV MMAC、FP32求和、RNE、完整KV遍历及尾部",
         numerical_verification="尚未完成，特别核对NaN和带符号零")
     (args.output / "dense-attention-aot-build.json").write_text(json.dumps(record, indent=2) + "\n")

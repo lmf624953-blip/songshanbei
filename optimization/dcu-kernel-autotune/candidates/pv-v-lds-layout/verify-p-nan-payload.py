@@ -15,11 +15,21 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     for name in ("reference", "candidate", "output"):
         cli.add_argument(name, type=Path)
+    cli.add_argument("--qk-split-batch", type=int,
+                     help="验证两阶段QK实验时，用指定批次的完整拆分发射替代原生单镜像")
     args = cli.parse_args()
     code = Path(os.environ["H3_AUTOTUNE_CODE_ROOT"]) / "optimization"
     sys.path.insert(0, str(code))
     load = runpy.run_path(str(code / "bench-attention.py"))["native_launcher"]
-    baseline, candidate = load(args.reference), load(args.candidate)
+    baseline = load(args.reference)
+    if args.qk_split_batch:
+        from importlib.util import spec_from_file_location, module_from_spec
+        spec = spec_from_file_location("qk_split_verification", Path(__file__).with_name("screen-qk-split.py"))
+        module = module_from_spec(spec)
+        spec.loader.exec_module(module)
+        candidate = module.launcher(args.candidate, args.reference, args.qk_split_batch, baseline)
+    else:
+        candidate = load(args.candidate)
     generator = torch.Generator(device="cuda").manual_seed(20261127)
     with args.output.open("x") as stream:
         def record(row):
