@@ -14,12 +14,18 @@ ALLOWED = {
 }
 
 
+def attention_layout_digest(source):
+    """校验包含行号的 IR，忽略生成目录和 Triton 安装目录。"""
+    normalized = re.sub(r'loc\("[^"]*/dense_attention_aot\.triton\.py":', 'loc("<generated>":', source)
+    normalized = re.sub(r'loc\("[^"]*/triton/language/standard\.py":', 'loc("<triton-standard>":', normalized)
+    return hashlib.sha256(normalized.encode()).hexdigest()
+
+
 def coalesce_pv_value(source):
     """仅改已核验的 Q64/K32 或 Q128/K32 生成 IR。动态长度、尾部掩码与归约保持原表达式。"""
-    normalized = re.sub(r'loc\("[^"]*/dense_attention_aot\.triton\.py":', 'loc("<generated>":', source)
-    if hashlib.sha256(normalized.encode()).hexdigest() not in {
-            "fd50ae3217c5f11aea2fb52043ff01e1566208a3320bce892b37d29f48eb438d",
-            "a7b278296c3dc8126c68ff45f8be1b0d6c5704c8a5a84d8e1a37572da0b7e2ba"}:
+    if attention_layout_digest(source) not in {
+            "10edb79f779de408e2b1ec95b3960e8cbc0451d32300e3473f64be4b5810607c",
+            "0eba84d416a67fce3f589a97e732195f5af804d4e7d9fd0bdad05d4c981cd7f6"}:
         raise RuntimeError("V 的 LDS 布局优化要求已核对的九齿 gfx936 生成 IR")
     original = "#shared3 = #ttg.swizzled_shared<{vec = 8, perPhase = 1, maxPhase = 16, order = [1, 0]}>"
     updated = "#shared3 = #ttg.swizzled_shared<{vec = 4, perPhase = 2, maxPhase = 8, order = [0, 1]}>"

@@ -1,9 +1,8 @@
 """验证 hoist 之后的 Q 能否直接进入矩阵寄存器布局，降低 LDS 峰值。"""
 
-import hashlib
 import re
 
-from attention_v_codegen import ALLOWED, LINE, SSA
+from attention_v_codegen import ALLOWED, LINE, SSA, attention_layout_digest
 
 TENSOR_LAYOUT = re.compile(r"#(?:blocked|mma)\b")
 DOT = "#ttg.dot_op<{opIdx = 0, parent = #mma, kWidth = 8}>"
@@ -11,12 +10,11 @@ DOT = "#ttg.dot_op<{opIdx = 0, parent = #mma, kWidth = 8}>"
 
 def load_attention_query_direct(source, *, query_block=64):
     """保持 Q 索引及掩码，直接按 QK 的矩阵操作数布局加载。"""
-    normalized = re.sub(r'loc\("[^"]*/dense_attention_aot\.triton\.py":', 'loc("<generated>":', source)
     expected = {
-        64: "3a2233acee520416b0e465be48f1e3d9c9032080fba573723e485f3c30f66ac6",
-        128: "e0bc50687b95af04e11633ace298283afaff2e5ffc723d2089b8fbff134db7ca",
+        64: "692f696b9704384b41ac5bb5a3d92b96ddceb4bfb948029d692c4f0f076dd0df",
+        128: "088d320d6248c7826bb21549877254bfa25b67d651014ffb82948f7f16eb3e93",
     }
-    if hashlib.sha256(normalized.encode()).hexdigest() != expected.get(query_block):
+    if attention_layout_digest(source) != expected.get(query_block):
         raise RuntimeError("Q 直接加载要求已核对的 V 协同布局和九齿生成 IR")
     q_type = f"tensor<{query_block}x128xbf16, {DOT}>"
     q_smem = f"!ttg.memdesc<{query_block}x128xbf16, #shared, #smem>"

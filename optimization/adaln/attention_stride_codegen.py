@@ -1,18 +1,17 @@
 """对已验证的 packed stride 生成九齿长注意力专门化镜像。"""
 
-import hashlib
 import re
+
+from attention_v_codegen import attention_layout_digest
 
 
 PACKED_STRIDES = (896, 896, 2688, 896)
 
 
 def specialize_attention_strides(source):
-    normalized = re.sub(r'loc\("[^"]*/dense_attention_aot\.triton\.py":',
-                        'loc("<generated>":', source)
-    if hashlib.sha256(normalized.encode()).hexdigest() not in {
-            "d9ece80ba7d813f3f2667549538bd84bbcf1a58d34bc47a9262b2792bb9f6119",
-            "8d66fa9618b94ed6317c6d7cfb24811ac7ad2cd14ac5ba82a2e0cfe80eecd819"}:
+    if attention_layout_digest(source) not in {
+            "7018fe8f373ce617dfe92be2db7f94eac9c7ac75841ac3f4a93ee8694deefdff",
+            "a51df5e2ab1cc90be037c9d6d2c49d4a20a73a441631ededd709fff4ad421faa"}:
         raise RuntimeError("packed stride 专门化要求已核对的 Q 直接加载与 V 协同布局 IR")
     lines = source.splitlines()
     signatures = [i for i, line in enumerate(lines)
