@@ -21,6 +21,7 @@ def f32(bits):return (bits.astype(np.uint32)<<16).view(np.float32)
 def main():
     cli=argparse.ArgumentParser(description=__doc__);cli.add_argument('library',type=Path);cli.add_argument('output',type=Path)
     cli.add_argument('--count',type=int,default=148216320);cli.add_argument('--patterns',type=int,default=32)
+    cli.add_argument('--seed',type=int,default=82371)
     cli.add_argument('--samples',type=int,default=65536);args=cli.parse_args()
     assert args.count>0 and args.count%args.patterns==0 and args.patterns>=16
     args.output.mkdir();ranks=8;assert torch.cuda.device_count()==ranks
@@ -28,7 +29,7 @@ def main():
     spec=importlib.util.spec_from_file_location('rccl_helper',helper);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     lib=module.load_rccl(args.library.resolve(strict=True));streams=[torch.cuda.Stream(device=i) for i in range(ranks)]
     comms=(ct.c_void_p*ranks)();devices=(ct.c_int*ranks)(*range(ranks));lib.ncclCommInitAll(comms,ranks,devices)
-    patterns=(torch.randn((ranks,args.patterns),generator=torch.Generator().manual_seed(82371))*torch.tensor([2**(i%4) for i in range(ranks)])[:,None]).to(torch.bfloat16)
+    patterns=(torch.randn((ranks,args.patterns),generator=torch.Generator().manual_seed(args.seed))*torch.tensor([2**(i%4) for i in range(ranks)])[:,None]).to(torch.bfloat16)
     raw_patterns=patterns.view(torch.int16).numpy().view(np.uint16)
     groups=args.count//args.patterns
     sample_ids=np.unique(np.concatenate([np.linspace(0,groups-1,min(args.samples,groups),dtype=np.int64),np.arange(min(4096,groups)),np.arange(max(0,groups-4096),groups),np.clip(np.arange(1025)[:,None]*groups//1024+np.arange(-16,17)[None,:],0,groups-1).ravel()]))
@@ -60,7 +61,7 @@ def main():
         locations=sample_ids[np.all(selected==signature,axis=1)]
         results.append(dict(sampled_groups=int(count),first_group=int(locations[0]),last_group=int(locations[-1]),
                             matching_permutations=orders[matched].tolist(),matches=int(matched.size),signature=[int(v) for v in signature]))
-    record=dict(count=args.count,patterns=args.patterns,sampled_groups=int(len(sample_ids)),distinct_signatures=len(results),
+    record=dict(count=args.count,patterns=args.patterns,seed=args.seed,sampled_groups=int(len(sample_ids)),distinct_signatures=len(results),
                 completely_matched_groups=sum(r['sampled_groups'] for r in results if r['matches']),
                 scope='只识别采样位置在这些探针上的BF16逐步RNE串行排列等价类；边界可能混合多条链，不能当完整索引映射证明',signatures=results)
     (args.output/'inference.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')

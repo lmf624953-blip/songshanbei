@@ -111,3 +111,7 @@ H3 候选构建默认限制 180 s，使用 `H3_AUTOTUNE_BUILD_TIMEOUT_SECONDS` �
 ## 当前 GEMM 覆盖与集合顺序闸门
 
 2026-11-27 在 `f13r1n16` 以实际Tensile目录审核短名称映射，补测26个旧目录外候选及16个主要RK1，共336形状组合，128个逐位一致；最快候选又做39组配对，完整A粗略收益投影仅约0.324%，不合入。八卡直接RS/AG及2/4/8分块在默认与Ring/Simple16下均不保持原BF16位结果，重复整段对照通过。独立rank链探针的106902采样组均匹配8类串行舍入链，尚未证明完整分片映射，继续研究保持原序的自定义分片。 [GEMM源码与用法](candidates/rocblas-coverage/README.md) · [集合源码与后续限制](candidates/rccl-sequence-parallel/README.md) · [完整原始样本](docs/gemm-coverage-f13r1n16.json)
+
+## 保持原累加顺序的分片门控候选
+
+2026-11-27 在 `f13r1n16` 新实现peer分片求和→原序门控残差→结果推送。修正九齿门控NaN编码后，27570/22016/24577 token的完整八卡BF16数组和39组配对通过，公开A对应流水线约6.370→4.920ms，按相关调用次数投影约5.59%完整请求空间。独立PMC及逐字节重建通过；当前仅是待接入模型的候选，无新端到端成绩。已准备关闭时保留原路径的私有native hook并通过语法检查，主机桥、运行时通信校准及真实八卡/完整入口验收仍待执行。 [源码与实测](candidates/rccl-sequence-parallel/README.md) · [全部原始记录](docs/peer-reduce-f13r1n16.json)

@@ -1,0 +1,96 @@
+--- a/csrc/models/minimax_h3/minimax_h3_transformer.cpp
++++ b/csrc/models/minimax_h3/minimax_h3_transformer.cpp
+@@ -22,6 +22,7 @@
+ #include <cmath>
+ #include <cstddef>
+ #include <limits>
++#include <type_traits>
+ #include <stdexcept>
+ #include <string>
+ #include <tuple>
+@@ -56,7 +57,18 @@
+ using SwiGLULaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
+     const infinicore::Tensor &, std::uintptr_t);
+ 
++using PeerGateLaunch = void (*)(const infinicore::Tensor &, const infinicore::Tensor &,
++    const infinicore::Tensor &, const infinicore::Tensor &, const infinicore::Tensor &,
++    int, int, infinicclComm_t, std::uintptr_t);
+ namespace {
++std::atomic<PeerGateLaunch> peer_gate_launch{nullptr};
++std::atomic<std::uint64_t> peer_gate_calls{0}, peer_deferred_rows{0};
++thread_local bool peer_defer_row = false;
++struct PeerRowScope {
++    bool previous;
++    explicit PeerRowScope(bool enabled) : previous(peer_defer_row) { peer_defer_row = enabled; }
++    ~PeerRowScope() { peer_defer_row = previous; }
++};
+ std::atomic<SwiGLULaunch> swiglu_launch{nullptr};
+ std::atomic<std::uint64_t> swiglu_calls{0};
+ std::atomic<WideNormIndexedLaunch> widenorm_indexed_launch{nullptr};
+@@ -147,6 +159,13 @@
+ std::uint64_t songshan_swiglu_calls() {
+     return swiglu_calls.load(std::memory_order_relaxed);
+ }
++
++extern "C" __attribute__((visibility("default")))
++void songshan_set_peer_gate_launch(PeerGateLaunch launch) { peer_gate_launch.store(launch, std::memory_order_release); }
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_peer_gate_calls() { return peer_gate_calls.load(std::memory_order_relaxed); }
++extern "C" __attribute__((visibility("default")))
++std::uint64_t songshan_peer_deferred_rows() { return peer_deferred_rows.load(std::memory_order_relaxed); }
+ 
+ namespace {
+ 
+@@ -189,6 +208,13 @@
+ infinicore::Tensor linear_forward(const std::shared_ptr<Linear> &linear,
+                                   const infinicore::Tensor &input) {
+     auto mutable_input = input;
++    if constexpr (std::is_same_v<Linear, infinilm::layers::linear::RowParallelLinear>) {
++        if (peer_defer_row) {
++            if (linear->has_bias()) throw std::runtime_error("H3 peer gate requires bias-free row projection");
++            peer_deferred_rows.fetch_add(1, std::memory_order_relaxed);
++            return static_cast<const infinilm::nn::BaseLinear &>(*linear).forward(mutable_input);
++        }
++    }
+     return linear->forward(mutable_input);
+ }
+ 
+@@ -659,6 +685,9 @@
+     if (launch && !supports_indexed(hidden_states, modulation, adaln_indices)) {
+         launch = nullptr;
+     }
++    auto peer = peer_gate_launch.load(std::memory_order_acquire);
++    const auto &peer_rank = infinilm::global_state::get_tensor_model_parallel_rank_info();
++    if (!launch || peer_rank.tp_size != 8 || !peer_rank.comm || hidden_states->shape()[1] < 16384) peer = nullptr;
+     auto token_modulation = (launch ? modulation : gather_rows(modulation, adaln_indices))->unsqueeze(0);
+     const auto adaln = [&](const infinicore::Tensor &normalized,
+                            const infinicore::Tensor &scale, const infinicore::Tensor &shift) {
+@@ -667,6 +696,14 @@
+     };
+     const auto residual = [&](const infinicore::Tensor &input, const infinicore::Tensor &branch,
+                               const infinicore::Tensor &gate) {
++        if (peer) {
++            auto out = infinicore::Tensor::empty(input->shape(), input->dtype(), input->device());
++            peer(out, input->contiguous(), branch->contiguous(), gate, adaln_indices,
++                 peer_rank.tp_rank, peer_rank.tp_size, peer_rank.comm,
++                 reinterpret_cast<std::uintptr_t>(infinicore::context::getStream()));
++            peer_gate_calls.fetch_add(1, std::memory_order_relaxed);
++            return out;
++        }
+         return launch ? apply_indexed(launch, true, input, branch, gate, adaln_indices)
+                       : infinicore::op::add(input, infinicore::op::mul(gate, branch));
+     };
+@@ -687,11 +724,11 @@
+         return adaln(norm->forward(input), scale, shift);
+     };
+     auto normalized = norm_adaln(hidden_states, norm1_, scale_msa, shift_msa);
+-    auto attention_output = attn_->forward(normalized, rope, position_ids, rotary_cos_sin_cache);
++    auto attention_output = [&] { PeerRowScope scope(peer != nullptr); return attn_->forward(normalized, rope, position_ids, rotary_cos_sin_cache); }();
+     auto output = residual(hidden_states, attention_output, gate_msa);
+ 
+     normalized = norm_adaln(output, norm2_, scale_mlp, shift_mlp);
+-    auto mlp_output = ff_->forward(normalized);
++    auto mlp_output = [&] { PeerRowScope scope(peer != nullptr); return ff_->forward(normalized); }();
+     output = residual(output, mlp_output, gate_mlp);
+     return output;
+ }
