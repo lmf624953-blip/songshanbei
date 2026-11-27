@@ -18,6 +18,10 @@ def snapshot(destination):
     if os.environ.get("H3_PEER_GATE_BUILD"):
         peer_source = project / "optimization/dcu-kernel-autotune/candidates/rccl-sequence-parallel"
         files.extend(p for p in peer_source.iterdir() if p.is_file() and p.suffix in {".py", ".sh", ".cc", ".hip", ".patch", ".md", ".json"})
+    if os.environ.get("H3_PEER_SHARDED_NORM_BUILD"):
+        for name in ("peer-sharded-norm", "peer-sharded-norm-model"):
+            source = project / "optimization/dcu-kernel-autotune/candidates" / name
+            files.extend(p for p in source.iterdir() if p.is_file() and p.suffix in {".py", ".sh", ".cc", ".hip", ".patch", ".md", ".json"})
     files.append(project / "runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py")
     records = {}
     for source in sorted(files):
@@ -29,7 +33,7 @@ def snapshot(destination):
     artifacts = {}
     for name in ("H3_ADALN_BUILD", "H3_ADALN_AOT_BUILD", "H3_INDEXED_BUILD",
                  "H3_SWIGLU_BUILD", "H3_QKNORM_BUILD", "H3_QKNORM_MROPE_BUILD", "H3_WIDE_NORM_INDEXED_BUILD", "H3_ATTENTION_AOT_BUILD", "H3_SHORT_ATTENTION_AOT_BUILD",
-                 "H3_REDUCECAST_BUILD", "H3_ENCODER_REDUCECAST_BUILD", "H3_WIDE_NORM_BUILD", "H3_PEER_GATE_BUILD"):
+                 "H3_REDUCECAST_BUILD", "H3_ENCODER_REDUCECAST_BUILD", "H3_WIDE_NORM_BUILD", "H3_PEER_GATE_BUILD", "H3_PEER_SHARDED_NORM_BUILD"):
         if not os.environ.get(name):
             continue
         build = Path(os.environ[name]).resolve(strict=True)

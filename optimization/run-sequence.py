@@ -261,7 +261,9 @@ def main():
                 raise RuntimeError("An original request unexpectedly executed candidate kernels")
             if peer_order is not None:
                 counts = record["candidate_calls"]
-                if peer_order[index] == "off" and any(counts.get(name, 0) for name in
+                if hasattr(control, "validate_peer_request"):
+                    control.validate_peer_request(peer_order[index], counts, record["peer_gate_stats"])
+                elif peer_order[index] == "off" and any(counts.get(name, 0) for name in
                         ("peer_gate", "peer_deferred", "peer_batches", "peer_fused", "peer_fallback")):
                     raise RuntimeError("A disabled peer gate request executed the candidate")
                 if peer_order[index] == "on" and (counts.get("peer_gate") != 39200

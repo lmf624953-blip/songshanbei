@@ -247,6 +247,17 @@ if os.environ.get("H3_PEER_GATE_BUILD"):
     sys.path.insert(0, str(peer_source))
     from peer_gate_runtime import install as install_peer_gate
     peer_gate_plugin = install_peer_gate(infinilm, indexed_host, control, os.environ["H3_PEER_GATE_BUILD"])
+sharded_norm_plugin = None
+if os.environ.get("H3_PEER_SHARDED_NORM_BUILD"):
+    if peer_gate_plugin is None:
+        raise RuntimeError("Sharded norm requires the accepted peer reference")
+    norm_host = next((lib for name, lib, _, _ in registrations if name == "widenorm_indexed"), None)
+    if norm_host is None:
+        raise RuntimeError("Sharded norm requires the matched indexed norm image")
+    sys.path.insert(0, str(here.parent / "dcu-kernel-autotune/candidates/peer-sharded-norm-model"))
+    from model_runtime import install as install_sharded_norm
+    sharded_norm_plugin = install_sharded_norm(infinilm, indexed_host, norm_host, control,
+        peer_gate_plugin, os.environ["H3_PEER_SHARDED_NORM_BUILD"])
 entry = here.parents[1] / "runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py"
 if os.environ.get("H3_PROFILE_CANDIDATE") == "1":
     entry = here.parent / "profile-entry.py"
