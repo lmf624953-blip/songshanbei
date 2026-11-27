@@ -21,7 +21,12 @@ def main():
     cli.add_argument('--norm',type=Path,required=True);cli.add_argument('--rows',type=int,nargs='+',default=[27570,22899,24062])
     cli.add_argument('--mismatch-weight',action='store_true')
     cli.add_argument('--test-abort',action='store_true',help='正向检查后中断仅7个rank到达的gate，验证等待唤醒与拒绝继续使用')
+    cli.add_argument('--profile-candidate-once',action='store_true',help='配合hipprof --pmc-off，只采集首组开启候选的第三次gate/norm，避免参考同名kernel混入')
     args=cli.parse_args();assert torch.cuda.device_count()==8
+    profiled=False
+    if args.profile_candidate_once:
+        assert not args.mismatch_weight and not args.test_abort and len(args.rows)==1
+        hip=ct.CDLL('libamdhip64.so')
     proxy=InfiniCCLProxy(Path(os.environ['INFINI_ROOT'])/'lib/libinfiniccl.so')
     comms=(ct.c_void_p*8)();proxy.ncclCommInitAll(comms,8,(ct.c_int*8)(*range(8)))
     indexed=ct.CDLL(str(args.indexed/'indexed-host.so'));meta=json.loads((args.indexed/'indexed-build.json').read_text())
@@ -84,7 +89,14 @@ def main():
                                 table=tables[r].data_ptr();stream=streams[r].cuda_stream
                                 check(model.h3_model_gate_raw(r,work[r].data_ptr(),cy[r].data_ptr(),old_cy[r].data_ptr(),table+2*5376*2,indices[r].data_ptr(),count,3,comms[r],stream))
                                 check(model.h3_model_norm_raw(r,count,3,cy[r].data_ptr(),weights[r].data_ptr(),table+4*5376*2,table+3*5376*2,indices[r].data_ptr(),cz[r].data_ptr(),stream))
-                        list(pool.map(cand,range(8)));sync();state=json.loads(model.h3_peer_bridge_stats());partial=state['pending_ranks']==8;details=[]
+                        capture=args.profile_candidate_once and enabled and step==2 and not profiled
+                        if capture:
+                            assert hip.hipProfilerStart()==0
+                        list(pool.map(cand,range(8)));sync()
+                        if capture:
+                            assert hip.hipProfilerStop()==0
+                            profiled=True
+                        state=json.loads(model.h3_peer_bridge_stats());partial=state['pending_ranks']==8;details=[]
                         for r in range(8):
                             first=rows*r//8*5376;last=rows*(r+1)//8*5376
                             with torch.cuda.device(r):

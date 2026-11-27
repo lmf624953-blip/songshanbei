@@ -1,6 +1,6 @@
 # 模型级行分片归一化候选
 
-本目录在独立原型基础上接入真实 H3 Transformer。当前状态：独立 Tensor 桥闸门、回退、异常唤醒、独立重建及真实八卡第 1/25/49 次去噪已通过，**完整官方入口与稳态资格尚待验证，正式默认未改变**。已验收最佳仍为 `peer-gate-nt-f13r1n16`，已有官方 A 稳态完整请求均值 120.698043 秒。
+本目录在独立原型基础上接入真实 H3 Transformer。当前状态：独立 Tensor 桥闸门、回退、异常唤醒、独立重建、真实八卡第 1/25/49 次去噪及普通官方默认 A 均已通过，**稳态完整资格正在验证，正式默认未改变**。普通 A 成片与此前验收版逐字节一致。已验收最佳仍为 `peer-gate-nt-f13r1n16`，已有官方 A 稳态完整请求均值 120.698043 秒。
 
 ## 模型边界
 
@@ -86,4 +86,6 @@ bash profile-model.sh pmc-norm "$candidate_config" "$new_norm_pmc"
 
 `trace` 在权重加载和一次预热后，仅采集真实模型第 25 次去噪的一次 Transformer；停止前两秒用于排空 profiler，不能算入计算时间。输出 `hipprof_stream.json` 与回放数值结果。
 
-两项 PMC 使用相同主机桥和设备镜像，在独立八卡 Tensor 桥检查中采集官方 A 长度，保留原始 `pmc.txt`；这不是完整模型 PMC。检查按开启/关闭/开启运行，各三次残差链，且每步都执行当前 peer 参考，原始同名 kernel 记录因此同时包含参考和候选。必须按设备、寄存器/网格和执行次序区分：行分片 gate 与完整参考 gate 不同，局部 norm 与全行 norm 的网格也不同。不能把这些记录的整体均值当作候选模型耗时。
+两项 PMC 使用相同主机桥和设备镜像，在独立八卡 Tensor 桥检查中采集官方 A 长度，保留原始 `pmc.txt`；这不是完整模型 PMC。检查仍按开启/关闭/开启运行，各三次残差链，每步执行当前 peer 参考；使用 `--pmc-off` 配合 `--profile-candidate-once`，只在首组开启候选的第三次 gate/norm 期间启动采集，避免参考同名 kernel 混入。每份 TXT 应仅有八卡各一次、共八条目标 kernel 记录；必须核对实际计数，不能仅以文件非空判断通过。profiler 耗时不作为正式模型性能。
+
+`summarize-profile.py MODE OUTPUT` 在采集正常退出后验证：真实 trace 的两个输出原始 SHA、预热加正式调用数、ROI 内八卡各 100 次 gate/publish/norm、末层物化状态、实际加载版本；PMC 的八条目标记录、逐 rank 行分片网格、寄存器、LDS/scratch 及完整独立输出检查。输出 `validation-summary.json`，保留所有原始字段。两类诊断不能代替无 profiler 的完整请求配对。

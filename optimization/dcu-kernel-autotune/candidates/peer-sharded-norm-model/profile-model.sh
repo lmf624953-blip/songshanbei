@@ -32,9 +32,9 @@ if [[ "$mode" == trace ]]; then
 else
     kernel=h3_peer_gate_kernel
     [[ "$mode" != pmc-norm ]] || kernel=wide_norm_indexed_kernel
-    command=(hipprof --pmc --kernel-name "$kernel" --devices 0,1,2,3,4,5,6,7 -o "$out/pmc"
+    command=(hipprof --pmc --pmc-off --kernel-name "$kernel" --devices 0,1,2,3,4,5,6,7 -o "$out/pmc"
         python "$here/check-model.py" "$H3_PEER_SHARDED_NORM_BUILD" "$out/result.json"
-        --reference "$H3_PEER_GATE_BUILD" --indexed "$H3_INDEXED_BUILD" --norm "$H3_WIDE_NORM_INDEXED_BUILD" --rows 27570)
+        --reference "$H3_PEER_GATE_BUILD" --indexed "$H3_INDEXED_BUILD" --norm "$H3_WIDE_NORM_INDEXED_BUILD" --rows 27570 --profile-candidate-once)
 fi
 printf '%q ' "${command[@]}" > "$out/command.txt"
 printf '\n' >> "$out/command.txt"
