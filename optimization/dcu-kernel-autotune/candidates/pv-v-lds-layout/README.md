@@ -411,4 +411,4 @@ python build-mmac-dependency-probe.py "$integrated" "$probe" --iterations 2048
 HIP_VISIBLE_DEVICES=0 python bench-mmac-dependency-probe.py "$probe" "$probe_result"
 ```
 
-目前五个镜像仅完成编译和 CPU 检查，设备代码摘要、内核描述符、元数据、静态 MMAC 数和预期输出公式一致性检查均通过。GPU 数值验证与计时排在本轮完整验收结束之后；尚无依赖延迟结论，不能据此宣布存在新收益。
+目前五个镜像仅完成编译和 CPU 检查，设备代码摘要、内核描述符、元数据、静态 MMAC 数和预期输出公式一致性检查均通过。测量默认覆盖 80 和 320 个线程块，分别观察较低并发和更多驻留 wave 时的变化。GPU 数值验证与计时排在本轮完整验收结束之后；尚无依赖延迟结论，不能据此宣布存在新收益。

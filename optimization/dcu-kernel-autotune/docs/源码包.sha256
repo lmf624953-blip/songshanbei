@@ -66,8 +66,8 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-3ea8d53e43ac03c07421ba02edd76a3727c3bfb96b7e4090fb8385ee78a45a77  candidates/pv-v-lds-layout/README.md
-6929c3ab81736580a1a2eb73bb522b492dbf23ef8740f0046da5b2858851493e  candidates/pv-v-lds-layout/bench-mmac-dependency-probe.py
+de91285bd5e985e4beec8c9ee7902af7ef5beb0689f954055ce811026d0aec70  candidates/pv-v-lds-layout/README.md
+4fbac08f5927bea303fa6ab9d3c41de67a682e5469e8ae07eaaf41f916bb1ee1  candidates/pv-v-lds-layout/bench-mmac-dependency-probe.py
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 ed04b8a92c672fa9e245dc7b2ad6725473926ba4665926d12fb9863bca8d51fd  candidates/pv-v-lds-layout/build-disjoint-k-lds.py

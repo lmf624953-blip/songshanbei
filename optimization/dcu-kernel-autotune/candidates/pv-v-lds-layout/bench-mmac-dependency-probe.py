@@ -15,9 +15,9 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("build", type=Path)
     cli.add_argument("output", type=Path)
-    cli.add_argument("--blocks", type=int, default=80)
+    cli.add_argument("--blocks", type=int, nargs="+", default=[80, 320])
     args = cli.parse_args()
-    if args.blocks <= 0:
+    if any(blocks <= 0 for blocks in args.blocks):
         cli.error("blocks 必须大于零")
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -32,11 +32,6 @@ def main():
             raise RuntimeError(f"HIP status {status}")
 
     torch.cuda.init()
-    output = torch.empty(args.blocks * 256, dtype=torch.float32, device="cuda")
-    storage = [ctypes.c_uint64(0) for _ in range(15)]
-    storage[4].value = output.data_ptr()
-    parameters = (ctypes.c_void_p * len(storage))(
-        *(ctypes.addressof(value) for value in storage))
     modules, functions = [], []
     for variant in meta["variants"]:
         path = args.build / variant["image"]
@@ -47,39 +42,48 @@ def main():
         modules.append(module)
         functions.append(function)
 
-    def run(index):
-        check(hip.hipModuleLaunchKernel(functions[index], args.blocks, 1, 1, 256, 1, 1,
-              16384, torch.cuda.current_stream().cuda_stream, parameters, None))
+    def measure(blocks):
+        output = torch.empty(blocks * 256, dtype=torch.float32, device="cuda")
+        storage = [ctypes.c_uint64(0) for _ in range(15)]
+        storage[4].value = output.data_ptr()
+        parameters = (ctypes.c_void_p * len(storage))(
+            *(ctypes.addressof(value) for value in storage))
 
-    for index, variant in enumerate(meta["variants"]):
-        output.fill_(float("nan"))
-        run(index)
-        torch.cuda.synchronize()
-        assert bool((output == variant["expected_output"]).all()), variant
-    samples = [[] for _ in functions]
-    start, end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
-    for trial in range(21):
-        order = list(range(len(functions)))
-        offset = trial % len(functions)
-        order = order[offset:] + order[:offset]
-        if trial % 2:
-            order.reverse()
-        for index in order:
-            start.record()
+        def run(index):
+            check(hip.hipModuleLaunchKernel(functions[index], blocks, 1, 1, 256, 1, 1,
+                  16384, torch.cuda.current_stream().cuda_stream, parameters, None))
+
+        for index, variant in enumerate(meta["variants"]):
+            output.fill_(float("nan"))
             run(index)
-            end.record()
-            end.synchronize()
-            if trial >= 2:
-                samples[index].append(start.elapsed_time(end))
-    rows = [dict(variant, samples_ms=times, median_ms=median(times))
-            for variant, times in zip(meta["variants"], samples)]
+            torch.cuda.synchronize()
+            assert bool((output == variant["expected_output"]).all()), variant
+        samples = [[] for _ in functions]
+        start, end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+        for trial in range(21):
+            order = list(range(len(functions)))
+            offset = trial % len(functions)
+            order = order[offset:] + order[:offset]
+            if trial % 2:
+                order.reverse()
+            for index in order:
+                start.record()
+                run(index)
+                end.record()
+                end.synchronize()
+                if trial >= 2:
+                    samples[index].append(start.elapsed_time(end))
+        return dict(blocks=blocks, records=[dict(variant, samples_ms=times, median_ms=median(times))
+                   for variant, times in zip(meta["variants"], samples)])
+
+    cases = [measure(blocks) for blocks in args.blocks]
     result = dict(scope="MMAC循环内无访存的诊断，不能直接推断真实注意力或端到端收益",
-                  blocks=args.blocks, threads=256, build=meta, records=rows,
+                  blocks=args.blocks, threads=256, build=meta, cases=cases,
                   device=str(torch.cuda.get_device_properties(0)), numerical_check_passed=True)
     with args.output.open("x") as stream:
         json.dump(result, stream, ensure_ascii=False, indent=2)
         stream.write("\n")
-    print(json.dumps(rows, indent=2), flush=True)
+    print(json.dumps(cases, indent=2), flush=True)
 
 
 if __name__ == "__main__":
