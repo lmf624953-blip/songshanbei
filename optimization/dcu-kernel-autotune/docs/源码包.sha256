@@ -66,7 +66,8 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-6c4e6a4d2f8a87cf21375b1d8f454ad64b195b91787ea60f24196339492b156b  candidates/pv-v-lds-layout/README.md
+3ea8d53e43ac03c07421ba02edd76a3727c3bfb96b7e4090fb8385ee78a45a77  candidates/pv-v-lds-layout/README.md
+6929c3ab81736580a1a2eb73bb522b492dbf23ef8740f0046da5b2858851493e  candidates/pv-v-lds-layout/bench-mmac-dependency-probe.py
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 ed04b8a92c672fa9e245dc7b2ad6725473926ba4665926d12fb9863bca8d51fd  candidates/pv-v-lds-layout/build-disjoint-k-lds.py
@@ -77,6 +78,7 @@ cb31c755f56b158b3458ce27d90e677f6564c005acb7e47d8489770cd0a4f9d3  candidates/pv-
 b4a157381626040125d22638be30aff20952256651eea81ec494bf8d564f3aee  candidates/pv-v-lds-layout/build-k-lookahead.py
 10080bb8b0a7f58a7874c55047731fd396288b21753215e47e8cf1920c6b9871  candidates/pv-v-lds-layout/build-k-producer.py
 e6f276c9eef61a12fb21bb871ebd2d77287e3d9d4ac12b8a24e3de467be7b240  candidates/pv-v-lds-layout/build-k-resources.py
+818859f35db9d75db81e434772132e57ee1e97e7fc32b98c51a098999584fa10  candidates/pv-v-lds-layout/build-mmac-dependency-probe.py
 3cbe87743eabea1f9b76b4cfee23d85e4dd56da0e1458c470476f49728d32006  candidates/pv-v-lds-layout/build-mmac-issue.py
 c43b76d19f96c0d7bd5ada09c45a12425da4c8a04e8547554537cc312a88d0e4  candidates/pv-v-lds-layout/build-p-half-lds.py
 3c740f14a5141d06f5b58cd7c71a55b604ffa1afb5e6f5b12a16e2483cc87ae1  candidates/pv-v-lds-layout/build-p-lds-axis.py
