@@ -294,3 +294,22 @@ python screen-pv-wide-operand.py "$ref" "$builds" "$results"
 四种候选在 27570 和 22016 token 上均通过普通和放大输入逐位校验，11 组无 profiler 配对差异均小于 0.04%。三种分配量对照的 `.text` 与基准一致。独立 PMC 确认基准、尾块复用、256 分配对照分别使用 220、216、256 VGPR，均为 0 B scratch。两个长度的平均活跃 wave 约为 11.32 和 10.59 每 CU，在三个对照间基本持平。尾块复用另通过 20 个长度及 24 组特殊 BF16 输入。候选及对照重建产物逐文件一致。本轮只归档，在现有 16 KiB 的分配条件下没有观察到仅调整 VGPR 数可带来性能收益。 [配对、边界及 PMC 记录](../../docs/tail-p-vgpr-f12r2n09.json)
 
 对双 Q128 共享 K/V 的冻结 LLVM IR 做独立后端探针。保持 512 线程组，分别增加 `amdgpu-num-vgpr=216`、`amdgpu-num-vgpr=256`，或声明统一线程组。两种 VGPR 指定的汇编与历史对照逐字节一致，三个改动都仍使用 128 VGPR 和 320 B scratch。本轮保留 CPU 编译结果，后续若继续双 Q128，需要改变活跃值或线程分布。
+
+## V 等待位置与在线 softmax 交错
+
+`build-v-wait-pipeline.py` 将完整块 V 的寄存器改到下一次 P 的 LDS 读取前尚未使用的区间，删除五条搬运。分别测最大值归约后、P 覆盖同步点、V 打包开始前三个等待位置。`--preload-next` 在发射下一块 K 时一并发射 V，保留完整块结束条件和受掩码清零。地址递推、P 写入前移和 QK 交错各有独立配对。
+
+`build-qk-online-order.py` 在两组最大值 DPP 之间调度 QK 缩放和第一组在线指数，保持原舍入和各行的归约顺序。`build-pv-online-sum.py` 将四项、八项求和或第一组求和 DPP 移到最后一批 PV MMAC 附近，每条 MMAC 累加链保持原顺序。
+
+```bash
+ref="$release/attention"
+mkdir "$builds"
+python build-v-wait-pipeline.py "$ref" "$builds/fence" --wait-at p-fence --register-base 208
+python build-qk-online-order.py "$ref" "$builds/qk" --split-scale --drop-second-nop --online interleaved
+python build-pv-online-sum.py "$ref" "$builds/pv" dpp-split
+python screen-pv-wide-operand.py "$ref" "$builds" "$results"
+```
+
+四组 19 个变体在 27570 和 22016 token 的普通输入、放大输入和输出哨兵检查中均通过。V 在 P 同步点等待的两个寄存器布局用 19 组复测，分别节省约 1.19%–1.20% 和 1.12%–1.13%。提到最大值归约后即等待、推到 V 打包才等待，以及下一块 K/V 联合发射均无正收益。P 前移或 QK 交错叠加到 V 版本后，收益小于单独延后等待。
+
+单独 QK 交错最好约 0.10%/0.08%。PV 提前处理求和回退 0.39%–2.72%。独立 PMC 保留在原始 TXT，三种代表候选均为 220 VGPR、16 KiB LDS、0 B scratch。V 版本在 27570 token 的 VALU 指令数约下降 1.30%，VMEM 读取指令数持平。四个代表镜像逐文件复建一致，分别通过 20 个额外长度和哨兵检查，三个代表镜像各通过 24 组特殊 BF16 输入。本轮验证范围为单卡。 [配对、逐位与 PMC 记录](../../docs/online-pipeline-f12r2n09.json)

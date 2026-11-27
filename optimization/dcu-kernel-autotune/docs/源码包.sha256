@@ -66,7 +66,7 @@ f8c44914419da30bfdd60859a1601ed131ef932bcd1b6ace41d2fdf658797caf  candidates/pre
 44ec8715b660d30f4188200f7ae43c5684c229797add73e9df1409fdc070a66a  candidates/precise-pv-tail/source_delta/build.py
 69924b184afcb037be726be8cd9f341e6c6bf103a45806018ab82a0e1d24674f  candidates/precise-pv-tail/source_delta/precise_tail_attention.py
 0c43ceb0954a4b5c465a836881b2005e1066ee207b1909a91a7150499a094780  candidates/precise-pv-tail/说明.md
-651a81c403921e10551270ff07ad166dc0a7d47cc77f8ec2d0d7020c2948c0ca  candidates/pv-v-lds-layout/README.md
+24284c56e4c94aac2e422cdec293fe621b4880f005614c04531073f51f881077  candidates/pv-v-lds-layout/README.md
 b93e51b6dbfa89c6aad21fca35c140d6064af6141798cdf569bfe435984bb59b  candidates/pv-v-lds-layout/build-cache-policy.py
 9c393a7ae2fb4449292fd0a1310eb66cdbb9660bf8d55abb48f5b60b8732a7c8  candidates/pv-v-lds-layout/build-compact-args.py
 ed04b8a92c672fa9e245dc7b2ad6725473926ba4665926d12fb9863bca8d51fd  candidates/pv-v-lds-layout/build-disjoint-k-lds.py
@@ -86,6 +86,7 @@ cf9203e2abf451a0ca0b5c6693db25525fa2b0791d5f26d4e97230f5a3a67963  candidates/pv-
 9e1a79f07ff842aed67d52573abe1ffa3ca56298347f34bb8d18a73d6b37e54e  candidates/pv-v-lds-layout/build-producer.py
 1ae0f7f7da03209fe6f3e82fdff6950eadd17895ed78c3c4a216b7f73aa1744c  candidates/pv-v-lds-layout/build-pv-lds-order.py
 7d81816a5c6685d9d12a5c12b24871e1a0bb6833579c5e96fa3af449f3448004  candidates/pv-v-lds-layout/build-pv-lds-overlap.py
+c1d45553806551609a8e9028c8e0c095e9e88b119d276dff10346a6812b005af  candidates/pv-v-lds-layout/build-pv-online-sum.py
 c1e89156a5b8a08b9a10541563321782cbcd959cae519047463e785e45704f09  candidates/pv-v-lds-layout/build-pv-wide-operand.py
 0581283f436bdabaabc3de1d93dac50d2f804d5832306d72837727c246363ab7  candidates/pv-v-lds-layout/build-q-resources-v2.py
 c5d4c067bba06127629b88caf235f31093d88818dfe2b22848c72caa48bfba38  candidates/pv-v-lds-layout/build-q-resources.py
@@ -93,6 +94,7 @@ c5d4c067bba06127629b88caf235f31093d88818dfe2b22848c72caa48bfba38  candidates/pv-
 daf8d69d5ca8dfe00301dbab5f3f1d4c80cd4fcea66a6065a328255b21d811d6  candidates/pv-v-lds-layout/build-q128-cta-order.py
 621885e5b85b6a9ff9927aeebab0b547a22f8ea014a0559dc551d03e6d62df7d  candidates/pv-v-lds-layout/build-q128.py
 f9270a0dbd5ae3475c858f7d65bc3fb865302f96bc0a4049f6ab424d14fef50d  candidates/pv-v-lds-layout/build-q256.py
+4804e605515d15c404d9c72ccbc9a1d08b1b120351491589945b78fe81c1a59e  candidates/pv-v-lds-layout/build-qk-online-order.py
 f2367c1579ca4aed9399a54fd7f984860b89360a4e445ffb54217e2caaaab03a  candidates/pv-v-lds-layout/build-row-sum-release.sh
 73df6d832256003d44ceed205fea27300a4371f40ffe6fddabbeb17037dfe42b  candidates/pv-v-lds-layout/build-softmax-dpp-arithmetic.py
 91e1f8f08c1857c370428d7148aa62c6500261cad65e2ee34b8e993c2103f0f6  candidates/pv-v-lds-layout/build-softmax-rescale-order.py
@@ -100,6 +102,7 @@ f2367c1579ca4aed9399a54fd7f984860b89360a4e445ffb54217e2caaaab03a  candidates/pv-
 302f1761bf96a9898ec5a506c4933dcd4eb307dd54163d922f4bbb5afbb1f539  candidates/pv-v-lds-layout/build-softmax-xor.py
 dc71b01224d4115e350e99a45b57b89f3fd4d088ed8bd2cca56e581fc8eabbdb  candidates/pv-v-lds-layout/build-tail-p-vgpr.py
 15cd13946863b4a1aaf5751aba8c9480bc3879464185e6abe9de9e0b91ea9328  candidates/pv-v-lds-layout/build-v-phase-qdirect.py
+a92b0f234054e4247577f9ce085f3f0a9f4d20e83c811f5b8ead1f4b0c8df5c3  candidates/pv-v-lds-layout/build-v-wait-pipeline.py
 1d058a3e3d6bb1c3ec8bd5900bd0f1820eeb45d0af770db2bf9170bc68fecf3a  candidates/pv-v-lds-layout/build-vwide-q-resources.py
 e45bb720f6a7c57927542eb51a403db0c3325cd395629d8496d59783fa9ee4c5  candidates/pv-v-lds-layout/build.py
 ffc197a128750980c1650a4e09504af3870d2cc4c3b949fa9e9748b8716d3365  candidates/pv-v-lds-layout/compact_args.py
@@ -232,6 +235,7 @@ ab51b6f67eb0122b472910f6fceeda1d7c2a48a02eb92203e16b016e2e93fa06  docs/k-pretran
 5c78d36f1bf1f5f2906d744f7c178a71e34d7cb9f9e3d7dc2204b6c539652495  docs/kp-lds-f12r2n09.json
 6c9edb645899d22c061ffa00b6d3f235cfa842e3cc7ad1a174ac0e5298e7ed91  docs/mmac-issue-a14r1n11.json
 ffd40883c739b6e7ce8482c69bbd02f0bdfd6765cd03eae22d4c298aa301f561  docs/mrope-aot-screen.json
+484ee815bb26e08218220ead6a59450c049c53fb1210345266cb9a8ad83497ee  docs/online-pipeline-f12r2n09.json
 24eaa7c1f98fc09aa9844ff8d18903e55f78bcc30a33d3d071d843e6d8a6a5d7  docs/p-half-lds-a14r1n11.json
 9b7aa258aac734c6fa3e872dddc65cd8577389414ed0e9c66d431fd18738276d  docs/p-round-pack-a14r1n11.json
 fc870872b7656a859ee9ca9e2793d46fb8bbcc558487d8840cd8e0f32ca82e86  docs/p-wave-dpp-a14r1n11.json
