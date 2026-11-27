@@ -22,6 +22,10 @@ PREPACKED_TEXT_HASHES = {
     "base": TEXT_HASHES["fast"],
     "fast": "251315bff60f202dd26e3024b81894413df5972288531294453558f23b8eef8f",
 }
+SOFTMAX_TEXT_HASHES = {
+    "base": PREPACKED_TEXT_HASHES["fast"],
+    "fast": "e9240c600e74a73b51cb429f459ab18b389343616c3054c85edbb6ee7f91b13e",
+}
 PREPACK_TEXT_HASH = "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9"
 FIRST_FRAME = "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54"
 REFERENCE_VIDEO = "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440"
@@ -54,7 +58,12 @@ def images(base, fast):
     records = {variant: PAIRING["read"](path / BUILD_META)
                for variant, path in (("base", base), ("fast", fast))}
     prepacked = records["fast"].get("prepacked_value_dispatch")
-    expected_text = PREPACKED_TEXT_HASHES if prepacked else TEXT_HASHES
+    experiment = records["fast"].get("experiment", {})
+    compact_softmax = bool(experiment.get("p_nan_payload") and experiment.get("softmax_ror4"))
+    if compact_softmax:
+        require(prepacked and records["base"].get("prepacked_value_dispatch"),
+                "精简 softmax 的双方必须均为预排布 V 版本")
+    expected_text = SOFTMAX_TEXT_HASHES if compact_softmax else (PREPACKED_TEXT_HASHES if prepacked else TEXT_HASHES)
     for variant, path in (("base", base), ("fast", fast)):
         metadata = records[variant]
         packed = metadata["packed_strides"]
@@ -68,28 +77,39 @@ def images(base, fast):
         result[variant] = {"path": str(path.resolve()), "packed_sha256": actual["sha256"],
                            "packed_text_sha256": actual["sections"][".text"]["sha256"],
                            "packed_lds_bytes": packed["shared"]}
-    if prepacked:
-        require(prepacked["version"] == 1 and prepacked["minimum_rows"] == 4096
-                and prepacked["prepack"]["tile"] == 2048 and prepacked["prepack"]["warps"] == 8
-                and prepacked["prepack"]["shared"] == 0, "预排布 V 几何配置与公布版本不符")
-        reference = prepacked["reference_packed"]
+    for variant, path in (("base", base), ("fast", fast)):
+        dispatch = records[variant].get("prepacked_value_dispatch")
+        if not dispatch:
+            continue
+        require(dispatch["version"] == 1 and dispatch["minimum_rows"] == 4096
+                and dispatch["prepack"]["tile"] == 2048 and dispatch["prepack"]["warps"] == 8
+                and dispatch["prepack"]["shared"] == 0, "预排布 V 几何配置与公布版本不符")
+        reference = dispatch["reference_packed"]
         require(reference["file"] == "dense-attention-packed-reference.hsaco"
                 and reference["shared"] == 16384
-                and reference["hsaco_sha256"] == result["base"]["packed_sha256"],
-                "候选回退镜像与本轮求和交错基准不符")
+                and elf_loads(path / reference["file"])["sections"][".text"]["sha256"] == TEXT_HASHES["fast"],
+                "预排布 V 的回退镜像与冻结的求和交错版本不符")
+        if not compact_softmax:
+            require(reference["hsaco_sha256"] == result["base"]["packed_sha256"],
+                    "候选回退镜像与本轮求和交错基准不符")
         for name, expected in (
             (reference["file"], reference["hsaco_sha256"]),
-            ("prepack-value.hsaco", prepacked["prepack"]["hsaco_sha256"]),
-            ("dense-attention-aot.so", prepacked["host_sha256"]),
+            ("prepack-value.hsaco", dispatch["prepack"]["hsaco_sha256"]),
+            ("dense-attention-aot.so", dispatch["host_sha256"]),
         ):
-            require(PAIRING["digest"](fast / name) == expected, f"发布产物摘要不符：{name}")
-        pack = elf_loads(fast / "prepack-value.hsaco")
+            require(PAIRING["digest"](path / name) == expected, f"{variant} 发布产物摘要不符：{name}")
+        pack = elf_loads(path / "prepack-value.hsaco")
         require(pack["sections"][".text"]["sha256"] == PREPACK_TEXT_HASH,
                 "V 预排布设备指令与公布版本不符")
-        result["fast"]["value_prepack"] = dict(
+        result[variant]["value_prepack"] = dict(
             tile=2048, warps=8, minimum_rows=4096,
             sha256=pack["sha256"], text_sha256=PREPACK_TEXT_HASH,
-            host_sha256=prepacked["host_sha256"])
+            host_sha256=dispatch["host_sha256"])
+    if compact_softmax:
+        for name in ("dense-attention-aot.hsaco", "dense-attention-fallback.hsaco",
+                     "dense-attention-packed-reference.hsaco", "prepack-value.hsaco", "dense-attention-aot.so"):
+            require(PAIRING["digest"](base / name) == PAIRING["digest"](fast / name),
+                    f"精简 softmax 配对只能修改 packed 长注意力：{name}")
     return result
 
 
@@ -114,6 +134,13 @@ def report(sequence):
     for name, expected_digest in overrides["sha256"].items():
         require(digest(Path(overrides["path"]) / name) == expected_digest,
                 f"候选产物与运行时快照不符：{name}")
+    for name, artifact in base["artifacts"].items():
+        if name == BUILD_META:
+            require(read(Path(base["path"]) / name) == artifact,
+                    "基准构建元数据与运行时快照不符")
+        else:
+            require(digest(Path(base["path"]) / name) == artifact["sha256"],
+                    f"基准产物与运行时快照不符：{name}")
     if "value_prepack" in identity["fast"]:
         runtime_pack = overrides["metadata"]["prepacked_value_dispatch"]
         require(identity["fast"]["value_prepack"]["sha256"] == runtime_pack["prepack"]["hsaco_sha256"]
@@ -148,8 +175,9 @@ def report(sequence):
     stages = {stage: timing(rows, lambda row: row["stage_seconds"][stage])
               for stage in rows[2]["stage_seconds"]}
     return dict(protocol="minimax-h3-public-a-resident-paired-v1",
-                comparison=("row-sum-vs-p-row-prepacked-v" if "value_prepack" in identity["fast"]
-                            else "joint-kv-vs-row-sum"),
+                comparison=("p-row-prepacked-v-vs-softmax-compact" if "value_prepack" in identity["base"]
+                            else ("row-sum-vs-p-row-prepacked-v" if "value_prepack" in identity["fast"]
+                                  else "joint-kv-vs-row-sum")),
                 metric="wall_seconds", units="seconds", timed_pairs=PAIRING["PAIRS"],
                 completed_sequence=complete["sequence"], summarized_request_indices=list(range(8)),
                 runtime=manifest["runtime"], environment=manifest["environment"], images=identity,

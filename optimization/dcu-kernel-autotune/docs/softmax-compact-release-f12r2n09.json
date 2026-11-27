@@ -1,0 +1,127 @@
+{
+  "scope": "CPU发布重建与汇总协议回归，未额外运行模型",
+  "node": "f12r2n09",
+  "release_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified",
+  "release": {
+    "kind": "p-row-prepacked-v-softmax-v1",
+    "reference_release": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/release-wrapper-rebuild",
+    "reference_manifest_sha256": "ac2cd3a66dcfe5a03aa0a00b6c5ed90aa23e48678cf34d728dcb4c3c182f21c2",
+    "candidate_config": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified/candidate.env",
+    "source_commit_base": "c7263ea91985a3d5b3bd6ca3fc9bd52dea96fa61",
+    "source_files": {
+      "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-softmax-compact-release.sh": "201ede5bdb603d426771cc6ac9b61c134b5abf08fae27c6ca909cb82a20879cb",
+      "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-p-nan-payload.py": "70ca68afee71111d7ccec3f45c69c91c895262f9d9d4a8db457747359f3af840",
+      "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-softmax-ror4.py": "ff577f2ec641eeca4e69a1fcef2c73fd4aa0814e9116ec3bd45f35984dbae94b",
+      "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-qk-online-order.py": "4804e605515d15c404d9c72ccbc9a1d08b1b120351491589945b78fe81c1a59e",
+      "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-public-a.py": "f28b97b80b229401edfb9cb7bc5bc00204fd57670878411c79cc2a9bfb766f7c",
+      "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-softmax-dpp-steady.py": "3d602b94c961736c50b79e73994068c12d07c4f976cea2e3662e1156f353392f",
+      "optimization/dcu-kernel-autotune/adapters/compare-h3-device.py": "cbdb0fc3a902f6b372f6e39b9a18780b0cfc32880cddbccf0486c564f49da1d1"
+    },
+    "artifacts": {
+      "dense-attention-packed.hsaco": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+      "dense-attention-aot.hsaco": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+      "dense-attention-fallback.hsaco": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+      "dense-attention-packed-reference.hsaco": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+      "prepack-value.hsaco": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+      "dense-attention-aot.so": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+    },
+    "qualified": false,
+    "qualification_note": "重建与冻结指令检查不代替完整模型质量及稳态性能验收"
+  },
+  "verification": {
+    "scope": "CPU重建一致性；不代替GPU数值或完整模型资格验收",
+    "artifacts": {
+      "dense-attention-packed.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+        "rebuilt_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c"
+      },
+      "dense-attention-aot.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f",
+        "rebuilt_sha256": "8d08c12ff759e540939c78cb23489621b06d4a69e945bc27cbbc9c0c5c98d42f"
+      },
+      "dense-attention-fallback.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba",
+        "rebuilt_sha256": "3bf91988748dc7f95c81457f1c860649be07b040cde5a81d8be5642d67aee6ba"
+      },
+      "dense-attention-packed-reference.hsaco": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9",
+        "rebuilt_sha256": "eee04c15b9dcb88769ea954898dcbc552ba8ec56d898a5e5dfeb33e81833e3f9"
+      },
+      "prepack-value.hsaco": {
+        "byte_equal": false,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "2240090e060306ab91bf5f80c16e5b75a0f3bd49784e3c72e0d18803e252a5fd",
+        "rebuilt_sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4"
+      },
+      "dense-attention-aot.so": {
+        "byte_equal": true,
+        "loaded_sections_equal": true,
+        "mapping_equal": true,
+        "original_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516",
+        "rebuilt_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+      }
+    },
+    "images": {
+      "base": {
+        "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-row-prepacked-f12r2n09-LHirPX7p/release-wrapper-rebuild/attention",
+        "packed_sha256": "96874b5cd49aa9343c7dffccbb135fcf4cac8343316217b7829953e1023e0803",
+        "packed_text_sha256": "251315bff60f202dd26e3024b81894413df5972288531294453558f23b8eef8f",
+        "packed_lds_bytes": 16384,
+        "value_prepack": {
+          "tile": 2048,
+          "warps": 8,
+          "minimum_rows": 4096,
+          "sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+          "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+          "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+        }
+      },
+      "fast": {
+        "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified/attention",
+        "packed_sha256": "bc1a23ae06dd494963afd5919fb8491b2174e8cc504881bf99fcf86b0bd6b05c",
+        "packed_text_sha256": "e9240c600e74a73b51cb429f459ab18b389343616c3054c85edbb6ee7f91b13e",
+        "packed_lds_bytes": 16384,
+        "value_prepack": {
+          "tile": 2048,
+          "warps": 8,
+          "minimum_rows": 4096,
+          "sha256": "c52abbdb12741134850dc983734c37099b41e5f88d4f702714dc3d78eb90d2a4",
+          "text_sha256": "fb1fd39927a2c0311dfe7477178976339f61566a56bc36655c589c0892f4b9d9",
+          "host_sha256": "5740e9502877d4cf0398ddb2f9ee62c636127b4a8841260f0ab3a7fd695e2516"
+        }
+      }
+    },
+    "source_files_match": true,
+    "reference_manifest_matches": true,
+    "prior_summary_all_fields_equal": true
+  },
+  "negative_checks": {
+    "frozen_pairs_passed": 3,
+    "wrong_reference_rejected": true,
+    "unfrozen_shader_rejected": true,
+    "incomplete_run_rejected": true,
+    "shell_and_python_syntax_passed": true
+  },
+  "source_sha256": {
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/build-softmax-compact-release.sh": "201ede5bdb603d426771cc6ac9b61c134b5abf08fae27c6ca909cb82a20879cb",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/verify-softmax-release-rebuild.py": "4030953a958bfe9e6185a169afaf19071a348053cdc786719d83e9fadfb70188",
+    "optimization/dcu-kernel-autotune/candidates/pv-v-lds-layout/summarize-public-a.py": "f28b97b80b229401edfb9cb7bc5bc00204fd57670878411c79cc2a9bfb766f7c",
+    "optimization/benchmark-public-a.sh": "ebbcc5cb3700f9201cf0650bd7358122dd20c205b673a1bc6f4e180884f71d5c",
+    "optimization/reproduce-public-a.sh": "aee55918d151d656b5eb24454176eebf64347796169d88fb10b318d981dab47f"
+  },
+  "selected": false,
+  "note": "新候选普通官方A已通过；完整稳态和B/C/A仍在同一个既有进程进行。重建核验不替代资格验收。"
+}

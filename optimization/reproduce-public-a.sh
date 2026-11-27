@@ -67,7 +67,7 @@ case "$mode" in
             source "$project/optimization/load-candidate-config.sh" "$release/candidate.env"
             export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 OMP_NUM_THREADS=4
             reference=$(python -c 'import json,sys; from pathlib import Path
-d=json.load(open(sys.argv[1])); assert d["kind"] == "p-row-prepacked-v-v1"
+d=json.load(open(sys.argv[1])); assert d["kind"] in ("p-row-prepacked-v-v1", "p-row-prepacked-v-softmax-v1")
 print(Path(d["reference_release"]) / "attention")' "$release/release.json")
             python "$scripts/summarize-public-a.py" check "$reference" "$release/attention" \
                 --first-frame "$IFAB_AFS_HOME/unified-dog-input/first_frame.png"

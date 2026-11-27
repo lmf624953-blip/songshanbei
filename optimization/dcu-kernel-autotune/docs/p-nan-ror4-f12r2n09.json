@@ -4189,5 +4189,13 @@
       "total.end_to_end": 828.529
     },
     "metric_note": "新进程完整官方入口，包括共享盘加载和首次JIT；不作为正式稳态配对成绩"
+  },
+  "release_reproduction": {
+    "path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/p-nan-payload-f12r2n09-GMarVNK0/release-wrapper-verified",
+    "verification": "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/docs/softmax-compact-release-f12r2n09.json",
+    "all_six_loaded_sections_and_mapping_equal": true,
+    "five_artifacts_byte_equal": true,
+    "prior_137_summary_all_fields_equal": true,
+    "kind": "p-row-prepacked-v-softmax-v1"
   }
 }

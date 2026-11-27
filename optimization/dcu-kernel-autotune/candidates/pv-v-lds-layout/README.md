@@ -461,6 +461,20 @@ python verify-p-nan-payload.py "$integrated" "$combined" "$verification_jsonl"
 
 预计 49 次 Transformer 可节省约 5.017 秒，即约 3.65% 先前完整请求墙钟；这是回放投影，不是新的端到端实测。普通官方默认入口 A 已通过，49 次 Transformer、规格和独立质量均通过，SSIM 93.832013%，MP4 与已验收版逐字节一致。新进程墙钟 880.90 s、模型组件创建加载约 635.48 s、首次生成管线 191.064 s、Transformer 114.281 s，首次进程耗时单列。三组完整 A 及 B/C/返回 A 的独立稳态实例已经启动，正式配置仍保持此前已完整验收的版本。一次误用单卡可见环境的回放在加载 Transformer 前失败，原始失败日志保留；改为显式八卡后上述真实回放成功，不归因于硬件故障。 [逐位校验、无 profiler 配对、独立重建与真实八卡记录](../../docs/p-nan-ror4-f12r2n09.json) · [原始 PMC TXT](../../docs/p-nan-ror4-f12r2n09-basic-pmc.txt)
 
+## 精简 softmax 候选的完整发布重建
+
+`build-softmax-compact-release.sh` 从上一节已冻结的 P 行布局 + V 预排布发布目录，依次执行内部 P payload 与 ROR4 变换，生成完整主机 ABI 的候选目录及配置。其余五个产物直接保留，短长度、其他步长和预排布回退均不变。此为仍在完整验收中的候选，重建成功和注册设备代码身份不表示已经选为正式版本。
+
+```bash
+bash build-softmax-compact-release.sh "$current_prepacked_release" "$softmax_release"
+bash "$code/optimization/benchmark-public-a.sh" \
+  "$softmax_release" "$model" "$new_benchmark_output"
+```
+
+计时仍是双方各预热一次后的三组完整 A 配对，`protocol` 和 `wall.candidate.mean` 的定义不变；`comparison` 为 `p-row-prepacked-v-vs-softmax-compact`，基准是此前约 137.344 秒的组合。当前 `reproduce-public-a.sh build` 默认仍重建已完成验收的旧组合，只有显式传入本节目录才会测新候选；不要把两组基准混用。
+
+CPU 独立发布重建中，六个产物的可加载区段及映射均与实际八卡回放/普通官方 A 所用候选相同，五个逐字节相同，V 预排布镜像只在调试信息上不同。`verify-softmax-release-rebuild.py` 同时核对上游发布清单、七份构建相关源码及六个产物摘要；传入旧序列和旧 JSON 时，按 JSON 协议核对旧计时全部字段。新的汇总程序实际重算 137.344 秒结果后全字段相等，三阶段的冻结镜像检查通过，错误基准、未冻结的后续 shader 及未完成运行均被拒绝。基准快照里的构建 JSON 是内嵌数据，按结构比较，其余产物按 SHA-256 比较。 [重建及计时协议回归记录](../../docs/softmax-compact-release-f12r2n09.json)
+
 ## 稳定最大值时的恒等重缩放，准备中
 
 `build-stable-max-rescale.py` 已在 CPU 上构建三种对照，均以本轮待验收的 NaN payload + ROR4 组合为直接参考：`deferred` 只延后 8 条 alpha exp，`guard-scale` 加 wave 一致判断但保留 exp，只省去恒等缩放，`guarded` 同时省去 exp 与恒等缩放。这样区分 SFU 调度变化、条件分支代价和省去实际指令的收益，目前没有 GPU 校验或性能结论。
