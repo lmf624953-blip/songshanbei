@@ -1,0 +1,842 @@
+{
+  "scope": "当前节点同实例11请求；off请求也可能保留七worker，不作为独立基线显存",
+  "sampler_interval_seconds": 5,
+  "transient_peak_may_be_missed": true,
+  "records": [
+    {
+      "index": 0,
+      "case": "A",
+      "mode": "off",
+      "sampled_peak_mib": {
+        "card0": 27727,
+        "card1": 22211,
+        "card2": 15315,
+        "card3": 15315,
+        "card4": 31984,
+        "card5": 31976,
+        "card6": 31976,
+        "card7": 31880
+      },
+      "samples": 36,
+      "workers": []
+    },
+    {
+      "index": 1,
+      "case": "A",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 35614,
+        "card1": 24069,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39814,
+        "card5": 39784,
+        "card6": 39784,
+        "card7": 31890
+      },
+      "samples": 50,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 16.174666169972625,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 16.210307234025095,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 16.888477231026627,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 16.57594255299773,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 16.4608188829734,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 16.08731844299473,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 16.631452168046962,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6053111808
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "case": "A",
+      "mode": "off",
+      "sampled_peak_mib": {
+        "card0": 36628,
+        "card1": 30233,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39814,
+        "card5": 39784,
+        "card6": 39784,
+        "card7": 31890
+      },
+      "samples": 23,
+      "workers": []
+    },
+    {
+      "index": 3,
+      "case": "A",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 36628,
+        "card1": 30233,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39814,
+        "card5": 39784,
+        "card6": 39784,
+        "card7": 31890
+      },
+      "samples": 21,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5024009859771468,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.417717129981611,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.404633750033099,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4775158690172248,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4478127579786815,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4932497800327837,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4427628109697253,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "case": "A",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 36628,
+        "card1": 30233,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39815,
+        "card5": 39785,
+        "card6": 39785,
+        "card7": 31890
+      },
+      "samples": 21,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.502487657009624,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.412443048960995,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3995340120163746,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4334033320192248,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4405624589999206,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.5011723120114766,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4479987120139413,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "case": "A",
+      "mode": "off",
+      "sampled_peak_mib": {
+        "card0": 36628,
+        "card1": 30379,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39814,
+        "card5": 39784,
+        "card6": 39784,
+        "card7": 31890
+      },
+      "samples": 23,
+      "workers": []
+    },
+    {
+      "index": 6,
+      "case": "A",
+      "mode": "off",
+      "sampled_peak_mib": {
+        "card0": 36628,
+        "card1": 30379,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39814,
+        "card5": 39784,
+        "card6": 39784,
+        "card7": 31890
+      },
+      "samples": 23,
+      "workers": []
+    },
+    {
+      "index": 7,
+      "case": "A",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 36628,
+        "card1": 30379,
+        "card2": 23115,
+        "card3": 23115,
+        "card4": 39814,
+        "card5": 39784,
+        "card6": 39784,
+        "card7": 31890
+      },
+      "samples": 21,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5169267050223425,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.478443586966023,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.522328589053359,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.3781611520098522,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.447033313976135,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.5126706039882265,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.448309588013217,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "case": "B",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 38210,
+        "card1": 31961,
+        "card2": 24697,
+        "card3": 24697,
+        "card4": 41396,
+        "card5": 41374,
+        "card6": 41374,
+        "card7": 33480
+      },
+      "samples": 17,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 2.735926823981572,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 2.7881830270052887,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 2.846206670976244,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 2.7668853380018845,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 2.836541165946983,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 2.8024577209725976,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 2.845708351000212,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "case": "C",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 38346,
+        "card1": 32113,
+        "card2": 24849,
+        "card3": 24849,
+        "card4": 41678,
+        "card5": 41652,
+        "card6": 41652,
+        "card7": 33758
+      },
+      "samples": 17,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 2.7649415600462817,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 2.7961389200063422,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 2.8403892389615066,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 2.8804083979921415,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 2.830867937009316,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 2.8048641280038282,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 2.8404172690352425,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6318090240
+          }
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "case": "A",
+      "mode": "on",
+      "sampled_peak_mib": {
+        "card0": 38346,
+        "card1": 32113,
+        "card2": 24849,
+        "card3": 24849,
+        "card4": 41684,
+        "card5": 41658,
+        "card6": 41658,
+        "card7": 33764
+      },
+      "samples": 21,
+      "workers": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.381304002017714,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.416812773037236,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.374253646004945,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4644989789812826,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4457271179999225,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.401674941997044,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4332091379910707,
+          "torch_peak_allocated_bytes": 7095841792,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7736393728,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    }
+  ],
+  "A_worker_allocated_after_gc_bytes_each": 5611481088,
+  "A_worker_allocated_stable_across_warmup_formal_return": true,
+  "raw_vram_sha256": "469eefb3685fd19e9ad44c0cb9e721e43c0504ca9306804b447d6f3a78d8e85c",
+  "raw_vram_path": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/vae-process-model-a02r3n04-s4xxWpv7/qualification/steady-paired.vram.jsonl"
+}
