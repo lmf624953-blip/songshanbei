@@ -23,6 +23,7 @@ struct Rank {
     hipStream_t publish = nullptr;
     hipStream_t compute = nullptr;
     hipEvent_t begin = nullptr;
+    hipEvent_t normalized = nullptr;
     hipEvent_t ready[2]{};
     hipEvent_t done = nullptr;
     rocblas_handle blas = nullptr;
@@ -63,6 +64,34 @@ __global__ void publish_rows(const uint16_t* source, Destinations destinations,
         #pragma unroll
         for (int destination = 0; destination < ranks; ++destination)
             destinations.data[destination][first + i] = value;
+    }
+}
+
+__global__ void push_local_rows(const uint16_t* source, Destinations destinations,
+                               size_t first, size_t count, int owner) {
+    for (size_t i = size_t(blockIdx.x) * blockDim.x + threadIdx.x; i < count;
+         i += size_t(gridDim.x) * blockDim.x) {
+        const uint16_t value = source[first + i];
+        #pragma unroll
+        for (int distance = 1; distance < ranks; ++distance)
+            destinations.data[(owner + distance) % ranks][first + i] = value;
+    }
+}
+
+template<bool Pull>
+__global__ void transfer_link_rows(Destinations buffers, int rows, int self, int blocks_per_link) {
+    constexpr size_t row_words = row_bytes / sizeof(uint4);
+    const int distance = 1 + blockIdx.x % (ranks - 1);
+    const int peer = (self + distance) % ranks;
+    const int owner = Pull ? peer : self;
+    const int destination = Pull ? self : peer;
+    const size_t first = size_t(rows) * owner / ranks * row_words;
+    const size_t end = size_t(rows) * (owner + 1) / ranks * row_words;
+    const auto* source = reinterpret_cast<const uint4*>(buffers.data[owner]);
+    auto* output = reinterpret_cast<uint4*>(buffers.data[destination]);
+    for (size_t offset = first + size_t(blockIdx.x / (ranks - 1)) * blockDim.x + threadIdx.x;
+         offset < end; offset += size_t(blocks_per_link) * blockDim.x) {
+        output[offset] = source[offset];
     }
 }
 
@@ -127,6 +156,7 @@ extern "C" const char* pipeline_setup(void* norm) {
             HIP(hipStreamCreateWithFlags(&rank.publish, hipStreamNonBlocking));
             HIP(hipStreamCreateWithFlags(&rank.compute, hipStreamNonBlocking));
             HIP(hipEventCreate(&rank.begin));
+            HIP(hipEventCreateWithFlags(&rank.normalized, hipEventDisableTiming));
             HIP(hipEventCreate(&rank.done));
             for (auto& event : rank.ready) HIP(hipEventCreateWithFlags(&event, hipEventDisableTiming));
             blas_check(rocblas_create_handle(&rank.blas));
@@ -142,25 +172,30 @@ extern "C" const char* pipeline_run(int mode, int rows, int columns, int split, 
                                     const uint64_t* local, const uint64_t* weights,
                                     const uint64_t* outputs, float* elapsed) {
     return run_checked([&] {
-        if (!normalize || mode < 0 || mode > 6 || rows <= 0 || columns <= 0 ||
+        if (!normalize || mode < 0 || mode > 9 || rows <= 0 || columns <= 0 ||
             split <= 0 || split >= rows || blocks <= 0)
             throw std::runtime_error("invalid pipeline arguments");
         const int phases = mode == 1 || mode == 2 ? 2 : 1;
+        const bool normalize_into_local = mode >= 7;
         const int boundary[3]{0, phases == 1 ? rows : split, rows};
         Destinations destinations{};
         for (int i = 0; i < ranks; ++i) {
+            if (mode >= 8 && local[i] % alignof(uint4))
+                throw std::runtime_error("unaligned link transfer buffer");
             destinations.data[i] = reinterpret_cast<uint16_t*>(local[i]);
             HIP(hipSetDevice(i));
             const auto first = size_t(rows) * i / ranks;
             const auto last = size_t(rows) * (i + 1) / ranks;
             auto& rank = state[i];
             HIP(hipEventRecord(rank.begin, rank.publish));
+            const auto destination = normalize_into_local ? local[i] + first * row_bytes : partial[i];
             const char* status = normalize(i, int(last - first), 3,
                 reinterpret_cast<void*>(hidden[i] + first * row_bytes),
                 reinterpret_cast<void*>(norm_weight[i]), reinterpret_cast<void*>(scale[i]),
                 reinterpret_cast<void*>(shift[i]), reinterpret_cast<void*>(indices[i] + first * 8),
-                reinterpret_cast<void*>(partial[i]), reinterpret_cast<uintptr_t>(rank.publish));
+                reinterpret_cast<void*>(destination), reinterpret_cast<uintptr_t>(rank.publish));
             if (status) throw std::runtime_error(status);
+            if (mode == 9) HIP(hipEventRecord(rank.normalized, rank.publish));
         }
         for (int phase = 0; phase < phases; ++phase) {
             for (int i = 0; i < ranks; ++i) {
@@ -175,7 +210,24 @@ extern "C" const char* pipeline_run(int mode, int rows, int columns, int split, 
                 const auto* source = base + (first - owner_first) * width;
                 const size_t offset = first * width;
                 const size_t count = (last - first) * width;
-                if (mode == 3) launch_vector<uint32_t>(source, destinations, offset, count, blocks, stream);
+                if (mode == 7) {
+                    hipLaunchKernelGGL(push_local_rows, dim3(blocks), dim3(256), 0, stream,
+                        destinations.data[i], destinations, offset, count, i);
+                } else if (mode == 8 || mode == 9) {
+                    const int link_blocks = (blocks + ranks - 2) / (ranks - 1);
+                    const dim3 grid(link_blocks * (ranks - 1));
+                    if (mode == 8)
+                        hipLaunchKernelGGL((transfer_link_rows<false>), grid, dim3(256), 0, stream,
+                            destinations, rows, i, link_blocks);
+                    else {
+                        for (int owner = 0; owner < ranks; ++owner) {
+                            if (owner != i) HIP(hipStreamWaitEvent(stream, state[owner].normalized, 0));
+                        }
+                        hipLaunchKernelGGL((transfer_link_rows<true>), grid, dim3(256), 0, stream,
+                            destinations, rows, i, link_blocks);
+                    }
+                }
+                else if (mode == 3) launch_vector<uint32_t>(source, destinations, offset, count, blocks, stream);
                 else if (mode == 4) launch_vector<uint2>(source, destinations, offset, count, blocks, stream);
                 else if (mode == 5) launch_vector<uint4>(source, destinations, offset, count, blocks, stream);
                 else if (mode == 6) {
@@ -204,6 +256,7 @@ extern "C" const char* pipeline_run(int mode, int rows, int columns, int split, 
                 const int last_wait = mode == 1 && phase == 0 ? phases : phase + 1;
                 for (int slot = first_wait; slot < last_wait; ++slot) {
                     for (int producer = 0; producer < ranks; ++producer) {
+                        if (mode == 9 && producer != i) continue;
                         const size_t first = size_t(rows) * producer / ranks;
                         const size_t last = size_t(rows) * (producer + 1) / ranks;
                         if (first < size_t(boundary[slot + 1]) && last > size_t(boundary[slot]))
@@ -234,6 +287,7 @@ extern "C" const char* pipeline_close() {
             if (rank.blas) blas_check(rocblas_destroy_handle(rank.blas));
             for (auto event : rank.ready) if (event) HIP(hipEventDestroy(event));
             if (rank.begin) HIP(hipEventDestroy(rank.begin));
+            if (rank.normalized) HIP(hipEventDestroy(rank.normalized));
             if (rank.done) HIP(hipEventDestroy(rank.done));
             if (rank.publish) HIP(hipStreamDestroy(rank.publish));
             if (rank.compute) HIP(hipStreamDestroy(rank.compute));

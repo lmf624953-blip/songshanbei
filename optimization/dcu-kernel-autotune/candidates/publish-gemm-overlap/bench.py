@@ -16,7 +16,8 @@ import torch
 RANKS = 8
 WIDTH = 5376
 GUARD = 0x3535
-MODES = ("full", "split_serial", "split_overlap", "vector32", "vector64", "vector128", "peer_copy")
+MODES = ("full", "split_serial", "split_overlap", "vector32", "vector64", "vector128", "peer_copy",
+         "push_local", "push_links", "pull_links")
 
 
 def addresses(tensors):
@@ -124,6 +125,8 @@ def main():
                                            outputs[0][rank].view(torch.int16))
                 guards = all(bool((tensor[-16:].view(torch.int16) == GUARD).all())
                              for tensor in (local[rank], partial[rank], outputs[mode][rank]))
+                if modes[mode] in ("push_local", "push_links", "pull_links"):
+                    guards = guards and bool((partial[rank].view(torch.int16) == GUARD).all())
                 finite = bool(torch.isfinite(outputs[mode][rank][:-16]).all())
                 row = dict(mode=modes[mode], rank=rank, input_exact=exact_input, output_exact=exact_output,
                            guards=guards, finite=finite)

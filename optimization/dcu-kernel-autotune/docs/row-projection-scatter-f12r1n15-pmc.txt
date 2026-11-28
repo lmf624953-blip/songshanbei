@@ -1,0 +1,1728 @@
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     0
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2d00
+ kernel time                               0.001082(s)
+ processed ALU instructions                63.7294253247(%)
+ performance                               6058.830696(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   75.2225365036(%)
+ L1 cache unit is stalled                  13.3096450193(%)
+ L2 cache write unit is stalled            3.8166163431(%)
+ L2 cache hit rate                         76.273217(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     1
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1880
+ kernel time                               0.001090(s)
+ processed ALU instructions                63.2418950208(%)
+ performance                               6013.488345(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.8127151016(%)
+ L1 cache unit is stalled                  13.6780059238(%)
+ L2 cache write unit is stalled            4.1202224489(%)
+ L2 cache hit rate                         76.257976(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     2
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0400
+ kernel time                               0.001078(s)
+ processed ALU instructions                63.8998772886(%)
+ performance                               6080.408369(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.8521892686(%)
+ L1 cache unit is stalled                  13.3072469917(%)
+ L2 cache write unit is stalled            4.2677305722(%)
+ L2 cache hit rate                         76.273429(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     3
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eef80
+ kernel time                               0.001082(s)
+ processed ALU instructions                63.7227518549(%)
+ performance                               6061.519527(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.7869386068(%)
+ L1 cache unit is stalled                  13.4753549831(%)
+ L2 cache write unit is stalled            3.6126299281(%)
+ L2 cache hit rate                         76.279522(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     4
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1edb00
+ kernel time                               0.001077(s)
+ processed ALU instructions                63.9881251868(%)
+ performance                               6086.730838(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.7124680036(%)
+ L1 cache unit is stalled                  13.4659289944(%)
+ L2 cache write unit is stalled            3.6676568458(%)
+ L2 cache hit rate                         76.271148(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     5
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec680
+ kernel time                               0.001083(s)
+ processed ALU instructions                63.6615530964(%)
+ performance                               6055.254891(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.9614383847(%)
+ L1 cache unit is stalled                  13.2632341152(%)
+ L2 cache write unit is stalled            3.7350634564(%)
+ L2 cache hit rate                         76.282750(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     6
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eb200
+ kernel time                               0.001082(s)
+ processed ALU instructions                63.5842057879(%)
+ performance                               6057.045064(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.4392502500(%)
+ L1 cache unit is stalled                  13.5184618759(%)
+ L2 cache write unit is stalled            3.5298720265(%)
+ L2 cache hit rate                         76.277685(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8"
+ kernel dispatch index                     7
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      24
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 1741824
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9d80
+ kernel time                               0.001086(s)
+ processed ALU instructions                63.4266527129(%)
+ performance                               6036.521763(Gflops)
+ shared memory operation                   8128512
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   74.8347332553(%)
+ L1 cache unit is stalled                  13.5307545520(%)
+ L2 cache write unit is stalled            3.6806808341(%)
+ L2 cache hit rate                         76.268054(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     8
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2b80
+ kernel time                               0.000159(s)
+ processed ALU instructions                52.0508413452(%)
+ performance                               5348.659819(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   66.0872747013(%)
+ L1 cache unit is stalled                  13.0441600743(%)
+ L2 cache write unit is stalled            2.1116115617(%)
+ L2 cache hit rate                         76.528662(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     9
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2b00
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.3798453833(%)
+ performance                               2798.324131(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.1914218050(%)
+ L1 cache unit is stalled                  32.8855599023(%)
+ L2 cache write unit is stalled            68.2032416625(%)
+ L2 cache hit rate                         76.445862(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     10
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2a80
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.2871790699(%)
+ performance                               2796.850553(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.2939866348(%)
+ L1 cache unit is stalled                  31.2079915988(%)
+ L2 cache write unit is stalled            68.0706118961(%)
+ L2 cache hit rate                         76.498966(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     11
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2a00
+ kernel time                               0.000301(s)
+ processed ALU instructions                26.6022619430(%)
+ performance                               2825.116596(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.8394600827(%)
+ L1 cache unit is stalled                  32.2759233261(%)
+ L2 cache write unit is stalled            68.6469125732(%)
+ L2 cache hit rate                         76.388220(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     12
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2980
+ kernel time                               0.000302(s)
+ processed ALU instructions                26.7067315737(%)
+ performance                               2810.168889(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.8429309323(%)
+ L1 cache unit is stalled                  34.3376298451(%)
+ L2 cache write unit is stalled            68.9357865707(%)
+ L2 cache hit rate                         75.961612(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     13
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2900
+ kernel time                               0.000302(s)
+ processed ALU instructions                26.4952945243(%)
+ performance                               2813.145763(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.0938175576(%)
+ L1 cache unit is stalled                  32.7029828361(%)
+ L2 cache write unit is stalled            68.3859212636(%)
+ L2 cache hit rate                         76.428164(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     14
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2880
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.5722511653(%)
+ performance                               2808.682813(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.3799159779(%)
+ L1 cache unit is stalled                  34.2409612597(%)
+ L2 cache write unit is stalled            68.6593677778(%)
+ L2 cache hit rate                         76.351631(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     15
+ gpu id                                    0
+ dispatch queue id                         8
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f2800
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.3967827166(%)
+ performance                               2801.275949(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.8014860674(%)
+ L1 cache unit is stalled                  34.1541352286(%)
+ L2 cache write unit is stalled            68.4034600972(%)
+ L2 cache hit rate                         76.436858(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     16
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1700
+ kernel time                               0.000159(s)
+ processed ALU instructions                52.5443250738(%)
+ performance                               5359.454289(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.1559723632(%)
+ L1 cache unit is stalled                  12.9948568197(%)
+ L2 cache write unit is stalled            4.3496278165(%)
+ L2 cache hit rate                         76.391081(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     17
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1680
+ kernel time                               0.000330(s)
+ processed ALU instructions                24.4504917217(%)
+ performance                               2575.761009(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.1283081060(%)
+ L1 cache unit is stalled                  39.9572345360(%)
+ L2 cache write unit is stalled            70.6924112477(%)
+ L2 cache hit rate                         76.282385(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     18
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1600
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.5347226492(%)
+ performance                               2584.534891(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   71.3927623322(%)
+ L1 cache unit is stalled                  39.4372692059(%)
+ L2 cache write unit is stalled            70.6963336962(%)
+ L2 cache hit rate                         76.293348(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     19
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1580
+ kernel time                               0.000326(s)
+ processed ALU instructions                24.8041683806(%)
+ performance                               2608.653831(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   70.9945609946(%)
+ L1 cache unit is stalled                  38.4292700763(%)
+ L2 cache write unit is stalled            70.8249920015(%)
+ L2 cache hit rate                         75.894991(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     20
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1500
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.5072452773(%)
+ performance                               2584.534891(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.4682316899(%)
+ L1 cache unit is stalled                  37.8658314096(%)
+ L2 cache write unit is stalled            70.2683516317(%)
+ L2 cache hit rate                         76.317851(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     21
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1480
+ kernel time                               0.000332(s)
+ processed ALU instructions                24.4342429438(%)
+ performance                               2558.398454(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.5624288616(%)
+ L1 cache unit is stalled                  36.5326984310(%)
+ L2 cache write unit is stalled            70.1778999236(%)
+ L2 cache hit rate                         76.003289(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     22
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1400
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.6638440828(%)
+ performance                               2582.021974(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.0198550411(%)
+ L1 cache unit is stalled                  34.6114796387(%)
+ L2 cache write unit is stalled            70.3063333618(%)
+ L2 cache hit rate                         75.905456(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     23
+ gpu id                                    1
+ dispatch queue id                         9
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f1380
+ kernel time                               0.000333(s)
+ processed ALU instructions                24.2472973190(%)
+ performance                               2551.017867(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   70.6621948146(%)
+ L1 cache unit is stalled                  38.1846955608(%)
+ L2 cache write unit is stalled            70.9365064330(%)
+ L2 cache hit rate                         76.387647(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     24
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0280
+ kernel time                               0.000158(s)
+ processed ALU instructions                51.9963821299(%)
+ performance                               5370.292417(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   64.1384371874(%)
+ L1 cache unit is stalled                  11.7359932088(%)
+ L2 cache write unit is stalled            2.6735447079(%)
+ L2 cache hit rate                         76.527605(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     25
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0200
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.3239017689(%)
+ performance                               2796.850553(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.3827525189(%)
+ L1 cache unit is stalled                  34.7655787674(%)
+ L2 cache write unit is stalled            67.7239099180(%)
+ L2 cache hit rate                         76.420716(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     26
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0180
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.3231867384(%)
+ performance                               2795.387722(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.8543919319(%)
+ L1 cache unit is stalled                  34.5807278075(%)
+ L2 cache write unit is stalled            68.1174829408(%)
+ L2 cache hit rate                         76.453630(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     27
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0100
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.2630591706(%)
+ performance                               2796.850553(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.9065498625(%)
+ L1 cache unit is stalled                  38.3854683880(%)
+ L2 cache write unit is stalled            67.6769436556(%)
+ L2 cache hit rate                         76.498512(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     28
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0080
+ kernel time                               0.000305(s)
+ processed ALU instructions                26.2850400749(%)
+ performance                               2786.578804(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.7077111898(%)
+ L1 cache unit is stalled                  35.0894782422(%)
+ L2 cache write unit is stalled            67.7151807873(%)
+ L2 cache hit rate                         76.427929(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     29
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1f0000
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.3044565685(%)
+ performance                               2790.971729(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.9532424803(%)
+ L1 cache unit is stalled                  33.2953567232(%)
+ L2 cache write unit is stalled            68.1715776943(%)
+ L2 cache hit rate                         76.360718(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     30
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eff80
+ kernel time                               0.000306(s)
+ processed ALU instructions                26.1189122173(%)
+ performance                               2776.382227(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.7602119197(%)
+ L1 cache unit is stalled                  35.3457652635(%)
+ L2 cache write unit is stalled            67.8543514002(%)
+ L2 cache hit rate                         76.519968(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     31
+ gpu id                                    2
+ dispatch queue id                         10
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eff00
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.3333029252(%)
+ performance                               2801.275949(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.5738946805(%)
+ L1 cache unit is stalled                  35.1168594348(%)
+ L2 cache write unit is stalled            68.1634586084(%)
+ L2 cache hit rate                         76.508433(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     32
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eee00
+ kernel time                               0.000159(s)
+ processed ALU instructions                52.2881555164(%)
+ performance                               5337.908744(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.4815933187(%)
+ L1 cache unit is stalled                  12.1649432885(%)
+ L2 cache write unit is stalled            3.6316197186(%)
+ L2 cache hit rate                         76.418042(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     33
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eed80
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.5205330904(%)
+ performance                               2582.021974(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.4033276583(%)
+ L1 cache unit is stalled                  39.9486401640(%)
+ L2 cache write unit is stalled            70.3064510882(%)
+ L2 cache hit rate                         76.291311(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     34
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eed00
+ kernel time                               0.000328(s)
+ processed ALU instructions                24.5915117681(%)
+ performance                               2592.103075(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.8314089957(%)
+ L1 cache unit is stalled                  36.5155971035(%)
+ L2 cache write unit is stalled            70.2843004867(%)
+ L2 cache hit rate                         76.263866(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     35
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eec80
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.6880345302(%)
+ performance                               2582.021974(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.6784448310(%)
+ L1 cache unit is stalled                  37.1011949821(%)
+ L2 cache write unit is stalled            70.9102753536(%)
+ L2 cache hit rate                         76.100174(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     36
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eec00
+ kernel time                               0.000331(s)
+ processed ALU instructions                24.4348590344(%)
+ performance                               2570.774056(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   71.9757105911(%)
+ L1 cache unit is stalled                  37.6814749244(%)
+ L2 cache write unit is stalled            70.8627949615(%)
+ L2 cache hit rate                         76.312614(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     37
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eeb80
+ kernel time                               0.000332(s)
+ processed ALU instructions                24.2910574026(%)
+ performance                               2562.093198(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.5801158042(%)
+ L1 cache unit is stalled                  39.7324489865(%)
+ L2 cache write unit is stalled            70.6471821517(%)
+ L2 cache hit rate                         76.405618(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     38
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eeb00
+ kernel time                               0.000326(s)
+ processed ALU instructions                24.7280819746(%)
+ performance                               2604.815694(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.6627188522(%)
+ L1 cache unit is stalled                  35.2690337150(%)
+ L2 cache write unit is stalled            70.1772324472(%)
+ L2 cache hit rate                         76.210428(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     39
+ gpu id                                    3
+ dispatch queue id                         11
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eea80
+ kernel time                               0.000333(s)
+ processed ALU instructions                24.2391964611(%)
+ performance                               2554.698990(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.8630932388(%)
+ L1 cache unit is stalled                  41.3058266217(%)
+ L2 cache write unit is stalled            70.6784057857(%)
+ L2 cache hit rate                         76.365880(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     40
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed980
+ kernel time                               0.000158(s)
+ processed ALU instructions                52.4219018659(%)
+ performance                               5370.292417(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.4890556356(%)
+ L1 cache unit is stalled                  12.2824167629(%)
+ L2 cache write unit is stalled            2.9488928128(%)
+ L2 cache hit rate                         76.526972(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     41
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed900
+ kernel time                               0.000305(s)
+ processed ALU instructions                26.2403537071(%)
+ performance                               2788.041575(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   66.8815928423(%)
+ L1 cache unit is stalled                  36.1586334080(%)
+ L2 cache write unit is stalled            68.0087343677(%)
+ L2 cache hit rate                         76.394218(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     42
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed880
+ kernel time                               0.000302(s)
+ processed ALU instructions                26.5997063050(%)
+ performance                               2816.128950(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.9675818003(%)
+ L1 cache unit is stalled                  32.5894073753(%)
+ L2 cache write unit is stalled            68.4987638540(%)
+ L2 cache hit rate                         76.352212(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     43
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed800
+ kernel time                               0.000305(s)
+ processed ALU instructions                26.2722642861(%)
+ performance                               2789.515039(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.6765602912(%)
+ L1 cache unit is stalled                  32.9838936117(%)
+ L2 cache write unit is stalled            67.6954357971(%)
+ L2 cache hit rate                         76.336426(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     44
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed780
+ kernel time                               0.000305(s)
+ processed ALU instructions                26.2362434952(%)
+ performance                               2788.041575(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.4942808135(%)
+ L1 cache unit is stalled                  33.7462218561(%)
+ L2 cache write unit is stalled            67.8542076389(%)
+ L2 cache hit rate                         76.511401(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     45
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed700
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.3939583175(%)
+ performance                               2796.850553(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   66.0353063738(%)
+ L1 cache unit is stalled                  35.4637092460(%)
+ L2 cache write unit is stalled            67.5778993014(%)
+ L2 cache hit rate                         76.354525(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     46
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed680
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.3660037235(%)
+ performance                               2804.234002(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.1425314921(%)
+ L1 cache unit is stalled                  36.0995697412(%)
+ L2 cache write unit is stalled            68.3345835584(%)
+ L2 cache hit rate                         76.488960(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     47
+ gpu id                                    4
+ dispatch queue id                         12
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ed600
+ kernel time                               0.000304(s)
+ processed ALU instructions                26.3364210951(%)
+ performance                               2799.799262(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.7570610228(%)
+ L1 cache unit is stalled                  32.1918822018(%)
+ L2 cache write unit is stalled            67.6386775165(%)
+ L2 cache hit rate                         76.483816(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     48
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec500
+ kernel time                               0.000161(s)
+ processed ALU instructions                51.6130333061(%)
+ performance                               5269.066667(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.2586213456(%)
+ L1 cache unit is stalled                  12.8799954349(%)
+ L2 cache write unit is stalled            4.1260723185(%)
+ L2 cache hit rate                         76.419566(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     49
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec480
+ kernel time                               0.000330(s)
+ processed ALU instructions                24.5680438656(%)
+ performance                               2573.265116(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.9114131380(%)
+ L1 cache unit is stalled                  38.1223380753(%)
+ L2 cache write unit is stalled            69.8910964957(%)
+ L2 cache hit rate                         75.984695(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     50
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec400
+ kernel time                               0.000328(s)
+ processed ALU instructions                24.6572997258(%)
+ performance                               2592.103075(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.1815476353(%)
+ L1 cache unit is stalled                  34.6640196062(%)
+ L2 cache write unit is stalled            70.6829652166(%)
+ L2 cache hit rate                         75.952214(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     51
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec380
+ kernel time                               0.000330(s)
+ processed ALU instructions                24.4815962987(%)
+ performance                               2578.261748(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.1706424965(%)
+ L1 cache unit is stalled                  38.0856604870(%)
+ L2 cache write unit is stalled            70.7296519916(%)
+ L2 cache hit rate                         76.309501(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     52
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec300
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.4893737613(%)
+ performance                               2579.521769(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.6352566579(%)
+ L1 cache unit is stalled                  35.4021887850(%)
+ L2 cache write unit is stalled            70.3728840482(%)
+ L2 cache hit rate                         76.382926(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     53
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec280
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.4511526983(%)
+ performance                               2579.513939(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.6815157370(%)
+ L1 cache unit is stalled                  35.9335801770(%)
+ L2 cache write unit is stalled            70.4245303421(%)
+ L2 cache hit rate                         76.295112(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     54
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec200
+ kernel time                               0.000331(s)
+ processed ALU instructions                24.4020734260(%)
+ performance                               2565.806377(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.7344861760(%)
+ L1 cache unit is stalled                  36.2051429168(%)
+ L2 cache write unit is stalled            70.1736368411(%)
+ L2 cache hit rate                         76.265845(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     55
+ gpu id                                    5
+ dispatch queue id                         13
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ec180
+ kernel time                               0.000330(s)
+ processed ALU instructions                24.4513289647(%)
+ performance                               2573.265116(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   72.5483583483(%)
+ L1 cache unit is stalled                  38.9291912671(%)
+ L2 cache write unit is stalled            70.6146326694(%)
+ L2 cache hit rate                         75.904318(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     56
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eb080
+ kernel time                               0.000157(s)
+ processed ALU instructions                52.9714513283(%)
+ performance                               5419.611429(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   64.6283636051(%)
+ L1 cache unit is stalled                  11.2156611641(%)
+ L2 cache write unit is stalled            2.2953725539(%)
+ L2 cache hit rate                         76.525853(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     57
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eb000
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.3713336055(%)
+ performance                               2801.275949(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.5800338212(%)
+ L1 cache unit is stalled                  32.0741005306(%)
+ L2 cache write unit is stalled            67.3568915583(%)
+ L2 cache hit rate                         76.207058(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     58
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eaf80
+ kernel time                               0.000306(s)
+ processed ALU instructions                26.1649515552(%)
+ performance                               2780.743037(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   66.6206550080(%)
+ L1 cache unit is stalled                  33.6501114694(%)
+ L2 cache write unit is stalled            67.5915283263(%)
+ L2 cache hit rate                         76.514719(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     59
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eaf00
+ kernel time                               0.000302(s)
+ processed ALU instructions                26.4284058524(%)
+ performance                               2816.128950(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.0672852721(%)
+ L1 cache unit is stalled                  35.4878116484(%)
+ L2 cache write unit is stalled            68.2705475116(%)
+ L2 cache hit rate                         76.431767(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     60
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eae80
+ kernel time                               0.000306(s)
+ processed ALU instructions                26.1635892046(%)
+ performance                               2780.743037(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.5007617321(%)
+ L1 cache unit is stalled                  34.0952984736(%)
+ L2 cache write unit is stalled            67.0949079654(%)
+ L2 cache hit rate                         76.486370(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     61
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1eae00
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.3985803763(%)
+ performance                               2805.715372(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   66.1632995355(%)
+ L1 cache unit is stalled                  34.6961653037(%)
+ L2 cache write unit is stalled            67.7451993330(%)
+ L2 cache hit rate                         76.320782(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     62
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ead80
+ kernel time                               0.000305(s)
+ processed ALU instructions                26.3099146549(%)
+ performance                               2788.050722(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.6633047040(%)
+ L1 cache unit is stalled                  35.8750055753(%)
+ L2 cache write unit is stalled            67.8306517140(%)
+ L2 cache hit rate                         76.371970(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     63
+ gpu id                                    6
+ dispatch queue id                         14
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1ead00
+ kernel time                               0.000303(s)
+ processed ALU instructions                26.4204286543(%)
+ performance                               2807.198309(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.4023006189(%)
+ L1 cache unit is stalled                  34.9421340022(%)
+ L2 cache write unit is stalled            67.4433413695(%)
+ L2 cache hit rate                         76.357713(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     64
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      27
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9c00
+ kernel time                               0.000160(s)
+ processed ALU instructions                52.0047530521(%)
+ performance                               5327.200802(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   65.2198765740(%)
+ L1 cache unit is stalled                  13.1359602890(%)
+ L2 cache write unit is stalled            3.3639343006(%)
+ L2 cache hit rate                         76.407047(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     65
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      28
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9b80
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.4085268989(%)
+ performance                               2580.767347(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   70.3372007463(%)
+ L1 cache unit is stalled                  35.9076156671(%)
+ L2 cache write unit is stalled            70.5719801166(%)
+ L2 cache hit rate                         76.375756(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     66
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      29
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9b00
+ kernel time                               0.000325(s)
+ processed ALU instructions                24.7735962750(%)
+ performance                               2613.788976(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.3942298914(%)
+ L1 cache unit is stalled                  39.3744864421(%)
+ L2 cache write unit is stalled            70.5921665297(%)
+ L2 cache hit rate                         75.751141(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     67
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      30
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9a80
+ kernel time                               0.000329(s)
+ processed ALU instructions                24.4692773703(%)
+ performance                               2582.021974(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   70.3779887134(%)
+ L1 cache unit is stalled                  35.5568290646(%)
+ L2 cache write unit is stalled            70.9474606870(%)
+ L2 cache hit rate                         76.279515(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     68
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      31
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9a00
+ kernel time                               0.000326(s)
+ processed ALU instructions                24.7174950309(%)
+ performance                               2606.101810(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   69.5139808669(%)
+ L1 cache unit is stalled                  38.8863585435(%)
+ L2 cache write unit is stalled            70.4417800919(%)
+ L2 cache hit rate                         76.012001(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     69
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      32
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9980
+ kernel time                               0.000328(s)
+ processed ALU instructions                24.4784160331(%)
+ performance                               2588.313450(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.8622229158(%)
+ L1 cache unit is stalled                  36.5589828851(%)
+ L2 cache write unit is stalled            70.7119840362(%)
+ L2 cache hit rate                         75.922934(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     70
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      33
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9900
+ kernel time                               0.000327(s)
+ processed ALU instructions                24.6464151026(%)
+ performance                               2600.996795(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   67.4488533560(%)
+ L1 cache unit is stalled                  34.6122946323(%)
+ L2 cache write unit is stalled            70.3809067062(%)
+ L2 cache hit rate                         76.322735(%)
+
+kernel-name:"Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1"
+ kernel dispatch index                     71
+ gpu id                                    7
+ dispatch queue id                         15
+ dispatch queue index                      34
+ process id                                2959477
+ thread id                                 2959477
+ grid size                                 225792
+ work group size                           768
+ shared memory size                        65536
+ scratch size                              0
+ vgpr count                                256
+ sgpr count                                112
+ signal handle                             0x149d8e1e9880
+ kernel time                               0.000331(s)
+ processed ALU instructions                24.4420784106(%)
+ performance                               2568.287814(Gflops)
+ shared memory operation                   1053696
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   68.5742138943(%)
+ L1 cache unit is stalled                  38.6177483165(%)
+ L2 cache write unit is stalled            70.8300455071(%)
+ L2 cache hit rate                         76.204221(%)
+
