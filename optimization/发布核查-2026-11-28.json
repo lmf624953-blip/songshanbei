@@ -1,0 +1,434 @@
+{
+  "reviewed_at": "2026-11-28T12:45:13.520807+00:00",
+  "node": "a02r3n04",
+  "source_head": "b742ec0545b53bfc6271d0d9a636feb5bcf64cfc",
+  "scope": "只读重核已有完整输出、源码与设备身份；本次未重复推理，未重散列全部模型权重",
+  "rules_sha256": "b70e62d1a07b0798b28a4a849ed710ba3f192b58bb2b99e303b0ffadb567a784",
+  "official_entry_and_compare_sha256": {
+    "h3/frameworks/InfiniLM/examples/minimax_h3.py": "9bee7f79ad0968cb2af1ade301ef59a4db31d2c06ba9d2ade3435dc2bd98ca46",
+    "h3/frameworks/InfiniLM/examples/minimax_h3_compare.py": "e143c28e4b3acb885662e0aa238aa00ca17cbcc82077f465f2ce57d0f1225590"
+  },
+  "selected_release": "peer-sharded-norm-f13r1n16",
+  "selected_qualified": true,
+  "selected_identity": {
+    "native_sha256": "ba2e14c8e7b4bacf473a4cf4b2be9e6305231313c057c0bd1a9e7a7c1ed5f26e",
+    "model_nt_sha256": "2807de6fad1af99613732dc6dae5bc627f7bbb82e2d443813c452894f64fd165",
+    "reference_nt_sha256": "8499ec13b54cd9c692a1d1ea585b6de7a1c10f466dd418ba4a43a7533bee9b37",
+    "host_sha256": {
+      "peer-gate-bridge.so": "da8c3fb51c7859d37c770b982a5a329d10b982c94186057f4aef9d0fc943c3aa",
+      "peer-transport.so": "40c74f002dd5d2480a69a8aafcd5935e51877f2193873a1f6e213a28b5c3e294"
+    },
+    "norm_host_sha256": "fda12374fdf350995bf59028978c4c6029825afe591eb1370716e4adaf6cc0bc"
+  },
+  "selected_resident_wall": {
+    "reference": {
+      "samples": [
+        122.20316658914089,
+        122.09751231689006,
+        123.27857228997163
+      ],
+      "mean": 122.5264170653342,
+      "median": 122.20316658914089,
+      "stdev": 0.6535241524023885
+    },
+    "candidate": {
+      "samples": [
+        116.59544301801361,
+        117.82542466698214,
+        116.50617288285866
+      ],
+      "mean": 116.9756801892848,
+      "median": 116.59544301801361,
+      "stdev": 0.7372527024640103
+    },
+    "paired_reduction_percent": {
+      "samples": [
+        4.588852914082819,
+        3.498914571510847,
+        5.493573847678224
+      ],
+      "mean": 4.527113777757297,
+      "median": 4.588852914082819,
+      "stdev": 0.998761832328312
+    },
+    "mean_time_reduction_percent": 4.530236833000356
+  },
+  "vae_candidate": {
+    "resident_passed": true,
+    "ordinary_default_passed": true,
+    "unchanged_functional_sources": 151,
+    "media": [
+      {
+        "index": 0,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 1,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 2,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 3,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 4,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 5,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 6,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 7,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      },
+      {
+        "index": 8,
+        "case": "B",
+        "sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+        "transformer_calls": 49,
+        "ssim_percent": 99.40412322827537
+      },
+      {
+        "index": 9,
+        "case": "C",
+        "sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+        "transformer_calls": 49,
+        "ssim_percent": 99.63004744871529
+      },
+      {
+        "index": 10,
+        "case": "A",
+        "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+        "transformer_calls": 49,
+        "ssim_percent": 93.83201347926341
+      }
+    ],
+    "wall": {
+      "reference": {
+        "samples": [
+          120.0467755550053,
+          118.38184093899326,
+          118.47217408200959
+        ],
+        "mean": 118.96693019200272,
+        "median": 118.47217408200959,
+        "stdev": 0.9362635981284511
+      },
+      "candidate": {
+        "samples": [
+          107.26528189401142,
+          107.3300958070322,
+          107.23459832702065
+        ],
+        "mean": 107.27665867602143,
+        "median": 107.26528189401142,
+        "stdev": 0.0487546464330954
+      },
+      "paired_reduction_percent": {
+        "samples": [
+          10.647094519533685,
+          9.335676016101546,
+          9.485413635787577
+        ],
+        "mean": 9.822728057140935,
+        "median": 9.485413635787577,
+        "stdev": 0.7178372983662531
+      },
+      "mean_time_reduction_percent": 9.826488333450456
+    },
+    "stages": {
+      "generation.pipeline_total": {
+        "reference": {
+          "samples": [
+            118.56532587099355,
+            116.81308847700711,
+            116.73461525095627
+          ],
+          "mean": 117.37100986631897,
+          "median": 116.81308847700711,
+          "stdev": 1.0350519557336626
+        },
+        "candidate": {
+          "samples": [
+            105.71666020003613,
+            105.76183016604045,
+            105.70765616797144
+          ],
+          "mean": 105.72871551134934,
+          "median": 105.71666020003613,
+          "stdev": 0.02902935436483718
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            10.836781813375662,
+            9.460633611397007,
+            9.446177604885285
+          ],
+          "mean": 9.914531009885986,
+          "median": 9.460633611397007,
+          "stdev": 0.7987253297811977
+        },
+        "mean_time_reduction_percent": 9.919224830926954
+      },
+      "compute.h3_transformer": {
+        "reference": {
+          "samples": [
+            97.2227712541353,
+            97.18887511786306,
+            97.19023946998641
+          ],
+          "mean": 97.20062861399492,
+          "median": 97.19023946998641,
+          "stdev": 0.0191882190019989
+        },
+        "candidate": {
+          "samples": [
+            97.20810440502828,
+            97.19224709289847,
+            97.17173600621754
+          ],
+          "mean": 97.19069583471476,
+          "median": 97.19224709289847,
+          "stdev": 0.018233757415261002
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            0.015085816746240877,
+            -0.0034695072160362272,
+            0.019038397137172147
+          ],
+          "mean": 0.010218235555792266,
+          "median": 0.015085816746240877,
+          "stdev": 0.012017547569179868
+        },
+        "mean_time_reduction_percent": 0.010218842636922076
+      },
+      "compute.condition_encoder": {
+        "reference": {
+          "samples": [
+            0.3114608979667537,
+            0.30274488095892593,
+            0.3075080319540575
+          ],
+          "mean": 0.30723793695991236,
+          "median": 0.3075080319540575,
+          "stdev": 0.004364281338271215
+        },
+        "candidate": {
+          "samples": [
+            0.31540206394856796,
+            0.30339438299415633,
+            0.3039238829514943
+          ],
+          "mean": 0.30757344329807285,
+          "median": 0.3039238829514943,
+          "stdev": 0.006784951622393772
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            -1.265380664970328,
+            -0.21453774318929142,
+            1.1655464671240456
+          ],
+          "mean": -0.10479064701185796,
+          "median": -0.21453774318929142,
+          "stdev": 1.2191739003225415
+        },
+        "mean_time_reduction_percent": -0.10920081728196251
+      },
+      "input.video_vae_encode": {
+        "reference": {
+          "samples": [
+            0.8622562899836339,
+            0.8614661860046908,
+            0.861991774989292
+          ],
+          "mean": 0.8619047503258722,
+          "median": 0.861991774989292,
+          "stdev": 0.00040217663211319877
+        },
+        "candidate": {
+          "samples": [
+            0.8628926230012439,
+            0.8613159020314924,
+            0.86238984297961
+          ],
+          "mean": 0.8621994560041154,
+          "median": 0.86238984297961,
+          "stdev": 0.0008054176894270289
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            -0.073798593875396,
+            0.017445138954941264,
+            -0.046180021882791245
+          ],
+          "mean": -0.03417782560108199,
+          "median": -0.046180021882791245,
+          "stdev": 0.046790963143453226
+        },
+        "mean_time_reduction_percent": -0.034192371968222446
+      },
+      "output.video_vae_decode": {
+        "reference": {
+          "samples": [
+            14.472796874993946,
+            14.850717597990297,
+            14.801080245000776
+          ],
+          "mean": 14.70819823932834,
+          "median": 14.801080245000776,
+          "stdev": 0.2053687377641054
+        },
+        "candidate": {
+          "samples": [
+            3.7735169299994595,
+            3.8122322529670782,
+            3.808922989992425
+          ],
+          "mean": 3.7982240576529875,
+          "median": 3.808922989992425,
+          "stdev": 0.02146088122665631
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            73.92683002053784,
+            74.32964280808237,
+            74.26591217030305
+          ],
+          "mean": 74.17412833297442,
+          "median": 74.26591217030305,
+          "stdev": 0.2165242250844609
+        },
+        "mean_time_reduction_percent": 74.17614315601966
+      },
+      "output.audio_vae_decode": {
+        "reference": {
+          "samples": [
+            0.2426503969472833,
+            0.2431022259988822,
+            0.24333545996341854
+          ],
+          "mean": 0.24302936096986136,
+          "median": 0.2431022259988822,
+          "stdev": 0.00034829559049712004
+        },
+        "candidate": {
+          "samples": [
+            0.24257651600055397,
+            0.2418904029764235,
+            0.24205917696235701
+          ],
+          "mean": 0.24217536531311148,
+          "median": 0.24205917696235701,
+          "stdev": 0.0003575088392035182
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            0.030447486449147743,
+            0.4984828984923695,
+            0.5244952795837476
+          ],
+          "mean": 0.3511418881750883,
+          "median": 0.4984828984923695,
+          "stdev": 0.2780338746740763
+        },
+        "mean_time_reduction_percent": 0.351396083724953
+      },
+      "output.media_encode": {
+        "reference": {
+          "samples": [
+            1.4469179330044426,
+            1.5368948389659636,
+            1.7058653029962443
+          ],
+          "mean": 1.5632260249888834,
+          "median": 1.5368948389659636,
+          "stdev": 0.13146647338560494
+        },
+        "candidate": {
+          "samples": [
+            1.5160690599586815,
+            1.5332991600153036,
+            1.4935458669788204
+          ],
+          "mean": 1.5143046956509352,
+          "median": 1.5160690599586815,
+          "stdev": 0.01993529063918967
+        },
+        "paired_reduction_percent": {
+          "samples": [
+            -4.779201734728011,
+            0.23395738338735095,
+            12.4464361661204
+          ],
+          "mean": 2.63373060492658,
+          "median": 0.23395738338735095,
+          "stdev": 8.860013200266627
+        },
+        "mean_time_reduction_percent": 3.1295109316195058
+      }
+    },
+    "extra_numeric_records": 52,
+    "stable_requests": 32,
+    "selected": false,
+    "full_release_qualified": false,
+    "pending": [
+      "有效的独立时间线与PMC",
+      "发布身份与统一复测入口整合"
+    ],
+    "cold_process_wall": "process.wall 1042.59 s\nprocess.peak_rss 27585752 KiB\n"
+  },
+  "profiler": {
+    "process_exit_code": 0,
+    "model_capture_complete": true,
+    "json_export_error": true,
+    "diagnostic_qualified": false,
+    "raw_database_sha256": "68b4d09271a7f73076562566e6c6cf5afe0e538eb964aaf86984cec799839a31",
+    "capture_sha256": "cd340ebe8c71a2d9c59ef22b1c7533a7a15f3c0d795b6e5fdea2a9afdc8b7763",
+    "log_sha256": "24bf7dab92a22ef7387f6c8880ebd7050d28aeab13465b6435aa12664dc2a56d"
+  },
+  "rule_review": {
+    "new_scheduling_violation_found": false,
+    "findings": [
+      "官方入口、固定工作量与逐请求完整输出核对通过",
+      "七进程重新计算当前输入，原_decode_clip及拼接顺序不变；新增调度没有新增设备数学kernel",
+      "既有Diffusers/Torch神经网络VAE明确属于模型计算，不能按媒体辅助工作申报",
+      "九齿编译后端定向变换及既有第三方基础能力需按实际依赖申报许可范围"
+    ],
+    "conclusion": "未发现本轮新增宿主调度违反给定条款；不能据本地检查保证全部既有第三方能力已获出题方明确许可或代表赛事合规裁定"
+  }
+}
