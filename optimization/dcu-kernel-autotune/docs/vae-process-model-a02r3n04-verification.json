@@ -1,0 +1,5722 @@
+{
+  "scope": "独立VAE原始输出位模式、同七卡线程/进程配对与持续资源检查，不是完整模型计时",
+  "complete": true,
+  "records": [
+    {
+      "name": "A-warmup",
+      "mode": "thread2",
+      "seconds": 38.7421341050067,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": null
+    },
+    {
+      "name": "A-process-warmup",
+      "mode": "process",
+      "seconds": 8.167162562021986,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 1,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 7.921113239019178,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 7.944117210980039,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 7.928667914005928,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 7.961625056981575,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 7.879105253028683,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 7.927063143986743,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 7.921588689030614,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6259236864
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-thread7-warmup",
+      "mode": "thread7",
+      "seconds": 18.87861250998685,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true
+    },
+    {
+      "name": "A-thread-control-0",
+      "mode": "thread7",
+      "seconds": 11.674202627968043,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true
+    },
+    {
+      "name": "A-thread-control-0",
+      "mode": "process",
+      "seconds": 3.811409887042828,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 2,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.525215453992132,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4341151150292717,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3716554560232908,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4299463250208646,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4046932199853472,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4243208069819957,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4876808230183087,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-thread-control-1",
+      "mode": "process",
+      "seconds": 3.8327688770368695,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 3,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5235241210320964,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4762743749888614,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.377794203988742,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.446390771016013,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.377074930991512,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.427534229005687,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4875067899702117,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-thread-control-1",
+      "mode": "thread7",
+      "seconds": 13.54144591797376,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true
+    },
+    {
+      "name": "A-thread-control-2",
+      "mode": "thread7",
+      "seconds": 14.908910115016624,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true
+    },
+    {
+      "name": "A-thread-control-2",
+      "mode": "process",
+      "seconds": 3.7574895519646816,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 4,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.3589009110000916,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4609463100205176,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3911660209996626,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4420691070263274,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.3873999990173616,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4487361849751323,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.491120619000867,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "square",
+      "mode": "thread2",
+      "seconds": 11.882153168029618,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        48,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": null
+    },
+    {
+      "name": "square",
+      "mode": "process",
+      "seconds": 3.145703839021735,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        48,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        768,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 5,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 2.8911012330208905,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 2.817923808004707,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 2.7428951879846863,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 2.8041072129854,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 2.849355621030554,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 2.77471944905119,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 2.8732365799951367,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        }
+      ]
+    },
+    {
+      "name": "one-window",
+      "mode": "thread2",
+      "seconds": 0.1575729240430519,
+      "latent_shape": [
+        1,
+        24,
+        7,
+        16,
+        16
+      ],
+      "shape": [
+        1,
+        3,
+        22,
+        256,
+        256
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 1,
+      "finite": true,
+      "exact": null
+    },
+    {
+      "name": "one-window",
+      "mode": "process",
+      "seconds": 0.15591654198942706,
+      "latent_shape": [
+        1,
+        24,
+        7,
+        16,
+        16
+      ],
+      "shape": [
+        1,
+        3,
+        22,
+        256,
+        256
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 1,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 5,
+      "worker_samples": []
+    },
+    {
+      "name": "two-windows",
+      "mode": "thread2",
+      "seconds": 2.8343407529755495,
+      "latent_shape": [
+        1,
+        24,
+        12,
+        48,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        39,
+        768,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 2,
+      "finite": true,
+      "exact": null
+    },
+    {
+      "name": "two-windows",
+      "mode": "process",
+      "seconds": 2.9377523389994167,
+      "latent_shape": [
+        1,
+        24,
+        12,
+        48,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        39,
+        768,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 2,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 6,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 2.701767537975684,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 2.828040692023933,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6318090240
+          }
+        }
+      ]
+    },
+    {
+      "name": "eight-windows",
+      "mode": "thread2",
+      "seconds": 14.345396339020226,
+      "latent_shape": [
+        1,
+        24,
+        42,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        141,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 8,
+      "finite": true,
+      "exact": null
+    },
+    {
+      "name": "eight-windows",
+      "mode": "process",
+      "seconds": 6.809125065978151,
+      "latent_shape": [
+        1,
+        24,
+        42,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        141,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 8,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 7,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0,
+            7
+          ],
+          "seconds": 6.4850314049981534,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6259206144
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4633399459999055,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.506643146974966,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4512414740165696,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.412676093983464,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4222523070056923,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4950967759941705,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "changed-A-values",
+      "mode": "thread2",
+      "seconds": 13.935161173983943,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": null
+    },
+    {
+      "name": "changed-A-values",
+      "mode": "process",
+      "seconds": 3.737003978982102,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 8,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.337002140993718,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4611805549939163,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.489051449985709,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4527819029754028,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.486920528986957,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4207202389952727,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.505850712012034,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "return-A",
+      "mode": "process",
+      "seconds": 3.8203915790072642,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 9,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.524436938983854,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4850554729928263,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4794134750263765,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4456457759952173,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.377526878961362,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4216282360139303,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.496588164009154,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-0",
+      "mode": "process",
+      "seconds": 3.7368118449812755,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 10,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.370339190994855,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.440219851967413,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4864158290438354,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.425734184042085,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.3750908019719645,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.397637894959189,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.5021802019909956,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-1",
+      "mode": "process",
+      "seconds": 3.71677571098553,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 11,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.3631999740027823,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4032374530215748,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4691635679919273,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4447285589994863,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.5015238590422086,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4432137300027534,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4160367269651033,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-2",
+      "mode": "process",
+      "seconds": 3.7233082259772345,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 12,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.361481451021973,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.40582138200989,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.468069037015084,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4444105419679545,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4867719460162334,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4366829649661668,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.5001676329993643,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-3",
+      "mode": "process",
+      "seconds": 3.7291128580109216,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 13,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.3674619360244833,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4167582920053974,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.469055634981487,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4290301380096935,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.5140996199916117,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4333706510369666,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4147520730039105,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-4",
+      "mode": "process",
+      "seconds": 3.7373403750243597,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 14,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.372180267004296,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4126137729617767,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4762225929880515,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4295785480062477,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.484379630011972,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.3990938519709744,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4108995589776896,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-5",
+      "mode": "process",
+      "seconds": 3.731219838024117,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 15,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.3707661100197583,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4135777310002595,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4723594789975323,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4325388750294223,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.484847978979815,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.3983876700513065,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4130833309609443,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-6",
+      "mode": "process",
+      "seconds": 3.756108845991548,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 16,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.3634516290039755,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4128898680210114,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4777142319944687,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.438589000958018,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.521671375958249,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.425706313981209,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4908904950134456,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-7",
+      "mode": "process",
+      "seconds": 3.7477672660024837,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 17,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.373523761983961,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4345111229922622,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4810897359857336,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.44320710899774,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.5141585409874097,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.456070106010884,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.464888385962695,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-8",
+      "mode": "process",
+      "seconds": 3.7114599579945207,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 18,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.359065994969569,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4353654099977575,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.379450765962247,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.434860829031095,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.483390290988609,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4488060769508593,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4032505730283447,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-9",
+      "mode": "process",
+      "seconds": 3.7847090649884194,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 19,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5176955990027636,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4408083930029534,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4832189779845066,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4304759450023994,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4784809370175935,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4549542849999852,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4875590709852986,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-10",
+      "mode": "process",
+      "seconds": 3.802584707038477,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 20,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5141206799889915,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.427122110966593,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.491784651996568,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.417869603028521,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.373507961980067,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.457292890001554,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.500906658009626,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-11",
+      "mode": "process",
+      "seconds": 3.845953720039688,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 21,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5202208579867147,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.43713839299744,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.504827781987842,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4299817649880424,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.394249370030593,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.417852753016632,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4994233289617114,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-12",
+      "mode": "process",
+      "seconds": 3.8446875250083394,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 22,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.50763048697263,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4163424039725214,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.379617449012585,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.416789472976234,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.524328526982572,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4226309950463474,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.5005594799877144,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-13",
+      "mode": "process",
+      "seconds": 3.8402262600138783,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 23,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5191701079602353,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4728253889479674,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.497378149011638,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.431919612979982,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6347532288
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4827426390256733,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4233119480195455,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.5099314809776843,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-14",
+      "mode": "process",
+      "seconds": 3.8464098089607432,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 24,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.525913296965882,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4477890279958956,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.5035559679963626,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4331730370176956,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4811180669930764,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4253733069635928,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.510069552983623,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-15",
+      "mode": "process",
+      "seconds": 3.8444529410335235,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 25,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.523676945012994,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.439051980036311,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4751040110131726,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4339606420253403,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.414525058993604,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4422651810455136,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4285866689751856,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-16",
+      "mode": "process",
+      "seconds": 3.8369246770162135,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 26,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5205620549968444,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4459024319658056,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.5069975839578547,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4290696590323932,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.3774643070064485,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.401366706995759,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.503446207032539,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-17",
+      "mode": "process",
+      "seconds": 3.8408408319810405,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 27,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.517585326975677,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4305563460220583,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.5046642490196973,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4210092229768634,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4065826169680804,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4891321909963153,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.456381761992816,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-18",
+      "mode": "process",
+      "seconds": 3.837064150022343,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 28,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.520470492017921,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.426674032001756,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.48416846600594,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.415373865980655,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.5152169909561053,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.435583183018025,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4191972379921935,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-19",
+      "mode": "process",
+      "seconds": 3.8438647099537775,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 29,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5217271569999866,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.434126776002813,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4515194790437818,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4214176409877837,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.526159102038946,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4330311749945395,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.417721481004264,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-20",
+      "mode": "process",
+      "seconds": 3.850615289993584,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 30,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.522802577004768,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.438819905044511,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.399100912967697,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.421539793955162,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.5156130990362726,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4157211519777775,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.5023303440539166,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-21",
+      "mode": "process",
+      "seconds": 3.8466776640270837,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 31,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5185166349983774,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.405370172986295,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4020352800143883,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4227282060310245,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.5186502170399763,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4160762690007687,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.420710197999142,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-22",
+      "mode": "process",
+      "seconds": 3.8497722540050745,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 32,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5207482879632153,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.469699148030486,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.398024993017316,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.421697786950972,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4872054739971645,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4201930070412345,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.5106009439914487,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-23",
+      "mode": "process",
+      "seconds": 3.8365744100301526,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 33,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5249978689826094,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4741943950066343,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.4037435320205986,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4221695759915747,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.487457838957198,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4212969889631495,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.506447374005802,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-24",
+      "mode": "process",
+      "seconds": 3.824766174016986,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 34,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5157317310222425,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.400316755985841,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.377893146011047,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4575842160265893,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4834586920333095,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.402132580988109,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4978608789970167,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-25",
+      "mode": "process",
+      "seconds": 3.844433401012793,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 35,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5258238760288805,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.439784865011461,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3769021870102733,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4545137070235796,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.476837375026662,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.483992052031681,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4016668620170094,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-26",
+      "mode": "process",
+      "seconds": 3.8338907490251586,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 36,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.5128492059884593,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.460527002986055,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3667791220359504,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4412590920110233,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4705645850044675,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4147164030000567,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.3874139090185054,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-27",
+      "mode": "process",
+      "seconds": 3.838021497009322,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 37,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.523301957990043,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.474228386010509,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3828598920372315,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4592075769905932,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.487949839036446,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.403760852990672,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.3947938510100357,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-28",
+      "mode": "process",
+      "seconds": 3.834702213993296,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 38,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.519765669014305,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.434602373978123,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3712259180028923,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.427677042025607,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4775099080288783,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4181571289664134,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4148260049987584,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-29",
+      "mode": "process",
+      "seconds": 3.8375878499937244,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 39,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.524695714004338,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.4818853230099194,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.375722864002455,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.423844018019736,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.3698061910108663,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.416255643009208,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4686020279768854,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-30",
+      "mode": "process",
+      "seconds": 3.850250172021333,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 40,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.526594400056638,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.404955985955894,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3718043490080163,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.4219354710076004,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.4109868509694934,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.5005001699901186,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.4250428110244684,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    },
+    {
+      "name": "steady-A-31",
+      "mode": "process",
+      "seconds": 3.8529379540123045,
+      "latent_shape": [
+        1,
+        24,
+        37,
+        58,
+        48
+      ],
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "dtype": "torch.bfloat16",
+      "windows": 7,
+      "finite": true,
+      "exact": true,
+      "pool_requests": 41,
+      "worker_samples": [
+        {
+          "rank": 0,
+          "clips": [
+            0
+          ],
+          "seconds": 3.525937018042896,
+          "torch_peak_allocated_bytes": 7125222400,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7795113984,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 1,
+          "clips": [
+            1
+          ],
+          "seconds": 3.478122830041684,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 2,
+          "clips": [
+            2
+          ],
+          "seconds": 3.3792364920373075,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 3,
+          "clips": [
+            3
+          ],
+          "seconds": 3.427432766999118,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 4,
+          "clips": [
+            4
+          ],
+          "seconds": 3.3992951969848946,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 5,
+          "clips": [
+            5
+          ],
+          "seconds": 3.4859839610289782,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        },
+        {
+          "rank": 6,
+          "clips": [
+            6
+          ],
+          "seconds": 3.488277654047124,
+          "torch_peak_allocated_bytes": 7055358976,
+          "memory": {
+            "allocated_bytes": 5611481088,
+            "reserved_bytes": 7673479168,
+            "before_collection_bytes": 6406416384
+          }
+        }
+      ]
+    }
+  ],
+  "thread_pairs": [
+    {
+      "thread7": 11.674202627968043,
+      "process": 3.811409887042828
+    },
+    {
+      "process": 3.8327688770368695,
+      "thread7": 13.54144591797376
+    },
+    {
+      "thread7": 14.908910115016624,
+      "process": 3.7574895519646816
+    }
+  ],
+  "stability": [
+    {
+      "trial": 0,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 1,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 2,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 3,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 4,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 5,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 6,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 7,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 8,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 9,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 10,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 11,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 12,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 13,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 14,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 15,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 16,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 17,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 18,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 19,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 20,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 21,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 22,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 23,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 24,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 25,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 26,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 27,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 28,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 29,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 30,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    },
+    {
+      "trial": 31,
+      "allocated": [
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088,
+        5611481088
+      ],
+      "reserved": [
+        7795113984,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168,
+        7673479168
+      ]
+    }
+  ],
+  "python_attention_mode": "1",
+  "compiler_cache_optimization": false,
+  "source_sha256": {
+    "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/vae-process-scheduling/bench.py": "baaf3ea48fd8f53e1e2a5e7ffbf8c6f6098b7fb19cc9ba55b9b6e3a37057e9b6",
+    "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/vae-process-scheduling/process_runtime.py": "ac744d4afe225cacf2c74026c4f156396b42d4afc1c75341a62e1c4e0374c666",
+    "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/dcu-kernel-autotune/candidates/vae-process-scheduling/worker-entry.py": "6131ca8a18e84708f7d69e726031a75331f6ac2824fe7bc4f797ef3818a68ca2",
+    "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/video_decode_parallel.py": "4cb62af9135b72ba69634b06e6f24fbff22b7e64148419430c27fab519db49c7",
+    "/public/home/acvduipmem/xsh/songshanbei/submission-xsh/optimization/adaln/accurate_attention.py": "bb021259c21db89e7d7f7e0a759041f651267525267599f41806924721f1a309",
+    "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/vae-process-model-a02r3n04-s4xxWpv7/verify-driver.py": "c408df640160c4e6148152489c31b2548da781c9d00f0a196a51196949cdda94"
+  },
+  "runtime": {
+    "hostname": "a02r3n04",
+    "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+    "torch_version": "2.9.0",
+    "hip_version": "6.3.26093",
+    "gpu_name": "BW"
+  },
+  "settings": {
+    "tokens_chunk_size": 5,
+    "token_drop": 3,
+    "official_A_latent_frames": 37
+  },
+  "thread_comparison": {
+    "eligible": true,
+    "thread7_median": 13.54144591797376,
+    "process7_median": 3.811409887042828,
+    "paired_gain_percent": 71.69601458918372
+  },
+  "steady_allocated_exactly_stable": true,
+  "numerical_checks_passed": true,
+  "worker_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_unchanged": true
+}
