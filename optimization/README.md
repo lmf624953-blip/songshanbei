@@ -1,5 +1,7 @@
 # MiniMax-H3 决赛推理
 
+本次整理的正式组合、采用清单、完整构建链和比赛条款核查见 [当前最优版本](当前最优版本.md)，文件身份与既有证据复核见 [核查记录](当前最优版本核查.json)。
+
 当前完整验收最优版为 **九齿分片 BF16 求和/门控 + 按完整行分片归一化后发布**，沿用已验收长注意力。`f13r1n16` 同一八卡实例三组完整官方 A 为 **122.526417→116.975680 秒，下降 4.530237%**；49 次 Transformer 为 **101.170642→97.202297 秒，下降 3.922428%**。普通默认入口、A×8/B/C/返回 A、独立重建、稳定发布实际加载、真实模型 trace 与独立模型桥 PMC 全部通过，成片逐字节一致，本地默认已切换。未启用跨进程编译缓存。[完整报告与适用范围](dcu-kernel-autotune/docs/行分片归一化模型-f13r1n16.md) · [选版记录](dcu-kernel-autotune/docs/peer-sharded-norm-model-f13r1n16-selection.json)
 
 已有稳定发布目录可直接用 `reproduce-public-a.sh resident RELEASE MODEL NEW_OUTPUT`，读取 `benchmark.json` 的 `wall.candidate.mean`；`single` 单列新进程加载与首次生成，本轮普通入口 875.75 秒。新构建先生成下文注意力前序，再用 `rccl-sequence-parallel/build-peer-release.sh` 构建 peer 参考，最后 `reproduce-public-a.sh build-sharded ACCEPTED_PEER_CONFIG NEW_WORK XMAKE_BINARY`。完整命令与计时口径见[复测说明](公开A耗时复测说明.md)及[模型构建说明](dcu-kernel-autotune/candidates/peer-sharded-norm-model/README.md)。前序 peer 版 120.698043 秒保留作为参考，不将跨轮绝对时间差当本轮加速比。
