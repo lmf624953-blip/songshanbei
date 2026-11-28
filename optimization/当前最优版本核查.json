@@ -383,5 +383,189 @@
     "scanned_changed_files": 233,
     "bytes": 7579684,
     "findings": []
+  },
+  "publication_recheck": {
+    "reviewed_at": "2026-11-28T10:53:13.075392+00:00",
+    "node": "a02r3n04",
+    "checks": {
+      "rules_pdf_sha256": "b70e62d1a07b0798b28a4a849ed710ba3f192b58bb2b99e303b0ffadb567a784",
+      "release_selected_and_qualified": true,
+      "candidate_config_sha256": "831e2aabbd18a216c548e573f0032ed3674aa9fbe7722817c672050161a7e97e",
+      "release_native_bridge_and_nt_identity": {
+        "native_sha256": "ba2e14c8e7b4bacf473a4cf4b2be9e6305231313c057c0bd1a9e7a7c1ed5f26e",
+        "model_nt_sha256": "2807de6fad1af99613732dc6dae5bc627f7bbb82e2d443813c452894f64fd165",
+        "reference_nt_sha256": "8499ec13b54cd9c692a1d1ea585b6de7a1c10f466dd418ba4a43a7533bee9b37",
+        "host_sha256": {
+          "peer-gate-bridge.so": "da8c3fb51c7859d37c770b982a5a329d10b982c94186057f4aef9d0fc943c3aa",
+          "peer-transport.so": "40c74f002dd5d2480a69a8aafcd5935e51877f2193873a1f6e213a28b5c3e294"
+        },
+        "norm_host_sha256": "fda12374fdf350995bf59028978c4c6029825afe591eb1370716e4adaf6cc0bc"
+      },
+      "original_evidence_hashes": [
+        {
+          "name": "qualification/benchmark.json",
+          "sha256": "6ccb94efd5086afbae398eb591af01cca81df77b0f8962f35b2a7b526df84e75"
+        },
+        {
+          "name": "qualification/benchmark-reproduction.json",
+          "sha256": "f9c1f58b3d1ffc58c167e845679e8a5246a35e8bf5bd80096c276a634c23aa61"
+        },
+        {
+          "name": "native-rebuild-verification.json",
+          "sha256": "958d2af49ed6018c23254b0db18e35f459b8131d9a8080983de1d7da2419dc90"
+        },
+        {
+          "name": "bridge-rebuild-verification.json",
+          "sha256": "7d47de9fdb7a64de07612c4d63e2fccf5b85a1df20ffa5f5a49fa5f1a751ffb9"
+        },
+        {
+          "name": "replay8-summary.json",
+          "sha256": "6949f82166cd6047d47b6a250f7a146f32b43f55034cb470b13d7fbe49a0df36"
+        },
+        {
+          "name": "release-profile/validation-summary.json",
+          "sha256": "df0491ffa5450736a27e72954e7992c3b2507ef6113ea4ee9dcd7005f0522687"
+        },
+        {
+          "name": "release-pmc-gate/validation-summary.json",
+          "sha256": "b6e8aee5ed22a71c3a96dc14a0bf2867f917814c1bf56918b3f6a9f26ee7b0b9"
+        },
+        {
+          "name": "release-pmc-gate/pmc.txt",
+          "sha256": "80181cd76291ad64f1bba552eda9120ad4718aea32078e19600ac9623d5a8902"
+        },
+        {
+          "name": "release-pmc-norm/validation-summary.json",
+          "sha256": "ccaeb353d773c219fc91a9cb254d25863c65eca40ead95aaefa1c6b26b355ccf"
+        },
+        {
+          "name": "release-pmc-norm/pmc.txt",
+          "sha256": "b2c04fe149a031bfd6d1eade01e27745752d680d618148f5a80ea6b7664f1082"
+        }
+      ],
+      "qualification_document_hashes_passed": 3,
+      "official_entry_and_comparison_unchanged": "45b2c3094d8d189e030f8984d7c07dead4db690a",
+      "deployed_entry_and_comparison_match": true,
+      "first_frame_sha256": "b97c3487ca35da0c803fba3787cf2b7f936d3d4595548ae5b7b576c19934be54",
+      "media_records": [
+        {
+          "index": 0,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 1,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 2,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 3,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 4,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 5,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 6,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 7,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        },
+        {
+          "index": 8,
+          "case": "B",
+          "sha256": "0ecaaf686ab8f903a831d5ba4981dc7aa7b48fb728037418c8be14537c7455d8",
+          "transformer_calls": 49,
+          "ssim_percent": 99.40412322827537
+        },
+        {
+          "index": 9,
+          "case": "C",
+          "sha256": "0fdfa83c964f32d67cc3770c750f9d89abbe50460d1eb4ef500795dc8f0d6b03",
+          "transformer_calls": 49,
+          "ssim_percent": 99.63004744871529
+        },
+        {
+          "index": 10,
+          "case": "A",
+          "sha256": "99d975c6e2537274224d5904eb35dc30ba3f350737ebe333b9d43c61882f0440",
+          "transformer_calls": 49,
+          "ssim_percent": 93.83201347926341
+        }
+      ],
+      "resident_statistics_match_original": true,
+      "timed_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "build_source_mismatches": [
+        "README.md",
+        "summarize-profile.py"
+      ],
+      "committed_changes_after_previous_review": "仅GEMM和门控实验归档及源码清单",
+      "reviewed_source_head": "a3378d825f6ac62b0e8ad6329169be66423e114b",
+      "tracked_source_manifest_entries_passed": 697,
+      "runtime_cache_optimization_enabled": false,
+      "vae_model_source_unchanged_from_fixed_baseline": true,
+      "performance_rerun_this_review": false,
+      "all_weights_rehashed_this_review": false
+    },
+    "decision": "正式组合保持原完整资格，按给定PDF未发现新增明确违规；第三方既有能力与编译后端变换按实际实现公开披露",
+    "secret_scan": {
+      "scanned_committed_files": 19,
+      "bytes": 2409163,
+      "findings": [],
+      "scope": "0ee4d06b之后已提交的两轮实验归档；发布文档另在提交前核对"
+    },
+    "included_archive_commits": [
+      "8df41e86ac7fc4892fe81872a45231a60cb8d519",
+      "a3378d825f6ac62b0e8ad6329169be66423e114b"
+    ],
+    "production_release_changed": false,
+    "experimental_packed_gate_included": false,
+    "source_hash_differences_note": "README.md为后续说明，summarize-profile.py为已保存的汇总修正；正式数值实现未改变"
   }
 }
