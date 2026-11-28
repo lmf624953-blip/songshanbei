@@ -1,0 +1,226 @@
+{
+  "complete": true,
+  "scope": "独立原 VAE 窗口和空间 tile 解码，含复制与原序拼接",
+  "height": 928,
+  "width": 768,
+  "input_latent_frames": 37,
+  "spatial_devices": 8,
+  "records": [
+    {
+      "mode": "temporal",
+      "warmup": true,
+      "seconds": 58.55243398901075,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        8651266560,
+        6223006208,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "spatial",
+      "warmup": true,
+      "seconds": 17.951854151673615,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        9045715456,
+        5796572672,
+        5523926528,
+        5641694720,
+        5531317760,
+        5630653952,
+        6090983936,
+        5748452864
+      ]
+    },
+    {
+      "mode": "temporal",
+      "warmup": false,
+      "seconds": 13.229681853670627,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        9683712512,
+        6370422272,
+        62996480,
+        121880576,
+        92438528,
+        33554432,
+        504833024,
+        180764672
+      ]
+    },
+    {
+      "mode": "spatial",
+      "warmup": false,
+      "seconds": 15.054924723226577,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        8722389504,
+        5583508480,
+        5906642432,
+        5583477760,
+        5425618944,
+        5543768064,
+        5501937152,
+        5484266496
+      ]
+    },
+    {
+      "mode": "spatial",
+      "warmup": false,
+      "seconds": 12.632174924015999,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        9222904320,
+        5495955456,
+        5583767552,
+        5613774848,
+        5483443712,
+        5483474432,
+        5442991616,
+        5432763392
+      ]
+    },
+    {
+      "mode": "temporal",
+      "warmup": false,
+      "seconds": 13.592502623796463,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        8475601408,
+        6164367872,
+        62996480,
+        152052736,
+        151322624,
+        92438528,
+        62996480,
+        62996480
+      ]
+    },
+    {
+      "mode": "temporal",
+      "warmup": false,
+      "seconds": 13.082699724007398,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        9212639744,
+        6274919936,
+        62996480,
+        93168640,
+        92438528,
+        33554432,
+        62996480,
+        62996480
+      ]
+    },
+    {
+      "mode": "spatial",
+      "warmup": false,
+      "seconds": 13.918867371045053,
+      "exact": true,
+      "finite": true,
+      "shape": [
+        1,
+        3,
+        124,
+        928,
+        768
+      ],
+      "peak_bytes": [
+        8722389504,
+        5748422144,
+        5759432192,
+        5580238848,
+        5483443712,
+        5513708544,
+        5542327808,
+        5520482816
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "temporal": 13.229681853670627,
+      "spatial": 15.054924723226577
+    },
+    {
+      "spatial": 12.632174924015999,
+      "temporal": 13.592502623796463
+    },
+    {
+      "temporal": 13.082699724007398,
+      "spatial": 13.918867371045053
+    }
+  ],
+  "baseline_median_seconds": 13.229681853670627,
+  "candidate_median_seconds": 13.918867371045053,
+  "paired_gain_percent": -6.391399823258537,
+  "experiment": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/vae-spatial-f12r1n15-ZmTLuOe7",
+  "node": "f12r1n15",
+  "selected": false,
+  "source_sha256": {
+    "bench.py": "d95898d4cb88616d08b72b4ea83bcc40181fde6257e120c37fb6edafe1654f3d",
+    "schedule.py": "52d456028163f699ddf43aed5f3155a1a4f804b169e33ae6b7d9b4a4ca4991ab"
+  }
+}
