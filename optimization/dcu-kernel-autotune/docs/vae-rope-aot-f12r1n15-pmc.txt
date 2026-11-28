@@ -1,0 +1,24 @@
+kernel-name:"apply_rope_flat_kernel"
+ kernel dispatch index                     0
+ gpu id                                    0
+ dispatch queue id                         0
+ dispatch queue index                      49
+ process id                                2926156
+ thread id                                 2926156
+ grid size                                 1840128
+ work group size                           256
+ shared memory size                        0
+ scratch size                              0
+ vgpr count                                24
+ sgpr count                                48
+ signal handle                             0x1483913fed00
+ kernel time                               0.000115(s)
+ processed ALU instructions                48.7844325186(%)
+ performance                               8320.411173(Gflops)
+ shared memory operation                   0
+ shared memory bank conflict               0.0000000000(%)
+ L1 cache unit is active                   52.6385162048(%)
+ L1 cache unit is stalled                  10.5747007463(%)
+ L2 cache write unit is stalled            0.3831076265(%)
+ L2 cache hit rate                         35.473537(%)
+
