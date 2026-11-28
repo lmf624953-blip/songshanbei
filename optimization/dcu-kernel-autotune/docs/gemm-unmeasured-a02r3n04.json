@@ -1,0 +1,429 @@
+{
+  "node": "a02r3n04",
+  "experiment": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/gemm-unmeasured-a02r3n04-tEOWtXAH",
+  "adopted": false,
+  "scope": "固定DTK BF16 TN目录、四个生产投影形状和确定性合成输入的完整候选筛选",
+  "library_sha256": "91a0024eacb1f7bb20ebd61c07a6df8e8c76c99b24eb2d7439f474f04a3d7947",
+  "catalog_json_sha256": "13d8eaec154f0bfccffdd6d0a8352c8aed568d1d5b5a56ca65124ffdf6a74b01",
+  "covered_unique_indices": 1446,
+  "covered_shape_index_pairs": 5784,
+  "parts": {
+    "screen": {
+      "rows": 300,
+      "exact": 0,
+      "raw_sha256": "9e8f1996f8b688b60baecf267ef123a13799425f0f0bdbfa51b52fb5f47e0fb5"
+    },
+    "remaining": {
+      "rows": 5056,
+      "exact": 92,
+      "raw_sha256": "93c5c1d1b7ff7a64e4b6011a116002d54d2e5da74c499ec0413e1374ffd42347"
+    },
+    "historical-numerics": {
+      "rows": 260,
+      "exact": 32,
+      "raw_sha256": "ec22018102203c864c91889ba7f21e859ca6258f9a017ea0b80b7832a91b724e"
+    }
+  },
+  "exact_combinations": 188,
+  "shape_summary": {
+    "(2688, 27570, 5376)": {
+      "considered": 1446,
+      "exact": 47,
+      "different": 1399,
+      "best_new": {
+        "index": 28037,
+        "reference_ms": 2.56496,
+        "candidate_ms": 6.98896,
+        "paired_gain_percent": -172.0198365666521
+      }
+    },
+    "(3584, 27570, 5376)": {
+      "considered": 1446,
+      "exact": 47,
+      "different": 1399,
+      "best_new": {
+        "index": 28037,
+        "reference_ms": 3.25592,
+        "candidate_ms": 9.33168,
+        "paired_gain_percent": -186.50335389075897
+      }
+    },
+    "(5376, 27570, 896)": {
+      "considered": 1446,
+      "exact": 47,
+      "different": 1399,
+      "best_new": {
+        "index": 28100,
+        "reference_ms": 1.07736,
+        "candidate_ms": 2.50848,
+        "paired_gain_percent": -132.67238828055636
+      }
+    },
+    "(5376, 27570, 1792)": {
+      "considered": 1446,
+      "exact": 47,
+      "different": 1399,
+      "best_new": {
+        "index": 28037,
+        "reference_ms": 1.79296,
+        "candidate_ms": 5.01224,
+        "paired_gain_percent": -179.78761377833303
+      }
+    }
+  },
+  "controls": [
+    {
+      "m": 2688,
+      "n": 27570,
+      "k": 5376,
+      "index": 27993,
+      "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_GEMVMT768_RK1_GSU1_SU0_TT16_8_VW8_WG16_32_1_WGM1",
+      "status": 0,
+      "mismatches": 0,
+      "elements": 74108160,
+      "baseline_ms": [
+        2.53496,
+        2.4924,
+        2.52328,
+        2.51944,
+        2.54912,
+        2.578,
+        2.55568,
+        2.65424,
+        2.56256
+      ],
+      "candidate_ms": [
+        2.56776,
+        2.53224,
+        2.49984,
+        2.60656,
+        2.49304,
+        2.51016,
+        2.5492,
+        2.5372,
+        2.49232
+      ],
+      "baseline_median_ms": 2.54912,
+      "candidate_median_ms": 2.53224,
+      "gain_percent": 0.66219
+    },
+    {
+      "m": 3584,
+      "n": 27570,
+      "k": 5376,
+      "index": 27993,
+      "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_GEMVMT768_RK1_GSU1_SU0_TT16_8_VW8_WG16_32_1_WGM1",
+      "status": 0,
+      "mismatches": 0,
+      "elements": 98810880,
+      "baseline_ms": [
+        3.27664,
+        3.32104,
+        3.23432,
+        3.22992,
+        3.23248,
+        3.3116,
+        3.22208,
+        3.30488,
+        3.25512
+      ],
+      "candidate_ms": [
+        3.28824,
+        3.28104,
+        3.2412,
+        3.29568,
+        3.27192,
+        3.27016,
+        3.18144,
+        3.25816,
+        3.26976
+      ],
+      "baseline_median_ms": 3.25512,
+      "candidate_median_ms": 3.27016,
+      "gain_percent": -0.462019
+    },
+    {
+      "m": 5376,
+      "n": 27570,
+      "k": 1792,
+      "index": 27993,
+      "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_GEMVMT768_RK1_GSU1_SU0_TT16_8_VW8_WG16_32_1_WGM1",
+      "status": 0,
+      "mismatches": 0,
+      "elements": 148216320,
+      "baseline_ms": [
+        1.78448,
+        1.79168,
+        1.79024,
+        1.79328,
+        1.79144,
+        1.79144,
+        1.78992,
+        1.78784,
+        1.78848
+      ],
+      "candidate_ms": [
+        1.79224,
+        1.78992,
+        1.78912,
+        1.78992,
+        1.79288,
+        1.7896,
+        1.79136,
+        1.78808,
+        1.78992
+      ],
+      "baseline_median_ms": 1.79024,
+      "candidate_median_ms": 1.78992,
+      "gain_percent": 0.0178456
+    },
+    {
+      "m": 5376,
+      "n": 27570,
+      "k": 896,
+      "index": 27993,
+      "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_GEMVMT768_RK1_GSU1_SU0_TT16_8_VW8_WG16_32_1_WGM1",
+      "status": 0,
+      "mismatches": 0,
+      "elements": 148216320,
+      "baseline_ms": [
+        1.07552,
+        1.08392,
+        1.0784,
+        1.08288,
+        1.07728,
+        1.07632,
+        1.07456,
+        1.08344,
+        1.08168
+      ],
+      "candidate_ms": [
+        1.08648,
+        1.08432,
+        1.08432,
+        1.08976,
+        1.08648,
+        1.08544,
+        1.08624,
+        1.08776,
+        1.08584
+      ],
+      "baseline_median_ms": 1.0784,
+      "candidate_median_ms": 1.08624,
+      "gain_percent": -0.726998
+    }
+  ],
+  "cpu_full_array_cross_checks_in_screen": 40,
+  "reused_previous_report": {
+    "path": "gemm-coverage-f13r1n16.json",
+    "sha256": "db92dfab1f0ed5a8b5ec0fa8cce5cc4caee43d0dc41a3c03944d8f5bc9cd6fc1",
+    "rows": 168
+  },
+  "pmc": {
+    "rows": [
+      {
+        "m": 2688,
+        "n": 27570,
+        "k": 5376,
+        "index": 27993,
+        "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_GEMVMT768_RK1_GSU1_SU0_TT16_8_VW8_WG16_32_1_WGM1",
+        "status": 0,
+        "mismatches": 0,
+        "elements": 74108160,
+        "baseline_ms": [],
+        "candidate_ms": []
+      },
+      {
+        "m": 2688,
+        "n": 27570,
+        "k": 5376,
+        "index": 27600,
+        "name": "Cijk_Alik_Bljk_BBH_MT512x128x16_SE_BW_DTL0_DRB16_ALT_KME0_EPS0_GRVW8_GSU1_ISA936_NLCA1_OLDSR1_PGR2_SU0_SUM0_TT16_8_TLM0_VAW2_VW8_WG32_16_1_WGM8",
+        "status": 0,
+        "mismatches": 34289,
+        "elements": 74108160,
+        "baseline_ms": [],
+        "candidate_ms": []
+      },
+      {
+        "m": 2688,
+        "n": 27570,
+        "k": 5376,
+        "index": 28037,
+        "name": "Cijk_Alik_Bljk_BBH_MT128x64x32_BW_DTL1_EPS0_GRVW4_GSU1_ISA936_MMAC_BW1_NLCA1_PGR2_SU0_SUM0_TT8_4_TLM1_VW4_WG16_16_1_WGM8_ULDSWM1",
+        "status": 0,
+        "mismatches": 0,
+        "elements": 74108160,
+        "baseline_ms": [],
+        "candidate_ms": []
+      }
+    ],
+    "dispatches": [
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+        "kernel dispatch index": "0",
+        "gpu id": "0",
+        "dispatch queue id": "1",
+        "dispatch queue index": "9",
+        "process id": "1396645",
+        "thread id": "1396645",
+        "grid size": "912384",
+        "work group size": "768",
+        "shared memory size": "65536",
+        "scratch size": "0",
+        "vgpr count": "256",
+        "sgpr count": "112",
+        "signal handle": "0x14e3eb1fdd80",
+        "kernel time": "0.002643(s)",
+        "processed ALU instructions": "67.4659422160(%)",
+        "performance": "5464.176400(Gflops)",
+        "shared memory operation": "25546752",
+        "shared memory bank conflict": "0.0000000000(%)",
+        "L1 cache unit is active": "87.9277180205(%)",
+        "L1 cache unit is stalled": "1.5542174467(%)",
+        "L2 cache write unit is stalled": "0.0774690952(%)",
+        "L2 cache hit rate": "78.165553(%)"
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+        "kernel dispatch index": "1",
+        "gpu id": "0",
+        "dispatch queue id": "1",
+        "dispatch queue index": "10",
+        "process id": "1396645",
+        "thread id": "1396645",
+        "grid size": "912384",
+        "work group size": "768",
+        "shared memory size": "65536",
+        "scratch size": "0",
+        "vgpr count": "256",
+        "sgpr count": "112",
+        "signal handle": "0x14e3eb1fdd00",
+        "kernel time": "0.002628(s)",
+        "processed ALU instructions": "67.8855914233(%)",
+        "performance": "5494.447924(Gflops)",
+        "shared memory operation": "25546752",
+        "shared memory bank conflict": "0.0000000000(%)",
+        "L1 cache unit is active": "87.4014593451(%)",
+        "L1 cache unit is stalled": "1.4589220387(%)",
+        "L2 cache write unit is stalled": "0.2276643077(%)",
+        "L2 cache hit rate": "78.574836(%)"
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+        "kernel dispatch index": "2",
+        "gpu id": "0",
+        "dispatch queue id": "1",
+        "dispatch queue index": "16",
+        "process id": "1396645",
+        "thread id": "1396645",
+        "grid size": "912384",
+        "work group size": "768",
+        "shared memory size": "65536",
+        "scratch size": "0",
+        "vgpr count": "256",
+        "sgpr count": "112",
+        "signal handle": "0x14e3eb1fdb80",
+        "kernel time": "0.002657(s)",
+        "processed ALU instructions": "67.1015393404(%)",
+        "performance": "5434.236609(Gflops)",
+        "shared memory operation": "25546752",
+        "shared memory bank conflict": "0.0000000000(%)",
+        "L1 cache unit is active": "87.8585939328(%)",
+        "L1 cache unit is stalled": "1.5931834882(%)",
+        "L2 cache write unit is stalled": "0.1509553808(%)",
+        "L2 cache hit rate": "78.283641(%)"
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT512x128x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS0_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW2_VSn1_VW8_WG32_16_1_WGM8",
+        "kernel dispatch index": "3",
+        "gpu id": "0",
+        "dispatch queue id": "1",
+        "dispatch queue index": "17",
+        "process id": "1396645",
+        "thread id": "1396645",
+        "grid size": "663552",
+        "work group size": "512",
+        "shared memory size": "53248",
+        "scratch size": "0",
+        "vgpr count": "212",
+        "sgpr count": "112",
+        "signal handle": "0x14e3eb1fdb00",
+        "kernel time": "0.006320(s)",
+        "processed ALU instructions": "32.6086637401(%)",
+        "performance": "2759.563434(Gflops)",
+        "shared memory operation": "55738368",
+        "shared memory bank conflict": "12.8396298351(%)",
+        "L1 cache unit is active": "93.6190811713(%)",
+        "L1 cache unit is stalled": "0.6042035871(%)",
+        "L2 cache write unit is stalled": "0.0060129321(%)",
+        "L2 cache hit rate": "88.893624(%)"
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1",
+        "kernel dispatch index": "4",
+        "gpu id": "0",
+        "dispatch queue id": "1",
+        "dispatch queue index": "23",
+        "process id": "1396645",
+        "thread id": "1396645",
+        "grid size": "912384",
+        "work group size": "768",
+        "shared memory size": "65536",
+        "scratch size": "0",
+        "vgpr count": "256",
+        "sgpr count": "112",
+        "signal handle": "0x14e3eb1fd980",
+        "kernel time": "0.002629(s)",
+        "processed ALU instructions": "67.8019970836(%)",
+        "performance": "5492.441675(Gflops)",
+        "shared memory operation": "25546752",
+        "shared memory bank conflict": "0.0000000000(%)",
+        "L1 cache unit is active": "87.6376810772(%)",
+        "L1 cache unit is stalled": "1.6578020223(%)",
+        "L2 cache write unit is stalled": "0.1998345014(%)",
+        "L2 cache hit rate": "79.043020(%)"
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT128x64x32_SE_AMAS3_BW_DTL1_BL1_DRB16_ALT_KME0_ETSP_EPS0_FL0_GRVW4_GSU1_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW4_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT8_4_TLM1_ULDSWM1_USFGRO0_USSB1_VAW1_VSn1_VW4_WG16_16_1_WGM8",
+        "kernel dispatch index": "5",
+        "gpu id": "0",
+        "dispatch queue id": "1",
+        "dispatch queue index": "24",
+        "process id": "1396645",
+        "thread id": "1396645",
+        "grid size": "2317056",
+        "work group size": "256",
+        "shared memory size": "28672",
+        "scratch size": "0",
+        "vgpr count": "124",
+        "sgpr count": "112",
+        "signal handle": "0x14e3eb1fd900",
+        "kernel time": "0.006899(s)",
+        "processed ALU instructions": "27.9983284997(%)",
+        "performance": "2501.752933(Gflops)",
+        "shared memory operation": "36493632",
+        "shared memory bank conflict": "35.2087247972(%)",
+        "L1 cache unit is active": "77.3839790679(%)",
+        "L1 cache unit is stalled": "1.2931671577(%)",
+        "L2 cache write unit is stalled": "0.0000000000(%)",
+        "L2 cache hit rate": "86.068653(%)"
+      }
+    ]
+  },
+  "raw_files": {
+    "gemm-unmeasured-a02r3n04-screen.jsonl": "310abc0817ebfd4a50ccbcf6de0e4d7a744e7c36e4f7d8b8b3796de41183d314",
+    "gemm-unmeasured-a02r3n04-pmc.txt": "05a313e74d4c92964bf78e584435ae13615b9f4fce5a483a6185208cbc946ab6"
+  },
+  "source_sha256": {
+    "screen-solutions.cc": "a2f1a184ab6b5df3cc00efb9aa85cf38f87944bcc1b5635f9bbde7459938ff94",
+    "screen-solutions-pmc.cc": "6e1e3d3304f83a4dcf224861ed429785f9df304353bca8cde52fad5b1d7627cd",
+    "prepare-unmeasured.py": "027dedd6d3f438a60cb9cf099c60b65e5dd8708282f63bc98c215da1cdb02542",
+    "prepare-remaining.py": "d0f7edab2c149d1b44964fff1416a6d078b6398d2ea8072d8c0d59e39da29ff9"
+  },
+  "binary_sha256": {
+    "screen": "c5e7d14f6c0d4c2f7459ac926722bd013df554539dcb553742b817c0a6a44bbb",
+    "screen-pmc": "dd6eaf2f9ccd1503b4a1503607b83d7afe04e91cde4aeab79f8d4ac148040637"
+  },
+  "decision": "新增逐位通过的库解均较慢，保留已有默认；结论限于当前目录和形状，不代表GEMM全局最优"
+}
