@@ -258,6 +258,15 @@ if os.environ.get("H3_PEER_SHARDED_NORM_BUILD"):
     from model_runtime import install as install_sharded_norm
     sharded_norm_plugin = install_sharded_norm(infinilm, indexed_host, norm_host, control,
         peer_gate_plugin, os.environ["H3_PEER_SHARDED_NORM_BUILD"])
+vae_process_plugin = None
+if process_workers := os.environ.get("H3_VAE_PROCESS_WORKERS"):
+    if vae_type is None:
+        raise RuntimeError("VAE process scheduling requires the accepted temporal decoder")
+    sys.path.insert(0, str(here.parent / "dcu-kernel-autotune/candidates/vae-process-scheduling"))
+    from process_runtime import install as install_vae_process
+    vae_process_plugin = install_vae_process(control, int(process_workers),
+        os.environ["H3_VAE_PROCESS_LOG_DIR"])
+    print("[vae_process] configured workers", process_workers, flush=True)
 entry = here.parents[1] / "runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py"
 if os.environ.get("H3_PROFILE_CANDIDATE") == "1":
     entry = here.parent / "profile-entry.py"

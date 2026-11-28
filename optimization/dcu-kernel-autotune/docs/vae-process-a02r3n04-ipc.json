@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "scope": "CPU IPC协议检查，不是模型数值或性能结果",
+  "checks": [
+    {
+      "rank": 0,
+      "trial": 0,
+      "exact": true
+    },
+    {
+      "rank": 1,
+      "trial": 0,
+      "exact": true
+    },
+    {
+      "rank": 0,
+      "trial": 1,
+      "exact": true
+    },
+    {
+      "rank": 1,
+      "trial": 1,
+      "exact": true
+    },
+    {
+      "rank": 0,
+      "trial": 2,
+      "exact": true
+    },
+    {
+      "rank": 1,
+      "trial": 2,
+      "exact": true
+    }
+  ],
+  "worker_exit_codes": [
+    0,
+    0
+  ],
+  "source_sha256": {
+    "worker-entry.py": "6131ca8a18e84708f7d69e726031a75331f6ac2824fe7bc4f797ef3818a68ca2",
+    "process_runtime.py": "7318d896c87057ba64314c4646b44d9790ad8fa17b217298c911eb136cfae81a",
+    "bench.py": "baaf3ea48fd8f53e1e2a5e7ffbf8c6f6098b7fb19cc9ba55b9b6e3a37057e9b6"
+  }
+}

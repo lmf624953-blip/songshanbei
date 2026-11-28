@@ -1,0 +1,1478 @@
+{
+  "adopted": false,
+  "full_model_qualified": false,
+  "experiments": {
+    "basic_attention": {
+      "experiment": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/vae-process-a02r3n04-6ncAk0q5",
+      "report": {
+        "scope": "独立VAE固定latent：两卡线程对照多进程，包含每请求搬运、解码、汇聚和原拼接",
+        "complete": true,
+        "records": [
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": true,
+            "seconds": 58.75048967101611,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": true,
+            "warmup": true,
+            "seconds": 28.5423572990112,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  2,
+                  4,
+                  6
+                ],
+                "seconds": 28.050032589002512,
+                "torch_peak_allocated_bytes": 7366558720
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  3,
+                  5
+                ],
+                "seconds": 25.220275993982796,
+                "torch_peak_allocated_bytes": 7329756160
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 15.637866346980445,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": true,
+            "warmup": false,
+            "seconds": 13.337105594982859,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  2,
+                  4,
+                  6
+                ],
+                "seconds": 12.776234069024213,
+                "torch_peak_allocated_bytes": 7642845184
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  3,
+                  5
+                ],
+                "seconds": 9.597940605017357,
+                "torch_peak_allocated_bytes": 7568819200
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": true,
+            "warmup": false,
+            "seconds": 13.410634817031678,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  2,
+                  4,
+                  6
+                ],
+                "seconds": 12.81172732199775,
+                "torch_peak_allocated_bytes": 7918752768
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  3,
+                  5
+                ],
+                "seconds": 9.594142582966015,
+                "torch_peak_allocated_bytes": 7679628288
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 15.350906558975112,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 13.938530250045005,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": true,
+            "warmup": false,
+            "seconds": 13.389206024992745,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  2,
+                  4,
+                  6
+                ],
+                "seconds": 12.79962477897061,
+                "torch_peak_allocated_bytes": 8194958336
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  3,
+                  5
+                ],
+                "seconds": 9.54936484299833,
+                "torch_peak_allocated_bytes": 7919217664
+              }
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": true,
+            "seconds": 18.484626698016655,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.184631917043589,
+                "torch_peak_allocated_bytes": 8231822336
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.1988199989427812,
+                "torch_peak_allocated_bytes": 7956050944
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 17.951794220949523,
+                "torch_peak_allocated_bytes": 7066338304
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 17.75470430700807,
+                "torch_peak_allocated_bytes": 7066338304
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 18.368534600012936,
+                "torch_peak_allocated_bytes": 7066338304
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 17.808220495993737,
+                "torch_peak_allocated_bytes": 7066338304
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 18.395442777022254,
+                "torch_peak_allocated_bytes": 7066338304
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 12.9389497829834,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": false,
+            "seconds": 3.483256198000163,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.2108651400194503,
+                "torch_peak_allocated_bytes": 8297950720
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.2163638960337266,
+                "torch_peak_allocated_bytes": 8040510464
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.2183129530167207,
+                "torch_peak_allocated_bytes": 7292830720
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.2194196739583276,
+                "torch_peak_allocated_bytes": 7292830720
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 3.2204303439939395,
+                "torch_peak_allocated_bytes": 7292830720
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 3.225670753978193,
+                "torch_peak_allocated_bytes": 7292830720
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 3.2248759400099516,
+                "torch_peak_allocated_bytes": 7292830720
+              }
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": false,
+            "seconds": 3.4946108670555986,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.222146336978767,
+                "torch_peak_allocated_bytes": 8393847808
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.197339929989539,
+                "torch_peak_allocated_bytes": 8158094336
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.200228176021483,
+                "torch_peak_allocated_bytes": 7329756160
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.200005021994002,
+                "torch_peak_allocated_bytes": 7329756160
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 3.1966750680003315,
+                "torch_peak_allocated_bytes": 7329756160
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 3.1954652249696665,
+                "torch_peak_allocated_bytes": 7329756160
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 3.21032616001321,
+                "torch_peak_allocated_bytes": 7329756160
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 13.110177659953479,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 14.343777836998925,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": false,
+            "seconds": 3.490336774964817,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.197523263981566,
+                "torch_peak_allocated_bytes": 8471380992
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.1923120940336958,
+                "torch_peak_allocated_bytes": 8195081216
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.1879093589959666,
+                "torch_peak_allocated_bytes": 7366558720
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.1856770670274273,
+                "torch_peak_allocated_bytes": 7366558720
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 3.1972322989604436,
+                "torch_peak_allocated_bytes": 7366558720
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 3.196175569028128,
+                "torch_peak_allocated_bytes": 7366558720
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 3.2071792490314692,
+                "torch_peak_allocated_bytes": 7366558720
+              }
+            ]
+          }
+        ],
+        "comparisons": {
+          "2": {
+            "eligible": true,
+            "pairs": [
+              {
+                "reference": 15.637866346980445,
+                "candidate": 13.337105594982859
+              },
+              {
+                "candidate": 13.410634817031678,
+                "reference": 15.350906558975112
+              },
+              {
+                "reference": 13.938530250045005,
+                "candidate": 13.389206024992745
+              }
+            ],
+            "reference_median": 15.350906558975112,
+            "candidate_median": 13.389206024992745,
+            "paired_gain_percent": 12.639460311280626
+          },
+          "7": {
+            "eligible": true,
+            "pairs": [
+              {
+                "reference": 12.9389497829834,
+                "candidate": 3.483256198000163
+              },
+              {
+                "candidate": 3.4946108670555986,
+                "reference": 13.110177659953479
+              },
+              {
+                "reference": 14.343777836998925,
+                "candidate": 3.490336774964817
+              }
+            ],
+            "reference_median": 13.110177659953479,
+            "candidate_median": 3.490336774964817,
+            "paired_gain_percent": 73.34429053749376
+          }
+        },
+        "latent_shape": [
+          1,
+          24,
+          37,
+          58,
+          48
+        ],
+        "model": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "compiler_cache_optimization": false,
+        "worker_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "bench_sha256": "5adefceecdb4b81505d9d41858a22c3084a067a008f5c4f101473d5c650e1f9e"
+    },
+    "fp32_attention": {
+      "experiment": "/public/home/acvduipmem/xsh/songshanbei/optimization/dcu-kernel-autotune/validation/vae-process-fp32-a02r3n04-8DYAZWut",
+      "report": {
+        "scope": "独立VAE固定latent：两卡线程对照多进程，包含每请求搬运、解码、汇聚和原拼接",
+        "complete": true,
+        "records": [
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": true,
+            "seconds": 36.28516153601231,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 4,
+            "processes": true,
+            "warmup": true,
+            "seconds": 11.354196464992128,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  4
+                ],
+                "seconds": 10.747568921011407,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6320056320,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  5
+                ],
+                "seconds": 11.085685571015347,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6320056320,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2,
+                  6
+                ],
+                "seconds": 10.852824021014385,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6320056320,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 7.648963054991327,
+                "torch_peak_allocated_bytes": 7055358976,
+                "memory": {
+                  "allocated_bytes": 6378971136,
+                  "reserved_bytes": 7673479168
+                }
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 12.846643252007198,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 4,
+            "processes": true,
+            "warmup": false,
+            "seconds": 6.617245962959714,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  4
+                ],
+                "seconds": 6.277540482988115,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6496708608,
+                  "reserved_bytes": 8074035200
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  5
+                ],
+                "seconds": 6.275577034975868,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6496708608,
+                  "reserved_bytes": 8074035200
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2,
+                  6
+                ],
+                "seconds": 6.285707269969862,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6496708608,
+                  "reserved_bytes": 8074035200
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.149097634013742,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 7920943104
+                }
+              }
+            ]
+          },
+          {
+            "workers": 4,
+            "processes": true,
+            "warmup": false,
+            "seconds": 6.62524811597541,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  4
+                ],
+                "seconds": 6.2433341649593785,
+                "torch_peak_allocated_bytes": 7546860544,
+                "memory": {
+                  "allocated_bytes": 6820632576,
+                  "reserved_bytes": 8195670016
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  5
+                ],
+                "seconds": 6.241846516961232,
+                "torch_peak_allocated_bytes": 7546860544,
+                "memory": {
+                  "allocated_bytes": 6820632576,
+                  "reserved_bytes": 8195670016
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2,
+                  6
+                ],
+                "seconds": 6.270493637013715,
+                "torch_peak_allocated_bytes": 7546860544,
+                "memory": {
+                  "allocated_bytes": 6820632576,
+                  "reserved_bytes": 8195670016
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.123867381014861,
+                "torch_peak_allocated_bytes": 7307674624,
+                "memory": {
+                  "allocated_bytes": 6555592704,
+                  "reserved_bytes": 7920943104
+                }
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 15.837599209975451,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 14.256838367960881,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 4,
+            "processes": true,
+            "warmup": false,
+            "seconds": 6.622092065983452,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0,
+                  4
+                ],
+                "seconds": 6.253551462024916,
+                "torch_peak_allocated_bytes": 7627703296,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 8317304832
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1,
+                  5
+                ],
+                "seconds": 6.258498247014359,
+                "torch_peak_allocated_bytes": 7627703296,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 8317304832
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2,
+                  6
+                ],
+                "seconds": 6.266759796009865,
+                "torch_peak_allocated_bytes": 7627703296,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 8317304832
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.143941946036648,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6467266560,
+                  "reserved_bytes": 8042577920
+                }
+              }
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": true,
+            "seconds": 7.878204494947568,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.1456538590136915,
+                "torch_peak_allocated_bytes": 7796289024,
+                "memory": {
+                  "allocated_bytes": 7291643904,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.154853984946385,
+                "torch_peak_allocated_bytes": 7796289024,
+                "memory": {
+                  "allocated_bytes": 7291643904,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.1523901180480607,
+                "torch_peak_allocated_bytes": 7796289024,
+                "memory": {
+                  "allocated_bytes": 7291643904,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.134595816023648,
+                "torch_peak_allocated_bytes": 7509935104,
+                "memory": {
+                  "allocated_bytes": 6820571136,
+                  "reserved_bytes": 8042577920
+                }
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 7.6373947220272385,
+                "torch_peak_allocated_bytes": 7055358976,
+                "memory": {
+                  "allocated_bytes": 6378971136,
+                  "reserved_bytes": 7673479168
+                }
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 7.689928900974337,
+                "torch_peak_allocated_bytes": 7055358976,
+                "memory": {
+                  "allocated_bytes": 6378971136,
+                  "reserved_bytes": 7673479168
+                }
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 7.777617354004178,
+                "torch_peak_allocated_bytes": 7055358976,
+                "memory": {
+                  "allocated_bytes": 6378971136,
+                  "reserved_bytes": 7673479168
+                }
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 15.069636480009649,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": false,
+            "seconds": 3.4180014160228893,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.1232194979675114,
+                "torch_peak_allocated_bytes": 7823066112,
+                "memory": {
+                  "allocated_bytes": 6879455232,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.126338357978966,
+                "torch_peak_allocated_bytes": 7823066112,
+                "memory": {
+                  "allocated_bytes": 6879455232,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.125201915972866,
+                "torch_peak_allocated_bytes": 7823066112,
+                "memory": {
+                  "allocated_bytes": 6879455232,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.131154200003948,
+                "torch_peak_allocated_bytes": 7547016192,
+                "memory": {
+                  "allocated_bytes": 6703020032,
+                  "reserved_bytes": 8074035200
+                }
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 3.1498976899893023,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 3.147746308008209,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 3.166778663988225,
+                "torch_peak_allocated_bytes": 7270810624,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 7920943104
+                }
+              }
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": false,
+            "seconds": 3.3962768990313634,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.1193254030076787,
+                "torch_peak_allocated_bytes": 7860074496,
+                "memory": {
+                  "allocated_bytes": 6761687040,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.1248436589958146,
+                "torch_peak_allocated_bytes": 7860074496,
+                "memory": {
+                  "allocated_bytes": 6761687040,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.1204952049884014,
+                "torch_peak_allocated_bytes": 7860074496,
+                "memory": {
+                  "allocated_bytes": 6761687040,
+                  "reserved_bytes": 8438939648
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.1342954009887762,
+                "torch_peak_allocated_bytes": 7583880192,
+                "memory": {
+                  "allocated_bytes": 6585034752,
+                  "reserved_bytes": 8105492480
+                }
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 3.1298080739798024,
+                "torch_peak_allocated_bytes": 7307674624,
+                "memory": {
+                  "allocated_bytes": 6555592704,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 3.1303934359457344,
+                "torch_peak_allocated_bytes": 7307674624,
+                "memory": {
+                  "allocated_bytes": 6555592704,
+                  "reserved_bytes": 7920943104
+                }
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 3.132175048987847,
+                "torch_peak_allocated_bytes": 7307674624,
+                "memory": {
+                  "allocated_bytes": 6555592704,
+                  "reserved_bytes": 7920943104
+                }
+              }
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 14.340169898001477,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 2,
+            "processes": false,
+            "warmup": false,
+            "seconds": 14.326556037995033,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ]
+          },
+          {
+            "workers": 7,
+            "processes": true,
+            "warmup": false,
+            "seconds": 3.418271981005091,
+            "exact": true,
+            "finite": true,
+            "shape": [
+              1,
+              3,
+              124,
+              928,
+              768
+            ],
+            "worker_samples": [
+              {
+                "rank": 0,
+                "clips": [
+                  0
+                ],
+                "seconds": 3.1340762370382436,
+                "torch_peak_allocated_bytes": 7914522112,
+                "memory": {
+                  "allocated_bytes": 7409412096,
+                  "reserved_bytes": 8560574464
+                }
+              },
+              {
+                "rank": 1,
+                "clips": [
+                  1
+                ],
+                "seconds": 3.1439499059924856,
+                "torch_peak_allocated_bytes": 7914522112,
+                "memory": {
+                  "allocated_bytes": 7409412096,
+                  "reserved_bytes": 8560574464
+                }
+              },
+              {
+                "rank": 2,
+                "clips": [
+                  2
+                ],
+                "seconds": 3.1511171339661814,
+                "torch_peak_allocated_bytes": 7914522112,
+                "memory": {
+                  "allocated_bytes": 7409412096,
+                  "reserved_bytes": 8560574464
+                }
+              },
+              {
+                "rank": 3,
+                "clips": [
+                  3
+                ],
+                "seconds": 3.156092299032025,
+                "torch_peak_allocated_bytes": 7767371264,
+                "memory": {
+                  "allocated_bytes": 7262201856,
+                  "reserved_bytes": 8355053568
+                }
+              },
+              {
+                "rank": 4,
+                "clips": [
+                  4
+                ],
+                "seconds": 3.144913404015824,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6467266560,
+                  "reserved_bytes": 8042577920
+                }
+              },
+              {
+                "rank": 5,
+                "clips": [
+                  5
+                ],
+                "seconds": 3.147631686006207,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6467266560,
+                  "reserved_bytes": 8042577920
+                }
+              },
+              {
+                "rank": 6,
+                "clips": [
+                  6
+                ],
+                "seconds": 3.1657593449926935,
+                "torch_peak_allocated_bytes": 7392166912,
+                "memory": {
+                  "allocated_bytes": 6467266560,
+                  "reserved_bytes": 8042577920
+                }
+              }
+            ]
+          }
+        ],
+        "comparisons": {
+          "4": {
+            "eligible": true,
+            "pairs": [
+              {
+                "reference": 12.846643252007198,
+                "candidate": 6.617245962959714
+              },
+              {
+                "candidate": 6.62524811597541,
+                "reference": 15.837599209975451
+              },
+              {
+                "reference": 14.256838367960881,
+                "candidate": 6.622092065983452
+              }
+            ],
+            "reference_median": 14.256838367960881,
+            "candidate_median": 6.622092065983452,
+            "paired_gain_percent": 53.55146845975926
+          },
+          "7": {
+            "eligible": true,
+            "pairs": [
+              {
+                "reference": 15.069636480009649,
+                "candidate": 3.4180014160228893
+              },
+              {
+                "candidate": 3.3962768990313634,
+                "reference": 14.340169898001477
+              },
+              {
+                "reference": 14.326556037995033,
+                "candidate": 3.418271981005091
+              }
+            ],
+            "reference_median": 14.340169898001477,
+            "candidate_median": 3.4180014160228893,
+            "paired_gain_percent": 76.3163412763702
+          }
+        },
+        "latent_shape": [
+          1,
+          24,
+          37,
+          58,
+          48
+        ],
+        "model": "/work1/share/sugonhpcapp01/zhanghengyu/songshanbei/models/MiniMax-H3",
+        "compiler_cache_optimization": false,
+        "python_attention_mode": "1",
+        "worker_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "bench_sha256": "68e9381341dec95aca3ca947458747a32af94b4c86a46c54565e72c9ca83ae05"
+    }
+  },
+  "note": "正式组合不变；微测通过后推进完整模型。生产subprocess引导与GC新增路径单独资格。"
+}

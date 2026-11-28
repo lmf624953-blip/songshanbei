@@ -22,6 +22,9 @@ def snapshot(destination):
         for name in ("peer-sharded-norm", "peer-sharded-norm-model"):
             source = project / "optimization/dcu-kernel-autotune/candidates" / name
             files.extend(p for p in source.iterdir() if p.is_file() and p.suffix in {".py", ".sh", ".cc", ".hip", ".patch", ".md", ".json"})
+    if os.environ.get("H3_VAE_PROCESS_WORKERS"):
+        source = project / "optimization/dcu-kernel-autotune/candidates/vae-process-scheduling"
+        files.extend(p for p in source.iterdir() if p.is_file() and p.suffix in {".py", ".sh", ".md", ".json"})
     files.append(project / "runtime/h3-runtime/sources/InfiniLM/examples/minimax_h3.py")
     records = {}
     for source in sorted(files):
@@ -51,6 +54,7 @@ def snapshot(destination):
                                              "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
         artifacts[name] = {"path": str(build), "artifacts": metadata}
     names = ("H3_PY_ATTENTION_FP32_SCALE", "H3_VAE_DEVICES", "H3_VAE_BATCH", "H3_VAE_CACHE_REPLICAS",
+             "H3_VAE_PROCESS_WORKERS", "H3_VAE_PROCESS_LOG_DIR",
              "H3_VAE_DETERMINISTIC_ENCODE",
              "H3_ENCODER_PREFILL", "H3_ENCODER_INITIAL_CACHE", "H3_ENCODER_TP_COUNT", "H3_INDEXED_AUDIT",
              "H3_INDEXED_PAIRED", "H3_PEER_GATE_ENABLED", "H3_BENCH_JIT_CACHE", "H3_NATIVE_CXX_OPTIMIZE",
